@@ -54,6 +54,8 @@
 
 审核未通过的图片不计费。
 
+**Agent Plan 包月套餐**（2026-09-30 实测，P0-06 D-007）：图像接口为 `POST /api/plan/v3/images/generations`，请求体与 `/api/v3` 相同；套餐 Key 与按量付费 Key 互不通用（套餐 Key 在 `/api/v3` 返回 `AuthenticationError`）；套餐内图像只支持 5.0 pro，flash / 4.0 返回 400 `UnsupportedModel`（兼容模型列表见文档 82379/2366394，当前容器无法访问）。按公开资料，套餐按 AFP 点数扣额度，视频路径为 `/api/plan/v3/contents/generations/tasks`，最低档不含视频；Seedance 是否可用、每张图扣多少点尚未核实（P0-08 前确认）。
+
 ### 3.3 Seedance 视频
 
 | 模型 | 时长 | 分辨率 | 并发（企业 / 个人） | 5 秒 720p 价格（无输入视频） |

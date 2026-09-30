@@ -315,7 +315,8 @@ class CliTest(unittest.TestCase):
 
     def test_offline_and_generation_are_exclusive(self):
         for argv in (["--verify", "x", "--stage", "main"], ["--export", "a", "b", "--model", "pro"], ["--cards", "x", "--verify", "y"],
-                     ["--stage", "main"], ["--stage", "derive", "--model", "pro"], ["--stage", "main", "--model", "pro", "--mode", "ref"], ["--verify", "x", "--small"]):
+                     ["--stage", "main"], ["--stage", "derive", "--model", "pro"], ["--stage", "main", "--model", "pro", "--mode", "ref"], ["--verify", "x", "--small"],
+                     ["--cards", "x", "--prompt-version", "costume.v2"]):
             with self.subTest(argv=argv):
                 code, _ = self.parse(argv)
                 self.assertEqual(code, 2)

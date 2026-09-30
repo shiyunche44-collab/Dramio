@@ -150,7 +150,7 @@ python3 -m poc costume --cards ../../docs/reports/p0/P0-06                      
 - 所有请求 `watermark=false`（D-005：定妆图是内部中间资产，不发布；成片的 AIGC 标识由 P0-11 负责）、`response_format=b64_json`、`output_format=jpeg`。图像字节原样保存，不转码、不裁剪。
 - Seedance 可用性：只有**没有参考图的文生图原始产物**标为 `seedance_eligible`（Seedance 只信任同账号 30 天内 Seedream 5.0 文生图的原始文件，见 `docs/reports/p0/vendor-volcengine.md` §1）。`ref` 派生是图生图，标为不可用。
 - 瞬时故障（网络、429、5xx、服务端繁忙）同一张最多重试 2 次，每次请求都记账：成功按 `usage.generated_images` 计；网络中断、响应无法解析、429、5xx 可能已生成，保守按全额计；审核拒绝（错误码含 `SensitiveContent`）、其它 4xx、无图不计费。每个请求记录 `node_key`（请求内容的 sha256，含采样序号），只记录、不做缓存。错误信息中的密钥和方舟账号 ID 会被脱敏。
-- 账号级错误（`AccountOverdueError` 欠费、`ModelNotOpen` 未开通、鉴权失败）立即中止整次运行，不再继续发请求。
+- 账号级错误（`AccountOverdueError` 欠费、`ModelNotOpen` 未开通、`UnsupportedModel` Agent Plan 不支持该模型、鉴权失败；plan 模式下选 flash / v4 在发请求前就拒绝）立即中止整次运行，不再继续发请求。
 - 退出码：全部成功为 0；有失败、因费用上限（`--max-cost-cny`，默认 15 元，下一张会超出即中止）或账号级错误中止为 1；用法错误为 2。`--verify` 全部一致为 0，否则为 1。
 - `--export`、`--verify`、`--cards` 是离线模式，只能选一个，且不能与生成参数同用。
 - 输出：`runs/<run_id>/images/rN/<角色>/<kind>-<label>.jpg`、`summary.json`（每张的提示词、参考图 sha256、尺寸、耗时、费用、sha256、Seedance 可用性）。`--export` 把第 1 轮成功的图像复制为 `<角色>/<kind>-<label>-<sha256 前 8 位>.jpg`，并写 `manifest.json`、`run-summary.json`、`run-calls.jsonl`（目标目录必须为空）。

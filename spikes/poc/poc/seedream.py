@@ -23,6 +23,7 @@
 - moderation   审核不通过（错误码含 SensitiveContent / RiskDetection），不计费、不重试
 - bad_response 响应不是预期结构
 - empty        响应里没有图片
+- config       缺少 Key、ARK_BILLING 无效、plan 模式选了套餐不支持的模型（不发请求）
 transient 属性标明是否可重试（网络、429、5xx、服务端繁忙）。
 """
 

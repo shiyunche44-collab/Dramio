@@ -200,7 +200,7 @@ def node_key(model: str, job: Job, sample: str) -> str:
 @dataclass
 class Settings:
     stage: str  # main / derive
-    model: str  # pro / flash
+    model: str  # pro / flash / v4（plan 模式只能 pro）
     chars: list[str]
     mode: str | None = None  # derive：text / ref / sheet
     n: int = 3
@@ -255,7 +255,7 @@ class Item:
 
 
 class Abort(Exception):
-    """中止整次运行：费用上限（CostLimit）或账号级错误（欠费、模型未开通、鉴权失败）。"""
+    """中止整次运行：费用上限（CostLimit）或账号级错误（欠费、模型未开通、套餐不支持该模型、鉴权失败、配置错误）。"""
 
     def __init__(self, message: str, item: "Item | None" = None):
         super().__init__(message)
@@ -741,7 +741,7 @@ def _cmd(args: argparse.Namespace) -> int:
 def add_parser(sub) -> None:
     p = sub.add_parser("costume", help="DramaIR 角色 → 定妆主图、三视图、表情集（P0-06，方舟 Seedream 5.0）")
     p.add_argument("--stage", choices=("main", "derive"), help="main：主图；derive：以主图派生三视图与表情")
-    p.add_argument("--model", choices=tuple(seedream.MODELS), help="Seedream 5.0 pro / flash")
+    p.add_argument("--model", choices=tuple(seedream.MODELS), help="Seedream 5.0 pro / flash 或 4.0（v4）；ARK_BILLING=plan 时只能 pro")
     p.add_argument("--mode", choices=MODES, help="派生方式：text 文生图 / ref 主图参考图生图 / sheet 设定板")
     p.add_argument("--char", action="append", metavar="角色id", help="只生成这些角色（默认全部），可重复")
     p.add_argument("--n", type=int, default=None, help="main 阶段每个角色的主图张数（默认 3）")
