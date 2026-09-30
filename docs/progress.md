@@ -23,17 +23,56 @@
 
 - **当前里程碑**：M0.2 单项能力摸底
 - **当前步骤**：P0-06
-- **步骤状态**：未开始
+- **步骤状态**：进行中
 - **工作分支**：claude/sweet-lamport-cwwsvb
 - **PR**：—
 
 ## 步骤卡
 
-（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
+- **步骤**：P0-06 角色定妆（估时 1 天，可能 1–1.5 天）
+- **目标**：用方舟 Seedream 5.0 为 ep01（D-002）的苏晚、陆沉各生成一套定妆：文生图主图 + 三视图（正 / 侧 / 背）+ 表情集；主图原样保存并记录 sha256，供 P0-07 / P0-08 作身份参考；对比出默认定妆路线，由用户（D-006）为每个角色选定一套。
+- **做**：
+  - 冒烟核实方舟图像接口 `POST /api/v3/images/generations`：`model`、`prompt`、`size`（9:16、≤1.5K 档）、`response_format`（优先 `b64_json`）、`watermark`、`seed`、参考图 `image` 传法（data URI）、组图 `sequential_image_generation`、响应与错误字段、审核拒绝错误码；结果写入报告“接口”一节。
+  - `poc/seedream.py`（标准库，可注入 transport，复用 `doctor.urlopen`，`config.redact` 脱敏）：失败分类 network / http / api_error / moderation / bad_response / empty，区分瞬时；每个请求经 `Run.call()` 记账，填写 `node_key`（只记录、不缓存）；calls.jsonl 与 summary 不写 base64。
+  - `pricing` 图像单价（vendor-volcengine.md §3.2：pro ≤1.5K ¥0.30、>1.5K ¥0.60，flash ¥0.12，第 2 张参考图起 ¥0.02）；审核拒绝与不可重试 4xx 不计费，网络中断 / 5xx / 429 保守按全额。
+  - 图像文件工具：sha256、字节数、JPEG SOF / PNG IHDR 宽高。
+  - Prompt 模板 `costume.v1`（主图、三视图、表情、组图），字段运行时取自 ep01 `characters[]` 与 `series.visual_style`（INV-02）；表情集 = neutral + 该角色在 ep01 `delivery.emotion` 中出现过的值（≤6）；允许修订 1 次为 v2 并在报告说明。
+  - 所有请求 `watermark=false`（D-005）。
+  - CLI `python3 -m poc costume`：`--stage main --model pro|flash --n 3`；`--stage derive --mode text|ref|group --base <主图>`；`--max-cost-cny`；离线 `--export`、`--verify`，与生成参数互斥（退出码 2）。
+  - 评测：阶段 1 主图 2 角色 × {pro, flash} × 3 张；阶段 2 以 agent 初评推荐主图为基础、固定阶段 1 推荐模型，比较 text / ref / group 三种派生方式，每角色 3 视图 + 表情集，2 轮（第 2 轮只留统计）。
+  - manifest 标注 `t2i_original` / `seedance_eligible`：只标在无参考图的文生图原始产物上；ref 派生标为不可用。
+  - 证据入库 `docs/reports/p0/P0-06/`：主图原图字节不改动；`manifest.json`；每角色定妆卡 `<角色>.md`（markdown 并排，不拼图）；`run-summary.json` / `run-calls.jsonl`；冒烟证据 `smoke/`。报告 `docs/reports/p0/P0-06.md`（结论、接口、方法、候选对比、agent 初评、Seedance 可用性与 30 天到期日、费用、待补测、给 P0-07 / P0-08 的建议）；README 增加 costume 一节；登记 D-006。
+- **不做**：人脸相似度与一致性量化（P0-07）；镜头关键帧（P0-07）；验证 Seedance 是否接受定妆图（P0-08）；其它图像供应商、即梦 / DreamO（无 AK/SK）、MediaKit（被拦截）；场景道具定妆；LoRA / 身份保持插件；修改 DramaIR Schema 或 ep01；模型网关、CAS、缓存命中；doctor 对 ark 的探测；提示词写法系统对比；拼图、缩略图、新增 Python 依赖。
+- **验收**（全部可离线复核）：
+  1. `cd spikes/poc && python3 -m unittest discover -s tests -t .` 全部通过且不访问网络；新增测试覆盖请求体（文生图 / 参考图 / 组图）、响应解析（b64 / url / 组图张数不足）、错误分类与瞬时判定、计价（档位、参考图加价、拒绝不计费、瞬时失败全额）、模板渲染与表情集推导、JPEG / PNG 尺寸解析、`--verify` 正反例、离线与生成参数互斥。
+  2. 冒烟核实的接口事实写入报告“接口”一节（端点、参数、响应字段、尺寸限制、参考图传法、计费依据、`watermark` 取值、审核拒绝错误码或“未遇到”）；冒烟 `run-calls.jsonl` 入库 `P0-06/smoke/`。
+  3. 主图：2 角色 × {pro, flash} × 3 = 12 张文生图原始产物入库，sha256 与 manifest 一致；失败张数与原因记在 summary。
+  4. 派生：每个角色在 text / ref / group 下各有三视图 + 表情集的第 1 轮产物或失败记录；第 2 轮统计写入 run-summary。
+  5. 对比表数字（成功 / 首次成功、失败类型、每张与每角色一套的耗时和费用、输出尺寸）可从入库 `run-summary.json` / `run-calls.jsonl` 复算。
+  6. 入库 `run-calls.jsonl` 的 `cost_cny` 合计与报告和“本步费用”一致（±¥0.01），冒烟在账内；本步总费用 ≤ ¥100。
+  7. `python3 -m poc costume --verify ../../docs/reports/p0/P0-06` 返回 0：sha256、字节数、宽高与 manifest 一致；manifest 与成功请求一一对应；`seedance_eligible=true` 只在无参考图的文生图产物上。
+  8. `make arch-check`、`make drama-ir-check` 通过；ep01.json sha256 仍为 `cd02daef022c6e78227ef3bf366adb2b5142a979a803bcf4373cdb8765a6fb59`。
+  9. 设置了密钥时 `grep -rF "$ARK_API_KEY" docs spikes/poc --exclude=.env` 无匹配；calls.jsonl 与 summary 不含 base64 图像（每行 < 16 KB）。
+  10. 改动只涉及 `spikes/poc/`、`docs/reports/p0/`、`docs/progress.md`、`docs/roadmap.md`；`pyproject.toml` 的 `dependencies` 仍为 `[]`。
+  11. `du -sb docs/reports/p0/P0-06` ≤ 10 MB（主图原图必须入库，runs/ 不入库）；超额时先降派生图尺寸或表情数，主图原图不降级。
+  12. 定妆选定（需用户确认）：D-006 登记每个角色的候选主图与派生方式、推荐与理由、定妆卡路径；用户选定后写入报告。
+- **涉及**：architecture.md §5.2.1–5.2.3、§9.3、§9.4；ADR-0004、ADR-0005、ADR-0006；INV-01、INV-02、INV-05、INV-06、INV-07、INV-08（D-005）、INV-10；vendor-volcengine.md §1 第 3 条、§3.2；D-002。
 
 ## 子任务
 
-（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
+- [ ] 1. 冒烟核实方舟图像接口（flash，≤5 次，约 ¥1）：b64 / url、size 限制、watermark / seed、data URI 参考图、组图张数、usage 与错误体、单张字节数
+- [ ] 2. `pricing` 图像单价与计价 + 单测
+- [ ] 3. `poc/seedream.py` 客户端（请求构造、解析、组图、错误分类、脱敏）+ 单测
+- [ ] 4. 图像文件工具（sha256、JPEG / PNG 宽高）+ 单测
+- [ ] 5. Prompt 模板 `costume.v1` 与渲染（ep01 字段、表情集）+ 单测
+- [ ] 6. `poc/costume.py` 主图阶段 + 注册 CLI + 单测
+- [ ] 7. 派生阶段 text / ref / group（manifest `t2i_original` / `seedance_eligible`）+ 单测
+- [ ] 8. 离线 `--export` / `--verify` + 单测；README costume 一节
+- [ ] 9. 评测阶段 1：主图 12 张，agent 初评选推荐主图与模型
+- [ ] 10. 评测阶段 2：text / ref / group × 2 角色 × 2 轮
+- [ ] 11. 证据导出、定妆卡、体积检查、`--verify` 返回 0
+- [ ] 12. 报告 `docs/reports/p0/P0-06.md`、登记 D-006、更新本步费用
+- [ ] 13. 验证（verifier）、评审（arch-reviewer）、交付 PR
 
 ## 本步费用
 
@@ -50,6 +89,7 @@
 | D-002 | P0-02 | 是否确认标准样例《雨夜反击》第 1 集作为 P0-03 ~ P0-13 所有评测的**固定输入**（确认后冻结，不再原地修改）？ | A：确认 `packages/drama-ir/examples/v0/ep01.json`（sha256 `cd02daef022c…`），可读版本 `packages/drama-ir/examples/v0/ep01.md`；B：按你的意见修改后再确认（说明要改什么） | A：2 角色、3 场、13 镜头、15 句台词、60 秒；覆盖空镜、道具插入、画外音、音效、3 种场景情绪，结尾有悬念；已按验收审阅修正剧情自洽问题 | 已决 | A：确认 `packages/drama-ir/examples/v0/ep01.json`（sha256 `cd02daef022c6e78227ef3bf366adb2b5142a979a803bcf4373cdb8765a6fb59`）为 P0-03 ~ P0-13 评测的固定输入，冻结（2026-09-30，用户） |
 | D-003 | P0-03 | 剧本生成的人工评分与默认方案：15 份样本都已通过严格校验，“有人工评分记录”需要你打分；同时确认默认 LLM | A：15 份全部人工评分；B：人工抽评 3 份——flash s04（初评最高）、flash s03（flash 最低）、v4-pro s01（初评判为不可用），其余沿用 agent 初评；C：只确认 agent 初评，不打分。默认方案候选：`deepseek-flash`（思维链开）/ `deepseek-v4-pro` / flash 关思维链。样本与评分表：`docs/reports/p0/P0-03.md`、`docs/reports/p0/P0-03/<候选>/sNN.md` | B + `deepseek-flash`：抽评工作量小，而且是真正的人工评分（C 不满足验收本意）；flash 初评均分 3.89 最高、5/5 通过、每集约 ¥0.10、53 秒。回复示例：`/decide D-003 B flash-s04:4,5,4,4,4,5,4 flash-s03:… v4pro-s01:… 默认 flash`（7 个数依次为 D1 ~ D7） | 已决 | 人工评分：flash s04“不错”（认可）；其余 14 份沿用 agent 初评，报告中注明；默认 LLM 定为 `deepseek-flash`（思维链默认开）（2026-09-30，用户） |
 | D-004 | P0-05 | 配音默认方案与角色音色（主观，需试听）：4 个候选 180/180 成功、同音字折叠后 CER 全为 0、费用与耗时几乎相同，差别只在听感 | A `plain`（首选音色，无指令）；B `instruct`（加语音指令）；C `instruct-speed`（指令 + 语速映射）；D `alt-instruct-speed`（次选音色 苏晚 清新女声 / 陆沉 儒雅逸辰 + 指令 + 语速）。整集试听 `docs/reports/p0/P0-05/<候选>/ep01.mp3`；音色初选 `docs/reports/p0/P0-05/voices/`；报告 `docs/reports/p0/P0-05.md` | C + 音色 苏晚 知性灿灿 2.0（`zh_female_cancan_uranus_bigtts`）/ 陆沉 高冷沉稳 2.0（`zh_male_gaolengchenwen_uranus_bigtts`）：语速映射实测生效（speed 0.9 的句子长 7%–18%），指令不计费、不影响 CER，音色贴合角色描述、初选无重试；若觉得指令腔调不自然则选 A。回复示例：`/decide D-004 C` 或 `/decide D-004 A 苏晚改清新女声` | 已决 | C `instruct-speed`：苏晚 知性灿灿 2.0（`zh_female_cancan_uranus_bigtts`）、陆沉 高冷沉稳 2.0（`zh_male_gaolengchenwen_uranus_bigtts`），加语音指令（`tts-instruct.v1`），并把 `delivery.speed` 映射到 `speech_rate`，作为默认配音方案（2026-09-30，用户） |
+| D-005 | P0-06 | 定妆图是否关闭 Seedream 的可见“AI 生成”水印（与 INV-08 相关：定妆图是内部中间资产、不发布，成片 AIGC 标识由 P0-11 负责） | A：关闭（`watermark=false`）；B：保留 | A：水印会污染作为参考图的定妆图；INV-08 约束生产环境，P0 不属于生产 | 已决 | A：定妆图关闭可见水印（`watermark=false`）（2026-09-30，用户：“关掉水印”） |
 
 ## 已知的前置条件
 
@@ -96,3 +136,4 @@
 | 2026-09-30 | P0-05 | 实现与评测完成，等待 D-004：用户配置 `ARK_API_KEY` 与 `VOLC_SPEECH_API_KEY` 后开工。注册 `volc_speech`（tts、asr）；`poc/speech.py`（豆包 TTS 2.0 逐行 JSON 流、录音文件识别 2.0 submit / query、失败分类与瞬时重试）、`poc/audio.py`（MP3 帧头时长、CER 与同音字等价折叠）、`poc/tts.py`（`python3 -m poc tts`，语音指令 `tts-instruct.v1`、语速映射，离线 `--metrics` / `--export`）、`pricing` 按字符 / 时长计价。评测：6 个音色初选；候选 A–D 各 3 轮 × 15 句 180/180 成功，`cer_equiv` 全 0，每集约 ¥0.074。报告 `docs/reports/p0/P0-05.md`。按评审修复：ASR 查询失败只重试查询、费用中止计入当句、计费口径统一、离线模式判空、业务错误脱敏、Xing 头 CRC；证据上限由 5 MB 调为 6 MB（4 个候选 + 初选，原因见步骤卡） | verifier 第 1–11 条通过、第 12 条登记完整待用户试听；158 个单元测试通过；`make arch-check`、`make drama-ir-check` 通过；评审无阻断项。费用估算 ¥1.15 | 用户试听后决定 D-004，把决定写入报告，P0-05 标为 ✅；未采纳的评审建议：代理 Tunnel 403 / DNS 等持续性网络错误快速失败（现由重试上限与 `--max-cost-cny` 兜底）。M0.2 其余可做：P0-06 定妆（Ark Seedream 可用）、P0-10 音乐音效 |
 | 2026-09-30 | D-004 | 用户选定 C `instruct-speed` 为默认配音方案（苏晚 知性灿灿 2.0 / 陆沉 高冷沉稳 2.0 + 语音指令 `tts-instruct.v1` + 语速映射） | — | P0-05 可把决定写入报告并标为 ✅；P0-09 口型、P0-11 剪辑合成、P0-12 串联使用该方案的配音 |
 | 2026-09-30 | P0-05 | 收尾：D-004 已决（用户 `/decide D-004 C`），决定写入报告 `docs/reports/p0/P0-05.md`（结论与“推荐与决定”一节）；P0-05 标为 ✅，进度指针移到 P0-06 | 验收第 1–11 条已由 verifier 通过（PR #7），第 12 条由 D-004 满足；`make arch-check` 通过。本步费用 ¥1.15（估算） | P0-06 角色定妆（Ark Seedream 可用） |
+| 2026-09-30 | P0-06 | 开工：PR #8 合并后按用户允许同步会话分支；step-planner 出计划，写入步骤卡与 13 个子任务。D-005 已决（定妆图关闭可见水印）；定妆选定登记为 D-006（待评测后） | `make arch-check` 通过。费用 ¥0 | 子任务 1：冒烟核实方舟图像接口 |
