@@ -23,21 +23,62 @@
 
 - **当前里程碑**：M0.2 单项能力摸底
 - **当前步骤**：P0-07
-- **步骤状态**：未开始
+- **步骤状态**：进行中
 - **工作分支**：claude/sweet-lamport-cwwsvb
 - **PR**：—
 
 ## 步骤卡
 
-（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
+## P0-07 关键帧与一致性度量
+
+- **目标**：`python3 -m poc keyframe` 对 ep01 每个镜头加 P0-06 定妆参考生成 9:16 首帧，比较 3 种一致性方案；`python3 -m poc face` 对任意一批图给出人脸相似度。产出 ep01 带角色镜头的相似度分布和一个可用方案，供 P0-08 直接取首帧。
+- **做**：
+  - 固定输入 `packages/drama-ir/examples/v0/ep01.json`（13 镜头，D-002 已冻结）。12 个镜头带角色，预计约 10–11 个脸部可度量（sc02_sh02 手部特写、sc02_sh01 远景可能测不到），分布按“镜头 × 角色”人脸实例统计并写明 n；空镜仍生成首帧，不计相似度。
+  - `poc/keyframe.py` + Prompt `keyframe.v1`：字段运行时取自 ep01；1152×2048（9:16，pro ¥0.30 / 张）；只用 Agent Plan 的 Seedream 5.0 pro；`watermark=false`；无字幕文字，底部 1/4 留白；只描述镜头起始姿态。
+  - 3 种方案（身份参考按 D-006：pro `main-02` + `ref` 派生）：A `text` 纯文字；B `ref1` 每角色 1 张 `main-02`；C `ref2` 每角色 2 张（`main-02` + neutral 特写）。各 12 镜头 + 1 张共用空镜，每方案 2 轮。
+  - `poc/face.py`：检测 + 特征 + 余弦相似度，后端可插拔（arcface / dlib / manual），双人镜头 2×2 指派，分位数与直方图，`--json` / `--csv`。后端按子任务 1 的可达性实测选定。
+  - 度量校准（¥0）：用 P0-06 的派生图验证度量排序与 P0-06 初评一致、异性角色互比明显更低；据此定阈值 τ，并写明只有 2 个角色、无同性别“不同人”负样本的局限。
+  - 预设“可用”判据：可度量实例 ≥80% 相似度 ≥ τ，中位数 ≥ τ，无“错人”区间实例，agent 目视抽查 ≥12 张无换脸或服装严重漂移。
+  - agent 目视抽查 ≥12 张（1–5 分，主观，需用户确认）；报告与证据；README。
+- **不做**：图生视频（P0-08，含 MiniMax 海螺；`api.minimaxi.com` 当前被网络策略拦截）；Seedance 可用性核实（P0-08）；口型、剪辑；LoRA、IP-Adapter / InstantID / PuLID、首尾帧；服装、发型、场景一致性度量；不接入模型网关，不写 `apps/`、`services/`、`packages/`；不改 `rules.toml`、`exceptions.toml`、`ep01.json`；不新增顶层目录；不用 flash / v4。
+- **验收**：
+  1. `python3 -m poc keyframe` 对 13 个镜头各生成 1 张 1152×2048 首帧，A/B/C 各 2 轮；`keyframe --verify docs/reports/p0/P0-07` 返回 0（sha256、尺寸、manifest 与 calls 对应、费用）。
+  2. `python3 -m poc face` 在同一批图上两次结果一致，支持 `--json` / `--csv`。
+  3. 报告含 12 个带角色镜头的逐镜头表（可度量 / 不可度量及原因、检测脸数、像素大小、相似度）与每方案分布（n、分位数、最小最大、直方图）。
+  4. 按预设判据给出至少一种可用方案，或写明“未找到”及原因。
+  5. 度量有效性：在 P0-06 的 ref / text / sheet 派生图上排序与 P0-06 初评一致，异性角色互比明显低于同角色。
+  6. A/B/C 对比表：成功率、失败率、耗时、单价、相似度中位数与 P10、可度量率。
+  7. agent 目视抽查 ≥12 张评分表（主观，需用户确认，登记 D-010）。
+  8. manifest 中每镜头有 `selected` 首帧，9:16、无字幕文字、底部留白；写明 P0-08 如何读取。
+  9. 费用以 `run-calls.jsonl` 的 `cost_cny` 合计，按 P0-06 口径说明；总额 ≤ ¥100。
+  10. `du -sb docs/reports/p0/P0-07` ≤ 10 MB（需放宽先登记待决事项）。
+  11. calls 与 summary 无密钥、无 base64 图像数据。
+  12. `cd spikes/poc && python3 -m unittest discover` 离线通过；`make arch-check`、`make drama-ir-check` 通过；`costume --verify docs/reports/p0/P0-06` 仍返回 0。
+  13. 改动仅限 `spikes/poc/`、`docs/reports/p0/P0-07*`、`docs/progress.md`、`docs/roadmap.md` 状态。
+- **涉及**：architecture.md §5.2.2、§5.4、§5.8.1；INV-01 / 06 / 10 在 spikes 内不强制，报告写明产品化落点（P1-11、P1-12）；无需 ADR。
+- **估时**：2 天；预计付费约 ¥30–35（约 74 张 pro 首帧，Agent Plan 等价费用，不实付）。
+- **风险**：人脸权重可能不可达（dlib 路线降级，再降级为 agent 目视评分，需用户决定放行域名）。
 
 ## 子任务
 
-（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
+- [x] 1. 可达性与方案选定：实测 pip、GitHub release、HuggingFace / ModelScope；试装 insightface 或 dlib-bin + face_recognition_models，各跑通一次“检测 + 特征”；结论写入交接日志
+- [x] 2. `poc/face.py` 骨架：Embedder 协议与选定后端、余弦相似度、最小脸阈值、伪造后端单测
+- [x] 3. 基准库、双人指派、统计（分位数、直方图）、`face` CLI（`--json` / `--csv`）与离线单测
+- [x] 4. 度量校准与有效性验证（¥0）：P0-06 派生图与其它主图、异性角色互比，定 τ，记局限
+- [x] 5. `keyframe.v1` 与 `poc/keyframe.py` 规划层（离线）：三方案提示词、参考图映射、可度量性预标注、计价、node_key；`costume --verify docs/reports/p0/P0-06` 仍返回 0；单测
+- [x] 6. 冒烟（约 ¥1）：单人镜头 B 方案、双人镜头 C 方案（4 张参考图），确认 pro 接受多参考图与 1152×2048，检查是否照抄参考图姿态或背景
+- [x] 7. 首帧生成第 1 轮（约 ¥11，A/B/C 各 12 镜头 + 空镜，37 张；`--max-cost-cny` ≤ 20）
+- [x] 8. 首帧生成第 2 轮（约 ¥11，只留统计）
+- [x] 9. 全量度量：74 张首帧逐镜头表与每方案分布；按预设判据评“可用”，必要时对最差镜头改进补跑（≤ ¥8）
+- [x] 10. agent 目视抽查 ≥12 张（1–5 分）并与度量交叉对照
+- [x] 11. `--export` 第 1 轮 37 张 + manifest（含 `selected`）、run-summary、run-calls、faces 证据；`--verify` 通过；≤ 10 MB
+- [x] 12. 报告 `docs/reports/p0/P0-07.md`；登记 D-010（证据体积）、D-011（默认一致性方案与目视评分）
+- [x] 13. README（`face`、`keyframe`、依赖安装）与交接日志；`make arch-check`、`make drama-ir-check`、单测
+- [ ] 14. verifier、arch-reviewer，按 ship.md 交付 PR
 
 ## 本步费用
 
-- **已花费**：¥0
+- **已花费**：¥24.52（估算：冒烟 ¥0.66 + r1 ¥12.08 + r2 ¥11.78；Agent Plan 等价费用，不实付）
 - **上限**：¥100
 
 ## 待决事项
@@ -55,6 +96,8 @@
 | D-008 | P0-06 | 证据体积超上限：加入 pro 主图后 `docs/reports/p0/P0-06` 为 10.95 MB（步骤卡上限 10 MB），pro 派生第 1 轮入库后预计 13–15 MB | A：上限放宽到 16 MB，flash 对照证据完整保留；B：保持 10 MB，删除已入库的 flash 派生图，只留 run-summary / calls | A：flash 是 pro 的对照组，删图后无法复核对比结论 | 已决 | A：上限放宽到 16 MB（2026-09-30，用户：“a”） |
 | D-006 | P0-06 | 定妆选定（主观）：每个角色选定一张主图和一种派生方式，作为 P0-07 / P0-08 的身份参考 | 主图：pro `main-01` / `main-02` / `main-03`（flash、v4 主图留作对照）；派生：A `ref`（主图作参考图的图生图）/ B `text`（独立文生图）/ C `sheet`（设定板，costume.v2）。并排见定妆卡 `docs/reports/p0/P0-06/char_suwan.md`、`char_luchen.md`；报告 `docs/reports/p0/P0-06.md` | 苏晚 pro `main-02`（`4e6cf20a`）+ A，陆沉 pro `main-02`（`33b545ed`）+ A：ref 76 张里脸型、发型、服装与主图最一致；text 表情脸型与年龄漂移、背面带出雨；sheet 板内一致但不是主图那张脸（陆沉发色变黑）。主图是文生图原始产物，可作 Seedance 参考到 2026-10-30（Agent Plan 生成是否计入待 P0-08 确认）。回复示例：`/decide D-006 A` 或 `/decide D-006 苏晚 main-01 + A` | 已决 | A：苏晚 pro `main-02`（`4e6cf20a`）+ `ref`，陆沉 pro `main-02`（`33b545ed`）+ `ref`（2026-09-30，用户：“选择A”） |
 | D-009 | P0-06 | 证据体积再次超上限：pro 派生第 1 轮入库后 `docs/reports/p0/P0-06` 为 16.94 MB（D-008 上限 16 MB）；派生图已是接口最小尺寸，主图原图不能降级 | A：上限放宽到 18 MB，全部保留；B：删除已入库的 flash `derive-text-flash`、`derive-ref-flash` 图像（因欠费不完整，约 4.1 MB），只留 run-summary / calls；C：pro 派生每角色只入库 neutral 加 2 个表情（重新导出，约减 1.5 MB） | A：只超 0.94 MB；flash 派生是 pro 的对照组，报告的对比结论依赖这些图；P0 证据不再继续增长（P0-07 起证据放各自目录） | 已决 | A：上限放宽到 18 MB，全部保留（2026-09-30，用户：“选择a”） |
+| D-010 | P0-07 | 证据体积超上限：37 张 pro 首帧（平均 276 KB，步骤卡估算时按 160 KB）入库后 `docs/reports/p0/P0-07` 为 10.83 MB（步骤卡上限 10 MB；含补充的 faces、pick-best、校准 JSON） | A：上限放宽到 11 MB，全部保留；B：只入库选定的 13 张 + 各方案各镜头的 r1 缩略说明（减到约 4 MB，但逐方案对比图没了，`faces-r1.json` 里的图像路径失效）；C：入库 `ref2` 与选定图（约 7 MB），`text` / `ref1` 只留统计 | A：只超 0.83 MB；三个方案的原图是报告对比结论与目视评分的依据，P0-08 也会按 manifest 引用 | 待决 | |
+| D-011 | P0-07 | 默认一致性方案与目视评分（主观）：推荐 `ref2`，但按预设判据“无错人实例（< 0.30）”严格算三个方案都不达标（`ref2` 有 1 个，r1 `sc01_sh05` 陆沉 0.296，目视为侧脸误判）；agent 目视抽查（缩略图，非盲评）三个方案基本无法区分，都没有发现换脸，只有 `sc01_sh05` 侧脸双人镜头 `text` / `ref1` 略差（3 分），评分表见报告 §6；**“底部 1/4 留白”没有做到**：约 7 / 13 个镜头主体延伸到画面底部，是否可作字幕安全区也请一并确认 | A：采纳 `ref2` 为默认方案，`sc01_sh05` 按“度量局限”处理；B：单人镜头 `ref1`、双人及多人镜头 `ref2`；C：不采纳，要求补测（例如对 `sc01_sh05` 这类侧脸双人镜头加候选数，或改用更严判据）。各方案首帧在 `docs/reports/p0/P0-07/keyframe-r1/`，逐镜头表见 [P0-07.md](reports/p0/P0-07.md) §3 | A：`ref2` 下尾最好（P10 0.48、92% ≥ τ），双人镜头最稳，P0-08 按 manifest 里选定的首帧取；B 与 A 差别主要在 `ref1` 单人镜头中位数更高（0.67 vs 0.57），但 `ref1` 下尾更差，建议 P1-12 用“多候选 + 打分选优”解决而不是在 P0 分方案 | 待决 | |
 
 ## 已知的前置条件
 
@@ -111,3 +154,11 @@
 | 2026-09-30 | P0-06 | verifier：12 条验收全部通过（单测 205 个在无网络命名空间通过；`--verify` 9 个目录 86 张、¥31.48；体积 16.94 MB ≤ 18 MB）；按其建议修正报告耗时口径措辞。arch-reviewer 评审进行中 | verifier 报告；`make arch-check` 通过 | 处理 arch-reviewer 阻断项，然后按 ship.md 交付 PR |
 | 2026-09-30 | P0-06 | 补记（会话 `01DXLc6Z`）：D-007 改走 Agent Plan（提交 1e87c7f 起：`ARK_BILLING`、`/api/plan/v3`、`costume.v2`、`--prompt-version`，pro 主图 run `20260930-201207-costume-3165`），D-008 上限 16 MB（e89bb79），pro 派生由会话 `01TKEJcW` 入库（624f910，runs `20260930-203811-costume-88ee` / `-8c43` / `-b7c2`）。arch-reviewer：无阻断项；已处理建议 1–4、6、7（`UnsupportedModel` 写入 README / 报告 / docstring，报告 Seedance 结论注明待 P0-08 确认，`.env.example` 注释说明 `ARK_BILLING`，旧证据缺 `billing` 即 payg，vendor 文档补 Agent Plan，`--model` help 与互斥测试）；建议 8（套餐额度与按量计费分开记账）留给 P1 模型网关 | 单测、`make arch-check` 通过 | 按 ship.md 交付 PR |
 | 2026-09-30 | P0-06 | 完成：Seedream 定妆（flash / v4 / pro 主图各 6 张；pro 派生 text / ref / sheet 76/76；flash 派生因欠费不完整，留作对照）；D-006 选定两个角色 pro `main-02` + `ref`；报告 `docs/reports/p0/P0-06.md`、定妆卡、证据 9 个目录。P0-06 标为 ✅，进度指针移到 P0-07 | verifier 12/12 通过（单测 205 个无网络通过；`--verify` 86 张、¥31.48；16.94 MB ≤ 18 MB；密钥无泄露；改动范围合规）；arch-reviewer 无阻断项，建议已处理。费用 ¥31.48（按量实付 ¥6.88，其余为 Agent Plan 等价费用，不实付；另有重复运行的 pro 派生等价 ¥23.40 未入库） | P0-07 关键帧与一致性度量（以 pro `main-02` 为身份参考）；P0-08 前确认 Agent Plan 能否调 Seedance |
+| 2026-09-30 | P0-07 | 开工：同步主线；step-planner 出计划，写入步骤卡与 14 个子任务。用户要求 P0-08 用 MiniMax 海螺视频：`MINIMAX_API_KEY` 已配置，但 `api.minimaxi.com`、`api.minimax.io` 在当前容器被网络策略拦截（CONNECT 403），需放行域名（新会话生效），模型 ID 待域名放行后核实；不影响 P0-07 | `make arch-check` 通过。费用 ¥0 | 子任务 1：人脸方案可达性实测 |
+| 2026-09-30 | P0-07 | 子任务 1 完成：PyPI、`github.com` release 及重定向域名 `release-assets.githubusercontent.com` 可达（HuggingFace、ModelScope 仍被拦）；venv 装 numpy / onnxruntime / opencv-python-headless / insightface 2.0，下载 buffalo_l（SCRFD det_10g + ArcFace w600k_r50，289 MB，不入库）。P0-06 主图检测成功率 6/6（置信 0.87–0.90，脸框约 140×200 px）；同角色 main 图互比 0.59–0.76，异性互比 -0.04–0.08，区分度足够；特写 / 三视图正脸可检出，背面无脸。选定后端 arcface | 实测命令输出；`make arch-check` 通过。费用 ¥0 | 子任务 2：`poc/face.py` |
+| 2026-09-30 | P0-07 | 子任务 2、3、5 完成：`poc/face.py`（arcface 后端懒加载、anchor / bank 两种口径、多人指派与置信差、分位数与直方图、`--json` / `--csv`、`--manifest` 逐镜头表）、`poc/keyframe.py` + `keyframe.v1`（text / ref1 / ref2 三方案，空镜共用，`--dry-run` / `--export` / `--verify`，可度量性预标注：ep01 为 1 个 no、2 个 maybe、10 个 yes）、costume 最小重构（Runner 钩子，`costume --verify` 结果不变）、pyproject `face` extras、README。真实后端在 P0-06 图上试跑通过；`--scheme all` 每轮 37 张预计 ¥11.46 | 279 个单测通过（新增 74 个，不联网、不需要 numpy）；`costume --verify docs/reports/p0/P0-06` 返回 0（86 张、¥31.48）；`make arch-check`、`make drama-ir-check` 通过。费用 ¥0 | 子任务 4：度量校准；子任务 6：冒烟 |
+| 2026-09-30 | P0-07 | 子任务 4 完成（度量校准，¥0）：以两个角色的 pro `main-02` 为锚点，对 P0-06 全部 11 个图像目录评分（汇总 `docs/reports/p0/P0-07/calibration.json`）。有效性：`derive-ref-pro` 中位 0.62（陆沉）/ 0.64（苏晚）> `derive-text-pro` 0.51 / 0.52 > `derive-sheet-pro` 0.52 / 0.33，与 P0-06 初评“ref 最像、text 有漂移、sheet 不是同一张脸”一致；异性角色互比中位 0.06–0.08、最大 0.21；“同描述但不同脸”的参照（他家模型 flash / v4 主图 + flash 文生图，23 个实例）中位 0.34、P90 0.43、P95 0.46、最大 0.52。**预设判据（先定规则再看首帧结果）**：τ = 0.45（≈ 不同人参照的 P95）；“错人区间” < 0.30（低于参照的大部分，且高于异性最大 0.21）；0.30–0.45 记“存疑”；“可用”= 可度量实例 ≥ 80% 相似度 ≥ τ、中位数 ≥ τ、无错人实例、目视抽查 ≥12 张无换脸或服装严重漂移。局限：只有 2 个角色、无同性别真正“不同人”的 pro 样本；pro 同描述独立采样本身偏向同一张脸（main-pro 互比 0.64–0.76），所以 text 方案的基线可能不低；首帧脸更小时相似度会下降，报告按 `face_px` 分层说明 | 试跑输出；`make arch-check` 通过。费用 ¥0 | 子任务 6：冒烟（约 ¥1）|
+| 2026-09-30 | P0-07 | 子任务 6 完成（冒烟）：单人镜头 sc01_sh02 ref1（86 秒）、双人镜头 sc01_sh05 ref2（4 张参考图，67 秒）均成功，1152×2048，Agent Plan pro 接受多参考图；目视：无字幕文字、底部留白、服装与设定一致、未照抄参考图背景和姿态；相似度 suwan 0.774（正脸）、双人镜头 0.413 / 0.380（侧脸对视，face_px 123–137），说明侧脸角度会拉低 arcface 相似度，报告需按朝向说明。子任务 7、8 已启动：两个后台进程各跑 `--scheme all` 37 张（r1 入库、r2 只留统计），串行约 45 分钟 | 冒烟 run `20260930-213820-keyframe-e5e2`、`20260930-213947-keyframe-a4ce`。费用 ¥0.66 | 等两个后台运行结束，做子任务 9 全量度量 |
+| 2026-09-30 | P0-07 | 子任务 7–13 完成，等待 D-010、D-011：首帧 r1 / r2 各 37 张全部成功（首次失败 3 次，`IncompleteRead`，重试成功）；`face` 新增 `--pick largest|best`（脸数多于角色数时默认取最大的脸，避免背景路人“恰好更像”造成高估；先用取最高口径跑过，发现该偏差后修正并补单测）；报告 `docs/reports/p0/P0-07.md`：`ref2` 推荐（26 个可度量实例中位 0.56、P10 0.48、92% ≥ τ=0.45），`ref1` 中位最高但下尾更差（最差 0.20），`text` 54%；按预设判据严格算无方案完全达标（`ref2` 1 个实例 < 0.30，目视为 `sc01_sh05` 侧脸误判），已登记 D-011；13 个镜头已选定首帧（manifest `selected`）；证据 10.76 MB 超上限，登记 D-010。MiniMax 海螺：域名仍被拦截，P0-08 前需放行 | 280 个单测通过；`keyframe --verify docs/reports/p0/P0-07 --require-selected` 通过（37 张、¥12.08、选定 13/13）；`costume --verify docs/reports/p0/P0-06` 返回 0；`make arch-check`、`make drama-ir-check` 通过。本步费用 ¥24.52（估算，等价费用） | 子任务 14：verifier、arch-reviewer，然后按 ship.md 交付 PR；D-010 / D-011 待用户 |
+| 2026-09-30 | P0-07 | arch-reviewer：无阻断项；已处理建议 1、3、4（子任务 12 改为 D-010、D-011；`faces-r2.json` 里的临时路径改为 `keyframe-r2（图像未入库）/…`；报告表里 `ref2` 陆沉 `sc01_sh05` 写作 0.296）。verifier 仍在后台核验 | `make arch-check` 通过 | 等 verifier 报告，处理后按 ship.md 交付 PR；D-010 / D-011 待用户 |
+| 2026-09-30 | P0-07 | verifier 报告与处理：第 1、2、5、6、9、11–13 条通过；第 3 条缺脸像素与分布表、第 7 条缺逐张评分表、第 8 条“底部留白”不属实，均已修订（§3 加脸像素，§4 加 P25 / P75 / P90 / max 与直方图，§6 改为逐张粗分表并撤回按方案平均分，“底部留白”改为“无字幕文字，约 7 / 13 镜头主体延伸到底部”并并入 D-011）；补存 `faces-r2-pick-best.json`（r1 上 best 与 largest 逐实例相同），校准基线 23 个数值写入 `calibration.json`，报告统一耗时口径（r1+r2，2 进程并发），补充 `--pick largest` 的偏差说明；更正上一条日志：3 次首次失败实为 1 次 IncompleteRead + 2 次 RemoteDisconnected；sheet 排序按角色分开写（陆沉 sheet ≈ text）。证据 10.83 MB（D-010 已更新） | `make arch-check`、单测通过 | 提交推送后按 ship.md 交付 PR；D-010 / D-011 待用户 |

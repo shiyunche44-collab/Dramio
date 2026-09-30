@@ -2,7 +2,7 @@
 
 P0 一次性验证代码（见 [roadmap §3](../../docs/roadmap.md)）。可以直连供应商、硬编码模型，但**任何产品代码都不能依赖本目录**（INV-03），P1 结束前删除。
 
-- Python ≥ 3.11，只用标准库（`dependencies = []`）。
+- Python ≥ 3.11，核心只用标准库（`dependencies = []`）；只有 `face` 命令需要可选依赖（见下文 face 一节），单元测试不需要。
 - 每次运行输出到 `spikes/poc/runs/<run_id>/`（与当前目录无关；可用 `POC_RUNS_DIR` 覆盖），不入库。
 - 每次模型调用经 `Run.call()` 记录耗时和费用，追加到 `runs/<run_id>/calls.jsonl`。
 
@@ -154,6 +154,57 @@ python3 -m poc costume --cards ../../docs/reports/p0/P0-06                      
 - 退出码：全部成功为 0；有失败、因费用上限（`--max-cost-cny`，默认 15 元，下一张会超出即中止）或账号级错误中止为 1；用法错误为 2。`--verify` 全部一致为 0，否则为 1。
 - `--export`、`--verify`、`--cards` 是离线模式，只能选一个，且不能与生成参数同用。
 - 输出：`runs/<run_id>/images/rN/<角色>/<kind>-<label>.jpg`、`summary.json`（每张的提示词、参考图 sha256、尺寸、耗时、费用、sha256、Seedance 可用性）。`--export` 把第 1 轮成功的图像复制为 `<角色>/<kind>-<label>-<sha256 前 8 位>.jpg`，并写 `manifest.json`、`run-summary.json`、`run-calls.jsonl`（目标目录必须为空）。
+
+## face：人脸相似度（P0-07）
+
+检测 + 特征 + 余弦相似度，度量一批图里的角色一致性。后端可插拔（`Embedder.detect(图像字节) → list[Face]`），当前后端 `arcface`：insightface 的 `buffalo_l`（SCRFD 检测 + ArcFace w600k_r50，CPU）。依赖与权重不入库，`numpy` 等只在 arcface 后端内懒加载，没装时 `face` 命令给出安装提示（退出码 2），单元测试用伪造后端。
+
+安装（可选依赖 + 权重）：
+
+```bash
+cd spikes/poc
+pip install -e '.[face]'          # numpy、opencv-python-headless、onnxruntime、insightface
+# 权重约 289 MB：下载后解压到 $POC_FACE_MODEL_ROOT/models/buffalo_l/（默认 ~/.cache/poc-face）
+mkdir -p ~/.cache/poc-face/models && cd ~/.cache/poc-face/models
+curl -LO https://github.com/deepinsight/insightface/releases/download/v0.7/buffalo_l.zip
+unzip -o buffalo_l.zip -d buffalo_l && rm buffalo_l.zip
+```
+
+```bash
+python3 -m poc face --refs char_suwan=<main-02> --refs char_suwan=<neutral 特写> --refs char_luchen=<main-02> --images <目录或文件...>
+python3 -m poc face --refs ... --manifest <keyframe 的 manifest.json> --json faces.json --csv faces.csv   # 按镜头出表
+```
+
+- 基准库：`--refs 角色=图像` 可重复，同一角色的第 1 张是锚点（P0-07 用 P0-06 选定的 `main-02`），之后的（如 neutral 特写）补充进 bank。每张参考图取最大的可度量脸，没有则退出码 2。
+- 两种相似度口径：`anchor`（只对锚点）与 `bank`（对基准库取最大）。一张图里的脸与该图应有的角色集合做最优指派（穷举，总相似度最大，默认按 `bank`；脸多于角色取相似度最大的若干张，少于则缺的角色记“未检出”）；`margin` = 该脸对被指派角色的相似度 − 对其它角色的最高相似度（单角色为空，越大越确信没指错）。
+- 图像应有的角色按优先级：`--manifest` 里的 `characters` > `--expect 角色,角色` > 图像所在目录名恰为某角色 id（P0-06 证据按角色分目录）> 基准库全部角色。`characters` 为空的镜头（空镜）只记脸数。与参考图字节相同的图像自动跳过（自比恒为 1），并在输出中注明。
+- 不可度量：`无脸`、`脸太小`（脸框短边 < `--min-face-px`，默认 40）、`分数低`（检测分 < `--min-det-score`，默认 0.5）、`未检出`（脸数少于角色数）。这些实例不进统计，但出现在逐行表里，并计入“可度量率”。`--det-size` 是 arcface 的检测输入边长（默认 640，脸很小时调大）。
+- 统计（标准库 `statistics`）：整体、按方案（有 manifest 时）、按角色，每组给出 n、最小最大、P10 / P25 / 中位数 / P75 / P90、均值、0.05 分箱文本直方图。`--json` 另含逐图、逐实例明细，`--csv` 每个（图像, 角色）实例一行。
+- 输出确定：按路径 / 镜头排序，不含时间戳与特征向量，相似度取 4 位小数；同一批图两次运行逐字节一致。
+- 退出码：正常为 0（有不可度量的实例不算失败）；用法错误、参考图无脸、图像不可读、依赖或权重缺失为 2。
+- 经验值（P0-06 主图，2048×1152 / 1152×2048 里的脸框约 140×200 px）：检测分 0.87–0.90，同角色主图互比 0.59–0.76，异性 -0.04–0.08。同一角色在 derive-ref-pro 的 `ref` 图里的 anchor 为 0.33–0.86（侧面、大表情偏低），只有 2 个角色，没有同性别“不同人”的负样本，阈值不能外推。
+
+## keyframe：镜头首帧（P0-07）
+
+DramaIR 镜头 + P0-06 定妆参考图 → 9:16 首帧（方舟 Seedream 5.0 pro，1152×2048，`watermark=false`，b64_json），比较三种一致性方案。输入固定为标准样例 ep01（D-002），提示词模板 `poc/prompts/keyframe.v1.md`，字段运行时取自 `series.visual_style`、`scene.setting`、`shot.framing / description / lighting`、`shot.characters[].action / emotion`、`characters[].appearance / costume`（INV-02）；只描述镜头起始姿态，无字幕文字，底部 1/4 留为字幕安全区。
+
+```bash
+python3 -m poc keyframe --scheme ref2 --dry-run                     # 离线：打印每个请求的提示词、参考图（路径 / sha256）、预计费用、node_key
+python3 -m poc keyframe --scheme all --rounds 2 --max-cost-cny 20    # 生成：三方案 × 13 镜头（空镜共用 1 张），2 轮
+python3 -m poc keyframe --scheme ref1 --shots ep01_sc01_sh03,ep01_sc01_sh05
+python3 -m poc keyframe --export runs/<run_id> ../../docs/reports/p0/P0-07/<目录>   # 离线：第 1 轮 + manifest + summary + calls
+python3 -m poc keyframe --verify ../../docs/reports/p0/P0-07 [--require-selected]   # 离线：复核证据
+```
+
+- 三种方案：`text` 无参考图；`ref1` 每个出镜角色 1 张参考图（P0-06 选定的 pro `main-02`，D-006）；`ref2` 每个角色 2 张（`main-02` + derive-ref-pro 的 `expression-neutral` 特写）。`--scheme` 可用逗号组合或 `all`。参考图不写死路径，按 `--ref-root`（默认 `docs/reports/p0/P0-06`）下 `main-pro/manifest.json` 与 `derive-ref-pro/manifest.json` 选定并校验 sha256。
+- 参考图顺序固定：按 `characters[]` 的顺序、每个角色的参考图相邻（ep01 的双人镜头：苏晚主图、苏晚特写、陆沉主图、陆沉特写），提示词写明“图1是苏晚的全身定妆照，图2是…”，并声明参考图只用于人物身份，场景、姿态、构图、服装以文字为准。
+- 空镜（没有角色的镜头）各方案共用 1 张，方案名 `shared`，提示词只描述场景、要求画面中无人；放在 `--scheme` 任一方案的运行里，想三方案共用同一张就一次运行 `--scheme all`。
+- 计价沿用 `pricing.image_cny`：pro ¥0.30 / 张（≤261 万像素），第 2 张参考图起每张 +¥0.02（双人镜头 ref2 的 4 张参考图 ¥0.36）；`ARK_BILLING=plan`（默认）记按量刊例价的等价费用、不实付。每个请求记录 `node_key`（请求内容 sha256，含采样序号，只记录不缓存）。每轮全部方案 37 张，预计 ¥11.46。
+- 复用 `costume` 的 Runner / 重试 / 费用保险（`--max-cost-cny` 默认 20）/ 账号级错误中止 / 证据复核；`--dry-run` 不需要密钥、不发请求、不创建运行目录。退出码：全部成功为 0；有失败或中止为 1；用法错误（缺密钥、未知镜头、参考图缺失或与 manifest 不符）为 2。
+- 可度量性预标注（写入 manifest 的 `measurable` / `measurable_reason`，读景别 / 机位 / 动作描述与角色数，不看镜头 id；最终以 `face` 的检测结果为准）：`no` 空镜；`maybe` 大特写 / 手部特写、景别 MLS 及更远、俯拍（`high` / `overhead`）；其余 `yes`。ep01 里为 1 个 `no`、2 个 `maybe`（`sc02_sh01`、`sc02_sh02`）、10 个 `yes`。
+- `--export`：第 1 轮成功的图像复制为 `<shot_id>/keyframe-<方案>-<sha256 前 8 位>.jpg`，`manifest.json` 每张图含 `shot_id`、`characters`、`scheme`、`round`、`sha256`、尺寸、`refs`（参考图 sha256）、`node_key`、`measurable` 与默认 `false` 的 `selected`（人工选定首帧时改为 `true`，每个镜头最多 1 张）；另有 `run-summary.json`、`run-calls.jsonl`（目标目录必须为空）。P0-08 读取首帧：取 manifest 中 `selected` 为 `true` 的项，`file` 相对 manifest 所在目录。
+- `--verify`：复核 sha256 / 字节数 / 宽高（1152×2048）、文件名前缀、manifest 与 summary / calls 的对应、每个方案的参考图数量（text 0、ref1 每角色 1、ref2 每角色 2）、参考图文件 sha256、`selected` 每镜头至多 1 张（`--require-selected`：每镜头必须有 1 张）、watermark、输入 ep01 的 sha256、费用合计、run-calls 无 base64 图像数据。
+- 用 `face` 度量首帧：`python3 -m poc face --refs ... --manifest <证据目录>/manifest.json`。
 
 ## 运行记录
 
