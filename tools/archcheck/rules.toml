@@ -1,0 +1,98 @@
+# 架构适应度检查规则（fitness functions）
+#
+# 说明见 docs/governance.md §5。修改本文件等同于修改架构约束：
+# 需要架构负责人评审（见 .github/CODEOWNERS），通常还需要对应的 ADR。
+
+# ---------------------------------------------------------------------------
+# 目录结构（INV-11）：与 docs/architecture.md §15 保持一致
+# ---------------------------------------------------------------------------
+[layout]
+allowed_top_level = [
+  "apps", "services", "workers", "packages", "evals", "infra", "docs", "tools", "spikes",
+  ".github", ".claude", ".devcontainer", ".vscode",
+]
+
+# ---------------------------------------------------------------------------
+# 区域（zone）：按路径前缀划分，最长前缀优先。
+# 只有落在某个 zone 内的代码文件才会做依赖、供应商 SDK、模型 ID 检查。
+# ---------------------------------------------------------------------------
+[zones]
+web = "apps/web"
+api = "apps/api"
+orchestrator = "services/orchestrator"
+model_gateway = "services/model-gateway"
+publisher = "services/publisher"
+analytics = "services/analytics"
+workers = "workers"
+packages = "packages"
+evals = "evals"
+spikes = "spikes"
+
+# ---------------------------------------------------------------------------
+# 依赖方向（INV-03）：zone = [允许依赖的其他 zone]
+# 同一 zone 内部的依赖不受限制；未列出的跨 zone 依赖一律禁止。
+# apps / services / workers 之间只能通过 API、事件或 Temporal 交互，不能 import。
+# spikes（P0 验证代码）不允许被任何 zone 依赖。
+# ---------------------------------------------------------------------------
+[dependencies]
+web = ["packages"]
+api = ["packages"]
+orchestrator = ["packages"]
+model_gateway = ["packages"]
+publisher = ["packages"]
+analytics = ["packages"]
+workers = ["packages"]
+packages = []
+evals = ["packages"]
+spikes = ["packages"]
+
+# 非相对路径 import 到 zone 的映射。
+# 以 * 结尾表示纯前缀匹配；否则按包边界匹配（完全相等，或后接 / 或 .）。最长匹配优先。
+[aliases]
+"@dramio/web" = "web"
+"@dramio/api" = "api"
+"@dramio/orchestrator" = "orchestrator"
+"@dramio/model-gateway" = "model_gateway"
+"@dramio/publisher" = "publisher"
+"@dramio/analytics" = "analytics"
+"@dramio/*" = "packages"
+"dramio_*" = "packages"
+
+# ---------------------------------------------------------------------------
+# 模型供应商 SDK 只能出现在模型网关内（INV-01）
+# ---------------------------------------------------------------------------
+[vendor_sdk]
+allowed_zones = ["model_gateway", "spikes"]
+python = [
+  "anthropic", "openai", "dashscope", "volcenginesdkarkruntime", "zhipuai",
+  "replicate", "fal_client", "elevenlabs", "google.genai", "runwayml",
+]
+node = [
+  "@anthropic-ai/sdk", "openai", "@google/genai", "replicate", "@fal-ai/client",
+  "elevenlabs", "@runwayml/sdk",
+]
+
+# ---------------------------------------------------------------------------
+# 模型 ID 不得硬编码在网关之外（INV-01）：模型选择属于网关的路由配置
+# ---------------------------------------------------------------------------
+[model_ids]
+allowed_zones = ["model_gateway", "evals", "spikes"]
+patterns = [
+  '\bclaude-(?:opus|sonnet|haiku|fable)-\d',
+  '\bgpt-\d',
+  '\bqwen[\w.]*-(?:max|plus|turbo|vl|\d)',
+  '\bdeepseek-(?:chat|reasoner|v\d|r\d)',
+  '\bdoubao-',
+  '\bkling-v?\d',
+  '\bseedance-',
+  '\bwan2?\.\d',
+]
+
+# ---------------------------------------------------------------------------
+# ADR 格式与索引（INV-11）
+# ---------------------------------------------------------------------------
+[adr]
+dir = "docs/adr"
+index = "README.md"
+template = "template.md"
+statuses = ["Proposed", "Accepted", "Deprecated", "Superseded"]

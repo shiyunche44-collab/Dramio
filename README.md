@@ -5,3 +5,12 @@ AI 短剧自动化生产平台：选题 → 剧本 → 角色/场景设定 → �
 ## 文档
 
 - [架构设计方案](docs/architecture.md)
+- [架构治理与落地保障](docs/governance.md)：不变量、ADR 流程、自动检查、分阶段落地、演进触发条件
+- [架构决策记录（ADR）](docs/adr/README.md)
+- [技术债与豁免登记](docs/tech-debt.md)
+
+## 参与开发
+
+- 开工前阅读 [CLAUDE.md](CLAUDE.md)（人和 AI 编码助手共用的项目约束）。
+- 提交前运行 `make arch-check`（需要 Python 3.11+）。
+- 评审规则见 [REVIEW.md](REVIEW.md)。

@@ -1,0 +1,13 @@
+# 架构关键路径的修改需要架构负责人评审（配合 main 分支保护中的 "Require review from Code Owners"）。
+# 团队成员加入后，把下面的负责人换成具体成员或小组，例如 @dramio/architecture。
+
+/docs/architecture.md        @shiyunche44-collab
+/docs/governance.md          @shiyunche44-collab
+/docs/adr/                   @shiyunche44-collab
+/docs/tech-debt.md           @shiyunche44-collab
+/tools/archcheck/            @shiyunche44-collab
+/CLAUDE.md                   @shiyunche44-collab
+/REVIEW.md                   @shiyunche44-collab
+/.github/                    @shiyunche44-collab
+/packages/drama-ir/          @shiyunche44-collab
+/services/model-gateway/     @shiyunche44-collab

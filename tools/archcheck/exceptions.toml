@@ -1,0 +1,23 @@
+# 架构豁免登记
+#
+# 规则见 docs/governance.md §6：
+#   - 每条豁免必须有 owner、到期日和原因，并在 docs/tech-debt.md 中登记对应的技术债；
+#   - 豁免过期后 CI 失败，只能偿还技术债，或经架构负责人批准后续期；
+#   - 新增或续期豁免需要架构负责人评审（见 .github/CODEOWNERS）。
+#
+# 字段：
+#   rule     规则 ID：layout / adr / dependency / vendor-sdk / model-id
+#   path     路径 glob，匹配违规文件（相对仓库根目录）
+#   reason   为什么暂时不能遵守
+#   owner    负责偿还的人
+#   expires  到期日（TOML 日期，不加引号）
+#   link     技术债登记链接
+#
+# 示例：
+# [[exception]]
+# rule = "vendor-sdk"
+# path = "workers/video/legacy_client.py"
+# reason = "P1 期间视频供应商适配器尚未迁入模型网关"
+# owner = "@someone"
+# expires = 2026-12-31
+# link = "docs/tech-debt.md#td-001"
