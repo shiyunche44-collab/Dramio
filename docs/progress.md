@@ -61,7 +61,7 @@
 - [x] 3. ASR 客户端（submit / query 轮询）+ CER 模块，离线单测
 - [x] 4. mp3 帧头时长解析 + 每句 / 镜头容纳 / 全集时长统计，离线单测
 - [x] 5. 定候选与音色（音色列表与 TTS 接口文档已读，`context_texts` / `speech_rate` 已确认；冒烟 `20260930-155850-tts-73b3`：陆沉 5 句全部成功）
-- [ ] 6. CLI `python3 -m poc tts`（生成 + `--metrics` 互斥、`--max-cost-cny`），README 一节
+- [x] 6. CLI `python3 -m poc tts`（生成 + `--metrics` 互斥、`--max-cost-cny`），README 一节
 - [ ] 7. 正式评测：3 候选 × 3 轮 × 15 句
 - [ ] 8. 证据入库、报告 `docs/reports/p0/P0-05.md`、登记 D-004
 - [ ] 9. 验证（verifier）、评审（arch-reviewer）、交付 PR
