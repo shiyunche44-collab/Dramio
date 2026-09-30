@@ -188,9 +188,13 @@ class Generator:
         self.env = env
         self.sleep = sleep
         self.spent = 0.0
-        self.base_messages = [
-            {"role": "system", "content": system_prompt(settings.target_s, settings.prompt_version)},
-            {"role": "user", "content": user_prompt(logline)},
+        self.base_messages = self.build_messages()
+
+    def build_messages(self) -> list[dict[str, str]]:
+        """首次生成的消息；子类（如 P0-04 shots）覆盖它来换 Prompt。"""
+        return [
+            {"role": "system", "content": system_prompt(self.s.target_s, self.s.prompt_version)},
+            {"role": "user", "content": user_prompt(self.logline)},
         ]
 
     def _request(self, messages, sample: str, attempt: Attempt) -> llm.ChatResult:
@@ -454,14 +458,19 @@ def add_parser(sub) -> None:
     p = sub.add_parser("script", help="一句话梗概 → 1 集 DramaIR v0 剧本（P0-03）")
     p.add_argument("--logline", help="一句话梗概；默认取标准样例 ep01 的 series.logline")
     p.add_argument("--n", type=int, default=5, help="顺序生成的样本数（默认 5）")
+    p.add_argument("--target-s", type=int, default=60, help="单集目标时长（秒）")
+    add_llm_options(p, DEFAULT_PROMPT)
+    p.set_defaults(func=_cmd)
+
+
+def add_llm_options(p, default_prompt: str) -> None:
+    """script 与 shots（P0-04）共用的模型与生成选项。"""
     p.add_argument("--provider", default="deepseek", help="OpenAI 兼容端点（见 poc/llm.py 的 ENDPOINTS）")
     p.add_argument("--model", default=DEFAULT_MODEL)
-    p.add_argument("--prompt-version", default=DEFAULT_PROMPT, help="poc/prompts/<版本>.md")
-    p.add_argument("--target-s", type=int, default=60, help="单集目标时长（秒）")
+    p.add_argument("--prompt-version", default=default_prompt, help="poc/prompts/<版本>.md")
     p.add_argument("--max-repairs", type=int, default=2, help="每份最多自动修复几轮（默认 2）")
     p.add_argument("--temperature", type=float, default=None)
     p.add_argument("--max-tokens", type=int, default=32000, help="含思维链 tokens")
     p.add_argument("--thinking", choices=("default", "enabled", "disabled"), default="default", help="DeepSeek 思维链开关")
     p.add_argument("--reasoning-effort", default=None, help="DeepSeek 思维强度，如 low / high / max")
     p.add_argument("--max-cost-cny", type=float, default=20.0, help="本次运行累计估算费用上限（元），达到即中止")
-    p.set_defaults(func=_cmd)

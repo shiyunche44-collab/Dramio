@@ -22,9 +22,9 @@
 ## 当前状态
 
 - **当前里程碑**：M0.2 单项能力摸底
-- **当前步骤**：P0-04
+- **当前步骤**：P0-05
 - **步骤状态**：未开始
-- **工作分支**：claude/lucid-hamilton-r7bd4w
+- **工作分支**：claude/sweet-lamport-cwwsvb
 - **PR**：—
 
 ## 步骤卡
@@ -84,3 +84,4 @@
 | 2026-09-30 | P0-03 | 未开工：用户提供 DeepSeek 密钥，写入 `spikes/poc/.env`（git 忽略，不入库）；`python3 -m poc doctor --require deepseek` 报 `UNREACHABLE(Tunnel 403)`，`api.deepseek.com` 被网络策略拦截。M0.2 其余步骤（P0-04 ~ P0-11）同样依赖尚未配置或被拦截的供应商，全部阻塞 | doctor 退出码 1；`make arch-check` 通过。费用 ¥0 | 用户放行 `api.deepseek.com` 并在云环境设置中添加 `DEEPSEEK_API_KEY` 后，新会话开始 P0-03 |
 | 2026-09-30 | P0-03 | 实现与评测完成，等待 D-003：`poc/llm.py`（OpenAI 兼容 Chat、JSON 模式、失败分类、余额查询）、`poc/pricing.py`、Prompt `script.v1`、`poc/script.py`（严格校验 + 最多 2 轮修复、瞬时故障重试、费用保险）、CLI `python3 -m poc script`；三个候选（deepseek-flash、flash 关思维链、deepseek-v4-pro）各 5 份全部通过严格校验；证据与结论报告 `docs/reports/p0/P0-03.md`（含 agent 初评）。按评审修复：费用中止时 summary 计入未完成样本的费用、`write_json` 脱敏兜底、入库证据去掉余额绝对值、补交冒烟证据 | verifier 第 1–8、10、11 条通过，第 9 条（人工评分）待用户；75 个离线单元测试通过；15 份报告样本独立 `validate --strict` 通过；`make arch-check`、`make drama-ir-check` 通过；评审无阻断项。费用估算 ¥2.44（余额实际减少 ¥1.46） | 用户决定 D-003 后把人工评分写入报告，P0-03 标为 ✅；M0.2 其余步骤：P0-04 依赖 P0-03，P0-05/06/10 缺供应商密钥或域名被拦截 |
 | 2026-09-30 | P0-03 | 收尾：D-003 已决（人工认可 flash s04“不错”，其余沿用 agent 初评；默认 LLM `deepseek-flash`），人工评分写入报告；P0-03 标为 ✅，进度指针移到 P0-04 | verifier 第 1–11 条全部满足（第 9 条由 D-003 满足）；`make arch-check` 通过。本步费用 ¥2.44（估算，余额实际减少 ¥1.46） | P0-04 分镜拆解（DeepSeek 可用，不受阻塞）；P0-05/06/10 仍缺供应商密钥或域名被拦截 |
+| 2026-09-30 | P0-04 | 分镜拆解：`poc/shots.py` + Prompt `shots.v1` + CLI `python3 -m poc shots`。v0 没有未分镜形态，做法是重新分镜：剥掉镜头结构，渲染分场剧本视图 → LLM 只出镜头 → 合并回输入、重排 shot_id → strict 校验 + 台词守恒 + 合理性硬门槛 H1–H4（12–24 镜、单镜 1.5–8 秒、总时长 ±10%、台词念得完）→ 最多修复 2 轮；复用 `script.Generator`（新增 `build_messages`、`add_llm_options`）。离线 `--metrics` 给出 ep01 与 P0-03 基线。评测：flash、flash 关思维链、v4-pro 各在 ep01 上 5 份；flash 对 P0-03 flash s01–s05 各 1 份。报告 `docs/reports/p0/P0-04.md`，证据 `docs/reports/p0/P0-04/`。按评审修复：无台词文档的指标行崩溃、非对象 JSON 崩溃、CLI 模式互斥（防误发付费生成）、summary 加 `n_expected`、报告 token 数与余额口径 | verifier 第 1–9 条通过（第 6 条补单价后复验通过）：批次 A flash 5/5（首次通过 3）、批次 B 5/5（首次通过 5），flash 关思维链 3/5（时长算术失败）、v4-pro 5/5；18 份入库样本独立 `validate --strict` 通过，10 份门禁样本 `--metrics` H1–H4 全过、守恒独立复核通过；110 个单元测试通过；`make arch-check`、`make drama-ir-check` 通过；评审无阻断项。费用估算 ¥3.34（余额实际减少 ¥1.84） | 推荐默认 `deepseek-flash`（平均单镜 2.9 秒，>5 秒镜头 0.5%）；可选：用户抽看 `docs/reports/p0/P0-04/deepseek-flash/s01.md`。未采纳的评审建议：输出 Schema 外层（scenes/scene_id）从 v0 `$defs/scene` 组装、删除 `ShotSettings.target_s` 残留（改了会使入库 Prompt 与代码不一致，留给 P0-12 / P1）。下一步 P0-05 配音：缺 TTS 供应商密钥（DashScope / MiniMax / ElevenLabs 均未配置或被拦截），M0.2 其余步骤同样阻塞 |

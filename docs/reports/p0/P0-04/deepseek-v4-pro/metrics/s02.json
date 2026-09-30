@@ -1,0 +1,65 @@
+{
+  "target_s": 60,
+  "scenes": 3,
+  "shots": 18,
+  "shot_range": [
+    12,
+    24
+  ],
+  "total_s": 59.5,
+  "total_dev": -0.0083,
+  "shot_s_avg": 3.306,
+  "shot_s_min": 2.0,
+  "shot_s_max": 5.5,
+  "shots_over_5s": 1,
+  "shots_over_5s_ratio": 0.056,
+  "lines": 15,
+  "dialogue_shots": 15,
+  "fill_avg": 0.724,
+  "fill_max": 0.833,
+  "slack_min_s": 0.5,
+  "slack_ok_ratio": 1.0,
+  "idle_shots": 0,
+  "max_lines_per_shot": 1,
+  "multi_speaker_shots": 0,
+  "empty_shots": 4,
+  "lipsync_shots": 10,
+  "shot_sizes": {
+    "CU": 4,
+    "ECU": 4,
+    "MCU": 3,
+    "MS": 3,
+    "MLS": 2,
+    "ELS": 1,
+    "LS": 1
+  },
+  "shot_size_kinds": 7,
+  "close_up_ratio": 0.611,
+  "establishing_first": 3,
+  "movements": {
+    "static": 9,
+    "push_in": 5,
+    "pan": 2,
+    "tilt": 1,
+    "tracking": 1
+  },
+  "static_ratio": 0.5,
+  "angles": {
+    "eye_level": 14,
+    "high": 3,
+    "low": 1
+  },
+  "gates": {
+    "H1": true,
+    "H2": true,
+    "H3": true,
+    "H4": true
+  },
+  "gate_issues": [],
+  "vs_source": {
+    "source_shots": 13,
+    "shot_count_delta": 5,
+    "same_line_groups_ratio": 0.733,
+    "identical_line_grouping": false
+  }
+}

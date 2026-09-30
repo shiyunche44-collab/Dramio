@@ -1,0 +1,927 @@
+{
+  "ep01": {
+    "target_s": 60,
+    "scenes": 3,
+    "shots": 13,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 60,
+    "total_dev": 0.0,
+    "shot_s_avg": 4.615,
+    "shot_s_min": 4,
+    "shot_s_max": 5,
+    "shots_over_5s": 0,
+    "shots_over_5s_ratio": 0.0,
+    "lines": 15,
+    "dialogue_shots": 13,
+    "fill_avg": 0.662,
+    "fill_max": 0.933,
+    "slack_min_s": 0.296,
+    "slack_ok_ratio": 0.923,
+    "idle_shots": 0,
+    "max_lines_per_shot": 2,
+    "multi_speaker_shots": 1,
+    "empty_shots": 1,
+    "lipsync_shots": 8,
+    "shot_sizes": {
+      "CU": 4,
+      "MS": 4,
+      "MCU": 2,
+      "ECU": 1,
+      "ELS": 1,
+      "MLS": 1
+    },
+    "shot_size_kinds": 6,
+    "close_up_ratio": 0.538,
+    "establishing_first": 3,
+    "movements": {
+      "static": 8,
+      "push_in": 3,
+      "tracking": 2
+    },
+    "static_ratio": 0.615,
+    "angles": {
+      "eye_level": 8,
+      "high": 2,
+      "low": 2,
+      "overhead": 1
+    },
+    "gates": {
+      "H1": true,
+      "H2": true,
+      "H3": true,
+      "H4": true
+    },
+    "gate_issues": []
+  },
+  "P0-03/deepseek-flash/s01": {
+    "target_s": 60,
+    "scenes": 4,
+    "shots": 14,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 60.0,
+    "total_dev": 0.0,
+    "shot_s_avg": 4.286,
+    "shot_s_min": 3.5,
+    "shot_s_max": 5.0,
+    "shots_over_5s": 0,
+    "shots_over_5s_ratio": 0.0,
+    "lines": 11,
+    "dialogue_shots": 11,
+    "fill_avg": 0.542,
+    "fill_max": 0.667,
+    "slack_min_s": 1.278,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 0,
+    "max_lines_per_shot": 1,
+    "multi_speaker_shots": 0,
+    "empty_shots": 1,
+    "lipsync_shots": 5,
+    "shot_sizes": {
+      "ECU": 4,
+      "MS": 4,
+      "MCU": 3,
+      "CU": 2,
+      "MLS": 1
+    },
+    "shot_size_kinds": 5,
+    "close_up_ratio": 0.643,
+    "establishing_first": 3,
+    "movements": {
+      "static": 9,
+      "push_in": 4,
+      "tracking": 1
+    },
+    "static_ratio": 0.643,
+    "angles": {
+      "eye_level": 8,
+      "high": 3,
+      "low": 2,
+      "overhead": 1
+    },
+    "gates": {
+      "H1": true,
+      "H2": true,
+      "H3": true,
+      "H4": true
+    },
+    "gate_issues": []
+  },
+  "P0-03/deepseek-flash/s02": {
+    "target_s": 60,
+    "scenes": 4,
+    "shots": 14,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 64,
+    "total_dev": 0.0667,
+    "shot_s_avg": 4.571,
+    "shot_s_min": 4,
+    "shot_s_max": 6,
+    "shots_over_5s": 1,
+    "shots_over_5s_ratio": 0.071,
+    "lines": 13,
+    "dialogue_shots": 13,
+    "fill_avg": 0.467,
+    "fill_max": 0.578,
+    "slack_min_s": 1.778,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 0,
+    "max_lines_per_shot": 1,
+    "multi_speaker_shots": 0,
+    "empty_shots": 0,
+    "lipsync_shots": 9,
+    "shot_sizes": {
+      "MS": 6,
+      "CU": 4,
+      "ECU": 2,
+      "LS": 1,
+      "MCU": 1
+    },
+    "shot_size_kinds": 5,
+    "close_up_ratio": 0.5,
+    "establishing_first": 4,
+    "movements": {
+      "static": 8,
+      "push_in": 4,
+      "handheld": 1,
+      "tracking": 1
+    },
+    "static_ratio": 0.571,
+    "angles": {
+      "eye_level": 10,
+      "low": 3,
+      "high": 1
+    },
+    "gates": {
+      "H1": true,
+      "H2": true,
+      "H3": true,
+      "H4": true
+    },
+    "gate_issues": []
+  },
+  "P0-03/deepseek-flash/s03": {
+    "target_s": 60,
+    "scenes": 4,
+    "shots": 14,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 61.0,
+    "total_dev": 0.0167,
+    "shot_s_avg": 4.357,
+    "shot_s_min": 3.5,
+    "shot_s_max": 5,
+    "shots_over_5s": 0,
+    "shots_over_5s_ratio": 0.0,
+    "lines": 14,
+    "dialogue_shots": 13,
+    "fill_avg": 0.575,
+    "fill_max": 0.711,
+    "slack_min_s": 1.333,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 0,
+    "max_lines_per_shot": 2,
+    "multi_speaker_shots": 1,
+    "empty_shots": 1,
+    "lipsync_shots": 9,
+    "shot_sizes": {
+      "MS": 5,
+      "CU": 4,
+      "MCU": 3,
+      "ECU": 1,
+      "LS": 1
+    },
+    "shot_size_kinds": 5,
+    "close_up_ratio": 0.571,
+    "establishing_first": 4,
+    "movements": {
+      "static": 8,
+      "push_in": 2,
+      "tracking": 2,
+      "pan": 1,
+      "pull_out": 1
+    },
+    "static_ratio": 0.571,
+    "angles": {
+      "eye_level": 9,
+      "high": 2,
+      "low": 2,
+      "overhead": 1
+    },
+    "gates": {
+      "H1": true,
+      "H2": true,
+      "H3": true,
+      "H4": true
+    },
+    "gate_issues": []
+  },
+  "P0-03/deepseek-flash/s04": {
+    "target_s": 60,
+    "scenes": 4,
+    "shots": 14,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 59.0,
+    "total_dev": -0.0167,
+    "shot_s_avg": 4.214,
+    "shot_s_min": 3.0,
+    "shot_s_max": 5.0,
+    "shots_over_5s": 0,
+    "shots_over_5s_ratio": 0.0,
+    "lines": 15,
+    "dialogue_shots": 14,
+    "fill_avg": 0.532,
+    "fill_max": 0.756,
+    "slack_min_s": 1.0,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 0,
+    "max_lines_per_shot": 2,
+    "multi_speaker_shots": 1,
+    "empty_shots": 0,
+    "lipsync_shots": 9,
+    "shot_sizes": {
+      "MCU": 4,
+      "MS": 4,
+      "CU": 3,
+      "ECU": 1,
+      "LS": 1,
+      "MLS": 1
+    },
+    "shot_size_kinds": 6,
+    "close_up_ratio": 0.571,
+    "establishing_first": 4,
+    "movements": {
+      "static": 10,
+      "push_in": 3,
+      "handheld": 1
+    },
+    "static_ratio": 0.714,
+    "angles": {
+      "eye_level": 10,
+      "high": 2,
+      "low": 2
+    },
+    "gates": {
+      "H1": true,
+      "H2": true,
+      "H3": true,
+      "H4": true
+    },
+    "gate_issues": []
+  },
+  "P0-03/deepseek-flash/s05": {
+    "target_s": 60,
+    "scenes": 3,
+    "shots": 12,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 60.0,
+    "total_dev": 0.0,
+    "shot_s_avg": 5.0,
+    "shot_s_min": 4.0,
+    "shot_s_max": 5.5,
+    "shots_over_5s": 4,
+    "shots_over_5s_ratio": 0.333,
+    "lines": 12,
+    "dialogue_shots": 12,
+    "fill_avg": 0.454,
+    "fill_max": 0.687,
+    "slack_min_s": 1.722,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 1,
+    "max_lines_per_shot": 1,
+    "multi_speaker_shots": 0,
+    "empty_shots": 0,
+    "lipsync_shots": 9,
+    "shot_sizes": {
+      "MS": 4,
+      "CU": 3,
+      "ECU": 2,
+      "MLS": 2,
+      "LS": 1
+    },
+    "shot_size_kinds": 5,
+    "close_up_ratio": 0.417,
+    "establishing_first": 3,
+    "movements": {
+      "static": 6,
+      "push_in": 4,
+      "handheld": 1,
+      "tracking": 1
+    },
+    "static_ratio": 0.5,
+    "angles": {
+      "eye_level": 6,
+      "low": 3,
+      "high": 2,
+      "dutch": 1
+    },
+    "gates": {
+      "H1": true,
+      "H2": true,
+      "H3": true,
+      "H4": true
+    },
+    "gate_issues": []
+  },
+  "P0-03/deepseek-flash-nothink/s01": {
+    "target_s": 60,
+    "scenes": 3,
+    "shots": 9,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 53,
+    "total_dev": -0.1167,
+    "shot_s_avg": 5.889,
+    "shot_s_min": 5,
+    "shot_s_max": 8,
+    "shots_over_5s": 4,
+    "shots_over_5s_ratio": 0.444,
+    "lines": 9,
+    "dialogue_shots": 8,
+    "fill_avg": 0.541,
+    "fill_max": 0.877,
+    "slack_min_s": 0.982,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 0,
+    "max_lines_per_shot": 2,
+    "multi_speaker_shots": 1,
+    "empty_shots": 0,
+    "lipsync_shots": 5,
+    "shot_sizes": {
+      "CU": 3,
+      "MCU": 3,
+      "ECU": 1,
+      "MLS": 1,
+      "MS": 1
+    },
+    "shot_size_kinds": 5,
+    "close_up_ratio": 0.778,
+    "establishing_first": 1,
+    "movements": {
+      "push_in": 3,
+      "static": 3,
+      "handheld": 2,
+      "tracking": 1
+    },
+    "static_ratio": 0.333,
+    "angles": {
+      "eye_level": 5,
+      "high": 2,
+      "low": 2
+    },
+    "gates": {
+      "H1": false,
+      "H2": true,
+      "H3": false,
+      "H4": true
+    },
+    "gate_issues": [
+      "H1 $.episodes[0]: 镜头共 9 个，应在 12–24 个之间（目标 60 秒，平均单镜 2.5–5 秒）",
+      "H3 $.episodes[0]: 镜头时长合计 53 秒，应在 54–66 秒之间（目标 60 秒 ±10%）"
+    ]
+  },
+  "P0-03/deepseek-flash-nothink/s02": {
+    "target_s": 60,
+    "scenes": 4,
+    "shots": 15,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 67.5,
+    "total_dev": 0.125,
+    "shot_s_avg": 4.5,
+    "shot_s_min": 2,
+    "shot_s_max": 6.5,
+    "shots_over_5s": 3,
+    "shots_over_5s_ratio": 0.2,
+    "lines": 8,
+    "dialogue_shots": 8,
+    "fill_avg": 0.504,
+    "fill_max": 0.593,
+    "slack_min_s": 1.833,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 0,
+    "max_lines_per_shot": 1,
+    "multi_speaker_shots": 0,
+    "empty_shots": 1,
+    "lipsync_shots": 4,
+    "shot_sizes": {
+      "CU": 4,
+      "MS": 4,
+      "ECU": 3,
+      "MCU": 2,
+      "LS": 1,
+      "MLS": 1
+    },
+    "shot_size_kinds": 6,
+    "close_up_ratio": 0.6,
+    "establishing_first": 3,
+    "movements": {
+      "static": 9,
+      "push_in": 3,
+      "handheld": 1,
+      "pull_out": 1,
+      "tracking": 1
+    },
+    "static_ratio": 0.6,
+    "angles": {
+      "eye_level": 8,
+      "low": 4,
+      "high": 2,
+      "overhead": 1
+    },
+    "gates": {
+      "H1": true,
+      "H2": true,
+      "H3": false,
+      "H4": true
+    },
+    "gate_issues": [
+      "H3 $.episodes[0]: 镜头时长合计 67.5 秒，应在 54–66 秒之间（目标 60 秒 ±10%）"
+    ]
+  },
+  "P0-03/deepseek-flash-nothink/s03": {
+    "target_s": 60,
+    "scenes": 3,
+    "shots": 12,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 59,
+    "total_dev": -0.0167,
+    "shot_s_avg": 4.917,
+    "shot_s_min": 4,
+    "shot_s_max": 6,
+    "shots_over_5s": 3,
+    "shots_over_5s_ratio": 0.25,
+    "lines": 10,
+    "dialogue_shots": 10,
+    "fill_avg": 0.525,
+    "fill_max": 0.749,
+    "slack_min_s": 1.249,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 1,
+    "max_lines_per_shot": 1,
+    "multi_speaker_shots": 0,
+    "empty_shots": 0,
+    "lipsync_shots": 6,
+    "shot_sizes": {
+      "CU": 4,
+      "ECU": 3,
+      "MCU": 2,
+      "MS": 2,
+      "LS": 1
+    },
+    "shot_size_kinds": 5,
+    "close_up_ratio": 0.75,
+    "establishing_first": 1,
+    "movements": {
+      "static": 6,
+      "push_in": 3,
+      "handheld": 2,
+      "pull_out": 1
+    },
+    "static_ratio": 0.5,
+    "angles": {
+      "eye_level": 5,
+      "high": 3,
+      "low": 3,
+      "overhead": 1
+    },
+    "gates": {
+      "H1": true,
+      "H2": true,
+      "H3": true,
+      "H4": true
+    },
+    "gate_issues": []
+  },
+  "P0-03/deepseek-flash-nothink/s04": {
+    "target_s": 60,
+    "scenes": 3,
+    "shots": 10,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 50,
+    "total_dev": -0.1667,
+    "shot_s_avg": 5.0,
+    "shot_s_min": 4,
+    "shot_s_max": 7,
+    "shots_over_5s": 2,
+    "shots_over_5s_ratio": 0.2,
+    "lines": 10,
+    "dialogue_shots": 9,
+    "fill_avg": 0.61,
+    "fill_max": 0.919,
+    "slack_min_s": 0.444,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 0,
+    "max_lines_per_shot": 2,
+    "multi_speaker_shots": 1,
+    "empty_shots": 0,
+    "lipsync_shots": 4,
+    "shot_sizes": {
+      "CU": 3,
+      "MCU": 3,
+      "MS": 2,
+      "ECU": 1,
+      "MLS": 1
+    },
+    "shot_size_kinds": 5,
+    "close_up_ratio": 0.7,
+    "establishing_first": 2,
+    "movements": {
+      "push_in": 3,
+      "handheld": 2,
+      "static": 2,
+      "tracking": 2,
+      "pull_out": 1
+    },
+    "static_ratio": 0.2,
+    "angles": {
+      "eye_level": 5,
+      "high": 4,
+      "low": 1
+    },
+    "gates": {
+      "H1": false,
+      "H2": true,
+      "H3": false,
+      "H4": true
+    },
+    "gate_issues": [
+      "H1 $.episodes[0]: 镜头共 10 个，应在 12–24 个之间（目标 60 秒，平均单镜 2.5–5 秒）",
+      "H3 $.episodes[0]: 镜头时长合计 50 秒，应在 54–66 秒之间（目标 60 秒 ±10%）"
+    ]
+  },
+  "P0-03/deepseek-flash-nothink/s05": {
+    "target_s": 60,
+    "scenes": 4,
+    "shots": 11,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 49,
+    "total_dev": -0.1833,
+    "shot_s_avg": 4.455,
+    "shot_s_min": 3,
+    "shot_s_max": 6,
+    "shots_over_5s": 1,
+    "shots_over_5s_ratio": 0.091,
+    "lines": 9,
+    "dialogue_shots": 9,
+    "fill_avg": 0.537,
+    "fill_max": 0.722,
+    "slack_min_s": 1.111,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 0,
+    "max_lines_per_shot": 1,
+    "multi_speaker_shots": 0,
+    "empty_shots": 0,
+    "lipsync_shots": 4,
+    "shot_sizes": {
+      "CU": 3,
+      "MCU": 3,
+      "MS": 3,
+      "ECU": 2
+    },
+    "shot_size_kinds": 4,
+    "close_up_ratio": 0.727,
+    "establishing_first": 2,
+    "movements": {
+      "static": 7,
+      "push_in": 3,
+      "handheld": 1
+    },
+    "static_ratio": 0.636,
+    "angles": {
+      "eye_level": 7,
+      "low": 3,
+      "high": 1
+    },
+    "gates": {
+      "H1": false,
+      "H2": true,
+      "H3": false,
+      "H4": true
+    },
+    "gate_issues": [
+      "H1 $.episodes[0]: 镜头共 11 个，应在 12–24 个之间（目标 60 秒，平均单镜 2.5–5 秒）",
+      "H3 $.episodes[0]: 镜头时长合计 49 秒，应在 54–66 秒之间（目标 60 秒 ±10%）"
+    ]
+  },
+  "P0-03/deepseek-v4-pro/s01": {
+    "target_s": 60,
+    "scenes": 4,
+    "shots": 10,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 48,
+    "total_dev": -0.2,
+    "shot_s_avg": 4.8,
+    "shot_s_min": 4,
+    "shot_s_max": 6,
+    "shots_over_5s": 2,
+    "shots_over_5s_ratio": 0.2,
+    "lines": 9,
+    "dialogue_shots": 9,
+    "fill_avg": 0.431,
+    "fill_max": 0.778,
+    "slack_min_s": 1.333,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 0,
+    "max_lines_per_shot": 1,
+    "multi_speaker_shots": 0,
+    "empty_shots": 0,
+    "lipsync_shots": 6,
+    "shot_sizes": {
+      "CU": 2,
+      "MCU": 2,
+      "MLS": 2,
+      "MS": 2,
+      "ECU": 1,
+      "LS": 1
+    },
+    "shot_size_kinds": 6,
+    "close_up_ratio": 0.5,
+    "establishing_first": 3,
+    "movements": {
+      "static": 5,
+      "push_in": 3,
+      "pan": 1,
+      "tracking": 1
+    },
+    "static_ratio": 0.5,
+    "angles": {
+      "eye_level": 6,
+      "high": 2,
+      "low": 2
+    },
+    "gates": {
+      "H1": false,
+      "H2": true,
+      "H3": false,
+      "H4": true
+    },
+    "gate_issues": [
+      "H1 $.episodes[0]: 镜头共 10 个，应在 12–24 个之间（目标 60 秒，平均单镜 2.5–5 秒）",
+      "H3 $.episodes[0]: 镜头时长合计 48 秒，应在 54–66 秒之间（目标 60 秒 ±10%）"
+    ]
+  },
+  "P0-03/deepseek-v4-pro/s02": {
+    "target_s": 60,
+    "scenes": 4,
+    "shots": 10,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 58,
+    "total_dev": -0.0333,
+    "shot_s_avg": 5.8,
+    "shot_s_min": 3,
+    "shot_s_max": 9,
+    "shots_over_5s": 5,
+    "shots_over_5s_ratio": 0.5,
+    "lines": 17,
+    "dialogue_shots": 10,
+    "fill_avg": 0.494,
+    "fill_max": 0.909,
+    "slack_min_s": 0.741,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 2,
+    "max_lines_per_shot": 3,
+    "multi_speaker_shots": 5,
+    "empty_shots": 0,
+    "lipsync_shots": 7,
+    "shot_sizes": {
+      "CU": 3,
+      "MS": 3,
+      "MCU": 2,
+      "ECU": 1,
+      "MLS": 1
+    },
+    "shot_size_kinds": 5,
+    "close_up_ratio": 0.6,
+    "establishing_first": 3,
+    "movements": {
+      "static": 4,
+      "push_in": 3,
+      "handheld": 2,
+      "tracking": 1
+    },
+    "static_ratio": 0.4,
+    "angles": {
+      "eye_level": 8,
+      "high": 1,
+      "low": 1
+    },
+    "gates": {
+      "H1": false,
+      "H2": false,
+      "H3": true,
+      "H4": true
+    },
+    "gate_issues": [
+      "H1 $.episodes[0]: 镜头共 10 个，应在 12–24 个之间（目标 60 秒，平均单镜 2.5–5 秒）",
+      "H2 $.episodes[0].scenes[0].shots[0].duration.hint_s: 单镜时长 9 秒，应在 1.5–8 秒之间"
+    ]
+  },
+  "P0-03/deepseek-v4-pro/s03": {
+    "target_s": 60,
+    "scenes": 3,
+    "shots": 14,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 61,
+    "total_dev": 0.0167,
+    "shot_s_avg": 4.357,
+    "shot_s_min": 2,
+    "shot_s_max": 6,
+    "shots_over_5s": 1,
+    "shots_over_5s_ratio": 0.071,
+    "lines": 12,
+    "dialogue_shots": 12,
+    "fill_avg": 0.474,
+    "fill_max": 0.711,
+    "slack_min_s": 1.444,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 1,
+    "max_lines_per_shot": 1,
+    "multi_speaker_shots": 0,
+    "empty_shots": 2,
+    "lipsync_shots": 9,
+    "shot_sizes": {
+      "CU": 4,
+      "ECU": 3,
+      "MS": 3,
+      "MCU": 2,
+      "MLS": 2
+    },
+    "shot_size_kinds": 5,
+    "close_up_ratio": 0.643,
+    "establishing_first": 2,
+    "movements": {
+      "static": 8,
+      "push_in": 2,
+      "tracking": 2,
+      "handheld": 1,
+      "pan": 1
+    },
+    "static_ratio": 0.571,
+    "angles": {
+      "eye_level": 9,
+      "high": 2,
+      "low": 2,
+      "overhead": 1
+    },
+    "gates": {
+      "H1": true,
+      "H2": true,
+      "H3": true,
+      "H4": true
+    },
+    "gate_issues": []
+  },
+  "P0-03/deepseek-v4-pro/s04": {
+    "target_s": 60,
+    "scenes": 3,
+    "shots": 12,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 57,
+    "total_dev": -0.05,
+    "shot_s_avg": 4.75,
+    "shot_s_min": 3,
+    "shot_s_max": 6,
+    "shots_over_5s": 3,
+    "shots_over_5s_ratio": 0.25,
+    "lines": 13,
+    "dialogue_shots": 12,
+    "fill_avg": 0.467,
+    "fill_max": 0.806,
+    "slack_min_s": 1.111,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 1,
+    "max_lines_per_shot": 2,
+    "multi_speaker_shots": 1,
+    "empty_shots": 0,
+    "lipsync_shots": 9,
+    "shot_sizes": {
+      "CU": 4,
+      "MCU": 3,
+      "MS": 2,
+      "ECU": 1,
+      "LS": 1,
+      "MLS": 1
+    },
+    "shot_size_kinds": 6,
+    "close_up_ratio": 0.667,
+    "establishing_first": 2,
+    "movements": {
+      "static": 7,
+      "push_in": 3,
+      "handheld": 1,
+      "tracking": 1
+    },
+    "static_ratio": 0.583,
+    "angles": {
+      "eye_level": 8,
+      "low": 3,
+      "overhead": 1
+    },
+    "gates": {
+      "H1": true,
+      "H2": true,
+      "H3": true,
+      "H4": true
+    },
+    "gate_issues": []
+  },
+  "P0-03/deepseek-v4-pro/s05": {
+    "target_s": 60,
+    "scenes": 4,
+    "shots": 13,
+    "shot_range": [
+      12,
+      24
+    ],
+    "total_s": 52.5,
+    "total_dev": -0.125,
+    "shot_s_avg": 4.038,
+    "shot_s_min": 2.5,
+    "shot_s_max": 7.5,
+    "shots_over_5s": 3,
+    "shots_over_5s_ratio": 0.231,
+    "lines": 12,
+    "dialogue_shots": 9,
+    "fill_avg": 0.522,
+    "fill_max": 0.65,
+    "slack_min_s": 1.444,
+    "slack_ok_ratio": 1.0,
+    "idle_shots": 0,
+    "max_lines_per_shot": 2,
+    "multi_speaker_shots": 1,
+    "empty_shots": 0,
+    "lipsync_shots": 4,
+    "shot_sizes": {
+      "MS": 5,
+      "CU": 4,
+      "MLS": 2,
+      "ECU": 1,
+      "MCU": 1
+    },
+    "shot_size_kinds": 5,
+    "close_up_ratio": 0.462,
+    "establishing_first": 3,
+    "movements": {
+      "static": 8,
+      "push_in": 3,
+      "tracking": 2
+    },
+    "static_ratio": 0.615,
+    "angles": {
+      "eye_level": 9,
+      "high": 3,
+      "low": 1
+    },
+    "gates": {
+      "H1": true,
+      "H2": true,
+      "H3": false,
+      "H4": true
+    },
+    "gate_issues": [
+      "H3 $.episodes[0]: 镜头时长合计 52.5 秒，应在 54–66 秒之间（目标 60 秒 ±10%）"
+    ]
+  }
+}

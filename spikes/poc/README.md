@@ -79,6 +79,28 @@ samples/sNN/final.json、final.md   通过校验的剧本及其可读版本
 summary.json                       每份的尝试、修复轮数、tokens、费用、耗时；首次通过率、通过率、失败类型、余额差
 ```
 
+## shots：分镜拆解（P0-04）
+
+1 集 DramaIR v0 剧本 → 重新分镜。v0 的台词只能挂在镜头上，没有“已分场、未分镜”的形态，所以做法是：剥掉输入的镜头结构，渲染成分场剧本视图（场设定、动作描写、原样的台词对象）交给 LLM → LLM 只输出各场的新镜头 → 合并回输入文档，`shot_id` 按 `<scene_id>_shNN` 重排 → 检查 → 不通过带路径回喂，最多 `--max-repairs` 轮。生成循环、重试、记账和费用保险与 `script` 相同。
+
+每份最终产物必须同时满足：
+
+- `validate` strict：0 错误、0 警告；
+- 守恒：场的集合与顺序不变；每场台词序列（`line_id`、`speaker`、`kind`、`text`、`delivery` 与顺序）与输入完全相同；
+- 合理性硬门槛（T 为目标时长，括号内为 T=60）：H1 镜头数 ⌈T/5⌉–⌊T/2.5⌋（12–24）；H2 单镜 1.5–8 秒；H3 时长合计偏差 ≤ 10%（54–66 秒）；H4 每镜台词估算朗读 ≤ `hint_s`。阈值集中在 `poc/shots.py` 顶部，依据见 `docs/reports/p0/P0-04.md`。
+
+```bash
+python3 -m poc shots --n 5                                   # 默认输入标准样例 ep01
+python3 -m poc shots --input a.json b.json --n 1             # 多个输入，每个 1 份
+python3 -m poc shots --metrics x.json y.json                 # 离线：只算指标与 H1–H4，不调用模型
+python3 -m poc shots --metrics new.json --source old.json --json   # 附带与原分镜的相似度，输出完整 JSON
+```
+
+- 输入必须通过严格校验且只有 1 集，否则退出码 2。
+- 退出码：全部通过为 0；有失败或因费用上限中止为 1；用法错误（缺少密钥、输入不合法、参数组合不对）为 2。`--metrics` 模式下，全部文件通过严格校验且 H1–H4 全部通过为 0，有文件读不了、结构不合法或门槛不通过为 1，`--source` 不合法为 2。
+- `--metrics` 是离线模式，不能与 `--input`、`--n` 同用；`--source`、`--json` 只能与 `--metrics` 同用，以免误发起付费生成。
+- 输出与 `script` 相同，另外每份通过的样本有 `samples/<名称>/metrics.json`（时长分布、台词占满率与留白、挂载统计、景别与运镜分布、H1–H4、与输入分镜的相似度）。单个输入时样本名为 `sNN`，多个输入时为 `inII_sNN`。
+
 ## 运行记录
 
 ```
@@ -86,7 +108,7 @@ runs/<run_id>/            # run_id = YYYYMMDD-HHMMSS-<命令>-<4 位 hex>（UTC�
   meta.json               # 命令、参数、起止时间、状态、Python 版本
   calls.jsonl             # 每次模型调用一行
   doctor.json             # doctor 的结果与能力覆盖
-  summary.json 等         # script 的输出，见上节
+  summary.json 等         # script、shots 的输出，见上两节
 ```
 
 在代码中记录一次模型调用：

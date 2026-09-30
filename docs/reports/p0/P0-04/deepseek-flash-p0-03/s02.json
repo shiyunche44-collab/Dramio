@@ -1,0 +1,801 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "series_u_pan",
+    "title": "雨夜U盘：被偷走的设计稿",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "写实都市质感，冷蓝雨夜与暖黄室内强对比，霓虹反光、浅景深特写、手持轻微晃动，竖屏构图人物居中偏侧",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_suqing",
+      "name": "苏晴",
+      "gender": "female",
+      "age": 27,
+      "role": "protagonist",
+      "bio": "入行四年的品牌设计师，能力出众却不擅争抢，所有方案都被直属上司李凯冠名抢占。性格倔强，越是被压越是咬牙，讨厌在人前掉眼泪。",
+      "appearance": "清瘦，齐肩黑发常年扎低马尾，眉眼秀气但眼神锋利，素颜偏白，身高一米六五左右。",
+      "costume": "本集穿米白色宽松衬衫外搭浅灰针织开衫、黑色直筒长裤，胸前挂公司工牌；雨夜后衬衫肩膀湿透、发梢滴水。",
+      "voice": "二十七八岁女声，音色清亮偏冷，语速平稳，压着情绪时尾音发紧，愤怒时咬字干脆。"
+    },
+    {
+      "id": "char_likai",
+      "name": "李凯",
+      "gender": "male",
+      "age": 38,
+      "role": "antagonist",
+      "bio": "设计总监，靠抢下属方案一路升职，擅长在人前扮演提携新人的好上级。对外圆滑、对内凶狠，笃定新人不敢反抗。",
+      "appearance": "中等身材略发福，梳背头，戴细框眼镜，眉骨高，笑起来眼睛不笑。",
+      "costume": "本集穿深灰西装三件套、白衬衫不打领带，手腕戴金属手表，雨夜撑一把黑色长柄伞。",
+      "voice": "三十八岁男声，低沉稳重带鼻腔共鸣，惯用慢语速和拖长尾音制造压迫感，讽刺时尾音上扬。"
+    },
+    {
+      "id": "char_xiaoman",
+      "name": "小满",
+      "gender": "female",
+      "age": 23,
+      "role": "supporting",
+      "bio": "刚入职半年的设计助理，是苏晴带的人，胆小但重情义，是全公司唯一愿意在雨天追出去送伞的人。",
+      "appearance": "圆脸，齐刘海短发，个子小，眼睛圆而亮，习惯性缩着肩。",
+      "costume": "本集穿亮黄色卫衣、牛仔裤，背一只帆布通勤包，手里一把浅蓝色折叠伞。",
+      "voice": "二十出头女声，音色偏软偏快，紧张时句子短促、尾音发飘。"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "雨夜离职箱里的U盘",
+      "synopsis": "提案会上李凯把苏晴熬了三个月的方案说成自己的，当众把她顶回去；当晚苏晴在暴雨里被辞退，抱着纸箱被赶出公司大门。街角便利店雨棚下她打开纸箱，发现一枚不属于自己的黑色U盘。回出租屋插上电脑，屏幕里跳出的文件时间戳证明李凯早已偷走她的草稿，她冷笑开口，屏幕却突然弹出红色提示——文件正在被远程访问。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "公司玻璃会议室",
+            "int_ext": "INT",
+            "time_of_day": "day",
+            "description": "现代开放式办公楼的玻璃会议室，长桌两侧坐着几名同事，投影幕布亮着品牌视觉稿，百叶窗外是白天的城市楼群。"
+          },
+          "summary": "提案会上，李凯把苏晴的方案据为己有，苏晴起身反驳被当众压下。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "ELS",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，玻璃会议室全景，长桌横向铺满画面中上部，投影幕布位于人物后侧偏右；画面下四分之一为暗色桌面留白，作字幕与平台UI安全区；幕布上的品牌字样文字后期叠加"
+              },
+              "description": "白天，现代开放式办公楼内的玻璃会议室。长桌两侧坐着几名同事（浅景深虚化成剪影），投影幕布亮着一版以图形和色块为主的品牌视觉稿，百叶窗外是密集的城市楼群。李凯穿深灰三件套站在幕布前抬手比划，苏晴坐在画面右前方桌尾，低头握着一支笔。幕布上的品牌字样文字后期叠加",
+              "lighting": "百叶窗过滤进来的冷白日光与投影仪冷光混合，桌面反光偏冷",
+              "characters": [
+                {
+                  "character_id": "char_likai",
+                  "action": "站在投影幕布前抬手指向幕布上的方案",
+                  "emotion": "自信、得意"
+                },
+                {
+                  "character_id": "char_suqing",
+                  "action": "坐在长桌末端低头握笔",
+                  "emotion": "隐忍、压抑"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "投影仪低鸣",
+                "细碎翻纸声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，李凯居中偏上，右侧留出幕布一角；画面底部四分之一为长桌与虚化同事肩膀，作字幕安全区"
+              },
+              "description": "会议室中景，李凯站在投影幕布前，右手扬起指向幕布上的品牌视觉稿，嘴角上扬地扫视长桌两边的同事，眼镜片反着投影的光。幕布上的图形色块在后景虚化，长桌右侧同事只留虚影",
+              "lighting": "投影冷白光打在李凯侧脸，形成半明半暗的硬边光",
+              "characters": [
+                {
+                  "character_id": "char_likai",
+                  "action": "抬手指点幕布上的方案，扫视全场",
+                  "emotion": "得意、轻慢"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_likai",
+                  "kind": "dialogue",
+                  "text": "这个方案，我改了三个月。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.6,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "投影仪低鸣",
+                "会议室轻微的椅背轻响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 2.8
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，苏晴面部居中偏上，右下角是她压在草稿纸上的手；画面下四分之一留出暗色桌面作字幕安全区"
+              },
+              "description": "苏晴近景，她坐在长桌末端，指尖把笔杆捏得发白，睫毛轻轻颤动，目光越过桌面望向幕布方向。她手边摊着自己手绘的草稿纸，纸角在画面右下角虚化",
+              "lighting": "顶灯冷白光，眼下投出淡淡阴影，脸色偏白",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "握笔不动，盯着幕布方向",
+                  "emotion": "隐忍、委屈"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "每一版，都是我画的。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.6,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "笔杆轻响",
+                "远处的纸张翻动声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh04",
+              "duration": {
+                "hint_s": 3.8
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "竖屏9:16，苏晴站姿居中偏左，李凯侧身坐在画面右侧，小满在左下角伸手；底部四分之一为桌沿，作字幕安全区"
+              },
+              "description": "会议室中景，苏晴从椅子上站起来，双手撑住桌面，正面直视李凯，声音压得很稳。李凯侧身坐着，眉毛上挑；旁边的小满慌张地伸出手拉她的衣角。其余同事虚化在背景",
+              "lighting": "冷白会议灯，苏晴的肩线被顶光勾出亮边",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "起身双手撑桌，直视李凯",
+                  "emotion": "压抑的愤怒"
+                },
+                {
+                  "character_id": "char_likai",
+                  "action": "侧身坐着抬眉看她",
+                  "emotion": "轻蔑、不耐烦"
+                },
+                {
+                  "character_id": "char_xiaoman",
+                  "action": "伸手拽住苏晴的衣角",
+                  "emotion": "紧张、担心"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "李总，方案里那组数据是我算的。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "椅子腿刮地声",
+                "会议室突然安静"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh05",
+              "duration": {
+                "hint_s": 2.6
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏9:16，李凯居中偏右，前景是几名同事的虚化背影压在画面下缘，作字幕安全区遮挡物"
+              },
+              "description": "会议桌主位，李凯十指交叉抵在下巴上，抬眼看向站着的苏晴，冷笑一声，左手随意向外一摆，像在打发人",
+              "lighting": "顶光偏冷，眼镜反光遮住一半眼神",
+              "characters": [
+                {
+                  "character_id": "char_likai",
+                  "action": "十指交叉抵住下巴，抬手向外一挥",
+                  "emotion": "傲慢、威胁"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_likai",
+                  "kind": "dialogue",
+                  "text": "你想清楚，再说话。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.7,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "会议室低沉的议论声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh06",
+              "duration": {
+                "hint_s": 2.4
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，苏晴面部略偏左，右侧留出虚化的会议桌；底部四分之一为桌面暗区，作字幕安全区"
+              },
+              "description": "苏晴的近景反应镜头：她站着，嘴唇抿紧，喉头动了一下，缓缓把视线从李凯转向幕布上那版属于自己的方案，垂在身侧的手慢慢握成拳",
+              "lighting": "冷白光从侧上方打下，半张脸落在阴影里",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "抿唇站定，视线转向幕布，手慢慢握拳",
+                  "emotion": "愤怒、屈辱"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "椅子轻微挪动声",
+                "会议室的低频空调声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "公司大楼门口人行道",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "暴雨夜的公司大楼门口，玻璃旋转门透出大堂暖光，湿漉漉的人行道上倒映着霓虹，雨幕密集。"
+          },
+          "summary": "苏晴抱着离职纸箱站在暴雨里，李凯撑伞嘲讽，小满追出来送伞。",
+          "mood": "sad",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "ELS",
+                "angle": "high",
+                "movement": "pull_out",
+                "composition": "竖屏9:16，人物位于画面中偏下，玻璃旋转门与霓虹倒影铺满上半部；底部四分之一为湿漉反光的地面，作字幕安全区"
+              },
+              "description": "暴雨夜的公司大楼门口。苏晴双手抱着装满杂物的纸箱，站在玻璃旋转门外的湿人行道上，雨水顺着头发和肩膀往下淌；李凯撑一把黑色长柄伞从旋转门里走出来。湿地面倒映着楼体霓虹，雨幕密集",
+              "lighting": "冷蓝雨夜环境光，大堂暖黄光从旋转门内透出，形成冷暖对撞",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "抱着纸箱站在暴雨里，肩膀湿透",
+                  "emotion": "麻木、倔强"
+                },
+                {
+                  "character_id": "char_likai",
+                  "action": "撑黑伞从旋转门内走出",
+                  "emotion": "淡漠"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "暴雨声",
+                "远处闷雷",
+                "旋转门转动声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "static",
+                "composition": "竖屏9:16，李凯居中偏上俯视镜头，伞沿占画面顶部三分之一，雨水沿伞骨成串落下；底部四分之一为台阶与湿地面，作字幕安全区"
+              },
+              "description": "中景，李凯撑着黑伞站在台阶上方，居高临下地看向画面外下方的苏晴，伞沿的雨水成串落下。他神情淡漠地开口，背后是亮着暖灯的公司大堂",
+              "lighting": "大堂暖黄背光勾出他的轮廓，脸落在伞下的阴影中",
+              "characters": [
+                {
+                  "character_id": "char_likai",
+                  "action": "撑伞俯视下方，微微侧头开口",
+                  "emotion": "嘲讽、冷漠"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_likai",
+                  "kind": "dialogue",
+                  "text": "方案归公司，人归你自己。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "雨点砸在伞面上",
+                "远处车流声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 2.8
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，苏晴面部居中偏上，怀中纸箱的一角在画面下缘，占底部四分之一安全区"
+              },
+              "description": "特写，苏晴站在雨里，雨水顺着发梢滴到脸颊，她咬着下唇，眼睛通红却没有落泪。怀里纸箱的一角被雨水打湿塌陷，浅灰针织开衫的肩膀已经湿透贴住身体",
+              "lighting": "冷蓝路灯与霓虹反光打在湿脸上，高光点点",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "咬唇忍泪，抱紧纸箱",
+                  "emotion": "隐忍、不肯示弱"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "我不哭。这雨，我记着。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "放大的雨声",
+                "急促呼吸声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh04",
+              "duration": {
+                "hint_s": 2.8
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "竖屏9:16，小满与苏晴一左一右分居画面中偏上，浅蓝伞面横过画面上缘；底部四分之一为溅水的地面，作字幕安全区"
+              },
+              "description": "中景，小满举着一把浅蓝色折叠伞从公司门口小跑出来，另一只手扶住苏晴怀里倾斜的纸箱，神情着急，雨水在她脚边溅起水花。苏晴侧头看她，勉强站稳",
+              "lighting": "冷蓝雨夜中，亮黄卫衣成为画面里唯一的暖色块",
+              "characters": [
+                {
+                  "character_id": "char_xiaoman",
+                  "action": "举伞跑到苏晴身侧，扶住倾斜的纸箱",
+                  "emotion": "着急、心疼"
+                },
+                {
+                  "character_id": "char_suqing",
+                  "action": "侧头看向小满，勉强站稳",
+                  "emotion": "疲惫、动容"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_xiaoman",
+                  "kind": "dialogue",
+                  "text": "晴姐，箱子里别淋湿了。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.7,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "脚步踩水声",
+                "伞面弹雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh05",
+              "duration": {
+                "hint_s": 2.4
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏9:16，湿纸箱一角充满画面中上部，苏晴的手指在画面下缘入画；底部四分之一为湿漉地面倒影，作字幕安全区"
+              },
+              "description": "大特写，苏晴抱着的那只纸箱被雨水打湿的一角，纸板已经软塌塌地卷边，一滴水顺着折角滑落，她的手指用力扣住箱沿，指节泛白。背景是虚化的霓虹倒影",
+              "lighting": "冷蓝路灯反光在湿纸板上形成细碎高光，暖黄远处虚化光斑",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "手指死死扣住被雨打湿的纸箱边角",
+                  "emotion": "隐忍、不甘"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨水打在纸板上的闷响",
+                "远处雷声余音"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "写字楼对面便利店雨棚下",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "24小时便利店门口的雨棚角落，头顶一盏暖黄灯箱，地面湿滑积水，棚外是密集的雨幕和空荡街道。"
+          },
+          "summary": "苏晴蹲在雨棚下打开纸箱，发现一枚不属于自己的黑色U盘。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "high",
+                "movement": "push_in",
+                "composition": "竖屏9:16，便利店雨棚占画面上半部，苏晴蹲在棚下偏右下位置；底部四分之一为积水地面反光，作字幕安全区；灯箱招牌文字后期叠加"
+              },
+              "description": "深夜，写字楼对面24小时便利店门口的雨棚角落，头顶一盏暖黄灯箱，地面湿滑积水，棚外是密集的雨幕和空荡街道。苏晴湿着头发蹲在台阶边，把纸箱放在膝盖上。灯箱招牌文字后期叠加",
+              "lighting": "头顶暖黄灯箱照亮雨棚内一小块干地，棚外是冷蓝雨幕",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "抱着湿纸箱蹲在雨棚下",
+                  "emotion": "疲惫、恍惚"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨滴打在雨棚上的闷响",
+                "积水滴落声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "high",
+                "movement": "push_in",
+                "composition": "竖屏9:16，俯拍视角，纸箱开口位于画面中心偏上，苏晴的头顶与肩线在画面上缘；底部四分之一为湿台阶，作字幕安全区"
+              },
+              "description": "俯拍中远景，苏晴蹲在雨棚台阶边，把湿透的纸箱摊在膝盖上打开，箱内露出挂着的工牌、一叠被雨水洇湿的打印设计稿，以及一个黑色小U盘。便利店暖黄灯光从上方打下来，棚外是密集雨幕",
+              "lighting": "暖黄顶光笼罩纸箱内部，手部动作有明显投影",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "蹲下打开湿纸箱翻找，手指拨开打印稿",
+                  "emotion": "疲惫、恍惚"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "工牌、草稿，还有……这是什么？",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.5,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "雨滴打棚顶的闷响",
+                "纸箱翻动声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 2.6
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏9:16，U盘位于画面正中偏上，掌心与手指占下部三分之一；底部四分之一为虚化暖黄光斑，作字幕安全区；标签上的字迹文字后期叠加"
+              },
+              "description": "大特写，苏晴湿漉漉的手心里躺着一枚黑色U盘，表面贴着一张被水汽打湿、字迹洇开的标签，一滴雨水落在金属接口上溅开。背景是虚化的暖黄灯箱光。标签上的字迹文字后期叠加",
+              "lighting": "暖黄灯光侧打，U盘塑料壳上有一道细长反光",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "摊开手掌托住U盘，另一只手轻轻擦去标签水汽",
+                  "emotion": "疑惑、警觉"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "这不是我的东西。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.6,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "雨滴落水声",
+                "布料擦过金属声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh04",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，苏晴面部居中偏上，视线朝画外街道方向，背景为虚化的便利店冷柜光；底部四分之一为暗色雨棚阴影，作字幕安全区"
+              },
+              "description": "特写，苏晴缓缓抬起头，雨水挂在睫毛上，原本泛红的眼睛逐渐变得锐利，她盯着雨棚外漆黑的街道，握着U盘的手指慢慢收紧",
+              "lighting": "暖黄灯光从侧后方勾出湿发轮廓，脸前半明半暗",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "抬头直视雨棚外的街道，握紧手中U盘",
+                  "emotion": "警觉、起了念头"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "谁会把它放进我的箱子？",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "雨势渐小的沙沙声",
+                "远处车辆驶过积水声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "苏晴的出租屋书桌前",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "狭小的出租屋，一张旧书桌靠窗，笔记本屏幕亮着，墙上贴着几张设计草图，窗外夜雨拍打玻璃，屋内只有屏幕的光。"
+          },
+          "summary": "苏晴插上U盘，看到李凯偷稿的时间戳证据，正要截图时屏幕弹出远程访问提示。",
+          "mood": "uplifting",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏9:16，苏晴坐在画面中央偏右，笔记本电脑在画面左下，屏幕冷光从下方打上脸；底部四分之一为桌面与键盘，作字幕安全区"
+              },
+              "description": "狭小的出租屋，一张旧书桌靠窗，墙上贴着几张设计草图。苏晴坐在窄桌前，湿发用毛巾随意搭着，她把黑色U盘插进旧笔记本电脑侧面的接口，屏幕亮起的冷白光打在她脸上，窗外夜雨拍打玻璃",
+              "lighting": "屋内只有屏幕的冷白光，与窗外冷蓝夜雨呼应",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "把U盘插进电脑，盯着屏幕等待",
+                  "emotion": "紧张、期待"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0011",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "里面的东西，比我想的多。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.6,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "U盘插入的提示音",
+                "电脑风扇声",
+                "窗外雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 2.4
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，电脑屏幕占满整幅画面，文件列表逐行亮起位于画面中部；底部四分之一为屏幕暗区，作字幕安全区；文件名与时间戳文字后期叠加"
+              },
+              "description": "大特写，电脑屏幕占满画面，一排文件列表逐行亮起，最上面一行文件名与时间戳被光标高亮选中，蓝白色系统界面倒映在画面边缘。文件名与时间戳文字后期叠加",
+              "lighting": "屏幕自发光，冷白偏蓝，画面右下有微弱反光",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "鼠标点击声",
+                "硬盘读取声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh03",
+              "duration": {
+                "hint_s": 3.8
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，苏晴面部居中偏上，屏幕冷光从画面前下方打来；底部四分之一为键盘与撑在桌边的手指，作字幕安全区"
+              },
+              "description": "近景，苏晴的脸被屏幕冷光映得发白，她一手撑在桌边，另一只手停在触控板上缓缓下移光标，眼睛一行行扫过屏幕上的文件时间戳，呼吸变重",
+              "lighting": "纯屏幕冷光，脸部对比强烈，凹处落在阴影里",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "手指停在触控板上缓缓下移光标，逐行扫视文件",
+                  "emotion": "震惊、逐渐清醒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0012",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "三个月前，他就拿走了我的草稿。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "硬盘读取声",
+                "窗外雨声渐强"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh04",
+              "duration": {
+                "hint_s": 2.2
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏9:16，红色提示框位于画面正中偏上，四周为暗下的屏幕界面；底部四分之一为屏幕暗区，作字幕安全区；红色提示文字后期叠加"
+              },
+              "description": "大特写，电脑屏幕上突然跳出一行红色提示框，占住画面中心，红色边框在冷蓝界面里格外刺眼，其余区域迅速压暗。红色提示文字后期叠加",
+              "lighting": "屏幕红光为主的局部光，四周压暗成黑",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "系统警告提示音",
+                "雨声骤强"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh05",
+              "duration": {
+                "hint_s": 2.8
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，苏晴面部居中偏上，屏幕红光从画面下缘打上来；底部四分之一为桌面暗区，作字幕安全区"
+              },
+              "description": "特写，屏幕光映在苏晴脸上，她嘴角先勾起一丝冷笑，随即瞳孔猛地一缩——红光爬上她的半张脸，她的手停在鼠标上一动不动，指节绷紧",
+              "lighting": "屏幕红光从下方向上投射，脸下半部泛红，上半部落在暗处",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "先冷笑，随即猛然前倾按住鼠标",
+                  "emotion": "决绝转为惊惧"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0013",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "李凯，这次轮到我了。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "鼠标急停声",
+                "放大的雨声",
+                "低频心跳声"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,591 @@
+{
+  "settings": {
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "prompt_version": "shots.v1",
+    "target_s": null,
+    "max_repairs": 2,
+    "temperature": null,
+    "max_tokens": 32000,
+    "thinking": "default",
+    "reasoning_effort": null,
+    "max_cost_cny": 10.0
+  },
+  "n": 5,
+  "passed": 5,
+  "first_pass": 3,
+  "first_pass_rate": 0.6,
+  "pass_rate": 1.0,
+  "repairs": [
+    0,
+    0,
+    0,
+    1,
+    2
+  ],
+  "attempts_total": 8,
+  "requests_total": 8,
+  "failed_attempts_by_kind": {
+    "invalid": 1,
+    "not_json": 2
+  },
+  "prompt_tokens_total": 39517,
+  "completion_tokens_total": 67007,
+  "reasoning_tokens_total": 33087,
+  "cost_cny_total": 0.5715,
+  "cost_cny_per_sample_avg": 0.1143,
+  "cost_cny_per_sample_max": 0.1589,
+  "elapsed_s_per_sample_avg": 52.4,
+  "elapsed_s_per_sample_max": 70.9,
+  "samples": [
+    {
+      "sample": "s01",
+      "passed": true,
+      "first_pass": true,
+      "repairs": 0,
+      "attempts": [
+        {
+          "attempt": 0,
+          "outcome": "pass",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 3732,
+          "completion_tokens": 10471,
+          "reasoning_tokens": 5461,
+          "cost_cny": 0.085856,
+          "elapsed_s": 41.5,
+          "detail": ""
+        }
+      ],
+      "stats": {
+        "characters": 2,
+        "episodes": 1,
+        "scenes": 3,
+        "shots": 22,
+        "lines": 15,
+        "duration_s": 61.9
+      },
+      "cost_cny": 0.085856,
+      "elapsed_s": 41.5,
+      "input": "packages/drama-ir/examples/v0/ep01.json",
+      "metrics": {
+        "target_s": 60,
+        "scenes": 3,
+        "shots": 22,
+        "shot_range": [
+          12,
+          24
+        ],
+        "total_s": 61.9,
+        "total_dev": 0.0317,
+        "shot_s_avg": 2.814,
+        "shot_s_min": 1.8,
+        "shot_s_max": 4.9,
+        "shots_over_5s": 0,
+        "shots_over_5s_ratio": 0.0,
+        "lines": 15,
+        "dialogue_shots": 15,
+        "fill_avg": 0.834,
+        "fill_max": 0.907,
+        "slack_min_s": 0.184,
+        "slack_ok_ratio": 0.933,
+        "idle_shots": 0,
+        "max_lines_per_shot": 1,
+        "multi_speaker_shots": 0,
+        "empty_shots": 3,
+        "lipsync_shots": 10,
+        "shot_sizes": {
+          "CU": 5,
+          "MS": 5,
+          "MCU": 4,
+          "ECU": 3,
+          "LS": 3,
+          "ELS": 2
+        },
+        "shot_size_kinds": 6,
+        "close_up_ratio": 0.545,
+        "establishing_first": 3,
+        "movements": {
+          "push_in": 10,
+          "static": 8,
+          "handheld": 1,
+          "pan": 1,
+          "tilt": 1,
+          "tracking": 1
+        },
+        "static_ratio": 0.364,
+        "angles": {
+          "eye_level": 12,
+          "high": 5,
+          "low": 4,
+          "overhead": 1
+        },
+        "gates": {
+          "H1": true,
+          "H2": true,
+          "H3": true,
+          "H4": true
+        },
+        "gate_issues": [],
+        "vs_source": {
+          "source_shots": 13,
+          "shot_count_delta": 9,
+          "same_line_groups_ratio": 0.733,
+          "identical_line_grouping": false
+        }
+      }
+    },
+    {
+      "sample": "s02",
+      "passed": true,
+      "first_pass": true,
+      "repairs": 0,
+      "attempts": [
+        {
+          "attempt": 0,
+          "outcome": "pass",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 3732,
+          "completion_tokens": 8705,
+          "reasoning_tokens": 3399,
+          "cost_cny": 0.071728,
+          "elapsed_s": 35.3,
+          "detail": ""
+        }
+      ],
+      "stats": {
+        "characters": 2,
+        "episodes": 1,
+        "scenes": 3,
+        "shots": 21,
+        "lines": 15,
+        "duration_s": 61.7
+      },
+      "cost_cny": 0.071728,
+      "elapsed_s": 35.4,
+      "input": "packages/drama-ir/examples/v0/ep01.json",
+      "metrics": {
+        "target_s": 60,
+        "scenes": 3,
+        "shots": 21,
+        "shot_range": [
+          12,
+          24
+        ],
+        "total_s": 61.7,
+        "total_dev": 0.0283,
+        "shot_s_avg": 2.938,
+        "shot_s_min": 2.0,
+        "shot_s_max": 5.2,
+        "shots_over_5s": 1,
+        "shots_over_5s_ratio": 0.048,
+        "lines": 15,
+        "dialogue_shots": 15,
+        "fill_avg": 0.804,
+        "fill_max": 0.882,
+        "slack_min_s": 0.467,
+        "slack_ok_ratio": 1.0,
+        "idle_shots": 0,
+        "max_lines_per_shot": 1,
+        "multi_speaker_shots": 0,
+        "empty_shots": 2,
+        "lipsync_shots": 10,
+        "shot_sizes": {
+          "MS": 7,
+          "CU": 5,
+          "MCU": 3,
+          "ECU": 2,
+          "LS": 2,
+          "ELS": 1,
+          "MLS": 1
+        },
+        "shot_size_kinds": 7,
+        "close_up_ratio": 0.476,
+        "establishing_first": 3,
+        "movements": {
+          "static": 11,
+          "push_in": 6,
+          "handheld": 2,
+          "pull_out": 1,
+          "tracking": 1
+        },
+        "static_ratio": 0.524,
+        "angles": {
+          "eye_level": 14,
+          "high": 4,
+          "low": 2,
+          "overhead": 1
+        },
+        "gates": {
+          "H1": true,
+          "H2": true,
+          "H3": true,
+          "H4": true
+        },
+        "gate_issues": [],
+        "vs_source": {
+          "source_shots": 13,
+          "shot_count_delta": 8,
+          "same_line_groups_ratio": 0.733,
+          "identical_line_grouping": false
+        }
+      }
+    },
+    {
+      "sample": "s03",
+      "passed": true,
+      "first_pass": true,
+      "repairs": 0,
+      "attempts": [
+        {
+          "attempt": 0,
+          "outcome": "pass",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 3732,
+          "completion_tokens": 14002,
+          "reasoning_tokens": 8335,
+          "cost_cny": 0.114104,
+          "elapsed_s": 55.6,
+          "detail": ""
+        }
+      ],
+      "stats": {
+        "characters": 2,
+        "episodes": 1,
+        "scenes": 3,
+        "shots": 24,
+        "lines": 15,
+        "duration_s": 62.3
+      },
+      "cost_cny": 0.114104,
+      "elapsed_s": 55.6,
+      "input": "packages/drama-ir/examples/v0/ep01.json",
+      "metrics": {
+        "target_s": 60,
+        "scenes": 3,
+        "shots": 24,
+        "shot_range": [
+          12,
+          24
+        ],
+        "total_s": 62.3,
+        "total_dev": 0.0383,
+        "shot_s_avg": 2.596,
+        "shot_s_min": 1.5,
+        "shot_s_max": 5.0,
+        "shots_over_5s": 0,
+        "shots_over_5s_ratio": 0.0,
+        "lines": 15,
+        "dialogue_shots": 15,
+        "fill_avg": 0.856,
+        "fill_max": 0.926,
+        "slack_min_s": 0.2,
+        "slack_ok_ratio": 0.6,
+        "idle_shots": 0,
+        "max_lines_per_shot": 1,
+        "multi_speaker_shots": 0,
+        "empty_shots": 2,
+        "lipsync_shots": 10,
+        "shot_sizes": {
+          "MCU": 8,
+          "CU": 6,
+          "MS": 4,
+          "ECU": 2,
+          "LS": 2,
+          "ELS": 1,
+          "MLS": 1
+        },
+        "shot_size_kinds": 7,
+        "close_up_ratio": 0.667,
+        "establishing_first": 3,
+        "movements": {
+          "static": 11,
+          "push_in": 8,
+          "handheld": 3,
+          "pull_out": 1,
+          "tracking": 1
+        },
+        "static_ratio": 0.458,
+        "angles": {
+          "eye_level": 15,
+          "high": 5,
+          "low": 4
+        },
+        "gates": {
+          "H1": true,
+          "H2": true,
+          "H3": true,
+          "H4": true
+        },
+        "gate_issues": [],
+        "vs_source": {
+          "source_shots": 13,
+          "shot_count_delta": 11,
+          "same_line_groups_ratio": 0.733,
+          "identical_line_grouping": false
+        }
+      }
+    },
+    {
+      "sample": "s04",
+      "passed": true,
+      "first_pass": false,
+      "repairs": 1,
+      "attempts": [
+        {
+          "attempt": 0,
+          "outcome": "invalid",
+          "errors": 1,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 3732,
+          "completion_tokens": 10104,
+          "reasoning_tokens": 5640,
+          "cost_cny": 0.08292,
+          "elapsed_s": 40.6,
+          "detail": ""
+        },
+        {
+          "attempt": 1,
+          "outcome": "pass",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 8268,
+          "completion_tokens": 5878,
+          "reasoning_tokens": 1419,
+          "cost_cny": 0.057992,
+          "elapsed_s": 18.1,
+          "detail": ""
+        }
+      ],
+      "stats": {
+        "characters": 2,
+        "episodes": 1,
+        "scenes": 3,
+        "shots": 20,
+        "lines": 15,
+        "duration_s": 58.8
+      },
+      "cost_cny": 0.140912,
+      "elapsed_s": 58.8,
+      "input": "packages/drama-ir/examples/v0/ep01.json",
+      "metrics": {
+        "target_s": 60,
+        "scenes": 3,
+        "shots": 20,
+        "shot_range": [
+          12,
+          24
+        ],
+        "total_s": 58.8,
+        "total_dev": -0.02,
+        "shot_s_avg": 2.94,
+        "shot_s_min": 2.0,
+        "shot_s_max": 5.0,
+        "shots_over_5s": 0,
+        "shots_over_5s_ratio": 0.0,
+        "lines": 15,
+        "dialogue_shots": 15,
+        "fill_avg": 0.82,
+        "fill_max": 0.889,
+        "slack_min_s": 0.384,
+        "slack_ok_ratio": 1.0,
+        "idle_shots": 0,
+        "max_lines_per_shot": 1,
+        "multi_speaker_shots": 0,
+        "empty_shots": 3,
+        "lipsync_shots": 10,
+        "shot_sizes": {
+          "CU": 8,
+          "MS": 4,
+          "ECU": 3,
+          "LS": 2,
+          "MCU": 2,
+          "ELS": 1
+        },
+        "shot_size_kinds": 6,
+        "close_up_ratio": 0.65,
+        "establishing_first": 3,
+        "movements": {
+          "push_in": 7,
+          "static": 7,
+          "handheld": 2,
+          "tracking": 2,
+          "pan": 1,
+          "pull_out": 1
+        },
+        "static_ratio": 0.35,
+        "angles": {
+          "eye_level": 11,
+          "low": 4,
+          "overhead": 3,
+          "high": 2
+        },
+        "gates": {
+          "H1": true,
+          "H2": true,
+          "H3": true,
+          "H4": true
+        },
+        "gate_issues": [],
+        "vs_source": {
+          "source_shots": 13,
+          "shot_count_delta": 7,
+          "same_line_groups_ratio": 0.733,
+          "identical_line_grouping": false
+        }
+      }
+    },
+    {
+      "sample": "s05",
+      "passed": true,
+      "first_pass": false,
+      "repairs": 2,
+      "attempts": [
+        {
+          "attempt": 0,
+          "outcome": "not_json",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 3732,
+          "completion_tokens": 8197,
+          "reasoning_tokens": 3506,
+          "cost_cny": 0.067664,
+          "elapsed_s": 33.4,
+          "detail": "JSONDecodeError: Expecting ',' delimiter: line 1 column 373 (char 372)"
+        },
+        {
+          "attempt": 1,
+          "outcome": "not_json",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 8515,
+          "completion_tokens": 2857,
+          "reasoning_tokens": 2607,
+          "cost_cny": 0.034318,
+          "elapsed_s": 11.2,
+          "detail": "JSONDecodeError: Expecting ',' delimiter: line 1 column 330 (char 329)"
+        },
+        {
+          "attempt": 2,
+          "outcome": "pass",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 4074,
+          "completion_tokens": 6793,
+          "reasoning_tokens": 2720,
+          "cost_cny": 0.056924,
+          "elapsed_s": 26.3,
+          "detail": ""
+        }
+      ],
+      "stats": {
+        "characters": 2,
+        "episodes": 1,
+        "scenes": 3,
+        "shots": 19,
+        "lines": 15,
+        "duration_s": 60.9
+      },
+      "cost_cny": 0.158906,
+      "elapsed_s": 70.9,
+      "input": "packages/drama-ir/examples/v0/ep01.json",
+      "metrics": {
+        "target_s": 60,
+        "scenes": 3,
+        "shots": 19,
+        "shot_range": [
+          12,
+          24
+        ],
+        "total_s": 60.9,
+        "total_dev": 0.015,
+        "shot_s_avg": 3.205,
+        "shot_s_min": 2,
+        "shot_s_max": 5,
+        "shots_over_5s": 0,
+        "shots_over_5s_ratio": 0.0,
+        "lines": 15,
+        "dialogue_shots": 15,
+        "fill_avg": 0.798,
+        "fill_max": 0.926,
+        "slack_min_s": 0.267,
+        "slack_ok_ratio": 0.867,
+        "idle_shots": 0,
+        "max_lines_per_shot": 1,
+        "multi_speaker_shots": 0,
+        "empty_shots": 1,
+        "lipsync_shots": 10,
+        "shot_sizes": {
+          "CU": 7,
+          "MS": 5,
+          "MCU": 3,
+          "ECU": 1,
+          "ELS": 1,
+          "LS": 1,
+          "MLS": 1
+        },
+        "shot_size_kinds": 7,
+        "close_up_ratio": 0.579,
+        "establishing_first": 3,
+        "movements": {
+          "push_in": 7,
+          "static": 7,
+          "tracking": 2,
+          "handheld": 1,
+          "pan": 1,
+          "pull_out": 1
+        },
+        "static_ratio": 0.368,
+        "angles": {
+          "eye_level": 11,
+          "high": 5,
+          "low": 2,
+          "overhead": 1
+        },
+        "gates": {
+          "H1": true,
+          "H2": true,
+          "H3": true,
+          "H4": true
+        },
+        "gate_issues": [],
+        "vs_source": {
+          "source_shots": 13,
+          "shot_count_delta": 6,
+          "same_line_groups_ratio": 0.733,
+          "identical_line_grouping": false
+        }
+      }
+    }
+  ],
+  "run_id": "20260930-130855-shots-e065",
+  "n_requested": 5,
+  "inputs": [
+    {
+      "path": "packages/drama-ir/examples/v0/ep01.json",
+      "sha256": "cd02daef022c6e78227ef3bf366adb2b5142a979a803bcf4373cdb8765a6fb59"
+    }
+  ],
+  "spent_cny_total": 0.5715,
+  "aborted": null,
+  "price": {
+    "input_cache_hit": 0.5,
+    "input_cache_miss": 2.0,
+    "output": 8.0,
+    "source": "保守上界，2026-09-30 余额差复核"
+  },
+  "balance_before_cny": null,
+  "balance_after_cny": null,
+  "balance_delta_cny": 0.41,
+  "balance_note": "入库时去掉了账户余额绝对值（原始值保留在本地 runs/，只报告余额差）"
+}

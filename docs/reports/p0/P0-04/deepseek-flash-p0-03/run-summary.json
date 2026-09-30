@@ -1,0 +1,559 @@
+{
+  "settings": {
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "prompt_version": "shots.v1",
+    "target_s": null,
+    "max_repairs": 2,
+    "temperature": null,
+    "max_tokens": 32000,
+    "thinking": "default",
+    "reasoning_effort": null,
+    "max_cost_cny": 10.0
+  },
+  "n": 5,
+  "passed": 5,
+  "first_pass": 5,
+  "first_pass_rate": 1.0,
+  "pass_rate": 1.0,
+  "repairs": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "attempts_total": 5,
+  "requests_total": 5,
+  "failed_attempts_by_kind": {},
+  "prompt_tokens_total": 22742,
+  "completion_tokens_total": 52496,
+  "reasoning_tokens_total": 23913,
+  "cost_cny_total": 0.4551,
+  "cost_cny_per_sample_avg": 0.091,
+  "cost_cny_per_sample_max": 0.1216,
+  "elapsed_s_per_sample_avg": 41.8,
+  "elapsed_s_per_sample_max": 60.2,
+  "samples": [
+    {
+      "sample": "in01_s01",
+      "passed": true,
+      "first_pass": true,
+      "repairs": 0,
+      "attempts": [
+        {
+          "attempt": 0,
+          "outcome": "pass",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 4744,
+          "completion_tokens": 7966,
+          "reasoning_tokens": 2741,
+          "cost_cny": 0.072832,
+          "elapsed_s": 32.0,
+          "detail": ""
+        }
+      ],
+      "stats": {
+        "characters": 4,
+        "episodes": 1,
+        "scenes": 4,
+        "shots": 20,
+        "lines": 11,
+        "duration_s": 61.2
+      },
+      "cost_cny": 0.072832,
+      "elapsed_s": 32.0,
+      "input": "docs/reports/p0/P0-03/deepseek-flash/s01.json",
+      "metrics": {
+        "target_s": 60,
+        "scenes": 4,
+        "shots": 20,
+        "shot_range": [
+          12,
+          24
+        ],
+        "total_s": 61.2,
+        "total_dev": 0.02,
+        "shot_s_avg": 3.06,
+        "shot_s_min": 2.5,
+        "shot_s_max": 3.8,
+        "shots_over_5s": 0,
+        "shots_over_5s_ratio": 0.0,
+        "lines": 11,
+        "dialogue_shots": 11,
+        "fill_avg": 0.719,
+        "fill_max": 0.821,
+        "slack_min_s": 0.574,
+        "slack_ok_ratio": 1.0,
+        "idle_shots": 0,
+        "max_lines_per_shot": 1,
+        "multi_speaker_shots": 0,
+        "empty_shots": 3,
+        "lipsync_shots": 5,
+        "shot_sizes": {
+          "CU": 5,
+          "ECU": 4,
+          "LS": 4,
+          "MCU": 4,
+          "MS": 3
+        },
+        "shot_size_kinds": 5,
+        "close_up_ratio": 0.65,
+        "establishing_first": 4,
+        "movements": {
+          "push_in": 9,
+          "static": 7,
+          "tracking": 2,
+          "handheld": 1,
+          "pull_out": 1
+        },
+        "static_ratio": 0.35,
+        "angles": {
+          "eye_level": 11,
+          "high": 6,
+          "low": 2,
+          "overhead": 1
+        },
+        "gates": {
+          "H1": true,
+          "H2": true,
+          "H3": true,
+          "H4": true
+        },
+        "gate_issues": [],
+        "vs_source": {
+          "source_shots": 14,
+          "shot_count_delta": 6,
+          "same_line_groups_ratio": 1.0,
+          "identical_line_grouping": true
+        }
+      }
+    },
+    {
+      "sample": "in02_s01",
+      "passed": true,
+      "first_pass": true,
+      "repairs": 0,
+      "attempts": [
+        {
+          "attempt": 0,
+          "outcome": "pass",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 4583,
+          "completion_tokens": 9168,
+          "reasoning_tokens": 4034,
+          "cost_cny": 0.080014,
+          "elapsed_s": 36.8,
+          "detail": ""
+        }
+      ],
+      "stats": {
+        "characters": 3,
+        "episodes": 1,
+        "scenes": 4,
+        "shots": 20,
+        "lines": 13,
+        "duration_s": 58.6
+      },
+      "cost_cny": 0.080014,
+      "elapsed_s": 36.8,
+      "input": "docs/reports/p0/P0-03/deepseek-flash/s02.json",
+      "metrics": {
+        "target_s": 60,
+        "scenes": 4,
+        "shots": 20,
+        "shot_range": [
+          12,
+          24
+        ],
+        "total_s": 58.6,
+        "total_dev": -0.0233,
+        "shot_s_avg": 2.93,
+        "shot_s_min": 2.2,
+        "shot_s_max": 3.8,
+        "shots_over_5s": 0,
+        "shots_over_5s_ratio": 0.0,
+        "lines": 13,
+        "dialogue_shots": 13,
+        "fill_avg": 0.687,
+        "fill_max": 0.8,
+        "slack_min_s": 0.759,
+        "slack_ok_ratio": 1.0,
+        "idle_shots": 0,
+        "max_lines_per_shot": 1,
+        "multi_speaker_shots": 0,
+        "empty_shots": 2,
+        "lipsync_shots": 9,
+        "shot_sizes": {
+          "CU": 6,
+          "MS": 5,
+          "ECU": 4,
+          "ELS": 2,
+          "LS": 1,
+          "MCU": 1,
+          "MLS": 1
+        },
+        "shot_size_kinds": 7,
+        "close_up_ratio": 0.55,
+        "establishing_first": 4,
+        "movements": {
+          "push_in": 12,
+          "static": 6,
+          "pull_out": 1,
+          "tracking": 1
+        },
+        "static_ratio": 0.3,
+        "angles": {
+          "eye_level": 14,
+          "high": 4,
+          "low": 2
+        },
+        "gates": {
+          "H1": true,
+          "H2": true,
+          "H3": true,
+          "H4": true
+        },
+        "gate_issues": [],
+        "vs_source": {
+          "source_shots": 14,
+          "shot_count_delta": 6,
+          "same_line_groups_ratio": 1.0,
+          "identical_line_grouping": true
+        }
+      }
+    },
+    {
+      "sample": "in03_s01",
+      "passed": true,
+      "first_pass": true,
+      "repairs": 0,
+      "attempts": [
+        {
+          "attempt": 0,
+          "outcome": "pass",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 4403,
+          "completion_tokens": 12452,
+          "reasoning_tokens": 5110,
+          "cost_cny": 0.105926,
+          "elapsed_s": 45.4,
+          "detail": ""
+        }
+      ],
+      "stats": {
+        "characters": 3,
+        "episodes": 1,
+        "scenes": 4,
+        "shots": 24,
+        "lines": 14,
+        "duration_s": 64.1
+      },
+      "cost_cny": 0.105926,
+      "elapsed_s": 45.4,
+      "input": "docs/reports/p0/P0-03/deepseek-flash/s03.json",
+      "metrics": {
+        "target_s": 60,
+        "scenes": 4,
+        "shots": 24,
+        "shot_range": [
+          12,
+          24
+        ],
+        "total_s": 64.1,
+        "total_dev": 0.0683,
+        "shot_s_avg": 2.671,
+        "shot_s_min": 1.8,
+        "shot_s_max": 4.0,
+        "shots_over_5s": 0,
+        "shots_over_5s_ratio": 0.0,
+        "lines": 14,
+        "dialogue_shots": 14,
+        "fill_avg": 0.772,
+        "fill_max": 0.889,
+        "slack_min_s": 0.378,
+        "slack_ok_ratio": 1.0,
+        "idle_shots": 0,
+        "max_lines_per_shot": 1,
+        "multi_speaker_shots": 0,
+        "empty_shots": 1,
+        "lipsync_shots": 10,
+        "shot_sizes": {
+          "CU": 6,
+          "LS": 5,
+          "MCU": 5,
+          "MS": 5,
+          "ECU": 3
+        },
+        "shot_size_kinds": 5,
+        "close_up_ratio": 0.583,
+        "establishing_first": 4,
+        "movements": {
+          "static": 12,
+          "push_in": 6,
+          "pan": 2,
+          "handheld": 1,
+          "pull_out": 1,
+          "tilt": 1,
+          "tracking": 1
+        },
+        "static_ratio": 0.5,
+        "angles": {
+          "eye_level": 16,
+          "high": 3,
+          "low": 3,
+          "overhead": 2
+        },
+        "gates": {
+          "H1": true,
+          "H2": true,
+          "H3": true,
+          "H4": true
+        },
+        "gate_issues": [],
+        "vs_source": {
+          "source_shots": 14,
+          "shot_count_delta": 10,
+          "same_line_groups_ratio": 0.857,
+          "identical_line_grouping": false
+        }
+      }
+    },
+    {
+      "sample": "in04_s01",
+      "passed": true,
+      "first_pass": true,
+      "repairs": 0,
+      "attempts": [
+        {
+          "attempt": 0,
+          "outcome": "pass",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 4656,
+          "completion_tokens": 14342,
+          "reasoning_tokens": 8541,
+          "cost_cny": 0.121552,
+          "elapsed_s": 60.2,
+          "detail": ""
+        }
+      ],
+      "stats": {
+        "characters": 3,
+        "episodes": 1,
+        "scenes": 4,
+        "shots": 23,
+        "lines": 15,
+        "duration_s": 58.7
+      },
+      "cost_cny": 0.121552,
+      "elapsed_s": 60.2,
+      "input": "docs/reports/p0/P0-03/deepseek-flash/s04.json",
+      "metrics": {
+        "target_s": 60,
+        "scenes": 4,
+        "shots": 23,
+        "shot_range": [
+          12,
+          24
+        ],
+        "total_s": 58.7,
+        "total_dev": -0.0217,
+        "shot_s_avg": 2.552,
+        "shot_s_min": 1.8,
+        "shot_s_max": 4.3,
+        "shots_over_5s": 0,
+        "shots_over_5s_ratio": 0.0,
+        "lines": 15,
+        "dialogue_shots": 15,
+        "fill_avg": 0.735,
+        "fill_max": 0.889,
+        "slack_min_s": 0.389,
+        "slack_ok_ratio": 1.0,
+        "idle_shots": 0,
+        "max_lines_per_shot": 1,
+        "multi_speaker_shots": 0,
+        "empty_shots": 2,
+        "lipsync_shots": 10,
+        "shot_sizes": {
+          "MS": 8,
+          "CU": 5,
+          "MCU": 4,
+          "ECU": 3,
+          "LS": 2,
+          "ELS": 1
+        },
+        "shot_size_kinds": 6,
+        "close_up_ratio": 0.522,
+        "establishing_first": 4,
+        "movements": {
+          "static": 15,
+          "push_in": 5,
+          "handheld": 1,
+          "pan": 1,
+          "tracking": 1
+        },
+        "static_ratio": 0.652,
+        "angles": {
+          "eye_level": 16,
+          "high": 5,
+          "low": 2
+        },
+        "gates": {
+          "H1": true,
+          "H2": true,
+          "H3": true,
+          "H4": true
+        },
+        "gate_issues": [],
+        "vs_source": {
+          "source_shots": 14,
+          "shot_count_delta": 9,
+          "same_line_groups_ratio": 0.867,
+          "identical_line_grouping": false
+        }
+      }
+    },
+    {
+      "sample": "in05_s01",
+      "passed": true,
+      "first_pass": true,
+      "repairs": 0,
+      "attempts": [
+        {
+          "attempt": 0,
+          "outcome": "pass",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 4356,
+          "completion_tokens": 8568,
+          "reasoning_tokens": 3487,
+          "cost_cny": 0.07476,
+          "elapsed_s": 34.6,
+          "detail": ""
+        }
+      ],
+      "stats": {
+        "characters": 3,
+        "episodes": 1,
+        "scenes": 3,
+        "shots": 19,
+        "lines": 12,
+        "duration_s": 59.6
+      },
+      "cost_cny": 0.07476,
+      "elapsed_s": 34.6,
+      "input": "docs/reports/p0/P0-03/deepseek-flash/s05.json",
+      "metrics": {
+        "target_s": 60,
+        "scenes": 3,
+        "shots": 19,
+        "shot_range": [
+          12,
+          24
+        ],
+        "total_s": 59.6,
+        "total_dev": -0.0067,
+        "shot_s_avg": 3.137,
+        "shot_s_min": 2.2,
+        "shot_s_max": 4.8,
+        "shots_over_5s": 0,
+        "shots_over_5s_ratio": 0.0,
+        "lines": 12,
+        "dialogue_shots": 12,
+        "fill_avg": 0.681,
+        "fill_max": 0.787,
+        "slack_min_s": 0.778,
+        "slack_ok_ratio": 1.0,
+        "idle_shots": 0,
+        "max_lines_per_shot": 1,
+        "multi_speaker_shots": 0,
+        "empty_shots": 3,
+        "lipsync_shots": 9,
+        "shot_sizes": {
+          "MS": 7,
+          "CU": 4,
+          "ELS": 3,
+          "ECU": 2,
+          "LS": 1,
+          "MCU": 1,
+          "MLS": 1
+        },
+        "shot_size_kinds": 7,
+        "close_up_ratio": 0.368,
+        "establishing_first": 3,
+        "movements": {
+          "push_in": 8,
+          "static": 6,
+          "tracking": 2,
+          "handheld": 1,
+          "pull_out": 1,
+          "tilt": 1
+        },
+        "static_ratio": 0.316,
+        "angles": {
+          "eye_level": 10,
+          "high": 5,
+          "low": 4
+        },
+        "gates": {
+          "H1": true,
+          "H2": true,
+          "H3": true,
+          "H4": true
+        },
+        "gate_issues": [],
+        "vs_source": {
+          "source_shots": 12,
+          "shot_count_delta": 7,
+          "same_line_groups_ratio": 1.0,
+          "identical_line_grouping": true
+        }
+      }
+    }
+  ],
+  "run_id": "20260930-130855-shots-f750",
+  "n_requested": 1,
+  "inputs": [
+    {
+      "path": "docs/reports/p0/P0-03/deepseek-flash/s01.json",
+      "sha256": "d01e254fc54544378a4afc095e0eef8deddd06864061a96220dc5d30a87388ec"
+    },
+    {
+      "path": "docs/reports/p0/P0-03/deepseek-flash/s02.json",
+      "sha256": "4bd1e34413ba23afd3d5aac79405eff285f6f94b7645b7cf026ecbab176b87f8"
+    },
+    {
+      "path": "docs/reports/p0/P0-03/deepseek-flash/s03.json",
+      "sha256": "336e722b58e7904eb785666b510f771931e4a0621ccfeefc2e03a9f5ce2b6f6c"
+    },
+    {
+      "path": "docs/reports/p0/P0-03/deepseek-flash/s04.json",
+      "sha256": "ca8dc76ee3beea4b3e216561cdb45956856389a80c7633b7a03ce23fe3280245"
+    },
+    {
+      "path": "docs/reports/p0/P0-03/deepseek-flash/s05.json",
+      "sha256": "8f8c5290899e5f9b48df1d2ce0e8030d5483fd0f6e43636057308b67aa82c5e7"
+    }
+  ],
+  "spent_cny_total": 0.4551,
+  "aborted": null,
+  "price": {
+    "input_cache_hit": 0.5,
+    "input_cache_miss": 2.0,
+    "output": 8.0,
+    "source": "保守上界，2026-09-30 余额差复核"
+  },
+  "balance_before_cny": null,
+  "balance_after_cny": null,
+  "balance_delta_cny": 0.41,
+  "balance_note": "入库时去掉了账户余额绝对值（原始值保留在本地 runs/，只报告余额差）"
+}
