@@ -69,14 +69,14 @@
 - [x] 7. 派生阶段 text / ref / sheet（5.0 pro / flash 不支持组图，group 改为 sheet 设定板）（manifest `t2i_original` / `seedance_eligible`）+ 单测
 - [x] 8. 离线 `--export` / `--verify` + 单测；README costume 一节
 - [x] 9. 评测阶段 1：主图 12 张，agent 初评选推荐主图与模型（flash 6/6、v4 6/6；推荐 flash，苏晚 main-02、陆沉 main-02）
-- [ ] 10. 评测阶段 2：text / ref / sheet × 2 角色 × 2 轮（D-007：先补 pro 主图 6 张，run `20260930-201207-costume-3165` 6/6，初评选苏晚、陆沉 main-02；派生用 pro + costume.v2）
+- [x] 10. 评测阶段 2：text / ref / sheet × 2 角色 × 2 轮（D-007：pro 主图 run `20260930-201207-costume-3165` 6/6，基础图苏晚、陆沉 main-02；派生 pro + costume.v2 + `--small`：text run `203811-costume-88ee` 34/34、ref `203811-costume-8c43` 34/34、sheet `203811-costume-b7c2` 8/8，全部首次成功）
 - [ ] 11. 证据导出、定妆卡、体积检查、`--verify` 返回 0
 - [ ] 12. 报告 `docs/reports/p0/P0-06.md`、登记 D-006、更新本步费用
 - [ ] 13. 验证（verifier）、评审（arch-reviewer）、交付 PR
 
 ## 本步费用
 
-- **已花费**：¥6.88（估算：冒烟 ¥0.56，主图 flash ¥0.72 / v4 ¥1.40，派生 text ¥1.56 / ref ¥1.68 / sheet ¥0.96）
+- **已花费**：¥31.48（估算：冒烟 ¥0.56，主图 flash ¥0.72 / v4 ¥1.40 / pro ¥1.80，派生 flash text ¥1.56 / ref ¥1.68 / sheet ¥0.96，派生 pro text ¥10.20 / ref ¥10.20 / sheet ¥2.40；pro 共 ¥24.60 为 Agent Plan 套餐内调用的刊例价等价费用，不实付）
 - **上限**：¥100
 
 ## 待决事项
