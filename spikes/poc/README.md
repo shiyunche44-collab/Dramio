@@ -128,6 +128,33 @@ python3 -m poc tts --export runs/<run_id> ../../docs/reports/p0/P0-05/<方案名
 - `--metrics`、`--export` 是离线模式，不能与 `--name`、`--voice`、`--instruct`、`--speed`、`--rounds`、`--only` 同用；`--json` 只能与 `--metrics` 同用，以免误发起付费生成。
 - 输出：`runs/<run_id>/samples/rN/<line_id>.mp3`、`samples/rN/asr/<line_id>.json`（转写文本、utterances、时长、resource id）、`summary.json`（每句指标、每轮整集统计与镜头容纳、方案汇总、指令原文）。`--export` 把第 1 轮的逐句 mp3 与 asr、按台词顺序拼接的 `ep01.mp3`、`run-summary.json`、`run-calls.jsonl` 复制到目标目录（目标目录必须为空）。
 
+## costume：角色定妆（P0-06）
+
+DramaIR 角色描述 → 定妆主图、三视图（正 / 左侧 / 背）、表情集（火山方舟 Seedream 5.0 pro / flash，文档 82379/1541523）。计费模式由 `ARK_BILLING` 决定（D-007）：默认 `plan` 走方舟 Agent Plan 包月套餐 `POST /api/plan/v3/images/generations`，只支持 5.0 pro，`cost_cny` 记按量刊例价的等价费用、不实付；`payg` 走按量付费 `POST /api/v3/images/generations`，可用 pro / flash / v4。两种模式的 Key 不能混用。`ARK_BILLING` 不是密钥，可写在进程环境或 `.env`，留空即 `plan`。默认输入标准样例 ep01；提示词模板 `poc/prompts/costume.v1.md`（`--prompt-version costume.v2`：设定板去掉剧集风格，其它节不变），字段取自 `series.visual_style` 与 `characters[]`；表情集为 neutral 加该角色台词 `delivery.emotion` 中出现过的值（最多 6 个）。
+
+需要在方舟控制台“开通管理”中开通对应模型，否则返回 404 `ModelNotOpen`（不计费）。
+
+```bash
+python3 -m poc costume --stage main --model pro --n 3                                   # 每个角色 3 张主图
+python3 -m poc costume --stage main --model flash --char char_suwan --n 3
+python3 -m poc costume --stage derive --mode text  --model pro --base char_suwan=<主图> --base char_luchen=<主图> --rounds 2
+python3 -m poc costume --stage derive --mode ref   --model pro --base ...                # 以主图为参考图的图生图
+python3 -m poc costume --stage derive --mode sheet --model pro --base ...                # 三视图设定板 + 表情设定板
+python3 -m poc costume --export runs/<run_id> ../../docs/reports/p0/P0-06/<方案名>        # 离线：整理入库证据
+python3 -m poc costume --verify ../../docs/reports/p0/P0-06                             # 离线：复核全部证据
+python3 -m poc costume --cards ../../docs/reports/p0/P0-06                              # 离线：生成每个角色的定妆卡
+```
+
+- 派生方式：`text` 每张独立文生图；`ref` 以主图为唯一参考图（`image` 传 data URI）；`sheet` 两张文生图设定板（三视图 2048×1152、表情网格 1536×1536）。5.0 pro / flash 不支持组图（`sequential_image_generation`），所以用设定板代替。`--base` 在三种方式下都要给，记录在 summary 中作为派生的基础；只有 `ref` 会把它发给模型。
+- 尺寸：竖图 1152×2048（9:16）；`--small` 用接口允许的最小像素数（竖 720×1280、横 1280×720、方 960×960），用于派生图以控制入库体积。均不超过 261 万像素，pro 按 ¥0.30 / 张计（超过为 ¥0.60），flash ¥0.12 / 张；pro 第 2 张参考图起每张 ¥0.02。单价见 `poc/pricing.py`。
+- 所有请求 `watermark=false`（D-005：定妆图是内部中间资产，不发布；成片的 AIGC 标识由 P0-11 负责）、`response_format=b64_json`、`output_format=jpeg`。图像字节原样保存，不转码、不裁剪。
+- Seedance 可用性：只有**没有参考图的文生图原始产物**标为 `seedance_eligible`（Seedance 只信任同账号 30 天内 Seedream 5.0 文生图的原始文件，见 `docs/reports/p0/vendor-volcengine.md` §1）。`ref` 派生是图生图，标为不可用。
+- 瞬时故障（网络、429、5xx、服务端繁忙）同一张最多重试 2 次，每次请求都记账：成功按 `usage.generated_images` 计；网络中断、响应无法解析、429、5xx 可能已生成，保守按全额计；审核拒绝（错误码含 `SensitiveContent`）、其它 4xx、无图不计费。每个请求记录 `node_key`（请求内容的 sha256，含采样序号），只记录、不做缓存。错误信息中的密钥和方舟账号 ID 会被脱敏。
+- 账号级错误（`AccountOverdueError` 欠费、`ModelNotOpen` 未开通、`UnsupportedModel` Agent Plan 不支持该模型、鉴权失败；plan 模式下选 flash / v4 在发请求前就拒绝）立即中止整次运行，不再继续发请求。
+- 退出码：全部成功为 0；有失败、因费用上限（`--max-cost-cny`，默认 15 元，下一张会超出即中止）或账号级错误中止为 1；用法错误为 2。`--verify` 全部一致为 0，否则为 1。
+- `--export`、`--verify`、`--cards` 是离线模式，只能选一个，且不能与生成参数同用。
+- 输出：`runs/<run_id>/images/rN/<角色>/<kind>-<label>.jpg`、`summary.json`（每张的提示词、参考图 sha256、尺寸、耗时、费用、sha256、Seedance 可用性）。`--export` 把第 1 轮成功的图像复制为 `<角色>/<kind>-<label>-<sha256 前 8 位>.jpg`，并写 `manifest.json`、`run-summary.json`、`run-calls.jsonl`（目标目录必须为空）。
+
 ## 运行记录
 
 ```

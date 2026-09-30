@@ -1,0 +1,103 @@
+{
+  "run_id": "20260930-194807-costume-2f7d",
+  "candidate": "derive-sheet-flash",
+  "stage": "derive",
+  "mode": "sheet",
+  "model_id": "doubao-seedream-5-0-flash-260915",
+  "prompt_version": "costume.v1",
+  "watermark": false,
+  "output_format": "jpeg",
+  "bases": {
+    "char_suwan": {
+      "path": "docs/reports/p0/P0-06/main-flash/char_suwan/main-02-e76b9c27.jpg",
+      "sha256": "e76b9c272236df0187fb64405f1830f43eae913928145c3caf875de7d556d8bd"
+    },
+    "char_luchen": {
+      "path": "docs/reports/p0/P0-06/main-flash/char_luchen/main-02-e5962809.jpg",
+      "sha256": "e59628092219b9708dee64d77d225203ad8f14eb07eddb4b3c9a333349e7685e"
+    }
+  },
+  "round": 1,
+  "images": [
+    {
+      "char_id": "char_suwan",
+      "kind": "sheet",
+      "label": "views",
+      "round": 1,
+      "file": "char_suwan/sheet-views-5409481c.jpg",
+      "sha256": "5409481c38cde1f259b954b6526d38bcd6b8f5a3116d326f711ff31734ef0654",
+      "bytes": 177824,
+      "width": 1280,
+      "height": 720,
+      "reported_size": "1280x720",
+      "request_id": "02179079768828533412155cdacfc777b8945c244aabe1b14a24c",
+      "node_key": "29819354ad4afaaf210cfb57a0232e8fda56e57bec13320d73aa6ca613a8622b",
+      "size": "1280x720",
+      "section": "view_sheet",
+      "refs": [],
+      "t2i_original": true,
+      "seedance_eligible": true,
+      "committed": true
+    },
+    {
+      "char_id": "char_suwan",
+      "kind": "sheet",
+      "label": "expressions",
+      "round": 1,
+      "file": "char_suwan/sheet-expressions-668c5553.jpg",
+      "sha256": "668c5553daa8c253adeca170e1fa68f153c5489ff27bf9359a0e320bd3ed7d40",
+      "bytes": 294709,
+      "width": 960,
+      "height": 960,
+      "reported_size": "960x960",
+      "request_id": "021790797702159ef85bd0387fb7be6c83a2089a55d2b2ee8f3b2",
+      "node_key": "2829e750e5ca63de44d912269d2be7578ba66eb8a47e135667bbfddfff4fb34d",
+      "size": "960x960",
+      "section": "expression_sheet",
+      "refs": [],
+      "t2i_original": true,
+      "seedance_eligible": true,
+      "committed": true
+    },
+    {
+      "char_id": "char_luchen",
+      "kind": "sheet",
+      "label": "views",
+      "round": 1,
+      "file": "char_luchen/sheet-views-b9f6318d.jpg",
+      "sha256": "b9f6318d6338cbeb20db1ac57d967bc4d4520d1938005f9d085e9c4db7facf8c",
+      "bytes": 129047,
+      "width": 1280,
+      "height": 720,
+      "reported_size": "1280x720",
+      "request_id": "0217907977138293feeeacbd564a1ad594c91d25f4e3e10cd9a72",
+      "node_key": "578f1938084db53fd562db5c09e8ec105ddb0bbe3228f6f6d8334bca3eeb2121",
+      "size": "1280x720",
+      "section": "view_sheet",
+      "refs": [],
+      "t2i_original": true,
+      "seedance_eligible": true,
+      "committed": true
+    },
+    {
+      "char_id": "char_luchen",
+      "kind": "sheet",
+      "label": "expressions",
+      "round": 1,
+      "file": "char_luchen/sheet-expressions-d28fcc65.jpg",
+      "sha256": "d28fcc653a24bf7f62f45d9a9827987ee74c5ed4320be7b184811edc09a74459",
+      "bytes": 257902,
+      "width": 960,
+      "height": 960,
+      "reported_size": "960x960",
+      "request_id": "02179079772510997147f4f1a42e833cb78104cc60692b07e32f6",
+      "node_key": "3d3c34efe947ddbcd482e3ec8997057ef82ef46aa030cc0a2854a2ae64b1e901",
+      "size": "960x960",
+      "section": "expression_sheet",
+      "refs": [],
+      "t2i_original": true,
+      "seedance_eligible": true,
+      "committed": true
+    }
+  ]
+}

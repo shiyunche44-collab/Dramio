@@ -66,3 +66,44 @@ def tts_cny(provider: str, resource: str, chars: int) -> float:
 
 def asr_cny(provider: str, resource: str, seconds: float) -> float:
     return round(seconds * ASR_CNY_PER_HOUR[(provider, resource)] / 3600, 6)
+
+
+# ---- 图像（P0-06）：按张计价 ----
+# 来源：方舟模型价格 doc 82379/1544106（2026-09-30 读取）：
+# Seedream 5.0 pro 单图生成 ≤261 万像素（1.5K 及以下）¥0.30 / 张，>261 万像素 ¥0.60 / 张；参考图首张免费、第 2 张起 ¥0.02 / 张；
+# Seedream 5.0 flash ¥0.12 / 张、Seedream 4.0 ¥0.20 / 张，参考图免费。只对成功生成的图片计费（usage.generated_images），审核未通过不计费。
+IMAGE_PRICE_SOURCE = "方舟模型价格 doc 82379/1544106（2026-09-30）"
+IMAGE_TIER_PIXELS = 2_610_000
+# Agent Plan（包月，按 AFP 点数扣额度）的调用不另外付费；cost_cny 仍按上面的按量刊例价记“等价费用”，用于成本模型（D-007）
+PLAN_COST_NOTE = "billing=plan：Agent Plan 包月额度内调用，cost_cny 为按量刊例价的等价费用，不实付"
+
+
+@dataclass(frozen=True)
+class ImagePrice:
+    low: float  # ≤ IMAGE_TIER_PIXELS
+    high: float  # > IMAGE_TIER_PIXELS
+    extra_ref: float  # 第 2 张参考图起每张
+
+
+IMAGE_PRICES: dict[tuple[str, str], ImagePrice] = {
+    ("ark", "doubao-seedream-5-0-pro-260628"): ImagePrice(0.30, 0.60, 0.02),
+    ("ark", "doubao-seedream-5-0-flash-260915"): ImagePrice(0.12, 0.12, 0.0),
+    ("ark", "doubao-seedream-4-0-20260415"): ImagePrice(0.20, 0.20, 0.0),
+}
+_TIER_PIXELS = {"1k": 1024 * 1024, "1.5k": 1536 * 1536, "2k": 2048 * 2048}
+
+
+def size_pixels(size: str) -> int:
+    """'宽x高' 或档位（1K / 1.5K / 2K，按 1:1 的像素数，只用于判断价格档位）。"""
+    w, sep, h = size.lower().partition("x")
+    if sep and w.isdigit() and h.isdigit():
+        return int(w) * int(h)
+    if size.lower() in _TIER_PIXELS:
+        return _TIER_PIXELS[size.lower()]
+    raise ValueError(f"无法识别的尺寸：{size!r}")
+
+
+def image_cny(provider: str, model: str, pixels: int, n_refs: int = 0, n_images: int = 1) -> float:
+    p = IMAGE_PRICES[(provider, model)]
+    per = p.low if pixels <= IMAGE_TIER_PIXELS else p.high
+    return round(n_images * per + max(0, n_refs - 1) * p.extra_ref, 6)

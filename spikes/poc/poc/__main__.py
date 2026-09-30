@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 import sys
 
-from poc import config, doctor, script, shots, tts
+from poc import config, costume, doctor, script, shots, tts
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -15,6 +15,7 @@ def build_parser() -> argparse.ArgumentParser:
     script.add_parser(sub)
     shots.add_parser(sub)
     tts.add_parser(sub)
+    costume.add_parser(sub)
     return parser
 
 
