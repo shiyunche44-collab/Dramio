@@ -1,0 +1,609 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "series_rainusb",
+    "title": "雨夜U盘",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "冷色调写实都市感，雨夜霓虹反光，办公室冷白灯与室内暖光对比，浅景深突出人物表情与关键道具",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_suwan",
+      "name": "苏晚",
+      "gender": "female",
+      "age": 26,
+      "role": "protagonist",
+      "bio": "设计公司主力设计师，连续三年业绩第一却屡被上司抢功，性格隐忍但底线清晰，被辞退后决定不再退让。",
+      "appearance": "清瘦，齐肩黑发微湿，眉眼倔强，嘴唇发白，穿米白色衬衫配深色长裤",
+      "costume": "米白衬衫、深灰西装裤、湿透的驼色风衣，脖颈挂着工牌",
+      "voice": "清冷偏低的年轻女声，语速平稳，情绪爆发时带轻微颤抖"
+    },
+    {
+      "id": "char_zhaokai",
+      "name": "赵凯",
+      "gender": "male",
+      "age": 38,
+      "role": "antagonist",
+      "bio": "设计部总监，惯于窃取下属成果，圆滑势利，最怕在老板面前丢脸，把苏晚的方案据为己有。",
+      "appearance": "中等身材略发福，梳油头，戴金丝边眼镜，穿深蓝高定西装，袖扣闪亮",
+      "costume": "深蓝高定西装、白衬衫、亮面皮鞋",
+      "voice": "中年男声，油滑自信，压人时拖长音，语速偏快"
+    },
+    {
+      "id": "char_xiaotang",
+      "name": "小唐",
+      "gender": "female",
+      "age": 23,
+      "role": "supporting",
+      "bio": "设计部实习生，苏晚带出来的新人，胆小但感恩，偷偷给苏晚递离职纸箱。",
+      "appearance": "圆脸短发，戴黑框眼镜，小巧，穿浅灰针织开衫",
+      "costume": "浅灰针织开衫、黑色半裙，挂着实习生工牌",
+      "voice": "年轻女声，音色软糯，说话快而轻"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "雨夜被辞退",
+      "synopsis": "提案成功后苏晚被赵凯当众抢功并辞退，抱着离职纸箱冲到地下车库避雨，纸箱底部滑出一枚刻着“星轨”的U盘，里面存着足以推翻赵凯的全部证据，苏晚抬头看向电梯口，眼神变了。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "设计公司会议室",
+            "int_ext": "INT",
+            "time_of_day": "day",
+            "description": "冷白灯下的长桌会议室，落地窗外雨幕模糊，投影幕布上显示方案首页，桌上散落文件与水杯"
+          },
+          "summary": "提案成功，赵凯当众揽功并宣布辞退苏晚。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 2
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "static",
+                "composition": "投影幕布占据上半画面，苏晚站在幕布前被冷光压住"
+              },
+              "description": "会议室里，投影幕布上显示一份设计方案封面，苏晚站在幕布前，手里攥着激光笔，手指发白，画面下方留字幕安全区",
+              "lighting": "冷白顶光，幕布反光打在苏晚脸上",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "攥着激光笔站在幕布前",
+                  "emotion": "紧张而期待"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "投影仪风扇低鸣",
+                "雨点打窗声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "苏晚面部居中，背景虚化，观众视线集中在眼神变化"
+              },
+              "description": "苏晚近景，听到身后掌声，眼神由期待转为错愕，嘴唇微张，雨水反光在侧脸",
+              "lighting": "冷白侧光，眼眶处略暗",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "微微回头",
+                  "emotion": "错愕"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "稀落掌声",
+                "会议椅滑动声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 6
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "赵凯站在长桌主位，苏晚在画面右侧边缘被裁掉半边"
+              },
+              "description": "赵凯站在长桌主位，双手撑桌，面带笑意看向门口方向，桌面摆着他的名牌与一份打印方案，文字后期叠加显示方案署名被改成“赵凯”",
+              "lighting": "冷白顶光，金丝眼镜反光遮住眼神",
+              "characters": [
+                {
+                  "character_id": "char_zhaokai",
+                  "action": "双手撑桌抬头笑着宣布",
+                  "emotion": "得意"
+                },
+                {
+                  "character_id": "char_suwan",
+                  "action": "僵在画面边缘",
+                  "emotion": "难以置信"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_zhaokai",
+                  "kind": "dialogue",
+                  "text": "这个方案，是我熬了三个月做出来的。",
+                  "delivery": {
+                    "emotion": "happy",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "皮鞋蹭地声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh04",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "赵凯正面中偏近，苏晚手中工牌进入画面右下角"
+              },
+              "description": "赵凯转向苏晚，嘴角含着笑，随手把一张离职单推过桌面，纸面朝上，文字后期叠加“离职交接单”",
+              "lighting": "冷白主光，桌面反光刺眼",
+              "characters": [
+                {
+                  "character_id": "char_zhaokai",
+                  "action": "推出一张纸，抬眼看苏晚",
+                  "emotion": "轻蔑"
+                },
+                {
+                  "character_id": "char_suwan",
+                  "action": "低头看纸",
+                  "emotion": "僵硬"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_zhaokai",
+                  "kind": "dialogue",
+                  "text": "苏晚，公司不养闲人。今晚之前，走人。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.8,
+                    "speed": 1.05
+                  }
+                }
+              ],
+              "sfx": [
+                "纸张滑动声",
+                "窗外闷雷"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh05",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "苏晚手指因用力而发白，工牌绳绷直，泪水在眼眶未落"
+              },
+              "description": "苏晚大特写，眼眶泛红，喉咙滚动一下，把到嘴的话咽回去，手指死死捏住工牌，旁边赵凯的袖扣反光越过画面",
+              "lighting": "侧逆光，泪光闪亮",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "咬唇忍住，捏紧工牌",
+                  "emotion": "压抑的愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_suwan",
+                  "kind": "voiceover",
+                  "text": "三年功劳，一句话归零。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.6,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "心跳声放大",
+                "雨声渐强"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "公司走廊与电梯间",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "深夜空荡的走廊，灯只亮一半，尽头电梯口泛绿光，地面反着雨水脚印"
+          },
+          "summary": "小唐偷偷给苏晚递离职纸箱，苏晚被赶出办公室。",
+          "mood": "sad",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "high",
+                "movement": "tracking",
+                "composition": "走廊纵深构图，苏晚抱纸箱走在通道中间，两侧灯影拉长"
+              },
+              "description": "深夜走廊，苏晚抱着一个装满杂物的大纸箱向电梯走，纸箱边角露出设计稿一角，小唐小跑跟在后面",
+              "lighting": "走廊半亮半暗，远处电梯绿光",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "抱着纸箱往前走",
+                  "emotion": "疲惫隐忍"
+                },
+                {
+                  "character_id": "char_xiaotang",
+                  "action": "小跑跟上",
+                  "emotion": "焦急"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "走廊脚步声",
+                "远处电梯叮声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 5.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "两人相对，纸箱在两人之间形成遮挡线"
+              },
+              "description": "小唐把一叠便当塞进纸箱空隙，压低声音，左右张望，确认没人后靠近苏晚",
+              "lighting": "头顶冷光，脸部阴影明显",
+              "characters": [
+                {
+                  "character_id": "char_xiaotang",
+                  "action": "塞东西同时低声说话",
+                  "emotion": "紧张愧疚"
+                },
+                {
+                  "character_id": "char_suwan",
+                  "action": "停步看她",
+                  "emotion": "麻木"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_xiaotang",
+                  "kind": "dialogue",
+                  "text": "晚姐，你的东西我全装进去了，一件没落。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.6,
+                    "speed": 1.15
+                  }
+                }
+              ],
+              "sfx": [
+                "纸张摩擦声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "static",
+                "composition": "苏晚居中，身后电梯门敞开发光，形成轮廓光"
+              },
+              "description": "小唐转身跑回办公室，苏晚独自站在电梯口，电梯门敞开，她回头看了一眼亮着的总监办公室灯光",
+              "lighting": "电梯暖白光照在苏晚正面，身后走廊冷暗",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "回头望向办公室方向",
+                  "emotion": "不甘"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_suwan",
+                  "kind": "voiceover",
+                  "text": "我做的图，署他的名字。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.55,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "电梯提示音",
+                "雨声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "写字楼地下车库入口",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "雨中地下车库入口，卷帘门半掩，地面湿滑积水反光，墙上是斑驳的广告牌，昏黄灯管忽明忽暗"
+          },
+          "summary": "苏晚在雨里放下纸箱，纸箱底部滑出神秘U盘。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "high",
+                "movement": "static",
+                "composition": "俯拍苏晚蹲在纸箱旁，雨中大片留白，突出孤立感"
+              },
+              "description": "地下车库入口，苏晚蹲下把湿透的纸箱放在积水中，雨水沿她发梢滴落，纸箱一角已被淋软坍下",
+              "lighting": "昏黄灯管闪动，雨水反光成条",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "蹲下放纸箱",
+                  "emotion": "落魄"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "大雨声",
+                "灯管电流声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 3
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "overhead",
+                "movement": "push_in",
+                "composition": "纸箱底部湿透纸张间露出银色U盘，反光刺眼"
+              },
+              "description": "纸箱底部特写，湿纸团中露出一枚银色U盘，表面刻着一个星轨图案，雨水打在金属上溅起小水花",
+              "lighting": "灯管反光集中在U盘金属面",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "金属轻响",
+                "雨滴溅落"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏晚手在画面下方捏起U盘，眼睛在画面上方，形成视线引导"
+              },
+              "description": "苏晚伸手拨开湿纸，捏起U盘举到眼前，瞳孔映出金属冷光，雨水从她下颌滴到U盘上",
+              "lighting": "侧面灯管光，U盘局部高光",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "捏起U盘端详",
+                  "emotion": "疑惑"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_suwan",
+                  "kind": "voiceover",
+                  "text": "这不是我的东西……",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.6,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "金属反光音效"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh04",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "static",
+                "composition": "苏晚站起，背后车库灯光斑驳，U盘在手心，画面下方留字幕区"
+              },
+              "description": "苏晚站起来，用袖子擦干U盘，眼神从恍惚转为锐利，雨水顺着风衣下摆滴落，远处写字楼总监办公室的灯还亮着",
+              "lighting": "背景暖黄灯，苏晚面部半明半暗",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "擦干U盘，望向写字楼方向",
+                  "emotion": "起疑"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨声渐弱",
+                "远处电梯提示音"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "写字楼外雨夜街道",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "写字楼外的雨夜街道，霓虹灯牌映在积水里，苏晚站在路边灯下，身后是写字楼玻璃幕墙"
+          },
+          "summary": "苏晚在手机上调出U盘内容，发现是赵凯窃取方案的完整证据，决定当众反击。",
+          "mood": "uplifting",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "手机屏幕和U盘占画面下半，苏晚上半脸被屏幕冷光照亮"
+              },
+              "description": "苏晚站在街边灯下，把U盘插上手机转接头，手机屏幕亮起，弹出文件夹列表，画面文字后期叠加文件夹名“原始设计备份_2023”",
+              "lighting": "手机屏幕冷光照脸，背景霓虹虚化",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "插上U盘，滑动屏幕",
+                  "emotion": "紧张专注"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "手机提示音",
+                "雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "苏晚瞳孔中倒映手机屏幕内容，眼角泪光与冷笑同在"
+              },
+              "description": "苏晚大特写，瞳孔里映出屏幕上密密麻麻的邮件与时间戳截图，嘴角缓缓扬起一个冷笑，雨水划过脸颊",
+              "lighting": "屏幕反光打亮眼白，暖街灯勾轮廓",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "盯着屏幕冷笑",
+                  "emotion": "恍然大悟的愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_suwan",
+                  "kind": "voiceover",
+                  "text": "原稿、改稿、邮件时间……全在里面。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.75,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "雨滴落屏声",
+                "心跳声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh03",
+              "duration": {
+                "hint_s": 6.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "pull_out",
+                "composition": "苏晚居中仰拍，写字楼灯火在她身后成背景光斑，手机和U盘在胸前"
+              },
+              "description": "苏晚把U盘握进掌心，抬头望向身后亮着灯的写字楼，雨水顺下巴滴落，眼神彻底变了，远处保安开始卷帘门",
+              "lighting": "背后写字楼灯火成暖色轮廓光，面前冷雨",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "握紧U盘抬头看向大楼",
+                  "emotion": "决绝"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_suwan",
+                  "kind": "dialogue",
+                  "text": "赵凯，明天早上，我们当众对质。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "卷帘门滑动声",
+                "低沉鼓点起"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

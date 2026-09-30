@@ -5,13 +5,14 @@ from __future__ import annotations
 import argparse
 import sys
 
-from poc import config, doctor
+from poc import config, doctor, script
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="python -m poc", description="Dramio P0 技术验证脚手架")
     sub = parser.add_subparsers(dest="command", required=True, metavar="<command>")
     doctor.add_parser(sub)
+    script.add_parser(sub)
     return parser
 
 

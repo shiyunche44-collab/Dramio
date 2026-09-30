@@ -1,0 +1,676 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "series_rainy_usb",
+    "title": "雨夜U盘",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "写实都市质感，冷蓝雨夜与冷白办公室对比，浅景深特写为主，霓虹与路灯反射光效，电影感打光，竖屏 9:16 中心构图",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_suyu",
+      "name": "苏语",
+      "gender": "female",
+      "age": 26,
+      "role": "protagonist",
+      "bio": "星野设计公司主创设计师，三年做了公司最赚钱的品牌项目，方案被总监赵霖据为己有，因当众质疑被辞退。她手里留着所有源文件，也留着不肯低头的脾气。",
+      "appearance": "清瘦，中长黑直发扎低马尾，眉形利落，眼神锐利，穿深灰西装外套，手指细长常带铅笔痕",
+      "costume": "深灰色西装外套内搭白衬衫，黑色直筒长裤，帆布托特包",
+      "voice": "年轻女声，中低音偏冷，语速稳、尾音收得干脆，情绪压在呼吸里"
+    },
+    {
+      "id": "char_zhaolin",
+      "name": "赵霖",
+      "gender": "male",
+      "age": 45,
+      "role": "antagonist",
+      "bio": "星野设计公司设计总监，擅长把别人的成果包装成自己的，对下属惯用打压与抢功两手，笃定没人敢跟他当面翻脸。",
+      "appearance": "中等身材微发福，背头油亮，方脸，穿定制西装戴钢带腕表，习惯扬下巴看人",
+      "costume": "深蓝细纹西装三件套，口袋巾，钢带腕表",
+      "voice": "中年男声，胸腔共鸣厚，语调慢而轻慢，笑意里带刺"
+    },
+    {
+      "id": "char_xiaotang",
+      "name": "小唐",
+      "gender": "female",
+      "age": 23,
+      "role": "supporting",
+      "bio": "星野设计公司实习生，苏语带出来的徒弟，胆小但心正，是整间办公室里唯一敢在苏语被赶走时凑过去说话的人。",
+      "appearance": "圆脸，齐肩短发别一枚黄色发夹，眼睛大，身材娇小，穿宽松针织衫",
+      "costume": "米白色粗针针织衫，牛仔裤，胸前挂着工牌",
+      "voice": "少女音，清亮偏软，说话轻声，带一点紧张的换气"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "第1集 纸箱里的U盘",
+      "synopsis": "苏语在项目评审会上撞见自己的方案被总监赵霖挂上主讲名字，当众亮出云端源文件时间戳反击，却仍被一纸通知当场辞退。雨夜她抱着纸箱站在公司楼下，招聘消息被拒，却在箱底摸到一枚贴着 Z.L. 手写贴纸的 U 盘；便利店电脑里，U 盘藏着赵霖与甲方私下交易的录音，她把文件复制上云端，决定在明天的大会上慢慢算账。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "星野设计公司 · 大会议室",
+            "int_ext": "INT",
+            "time_of_day": "day",
+            "description": "狭长会议室，左侧整面投影幕布，中央长条会议桌坐满同事，桌面散着打印稿和咖啡杯，气氛安静得能听见投影仪风扇声。"
+          },
+          "summary": "赵霖在评审会上以主讲身份展示苏语的方案，苏语当场亮出云端创建时间反击，赵霖当众把解除劳动合同通知书推到她面前。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "static",
+                "composition": "赵霖位于画面正中偏右，投影幕布占左侧半屏，画面上方留字幕安全区"
+              },
+              "description": "会议室里，赵霖背对镜头站在投影幕布前，双臂张开接受台下掌声；幕布上是蓝白主视觉提案页面，页面底部有小字【文字后期叠加：主视觉方案 · 主讲 赵霖】；台下一排同事剪影鼓掌。",
+              "lighting": "投影冷蓝光打在赵霖背上，室内顶灯压暗，人物成半剪影",
+              "characters": [
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "背对镜头张开双臂，微微后仰迎着掌声",
+                  "emotion": "得意、胸有成竹"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_zhaolin",
+                  "kind": "dialogue",
+                  "text": "这方案，我熬了三个月。",
+                  "delivery": {
+                    "emotion": "happy",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "掌声",
+                "投影仪风扇声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "苏语面部占画面中央，背景会议室虚化，视线引向画面左上方幕布方向"
+              },
+              "description": "苏语坐在长桌末端，双手僵在膝盖上，眼睛直直盯着投影幕布，瞳孔慢慢收缩，嘴唇抿成一条线；背景里赵霖和幕布被虚化成一团冷蓝光。",
+              "lighting": "投影冷光从画面左侧打在她脸上，右半边脸沉在阴影里",
+              "characters": [
+                {
+                  "character_id": "char_suyu",
+                  "action": "僵坐不动，手指掐进掌心",
+                  "emotion": "震惊、难以置信"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_suyu",
+                  "kind": "voiceover",
+                  "text": "是我的方案……连配色都没改。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "心跳声",
+                "会议室低频环境音"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 5.0
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "苏语站起位于画面左侧三分之一，赵霖在右侧前景虚化，"
+              },
+              "description": "苏语猛地从椅子上站起，椅腿在地板上划出声响，全场转头看她；赵霖在前景侧身回头，抱臂俯视她，眉头一挑。",
+              "lighting": "顶灯直射，会议桌反光，两人脸部对比鲜明",
+              "characters": [
+                {
+                  "character_id": "char_suyu",
+                  "action": "双手撑住桌面站起，直视赵霖",
+                  "emotion": "愤怒而克制"
+                },
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "侧身回头，抱臂俯视她",
+                  "emotion": "轻蔑、不慌"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_suyu",
+                  "kind": "dialogue",
+                  "text": "这份方案，是我做的。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                },
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_zhaolin",
+                  "kind": "dialogue",
+                  "text": "苏语，注意场合。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "椅子摩擦地板声",
+                "全场骤然安静"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh04",
+              "duration": {
+                "hint_s": 5.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "手机屏幕居中，苏语侧脸在画面右三分之一处，屏幕内容清晰可读"
+              },
+              "description": "苏语举起手机，屏幕正对全场，屏幕上是一列云盘文件，创建时间一行被高亮【文字后期叠加：创建时间 上周二 03:17】；赵霖的笑容在画面边缘一寸寸僵住。",
+              "lighting": "手机屏幕冷白光映在苏语脸上，背景压暗",
+              "characters": [
+                {
+                  "character_id": "char_suyu",
+                  "action": "举着手机，手臂很稳，一字一句地说",
+                  "emotion": "冷静、反击"
+                },
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "在画面边缘，手指微微蜷起",
+                  "emotion": "慌乱"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_suyu",
+                  "kind": "dialogue",
+                  "text": "源文件在我云端，上周二凌晨三点创建的。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "会议室骚动",
+                "手机提示音"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh05",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "high",
+                "movement": "static",
+                "composition": "俯拍桌面，通知书与空纸箱位于画面下方三分之一，标题文字朝上"
+              },
+              "description": "赵霖把一张通知书沿着桌面推过来，纸角停在苏语手边，桌上已经摆着一个空纸箱，纸箱口敞着；通知书标题【文字后期叠加：解除劳动合同通知书】。",
+              "lighting": "顶灯冷白直射，纸面反光刺眼",
+              "characters": [
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "单手推纸，另一只手插兜，居高临下",
+                  "emotion": "冷漠、胜券在握"
+                },
+                {
+                  "character_id": "char_suyu",
+                  "action": "低头看着通知书，没有伸手",
+                  "emotion": "隐忍"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_zhaolin",
+                  "kind": "dialogue",
+                  "text": "收拾东西，今天就走。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.5,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "纸张摩擦桌面"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "星野设计公司 · 开放办公区",
+            "int_ext": "INT",
+            "time_of_day": "dusk",
+            "description": "大面积落地窗的开放办公区，一排排工位亮着屏幕，总监办公室玻璃墙在远处，夕照斜切进来把地面切成明暗条带。"
+          },
+          "summary": "苏语在工位收拾东西，实习生小唐偷偷来送纸巾，赵霖在走廊上出声讥讽她的背影。",
+          "mood": "sad",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 4.0
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏语与工位在画面中央，纸箱在下方三分之一，四周同事作为虚化前景"
+              },
+              "description": "苏语站在自己工位前，把马克杯、相框、手写草稿一件件放进纸箱；四周同事全都低头盯着自己的屏幕，没有人抬头。",
+              "lighting": "夕照从落地窗斜射进来，工位区域偏暗，人物轮廓带暖边光",
+              "characters": [
+                {
+                  "character_id": "char_suyu",
+                  "action": "把一个相框轻轻放进纸箱，动作很慢",
+                  "emotion": "失落、麻木"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_suyu",
+                  "kind": "voiceover",
+                  "text": "三年，换一个纸箱。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.6,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "稀疏键盘声",
+                "纸箱摩擦声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 4.0
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "小唐在画面左侧探头，苏语在右侧，两人之间是工位隔断"
+              },
+              "description": "小唐从隔断后探过身，飞快地把一包纸巾塞进苏语手里，声音压得很低，眼睛快速瞟向总监办公室方向。",
+              "lighting": "夕照侧光，隔断投下条状阴影",
+              "characters": [
+                {
+                  "character_id": "char_xiaotang",
+                  "action": "半蹲着凑近，把纸巾塞过去",
+                  "emotion": "紧张、仗义"
+                },
+                {
+                  "character_id": "char_suyu",
+                  "action": "接过纸巾，轻轻点了一下头",
+                  "emotion": "疲惫里带着感激"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_xiaotang",
+                  "kind": "dialogue",
+                  "text": "苏语姐，我信你。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "压低的气声",
+                "椅子挪动声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 4.0
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏语抱纸箱在画面左侧走向深处，赵霖在右侧工位隔断旁，形成前后景对峙"
+              },
+              "description": "苏语抱着纸箱穿过办公区走向电梯口，赵霖靠在工位隔断上端着咖啡，冲她的背影抬了抬下巴。",
+              "lighting": "走廊射灯从头顶打下来，人脸半明半暗，地面反光",
+              "characters": [
+                {
+                  "character_id": "char_suyu",
+                  "action": "抱着纸箱直走，没有回头",
+                  "emotion": "倔强"
+                },
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "靠着隔断，抬手抿了一口咖啡",
+                  "emotion": "讥讽、得意"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_zhaolin",
+                  "kind": "dialogue",
+                  "text": "祝你，下家别这么多话。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "电梯到站提示音",
+                "咖啡杯轻响"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "写字楼门前屋檐下",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "雨夜，写字楼门口的屋檐下，雨水顺着檐口成串落下，霓虹招牌的倒影在积水里晃动，偶有车灯扫过。"
+          },
+          "summary": "苏语在雨中收到面试取消的消息，蹲下翻找被淋湿的纸箱，指尖碰到一枚贴着 Z.L. 手写贴纸的 U 盘。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏语抱纸箱位于画面中央偏下，雨幕与霓虹牌占上方，脚下积水带倒影"
+              },
+              "description": "雨夜，苏语抱着纸箱站在写字楼门前屋檐下，雨水成串从檐口落下；她低头看手机，屏幕上是招聘软件的对话框【文字后期叠加：很遗憾，该岗位已招满】。",
+              "lighting": "冷蓝路灯加霓虹反射，雨丝被过往车灯照亮",
+              "characters": [
+                {
+                  "character_id": "char_suyu",
+                  "action": "用肩膀夹住纸箱，单手滑动手机屏幕",
+                  "emotion": "疲惫、麻木"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_suyu",
+                  "kind": "voiceover",
+                  "text": "连退路，都堵死了。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.7,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "车流碾水声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 4.0
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "俯拍苏语蹲姿，敞开的纸箱在画面下方，手部动作是视觉中心"
+              },
+              "description": "苏语蹲在屋檐下，把被雨打湿的纸箱翻开翻找，指尖在相框和草稿之间碰到一枚贴着红色贴纸的银色 U 盘。",
+              "lighting": "路灯自上而下打进纸箱内部，U 盘金属面跳出一小点反光",
+              "characters": [
+                {
+                  "character_id": "char_suyu",
+                  "action": "蹲下翻找，两指捏起 U 盘",
+                  "emotion": "疑惑、警觉"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0011",
+                  "speaker": "char_suyu",
+                  "kind": "dialogue",
+                  "text": "这东西……不是我的。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨打在纸箱上的闷响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 4.0
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "U 盘居中占满画面，苏语指尖在下缘入画，红色贴纸上的字迹清晰可读"
+              },
+              "description": "U 盘大特写，红色贴纸上是黑色手写字迹【文字后期叠加：Z.L.】，雨珠落在金属外壳上滑走；苏语的指尖在画面下缘微微发抖。",
+              "lighting": "路灯点光，金属高光，背景雨幕完全虚化",
+              "characters": [
+                {
+                  "character_id": "char_suyu",
+                  "action": "指尖捏紧 U 盘，指节发白",
+                  "emotion": "震惊"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0012",
+                  "speaker": "char_suyu",
+                  "kind": "voiceover",
+                  "text": "Z.L.……赵霖的缩写。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.8,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "低沉的弦乐"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "24小时便利店",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "街角便利店，冷白色日光灯，窗边一排高脚桌，玻璃窗外是被雨模糊的街灯和车流，冰柜发出低鸣。"
+          },
+          "summary": "苏语在便利店电脑里打开 U 盘，发现里面是赵霖与甲方私下交易的录音，她把文件复制上云端，宣告明天大会上算账。",
+          "mood": "uplifting",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏语坐在窗边高脚桌前，笔记本屏幕朝镜头略侧，屏幕上文件列表可读"
+              },
+              "description": "便利店窗边高脚桌上，苏语把 U 盘插进借来的笔记本电脑，屏幕跳出一个文件夹列表，第一行是高亮的文件夹名【文字后期叠加：文件夹名 备份_0409】。",
+              "lighting": "便利店冷白日光灯明亮，窗外雨夜街灯被玻璃糊成一片光斑",
+              "characters": [
+                {
+                  "character_id": "char_suyu",
+                  "action": "盯着屏幕，手还搭在鼠标上",
+                  "emotion": "紧绷、专注"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0013",
+                  "speaker": "char_suyu",
+                  "kind": "dialogue",
+                  "text": "备份……他连我的备份都拿走了？",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "冰柜低鸣",
+                "鼠标点击声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "屏幕与苏语侧脸各占一半，播放器界面居中，耳机线从画面下缘入画"
+              },
+              "description": "屏幕特写：一个音频文件被双击打开，波形在播放器里跳动【文字后期叠加：录音 0409_21:40】；苏语戴着耳机，瞳孔骤然一缩。",
+              "lighting": "屏幕蓝光打在苏语脸上，背景灯箱虚化成暖色块",
+              "characters": [
+                {
+                  "character_id": "char_suyu",
+                  "action": "戴着耳机，屏住呼吸",
+                  "emotion": "惊愕"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0014",
+                  "speaker": "char_suyu",
+                  "kind": "voiceover",
+                  "text": "这是赵霖和甲方私下谈钱的声音。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "耳机漏出的男声",
+                "电流杂音"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh03",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "苏语位于画面中央偏右，窗外雨夜在左后方，笔记本屏幕提示在画面下缘"
+              },
+              "description": "苏语摘下耳机，抬头望向窗外雨夜，把 U 盘握紧塞进衣兜，嘴角一点点提起；笔记本屏幕上跳出一行提示【文字后期叠加：文件已复制到云端】。",
+              "lighting": "便利店冷白灯从上方打，屏幕光补亮下颌，眼神发亮",
+              "characters": [
+                {
+                  "character_id": "char_suyu",
+                  "action": "握紧 U 盘收进口袋，低声说完最后一句话",
+                  "emotion": "决绝、蓄势"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0015",
+                  "speaker": "char_suyu",
+                  "kind": "dialogue",
+                  "text": "赵霖，明天大会上，我们慢慢聊。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声渐强",
+                "拨弦音效"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -53,6 +53,32 @@ python3 -m unittest discover -s tests -t .  # 单元测试
 缺少密钥或网络被拦截都不算 doctor 失败（返回 0）；只有 `--require` 列出的供应商不是 `OK` 时返回 1。
 每次在线探测也写入 `calls.jsonl`（`cost_cny=0`、`cost_basis=free`）。任何输出都不包含密钥的值。
 
+## script：剧本生成（P0-03）
+
+一句话梗概 → 1 集 DramaIR v0 剧本。每份样本：生成 → `json.loads` → `dramio_drama_ir.validate`（strict，警告也算失败）+ 只生成 1 集、logline 原样使用输入 → 不通过时把上一版输出和问题清单（带 JSON 路径）回喂，要求重写完整 JSON，最多 `--max-repairs` 轮（默认 2）。
+
+```bash
+python3 -m poc script --n 5                                  # 默认梗概取标准样例 ep01 的 series.logline
+python3 -m poc script --logline "……" --n 1 --model deepseek-v4-pro
+python3 -m poc script --thinking disabled --max-cost-cny 5   # 关闭思维链；累计估算费用达到上限即中止
+```
+
+- 模型经 OpenAI 兼容的 Chat Completions 调用（`poc/llm.py` 的 `ENDPOINTS`，目前只登记 DeepSeek），开启 JSON 模式。
+- Prompt 模板在 `poc/prompts/<版本>.md`（`--prompt-version`，默认 `script.v1`）；Schema 和阈值在运行时从 `packages/drama-ir` 读取，不会与校验器漂移。P1 起 Prompt 迁入 `packages/prompts`（INV-10）。
+- 单价在 `poc/pricing.py`（估算）；每次运行前后查询账户余额（免费接口），`summary.json` 记录余额差用于复核。
+- 网络错误、429、5xx 在同一次尝试内最多重试 2 次，不占用修复轮数；截断、空输出、非 JSON、校验失败都算一次失败的尝试。
+- 退出码：N 份全部通过为 0；有失败或因费用上限中止为 1；缺少密钥等用法错误为 2。
+
+输出（在 `runs/<run_id>/` 下）：
+
+```
+prompt.json                        system / user 消息、Prompt 版本、参数
+samples/sNN/attemptK.raw.txt       第 K 次尝试的原始输出（K=0 为首次生成）
+samples/sNN/attemptK.report.json   该次尝试的结论与问题清单
+samples/sNN/final.json、final.md   通过校验的剧本及其可读版本
+summary.json                       每份的尝试、修复轮数、tokens、费用、耗时；首次通过率、通过率、失败类型、余额差
+```
+
 ## 运行记录
 
 ```
@@ -60,6 +86,7 @@ runs/<run_id>/            # run_id = YYYYMMDD-HHMMSS-<命令>-<4 位 hex>（UTC�
   meta.json               # 命令、参数、起止时间、状态、Python 版本
   calls.jsonl             # 每次模型调用一行
   doctor.json             # doctor 的结果与能力覆盖
+  summary.json 等         # script 的输出，见上节
 ```
 
 在代码中记录一次模型调用：

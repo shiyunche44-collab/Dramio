@@ -1,0 +1,601 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "s01",
+    "title": "逆袭U盘",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "现代都市写实，冷暖对比强烈，雨夜霓虹光晕，竖屏构图，电影感光影。",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_linwei",
+      "name": "林薇",
+      "gender": "female",
+      "age": 28,
+      "role": "protagonist",
+      "bio": "才华横溢的设计师，性格坚韧但长期被压榨，负责重要方案却被上司抢功，被迫反击。",
+      "appearance": "长发微卷，面容清秀，眼神倔强，穿浅灰西装外套内搭白衬衫。",
+      "costume": "浅灰西装外套、白衬衫、深色长裤。",
+      "voice": "青年女声，干净有力，愤怒时微抖。"
+    },
+    {
+      "id": "char_zhou",
+      "name": "周明",
+      "gender": "male",
+      "age": 45,
+      "role": "antagonist",
+      "bio": "部门总监，贪婪自私，抢下属功劳，表面威严内心阴险，掌控欲强。",
+      "appearance": "短发花白，身材微胖，深蓝衬衫，戴金表。",
+      "costume": "深蓝衬衫、黑色西裤。",
+      "voice": "中年男声，低沉傲慢，带着威胁。"
+    },
+    {
+      "id": "char_xiaoya",
+      "name": "小雅",
+      "gender": "female",
+      "age": 26,
+      "role": "supporting",
+      "bio": "林薇同事兼好友，胆小但善良，偷偷向林薇报信。",
+      "appearance": "齐肩短发，圆脸，穿淡黄色针织衫。",
+      "costume": "淡黄色针织衫、牛仔裤。",
+      "voice": "年轻女声，急促担忧。"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "雨夜被辞",
+      "synopsis": "雨夜，林薇被上司周明抢走方案并当场辞退；在离职纸箱中，她发现一枚神秘U盘，里面藏着周明的罪证，她决定当众反击。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "周明办公室",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "宽敞现代办公室，落地窗映出雨夜城市霓虹，办公桌后周明，桌上有林薇的方案文件。"
+          },
+          "summary": "周明把林薇的方案占为己有，并当场辞退她，林薇震惊愤怒。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "周明在画面右侧，林薇在左侧，方案文件位于前景桌面，字幕安全区在下方。"
+              },
+              "description": "周明坐在办公桌后，把一份方案文件重重扔在桌上，林薇站在桌前震惊地看着他，雨夜霓虹映在落地窗上。",
+              "lighting": "顶光冷白，窗外霓虹彩色光斑，形成强烈明暗对比。",
+              "characters": [
+                {
+                  "character_id": "char_zhou",
+                  "action": "把方案文件扔在桌上",
+                  "emotion": "傲慢冷漠"
+                },
+                {
+                  "character_id": "char_linwei",
+                  "action": "站在桌前，身体前倾",
+                  "emotion": "震惊"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_zhou",
+                  "kind": "dialogue",
+                  "text": "你的方案，从今天起归我。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                },
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_linwei",
+                  "kind": "dialogue",
+                  "text": "什么？",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "文件摔在桌上声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "林薇面部占据画面中央，背景虚化，周明的手进入画面边缘，字幕安全区在下方。"
+              },
+              "description": "林薇的近景，她握紧拳头，眼神愤怒；周明的手指敲着桌沿，画面外传来他冷漠的声音。",
+              "lighting": "侧逆光勾勒林薇轮廓，背景暗部冷色。",
+              "characters": [
+                {
+                  "character_id": "char_linwei",
+                  "action": "握紧拳头，身体僵硬",
+                  "emotion": "愤怒"
+                },
+                {
+                  "character_id": "char_zhou",
+                  "action": "手指敲击桌沿",
+                  "emotion": "冷漠"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_zhou",
+                  "kind": "dialogue",
+                  "text": "你被辞退了，马上收拾走人。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "手指敲桌声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "周明和林薇分站画面两侧，形成对峙构图，桌面方案文件位于中间。"
+              },
+              "description": "林薇上前一步质问，周明靠在椅背上冷笑，办公室内雨声清晰。",
+              "lighting": "吊灯高光，人物面部半明半暗。",
+              "characters": [
+                {
+                  "character_id": "char_linwei",
+                  "action": "上前一步，手指桌面",
+                  "emotion": "愤怒"
+                },
+                {
+                  "character_id": "char_zhou",
+                  "action": "靠向椅背，双臂交叉",
+                  "emotion": "嘲讽"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_linwei",
+                  "kind": "dialogue",
+                  "text": "这是我的方案！",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                },
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_zhou",
+                  "kind": "dialogue",
+                  "text": "证据呢？",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "公司走廊",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "走廊灯光冷白，雨水拍打玻璃窗，林薇抱着纸箱走出，小雅从身后追出。"
+          },
+          "summary": "小雅追出告知方案已被周明抢走去见大客户，林薇绝望。",
+          "mood": "sad",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "林薇居中抱着纸箱，小雅从左侧入画拉住她，字幕安全区在下方。"
+              },
+              "description": "林薇抱着纸箱沿走廊向前，小雅从身后追来，抓住她的手臂，神色焦急。",
+              "lighting": "顶部日光灯冷白，走廊一侧玻璃反光雨滴。",
+              "characters": [
+                {
+                  "character_id": "char_linwei",
+                  "action": "抱着纸箱继续走",
+                  "emotion": "低落"
+                },
+                {
+                  "character_id": "char_xiaoya",
+                  "action": "追来拉住林薇手臂",
+                  "emotion": "焦急"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_xiaoya",
+                  "kind": "dialogue",
+                  "text": "林薇，你的方案被周总抢走了！",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                },
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_linwei",
+                  "kind": "dialogue",
+                  "text": "我知道。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.4,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "脚步声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "小雅面部特写，背景虚化显示林薇背影，字幕安全区在下方。"
+              },
+              "description": "小雅急切地告诉林薇，周明已经拿着方案去见大客户了，林薇背对镜头沉默。",
+              "lighting": "顶光柔和，人物面部受光均匀。",
+              "characters": [
+                {
+                  "character_id": "char_xiaoya",
+                  "action": "紧握林薇手臂，语速快",
+                  "emotion": "焦急"
+                },
+                {
+                  "character_id": "char_linwei",
+                  "action": "背对镜头，停住脚步",
+                  "emotion": "绝望"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_xiaoya",
+                  "kind": "dialogue",
+                  "text": "周总已经拿它去见大客户了。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "static",
+                "composition": "林薇低头俯视纸箱，纸箱内空荡，顶部灯在纸箱上投下阴影。"
+              },
+              "description": "林薇低头看着怀中的纸箱，里面只有几支笔和一枚工牌，她的手指无意识地扣着箱沿。",
+              "lighting": "顶部冷光，脸上阴影浓重，情绪压抑。",
+              "characters": [
+                {
+                  "character_id": "char_linwei",
+                  "action": "低头看纸箱，手指扣箱沿",
+                  "emotion": "悲伤"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "写字楼门口",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "写字楼大门外，雨幕中霓虹灯倒影，林薇站在檐下翻纸箱。"
+          },
+          "summary": "林薇在纸箱夹层发现神秘U盘，插入手机看到周明私吞回扣的证据，震惊并决定反击。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "林薇站在画面中央，身后是玻璃大门和雨幕，纸箱放在脚边，霓虹光斑在地面。"
+              },
+              "description": "林薇站在写字楼门口的雨檐下，把纸箱放在地上，弯腰翻找，雨水从檐边滴落。",
+              "lighting": "霓虹灯牌彩光映在湿润地面，人物轮廓侧逆光。",
+              "characters": [
+                {
+                  "character_id": "char_linwei",
+                  "action": "弯腰在纸箱中翻找",
+                  "emotion": "疲惫"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨声",
+                "街道车流声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "overhead",
+                "movement": "static",
+                "composition": "手指特写，从纸箱夹层中抽出一枚黑色U盘，U盘挂绳反光。"
+              },
+              "description": "林薇的手指在纸箱夹层中触到硬物，抽出一枚黑色U盘，U盘表面有一道划痕，她拿近端详。",
+              "lighting": "暖色霓虹光打在手上，背景雨幕虚化。",
+              "characters": [
+                {
+                  "character_id": "char_linwei",
+                  "action": "手指捏住U盘，举到眼前",
+                  "emotion": "疑惑"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_linwei",
+                  "kind": "voiceover",
+                  "text": "这是什么？",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.5,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "overhead",
+                "movement": "static",
+                "composition": "手机屏幕特写，屏幕显示文件列表，文字后期叠加“周明私吞回扣 录音视频”，手指在屏幕上滑动。"
+              },
+              "description": "林薇将U盘插入手机转换器，手机屏幕亮起，文字后期叠加显示“周明私吞回扣 录音视频”，她的手指微微颤抖。",
+              "lighting": "屏幕光反射在林薇脸部，周围暗色，只有屏幕亮光。",
+              "characters": [
+                {
+                  "character_id": "char_linwei",
+                  "action": "手指滑动屏幕",
+                  "emotion": "震惊"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_linwei",
+                  "kind": "voiceover",
+                  "text": "周明，这是你的罪证！",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "手机提示音",
+                "雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh04",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "林薇抬头，面部由暗转亮，眼神坚定，身后雨幕和霓虹形成光晕。"
+              },
+              "description": "林薇抬起头，眼神从震惊转为坚定，雨水溅在脸上，她握紧手机和U盘，站直身体。",
+              "lighting": "霓虹光从侧后方打出轮廓，脸部明暗对比强烈。",
+              "characters": [
+                {
+                  "character_id": "char_linwei",
+                  "action": "抬头，握紧手机和U盘",
+                  "emotion": "坚定"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0011",
+                  "speaker": "char_linwei",
+                  "kind": "voiceover",
+                  "text": "我要当众揭穿你。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雷声",
+                "雨声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "写字楼门口",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "同一写字楼门口，雨势稍小，玻璃门映出林薇和周明的身影。"
+          },
+          "summary": "林薇转身走回大楼，在大厅与周明对峙，握紧U盘，留下反击悬念。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "tracking",
+                "composition": "林薇从雨檐下转身，玻璃门映出她的身影，摄像机跟随她的脚步。"
+              },
+              "description": "林薇合上手机，把U盘放进外套内兜，转身面对写字楼大门，玻璃门上映出她坚定的表情。",
+              "lighting": "门口暖色灯光打亮她的正脸，背景雨幕暗蓝。",
+              "characters": [
+                {
+                  "character_id": "char_linwei",
+                  "action": "转身面向大门，迈步向前",
+                  "emotion": "坚定"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0012",
+                  "speaker": "char_linwei",
+                  "kind": "voiceover",
+                  "text": "反击，现在开始。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "脚步踏入积水声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "大厅内，林薇推门而入，周明从电梯口走出，两人对视，电梯门在背景合上。"
+              },
+              "description": "林薇推开门走进大厅，周明正好从电梯里走出，看到林薇愣住，两人对视，林薇的手插在外套兜里紧握U盘。",
+              "lighting": "大厅灯光柔和，但地面反射出冷色，营造对峙氛围。",
+              "characters": [
+                {
+                  "character_id": "char_linwei",
+                  "action": "推门走入大厅，停步",
+                  "emotion": "坚定"
+                },
+                {
+                  "character_id": "char_zhou",
+                  "action": "从电梯走出，停步对视",
+                  "emotion": "惊愕"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0013",
+                  "speaker": "char_zhou",
+                  "kind": "dialogue",
+                  "text": "你怎么还没走？",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "电梯叮声",
+                "雨声"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

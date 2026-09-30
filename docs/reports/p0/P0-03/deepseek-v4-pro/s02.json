@@ -1,0 +1,591 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "urban_revenge",
+    "title": "雨夜反击",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "写实都市剧，冷色调，雨夜氛围，强调光影对比",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_linxiao",
+      "name": "林晓",
+      "gender": "female",
+      "age": 28,
+      "role": "protagonist",
+      "bio": "才华横溢的设计师，被上司长期压制，性格坚韧。",
+      "appearance": "清秀面庞，黑长发扎成低马尾，眼神坚定，略显疲惫。",
+      "costume": "深色西装外套内搭白衬衫，深色长裤，外面穿米色风衣。",
+      "voice": "年轻女性，声音清亮但带沙哑，语气坚定。"
+    },
+    {
+      "id": "char_zhouzong",
+      "name": "周总",
+      "gender": "male",
+      "age": 45,
+      "role": "antagonist",
+      "bio": "自私贪婪的设计总监，剽窃下属成果。",
+      "appearance": "微胖，油头，戴金丝眼镜，嘴角常带冷笑。",
+      "costume": "深灰色高档西装，深蓝色领带。",
+      "voice": "中年男性，声音低沉，傲慢，语速偏慢。"
+    },
+    {
+      "id": "char_xiaomei",
+      "name": "小美",
+      "gender": "female",
+      "age": 25,
+      "role": "supporting",
+      "bio": "林晓的同事，胆小善良。",
+      "appearance": "短发圆脸，戴圆框眼镜，看起来乖巧。",
+      "costume": "浅色针织衫配牛仔裤。",
+      "voice": "年轻女性，轻柔小声，带点紧张。"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "雨夜U盘",
+      "synopsis": "林晓被上司周总抢走方案并辞退，在离职纸箱中发现神秘U盘，决定当众反击。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "周总办公室",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "冷色调办公室，办公桌后是落地窗，窗外雨夜霓虹模糊。"
+          },
+          "summary": "周总通知林晓被辞退，并抢走她的方案。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 9
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "两人对峙，周总在前景，林晓在中景，字幕安全区在上方。"
+              },
+              "description": "周总坐在办公桌后，把一份辞退通知书推到林晓面前，林晓站在桌前，表情震惊。",
+              "lighting": "冷白顶光，脸部有阴影",
+              "characters": [
+                {
+                  "character_id": "char_zhouzong",
+                  "action": "推辞退通知书，表情冷漠",
+                  "emotion": "冷漠"
+                },
+                {
+                  "character_id": "char_linxiao",
+                  "action": "握拳，身体前倾",
+                  "emotion": "震惊愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_zhouzong",
+                  "kind": "dialogue",
+                  "text": "林晓，你的方案公司已经用了，但团队需要优化，你被辞退了。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                },
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_linxiao",
+                  "kind": "dialogue",
+                  "text": "周总，那是我的方案！",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.1
+                  }
+                },
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_zhouzong",
+                  "kind": "dialogue",
+                  "text": "现在不是了。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.5,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "纸张滑动声",
+                "雨声隐约"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "特写周总夺工牌的手和林晓面部，主体居中。"
+              },
+              "description": "周总站起身，夺过林晓的工牌，林晓咬紧嘴唇，眼眶泛红。",
+              "lighting": "冷白顶光，面部阴影加重",
+              "characters": [
+                {
+                  "character_id": "char_zhouzong",
+                  "action": "夺走工牌",
+                  "emotion": "不耐烦"
+                },
+                {
+                  "character_id": "char_linxiao",
+                  "action": "强忍愤怒",
+                  "emotion": "委屈愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_zhouzong",
+                  "kind": "dialogue",
+                  "text": "交接完就走，别闹。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "工牌被扯下声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "办公区工位",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "开放式办公区，林晓工位亮着暖黄台灯，其他工位空荡荡。"
+          },
+          "summary": "林晓收拾纸箱，小美欲言又止，林晓发现纸箱异常沉重。",
+          "mood": "sad",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 7
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "林晓在画面右侧收拾，小美从左侧入画。"
+              },
+              "description": "林晓在工位把个人物品放入纸箱，小美走过来，欲言又止，回头看到周总从办公室出来，匆匆离开。",
+              "lighting": "暖黄台灯照亮桌面，背景昏暗",
+              "characters": [
+                {
+                  "character_id": "char_linxiao",
+                  "action": "收拾物品",
+                  "emotion": "低落"
+                },
+                {
+                  "character_id": "char_xiaomei",
+                  "action": "走近又离开",
+                  "emotion": "欲言又止"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_xiaomei",
+                  "kind": "dialogue",
+                  "text": "晓姐，你……保重。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.4,
+                    "speed": 0.8
+                  }
+                },
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_linxiao",
+                  "kind": "voiceover",
+                  "text": "这个纸箱……怎么这么沉？",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.3,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "纸箱摩擦声",
+                "脚步声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 3
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "大特写U盘，在纸箱底部反光。"
+              },
+              "description": "林晓从纸箱底部摸出一个黑色U盘，U盘表面反光，她疑惑地端详。",
+              "lighting": "暖黄台灯，U盘反光明显",
+              "characters": [
+                {
+                  "character_id": "char_linxiao",
+                  "action": "拿出U盘端详",
+                  "emotion": "疑惑"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_linxiao",
+                  "kind": "voiceover",
+                  "text": "优盘？",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.4,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "环境雨声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "公司楼下门口",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "公司门口雨棚下，大雨滂沱，街灯冷光。"
+          },
+          "summary": "林晓查看U盘内容，发现周总剽窃证据，决定反击。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 8
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "林晓居中，手机屏幕在前景，文字后期叠加。"
+              },
+              "description": "林晓抱着纸箱站在公司门口雨棚下，雨幕中她拿出手机插入U盘，手机屏幕显示文件列表（文字后期叠加：“项目源文件”、“录音_20231012”）。她睁大眼睛。",
+              "lighting": "街灯冷光，雨滴反光",
+              "characters": [
+                {
+                  "character_id": "char_linxiao",
+                  "action": "插入U盘查看手机",
+                  "emotion": "震惊"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_linxiao",
+                  "kind": "voiceover",
+                  "text": "这是……",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.5,
+                    "speed": 0.9
+                  }
+                },
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_zhouzong",
+                  "kind": "voiceover",
+                  "text": "方案是我独立完成的，和林晓无关。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.6,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "手机提示音",
+                "录音播放声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "仰拍林晓面部，背景公司大楼虚化。"
+              },
+              "description": "林晓握紧U盘，抬头望向公司大楼，眼神从震惊转为坚定。",
+              "lighting": "街灯勾勒轮廓，面部半明半暗",
+              "characters": [
+                {
+                  "character_id": "char_linxiao",
+                  "action": "握拳，抬头",
+                  "emotion": "坚定"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_linxiao",
+                  "kind": "voiceover",
+                  "text": "周总，这次我不会再忍了。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "心跳声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "公司办公区",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "开放式办公区，有几个同事还在加班，办公桌电脑亮着。"
+          },
+          "summary": "林晓返回公司当众反击，播放U盘证据，周总威胁，集尾悬念。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "跟拍林晓冲入，同事在两侧反应。"
+              },
+              "description": "林晓推门冲进办公区，同事们纷纷抬头，她走到中央，大声说话。",
+              "lighting": "办公室日光灯，明亮",
+              "characters": [
+                {
+                  "character_id": "char_linxiao",
+                  "action": "推门进入，举起手",
+                  "emotion": "愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0011",
+                  "speaker": "char_linxiao",
+                  "kind": "dialogue",
+                  "text": "都停一下！",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.2
+                  }
+                }
+              ],
+              "sfx": [
+                "推门声",
+                "椅子转动声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 6
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "周总和林晓对峙，周总在前景侧面，林晓正面。"
+              },
+              "description": "周总从工位转过身，不屑地看着林晓；林晓举起U盘，与他对峙。",
+              "lighting": "办公室日光灯，面部清晰",
+              "characters": [
+                {
+                  "character_id": "char_zhouzong",
+                  "action": "转身，冷笑",
+                  "emotion": "不屑"
+                },
+                {
+                  "character_id": "char_linxiao",
+                  "action": "举起U盘",
+                  "emotion": "愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0012",
+                  "speaker": "char_zhouzong",
+                  "kind": "dialogue",
+                  "text": "你怎么还没走？",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.6,
+                    "speed": 0.9
+                  }
+                },
+                {
+                  "line_id": "l_0013",
+                  "speaker": "char_linxiao",
+                  "kind": "dialogue",
+                  "text": "周总，这个优盘里，有你和王总交易的录音。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "键盘声停止",
+                "空调声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh03",
+              "duration": {
+                "hint_s": 6
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "周总扑抢，林晓躲闪，会议桌电脑在后景。"
+              },
+              "description": "周总脸色大变，冲上前想抢U盘，林晓侧身躲开，把U盘插入会议桌上的电脑，大屏幕出现文件，播放录音。",
+              "lighting": "大屏幕蓝光映在众人脸上",
+              "characters": [
+                {
+                  "character_id": "char_zhouzong",
+                  "action": "扑抢U盘",
+                  "emotion": "慌乱"
+                },
+                {
+                  "character_id": "char_linxiao",
+                  "action": "躲闪，插入U盘",
+                  "emotion": "坚决"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0014",
+                  "speaker": "char_zhouzong",
+                  "kind": "dialogue",
+                  "text": "你胡说！",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.1
+                  }
+                },
+                {
+                  "line_id": "l_0015",
+                  "speaker": "char_linxiao",
+                  "kind": "dialogue",
+                  "text": "大家听听！",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.1
+                  }
+                },
+                {
+                  "line_id": "l_0016",
+                  "speaker": "char_linxiao",
+                  "kind": "dialogue",
+                  "text": "还有源文件，都在这里！",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "电脑启动声",
+                "录音播放嘈杂声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh04",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "周总面部特写，一半脸在阴影中。"
+              },
+              "description": "周总突然冷笑，逼近林晓，压低声音。",
+              "lighting": "一半脸在阴影中，阴森",
+              "characters": [
+                {
+                  "character_id": "char_zhouzong",
+                  "action": "冷笑，逼近",
+                  "emotion": "威胁"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0017",
+                  "speaker": "char_zhouzong",
+                  "kind": "dialogue",
+                  "text": "你以为公司会帮你？",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.7,
+                    "speed": 0.8
+                  }
+                }
+              ],
+              "sfx": [
+                "低沉的威胁语气",
+                "雨声渐强"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

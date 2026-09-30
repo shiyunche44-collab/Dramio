@@ -1,0 +1,513 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "series_zhuchang",
+    "title": "离职纸箱里的U盘",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "都市写实短剧，冷色调雨夜+办公室冷光，高对比硬光，手持近景为主，节奏快剪，字幕高亮关键信息",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_suqing",
+      "name": "苏晴",
+      "gender": "female",
+      "age": 27,
+      "role": "protagonist",
+      "bio": "设计公司主创设计师，作品多次被总监抢功。性格倔强、逻辑缜密，习惯把所有版本方案都留底。被辞退后拿到神秘U盘，决定不再忍。",
+      "appearance": "清瘦，齐肩黑发略显凌乱，皮肤偏白，眼神倔强；穿深灰针织衫，袖口被雨打湿。",
+      "costume": "深灰色高领针织衫+黑色长裤，胸前挂着工牌，工牌绳已被扯断。",
+      "voice": "青年女声，音色偏冷，语速中快，压抑怒火时尾音发紧，画外音冷静克制。"
+    },
+    {
+      "id": "char_zhaokai",
+      "name": "赵凯",
+      "gender": "male",
+      "age": 38,
+      "role": "antagonist",
+      "bio": "设计总监，惯于抢下属方案向老板邀功。表面儒雅，实则精于话术，最怕留证据。",
+      "appearance": "中等身材，背头，戴细框眼镜，西装笔挺；笑时嘴角上扬但眼神冷。",
+      "costume": "深蓝西装+白衬衫，无名指戴婚戒，袖扣亮金属色。",
+      "voice": "中年男声，音色圆滑，语速平稳，假笑时带着居高临下的轻慢。"
+    },
+    {
+      "id": "char_linna",
+      "name": "林娜",
+      "gender": "female",
+      "age": 25,
+      "role": "supporting",
+      "bio": "前台行政，苏晴唯一还留在公司的熟人，胆小但心软，偷偷给苏晴递了最后一个纸箱。",
+      "appearance": "圆脸，丸子头，穿浅粉色职业裙，神情慌张。",
+      "costume": "浅粉色衬衫+黑色半裙，胸前挂行政工牌。",
+      "voice": "年轻女声，音量小，说话带颤，显得紧张又内疚。"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "雨夜被辞退",
+      "synopsis": "苏晴的方案被总监赵凯当众说成自己的成果，她冲进办公室理论反被以“情绪不稳定”为由辞退。林娜塞给她一个离职纸箱，苏晴在纸箱夹层发现一枚署名“源文件”的U盘；此时大屏弹出通知——第二天上午十点，全公司路演评审会，赵凯要拿她的方案上台。苏晴握紧U盘，决定去现场。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "设计公司办公区",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "深夜加班办公区，只剩顶灯和几排电脑屏幕亮着，玻璃隔断反射雨痕，工位上散着外卖盒和图纸。"
+          },
+          "summary": "苏晴亲眼看到大屏上自己的方案被署上赵凯的名字，当众被抢功。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "苏晴面部特写偏左，右侧留出屏幕反光区，字幕安全区在上方"
+              },
+              "description": "深夜办公区，苏晴站在工位前，手里攥着打印好的设计方案，眼睛盯着前方投影大屏；大屏上是她熟悉的方案封面，标题下方署名处被打码高亮，标注“文字后期叠加：主创设计 赵凯”。她呼吸一滞，纸角被捏皱。",
+              "lighting": "屏幕冷蓝光打在苏晴脸上，顶灯偏暗，形成硬朗侧光",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "攥紧设计方案，盯着大屏",
+                  "emotion": "震惊到不敢相信，呼吸急促"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "那是我的方案。署名却是他。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.8,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "电脑风扇低鸣",
+                "远处雨点打玻璃声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "static",
+                "composition": "赵凯站在投影大屏前，占据画面中心，仰拍强化压迫感，苏晴在画面右下角虚焦"
+              },
+              "description": "赵凯站在投影大屏前，转身对围拢的同事摊手微笑，身后大屏显示方案内页；他手腕上婚戒反光，神情得意。画面右侧虚焦处，苏晴站着没动。",
+              "lighting": "投影强光从赵凯背后打来，形成轮廓光，正面用室内冷光补亮",
+              "characters": [
+                {
+                  "character_id": "char_zhaokai",
+                  "action": "摊手向同事展示大屏，微笑发言",
+                  "emotion": "得意而轻慢"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_zhaokai",
+                  "kind": "dialogue",
+                  "text": "这套方案，我熬了三个通宵。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "投影仪电流声",
+                "零星掌声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 3
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "特写苏晴手背青筋和捏皱的纸角，背景大屏虚化，构图偏左"
+              },
+              "description": "极近特写：苏晴的手把方案纸角捏出深褶，指节发白；纸页边缘能看到她名字缩写被涂改的痕迹。背景大屏虚化成冷蓝色块。",
+              "lighting": "屏幕冷光从右上侧打亮手背，环境低照度",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "死死捏住纸角",
+                  "emotion": "压抑愤怒"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "纸张被捏皱的细响"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "设计总监办公室",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "独立玻璃办公室，办公桌上摆着奖杯和合照，百叶窗半开，走廊灯光透进来，雨声更清晰。"
+          },
+          "summary": "苏晴当面对质，赵凯反诬她情绪不稳定，当场宣布辞退。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "两人隔办公桌对峙，苏晴在前景背对镜头，赵凯在画面中央靠椅背"
+              },
+              "description": "总监办公室内，苏晴把打印方案拍在办公桌上，纸页滑向赵凯。赵凯靠在椅背，双手交叠，眼镜反光，神情不耐。窗外雨越下越大，玻璃上有水痕。",
+              "lighting": "办公桌上暖黄台灯与走廊冷白光交汇，赵凯脸部半明半暗",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "把方案拍在桌上，身体前倾",
+                  "emotion": "愤怒而坚定"
+                },
+                {
+                  "character_id": "char_zhaokai",
+                  "action": "靠椅背，双手交叠，抬眼看她",
+                  "emotion": "轻蔑不耐烦"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "源文件、修改记录，全在我电脑里。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声加大",
+                "纸张拍桌声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 6
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "low",
+                "movement": "static",
+                "composition": "赵凯面部特写居中偏右，台灯从下方补光，眼镜反光遮住眼神"
+              },
+              "description": "赵凯缓缓摘下眼镜擦拭，嘴角挂着假笑，语气温和却字字扎人。他把桌上的方案推回苏晴方向，动作不急不缓。",
+              "lighting": "台灯自下而上打光，制造阴冷感，背景百叶窗投下条状阴影",
+              "characters": [
+                {
+                  "character_id": "char_zhaokai",
+                  "action": "摘下眼镜擦拭，把方案推回去",
+                  "emotion": "伪善而冷酷"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_zhaokai",
+                  "kind": "dialogue",
+                  "text": "情绪不稳定，不适合团队。你被辞退了。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.8,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "眼镜布摩擦声",
+                "雨声持续"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "苏晴站在门口回头，走廊冷光勾边，赵凯虚焦在画面右侧"
+              },
+              "description": "苏晴站在办公室门口，背对走廊，回头看了赵凯一眼。她没有说话，只是把扯断的工牌塞进口袋，转身推门。门玻璃上映出赵凯低头翻方案的倒影。",
+              "lighting": "走廊冷白荧光勾出苏晴轮廓，办公室内暖光被门缝压暗",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "扯断工牌塞进口袋，转身推门",
+                  "emotion": "心冷到极点的平静"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "好。我记住了。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "门开声",
+                "走廊脚步回声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "公司一楼门厅",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "公司一楼门厅，玻璃门外大雨，地面湿滑，前台只亮一盏灯，纸箱放在前台台面。"
+          },
+          "summary": "林娜把离职纸箱塞给苏晴，苏晴在夹层发现神秘U盘。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "两人隔着前台台面，纸箱在画面中央，玻璃门外雨幕成背景"
+              },
+              "description": "门厅前台，林娜慌张地把一个印着公司标志的离职纸箱推给苏晴，左右张望确认没人，压低声音。门外暴雨拍打玻璃，地面积水反光。",
+              "lighting": "前台顶灯偏暖，玻璃门外冷蓝雨夜形成对比",
+              "characters": [
+                {
+                  "character_id": "char_linna",
+                  "action": "把纸箱推向前，左右张望",
+                  "emotion": "紧张内疚"
+                },
+                {
+                  "character_id": "char_suqing",
+                  "action": "接过纸箱，低声道谢",
+                  "emotion": "疲惫但保持镇定"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_linna",
+                  "kind": "dialogue",
+                  "text": "晴姐，箱子是你的，我没让人动过。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.7,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "暴雨拍玻璃",
+                "纸箱摩擦台面"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "俯拍纸箱开口，苏晴的手在箱内翻找，U盘位于画面视觉中心"
+              },
+              "description": "俯视特写：苏晴的手在纸箱里翻出笔记本、马克杯，指尖触到箱底夹层；一枚黑色U盘被胶带贴在夹层里，U盘外壳上用白笔写着小字“源文件”。她把U盘抠下来，指尖微微发抖。",
+              "lighting": "前台暖光从上方直射箱内，U盘黑色表面反射一小块高光",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "从纸箱夹层抠出U盘",
+                  "emotion": "疑惑转为震惊"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "谁放的？上面写着……源文件。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.8,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "胶带撕开声",
+                "雨声渐弱为环境底噪"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "U盘在白炽灯下的极近特写，占满画面，背景模糊"
+              },
+              "description": "极近特写：黑色U盘躺在苏晴掌心，外壳上白笔写的“源文件”三个字清晰可见，旁边还贴着一小条褪色标签，标签边缘有撕过的痕迹。画面下缘是苏晴湿润的袖口。",
+              "lighting": "单一顶光打下，U盘表面形成硬高光，掌心纹路清晰",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "把U盘攥进掌心",
+                  "emotion": "警觉而专注"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "掌心合拢的轻响"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "公司一楼门厅及门外雨夜",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "门厅落地玻璃墙内侧，苏晴抱着纸箱站在大屏前；门外雨夜街道，路灯把雨丝照成白线。"
+          },
+          "summary": "大屏弹出路演评审会通知，苏晴意识到赵凯明天要拿她的方案上台，握紧U盘决定反击。",
+          "mood": "uplifting",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏晴抱纸箱站在画面左侧，右侧是墙上的巨幅电子通告屏"
+              },
+              "description": "门厅墙上电子通告屏突然亮起，红色加粗通知滚动播放，标注“文字后期叠加：明日上午10:00 全公司路演评审会 主讲人：赵凯 总监”；苏晴抱着纸箱站在屏幕前，屏幕红光映在她脸上。",
+              "lighting": "通告屏红光为主光源，雨夜窗外冷蓝光从右侧补充",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "抱着纸箱抬头看通告屏",
+                  "emotion": "从疲惫转为警觉"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "明天十点，他要拿我的方案上台。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "电子屏提示音",
+                "雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "苏晴居中，纸箱在胸前，U盘握在右手，背景通告屏红光虚化"
+              },
+              "description": "苏晴低头看着掌心的U盘，再抬头看向通告屏；她把U盘握紧，另一只手把纸箱抱稳，雨水顺发梢滴到箱盖上。玻璃门外，一辆车的远光灯扫过雨幕。",
+              "lighting": "通告屏红光正面打脸，门外车灯白光从背后扫过形成瞬时光晕",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "握紧U盘，抱稳纸箱，转身面向玻璃门",
+                  "emotion": "从绝望转为决绝"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "赵凯，这次，我要你当众还回来。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "汽车远光灯电流声",
+                "推门雨声涌入",
+                "BGM低鼓点起"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

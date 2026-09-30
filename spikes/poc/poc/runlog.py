@@ -107,8 +107,10 @@ class Run:
         self.write_json("meta.json", self.meta)
 
     def write_json(self, name: str, obj: Any) -> Path:
+        """写出 JSON；与 calls.jsonl 一样先脱敏兜底（错误信息等字段可能意外带上密钥）。"""
         path = self.dir / name
-        path.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        text = config.redact(json.dumps(obj, ensure_ascii=False, indent=2, default=str), self._secrets)
+        path.write_text(text + "\n", encoding="utf-8")
         return path
 
     @contextmanager
