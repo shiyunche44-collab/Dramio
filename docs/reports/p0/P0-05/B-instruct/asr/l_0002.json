@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "我以为努力就够了。",
+  "duration_ms": 2831,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "我以为努力就够了。",
+      "start_ms": 380,
+      "end_ms": 2460
+    }
+  ]
+}

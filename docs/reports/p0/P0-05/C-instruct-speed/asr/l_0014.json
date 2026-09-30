@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "保安把他带出去。",
+  "duration_ms": 2231,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "保安把他带出去。",
+      "start_ms": 400,
+      "end_ms": 2000
+    }
+  ]
+}

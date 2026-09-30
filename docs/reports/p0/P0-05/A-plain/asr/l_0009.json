@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "会是谁偷偷在帮我？",
+  "duration_ms": 2831,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "会是谁偷偷在帮我？",
+      "start_ms": 420,
+      "end_ms": 2380
+    }
+  ]
+}

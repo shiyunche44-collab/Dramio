@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "方案我会替你好好完成的。",
+  "duration_ms": 3599,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "方案我会替你好好完成的。",
+      "start_ms": 590,
+      "end_ms": 3350
+    }
+  ]
+}

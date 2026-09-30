@@ -50,7 +50,7 @@
   8. 报告有候选对比表：成功率（首次 / 最终）、重试次数、耗时、每集费用、全集时长、字/秒比值、念不完的镜头数、CER；数字可在 `run-summary.json` 找到出处。
   9. `run-calls.jsonl` 每行 `provider=volc_speech`、`capability∈{tts,asr}`、`cost_basis=estimate`，失败请求也在；费用合计与报告和“本步费用”一致，≤¥100。
   10. 设置了密钥时 `grep -rF "$VOLC_SPEECH_API_KEY" docs spikes/poc --exclude=.env` 无匹配。
-  11. 改动只涉及 `spikes/poc/`、`docs/reports/p0/`、`docs/progress.md`、`docs/roadmap.md`；`du -sh docs/reports/p0/P0-05` ≤5 MB。
+  11. 改动只涉及 `spikes/poc/`、`docs/reports/p0/`、`docs/progress.md`、`docs/roadmap.md`；`du -sb docs/reports/p0/P0-05` ≤ 6 MB（原定 5 MB 按 3 个候选估算；实际为 4 个候选 + 6 个初选音色，逐句 mp3 是 `--metrics` 复核的输入，`ep01.mp3` 用于试听，均不能省）。
   12. 默认方案（需用户确认）：报告给出推荐与理由；D-004 登记候选、推荐、试听路径与回复示例。
 - **涉及**：architecture.md §2.1 ⑤、§5.5.1、§7.1、§7.4、§19.1；ADR-0004（P0 允许 spikes 直连供应商）；INV-01、INV-03、INV-07、INV-10、INV-11；D-002。
 
@@ -62,13 +62,13 @@
 - [x] 4. mp3 帧头时长解析 + 每句 / 镜头容纳 / 全集时长统计，离线单测
 - [x] 5. 定候选与音色（音色列表与 TTS 接口文档已读，`context_texts` / `speech_rate` 已确认；冒烟 `20260930-155850-tts-73b3`：陆沉 5 句全部成功）
 - [x] 6. CLI `python3 -m poc tts`（生成 + `--metrics` 互斥、`--max-cost-cny`），README 一节
-- [ ] 7. 正式评测：3 候选 × 3 轮 × 15 句
+- [x] 7. 正式评测：音色初选 6 个音色（`20260930-160232` ~ `160636`）；候选 A–D 各 3 轮 × 15 句（`20260930-160729-tts-6688`、`161030-tts-8fed`、`161329-tts-ed5c`、`161629-tts-b795`），180/180 成功
 - [ ] 8. 证据入库、报告 `docs/reports/p0/P0-05.md`、登记 D-004
 - [ ] 9. 验证（verifier）、评审（arch-reviewer）、交付 PR
 
 ## 本步费用
 
-- **已花费**：¥0.03（探测与冒烟）
+- **已花费**：¥1.15（估算：探测约 ¥0.005，冒烟 ¥0.02，音色初选 ¥0.23，候选 A–D ¥0.88）
 - **上限**：¥100
 
 ## 待决事项
