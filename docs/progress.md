@@ -25,7 +25,7 @@
 - **当前步骤**：P0-03
 - **步骤状态**：进行中
 - **工作分支**：claude/lucid-hamilton-r7bd4w
-- **PR**：—
+- **PR**：#4（已合并；步骤仍为 🔄，等待 D-003）
 
 ## 步骤卡
 
@@ -50,7 +50,7 @@
 - [x] 评分表与 agent 初评（含 ep01 锚点）
 - [x] 结论报告 `docs/reports/p0/P0-03.md`
 - [x] 登记 D-003（人工评分），更新本步费用
-- [ ] 验证（verifier）、评审（arch-reviewer）、交付
+- [x] 验证（verifier）、评审（arch-reviewer）、交付（PR #4 已合并；✅ 待 D-003）
 
 ## 本步费用
 
