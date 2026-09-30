@@ -39,10 +39,10 @@
 
 ## 子任务
 
-- [ ] 剧本视图与 Prompt：`poc/shots.py` 的 `script_view`、`prompts/shots.v1.md`、system / user prompt 渲染（阈值取自常量，输出 Schema 运行时抽取），加测试
-- [ ] 合并与检查：合并回输入、`shot_id` 重排、守恒检查、H1–H4（常量集中定义），ep01 锚点与反例测试（带 JSON 路径）
-- [ ] 合理性指标与离线模式：`metrics(doc, source_doc)` 与 `--metrics`；ep01 与 P0-03 15 份原分镜基线（¥0），加测试
-- [ ] 生成循环与 CLI：子类化 `script.Generator`，`run_shots`（多输入、`--n`、summary、费用保险、余额差），`python3 -m poc shots`，假 chat_fn 测试通过 / 修复 / 中止
+- [x] 剧本视图与 Prompt：`poc/shots.py` 的 `script_view`、`prompts/shots.v1.md`、system / user prompt 渲染（阈值取自常量，输出 Schema 运行时抽取），加测试
+- [x] 合并与检查：合并回输入、`shot_id` 重排、守恒检查、H1–H4（常量集中定义），ep01 锚点与反例测试（带 JSON 路径）
+- [x] 合理性指标与离线模式：`metrics(doc, source_doc)` 与 `--metrics`；ep01 与 P0-03 15 份原分镜基线（¥0），加测试
+- [x] 生成循环与 CLI：子类化 `script.Generator`，`run_shots`（多输入、`--n`、summary、费用保险、余额差），`python3 -m poc shots`，假 chat_fn 测试通过 / 修复 / 中止
 - [ ] 冒烟：3 个候选在 ep01 上各 1 份，必要时微调 `shots.v1`
 - [ ] 批次 A：ep01 上 flash ×5、flash 关思维链 ×5、v4-pro ×5
 - [ ] 批次 B：flash 对 P0-03 flash s01–s05 各 1 份
