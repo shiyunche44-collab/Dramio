@@ -61,7 +61,7 @@
 
 ## 子任务
 
-- [ ] 1. 可达性与方案选定：实测 pip、GitHub release、HuggingFace / ModelScope；试装 insightface 或 dlib-bin + face_recognition_models，各跑通一次“检测 + 特征”；结论写入交接日志
+- [x] 1. 可达性与方案选定：实测 pip、GitHub release、HuggingFace / ModelScope；试装 insightface 或 dlib-bin + face_recognition_models，各跑通一次“检测 + 特征”；结论写入交接日志
 - [ ] 2. `poc/face.py` 骨架：Embedder 协议与选定后端、余弦相似度、最小脸阈值、伪造后端单测
 - [ ] 3. 基准库、双人指派、统计（分位数、直方图）、`face` CLI（`--json` / `--csv`）与离线单测
 - [ ] 4. 度量校准与有效性验证（¥0）：P0-06 派生图与其它主图、异性角色互比，定 τ，记局限
@@ -153,3 +153,4 @@
 | 2026-09-30 | P0-06 | 补记（会话 `01DXLc6Z`）：D-007 改走 Agent Plan（提交 1e87c7f 起：`ARK_BILLING`、`/api/plan/v3`、`costume.v2`、`--prompt-version`，pro 主图 run `20260930-201207-costume-3165`），D-008 上限 16 MB（e89bb79），pro 派生由会话 `01TKEJcW` 入库（624f910，runs `20260930-203811-costume-88ee` / `-8c43` / `-b7c2`）。arch-reviewer：无阻断项；已处理建议 1–4、6、7（`UnsupportedModel` 写入 README / 报告 / docstring，报告 Seedance 结论注明待 P0-08 确认，`.env.example` 注释说明 `ARK_BILLING`，旧证据缺 `billing` 即 payg，vendor 文档补 Agent Plan，`--model` help 与互斥测试）；建议 8（套餐额度与按量计费分开记账）留给 P1 模型网关 | 单测、`make arch-check` 通过 | 按 ship.md 交付 PR |
 | 2026-09-30 | P0-06 | 完成：Seedream 定妆（flash / v4 / pro 主图各 6 张；pro 派生 text / ref / sheet 76/76；flash 派生因欠费不完整，留作对照）；D-006 选定两个角色 pro `main-02` + `ref`；报告 `docs/reports/p0/P0-06.md`、定妆卡、证据 9 个目录。P0-06 标为 ✅，进度指针移到 P0-07 | verifier 12/12 通过（单测 205 个无网络通过；`--verify` 86 张、¥31.48；16.94 MB ≤ 18 MB；密钥无泄露；改动范围合规）；arch-reviewer 无阻断项，建议已处理。费用 ¥31.48（按量实付 ¥6.88，其余为 Agent Plan 等价费用，不实付；另有重复运行的 pro 派生等价 ¥23.40 未入库） | P0-07 关键帧与一致性度量（以 pro `main-02` 为身份参考）；P0-08 前确认 Agent Plan 能否调 Seedance |
 | 2026-09-30 | P0-07 | 开工：同步主线；step-planner 出计划，写入步骤卡与 14 个子任务。用户要求 P0-08 用 MiniMax 海螺视频：`MINIMAX_API_KEY` 已配置，但 `api.minimaxi.com`、`api.minimax.io` 在当前容器被网络策略拦截（CONNECT 403），需放行域名（新会话生效），模型 ID 待域名放行后核实；不影响 P0-07 | `make arch-check` 通过。费用 ¥0 | 子任务 1：人脸方案可达性实测 |
+| 2026-09-30 | P0-07 | 子任务 1 完成：PyPI、`github.com` release 及重定向域名 `release-assets.githubusercontent.com` 可达（HuggingFace、ModelScope 仍被拦）；venv 装 numpy / onnxruntime / opencv-python-headless / insightface 2.0，下载 buffalo_l（SCRFD det_10g + ArcFace w600k_r50，289 MB，不入库）。P0-06 主图检测成功率 6/6（置信 0.87–0.90，脸框约 140×200 px）；同角色 main 图互比 0.59–0.76，异性互比 -0.04–0.08，区分度足够；特写 / 三视图正脸可检出，背面无脸。选定后端 arcface | 实测命令输出；`make arch-check` 通过。费用 ¥0 | 子任务 2：`poc/face.py` |
