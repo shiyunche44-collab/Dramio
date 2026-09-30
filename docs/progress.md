@@ -59,12 +59,12 @@
 
 （开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
 
-- [ ] Schema：`schema/v0/drama.schema.json` 与 README 字段说明表
-- [ ] 子集 Schema 校验器与 `load_schema`，附单元测试
-- [ ] 语义校验与 `validate` 命令行（`--strict`、`--json`、退出码），附反例测试
-- [ ] 标准样例 `examples/v0/ep01.json`，`validate --strict` 零警告
-- [ ] `render` 子命令与 `ep01.md`，一致性测试；可选 `jsonschema` 差分测试
-- [ ] Makefile `drama-ir-check`；README 用法与冻结规则；architecture.md §4 指向说明；tech-debt.md TD-001
+- [x] Schema：`schema/v0/drama.schema.json` 与 README 字段说明表
+- [x] 子集 Schema 校验器与 `load_schema`，附单元测试
+- [x] 语义校验与 `validate` 命令行（`--strict`、`--json`、退出码），附反例测试
+- [x] 标准样例 `examples/v0/ep01.json`，`validate --strict` 零警告
+- [x] `render` 子命令与 `ep01.md`，一致性测试；可选 `jsonschema` 差分测试
+- [x] Makefile `drama-ir-check`；README 用法与冻结规则；architecture.md §4 指向说明；tech-debt.md TD-001
 - [ ] 验证与交付：verifier 验收；登记 D-002（附 sha256）；PR 等用户审阅合并
 
 ## 本步费用
