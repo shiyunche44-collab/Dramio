@@ -1,6 +1,6 @@
 # Dramio：AI 短剧自动化生产平台架构设计
 
-> 版本：v0.3（草案） · 日期：2026-09-30 · 配套文档：[架构治理与落地保障](governance.md)、[分步实施路线图](roadmap.md)、[ADR 目录](adr/README.md)
+> 版本：v0.4（草案） · 日期：2026-09-30 · 配套文档：[架构治理与落地保障](governance.md)、[分步实施路线图](roadmap.md)、[ADR 目录](adr/README.md)
 >
 > 目标：在一个平台上跑通 AI 短剧**从选题到分发、再到数据回流**的全部环节。每个环节都能全自动运行，也能在关键节点交给人审核和修改。
 
@@ -1017,13 +1017,16 @@ dramio/
 │   ├── terraform/
 │   └── docker/
 ├── tools/
-│   └── archcheck/              # 架构自动检查（适应度函数）
+│   ├── archcheck/              # 架构自动检查（适应度函数）
+│   └── workflow/               # 进度解析与 Claude Code hook 脚本
 ├── docs/
 │   ├── architecture.md         # 本文档
 │   ├── governance.md           # 架构治理与落地保障
 │   ├── roadmap.md              # 分步实施路线图
+│   ├── progress.md             # 开发进度（跨会话状态）
 │   ├── adr/                    # 架构决策记录
 │   └── tech-debt.md            # 技术债与豁免登记
+├── .claude/                    # 工作流命令、子代理、hooks 与权限
 ├── CLAUDE.md                   # AI 编码助手的项目约束
 └── REVIEW.md                   # 代码评审规则
 ```
@@ -1170,5 +1173,6 @@ flowchart TB
 | v0.1 | 2026-09-30 | 初稿：全流程、分层架构、DramaIR、各子系统、编排、网关、数据、部署、路线图 |
 | v0.2 | 2026-09-30 | 新增第 20 章架构治理；§3.3 关联 ADR；§15 目录结构补充 `spikes/`、`tools/` 与治理文件；§17 关联阶段退出标准 |
 | v0.3 | 2026-09-30 | §17 关联分步实施路线图；§15 目录结构补充 roadmap.md |
+| v0.4 | 2026-09-30 | §15 目录结构补充 `.claude/`、`tools/workflow/`、`docs/progress.md`（自主推进工作流，见 governance §10.1） |
 
 > 本文档描述架构的**当前状态**。每次修改都要在这里记录，并在同一个 PR 中更新相关 ADR。P1 结束时发布 v1.0 作为第一个架构基线。

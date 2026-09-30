@@ -18,5 +18,7 @@ jobs:
           python-version: "3.12"
       - name: Self-test archcheck rules
         run: python -m unittest discover -s tools/archcheck -p "test_*.py" -v
+      - name: Test workflow hooks and progress parser
+        run: python -m unittest discover -s tools/workflow -p "test_*.py" -v
       - name: Check architecture invariants
         run: python tools/archcheck/archcheck.py

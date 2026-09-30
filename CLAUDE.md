@@ -2,12 +2,27 @@
 
 Dramio 是 AI 短剧自动化生产平台，长期演进。本文件是 AI 编码助手（以及新成员）必须遵守的项目约束。
 
+## 工作流命令
+
+本项目用 Claude Code 原生机制组织开发（只对本仓库生效）。进度的唯一状态来源是 `docs/progress.md`，每次会话开始时由 SessionStart hook 自动注入摘要。
+
+| 命令 | 作用 |
+|---|---|
+| `/continue` | 按当前进度自主推进，完成当前里程碑后汇报。**用户说“继续当前进度”“继续”“接着做”时执行它**，不要重新询问背景 |
+| `/step [编号]` | 完成一个步骤：探索计划 → 实现 → 验证 → 评审 → PR 合并 |
+| `/progress` | 只读查看进度、待决事项、下一步 |
+| `/decide 编号 决定` | 用户记录决定（agent 不能调用） |
+
+- 定义位置：`.claude/skills/`（命令）、`.claude/agents/`（`step-planner`、`verifier`、`arch-reviewer` 子代理）、`.claude/settings.json`（hooks 与权限）、`tools/workflow/`（hook 脚本）。
+- 自主程度以 `docs/progress.md` 的“自主推进设置”为准，那是用户的授权范围。
+- 步骤进行中停止会话前，必须先存档：勾选子任务、追加交接日志、提交并推送（Stop hook 会检查）。
+
 ## 开工前
 
 1. 阅读 `docs/architecture.md` 中与任务相关的章节，以及 `docs/adr/` 中相关的 ADR。
 2. 如果改动会触及下方任一不变量，或引入新的基础设施、存储、语言、外部供应商类别，或改变目录与模块边界、DramaIR 主版本：**先写或更新 ADR**（`docs/adr/template.md`），再写代码。完整的判断标准见 `docs/governance.md` §4.1。
 3. 较大的功能先输出实现计划，写明涉及的架构章节和 ADR 编号，确认后再编码。
-4. 按 `docs/roadmap.md` 推进：一次只做一个步骤，先写步骤卡（目标 / 做 / 不做 / 验收），不要顺手做下一步或范围外的事；完成后把该步骤状态更新为 ✅。
+4. 按 `docs/roadmap.md` 推进，流程见上方“工作流命令”：一次只做一个步骤，先写步骤卡（目标 / 做 / 不做 / 验收），不要顺手做下一步或范围外的事。
 5. ADR 状态：Accepted 是必须遵守的决策；Proposed 表示方向已定、待正式确认，不要写与之矛盾的实现，有疑问先提出来。
 
 ## 架构不变量（详见 docs/governance.md §3）
@@ -39,6 +54,8 @@ Dramio 是 AI 短剧自动化生产平台，长期演进。本文件是 AI 编�
 | `spikes/` | P0 一次性验证代码，任何产品代码都不能依赖它 |
 | `infra/` | Helm、Terraform、Docker |
 | `tools/archcheck/` | 架构自动检查 |
+| `tools/workflow/` | 进度解析与 Claude Code hook 脚本 |
+| `.claude/` | 工作流命令、子代理、hooks 与权限配置 |
 | `docs/` | 架构文档、治理文档、ADR、技术债登记 |
 
 ## 提交前必须运行

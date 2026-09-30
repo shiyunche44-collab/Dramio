@@ -1,4 +1,5 @@
-# 架构关键路径的修改需要架构负责人评审（配合 main 分支保护中的 "Require review from Code Owners"）。
+# 架构关键路径：改动这些路径的 PR 不会被 agent 自动合并，必须由人审阅合并
+# （见 .claude/skills/step/ship.md；分支保护不开启 "Require review from Code Owners"，以免阻止其他 PR 的自动合并）。
 # 团队成员加入后，把下面的负责人换成具体成员或小组，例如 @dramio/architecture。
 
 /docs/architecture.md        @shiyunche44-collab
@@ -6,6 +7,8 @@
 /docs/adr/                   @shiyunche44-collab
 /docs/tech-debt.md           @shiyunche44-collab
 /tools/archcheck/            @shiyunche44-collab
+/tools/workflow/             @shiyunche44-collab
+/.claude/                    @shiyunche44-collab
 /CLAUDE.md                   @shiyunche44-collab
 /REVIEW.md                   @shiyunche44-collab
 /.github/                    @shiyunche44-collab

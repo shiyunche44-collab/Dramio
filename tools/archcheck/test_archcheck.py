@@ -198,6 +198,36 @@ class ExceptionTest(RepoCase):
         self.assertEqual(len(report.warnings), 1)
 
 
+class ProgressRuleTest(RepoCase):
+    ROADMAP = (
+        "| 编号 | 步骤 | 交付 | 验收 | 依赖 | 估时 | 状态 |\n|---|---|---|---|---|---|---|\n"
+        "| P0-01 | 脚手架 | x | x | — | 1 天 | {s1} |\n"
+        "| P0-02 | 样例 | x | x | — | 1 天 | {s2} |\n"
+        "| P0-03 | 剧本 | x | x | — | 1 天 | {s3} |\n"
+    )
+    PROGRESS = "## 自主推进设置\n\n## 当前状态\n\n- **当前步骤**：{current}\n"
+
+    def state(self, current: str = "P0-01", s1: str = "⬜", s2: str = "⬜", s3: str = "⬜") -> None:
+        self.write("docs/roadmap.md", self.ROADMAP.format(s1=s1, s2=s2, s3=s3))
+        self.write("docs/progress.md", self.PROGRESS.format(current=current))
+
+    def test_consistent_state_passes(self) -> None:
+        self.state(current="P0-02", s1="✅", s2="🔄")
+        self.assertEqual(self.rules_hit(self.run_check()), [])
+
+    def test_too_many_in_progress_fails(self) -> None:
+        self.state(current="P0-01", s1="🔄", s2="🔄", s3="🔄")
+        self.assertEqual(self.rules_hit(self.run_check()), ["progress"])
+
+    def test_current_step_already_done_fails(self) -> None:
+        self.state(current="P0-01", s1="✅")
+        self.assertEqual(self.rules_hit(self.run_check()), ["progress"])
+
+    def test_missing_progress_file_fails(self) -> None:
+        self.write("docs/roadmap.md", self.ROADMAP.format(s1="⬜", s2="⬜", s3="⬜"))
+        self.assertEqual(self.rules_hit(self.run_check()), ["progress"])
+
+
 class RealRepoTest(unittest.TestCase):
     def test_repository_passes(self) -> None:
         report = archcheck.run(REPO_ROOT, RULES, HERE / "exceptions.toml", dt.date.today())

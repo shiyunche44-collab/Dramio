@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(make arch-check)",
+      "Bash(make check)",
+      "Bash(python3 -m unittest *)",
+      "Bash(python3 tools/archcheck/archcheck.py)",
+      "Bash(python3 tools/workflow/hooks.py *)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git fetch *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git merge --ff-only origin/main)",
+      "Bash(git push -u origin claude/*)"
+    ],
+    "ask": [
+      "Edit(tools/archcheck/rules.toml)",
+      "Edit(tools/archcheck/exceptions.toml)",
+      "Edit(.claude/**)",
+      "Edit(.github/CODEOWNERS)"
+    ],
+    "deny": [
+      "Bash(git push * main)",
+      "Bash(git push * HEAD:main)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/workflow/hooks.py\" session-start",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/workflow/hooks.py\" stop-guard",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

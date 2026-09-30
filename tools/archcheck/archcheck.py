@@ -7,6 +7,7 @@
   dependency  zone 之间的依赖方向                        INV-03
   vendor-sdk  模型供应商 SDK 只在模型网关中使用          INV-01
   model-id    模型 ID 不硬编码在网关之外                 INV-01
+  progress    路线图与进度文件的状态一致                 GOV
 
 规则在 rules.toml，豁免在 exceptions.toml（必须有 owner 和到期日）。
 只依赖标准库，Python >= 3.11。
@@ -31,12 +32,16 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 GUIDE = "docs/governance.md"
 
+sys.path.insert(0, str(HERE.parent / "workflow"))
+import progress_state  # noqa: E402  进度格式的唯一解析实现（tools/workflow）
+
 RULE_INVARIANT = {
     "layout": "INV-11",
     "adr": "INV-11",
     "dependency": "INV-03",
     "vendor-sdk": "INV-01",
     "model-id": "INV-01",
+    "progress": "GOV",
     "exception": "GOV",
 }
 
@@ -299,6 +304,23 @@ def check_adr(root: Path, files: list[str], rules: dict) -> list[Violation]:
     return out
 
 
+def check_progress(root: Path, files: list[str], rules: dict) -> list[Violation]:
+    cfg = rules.get("progress", {})
+    roadmap_rel = cfg.get("roadmap", "docs/roadmap.md")
+    progress_rel = cfg.get("progress", "docs/progress.md")
+    if roadmap_rel not in files and progress_rel not in files:
+        return []
+    if roadmap_rel not in files or progress_rel not in files:
+        missing = roadmap_rel if roadmap_rel not in files else progress_rel
+        return [Violation("progress", missing, 0, "路线图与进度文件必须同时存在")]
+    steps = progress_state.parse_roadmap((root / roadmap_rel).read_text(encoding="utf-8"))
+    progress = progress_state.parse_progress((root / progress_rel).read_text(encoding="utf-8"))
+    return [
+        Violation("progress", progress_rel, 0, problem)
+        for problem in progress_state.consistency_problems(steps, progress, cfg.get("max_in_progress", 2))
+    ]
+
+
 # ---------------------------------------------------------------------------
 # 豁免
 # ---------------------------------------------------------------------------
@@ -358,6 +380,7 @@ def run(root: Path, rules_path: Path, exceptions_path: Path, today: dt.date) -> 
         check_layout(files, rules)
         + check_adr(root, files, rules)
         + check_code(root, files, rules)
+        + check_progress(root, files, rules)
     )
     try:
         exc_label = exceptions_path.resolve().relative_to(root.resolve()).as_posix()

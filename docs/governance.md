@@ -318,6 +318,22 @@ flowchart LR
 
 给 AI 布置任务时，最好直接引用架构章节和 ADR，例如：“按 architecture.md §5.5 和 ADR-0006 实现配音节点”。
 
+### 10.1 自主推进工作流（Claude Code 原生机制）
+
+日常推进不需要每次布置任务：说“继续当前进度”（`/continue`），agent 就按仓库中的进度自主推进当前里程碑。所有配置都在仓库内，只对本项目生效。
+
+| 部件 | 位置 | 作用 |
+|---|---|---|
+| 斜杠命令 | `.claude/skills/` | `/continue` 推进里程碑；`/step` 完成一个步骤；`/progress` 只读查看；`/decide` 由用户记录决定（agent 不能调用） |
+| 子代理 | `.claude/agents/` | `step-planner` 出步骤卡；`verifier` 在全新上下文中独立验收，避免“自己给自己打勾”；`arch-reviewer` 按不变量审查 diff |
+| SessionStart hook | `.claude/settings.json` → `tools/workflow/hooks.py` | 会话开始和上下文压缩后，自动注入当前进度与待决事项 |
+| Stop hook | 同上 | 步骤进行中且有未提交改动时阻止停止，要求先存档，防止容器回收丢失进度 |
+| 权限 | `.claude/settings.json` | 常用检查和 git 操作免确认；修改规则、豁免、工作流配置需确认；禁止直接推送 main 和强制推送 |
+| 状态文件 | `docs/progress.md` | 用户授权（自主推进设置）、当前步骤、子任务断点、待决事项、交接日志 |
+| 一致性检查 | `archcheck` 的 `progress` 规则 | 路线图与进度文件不能互相矛盾 |
+
+每个步骤一个 PR，CI 通过后 agent 自动合并；改动命中 CODEOWNERS 路径（规则、豁免、ADR、工作流配置等）的 PR 不自动合并，由人审阅。需要主观判断的验收、超预算、缺少密钥等情况，agent 登记待决事项后停下，不替人做主。
+
 ---
 
 ## 11. 架构健康度指标
@@ -367,11 +383,13 @@ flowchart LR
 - [x] PR 模板与 CODEOWNERS：`.github/`
 - [x] 技术债登记簿：`docs/tech-debt.md`
 - [x] 分步实施路线图：`docs/roadmap.md`
+- [x] 自主推进工作流：`.claude/`、`tools/workflow/`、`docs/progress.md`（§10.1）
 
 ### 13.2 需要在 GitHub 上手动设置
 
-- [ ] 创建 `main` 分支并设为默认分支；
-- [ ] 为 `main` 开启分支保护：禁止直接推送、必须通过 PR 合入、必须通过 `arch-check` 状态检查、必须有 Code Owner 评审；
+- [x] 创建 `main` 分支；
+- [ ] 把 `main` 设为默认分支（新会话从默认分支启动）；
+- [ ] 为 `main` 开启分支保护：禁止直接推送、必须通过 PR 合入、必须通过 `arch-check` 状态检查。**不要**开启“必须有 Code Owner 评审”，否则 agent 无法自动合并；受保护路径由工作流在合并前把关（§10.1）；
 - [ ] 团队成员加入后，把 `.github/CODEOWNERS` 中的负责人换成具体成员或小组。
 
 ### 13.3 P0 期间完成
