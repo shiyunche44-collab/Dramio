@@ -351,12 +351,17 @@ def metrics(doc: dict[str, Any], source: dict[str, Any] | None = None) -> dict[s
     return m
 
 
+def _fmt(value: Any, spec: str = "g") -> str:
+    return "-" if value is None else format(value, spec)
+
+
 def metrics_line(m: dict[str, Any]) -> str:
     gates = " ".join(f"{g}{'✓' if ok else '✗'}" for g, ok in m["gates"].items())
     return (
         f"镜头 {m['shots']}（{m['shot_range'][0]}–{m['shot_range'][1]}）  时长 {m['total_s']:g}/{m['target_s']:g}s  "
-        f"单镜 {m['shot_s_min']:g}–{m['shot_s_max']:g}s 平均 {m['shot_s_avg']:g}s  >5s {m['shots_over_5s']}  "
-        f"景别 {m['shot_size_kinds']} 种 近景特写 {m['close_up_ratio']:.0%}  留白≥{MIN_SLACK_S:g}s {m['slack_ok_ratio']:.0%}  {gates}"
+        f"单镜 {_fmt(m['shot_s_min'])}–{_fmt(m['shot_s_max'])}s 平均 {_fmt(m['shot_s_avg'])}s  >5s {m['shots_over_5s']}  "
+        f"景别 {m['shot_size_kinds']} 种 近景特写 {_fmt(m['close_up_ratio'], '.0%')}  "
+        f"留白≥{MIN_SLACK_S:g}s {_fmt(m['slack_ok_ratio'], '.0%')}  {gates}"
     )
 
 
@@ -532,8 +537,9 @@ def run_shots(
                 round(balance_before - balance_after, 2) if balance_before is not None and balance_after is not None else None
             ),
         )
-        run.write_json("summary.json", summary)
         expected = n * len(sources)
+        summary["n_expected"] = expected  # n_requested 是每个输入的份数
+        run.write_json("summary.json", summary)
         ok = aborted is None and summary["passed"] == expected
         print(
             f"\n通过 {summary['passed']}/{expected}（首次通过 {summary['first_pass']}），估算费用 ¥{summary['cost_cny_total']:.4f}"
@@ -565,8 +571,9 @@ def run_metrics(paths: list[Path], source: Path | None = None, as_json: bool = F
             ok = False
             continue
         report = script.drama_ir().validate(doc)
-        if report.errors or len(doc["episodes"]) != 1:
-            print(f"{p}: 无法计算指标（{len(report.errors)} 个校验错误，{len(doc.get('episodes') or [])} 集）", file=out)
+        if report.errors or len(doc["episodes"]) != 1:  # 没有结构错误时 doc 必是对象
+            episodes = len(doc["episodes"]) if not report.errors else "?"
+            print(f"{p}: 无法计算指标（{len(report.errors)} 个校验错误，{episodes} 集）", file=out)
             ok = False
             continue
         m = metrics(doc, src_doc)
@@ -584,7 +591,11 @@ def run_metrics(paths: list[Path], source: Path | None = None, as_json: bool = F
 
 def _cmd(args: argparse.Namespace) -> int:
     if args.metrics:
+        if args.input or args.n is not None:
+            args.parser.error("--metrics 是离线模式，不能与 --input、--n 一起用")
         return run_metrics([Path(p) for p in args.metrics], Path(args.source) if args.source else None, args.json)
+    if args.source or args.json:
+        args.parser.error("--source、--json 只能与 --metrics 一起用（否则会发起付费生成）")
     settings = ShotSettings(
         provider=args.provider,
         model=args.model,
@@ -596,15 +607,15 @@ def _cmd(args: argparse.Namespace) -> int:
         reasoning_effort=args.reasoning_effort,
         max_cost_cny=args.max_cost_cny,
     )
-    return run_shots(settings, inputs=[Path(p) for p in args.input] if args.input else None, n=args.n)
+    return run_shots(settings, inputs=[Path(p) for p in args.input] if args.input else None, n=5 if args.n is None else args.n)
 
 
 def add_parser(sub) -> None:
     p = sub.add_parser("shots", help="1 集 DramaIR v0 剧本 → 重新分镜（P0-04）")
     p.add_argument("--input", nargs="+", help="输入剧本（DramaIR v0 JSON，1 集）；默认标准样例 ep01")
-    p.add_argument("--n", type=int, default=5, help="每个输入顺序生成的样本数（默认 5）")
+    p.add_argument("--n", type=int, default=None, help="每个输入顺序生成的样本数（默认 5）")
     p.add_argument("--metrics", nargs="+", metavar="JSON", help="离线模式：只计算这些文档的分镜指标与 H1–H4，不调用模型")
     p.add_argument("--source", help="与 --metrics 一起用：原分镜文档，用于计算相似度")
     p.add_argument("--json", action="store_true", help="与 --metrics 一起用：输出完整 JSON")
     script.add_llm_options(p, DEFAULT_PROMPT)
-    p.set_defaults(func=_cmd)
+    p.set_defaults(func=_cmd, parser=p)

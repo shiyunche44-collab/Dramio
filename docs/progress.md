@@ -22,36 +22,22 @@
 ## 当前状态
 
 - **当前里程碑**：M0.2 单项能力摸底
-- **当前步骤**：P0-04
-- **步骤状态**：进行中
+- **当前步骤**：P0-05
+- **步骤状态**：未开始
 - **工作分支**：claude/sweet-lamport-cwwsvb
 - **PR**：—
 
 ## 步骤卡
 
-- **步骤**：P0-04 分镜拆解
-- **目标**：`python3 -m poc shots` 把 1 集 DramaIR v0 剧本（场、台词、动作）重新拆成镜头列表（景别、机位、运镜、时长、台词挂载），产物仍是通过严格校验的 v0 文档，并附带可量化的“镜头数量与时长合理性”指标
-- **做**：v0 没有“已分场、未分镜”的形态（台词只能挂在镜头上），所以做**重新分镜**：代码剥掉镜头结构，渲染成分场剧本视图（只是 Prompt 文本，不建新结构）→ LLM 只输出各场新镜头 → 合并回输入文档、确定性重排 `shot_id` → `validate` strict + 守恒检查（场集合与顺序、每场台词序列 `line_id/speaker/kind/text/delivery` 与顺序完全不变）+ 合理性硬门槛 H1–H4 → 不通过带路径回喂，最多修复 2 轮。硬门槛（T=目标时长，T=60 时值在括号内）：H1 镜头数 ⌈T/5⌉–⌊T/2.5⌋（12–24）；H2 单镜 1.5–8 秒；H3 总时长偏差 ≤ 10%（54–66 秒）；H4 每镜台词朗读 ≤ hint_s。Prompt `poc/prompts/shots.v1.md`（阈值运行时取自常量与 `checks`，输出 Schema 从 v0 `$defs/shot` 抽取）；`poc/shots.py` 复用 `script.Generator`（子类化，不复制重试、记账、费用保险）；指标 `metrics.json`（时长分布、>5 秒占比、台词占满率与留白、挂载统计、景别与运镜分布、近景特写占比、首镜是否建立镜头、与输入分镜的相似度）；离线 `--metrics` 模式出 ep01 与 P0-03 原分镜基线（¥0）；评测：批次 A（ep01，flash / flash 关思维链 / v4-pro 各 5 份）、批次 B（flash 对 P0-03 flash s01–s05 各 1 份）；报告 `docs/reports/p0/P0-04.md` 与证据 `docs/reports/p0/P0-04/<候选>/`；README 增加 shots 一节
-- **不做**：改 DramaIR Schema、校验器阈值、ep01（D-002 冻结）；引入 v1 字段或“未分镜”中间形态（写入报告留给 P0-14）；改写剧情或台词；配音真实时长回填（P0-05 / P0-12）；关键帧与模型 Prompt 编译（P0-07 / P1）；Prompt 迁入 `packages/prompts`、接入 `evals/`（P1）；DeepSeek 以外的供应商（列为待补测）；串联与缓存（P0-12）；规则式分镜基线
-- **验收**：1）`cd spikes/poc && python3 -m poc shots --n 5`（默认输入 ep01、默认 `deepseek-flash`）同一次运行 5/5 通过：strict 0 错误 0 警告、守恒与 H1–H4 通过、每份修复 ≤ 2 轮，退出码 0；2）批次 B 5/5 通过，口径同 1；3）另两个候选各 5 份，结果与失败类型如实写入对比表（不要求全过）；4）第 1、2 条入库样本独立 `validate --strict` 退出码 0；5）`python3 -m poc shots --metrics <入库样本>` 对第 1、2 条样本报告 H1–H4 通过且与报告数值一致；6）报告含阈值与来源（architecture §1.3、§5.3、§5.4.1、§5.5.1、ep01、checks.py）、指标对比（ep01 基线、P0-03 原分镜、P0-04 各候选）、分布与挂载统计、单价、耗时、失败率、推荐方案；7）单元测试全部通过（原 75 个 + 新增：剧本视图、合并与重排、守恒反例带路径、H1–H4 边界、ep01 锚点通过全部硬门槛、ep01 指标数值、假 chat_fn 驱动的通过 / 修复 / 费用中止）；8）`make drama-ir-check`、`make arch-check` 通过；9）本步费用 ≤ ¥100 并记入“本步费用”；10）（可选，不阻塞）用户抽看 1 份新分镜
-- **涉及**：architecture §1.3、§4.2、§5.3、§5.4.1、§5.5.1；`packages/drama-ir/README.md`；ADR-0002、ADR-0010；INV-02、INV-03、INV-10（P0 惯例）、INV-11；governance §3 注（spikes 豁免 INV-01、INV-07，调用记入 calls.jsonl）
-- **估时**：1 天（含 3 个候选对比，可能到 1.5 天）
+（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
 
 ## 子任务
 
-- [x] 剧本视图与 Prompt：`poc/shots.py` 的 `script_view`、`prompts/shots.v1.md`、system / user prompt 渲染（阈值取自常量，输出 Schema 运行时抽取），加测试
-- [x] 合并与检查：合并回输入、`shot_id` 重排、守恒检查、H1–H4（常量集中定义），ep01 锚点与反例测试（带 JSON 路径）
-- [x] 合理性指标与离线模式：`metrics(doc, source_doc)` 与 `--metrics`；ep01 与 P0-03 15 份原分镜基线（¥0），加测试
-- [x] 生成循环与 CLI：子类化 `script.Generator`，`run_shots`（多输入、`--n`、summary、费用保险、余额差），`python3 -m poc shots`，假 chat_fn 测试通过 / 修复 / 中止
-- [x] 冒烟：3 个候选在 ep01 上各 1 份，必要时微调 `shots.v1`
-- [x] 批次 A：ep01 上 flash ×5、flash 关思维链 ×5、v4-pro ×5
-- [x] 批次 B：flash 对 P0-03 flash s01–s05 各 1 份
-- [x] 报告与证据：`docs/reports/p0/P0-04.md`、`docs/reports/p0/P0-04/<候选>/`（去掉余额绝对值）、README shots 一节
-- [ ] 验证（verifier）、评审（arch-reviewer）、交付
+（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
 
 ## 本步费用
 
-- **已花费**：¥3.34（估算；余额实际减少 ¥1.84）
+- **已花费**：¥0
 - **上限**：¥100
 
 ## 待决事项
@@ -98,3 +84,4 @@
 | 2026-09-30 | P0-03 | 未开工：用户提供 DeepSeek 密钥，写入 `spikes/poc/.env`（git 忽略，不入库）；`python3 -m poc doctor --require deepseek` 报 `UNREACHABLE(Tunnel 403)`，`api.deepseek.com` 被网络策略拦截。M0.2 其余步骤（P0-04 ~ P0-11）同样依赖尚未配置或被拦截的供应商，全部阻塞 | doctor 退出码 1；`make arch-check` 通过。费用 ¥0 | 用户放行 `api.deepseek.com` 并在云环境设置中添加 `DEEPSEEK_API_KEY` 后，新会话开始 P0-03 |
 | 2026-09-30 | P0-03 | 实现与评测完成，等待 D-003：`poc/llm.py`（OpenAI 兼容 Chat、JSON 模式、失败分类、余额查询）、`poc/pricing.py`、Prompt `script.v1`、`poc/script.py`（严格校验 + 最多 2 轮修复、瞬时故障重试、费用保险）、CLI `python3 -m poc script`；三个候选（deepseek-flash、flash 关思维链、deepseek-v4-pro）各 5 份全部通过严格校验；证据与结论报告 `docs/reports/p0/P0-03.md`（含 agent 初评）。按评审修复：费用中止时 summary 计入未完成样本的费用、`write_json` 脱敏兜底、入库证据去掉余额绝对值、补交冒烟证据 | verifier 第 1–8、10、11 条通过，第 9 条（人工评分）待用户；75 个离线单元测试通过；15 份报告样本独立 `validate --strict` 通过；`make arch-check`、`make drama-ir-check` 通过；评审无阻断项。费用估算 ¥2.44（余额实际减少 ¥1.46） | 用户决定 D-003 后把人工评分写入报告，P0-03 标为 ✅；M0.2 其余步骤：P0-04 依赖 P0-03，P0-05/06/10 缺供应商密钥或域名被拦截 |
 | 2026-09-30 | P0-03 | 收尾：D-003 已决（人工认可 flash s04“不错”，其余沿用 agent 初评；默认 LLM `deepseek-flash`），人工评分写入报告；P0-03 标为 ✅，进度指针移到 P0-04 | verifier 第 1–11 条全部满足（第 9 条由 D-003 满足）；`make arch-check` 通过。本步费用 ¥2.44（估算，余额实际减少 ¥1.46） | P0-04 分镜拆解（DeepSeek 可用，不受阻塞）；P0-05/06/10 仍缺供应商密钥或域名被拦截 |
+| 2026-09-30 | P0-04 | 分镜拆解：`poc/shots.py` + Prompt `shots.v1` + CLI `python3 -m poc shots`。v0 没有未分镜形态，做法是重新分镜：剥掉镜头结构，渲染分场剧本视图 → LLM 只出镜头 → 合并回输入、重排 shot_id → strict 校验 + 台词守恒 + 合理性硬门槛 H1–H4（12–24 镜、单镜 1.5–8 秒、总时长 ±10%、台词念得完）→ 最多修复 2 轮；复用 `script.Generator`（新增 `build_messages`、`add_llm_options`）。离线 `--metrics` 给出 ep01 与 P0-03 基线。评测：flash、flash 关思维链、v4-pro 各在 ep01 上 5 份；flash 对 P0-03 flash s01–s05 各 1 份。报告 `docs/reports/p0/P0-04.md`，证据 `docs/reports/p0/P0-04/`。按评审修复：无台词文档的指标行崩溃、非对象 JSON 崩溃、CLI 模式互斥（防误发付费生成）、summary 加 `n_expected`、报告 token 数与余额口径 | verifier 第 1–9 条通过（第 6 条补单价后复验通过）：批次 A flash 5/5（首次通过 3）、批次 B 5/5（首次通过 5），flash 关思维链 3/5（时长算术失败）、v4-pro 5/5；18 份入库样本独立 `validate --strict` 通过，10 份门禁样本 `--metrics` H1–H4 全过、守恒独立复核通过；110 个单元测试通过；`make arch-check`、`make drama-ir-check` 通过；评审无阻断项。费用估算 ¥3.34（余额实际减少 ¥1.84） | 推荐默认 `deepseek-flash`（平均单镜 2.9 秒，>5 秒镜头 0.5%）；可选：用户抽看 `docs/reports/p0/P0-04/deepseek-flash/s01.md`。未采纳的评审建议：输出 Schema 外层（scenes/scene_id）从 v0 `$defs/scene` 组装、删除 `ShotSettings.target_s` 残留（改了会使入库 Prompt 与代码不一致，留给 P0-12 / P1）。下一步 P0-05 配音：缺 TTS 供应商密钥（DashScope / MiniMax / ElevenLabs 均未配置或被拦截），M0.2 其余步骤同样阻塞 |

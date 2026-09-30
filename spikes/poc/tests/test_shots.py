@@ -4,6 +4,7 @@ import json
 import re
 import tempfile
 import unittest
+import unittest.mock
 from pathlib import Path
 
 from poc import __main__ as cli
@@ -280,9 +281,34 @@ class MetricsTest(unittest.TestCase):
             self.assertEqual(shots.run_metrics([path], source=script.SAMPLE_EP01, as_json=True, out=out), 1)
             self.assertIn("vs_source", json.loads(out.getvalue())[0])
 
+    def test_no_dialogue_and_non_object_inputs(self):
+        doc = copy.deepcopy(EP01)
+        for sh in shots.shots_of(doc):
+            sh["dialogue"] = []
+        self.assertTrue(script.drama_ir().validate(doc).ok(strict=True))
+        self.assertIn("留白≥0.3s -", shots.metrics_line(shots.metrics(doc)))
+        with tempfile.TemporaryDirectory() as tmp:
+            nodlg, arr = Path(tmp) / "nodlg.json", Path(tmp) / "arr.json"
+            nodlg.write_text(dumps(doc), encoding="utf-8")
+            arr.write_text("[1, 2]", encoding="utf-8")
+            out = io.StringIO()
+            self.assertEqual(shots.run_metrics([nodlg], out=out), 0)
+            out = io.StringIO()
+            self.assertEqual(shots.run_metrics([arr], out=out), 1)
+            self.assertIn("无法计算指标", out.getvalue())
+
+    def test_cli_rejects_mixed_modes(self):
+        for argv in (["shots", "--source", "x.json"], ["shots", "--json"], ["shots", "--metrics", "a.json", "--n", "2"],
+                     ["shots", "--metrics", "a.json", "--input", "b.json"]):
+            args = cli.build_parser().parse_args(argv)
+            with self.assertRaises(SystemExit) as cm, unittest.mock.patch("sys.stderr", io.StringIO()):
+                args.func(args)
+            self.assertEqual(cm.exception.code, 2, argv)
+
     def test_cli_parser(self):
         args = cli.build_parser().parse_args(["shots", "--n", "2", "--thinking", "disabled"])
         self.assertEqual((args.n, args.thinking, args.prompt_version, args.model), (2, "disabled", "shots.v1", "deepseek-flash"))
+        self.assertIsNone(cli.build_parser().parse_args(["shots"]).n)  # 未给出时按 5 份
         self.assertEqual(cli.build_parser().parse_args(["script"]).prompt_version, "script.v1")
 
 
@@ -371,6 +397,7 @@ class GenerateTest(unittest.TestCase):
             code, run_dir, summary, _ = self.run_shots(chat, n=1, inputs=[script.SAMPLE_EP01, p2])
         self.assertEqual(code, 0)
         self.assertEqual([s["sample"] for s in summary["samples"]], ["in01_s01", "in02_s01"])
+        self.assertEqual((summary["n_requested"], summary["n_expected"]), (1, 2))
         self.assertEqual(len(summary["inputs"]), 2)
         # 一次调用 ¥0.064，上限 ¥0.05：第一份输入的请求照常发出，第二份输入的首个请求前按整次运行的累计费用中止
         out = io.StringIO()
