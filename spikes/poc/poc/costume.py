@@ -41,6 +41,7 @@ from poc import images, pricing, providers, script, seedream
 from poc.runlog import Run
 
 PROMPT_VERSION = "costume.v1"
+PROMPT_VERSIONS = ("costume.v1", "costume.v2")
 TRANSIENT_RETRIES = 2
 MAX_EXPRESSIONS = 6
 WATERMARK = False  # D-005
@@ -276,6 +277,7 @@ class Runner:
         self.gen_fn = gen_fn or seedream.generate
         self.sleep = sleep
         self.spent = 0.0
+        self.billing = seedream.billing_mode(env)
 
     def _price(self, job: Job) -> float:
         return pricing.image_cny(seedream.PROVIDER, self.s.model_id, pricing.size_pixels(job.size), len(job.refs))
@@ -301,7 +303,7 @@ class Runner:
                     call.cost_cny = 0.0
                     call.extra = {
                         "candidate": self.s.label, "round": rnd, "char_id": job.char_id, "kind": job.kind, "label": job.label,
-                        "retry": retry, "size": job.size, "refs": [r.sha256 for r in job.refs],
+                        "retry": retry, "size": job.size, "refs": [r.sha256 for r in job.refs], "billing": self.billing,
                     }
                     try:
                         res = self.gen_fn(
@@ -432,6 +434,12 @@ def run_costume(
         print(f"未知角色：{', '.join(unknown)}（可选 {', '.join(known)}）", file=out)
         return 2
     settings.chars = chars
+    try:
+        billing = seedream.billing_mode(env)
+        seedream.check_model(settings.model_id, billing)
+    except seedream.ImageError as exc:
+        print(str(exc), file=out)
+        return 2
     bases: dict[str, Ref] = {}
     if settings.stage == "derive":
         if settings.mode not in MODES:
@@ -456,10 +464,10 @@ def run_costume(
     )
     source = {"path": str(episode.relative_to(script.REPO_ROOT)) if episode.is_relative_to(script.REPO_ROOT) else str(episode), "sha256": sha}
     base_info = {cid: {"path": r.path, "sha256": r.sha256} for cid, r in bases.items()}
-    args = {"source": source, **asdict(settings), "bases": base_info, "watermark": WATERMARK}
+    args = {"source": source, **asdict(settings), "bases": base_info, "watermark": WATERMARK, "billing": billing}
     with Run("costume", args, base_dir=base_dir, secrets=providers.secret_values(env)) as run:
         runner = Runner(run, settings, env, gen_fn=gen_fn, sleep=sleep)
-        print(f"run_id: {run.run_id}  方案: {settings.label}  模型: {settings.model_id}  角色: {', '.join(chars)}  每轮 {len(jobs)} 张", file=out)
+        print(f"run_id: {run.run_id}  方案: {settings.label}  模型: {settings.model_id}（{billing}）  角色: {', '.join(chars)}  每轮 {len(jobs)} 张", file=out)
         items: list[Item] = []
         aborted = None
         for rnd in range(1, settings.rounds + 1):
@@ -491,6 +499,7 @@ def run_costume(
             watermark=WATERMARK,
             output_format=OUTPUT_FORMAT,
             prompt_version=settings.prompt_version,
+            billing=billing,
             aborted=aborted,
             spent_cny_total=round(runner.spent, 6),
             price={
@@ -498,6 +507,7 @@ def run_costume(
                 **asdict(pricing.IMAGE_PRICES[(seedream.PROVIDER, settings.model_id)]),
                 "tier_pixels": pricing.IMAGE_TIER_PIXELS,
                 "source": pricing.IMAGE_PRICE_SOURCE,
+                **({"note": pricing.PLAN_COST_NOTE} if billing == "plan" else {}),
             },
         )
         run.write_json("summary.json", summary)
@@ -552,6 +562,7 @@ def export_run(run_dir: Path, dest: Path, rnd: int = 1, out: TextIO | None = Non
         "prompt_version": summary["prompt_version"],
         "watermark": summary["watermark"],
         "output_format": summary["output_format"],
+        "billing": summary.get("billing", "payg"),
         "bases": summary["bases"],
         "round": rnd,
         "images": entries,
@@ -692,7 +703,8 @@ def _parse_bases(items: list[str] | None, parser) -> dict[str, str]:
 
 def _cmd(args: argparse.Namespace) -> int:
     generation = [o for o, v in (("--stage", args.stage), ("--model", args.model), ("--mode", args.mode), ("--char", args.char),
-                                  ("--n", args.n), ("--rounds", args.rounds), ("--base", args.base), ("--name", args.name), ("--small", args.small or None)) if v is not None]
+                                  ("--n", args.n), ("--rounds", args.rounds), ("--base", args.base), ("--name", args.name), ("--small", args.small or None),
+                                  ("--prompt-version", args.prompt_version)) if v is not None]
     offline = [o for o, v in (("--export", args.export), ("--verify", args.verify), ("--cards", args.cards)) if v is not None]
     if offline:
         if len(offline) > 1:
@@ -721,6 +733,7 @@ def _cmd(args: argparse.Namespace) -> int:
         max_cost_cny=args.max_cost_cny,
         name=args.name,
         small=args.small,
+        prompt_version=args.prompt_version or PROMPT_VERSION,
     )
     return run_costume(settings)
 
@@ -736,6 +749,7 @@ def add_parser(sub) -> None:
     p.add_argument("--base", action="append", metavar="角色=主图路径", help="derive 阶段每个角色的主图，可重复")
     p.add_argument("--name", help="方案名（默认 main-<模型> / derive-<方式>-<模型>）")
     p.add_argument("--small", action="store_true", help="用接口允许的最小尺寸（竖 720x1280、横 1280x720、方 960x960），控制入库体积")
+    p.add_argument("--prompt-version", choices=PROMPT_VERSIONS, help=f"提示词模板版本（默认 {PROMPT_VERSION}；v2 设定板去掉剧集风格）")
     p.add_argument("--max-cost-cny", type=float, default=15.0, help="本次运行累计估算费用上限（元），预计超出即中止")
     p.add_argument("--export", nargs=2, metavar=("运行目录", "目标目录"), help="离线：把一次运行的第 1 轮整理成入库证据")
     p.add_argument("--verify", metavar="证据根目录", help="离线：复核证据目录（sha256、尺寸、manifest 与 calls 对应、费用）")

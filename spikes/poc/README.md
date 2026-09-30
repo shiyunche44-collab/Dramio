@@ -130,7 +130,7 @@ python3 -m poc tts --export runs/<run_id> ../../docs/reports/p0/P0-05/<方案名
 
 ## costume：角色定妆（P0-06）
 
-DramaIR 角色描述 → 定妆主图、三视图（正 / 左侧 / 背）、表情集（火山方舟 Seedream 5.0 pro / flash，`POST /api/v3/images/generations`，文档 82379/1541523）。默认输入标准样例 ep01；提示词模板 `poc/prompts/costume.v1.md`，字段取自 `series.visual_style` 与 `characters[]`；表情集为 neutral 加该角色台词 `delivery.emotion` 中出现过的值（最多 6 个）。
+DramaIR 角色描述 → 定妆主图、三视图（正 / 左侧 / 背）、表情集（火山方舟 Seedream 5.0 pro / flash，文档 82379/1541523）。计费模式由 `ARK_BILLING` 决定（D-007）：默认 `plan` 走方舟 Agent Plan 包月套餐 `POST /api/plan/v3/images/generations`，只支持 5.0 pro，`cost_cny` 记按量刊例价的等价费用、不实付；`payg` 走按量付费 `POST /api/v3/images/generations`，可用 pro / flash / v4。两种模式的 Key 不能混用。`ARK_BILLING` 不是密钥，可写在进程环境或 `.env`，留空即 `plan`。默认输入标准样例 ep01；提示词模板 `poc/prompts/costume.v1.md`（`--prompt-version costume.v2`：设定板去掉剧集风格，其它节不变），字段取自 `series.visual_style` 与 `characters[]`；表情集为 neutral 加该角色台词 `delivery.emotion` 中出现过的值（最多 6 个）。
 
 需要在方舟控制台“开通管理”中开通对应模型，否则返回 404 `ModelNotOpen`（不计费）。
 

@@ -9,6 +9,7 @@ from tests.test_seedream import jpeg
 
 SENTINEL = "ark-SENTINEL-7f3b2c9e1d"
 ENV = {"ARK_API_KEY": SENTINEL}
+PAYG = {**ENV, "ARK_BILLING": "payg"}
 
 
 def result(width=1152, height=2048, tag=b"a"):
@@ -43,6 +44,20 @@ class TemplateTest(unittest.TestCase):
         self.assertEqual(set(t), {"main", "view", "expression", "view_ref", "expression_ref", "view_sheet", "expression_sheet"})
         for tpl in t.values():
             self.assertNotIn(">", tpl.template.splitlines()[0][:1])
+
+    def test_v2_only_drops_style_from_sheets(self):
+        v1, v2 = costume.load_templates("costume.v1"), costume.load_templates("costume.v2")
+        self.assertEqual(set(v1), set(v2))
+        for name in v1:
+            with self.subTest(name=name):
+                if name.endswith("_sheet"):
+                    self.assertIn("$style", v1[name].template)
+                    self.assertNotIn("$style", v2[name].template)
+                else:
+                    self.assertEqual(v1[name].template, v2[name].template)
+        jobs = costume.plan_jobs(self.doc, "derive", ["char_suwan"], mode="sheet", version="costume.v2")
+        self.assertTrue(jobs and all(self.doc["series"]["visual_style"] not in j.prompt and "$" not in j.prompt for j in jobs))
+        self.assertEqual(costume.PROMPT_VERSIONS, tuple(sorted(f.stem for f in costume.script.PROMPTS_DIR.glob("costume.v*.md"))))
 
     def test_fields_come_from_ir(self):
         jobs = costume.plan_jobs(self.doc, "main", ["char_suwan"], n=3)
@@ -123,6 +138,9 @@ class RunTest(unittest.TestCase):
         self.assertAlmostEqual(summary["cost_cny_total"], 0.60)
         self.assertAlmostEqual(sum(c["cost_cny"] for c in calls), summary["spent_cny_total"])
         self.assertTrue(all(c["provider"] == "ark" and c["capability"] == "image" and c["cost_basis"] == "estimate" for c in calls))
+        self.assertTrue(all(c["extra"]["billing"] == "plan" for c in calls))
+        self.assertEqual(summary["billing"], "plan")
+        self.assertIn("不实付", summary["price"]["note"])
         self.assertTrue(all(len(c["node_key"]) == 64 for c in calls))
         self.assertFalse(gen.calls[0]["watermark"])
         item = summary["items"][0]
@@ -156,7 +174,7 @@ class RunTest(unittest.TestCase):
 
     def test_account_level_error_aborts_run(self):
         gen = FakeGen(None, seedream.ImageError("http", "HTTP 403 code=AccountOverdueError", http_status=403, api_code="AccountOverdueError"))
-        code, run_dir, _ = self.run_costume(costume.Settings("main", "flash", ["char_suwan"], n=3), gen)
+        code, run_dir, _ = self.run_costume(costume.Settings("main", "flash", ["char_suwan"], n=3), gen, env=PAYG)
         self.assertEqual(code, 1)
         self.assertEqual(len(gen.calls), 2)
         summary, calls = self.load(run_dir)
@@ -167,7 +185,7 @@ class RunTest(unittest.TestCase):
 
     def test_retries_exhausted(self):
         errs = [seedream.ImageError("network", "reset") for _ in range(costume.TRANSIENT_RETRIES + 1)]
-        code, run_dir, _ = self.run_costume(costume.Settings("main", "flash", ["char_suwan"], n=1), FakeGen(*errs))
+        code, run_dir, _ = self.run_costume(costume.Settings("main", "flash", ["char_suwan"], n=1), FakeGen(*errs), env=PAYG)
         self.assertEqual(code, 1)
         summary, calls = self.load(run_dir)
         self.assertEqual(len(calls), costume.TRANSIENT_RETRIES + 1)
@@ -210,6 +228,8 @@ class RunTest(unittest.TestCase):
             (costume.Settings("main", "pro", ["char_x"]), ENV, "未知角色"),
             (costume.Settings("derive", "pro", ["char_suwan"], mode="ref"), ENV, "主图"),
             (costume.Settings("main", "pro", []), {}, "ARK_API_KEY"),
+            (costume.Settings("main", "flash", ["char_suwan"]), ENV, "Agent Plan 不支持"),
+            (costume.Settings("main", "pro", ["char_suwan"]), {**ENV, "ARK_BILLING": "free"}, "ARK_BILLING"),
         ]
         for settings, env, msg in cases:
             with self.subTest(msg=msg):

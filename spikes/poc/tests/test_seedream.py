@@ -63,7 +63,7 @@ class RequestTest(unittest.TestCase):
         res = seedream.generate("画一个人", model=PRO, size="1152x2048", env=ENV, transport=fake)
         req = fake.requests[0]
         body = json.loads(req.data)
-        self.assertEqual(req.full_url, "https://ark.cn-beijing.volces.com/api/v3/images/generations")
+        self.assertEqual(req.full_url, "https://ark.cn-beijing.volces.com/api/plan/v3/images/generations")
         self.assertEqual(req.get_header("Authorization"), f"Bearer {SENTINEL}")
         self.assertEqual(body, {
             "model": PRO, "prompt": "画一个人", "size": "1152x2048", "response_format": "b64_json",
@@ -81,6 +81,25 @@ class RequestTest(unittest.TestCase):
         self.assertEqual(seedream.build_body(PRO, "p", size="1K", refs=[uri, uri])["image"], [uri, uri])
         with self.assertRaises(ValueError):
             seedream.build_body(PRO, "p", size="1K", refs=[uri] * 11)
+
+    def test_payg_uses_v3_and_allows_flash(self):
+        fake = Fake(resp(200, ok_body(jpeg())))
+        seedream.generate("p", model=FLASH, size="1K", env={**ENV, "ARK_BILLING": " PAYG "}, transport=fake)
+        self.assertEqual(fake.requests[0].full_url, "https://ark.cn-beijing.volces.com/api/v3/images/generations")
+
+    def test_plan_rejects_unsupported_model_before_request(self):
+        fake = Fake()
+        for model in (FLASH, seedream.MODELS["v4"]):
+            with self.subTest(model=model), self.assertRaises(seedream.ImageError) as ctx:
+                seedream.generate("p", model=model, size="1K", env=ENV, transport=fake)
+            self.assertEqual(ctx.exception.kind, "config")
+            self.assertTrue(ctx.exception.fatal)
+        self.assertEqual(fake.requests, [])
+
+    def test_invalid_billing(self):
+        with self.assertRaises(seedream.ImageError) as ctx:
+            seedream.generate("p", model=PRO, size="1K", env={**ENV, "ARK_BILLING": "free"}, transport=Fake())
+        self.assertEqual(ctx.exception.kind, "config")
 
     def test_missing_key(self):
         with self.assertRaises(seedream.ImageError) as ctx:
@@ -131,6 +150,11 @@ class ErrorTest(unittest.TestCase):
         self.assertTrue(exc.fatal)
         self.assertFalse(exc.billable)
         self.assertFalse(self.call(resp(500, b"x")).fatal)
+
+    def test_unsupported_model_from_server_is_fatal(self):
+        exc = self.call(resp(400, err_body("UnsupportedModel", "does not support the agent plan feature")))
+        self.assertTrue(exc.fatal)
+        self.assertFalse(exc.billable)
 
     def test_moderation(self):
         for status in (400, 200):

@@ -3,6 +3,11 @@
 接口：POST https://ark.cn-beijing.volces.com/api/v3/images/generations（文档 82379/1541523，2026-09-30 读取）
 鉴权：`Authorization: Bearer <ARK_API_KEY>`。不跟随重定向（沿用 doctor 的 opener）。
 
+计费模式（`ARK_BILLING`，默认 plan，D-007）：
+- plan  方舟 Agent Plan 包月套餐：路径 `/api/plan/v3/images/generations`，请求体与 `/api/v3` 相同；只支持 5.0 pro
+        （2026-09-30 实测 flash / 4.0 返回 `UnsupportedModel`）；套餐 Key 在 `/api/v3` 上返回 `AuthenticationError`，两种 Key 不能混用。
+- payg  按量付费：路径 `/api/v3/images/generations`，需要按量付费账户的 Key。
+
 请求要点（Seedream 5.0 pro / flash；4.0 另见各处注明）：
 - `size`：档位 `1K` / `1.5K` / `2K`（默认 2K），或 `宽x高`（总像素 [921600, 4624220]，宽高比 [1/16, 16]；4.0 上限 4096x4096）；
 - `image`：参考图，URL 或 `data:image/<小写格式>;base64,...`，最多 10 张；
@@ -37,8 +42,10 @@ from urllib.request import Request
 from poc import config, doctor, providers
 
 BASE_URL = "https://ark.cn-beijing.volces.com"
-PATH = "/api/v3/images/generations"
 KEY_ENV = "ARK_API_KEY"
+BILLING_ENV = "ARK_BILLING"
+DEFAULT_BILLING = "plan"
+PATHS = {"plan": "/api/plan/v3/images/generations", "payg": "/api/v3/images/generations"}
 PROVIDER = "ark"
 USER_AGENT = "dramio-poc-seedream/0"
 DEFAULT_TIMEOUT = 180.0
@@ -48,12 +55,14 @@ MODELS = {
     "flash": "doubao-seedream-5-0-flash-260915",
     "v4": "doubao-seedream-4-0-20260415",
 }
+# Agent Plan 支持的图像模型（2026-09-30 实测；其它模型返回 UnsupportedModel，文档 82379/2366394）
+PLAN_MODELS = {MODELS["pro"]}
 # output_format 只有 5.0 系列支持（文档 82379/1541523）；4.0 不传，默认输出 jpeg
 OUTPUT_FORMAT_MODELS = {MODELS["pro"], MODELS["flash"]}
 MAX_REFS = 10
 _MODERATION_MARKERS = ("SensitiveContent", "RiskDetection", "ContentFilter")
 # 账号级错误：换哪张图都会失败（欠费、模型未开通、鉴权失败），调用方应中止整次运行
-FATAL_CODES = ("AccountOverdueError", "ModelNotOpen", "AuthenticationError", "InvalidEndpointOrModel.NotFound")
+FATAL_CODES = ("AccountOverdueError", "ModelNotOpen", "AuthenticationError", "InvalidEndpointOrModel.NotFound", "UnsupportedModel")
 _TRANSIENT_CODES = ("ServerOverloaded", "InternalServiceError", "RateLimitExceeded", "QuotaExceeded.Concurrency")
 
 
@@ -108,6 +117,22 @@ def _default_transport(request: Request, timeout: float) -> Response:
     except (URLError, OSError, http.client.HTTPException) as exc:
         reason = getattr(exc, "reason", exc)
         raise ImageError("network", f"{type(exc).__name__}: {reason}") from None
+
+
+def billing_mode(env: Mapping[str, str] | None = None) -> str:
+    env = os.environ if env is None else env
+    mode = (env.get(BILLING_ENV) or DEFAULT_BILLING).strip().lower()
+    if mode not in PATHS:
+        raise ImageError("config", f"{BILLING_ENV}={mode!r} 无效，可选 {' / '.join(PATHS)}", transient=False)
+    return mode
+
+
+def check_model(model: str, billing: str) -> None:
+    if billing == "plan" and model not in PLAN_MODELS:
+        raise ImageError(
+            "config", f"Agent Plan 不支持 {model}（只支持 {', '.join(sorted(PLAN_MODELS))}）；按量付费请设 {BILLING_ENV}=payg 并换用按量付费 Key",
+            transient=False,
+        )
 
 
 def data_uri(image: bytes, fmt: str) -> str:
@@ -232,12 +257,14 @@ def generate(
     key = (env.get(KEY_ENV) or "").strip()
     if not key:
         raise ImageError("config", f"缺少 {KEY_ENV}", transient=False)
+    billing = billing_mode(env)
+    check_model(model, billing)
     secrets = providers.secret_values(env)
     body = build_body(
         model, prompt, size=size, refs=refs, watermark=watermark, response_format=response_format, output_format=output_format
     )
     request = Request(
-        BASE_URL + PATH,
+        BASE_URL + PATHS[billing],
         data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
         headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json", "User-Agent": USER_AGENT},
         method="POST",

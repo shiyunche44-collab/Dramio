@@ -74,6 +74,8 @@ def asr_cny(provider: str, resource: str, seconds: float) -> float:
 # Seedream 5.0 flash ¥0.12 / 张、Seedream 4.0 ¥0.20 / 张，参考图免费。只对成功生成的图片计费（usage.generated_images），审核未通过不计费。
 IMAGE_PRICE_SOURCE = "方舟模型价格 doc 82379/1544106（2026-09-30）"
 IMAGE_TIER_PIXELS = 2_610_000
+# Agent Plan（包月，按 AFP 点数扣额度）的调用不另外付费；cost_cny 仍按上面的按量刊例价记“等价费用”，用于成本模型（D-007）
+PLAN_COST_NOTE = "billing=plan：Agent Plan 包月额度内调用，cost_cny 为按量刊例价的等价费用，不实付"
 
 
 @dataclass(frozen=True)
