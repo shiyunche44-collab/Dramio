@@ -22,61 +22,22 @@
 ## 当前状态
 
 - **当前里程碑**：M0.2 单项能力摸底
-- **当前步骤**：P0-06
-- **步骤状态**：进行中
+- **当前步骤**：P0-07
+- **步骤状态**：未开始
 - **工作分支**：claude/sweet-lamport-cwwsvb
 - **PR**：—
 
 ## 步骤卡
 
-- **步骤**：P0-06 角色定妆（估时 1 天，可能 1–1.5 天）
-- **目标**：用方舟 Seedream（阶段 1 用按量付费的 5.0 flash 对比 4.0；账号改为 Agent Plan 后只能用 5.0 pro，按 D-007 主图与阶段 2 用 pro 重跑，flash 结果留作对照）为 ep01（D-002）的苏晚、陆沉各生成一套定妆：文生图主图 + 三视图（正 / 侧 / 背）+ 表情集；主图原样保存并记录 sha256，供 P0-07 / P0-08 作身份参考；对比出默认定妆路线，由用户（D-006）为每个角色选定一套。
-- **做**：
-  - 冒烟核实方舟图像接口 `POST /api/v3/images/generations`：`model`、`prompt`、`size`（9:16、≤1.5K 档）、`response_format`（优先 `b64_json`）、`watermark`、`seed`、参考图 `image` 传法（data URI）、响应与错误字段、审核拒绝错误码；结果写入报告“接口”一节。
-  - `poc/seedream.py`（标准库，可注入 transport，复用 `doctor.urlopen`，`config.redact` 脱敏）：失败分类 network / http / api_error / moderation / bad_response / empty，区分瞬时；每个请求经 `Run.call()` 记账，填写 `node_key`（只记录、不缓存）；calls.jsonl 与 summary 不写 base64。
-  - `pricing` 图像单价（vendor-volcengine.md §3.2：pro ≤1.5K ¥0.30、>1.5K ¥0.60，flash ¥0.12，第 2 张参考图起 ¥0.02）；审核拒绝与不可重试 4xx 不计费，网络中断 / 5xx / 429 保守按全额。
-  - 图像文件工具：sha256、字节数、JPEG SOF / PNG IHDR 宽高。
-  - Prompt 模板 `costume.v1`（主图、三视图、表情、ref 版、设定板），字段运行时取自 ep01 `characters[]` 与 `series.visual_style`（INV-02）；表情集 = neutral + 该角色在 ep01 `delivery.emotion` 中出现过的值（≤6）；允许修订 1 次为 v2 并在报告说明。
-  - 所有请求 `watermark=false`（D-005）。
-  - CLI `python3 -m poc costume`：`--stage main --model pro|flash --n 3`；`--stage derive --mode text|ref|group --base <主图>`；`--max-cost-cny`；离线 `--export`、`--verify`，与生成参数互斥（退出码 2）。
-  - 评测：阶段 1 主图 2 角色 × {flash, v4（`doubao-seedream-4-0-20260415`）} × 3 张；阶段 2 以 agent 初评推荐主图为基础、固定阶段 1 推荐模型，比较 text / ref / sheet 三种派生方式（5.0 pro / flash 不支持组图，sheet 为单张文生图设定板：三视图横排一张、表情网格一张），每角色 3 视图 + 表情集，2 轮（第 2 轮只留统计）。
-  - manifest 标注 `t2i_original` / `seedance_eligible`：只标在无参考图的文生图原始产物上；ref 派生标为不可用。
-  - 证据入库 `docs/reports/p0/P0-06/`：主图原图字节不改动；`manifest.json`；每角色定妆卡 `<角色>.md`（markdown 并排，不拼图）；`run-summary.json` / `run-calls.jsonl`；冒烟证据 `smoke/`。报告 `docs/reports/p0/P0-06.md`（结论、接口、方法、候选对比、agent 初评、Seedance 可用性与 30 天到期日、费用、待补测、给 P0-07 / P0-08 的建议）；README 增加 costume 一节；登记 D-006。
-- **不做**：人脸相似度与一致性量化（P0-07）；镜头关键帧（P0-07）；验证 Seedance 是否接受定妆图（P0-08）；其它图像供应商、即梦 / DreamO（无 AK/SK）、MediaKit（被拦截）；场景道具定妆；LoRA / 身份保持插件；修改 DramaIR Schema 或 ep01；模型网关、CAS、缓存命中；doctor 对 ark 的探测；提示词写法系统对比；拼图、缩略图、新增 Python 依赖。
-- **验收**（全部可离线复核）：
-  1. `cd spikes/poc && python3 -m unittest discover -s tests -t .` 全部通过且不访问网络；新增测试覆盖请求体（文生图 / 单参考图 / 多参考图）、响应解析（b64 / url / 无图）、错误分类与瞬时判定、计价（档位、参考图加价、拒绝不计费、瞬时失败全额）、模板渲染与表情集推导、JPEG / PNG 尺寸解析、`--verify` 正反例、离线与生成参数互斥。
-  2. 冒烟核实的接口事实写入报告“接口”一节（端点、参数、响应字段、尺寸限制、参考图传法、计费依据、`watermark` 取值、审核拒绝错误码或“未遇到”）；冒烟 `run-calls.jsonl` 入库 `P0-06/smoke/`。
-  3. 主图：2 角色 × {flash, v4} × 3 = 12 张文生图原始产物入库，sha256 与 manifest 一致；失败张数与原因记在 summary。
-  4. 派生：每个角色在 text / ref / sheet 下各有三视图 + 表情集的第 1 轮产物或失败记录；第 2 轮统计写入 run-summary。
-  5. 对比表数字（成功 / 首次成功、失败类型、每张与每角色一套的耗时和费用、输出尺寸）可从入库 `run-summary.json` / `run-calls.jsonl` 复算。
-  6. 入库 `run-calls.jsonl` 的 `cost_cny` 合计与报告和“本步费用”一致（±¥0.01），冒烟在账内；本步总费用 ≤ ¥100。
-  7. `python3 -m poc costume --verify ../../docs/reports/p0/P0-06` 返回 0：sha256、字节数、宽高与 manifest 一致；manifest 与成功请求一一对应；`seedance_eligible=true` 只在无参考图的文生图产物上。
-  8. `make arch-check`、`make drama-ir-check` 通过；ep01.json sha256 仍为 `cd02daef022c6e78227ef3bf366adb2b5142a979a803bcf4373cdb8765a6fb59`。
-  9. 设置了密钥时 `grep -rF "$ARK_API_KEY" docs spikes/poc --exclude=.env` 无匹配；calls.jsonl 与 summary 不含 base64 图像（每行 < 16 KB）。
-  10. 改动只涉及 `spikes/poc/`、`docs/reports/p0/`、`docs/progress.md`、`docs/roadmap.md`；`pyproject.toml` 的 `dependencies` 仍为 `[]`。
-  11. `du -sb docs/reports/p0/P0-06` ≤ 18 MB（D-009，D-008 为 16 MB，原 10 MB；主图原图必须入库，runs/ 不入库）；超额时先降派生图尺寸或表情数，主图原图不降级。
-  12. 定妆选定（需用户确认）：D-006 登记每个角色的候选主图与派生方式、推荐与理由、定妆卡路径；用户选定后写入报告。
-- **涉及**：architecture.md §5.2.1–5.2.3、§9.3、§9.4；ADR-0004、ADR-0005、ADR-0006；INV-01、INV-02、INV-05、INV-06、INV-07、INV-08（D-005）、INV-10；vendor-volcengine.md §1 第 3 条、§3.2；D-002。
+（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
 
 ## 子任务
 
-- [x] 1. 冒烟核实方舟图像接口（flash，≤5 次，约 ¥1）：b64 / url、size 限制、watermark / seed、data URI 参考图、usage 与错误体、单张字节数（run `20260930-194423-costume-smoke-b617`，¥0.56；url 下载域名被拦截，只能用 b64_json）
-- [x] 2. `pricing` 图像单价与计价 + 单测
-- [x] 3. `poc/seedream.py` 客户端（请求构造、解析、错误分类、脱敏）+ 单测
-- [x] 4. 图像文件工具（sha256、JPEG / PNG 宽高）+ 单测
-- [x] 5. Prompt 模板 `costume.v1` 与渲染（ep01 字段、表情集）+ 单测
-- [x] 6. `poc/costume.py` 主图阶段 + 注册 CLI + 单测
-- [x] 7. 派生阶段 text / ref / sheet（5.0 pro / flash 不支持组图，group 改为 sheet 设定板）（manifest `t2i_original` / `seedance_eligible`）+ 单测
-- [x] 8. 离线 `--export` / `--verify` + 单测；README costume 一节
-- [x] 9. 评测阶段 1：主图 12 张，agent 初评选推荐主图与模型（flash 6/6、v4 6/6；推荐 flash，苏晚 main-02、陆沉 main-02）
-- [x] 10. 评测阶段 2：text / ref / sheet × 2 角色 × 2 轮（D-007：pro 主图 run `20260930-201207-costume-3165` 6/6，基础图苏晚、陆沉 main-02；派生 pro + costume.v2 + `--small`：text run `203811-costume-88ee` 34/34、ref `203811-costume-8c43` 34/34、sheet `203811-costume-b7c2` 8/8，全部首次成功）
-- [x] 11. 证据导出、定妆卡、体积检查、`--verify` 返回 0（`--verify` 9 个目录 86 张通过；体积 16.94 MB 超 16 MB，登记 D-009）
-- [x] 12. 报告 `docs/reports/p0/P0-06.md`、登记 D-006、更新本步费用
-- [ ] 13. 验证（verifier）、评审（arch-reviewer）、交付 PR
+（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
 
 ## 本步费用
 
-- **已花费**：¥31.48（估算：冒烟 ¥0.56，主图 flash ¥0.72 / v4 ¥1.40 / pro ¥1.80，派生 flash text ¥1.56 / ref ¥1.68 / sheet ¥0.96，派生 pro text ¥10.20 / ref ¥10.20 / sheet ¥2.40；pro 共 ¥24.60 为 Agent Plan 套餐内调用的刊例价等价费用，不实付；另有一套重复运行的 pro 派生（runs `20260930-201759-costume-b459` / `-7118` / `-ff86`，76 张，等价 ¥23.40，消耗套餐额度，未入库、不计入上述合计））
+- **已花费**：¥0
 - **上限**：¥100
 
 ## 待决事项
@@ -149,3 +110,4 @@
 | 2026-09-30 | D-006 | 用户选 A：两个角色都用 pro `main-02` + `ref` 派生；决定写入报告“推荐与决定”，待补测补充 P0-08 需确认 Agent Plan 能否调 Seedance | — | 子任务 13：verifier、arch-reviewer、交付 PR |
 | 2026-09-30 | P0-06 | verifier：12 条验收全部通过（单测 205 个在无网络命名空间通过；`--verify` 9 个目录 86 张、¥31.48；体积 16.94 MB ≤ 18 MB）；按其建议修正报告耗时口径措辞。arch-reviewer 评审进行中 | verifier 报告；`make arch-check` 通过 | 处理 arch-reviewer 阻断项，然后按 ship.md 交付 PR |
 | 2026-09-30 | P0-06 | 补记（会话 `01DXLc6Z`）：D-007 改走 Agent Plan（提交 1e87c7f 起：`ARK_BILLING`、`/api/plan/v3`、`costume.v2`、`--prompt-version`，pro 主图 run `20260930-201207-costume-3165`），D-008 上限 16 MB（e89bb79），pro 派生由会话 `01TKEJcW` 入库（624f910，runs `20260930-203811-costume-88ee` / `-8c43` / `-b7c2`）。arch-reviewer：无阻断项；已处理建议 1–4、6、7（`UnsupportedModel` 写入 README / 报告 / docstring，报告 Seedance 结论注明待 P0-08 确认，`.env.example` 注释说明 `ARK_BILLING`，旧证据缺 `billing` 即 payg，vendor 文档补 Agent Plan，`--model` help 与互斥测试）；建议 8（套餐额度与按量计费分开记账）留给 P1 模型网关 | 单测、`make arch-check` 通过 | 按 ship.md 交付 PR |
+| 2026-09-30 | P0-06 | 完成：Seedream 定妆（flash / v4 / pro 主图各 6 张；pro 派生 text / ref / sheet 76/76；flash 派生因欠费不完整，留作对照）；D-006 选定两个角色 pro `main-02` + `ref`；报告 `docs/reports/p0/P0-06.md`、定妆卡、证据 9 个目录。P0-06 标为 ✅，进度指针移到 P0-07 | verifier 12/12 通过（单测 205 个无网络通过；`--verify` 86 张、¥31.48；16.94 MB ≤ 18 MB；密钥无泄露；改动范围合规）；arch-reviewer 无阻断项，建议已处理。费用 ¥31.48（按量实付 ¥6.88，其余为 Agent Plan 等价费用，不实付；另有重复运行的 pro 派生等价 ¥23.40 未入库） | P0-07 关键帧与一致性度量（以 pro `main-02` 为身份参考）；P0-08 前确认 Agent Plan 能否调 Seedance |
