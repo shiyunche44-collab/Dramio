@@ -70,8 +70,8 @@
 - [x] 8. 离线 `--export` / `--verify` + 单测；README costume 一节
 - [x] 9. 评测阶段 1：主图 12 张，agent 初评选推荐主图与模型（flash 6/6、v4 6/6；推荐 flash，苏晚 main-02、陆沉 main-02）
 - [x] 10. 评测阶段 2：text / ref / sheet × 2 角色 × 2 轮（D-007：pro 主图 run `20260930-201207-costume-3165` 6/6，基础图苏晚、陆沉 main-02；派生 pro + costume.v2 + `--small`：text run `203811-costume-88ee` 34/34、ref `203811-costume-8c43` 34/34、sheet `203811-costume-b7c2` 8/8，全部首次成功）
-- [ ] 11. 证据导出、定妆卡、体积检查、`--verify` 返回 0
-- [ ] 12. 报告 `docs/reports/p0/P0-06.md`、登记 D-006、更新本步费用
+- [x] 11. 证据导出、定妆卡、体积检查、`--verify` 返回 0（`--verify` 9 个目录 86 张通过；体积 16.94 MB 超 16 MB，登记 D-009）
+- [x] 12. 报告 `docs/reports/p0/P0-06.md`、登记 D-006、更新本步费用
 - [ ] 13. 验证（verifier）、评审（arch-reviewer）、交付 PR
 
 ## 本步费用
@@ -92,6 +92,8 @@
 | D-005 | P0-06 | 定妆图是否关闭 Seedream 的可见“AI 生成”水印（与 INV-08 相关：定妆图是内部中间资产、不发布，成片 AIGC 标识由 P0-11 负责） | A：关闭（`watermark=false`）；B：保留 | A：水印会污染作为参考图的定妆图；INV-08 约束生产环境，P0 不属于生产 | 已决 | A：定妆图关闭可见水印（`watermark=false`）（2026-09-30，用户：“关掉水印”） |
 | D-007 | P0-06 | 方舟改为 Agent Plan 包月套餐（新 Key 只能调 `/api/plan/v3`，图像只支持 Seedream 5.0 pro；flash / 4.0 返回 `UnsupportedModel`，新 Key 在按量付费的 `/api/v3` 上鉴权失败）后，P0-06 剩余评测怎么跑 | A：改用套餐内的 5.0 pro，主图 6 张 + 阶段 2（text / ref / sheet × 2 角色 × 2 轮）全部用 pro 重跑，flash 结果留作对照；B：给按量付费账户充值、换回旧 Key，按原计划用 flash 补跑（约 ¥4.8） | A：同模型内可比，费用走套餐额度；代价是推荐模型变为 pro（按量刊例价 ¥0.30 / 张，flash ¥0.12），结论中注明 | 已决 | A：改用 Agent Plan 的 5.0 pro 重跑（2026-09-30，用户：“选a”）。实现：`ARK_BILLING=plan`（默认）/ `payg`；plan 调用的 `cost_cny` 记按量刊例价的等价费用、不实付 |
 | D-008 | P0-06 | 证据体积超上限：加入 pro 主图后 `docs/reports/p0/P0-06` 为 10.95 MB（步骤卡上限 10 MB），pro 派生第 1 轮入库后预计 13–15 MB | A：上限放宽到 16 MB，flash 对照证据完整保留；B：保持 10 MB，删除已入库的 flash 派生图，只留 run-summary / calls | A：flash 是 pro 的对照组，删图后无法复核对比结论 | 已决 | A：上限放宽到 16 MB（2026-09-30，用户：“a”） |
+| D-006 | P0-06 | 定妆选定（主观）：每个角色选定一张主图和一种派生方式，作为 P0-07 / P0-08 的身份参考 | 主图：pro `main-01` / `main-02` / `main-03`（flash、v4 主图留作对照）；派生：A `ref`（主图作参考图的图生图）/ B `text`（独立文生图）/ C `sheet`（设定板，costume.v2）。并排见定妆卡 `docs/reports/p0/P0-06/char_suwan.md`、`char_luchen.md`；报告 `docs/reports/p0/P0-06.md` | 苏晚 pro `main-02`（`4e6cf20a`）+ A，陆沉 pro `main-02`（`33b545ed`）+ A：ref 76 张里脸型、发型、服装与主图最一致；text 表情脸型与年龄漂移、背面带出雨；sheet 板内一致但不是主图那张脸（陆沉发色变黑）。主图是文生图原始产物，可作 Seedance 参考到 2026-10-30。回复示例：`/decide D-006 A` 或 `/decide D-006 苏晚 main-01 + A` | 待决 | — |
+| D-009 | P0-06 | 证据体积再次超上限：pro 派生第 1 轮入库后 `docs/reports/p0/P0-06` 为 16.94 MB（D-008 上限 16 MB）；派生图已是接口最小尺寸，主图原图不能降级 | A：上限放宽到 18 MB，全部保留；B：删除已入库的 flash `derive-text-flash`、`derive-ref-flash` 图像（因欠费不完整，约 4.1 MB），只留 run-summary / calls；C：pro 派生每角色只入库 neutral 加 2 个表情（重新导出，约减 1.5 MB） | A：只超 0.94 MB；flash 派生是 pro 的对照组，报告的对比结论依赖这些图；P0 证据不再继续增长（P0-07 起证据放各自目录） | 待决 | — |
 
 ## 已知的前置条件
 
