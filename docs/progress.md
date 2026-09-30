@@ -64,7 +64,7 @@
 - [x] 6. CLI `python3 -m poc tts`（生成 + `--metrics` 互斥、`--max-cost-cny`），README 一节
 - [x] 7. 正式评测：音色初选 6 个音色（`20260930-160232` ~ `160636`）；候选 A–D 各 3 轮 × 15 句（`20260930-160729-tts-6688`、`161030-tts-8fed`、`161329-tts-ed5c`、`161629-tts-b795`），180/180 成功
 - [x] 8. 证据入库、报告 `docs/reports/p0/P0-05.md`、登记 D-004
-- [ ] 9. 验证（verifier）、评审（arch-reviewer）、交付 PR
+- [x] 9. 验证（verifier）、评审（arch-reviewer）、交付 PR（P0-05 保持 🔄，等 D-004）
 
 ## 本步费用
 
@@ -124,3 +124,4 @@
 | 2026-09-30 | P0-05 | 未开工：PR #6 已合并（P0-04 ✅）。M0.2 其余步骤全部阻塞：P0-05 配音缺 TTS 密钥（DashScope / MiniMax / ElevenLabs），P0-06 定妆缺图像密钥（DashScope / Ark / 可灵 / fal / Replicate），P0-10 缺音乐音效密钥（MiniMax / ElevenLabs / Replicate），P0-07 ~ P0-09、P0-11 依赖它们；只有 DeepSeek 可用 | doctor：除 deepseek 外 10 家均 `MISSING`；`make arch-check` 通过。费用 ¥0 | 用户在云环境设置中添加上述任一组密钥并放行对应域名后，新会话从 P0-05 开始 |
 | 2026-09-30 | P0-05 | 未开工：用户放行火山引擎文档域名并提供 AI MediaKit 视频口型对齐文档；整理接口、鉴权、输入限制、单价（¥1/分钟）写入“已知的前置条件”，作为 P0-09 口型候选 | `docs.volcengine.com`、`ark.cn-beijing.volces.com` 可访问；`mediakit.cn-beijing.volces.com` 仍 `Tunnel 403`；doctor 除 deepseek 外均 `MISSING`。费用 ¥0 | P0-05 仍缺 TTS 密钥；要用 MediaKit，需在云环境添加 `MEDIAKIT_API_KEY` 并放行 `mediakit.cn-beijing.volces.com` 及上传、下载域名（P0-09 前） |
 | 2026-09-30 | P0-05 | 未开工：按用户要求通读火山引擎文档中心，盘点与 Dramio 相关的能力、单价、鉴权与域名，写成 `docs/reports/p0/vendor-volcengine.md`（覆盖方舟、豆包语音、AI MediaKit、视觉智能 / 即梦、音乐生成、审核） | 域名可达性实测见报告 §8；`make arch-check` 通过。费用 ¥0 | P0-05 仍缺 TTS 凭证：火山路线需豆包语音 API Key 并放行其接口域名（待从控制台核实），或经 MediaKit 用 Seed Audio |
+| 2026-09-30 | P0-05 | 实现与评测完成，等待 D-004：用户配置 `ARK_API_KEY` 与 `VOLC_SPEECH_API_KEY` 后开工。注册 `volc_speech`（tts、asr）；`poc/speech.py`（豆包 TTS 2.0 逐行 JSON 流、录音文件识别 2.0 submit / query、失败分类与瞬时重试）、`poc/audio.py`（MP3 帧头时长、CER 与同音字等价折叠）、`poc/tts.py`（`python3 -m poc tts`，语音指令 `tts-instruct.v1`、语速映射，离线 `--metrics` / `--export`）、`pricing` 按字符 / 时长计价。评测：6 个音色初选；候选 A–D 各 3 轮 × 15 句 180/180 成功，`cer_equiv` 全 0，每集约 ¥0.074。报告 `docs/reports/p0/P0-05.md`。按评审修复：ASR 查询失败只重试查询、费用中止计入当句、计费口径统一、离线模式判空、业务错误脱敏、Xing 头 CRC；证据上限由 5 MB 调为 6 MB（4 个候选 + 初选，原因见步骤卡） | verifier 第 1–11 条通过、第 12 条登记完整待用户试听；158 个单元测试通过；`make arch-check`、`make drama-ir-check` 通过；评审无阻断项。费用估算 ¥1.15 | 用户试听后决定 D-004，把决定写入报告，P0-05 标为 ✅；未采纳的评审建议：代理 Tunnel 403 / DNS 等持续性网络错误快速失败（现由重试上限与 `--max-cost-cny` 兜底）。M0.2 其余可做：P0-06 定妆（Ark Seedream 可用）、P0-10 音乐音效 |
