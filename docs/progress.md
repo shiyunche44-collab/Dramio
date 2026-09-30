@@ -23,17 +23,34 @@
 
 - **当前里程碑**：M0.2 单项能力摸底
 - **当前步骤**：P0-03
-- **步骤状态**：未开始
-- **工作分支**：—
+- **步骤状态**：进行中
+- **工作分支**：claude/lucid-hamilton-r7bd4w
 - **PR**：—
 
 ## 步骤卡
 
-（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
+- **步骤**：P0-03 剧本生成
+- **目标**：`python3 -m poc script` 把一句话梗概经 DeepSeek 生成为 1 集 DramaIR v0 剧本，自动严格校验、有限次修复、记录费用；产出 5 份通过严格校验的样本、候选对比和评分表
+- **做**：`poc/llm.py`（OpenAI 兼容 Chat 客户端，urllib，JSON 模式，失败分类）；`poc/pricing.py`（单价，注明来源与日期，费用为估算，用余额差复核）；`poc/prompts/script.v1.md`（Schema + 从 `checks` 常量渲染的语义规则，spikes 内版本化）；`poc/script.py`（生成 → 解析 → `validate` strict → 最多 2 轮修复 → `runs/<run_id>/samples/`、`summary.json`、费用保险）；CLI `python3 -m poc script`（默认梗概取 ep01 的 `series.logline`）；离线单元测试；真实评测 `deepseek-flash` 门禁批次 n=5 与 `deepseek-v4-pro` 对比批次 n=5；证据入库 `docs/reports/p0/P0-03/`；结论报告 `docs/reports/p0/P0-03.md`（含 agent 初评）；登记 D-003 人工评分
+- **不做**：其他供应商 LLM 评测（无密钥或被拦截，报告列为待补测）；分镜评测（P0-04）及下游环节；node_key 缓存与串联（P0-12）；多集、审稿 Agent；Prompt 迁入 `packages/prompts`；修改 DramaIR Schema、阈值、ep01 及任何 CODEOWNERS 路径；新增 pip 依赖
+- **验收**：1）`cd spikes/poc && python3 -m poc script --n 5` 退出码 0，产物齐全；2）同一次运行顺序生成 5 份、不挑选，每份最终产物 `validate --strict` 0 错误 0 警告、自动修复 ≤ 2 轮，任一失败整批重跑且失败批次写入报告；3）`docs/reports/p0/P0-03/s*.json` 独立 `validate --strict` 通过，每份 1 集、logline 与输入一致；4）summary 与报告含首次通过率与每份修复轮数；5）calls.jsonl 每次尝试 1 行（provider、model、usage、cost_cny、cost_basis、extra.attempt），本步费用 ≤ ¥100 且与“已花费”一致；6）runs 与报告中不含密钥；7）离线单元测试全部通过（不设密钥也通过）；8）报告含样例、单价、耗时、失败率、推荐方案、评分表和标注“agent 初评（非人工）”的初评；9）D-003 人工评分由用户给出后写入报告（此前保持 🔄）；10）`make arch-check`、`make drama-ir-check` 通过，ep01 sha256 不变；11）改动只在 `spikes/poc/`、`docs/reports/p0/`、`docs/progress.md`、`docs/roadmap.md`
+- **涉及**：architecture §4、§5.1.2、§5.1.4；ADR-0002、ADR-0004（P0 豁免）、ADR-0010；governance §3 注（spikes 不受 INV-01 ~ INV-10 约束）；INV-03；TD-001
+- **估时**：1.5 天
 
 ## 子任务
 
-（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
+- [ ] LLM 客户端与计价：`poc/llm.py`、`poc/pricing.py`，离线测试 `tests/test_llm.py`
+- [ ] Prompt：`poc/prompts/script.v1.md` 与 Prompt 构建（Schema + checks 常量规则），`poc` 能找到 `dramio_drama_ir`，加测试
+- [ ] 生成流程 `poc/script.py`：生成、解析、严格校验、修复、产物、summary、费用保险，离线测试 `tests/test_script.py`
+- [ ] CLI `python3 -m poc script` 与 README 用法，加 CLI 测试
+- [ ] 真实冒烟：`deepseek-flash`、`deepseek-v4-pro` 各 1 次，确认 JSON 模式与输出长度，实测单价并更新“已花费”
+- [ ] 门禁批次：`deepseek-flash` `--n 5`（失败则改 Prompt 后整批重跑，全部记录）
+- [ ] 对比批次：`deepseek-v4-pro` `--n 5`
+- [ ] 证据入库 `docs/reports/p0/P0-03/` 并独立复验
+- [ ] 评分表与 agent 初评（含 ep01 锚点）
+- [ ] 结论报告 `docs/reports/p0/P0-03.md`
+- [ ] 登记 D-003（人工评分），更新本步费用
+- [ ] 验证（verifier）、评审（arch-reviewer）、交付
 
 ## 本步费用
 
@@ -64,7 +81,7 @@
   - Google Gemini / Veo `GEMINI_API_KEY` · `generativelanguage.googleapis.com`
   - Runway `RUNWAYML_API_SECRET` · `api.dev.runwayml.com`
 - 当前云容器（2026-09-30）：没有任何供应商密钥；`api.anthropic.com`、`generativelanguage.googleapis.com` 可以访问，其余供应商域名被网络策略拦截（doctor 报 `UNREACHABLE`）。
-- DeepSeek 密钥（2026-09-30）：用户已提供，本会话写入了被 git 忽略的 `spikes/poc/.env`（仅存在于当前容器，不入库）；doctor 能识别，但 `api.deepseek.com` 仍被网络策略拦截（`UNREACHABLE(Tunnel 403)`）。长期应在云环境设置中添加环境变量 `DEEPSEEK_API_KEY`，并在网络访问中放行 `api.deepseek.com`。
+- DeepSeek（2026-09-30 更新）：云环境已配置 `DEEPSEEK_API_KEY` 并放行 `api.deepseek.com`，doctor 报 OK；可用模型 `deepseek-flash`（V4.1-Flash）、`deepseek-v4-pro`。
 - ADR-0001 ~ 0010 目前为 Proposed，在 P0-14 统一评审。
 - GitHub 上需要用户手动完成：把默认分支改为 `main`；为 `main` 开启分支保护（要求 `arch-check` 通过，不要求 Code Owner 评审）。
 
