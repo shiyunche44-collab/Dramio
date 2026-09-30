@@ -25,7 +25,7 @@
 - **当前步骤**：P0-02
 - **步骤状态**：进行中
 - **工作分支**：claude/ecstatic-euler-z68coi
-- **PR**：https://github.com/shiyunche44-collab/Dramio/pull/2（与 D-001 合并在同一个 PR）
+- **PR**：https://github.com/shiyunche44-collab/Dramio/pull/2 已合并（含 D-001）；只剩 D-002
 
 ## 步骤卡
 
@@ -65,7 +65,7 @@
 - [x] 标准样例 `examples/v0/ep01.json`，`validate --strict` 零警告
 - [x] `render` 子命令与 `ep01.md`，一致性测试；可选 `jsonschema` 差分测试
 - [x] Makefile `drama-ir-check`；README 用法与冻结规则；architecture.md §4 指向说明；tech-debt.md TD-001
-- [ ] 验证与交付（verifier 1–9 通过；D-002 已登记；等 PR 合并与 D-002）：verifier 验收；登记 D-002（附 sha256）；PR 等用户审阅合并
+- [ ] 验证与交付（verifier 1–9 通过；PR #2 已合并；只等 D-002）：verifier 验收；登记 D-002（附 sha256）；PR 等用户审阅合并
 
 ## 本步费用
 
