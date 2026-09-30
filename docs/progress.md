@@ -58,7 +58,7 @@
 - [x] 项目骨架：pyproject、`poc/__main__.py`（argparse）、`.gitignore`（`runs/`、`!.env.example`）、`tests/`
 - [x] 配置加载与供应商注册表：`poc/config.py`、`poc/providers.py`、`.env.example`，附单元测试
 - [x] 运行目录与调用记录：`poc/runlog.py`（run_id、meta.json、`run.call()` → calls.jsonl），附单元测试
-- [ ] doctor 命令：状态判定、并发探测、`--offline`、`--require`、doctor.json，附 mock 单元测试与密钥不泄露测试
+- [x] doctor 命令：状态判定、并发探测、`--offline`、`--require`、doctor.json，附 mock 单元测试与密钥不泄露测试
 - [ ] 文档：`spikes/poc/README.md`；progress.md 前置条件写入变量名与域名
 - [ ] 验证：从 `spikes/poc` 与仓库根目录运行 doctor，输出写入交接日志；unittest 与 `make arch-check`
 
