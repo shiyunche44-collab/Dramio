@@ -59,7 +59,7 @@
 - [x] 配置加载与供应商注册表：`poc/config.py`、`poc/providers.py`、`.env.example`，附单元测试
 - [x] 运行目录与调用记录：`poc/runlog.py`（run_id、meta.json、`run.call()` → calls.jsonl），附单元测试
 - [x] doctor 命令：状态判定、并发探测、`--offline`、`--require`、doctor.json，附 mock 单元测试与密钥不泄露测试
-- [ ] 文档：`spikes/poc/README.md`；progress.md 前置条件写入变量名与域名
+- [x] 文档：`spikes/poc/README.md`；progress.md 前置条件写入变量名与域名
 - [ ] 验证：从 `spikes/poc` 与仓库根目录运行 doctor，输出写入交接日志；unittest 与 `make arch-check`
 
 ## 本步费用
@@ -76,7 +76,19 @@
 
 ## 已知的前置条件
 
-- P0-03 起需要调用模型供应商 API：需要在云环境设置中添加对应的密钥环境变量（变量名在 P0-01 中确定），并在网络设置中放行供应商域名。新会话才会生效。
+- P0-03 起需要调用模型供应商 API：在云环境设置中添加要评测的供应商的密钥环境变量，并在网络设置中放行其域名，新会话才会生效。用 `cd spikes/poc && python3 -m poc doctor --require <供应商>` 确认可用。变量名与域名（P0-01 确定，详见 `spikes/poc/README.md`）：
+  - Anthropic `ANTHROPIC_API_KEY` · `api.anthropic.com`
+  - 阿里云百炼 `DASHSCOPE_API_KEY` · `dashscope.aliyuncs.com`
+  - DeepSeek `DEEPSEEK_API_KEY` · `api.deepseek.com`
+  - 火山方舟 `ARK_API_KEY` · `ark.cn-beijing.volces.com`
+  - MiniMax `MINIMAX_API_KEY`（可选 `MINIMAX_GROUP_ID`）· `api.minimaxi.com`
+  - ElevenLabs `ELEVENLABS_API_KEY` · `api.elevenlabs.io`
+  - 可灵 `KLING_ACCESS_KEY`、`KLING_SECRET_KEY` · `api-beijing.klingai.com`
+  - fal `FAL_KEY` · `fal.run`、`queue.fal.run`
+  - Replicate `REPLICATE_API_TOKEN` · `api.replicate.com`、`replicate.delivery`
+  - Google Gemini / Veo `GEMINI_API_KEY` · `generativelanguage.googleapis.com`
+  - Runway `RUNWAYML_API_SECRET` · `api.dev.runwayml.com`
+- 当前云容器（2026-09-30）：没有任何供应商密钥；除 `api.anthropic.com` 外，上述供应商域名都被网络策略拦截（doctor 报 `UNREACHABLE`）。
 - ADR-0001 ~ 0010 目前为 Proposed，在 P0-14 统一评审。
 - GitHub 上需要用户手动完成：把默认分支改为 `main`；为 `main` 开启分支保护（要求 `arch-check` 通过，不要求 Code Owner 评审）。
 
