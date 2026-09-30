@@ -1,8 +1,8 @@
 """LLM 单价（元 / 百万 tokens），按 usage 估算单次调用费用（cost_basis=estimate）。
 
 来源说明：DeepSeek 官方价格页（api-docs.deepseek.com）被当前云环境的网络策略拦截，仓库内也没有单价资料。
-下表是 P0-03 冒烟时用“调用前后账户余额差 ÷ 实测 usage”校准的值（见 docs/reports/p0/P0-03.md），
-偏保守取整；账户余额只精确到 0.01 元，所以按批次复核，单次费用仍是估算。
+下表是按 DeepSeek 以往公开价量级取的保守上界。P0-03 全部 22 次调用估算 ¥2.44，账户余额实际减少 ¥1.46
+（见 docs/reports/p0/P0-03.md），即实际约为估算的 60%。余额只精确到 0.01 元且入账有延迟，只能按批次复核，单次费用仍是估算。
 """
 
 from __future__ import annotations
@@ -19,10 +19,10 @@ class Price:
     source: str
 
 
-# 2026-09-30 校准，见模块说明
+# 见模块说明
 PRICES: dict[tuple[str, str], Price] = {
-    ("deepseek", "deepseek-flash"): Price(0.5, 2.0, 8.0, "2026-09-30 余额差校准（保守上界）"),
-    ("deepseek", "deepseek-v4-pro"): Price(1.0, 4.0, 16.0, "2026-09-30 余额差校准（保守上界）"),
+    ("deepseek", "deepseek-flash"): Price(0.5, 2.0, 8.0, "保守上界，2026-09-30 余额差复核"),
+    ("deepseek", "deepseek-v4-pro"): Price(1.0, 4.0, 16.0, "保守上界，2026-09-30 余额差复核"),
 }
 
 # 未登记的模型按此保守估算，避免费用保险失效
