@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "陆沉，原来你连署名都是偷的。",
+  "duration_ms": 3479,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "陆沉，原来你连署名都是偷的。",
+      "start_ms": 480,
+      "end_ms": 3160
+    }
+  ]
+}

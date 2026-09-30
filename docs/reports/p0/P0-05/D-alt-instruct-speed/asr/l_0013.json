@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "你你怎么会有这个？",
+  "duration_ms": 2951,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "你你怎么会有这个？",
+      "start_ms": 430,
+      "end_ms": 2510
+    }
+  ]
+}

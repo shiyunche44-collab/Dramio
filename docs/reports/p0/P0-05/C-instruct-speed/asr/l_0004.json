@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "那是我熬了三个月的方案。",
+  "duration_ms": 2423,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "那是我熬了三个月的方案。",
+      "start_ms": 410,
+      "end_ms": 1970
+    }
+  ]
+}

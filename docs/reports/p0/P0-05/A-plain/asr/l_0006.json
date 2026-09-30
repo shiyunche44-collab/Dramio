@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "总有一天我会拿回来。",
+  "duration_ms": 2663,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "总有一天我会拿回来。",
+      "start_ms": 450,
+      "end_ms": 2250
+    }
+  ]
+}

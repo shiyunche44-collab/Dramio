@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "入职三年，我只用了十分钟收拾工位。",
+  "duration_ms": 3647,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "入职三年，我只用了十分钟收拾工位。",
+      "start_ms": 440,
+      "end_ms": 3280
+    }
+  ]
+}

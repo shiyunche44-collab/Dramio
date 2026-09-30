@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "纸箱底下粘着一枚不属于我的 U 盘。",
+  "duration_ms": 3863,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "纸箱底下粘着一枚不属于我的 U 盘。",
+      "start_ms": 390,
+      "end_ms": 3350
+    }
+  ]
+}

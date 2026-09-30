@@ -45,3 +45,24 @@ def estimate_cny(provider: str, model: str, usage: dict[str, Any] | None) -> flo
     output = int(usage.get("completion_tokens") or 0)
     cost = (int(hit) * p.input_cache_hit + int(miss) * p.input_cache_miss + output * p.output) / 1_000_000
     return round(cost, 6)
+
+
+# ---- 语音（P0-05）：按字符 / 按音频时长计价 ----
+# 来源：豆包语音计费说明 doc 6561/1359370（2026-09-30 读取）：后付费刊例价，语音合成模型 2.0 ¥3 / 万字符，
+# 录音文件识别模型 2.0 ¥0.8 / 小时（预付费资源包更低，P0 按刊例价保守估算）。
+# TTS 2.0 按“计费字符数”计费；结束块返回 usage.text_words 时用它，否则按全部字符（含标点）保守计算。
+TTS_CNY_PER_10K_CHARS: dict[tuple[str, str], float] = {
+    ("volc_speech", "seed-tts-2.0"): 3.0,
+}
+ASR_CNY_PER_HOUR: dict[tuple[str, str], float] = {
+    ("volc_speech", "volc.seedasr.auc"): 0.8,
+}
+SPEECH_PRICE_SOURCE = "豆包语音计费说明 doc 6561/1359370（后付费刊例价，2026-09-30）"
+
+
+def tts_cny(provider: str, resource: str, chars: int) -> float:
+    return round(chars * TTS_CNY_PER_10K_CHARS[(provider, resource)] / 10_000, 6)
+
+
+def asr_cny(provider: str, resource: str, seconds: float) -> float:
+    return round(seconds * ASR_CNY_PER_HOUR[(provider, resource)] / 3600, 6)

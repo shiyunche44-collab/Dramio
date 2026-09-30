@@ -15,6 +15,7 @@ from dataclasses import dataclass, field
 CAPABILITIES: dict[str, str] = {
     "llm": "LLM",
     "tts": "配音 TTS",
+    "asr": "语音识别 ASR",
     "image": "图像",
     "video": "视频",
     "lipsync": "口型",
@@ -98,6 +99,14 @@ PROVIDERS: tuple[Provider, ...] = (
         env=("ARK_API_KEY",),
         domains=("ark.cn-beijing.volces.com",),
         notes="未确认免费校验接口，只检查是否配置",
+    ),
+    Provider(
+        name="volc_speech",
+        label="豆包语音（火山引擎）",
+        capabilities=("tts", "asr"),
+        env=("VOLC_SPEECH_API_KEY",),
+        domains=("openspeech.bytedance.com",),
+        notes="新版控制台 API Key（x-api-key 头）；无免费校验接口，只检查是否配置",
     ),
     Provider(
         name="minimax",
