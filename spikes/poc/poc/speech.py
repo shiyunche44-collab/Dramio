@@ -53,6 +53,7 @@ ASR_DONE = 20000000
 ASR_PENDING = (20000001, 20000002)
 ASR_SILENT = 20000003
 _TRANSIENT_API_CODES = {55000000, 55000031}
+_CONCURRENCY_CODE = 45000000  # “quota exceeded for types: concurrency”并发限流
 
 
 class SpeechError(Exception):
@@ -68,7 +69,7 @@ class SpeechError(Exception):
                 kind in ("network", "truncated")
                 or (kind == "http" and (http_status == 429 or (http_status or 0) >= 500))
                 or (api_code in _TRANSIENT_API_CODES)
-                or ("concurrency" in message)
+                or (api_code == _CONCURRENCY_CODE and "concurrency" in message)  # 45000000 同时用于音色鉴权失败，按消息区分
             )
         self.transient = transient
 
@@ -232,7 +233,11 @@ def synthesize(
     resp = _send(BASE_URL + TTS_PATH, headers, body, timeout, transport, secrets)
     if resp.status != 200:
         raise _http_error(resp, secrets)
-    audio, words, chunks = parse_tts_stream(resp.body)
+    try:
+        audio, words, chunks = parse_tts_stream(resp.body)
+    except SpeechError as exc:  # 业务错误信息来自供应商，打印前脱敏
+        exc.args = (config.redact(str(exc), secrets),)
+        raise
     return TTSResult(audio, words, chunks, resp.headers.get("x-tt-logid"))
 
 

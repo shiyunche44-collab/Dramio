@@ -7,8 +7,10 @@
 语音指令按台词的 delivery（emotion / intensity）和 kind（旁白）生成，模板版本见 INSTRUCT_VERSION。
 
 瞬时故障（网络、流截断、429、5xx、服务端繁忙）同一句最多重试 TRANSIENT_RETRIES 次，每次请求都经 Run.call 记账。
-费用为估算：TTS 按结束块返回的计费字符数（没有时按全部字符）× 单价；请求被拒（HTTP 4xx、业务错误码）不计费，
-其余失败（网络中断、流截断）保守按全部字符计。ASR 按音频时长计，只在提交成功时计费；查询不计费。
+费用为估算：TTS 按结束块返回的计费字符数（没有时按全部字符）× 单价；ASR 按音频时长计，查询不计费。
+不可重试的失败（HTTP 4xx〔429 除外〕、业务错误码）说明请求被拒，不计费；其余失败（网络中断、流截断、429、5xx、
+服务端繁忙）供应商可能已受理，保守按全额计。ASR 查询遇到瞬时故障时用原 request_id 重试查询，不重新提交；
+只有提交失败或轮询超时才重新提交。
 
 离线模式：
 - --metrics 目录：从已入库的 l_*.mp3 与 asr/l_*.json 重算时长、CER、镜头容纳，不调用任何接口；
@@ -252,7 +254,9 @@ class LineRun:
 
 
 class CostLimit(Exception):
-    pass
+    def __init__(self, message: str, line: "LineRun | None" = None):
+        super().__init__(message)
+        self.line = line  # 中止时正在处理的句子（已产生的费用要计入 summary）
 
 
 class Runner:
@@ -293,8 +297,7 @@ class Runner:
                             )
                         except speech.SpeechError as exc:
                             call.extra.update(error_kind=exc.kind, http_status=exc.http_status, api_code=exc.api_code)
-                            rejected = exc.kind in ("http", "api_error", "config") and not exc.transient
-                            self._charge(call, lr, 0.0 if rejected else pricing.tts_cny(speech.PROVIDER, self.s.resource, len(line["text"])))
+                            self._charge(call, lr, 0.0 if _rejected(exc) else pricing.tts_cny(speech.PROVIDER, self.s.resource, len(line["text"])))
                             raise
                         chars = res.text_words if res.text_words is not None else len(line["text"])
                         self._charge(call, lr, pricing.tts_cny(speech.PROVIDER, self.s.resource, chars))
@@ -327,7 +330,7 @@ class Runner:
                             request_id = self.submit_fn(mp3, env=self.env)
                         except speech.SpeechError as exc:
                             call.extra.update(error_kind=exc.kind, http_status=exc.http_status, api_code=exc.api_code)
-                            self._charge(call, lr, 0.0)
+                            self._charge(call, lr, 0.0 if _rejected(exc) else pricing.asr_cny(speech.PROVIDER, speech.ASR_RESOURCE, seconds))
                             raise
                         call.request_id = request_id
                         self._charge(call, lr, pricing.asr_cny(speech.PROVIDER, speech.ASR_RESOURCE, seconds))
@@ -347,11 +350,23 @@ class Runner:
             lr.asr_elapsed_s = round(time.monotonic() - t0, 3)
 
     def _query(self, request_id: str, lr: LineRun, retry: int):
+        """查询一次；瞬时故障用同一个 request_id 重试（查询免费，不重新提交、不重复计费）。"""
+        for q_retry in range(TRANSIENT_RETRIES + 1):
+            try:
+                return self._query_once(request_id, lr, retry, q_retry)
+            except speech.SpeechError as exc:
+                if not exc.transient or q_retry == TRANSIENT_RETRIES:
+                    raise
+                lr.transient_failures += 1
+                self.sleep(2 ** (q_retry + 1))
+        raise AssertionError("unreachable")
+
+    def _query_once(self, request_id: str, lr: LineRun, retry: int, q_retry: int):
         with self.run.call(speech.PROVIDER, "asr", model=speech.ASR_RESOURCE) as call:
             call.cost_cny = 0.0
             call.cost_basis = "free"
             call.request_id = request_id
-            call.extra = {"candidate": self.s.name, "round": lr.round, "line_id": lr.line_id, "retry": retry, "op": "query"}
+            call.extra = {"candidate": self.s.name, "round": lr.round, "line_id": lr.line_id, "retry": retry, "op": "query", "query_retry": q_retry}
             try:
                 code, obj = self.query_fn(request_id, env=self.env)
             except speech.SpeechError as exc:
@@ -370,6 +385,14 @@ class Runner:
             speech_rate=speech_rate(line["delivery"]["speed"]) if self.s.speed else 0,
             context_text=instruction(line) if self.s.instruct else None,
         )
+        try:
+            return self._line(line, lr, out_dir)
+        except CostLimit as exc:
+            lr.stage = lr.stage or "aborted"
+            lr.error = str(exc)
+            raise CostLimit(str(exc), lr) from None
+
+    def _line(self, line: Mapping[str, Any], lr: LineRun, out_dir: Path) -> LineRun:
         try:
             mp3 = self.synth(line, lr)
         except speech.SpeechError as exc:
@@ -394,6 +417,11 @@ class Runner:
         lr.metrics = line_metrics(line, mp3, asr.to_json())
         lr.ok = True
         return lr
+
+
+def _rejected(exc: speech.SpeechError) -> bool:
+    """请求被供应商明确拒绝（不可重试的 HTTP 4xx、业务错误码、缺少密钥）：不计费。"""
+    return exc.kind in ("http", "api_error", "config") and not exc.transient
 
 
 def _spread(values: list[float]) -> float:
@@ -506,6 +534,8 @@ def run_tts(
                     lr = runner.line(line, rnd, out_dir)
                 except CostLimit as exc:
                     aborted = str(exc)
+                    if exc.line is not None and (exc.line.tts_requests or exc.line.asr_requests):
+                        runs.append(exc.line)  # 未完成，按失败计，已产生的费用计入合计
                     print(f"r{rnd} {line['line_id']}: 中止：{aborted}", file=out)
                     break
                 runs.append(lr)
@@ -645,14 +675,14 @@ def _parse_voices(items: list[str] | None, parser) -> dict[str, str]:
 
 
 def _cmd(args: argparse.Namespace) -> int:
-    generation = [o for o, v in (("--voice", args.voice), ("--name", args.name), ("--instruct", args.instruct), ("--speed", args.speed),
-                                  ("--rounds", args.rounds), ("--only", args.only)) if v]
-    if args.metrics or args.export:
-        if args.metrics and args.export:
+    generation = [o for o, v in (("--voice", args.voice), ("--name", args.name), ("--instruct", args.instruct or None), ("--speed", args.speed or None),
+                                  ("--rounds", args.rounds), ("--only", args.only)) if v is not None]
+    if args.metrics is not None or args.export is not None:
+        if args.metrics is not None and args.export is not None:
             args.parser.error("--metrics 与 --export 不能同时使用")
         if generation:
             args.parser.error(f"离线模式不能与生成参数一起用：{', '.join(generation)}")
-        if args.metrics:
+        if args.metrics is not None:
             return run_metrics(Path(args.metrics), args.json)
         return export_run(Path(args.export[0]), Path(args.export[1]))
     if args.json:

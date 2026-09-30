@@ -2,7 +2,8 @@
 
 MP3 时长按帧计数：每帧采样数 MPEG-1 Layer III 为 1152，MPEG-2 / 2.5 Layer III 为 576
 （豆包语音 24 kHz 输出属于 MPEG-2），时长 = 帧数 × 每帧采样数 / 采样率。
-开头的 ID3v2 标签和 Xing / Info 头帧（不含音频）不计入时长。
+开头的 ID3v2 标签和 Xing / Info / VBRI 头帧（不含音频）不计入时长。
+不扣除编码器延迟与尾部填充（LAME 头中记录，通常约 50 毫秒）；豆包语音的输出没有头帧，与 ASR 返回的时长偏差 ≤ 1 毫秒。
 """
 
 from __future__ import annotations
@@ -91,8 +92,11 @@ def _side_info_len(frame: _Frame, data: bytes) -> int:
 
 
 def _is_xing(frame: _Frame, data: bytes) -> bool:
-    start = frame.offset + 4 + _side_info_len(frame, data)
-    return data[start : start + 4] in (b"Xing", b"Info")
+    """首帧是否为 Xing / Info（位于 side info 之后；有 CRC 时再后移 2 字节）或 VBRI（固定在帧头后 32 字节）头帧。"""
+    crc = 0 if data[frame.offset + 1] & 0x1 else 2
+    start = frame.offset + 4 + crc + _side_info_len(frame, data)
+    vbri = frame.offset + 4 + 32
+    return data[start : start + 4] in (b"Xing", b"Info") or data[vbri : vbri + 4] == b"VBRI"
 
 
 def frames(data: bytes) -> tuple[int, list[_Frame]]:

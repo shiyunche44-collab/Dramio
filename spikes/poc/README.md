@@ -116,14 +116,14 @@ DramaIR 台词 → 逐句配音（豆包语音 TTS 2.0，`seed-tts-2.0`）→ AS
 python3 -m poc tts --name A --voice char_suwan=<音色> --voice char_luchen=<音色>              # 3 轮 15 句
 python3 -m poc tts --name B --voice ... --instruct --speed --rounds 1
 python3 -m poc tts --name v-x --voice char_luchen=<音色> --only char_luchen --rounds 1       # 音色初选：只合成该角色的台词
-python3 -m poc tts --metrics ../../docs/reports/p0/P0-05/A                                  # 离线：从 mp3 与 asr/*.json 重算指标
+python3 -m poc tts --metrics ../../docs/reports/p0/P0-05/A-plain                            # 离线：从 mp3 与 asr/*.json 重算指标
 python3 -m poc tts --metrics <目录> --json
-python3 -m poc tts --export runs/<run_id> ../../docs/reports/p0/P0-05/A                      # 离线：整理入库证据
+python3 -m poc tts --export runs/<run_id> ../../docs/reports/p0/P0-05/<方案名>               # 离线：整理入库证据
 ```
 
 - 每句指标：文件时长（MP3 帧头计数，24 kHz 为 MPEG-2，每帧 576 个采样）、ASR 返回的时长、有效语音时长（首个 utterance 起点到末个终点）、首尾静音、字/秒、与 4.5 字/秒估算（`dramio_drama_ir.checks.speech_seconds`）之比；CER 三种口径：`cer`（NFKC、小写、去标点和空白后的字级编辑距离）、`cer_raw`（只去空白）、`cer_equiv`（在 `cer` 基础上把 ASR 分不出的同音字“他 / 她 / 它”“的 / 得 / 地”各折叠为一个字）。ASR 关闭了 ITN，数字保留为汉字。
 - 每个镜头：台词文件时长之和与 `hint_s` 对照（留白、是否超出）；整集：总时长、平均字/秒、CER 汇总。
-- 瞬时故障（网络、流截断、429、5xx、服务端繁忙或并发限流）同一句最多重试 2 次；每次请求都记账（查询记为 `free`）。TTS 按结束块返回的计费字符数（`usage.text_words`）× 单价估算；被拒的请求（HTTP 4xx、业务错误码）不计费，网络中断、流截断保守按全部字符计。ASR 按音频时长估算，提交成功才计费。单价见 `poc/pricing.py`。
+- 瞬时故障（网络、流截断、429、5xx、服务端繁忙或并发限流）同一句最多重试 2 次；ASR 查询失败时用原 request_id 重试查询，不重新提交，只有提交失败或轮询超时（60 秒）才重新提交。每次请求都记账（查询记为 `free`）。TTS 按结束块返回的计费字符数（`usage.text_words`）× 单价估算，ASR 按音频时长估算；不可重试的失败（HTTP 4xx〔429 除外〕、业务错误码）说明请求被拒，不计费；其余失败（网络中断、流截断、429、5xx）供应商可能已受理，保守按全额计。单价见 `poc/pricing.py`。
 - 退出码：全部句子成功为 0；有失败或因费用上限（`--max-cost-cny`，默认 10 元）中止为 1；用法错误（缺少密钥、缺少音色、参数组合不对）为 2。`--metrics` 模式下，目录中每个 mp3 都能解析且都有 ASR 结果为 0，否则为 1。
 - `--metrics`、`--export` 是离线模式，不能与 `--name`、`--voice`、`--instruct`、`--speed`、`--rounds`、`--only` 同用；`--json` 只能与 `--metrics` 同用，以免误发起付费生成。
 - 输出：`runs/<run_id>/samples/rN/<line_id>.mp3`、`samples/rN/asr/<line_id>.json`（转写文本、utterances、时长、resource id）、`summary.json`（每句指标、每轮整集统计与镜头容纳、方案汇总、指令原文）。`--export` 把第 1 轮的逐句 mp3 与 asr、按台词顺序拼接的 `ep01.mp3`、`run-summary.json`、`run-calls.jsonl` 复制到目标目录（目标目录必须为空）。

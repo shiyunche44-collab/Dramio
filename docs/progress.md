@@ -48,7 +48,7 @@
   6. `python3 -m poc tts --metrics <候选目录>` 退出码 0，时长与报告一致（±0.05 秒）。
   7. 每个样本有 `asr/l_XXXX.json`；`--metrics` 重算的原始 / 归一化 CER 与报告一致；报告写明 ASR 接口与 resource id。
   8. 报告有候选对比表：成功率（首次 / 最终）、重试次数、耗时、每集费用、全集时长、字/秒比值、念不完的镜头数、CER；数字可在 `run-summary.json` 找到出处。
-  9. `run-calls.jsonl` 每行 `provider=volc_speech`、`capability∈{tts,asr}`、`cost_basis=estimate`，失败请求也在；费用合计与报告和“本步费用”一致，≤¥100。
+  9. `run-calls.jsonl` 每行 `provider=volc_speech`、`capability∈{tts,asr}`、`cost_basis∈{estimate,free}`（ASR 查询为 free），失败请求也在；费用合计与报告和“本步费用”一致，≤¥100。
   10. 设置了密钥时 `grep -rF "$VOLC_SPEECH_API_KEY" docs spikes/poc --exclude=.env` 无匹配。
   11. 改动只涉及 `spikes/poc/`、`docs/reports/p0/`、`docs/progress.md`、`docs/roadmap.md`；`du -sb docs/reports/p0/P0-05` ≤ 6 MB（原定 5 MB 按 3 个候选估算；实际为 4 个候选 + 6 个初选音色，逐句 mp3 是 `--metrics` 复核的输入，`ep01.mp3` 用于试听，均不能省）。
   12. 默认方案（需用户确认）：报告给出推荐与理由；D-004 登记候选、推荐、试听路径与回复示例。
@@ -100,7 +100,7 @@
 - 当前云容器（2026-09-30）：没有任何供应商密钥；`api.anthropic.com`、`generativelanguage.googleapis.com` 可以访问，其余供应商域名被网络策略拦截（doctor 报 `UNREACHABLE`）。
 - DeepSeek（2026-09-30 更新）：云环境已配置 `DEEPSEEK_API_KEY` 并放行 `api.deepseek.com`，doctor 报 OK；可用模型 `deepseek-flash`（V4.1-Flash）、`deepseek-v4-pro`。
 - 火山引擎 AI MediaKit 视频口型对齐（2026-09-30 用户提供，P0-09 口型候选，尚未加入 `poc` 供应商注册表）：文档 <https://docs.volcengine.com/docs/6448/2658349>。`POST https://mediakit.cn-beijing.volces.com/api/v1/tools/lip-sync`（`video_url`、`audio_url`、可选 `enable_video_loop`）→ `task_id`；`GET /api/v1/tasks/{task_id}` 轮询到 `status=completed`，取 `result.video_url`（24 小时有效）和 `result.duration`。鉴权：`Authorization: Bearer <MediaKit API Key>`（在 AI MediaKit 控制台创建，不是方舟 `ARK_API_KEY`），变量名拟用 `MEDIAKIT_API_KEY`。输入：mp4 视频（单人真人、正脸、偏转 ≤45°、俯仰 ≤15°，≤30 分钟，不支持 HDR）；音频 mp3/aac/wav/m4a/flac；支持公网 URL、`mediakit://` 本地上传（`tools-sync/request-media-upload-url` 取预签名 PUT 地址，文件保留 30 天）、`vod://`、`tos://`。计费：按输出时长 ¥1/分钟；耗时 RTF 约 6–8（1 分钟音频约 6–8 分钟）。需放行的域名：`mediakit.cn-beijing.volces.com`（API），以及上传地址与产物下载地址的域名（文档示例为 `*.volcvod.com`、`*.volcvideo.com`，以实际返回为准）。当前容器实测：`docs.volcengine.com` 可以访问；`ark.cn-beijing.volces.com` 可以访问（无密钥返回 401）；`mediakit.cn-beijing.volces.com` 仍被拦截（`Tunnel 403`）；未配置 MediaKit 密钥。
-- 火山引擎能力盘点（2026-09-30）：见 [reports/p0/vendor-volcengine.md](reports/p0/vendor-volcengine.md)。火山可覆盖 P0-03 ~ P0-11 全部环节；只需方舟 `ARK_API_KEY` + MediaKit API Key 两个 Bearer Key（MediaKit 可代理方舟图像 / 视频和 Seed Audio）。当前可达：`ark.cn-beijing.volces.com`、`visual.volcengineapi.com`、`open.volcengineapi.com`；被拦截：`mediakit.cn-beijing.volces.com`、`openspeech.bytedance.com`。注意 Seedance 不接受直接上传的真人人脸参考，只信任同账号 30 天内 Seedance 2.x / Seedream 5.0 文生图的原始产物或平台授权素材。
+- 火山引擎能力盘点（2026-09-30）：见 [reports/p0/vendor-volcengine.md](reports/p0/vendor-volcengine.md)。火山可覆盖 P0-03 ~ P0-11 全部环节；只需方舟 `ARK_API_KEY` + MediaKit API Key 两个 Bearer Key（MediaKit 可代理方舟图像 / 视频和 Seed Audio）。当前可达：`ark.cn-beijing.volces.com`、`visual.volcengineapi.com`、`open.volcengineapi.com`；被拦截：`mediakit.cn-beijing.volces.com`（`openspeech.bytedance.com` 已于同日放行，见下一条）。注意 Seedance 不接受直接上传的真人人脸参考，只信任同账号 30 天内 Seedance 2.x / Seedream 5.0 文生图的原始产物或平台授权素材。
 - 火山引擎密钥（2026-09-30 更新）：云环境已配置 `ARK_API_KEY`（`GET /api/v3/models` 返回 200，含 Seedream 5.0、Seedance 2.0）与 `VOLC_SPEECH_API_KEY`；`openspeech.bytedance.com` 已放行（代理隧道偶发中途断开，客户端需重试）。豆包语音该 Key 已授权：TTS 2.0（`seed-tts-2.0`）、录音文件识别 2.0 标准版（`volc.seedasr.auc`，submit / query，可内联 base64）；未授权（403 `45000030`）：TTS 1.0（`seed-tts-1.0`）、ASR 1.0（`volc.bigasr.auc`）、极速版（`*.auc_turbo`）。`mediakit.cn-beijing.volces.com` 仍被拦截。
 - ADR-0001 ~ 0010 目前为 Proposed，在 P0-14 统一评审。
 - GitHub 上需要用户手动完成：把默认分支改为 `main`；为 `main` 开启分支保护（要求 `arch-check` 通过，不要求 Code Owner 评审）。

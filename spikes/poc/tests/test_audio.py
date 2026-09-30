@@ -51,6 +51,15 @@ class MP3Test(unittest.TestCase):
         self.assertTrue(info.xing)
         self.assertEqual(info.frames, 4)
 
+    def test_xing_frame_with_crc_and_vbri(self):
+        f = bytearray(frame_v2())
+        f[1] = 0xF2  # protection bit = 0：帧头后有 2 字节 CRC
+        f[4 + 2 + 9 : 4 + 2 + 13] = b"Xing"
+        self.assertEqual(audio.mp3_info(bytes(f) + frame_v2() * 3).frames, 3)
+        v = bytearray(frame_v2())
+        v[36:40] = b"VBRI"
+        self.assertEqual(audio.mp3_info(bytes(v) + frame_v2() * 3).frames, 3)
+
     def test_truncated_or_garbage_raises(self):
         with self.assertRaises(audio.MP3Error):
             audio.mp3_info(frame_v2() * 3 + frame_v2()[:100])

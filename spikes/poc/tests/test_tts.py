@@ -155,6 +155,56 @@ class RunnerTest(unittest.TestCase):
         bad = [x for x in s["lines"] if x["line_id"] == "l_0002"][0]
         self.assertEqual((bad["tts_requests"], bad["transient_failures"]), (3, 2))
 
+    def test_query_failure_is_retried_without_resubmit(self):
+        asr = FakeASR()
+        orig = asr.query
+        failed = []
+
+        def query(rid, *, env):
+            if rid == "rid-0" and not failed:
+                failed.append(rid)
+                raise speech.SpeechError("network", "reset")
+            return orig(rid, env=env)
+
+        asr.query = query
+        code, run_dir, s, _ = self.run_tts(tts.Settings("A", VOICES, rounds=1), asr=asr)
+        self.assertEqual(code, 0)
+        self.assertEqual((s["asr_requests"], s["transient_failures"], s["first_ok"]), (15, 1, 15))
+        first = [c for c in self.calls(run_dir) if c["capability"] == "asr" and c["extra"]["line_id"] == "l_0001"]
+        self.assertEqual([c["extra"]["op"] for c in first], ["submit", "query", "query", "query"])
+        self.assertEqual({c["request_id"] for c in first}, {"rid-0"})
+        self.assertEqual([c["status"] for c in first], ["ok", "error", "ok", "ok"])
+
+    def test_submit_network_failure_is_charged(self):
+        asr = FakeASR()
+        orig = asr.submit
+        failed = []
+
+        def submit(mp3, *, env):
+            if not failed:
+                failed.append(1)
+                raise speech.SpeechError("network", "reset")
+            return orig(mp3, env=env)
+
+        asr.submit = submit
+        code, run_dir, s, _ = self.run_tts(tts.Settings("A", VOICES, rounds=1), asr=asr)
+        self.assertEqual(code, 0)
+        bad = [c for c in self.calls(run_dir) if c["extra"].get("op") == "submit" and c["status"] == "error"]
+        self.assertEqual(len(bad), 1)
+        self.assertGreater(bad[0]["cost_cny"], 0)  # 响应丢失时供应商可能已受理，保守计费
+        self.assertAlmostEqual(s["cost_cny_total"], s["spent_cny_total"], places=6)
+
+    def test_cost_limit_mid_line_keeps_its_cost(self):
+        # l_0001 的 TTS 约 ¥0.0048；上限设在 TTS 之后、ASR 之前触发
+        code, run_dir, s, _ = self.run_tts(tts.Settings("A", VOICES, rounds=1, max_cost_cny=0.004))
+        self.assertEqual(code, 1)
+        self.assertIsNotNone(s["aborted"])
+        self.assertEqual(len(s["lines"]), 1)
+        self.assertEqual((s["lines"][0]["ok"], s["lines"][0]["stage"]), (False, "aborted"))
+        self.assertGreater(s["cost_cny_total"], 0)
+        self.assertAlmostEqual(s["cost_cny_total"], s["spent_cny_total"], places=6)
+        self.assertAlmostEqual(sum(c["cost_cny"] for c in self.calls(run_dir)), s["spent_cny_total"], places=6)
+
     def test_only_one_speaker(self):
         code, run_dir, s, _ = self.run_tts(tts.Settings("voice-x", {"char_luchen": "m"}, only="char_luchen", rounds=1))
         self.assertEqual(code, 0)
@@ -236,6 +286,8 @@ class CLITest(unittest.TestCase):
         self.assertEqual(self.cli("--metrics", "x", "--rounds", "1")[0], 2)
         self.assertEqual(self.cli("--export", "a", "b", "--instruct")[0], 2)
         self.assertEqual(self.cli("--metrics", "x", "--export", "a", "b")[0], 2)
+        self.assertEqual(self.cli("--metrics", "", "--voice", "a=b", "--name", "n")[0], 2)  # 空字符串也算离线模式
+        self.assertEqual(self.cli("--metrics", "x", "--rounds", "0")[0], 2)
 
     def test_json_requires_metrics(self):
         self.assertEqual(self.cli("--json", "--name", "a")[0], 2)

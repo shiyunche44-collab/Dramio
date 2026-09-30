@@ -10,7 +10,7 @@
 2. **两套入口就够用**：
    - **火山方舟**（`ark.cn-beijing.volces.com`，`ARK_API_KEY`，Bearer）：LLM、Seedream 图像、Seedance 视频、Seed3D、向量。**当前容器已可访问**（无密钥返回 401）。
    - **AI MediaKit**（`mediakit.cn-beijing.volces.com`，MediaKit API Key，Bearer）：口型对齐、剪辑合成、字幕、AIGC 标识等几十个媒体工具，并且可以**代理调用**方舟的图像 / 视频模型和豆包语音的 Seed Audio、ASR（`POST /api/v1/tools/call-maas-proxy`，模型费用仍按方舟 / 豆包语音计费）。**当前被网络策略拦截**。
-   - 豆包语音的 TTS 2.0 / 声音复刻走自己的接口（`x-api-key` 头），接口文档页本次读不到（见 §9），域名待核实。
+   - 豆包语音的 TTS 2.0 / 声音复刻走自己的接口（`x-api-key` 头），接口文档页本次读不到（见 §9），域名待核实。**2026-09-30 更新（P0-05）**：已核实为 `openspeech.bytedance.com`（已放行），TTS 2.0 与录音文件识别 2.0 实测可用，接口与授权情况见 [P0-05.md](P0-05.md#接口)。
 3. **与 P0 直接相关的三个发现**：
    - **Seedance 2.0 / 2.5 能直接生成有声视频**（`generate_audio=true`，提示词里台词用 `{}`、音效 `<>`、音乐 `()`），这就是 P0-09 “原生音画同步”路线的候选，可以和“先配音再改口型”路线对比。
    - **Seedance 不接受直接上传的真人人脸参考图 / 视频**。只信任同账号下 30 天内由 Seedance 2.x 或 Seedream 5.0 lite/pro **文生图**产出的含人脸原始文件（不能二次剪辑、不能跨账号），或平台预置虚拟人像、经活体认证授权的真人素材。这会直接约束 P0-06 定妆 → P0-07 关键帧 → P0-08 图生视频的链路设计（写实风格尤其如此），也意味着产物要保留原始文件（与 INV-06 CAS 原样存储一致）。
@@ -122,7 +122,7 @@
 | AI MediaKit | `mediakit.cn-beijing.volces.com`，上传 / 下载域名以返回为准（示例 `*.volcvod.com`、`*.volcvideo.com`） | MediaKit API Key（Bearer） | 被拦截（Tunnel 403） |
 | 视觉智能 / 即梦 | `visual.volcengineapi.com` | AK/SK 签名（部分支持 API Key） | 可访问（400） |
 | 音乐生成等 OpenAPI | `open.volcengineapi.com` | AK/SK 签名 | 可访问（400） |
-| 豆包语音 | 待核实（接口文档页本次读不到；旧版接口为 `openspeech.bytedance.com`） | `x-api-key` | `openspeech.bytedance.com` 不可访问 |
+| 豆包语音 | `openspeech.bytedance.com`（P0-05 核实） | `x-api-key` | 本表实测时不可访问；同日稍后已放行，见 [P0-05.md](P0-05.md#接口) |
 | 文档中心 | `docs.volcengine.com` | — | 可访问 |
 
 ## 9. 未覆盖与待核实
