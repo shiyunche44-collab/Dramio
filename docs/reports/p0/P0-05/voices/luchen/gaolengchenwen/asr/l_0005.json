@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "证据呢？没有证据就别再闹了。",
+  "duration_ms": 4823,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "证据呢？没有证据就别再闹了。",
+      "start_ms": 520,
+      "end_ms": 4480
+    }
+  ]
+}

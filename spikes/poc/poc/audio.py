@@ -202,11 +202,12 @@ def cer(ref: str, hyp: str) -> CER:
 
 
 # ASR 无法从读音区分的同音字：按一个字比较（只用于“等价折叠 CER”，原 CER 不受影响）
-_HOMOPHONE_FOLD = str.maketrans({"她": "他", "它": "他", "祂": "他"})
+# 第三人称代词（tā）与结构助词（de）
+_HOMOPHONE_FOLD = str.maketrans({"她": "他", "它": "他", "祂": "他", "得": "的", "地": "的"})
 
 
 def fold_equivalents(text: str) -> str:
-    """在 normalize 之后使用：把 ASR 听不出区别的同音代词折叠成同一个字。"""
+    """在 normalize 之后使用：把 ASR 听不出区别的同音代词、结构助词折叠成同一个字。"""
     return text.translate(_HOMOPHONE_FOLD)
 
 

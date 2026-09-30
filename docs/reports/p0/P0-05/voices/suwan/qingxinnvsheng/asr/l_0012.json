@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "陆总监，这段监控录像要不要当众放给大家看看？",
+  "duration_ms": 5255,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "陆总监，这段监控录像要不要当众放给大家看看？",
+      "start_ms": 510,
+      "end_ms": 4830
+    }
+  ]
+}

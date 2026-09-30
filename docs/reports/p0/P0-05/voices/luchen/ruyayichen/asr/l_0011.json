@@ -1,0 +1,13 @@
+{
+  "resource_id": "volc.seedasr.auc",
+  "text": "各位，这是我主导的新品方案。",
+  "duration_ms": 3239,
+  "silent": false,
+  "utterances": [
+    {
+      "text": "各位，这是我主导的新品方案。",
+      "start_ms": 340,
+      "end_ms": 2980
+    }
+  ]
+}

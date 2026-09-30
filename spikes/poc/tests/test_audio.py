@@ -94,6 +94,9 @@ class CERTest(unittest.TestCase):
         ref, hyp = audio.normalize("把她带出去！"), audio.normalize("把他带出去。")
         self.assertEqual(audio.cer(ref, hyp).errors, 1)
         self.assertEqual(audio.cer(audio.fold_equivalents(ref), audio.fold_equivalents(hyp)).errors, 0)
+        ref, hyp = audio.normalize("他说得对"), audio.normalize("他说的对")
+        self.assertEqual(audio.cer(audio.fold_equivalents(ref), audio.fold_equivalents(hyp)).errors, 0)
+        self.assertEqual(audio.cer(audio.fold_equivalents("粘着"), audio.fold_equivalents("藏着")).errors, 1)
 
     def test_digit_mismatch(self):
         self.assertTrue(audio.has_digit_mismatch("三个月", "3个月"))
