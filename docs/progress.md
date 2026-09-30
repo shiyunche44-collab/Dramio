@@ -23,17 +23,31 @@
 
 - **当前里程碑**：M0.2 单项能力摸底
 - **当前步骤**：P0-04
-- **步骤状态**：未开始
-- **工作分支**：claude/lucid-hamilton-r7bd4w
+- **步骤状态**：进行中
+- **工作分支**：claude/sweet-lamport-cwwsvb
 - **PR**：—
 
 ## 步骤卡
 
-（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
+- **步骤**：P0-04 分镜拆解
+- **目标**：`python3 -m poc shots` 把 1 集 DramaIR v0 剧本（场、台词、动作）重新拆成镜头列表（景别、机位、运镜、时长、台词挂载），产物仍是通过严格校验的 v0 文档，并附带可量化的“镜头数量与时长合理性”指标
+- **做**：v0 没有“已分场、未分镜”的形态（台词只能挂在镜头上），所以做**重新分镜**：代码剥掉镜头结构，渲染成分场剧本视图（只是 Prompt 文本，不建新结构）→ LLM 只输出各场新镜头 → 合并回输入文档、确定性重排 `shot_id` → `validate` strict + 守恒检查（场集合与顺序、每场台词序列 `line_id/speaker/kind/text/delivery` 与顺序完全不变）+ 合理性硬门槛 H1–H4 → 不通过带路径回喂，最多修复 2 轮。硬门槛（T=目标时长，T=60 时值在括号内）：H1 镜头数 ⌈T/5⌉–⌊T/2.5⌋（12–24）；H2 单镜 1.5–8 秒；H3 总时长偏差 ≤ 10%（54–66 秒）；H4 每镜台词朗读 ≤ hint_s。Prompt `poc/prompts/shots.v1.md`（阈值运行时取自常量与 `checks`，输出 Schema 从 v0 `$defs/shot` 抽取）；`poc/shots.py` 复用 `script.Generator`（子类化，不复制重试、记账、费用保险）；指标 `metrics.json`（时长分布、>5 秒占比、台词占满率与留白、挂载统计、景别与运镜分布、近景特写占比、首镜是否建立镜头、与输入分镜的相似度）；离线 `--metrics` 模式出 ep01 与 P0-03 原分镜基线（¥0）；评测：批次 A（ep01，flash / flash 关思维链 / v4-pro 各 5 份）、批次 B（flash 对 P0-03 flash s01–s05 各 1 份）；报告 `docs/reports/p0/P0-04.md` 与证据 `docs/reports/p0/P0-04/<候选>/`；README 增加 shots 一节
+- **不做**：改 DramaIR Schema、校验器阈值、ep01（D-002 冻结）；引入 v1 字段或“未分镜”中间形态（写入报告留给 P0-14）；改写剧情或台词；配音真实时长回填（P0-05 / P0-12）；关键帧与模型 Prompt 编译（P0-07 / P1）；Prompt 迁入 `packages/prompts`、接入 `evals/`（P1）；DeepSeek 以外的供应商（列为待补测）；串联与缓存（P0-12）；规则式分镜基线
+- **验收**：1）`cd spikes/poc && python3 -m poc shots --n 5`（默认输入 ep01、默认 `deepseek-flash`）同一次运行 5/5 通过：strict 0 错误 0 警告、守恒与 H1–H4 通过、每份修复 ≤ 2 轮，退出码 0；2）批次 B 5/5 通过，口径同 1；3）另两个候选各 5 份，结果与失败类型如实写入对比表（不要求全过）；4）第 1、2 条入库样本独立 `validate --strict` 退出码 0；5）`python3 -m poc shots --metrics <入库样本>` 对第 1、2 条样本报告 H1–H4 通过且与报告数值一致；6）报告含阈值与来源（architecture §1.3、§5.3、§5.4.1、§5.5.1、ep01、checks.py）、指标对比（ep01 基线、P0-03 原分镜、P0-04 各候选）、分布与挂载统计、单价、耗时、失败率、推荐方案；7）单元测试全部通过（原 75 个 + 新增：剧本视图、合并与重排、守恒反例带路径、H1–H4 边界、ep01 锚点通过全部硬门槛、ep01 指标数值、假 chat_fn 驱动的通过 / 修复 / 费用中止）；8）`make drama-ir-check`、`make arch-check` 通过；9）本步费用 ≤ ¥100 并记入“本步费用”；10）（可选，不阻塞）用户抽看 1 份新分镜
+- **涉及**：architecture §1.3、§4.2、§5.3、§5.4.1、§5.5.1；`packages/drama-ir/README.md`；ADR-0002、ADR-0010；INV-02、INV-03、INV-10（P0 惯例）、INV-11；governance §3 注（spikes 豁免 INV-01、INV-07，调用记入 calls.jsonl）
+- **估时**：1 天（含 3 个候选对比，可能到 1.5 天）
 
 ## 子任务
 
-（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
+- [ ] 剧本视图与 Prompt：`poc/shots.py` 的 `script_view`、`prompts/shots.v1.md`、system / user prompt 渲染（阈值取自常量，输出 Schema 运行时抽取），加测试
+- [ ] 合并与检查：合并回输入、`shot_id` 重排、守恒检查、H1–H4（常量集中定义），ep01 锚点与反例测试（带 JSON 路径）
+- [ ] 合理性指标与离线模式：`metrics(doc, source_doc)` 与 `--metrics`；ep01 与 P0-03 15 份原分镜基线（¥0），加测试
+- [ ] 生成循环与 CLI：子类化 `script.Generator`，`run_shots`（多输入、`--n`、summary、费用保险、余额差），`python3 -m poc shots`，假 chat_fn 测试通过 / 修复 / 中止
+- [ ] 冒烟：3 个候选在 ep01 上各 1 份，必要时微调 `shots.v1`
+- [ ] 批次 A：ep01 上 flash ×5、flash 关思维链 ×5、v4-pro ×5
+- [ ] 批次 B：flash 对 P0-03 flash s01–s05 各 1 份
+- [ ] 报告与证据：`docs/reports/p0/P0-04.md`、`docs/reports/p0/P0-04/<候选>/`（去掉余额绝对值）、README shots 一节
+- [ ] 验证（verifier）、评审（arch-reviewer）、交付
 
 ## 本步费用
 
