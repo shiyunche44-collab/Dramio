@@ -22,53 +22,22 @@
 ## 当前状态
 
 - **当前里程碑**：M0.2 单项能力摸底
-- **当前步骤**：P0-05
-- **步骤状态**：进行中
+- **当前步骤**：P0-06
+- **步骤状态**：未开始
 - **工作分支**：claude/sweet-lamport-cwwsvb
-- **PR**：#7（已合并，P0-05 保持进行中，等待 D-004）
+- **PR**：—
 
 ## 步骤卡
 
-- **步骤**：P0-05 配音（估时 1 天）
-- **目标**：用固定输入 ep01（D-002）的 15 句台词，在豆包语音内部对比 3 种配音方案：逐句音频、实测时长统计、ASR 回检字错率（CER），形成对比表，推荐默认方案（用户试听确认）。
-- **做**：
-  - 注册供应商 `volc_speech`（`VOLC_SPEECH_API_KEY`，`openspeech.bytedance.com`，能力 `tts`、`asr`；无免费探测，`probe=None`）；同步 `.env.example`、README、“已知的前置条件”。
-  - `poc/speech.py`（标准库）：TTS 2.0 `POST /api/v3/tts/unidirectional`（逐行 JSON、base64 拼接、结束块 `20000000` 才算成功）；ASR 2.0 标准版 `POST /api/v3/auc/bigmodel/submit` + `query`（resource `volc.seedasr.auc`，内联 base64，已实测可用）。失败分类 network / http / api_error / truncated / empty / bad_response；瞬时故障重试，每次请求都经 `Run.call()` 入账。
-  - CER：字级编辑距离，原始与归一化两种口径。时长：mp3 帧头解析（24 kHz 为 MPEG-2 L3，每帧 576 样本），每句、每镜头容纳（对照 `hint_s`）、全集、多轮波动；实测字/秒对比 4.5 字/秒估算。
-  - `pricing` 按字符 / 按时长计价；CLI `python3 -m poc tts`（生成模式 + 离线 `--metrics`，互斥；`--max-cost-cny`）。
-  - 对比（均 `seed-tts-2.0`；TTS 1.0 与 ASR 极速版未授权）分两阶段：① 音色初选：每个角色 3 个 2.0 音色（苏晚：知性灿灿、林潇、清新女声；陆沉：高冷沉稳、傲娇霸总、儒雅逸辰），只合成本角色台词、1 轮、无指令；② 全集对比，每个候选 15 句 × 3 轮：A `plain` 首选音色、无指令；B `instruct` 同音色 + 按 `delivery` 生成语音指令（`additions.context_texts`，模板 `tts-instruct.v1`）；C `instruct-speed` 再把 `delivery.speed` 映射到 `speech_rate`；D `alt-instruct-speed` 次选音色 + 指令 + 语速。
-  - 证据入库 `docs/reports/p0/P0-05/<候选>/`（第 1 轮逐句 mp3、整集 `ep01.mp3`、`asr/*.json`、`run-summary.json`、`run-calls.jsonl`，≤5 MB）；报告 `docs/reports/p0/P0-05.md`；登记 D-004 由用户试听选默认方案。
-- **不做**：其它 TTS 供应商（无密钥）；Seed Audio（MediaKit 被拦截）；声音复刻 / 音色设计 / 按描述自动选声；字幕时间戳、口型、BGM；音频质检；CER 超阈值自动重合成；修改 ep01、Schema 或 CODEOWNERS 路径；模型网关、`packages/prompts`、`evals/`。
-- **验收**（全部可离线复核）：
-  1. `cd spikes/poc && python3 -m unittest discover -s tests -t .` 全部通过且多于 110 个，覆盖流式拼接、断流重试记账、`code≠0` 不重试、无结束块、MPEG-1/2 帧时长、CER、`--metrics` 互斥。
-  2. `make arch-check`、`make drama-ir-check` 通过。
-  3. ep01.json sha256 仍为 `cd02daef022c6e78227ef3bf366adb2b5142a979a803bcf4373cdb8765a6fb59`。
-  4. `python3 -m poc doctor --offline` 有 `volc_speech` 行（能力 `tts,asr`）；`.env.example`、README、前置条件写明变量名与域名。
-  5. 候选 A–D 目录各恰好 15 个 `l_XXXX.mp3`（音色初选目录为该角色的台词），与 ep01 `line_id` 集合一致，为 MPEG layer III。
-  6. `python3 -m poc tts --metrics <候选目录>` 退出码 0，时长与报告一致（±0.05 秒）。
-  7. 每个样本有 `asr/l_XXXX.json`；`--metrics` 重算的原始 / 归一化 CER 与报告一致；报告写明 ASR 接口与 resource id。
-  8. 报告有候选对比表：成功率（首次 / 最终）、重试次数、耗时、每集费用、全集时长、字/秒比值、念不完的镜头数、CER；数字可在 `run-summary.json` 找到出处。
-  9. `run-calls.jsonl` 每行 `provider=volc_speech`、`capability∈{tts,asr}`、`cost_basis∈{estimate,free}`（ASR 查询为 free），失败请求也在；费用合计与报告和“本步费用”一致，≤¥100。
-  10. 设置了密钥时 `grep -rF "$VOLC_SPEECH_API_KEY" docs spikes/poc --exclude=.env` 无匹配。
-  11. 改动只涉及 `spikes/poc/`、`docs/reports/p0/`、`docs/progress.md`、`docs/roadmap.md`；`du -sb docs/reports/p0/P0-05` ≤ 6 MB（原定 5 MB 按 3 个候选估算；实际为 4 个候选 + 6 个初选音色，逐句 mp3 是 `--metrics` 复核的输入，`ep01.mp3` 用于试听，均不能省）。
-  12. 默认方案（需用户确认）：报告给出推荐与理由；D-004 登记候选、推荐、试听路径与回复示例。
-- **涉及**：architecture.md §2.1 ⑤、§5.5.1、§7.1、§7.4、§19.1；ADR-0004（P0 允许 spikes 直连供应商）；INV-01、INV-03、INV-07、INV-10、INV-11；D-002。
+（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
 
 ## 子任务
 
-- [x] 1. 注册 `volc_speech` 供应商（providers、`CAPABILITIES` 加 `asr`、`.env.example`、README、前置条件），单测通过
-- [x] 2. `poc/speech.py` TTS 客户端 + `pricing` 按字符 / 时长计价，离线单测
-- [x] 3. ASR 客户端（submit / query 轮询）+ CER 模块，离线单测
-- [x] 4. mp3 帧头时长解析 + 每句 / 镜头容纳 / 全集时长统计，离线单测
-- [x] 5. 定候选与音色（音色列表与 TTS 接口文档已读，`context_texts` / `speech_rate` 已确认；冒烟 `20260930-155850-tts-73b3`：陆沉 5 句全部成功）
-- [x] 6. CLI `python3 -m poc tts`（生成 + `--metrics` 互斥、`--max-cost-cny`），README 一节
-- [x] 7. 正式评测：音色初选 6 个音色（`20260930-160232` ~ `160636`）；候选 A–D 各 3 轮 × 15 句（`20260930-160729-tts-6688`、`161030-tts-8fed`、`161329-tts-ed5c`、`161629-tts-b795`），180/180 成功
-- [x] 8. 证据入库、报告 `docs/reports/p0/P0-05.md`、登记 D-004
-- [x] 9. 验证（verifier）、评审（arch-reviewer）、交付 PR（P0-05 保持 🔄，等 D-004）
+（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
 
 ## 本步费用
 
-- **已花费**：¥1.15（估算：探测约 ¥0.005，冒烟 ¥0.02，音色初选 ¥0.23，候选 A–D ¥0.88）
+- **已花费**：¥0
 - **上限**：¥100
 
 ## 待决事项
@@ -126,3 +95,4 @@
 | 2026-09-30 | P0-05 | 未开工：按用户要求通读火山引擎文档中心，盘点与 Dramio 相关的能力、单价、鉴权与域名，写成 `docs/reports/p0/vendor-volcengine.md`（覆盖方舟、豆包语音、AI MediaKit、视觉智能 / 即梦、音乐生成、审核） | 域名可达性实测见报告 §8；`make arch-check` 通过。费用 ¥0 | P0-05 仍缺 TTS 凭证：火山路线需豆包语音 API Key 并放行其接口域名（待从控制台核实），或经 MediaKit 用 Seed Audio |
 | 2026-09-30 | P0-05 | 实现与评测完成，等待 D-004：用户配置 `ARK_API_KEY` 与 `VOLC_SPEECH_API_KEY` 后开工。注册 `volc_speech`（tts、asr）；`poc/speech.py`（豆包 TTS 2.0 逐行 JSON 流、录音文件识别 2.0 submit / query、失败分类与瞬时重试）、`poc/audio.py`（MP3 帧头时长、CER 与同音字等价折叠）、`poc/tts.py`（`python3 -m poc tts`，语音指令 `tts-instruct.v1`、语速映射，离线 `--metrics` / `--export`）、`pricing` 按字符 / 时长计价。评测：6 个音色初选；候选 A–D 各 3 轮 × 15 句 180/180 成功，`cer_equiv` 全 0，每集约 ¥0.074。报告 `docs/reports/p0/P0-05.md`。按评审修复：ASR 查询失败只重试查询、费用中止计入当句、计费口径统一、离线模式判空、业务错误脱敏、Xing 头 CRC；证据上限由 5 MB 调为 6 MB（4 个候选 + 初选，原因见步骤卡） | verifier 第 1–11 条通过、第 12 条登记完整待用户试听；158 个单元测试通过；`make arch-check`、`make drama-ir-check` 通过；评审无阻断项。费用估算 ¥1.15 | 用户试听后决定 D-004，把决定写入报告，P0-05 标为 ✅；未采纳的评审建议：代理 Tunnel 403 / DNS 等持续性网络错误快速失败（现由重试上限与 `--max-cost-cny` 兜底）。M0.2 其余可做：P0-06 定妆（Ark Seedream 可用）、P0-10 音乐音效 |
 | 2026-09-30 | D-004 | 用户选定 C `instruct-speed` 为默认配音方案（苏晚 知性灿灿 2.0 / 陆沉 高冷沉稳 2.0 + 语音指令 `tts-instruct.v1` + 语速映射） | — | P0-05 可把决定写入报告并标为 ✅；P0-09 口型、P0-11 剪辑合成、P0-12 串联使用该方案的配音 |
+| 2026-09-30 | P0-05 | 收尾：D-004 已决（用户 `/decide D-004 C`），决定写入报告 `docs/reports/p0/P0-05.md`（结论与“推荐与决定”一节）；P0-05 标为 ✅，进度指针移到 P0-06 | 验收第 1–11 条已由 verifier 通过（PR #7），第 12 条由 D-004 满足；`make arch-check` 通过。本步费用 ¥1.15（估算） | P0-06 角色定妆（Ark Seedream 可用） |
