@@ -44,14 +44,14 @@
 - [x] 合理性指标与离线模式：`metrics(doc, source_doc)` 与 `--metrics`；ep01 与 P0-03 15 份原分镜基线（¥0），加测试
 - [x] 生成循环与 CLI：子类化 `script.Generator`，`run_shots`（多输入、`--n`、summary、费用保险、余额差），`python3 -m poc shots`，假 chat_fn 测试通过 / 修复 / 中止
 - [x] 冒烟：3 个候选在 ep01 上各 1 份，必要时微调 `shots.v1`
-- [ ] 批次 A：ep01 上 flash ×5、flash 关思维链 ×5、v4-pro ×5
+- [x] 批次 A：ep01 上 flash ×5、flash 关思维链 ×5、v4-pro ×5
 - [x] 批次 B：flash 对 P0-03 flash s01–s05 各 1 份
-- [ ] 报告与证据：`docs/reports/p0/P0-04.md`、`docs/reports/p0/P0-04/<候选>/`（去掉余额绝对值）、README shots 一节
+- [x] 报告与证据：`docs/reports/p0/P0-04.md`、`docs/reports/p0/P0-04/<候选>/`（去掉余额绝对值）、README shots 一节
 - [ ] 验证（verifier）、评审（arch-reviewer）、交付
 
 ## 本步费用
 
-- **已花费**：¥2.19（估算；批次 A 的 v4-pro 仍在运行）
+- **已花费**：¥3.34（估算；余额实际减少 ¥1.84）
 - **上限**：¥100
 
 ## 待决事项

@@ -1,0 +1,769 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "drama_usb_counter",
+    "title": "纸箱里的U盘",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "写实都市短剧质感，冷调玻璃办公室与暖调雨夜霓虹形成对比，大量近景特写与浅景深，高反差布光，手持感镜头语言",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_suqing",
+      "name": "苏晴",
+      "gender": "female",
+      "age": 26,
+      "role": "protagonist",
+      "bio": "入行三年的平面设计师，独自在大城市打拼，作品被上司王振长期据为己有。性格隐忍但底线清晰，被辞退后拿到关键证据，决定不再退让。",
+      "appearance": "中等身高，偏瘦，黑长直发常扎低马尾，眉骨清秀，眼下有淡淡疲惫的阴影，手指细长，虎口有常年握笔的薄茧。",
+      "costume": "米白色衬衫外搭浅灰针织开衫，黑色直筒长裤，帆布托特包，右手腕戴一条细银链。",
+      "voice": "清亮偏中低的年轻女声，前半段压抑、气息发紧，后半段转冷硬、字字咬牙，语速偏快。"
+    },
+    {
+      "id": "char_wangzhen",
+      "name": "王振",
+      "gender": "male",
+      "age": 45,
+      "role": "antagonist",
+      "bio": "设计总监，擅长在汇报场合摘取下属成果，用职位与话术压人。表面体面圆熟，实则把公司资源当成私人生意。",
+      "appearance": "中等偏胖，短发梳得一丝不苟，国字脸，戴细边金框眼镜，习惯性微笑，下巴有浅浅胡茬。",
+      "costume": "深藏青西装外套，白衬衫不系领带，左手腕戴一块棕色皮表带腕表，胸前挂着工牌。",
+      "voice": "中年男中音，语调平稳拖腔，笑意里带居高临下的压迫感，语速偏慢。"
+    },
+    {
+      "id": "char_linna",
+      "name": "林娜",
+      "gender": "female",
+      "age": 28,
+      "role": "supporting",
+      "bio": "王振的直属下属，擅长察言观色、替上司传话干脏活。对苏晴谈不上仇，只是顺手踩一脚往上爬。",
+      "appearance": "圆脸，齐肩栗色微卷发，妆容精致，眼角有一颗小痣，习惯抱着文件夹走路。",
+      "costume": "黑色西装裙套装，白色短靴，耳朵上戴小巧珍珠耳钉。",
+      "voice": "偏尖的年轻女声，语速快，收尾带一点假客气上扬的尾调。"
+    },
+    {
+      "id": "char_chenmo",
+      "name": "陈默",
+      "gender": "male",
+      "age": 30,
+      "role": "supporting",
+      "bio": "同层市场部的普通员工，与苏晴只是点头之交，但看不惯办公室的倾轧，在雨夜顺手帮了一把。",
+      "appearance": "高个子，清瘦，黑框眼镜，头发被雨打湿后贴在额前，笑起来有点腼腆。",
+      "costume": "深灰色连帽薄外套，黑色长裤，运动鞋，手里一把黑色长柄伞。",
+      "voice": "温和的年轻男声，音量不大，语气真诚，语速中等偏慢。"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "雨夜里的纸箱",
+      "synopsis": "苏晴通宵做出的方案被总监王振当众署上自己的名字，她当场质问反被林娜按住；傍晚一纸解除通知，三年工龄只换来一个纸箱。雨夜楼下陈默递来一把伞，纸箱草稿下面压着一枚贴着'留给你'标签的U盘——里面是王振与外部勾结的假合同和回扣明细。苏晴握紧U盘决定当众反击，此时手机弹出消息：王总点名让她明早九点全员大会发言。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "公司大会议室",
+            "int_ext": "INT",
+            "time_of_day": "day",
+            "description": "落地玻璃环绕的会议室，长条白色会议桌，墙面是公司logo墙，投影幕布占据正前方，桌上散着打印稿和咖啡杯，空调冷气很足。"
+          },
+          "summary": "王振在项目汇报会上把苏晴的设计方案说成自己的成果，苏晴当场站起质问，被轻描淡写地压下去。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "high",
+                "movement": "push_in",
+                "composition": "9:16 竖幅，长条白会议桌斜向延伸占据画面中下部，投影幕布与人物的头部集中在画面上三分之一，画面底部约 1/4 留作字幕与平台 UI 安全区"
+              },
+              "description": "冷气充足的玻璃会议室，落地窗外城市灰白天光，白会议桌两侧坐着几名同事的侧影，苏晴坐在长桌一侧低头，主位的王振靠着椅背；投影幕布亮着，桌面散落打印稿与咖啡杯，镜头自门口缓慢推近会议桌",
+              "lighting": "顶部冷白筒灯为主，投影幕布泛出偏蓝的散射光，人物脸侧有淡淡阴影",
+              "characters": [
+                {
+                  "character_id": "char_wangzhen",
+                  "action": "坐在长桌主位，一只手搭在会议平板边缘",
+                  "emotion": "松弛、胸有成竹"
+                },
+                {
+                  "character_id": "char_suqing",
+                  "action": "坐在长桌一侧，双手交叠在打印稿上",
+                  "emotion": "疲惫、隐忍"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "投影仪风扇低鸣",
+                "会议室空调嗡声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "9:16 竖幅，投影幕布上的方案封面几乎占满画面上半部，署名行位于画面中央偏上，底部 1/4 留空为字幕安全区"
+              },
+              "description": "投影幕布特写：苏晴手绘版主视觉方案封面占满画面，标题下方一行署名（文字后期叠加：“设计：王振”）；一只戴棕色皮表带腕表的手指压在那两个字上，指尖轻敲两下，指节微微用力",
+              "lighting": "投影的冷白光从画面内向外打亮指尖，边缘轻微过曝",
+              "characters": [
+                {
+                  "character_id": "char_wangzhen",
+                  "action": "手指点在幕布署名处，轻敲两下",
+                  "emotion": "从容自得"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "指节敲击空气的轻响",
+                "投影仪风扇低鸣"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 3.8
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "9:16 竖幅，苏晴站在长桌边偏画面中上，身后是虚化的同事侧影，桌面草图与口红纸杯位于画面下缘，底部 1/4 为字幕安全区"
+              },
+              "description": "苏晴从长桌边猛地站起，双手撑在桌沿上，指节泛白，桌上摊着她凌晨改的铅笔草图和一只有口红印的纸杯；背景里几名同事的侧影齐齐转向她，画面轻微手持晃动",
+              "lighting": "顶灯冷白为主，侧面被投影幕布映出一层蓝调反光",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "双手撑桌沿站起身，直视主位方向",
+                  "emotion": "错愕转为强压的愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "王总，这是我熬了三个通宵的方案。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "椅子划过地板的声音",
+                "会议室骤然安静"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh04",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "static",
+                "composition": "9:16 竖幅，王振占据画面中央偏上，身后是虚化的会议桌与同事，桌面平板位于画面下缘，底部 1/4 留给字幕"
+              },
+              "description": "王振身体后仰靠在黑色椅背上，一只手搭在会议平板边缘，细边金框眼镜反着投影的光，他根本不去看苏晴，只抬了抬下巴朝全桌方向说话，嘴角挂着习惯性的浅笑",
+              "lighting": "投影冷光在他镜片上形成一道亮反射，脸部下半有轻微阴影，高反差",
+              "characters": [
+                {
+                  "character_id": "char_wangzhen",
+                  "action": "后仰靠椅，抬了抬下巴对全桌说话",
+                  "emotion": "轻蔑、漫不经心"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_wangzhen",
+                  "kind": "dialogue",
+                  "text": "方案上署的是我的名字。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "空调出风声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh05",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "9:16 竖幅，苏晴面部居中偏上，视线向下，前景下缘露出被捏皱的草图纸角，底部 1/4 为字幕安全区"
+              },
+              "description": "苏晴面部特写：她咬住下唇，视线从投影幕布慢慢移到桌上那叠草图，手指在纸边一点点收紧，把纸角捏出一道明显折痕，镜头极缓推近她的眼睛",
+              "lighting": "侧面冷白光勾出下颌线，眼下疲惫阴影明显，浅景深虚化背景",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "咬唇，视线下移，手指收紧捏皱纸角",
+                  "emotion": "隐忍到极点的屈辱与不甘"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "他连改都没改一个字。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "心跳声渐起",
+                "笔尖滚落桌面的轻响"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "公司开放办公区 · 苏晴工位",
+            "int_ext": "INT",
+            "time_of_day": "dusk",
+            "description": "傍晚的开放办公区，顶灯只亮了一半，格子间大多空着，桌面上还留着加班的外卖盒和便利贴，落地窗外天色泛蓝。"
+          },
+          "summary": "林娜送来解除通知，苏晴沉默收拾工位，纸箱底部露出那枚神秘U盘。",
+          "mood": "sad",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "high",
+                "movement": "tracking",
+                "composition": "9:16 竖幅，成排格子间向画面深处延伸，苏晴工位位于画面中央偏上，落地窗天色在画面上部，底部 1/4 为字幕与 UI 安全区"
+              },
+              "description": "傍晚的开放办公区，顶灯只亮了一半，格子间大多空着，桌面上留着加班的外卖盒和便利贴；镜头沿过道缓慢横移，停在苏晴那个还亮着台灯的工位上，落地窗外天色泛蓝",
+              "lighting": "半亮顶灯形成冷暖交界，窗外蓝调暮光从玻璃透入，工位局部偏暗",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "坐在工位椅上，手垂在膝上",
+                  "emotion": "麻木、疲惫"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "远处电梯叮的一声",
+                "日光灯管的轻微电流声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "9:16 竖幅，两人一坐一立构成前后景，林娜抱文件站画面右上，苏晴坐画面左下，桌面通知单位于画面中心，底部 1/4 留字幕"
+              },
+              "description": "林娜抱着一摞文件站在工位前，把一张打印的解除通知书轻轻放在苏晴桌面，纸面抬头写着“解除劳动合同通知书”（文字后期叠加）；她说完就把手收回文件夹上并后退半步，苏晴坐着抬头看她，没有伸手去拿",
+              "lighting": "顶灯偏冷，桌面纸面反出一片死白，林娜脸侧有轮廓光",
+              "characters": [
+                {
+                  "character_id": "char_linna",
+                  "action": "把通知单放在桌上，抱紧文件夹后退半步",
+                  "emotion": "公事公办的敷衍，带一点假客气"
+                },
+                {
+                  "character_id": "char_suqing",
+                  "action": "坐在椅上抬头看对方，手垂在膝上未动",
+                  "emotion": "麻木、疲惫"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_linna",
+                  "kind": "dialogue",
+                  "text": "苏晴，收拾一下吧，别让大家难做。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.5,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "纸张放上桌面的轻响",
+                "林娜皮鞋踩地的轻响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "pull_out",
+                "composition": "9:16 竖幅，苏晴蹲坐在画面中上，脚边纸箱在画面下缘，隔壁空椅与待机显示器虚化在后，底部 1/4 为字幕安全区"
+              },
+              "description": "苏晴蹲坐在椅子边，把抽屉里的手绘草稿、印着公司 logo 的马克杯和一盆小多肉一件件放进脚边的纸箱，动作很慢，把草稿叠得整整齐齐；镜头缓缓拉开，露出隔壁空着的工位和还亮着待机灯的显示器",
+              "lighting": "工位台灯暖黄与顶灯冷白混合，人物半张脸在暗部",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "把草稿和杯子放进纸箱，动作缓慢",
+                  "emotion": "落寞、克制"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "三年，就换来一个纸箱。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "纸张摩擦声",
+                "显示器待机电流声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh04",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "overhead",
+                "movement": "push_in",
+                "composition": "9:16 竖幅，纸箱内部俯拍填满画面，U盘位于画面中央偏下，标签朝向镜头，底部 1/4 留作字幕安全区"
+              },
+              "description": "俯拍纸箱内部：上面几层是铅笔草稿和旧名片，草稿被掀开一角，底下压着一枚黑色金属 U 盘，蓝色接口反着一线光，侧面贴着一小片手写标签（文字后期叠加：“留给你”）；镜头极缓推近标签，纸箱边缘有雨点渗进的湿痕",
+              "lighting": "顶部工位灯光单一硬光，U盘金属面出现一道高光，其余压暗",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "窗外隐约的雨声",
+                "一声低沉的电子嗡鸣"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "公司楼下街边",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "雨夜的公司楼下，人行道积水倒映着大楼门厅的暖黄灯带，路边停着几辆车，雨丝在路灯下连成斜线，玻璃幕墙反着城市的霓虹。"
+          },
+          "summary": "苏晴抱着纸箱站在雨里，陈默撑伞跑来相助，她在纸箱底层发现贴着'留给你'标签的U盘。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "9:16 竖幅，苏晴抱纸箱站在画面中上偏左，玻璃门厅暖灯带在右后方，积水倒影铺满画面下部，底部 1/4 为字幕与 UI 安全区"
+              },
+              "description": "雨夜的公司楼下，苏晴抱着纸箱站在台阶边，头发被雨打湿贴在脸侧，人行道积水倒映着大楼门厅的暖黄灯带，路边停着几辆车，雨丝在路灯下连成斜线，玻璃幕墙反着城市霓虹；镜头缓慢推近她湿透的肩膀",
+              "lighting": "门厅暖黄光与路灯冷白相互冲突，雨丝被逆光打亮，整体冷调霓虹感",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "抱着纸箱站在台阶边，任雨水打在肩上",
+                  "emotion": "疲惫、茫然"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "密集雨声",
+                "路面积水被踩响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "9:16 竖幅，黑伞斜罩在两人头顶占据画面上缘，两人一左一右位于画面中部，积水倒影在下缘，底部 1/4 留字幕"
+              },
+              "description": "陈默撑着黑色长柄伞从门厅方向小跑过来，把伞倾向苏晴那一侧，自己半边肩膀淋在雨里，另一只手伸过来想接纸箱；两人在积水倒影前停下，镜头随脚步轻微跟移，伞面雨珠不断滑落",
+              "lighting": "路灯从伞后逆光，伞面透出橙黄光晕，两人面部只留微弱反光",
+              "characters": [
+                {
+                  "character_id": "char_chenmo",
+                  "action": "小跑上前，把伞倾向苏晴一侧，另一只手想接纸箱",
+                  "emotion": "关切、有点局促"
+                },
+                {
+                  "character_id": "char_suqing",
+                  "action": "抱着纸箱抬头看他，雨水从发梢滴落",
+                  "emotion": "疲惫、微微意外"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_chenmo",
+                  "kind": "dialogue",
+                  "text": "苏晴姐，伞给你，我送你到路口。",
+                  "delivery": {
+                    "emotion": "tender",
+                    "intensity": 0.5,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨点密集打在伞面上",
+                "鞋踩进积水的啪嗒声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 2.8
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "push_in",
+                "composition": "9:16 竖幅，苏晴低头俯看纸箱，纸箱开口位于画面下三分之一，发梢在画面中心，底部 1/4 为字幕安全区"
+              },
+              "description": "苏晴低头看怀里的纸箱，雨水顺着发梢滴到草稿纸上，把墨迹洇开一小片；她用指尖拨开最上面那张草图，纸堆下面露出一截蓝色的 U 盘接口，她的手指在半空停住，镜头随之推近",
+              "lighting": "门厅暖光从侧后方勾出发丝轮廓，纸箱内部落在暗部，冷调雨夜背景",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "低头拨开草稿纸，指尖触到硬物后停住",
+                  "emotion": "疑惑、警觉"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "这不是我的东西。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "纸张被雨水浸湿的软响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh04",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "9:16 竖幅，U盘侧面标签占画面中心，橙色路灯光斑与斜雨丝在背景虚化，底部 1/4 留作字幕安全区"
+              },
+              "description": "苏晴的手指捏起那枚黑色金属 U 盘，镜头贴近侧面标签，手写字的墨迹被雨水打湿微微晕开（文字后期叠加：“留给你”）；背景是虚化的橙色路灯光斑和斜落的雨丝，金属外壳上凝着几颗水珠",
+              "lighting": "路灯暖橙作逆光，U盘边缘高光，画面整体冷暖对冲，浅景深",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "捏起 U 盘，凑近细看标签",
+                  "emotion": "震惊、说不出的不安"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨声持续",
+                "远处车辆驶过水面的声音"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "苏晴的出租屋书桌",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "狭小的出租屋，窗帘没拉严，窗外雨光透进来；一张旧书桌，笔记本电脑、台灯、翻开的速写本，墙上贴着几张未完成的海报稿。"
+          },
+          "summary": "苏晴读走U盘里的内容，发现王振的回扣明细与假合同，握紧U盘决定当众反击；手机随即弹出消息，王总点名让她明早全员大会发言。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 2.8
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "high",
+                "movement": "push_in",
+                "composition": "9:16 竖幅，书桌位于画面中下部，苏晴背影居中偏上，窗帘缝隙的雨光在画面上缘，底部 1/4 为字幕与 UI 安全区"
+              },
+              "description": "狭小的出租屋，窗帘没拉严，窗外雨光斜切进来；旧书桌上摆着笔记本电脑、台灯和翻开的速写本，墙上贴着几张未完成的海报稿，苏晴湿着头发坐在椅背上，屏幕冷光打在她背上；镜头从门口缓慢推近书桌",
+              "lighting": "仅台灯暖点与笔记本屏幕冷光两个光源，墙面阴暗，高反差",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "坐在书桌前，湿发贴在颈边，伸手去拿 U 盘",
+                  "emotion": "疲惫而紧绷"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "窗外持续的雨声",
+                "椅子轻响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "9:16 竖幅，苏晴侧脸位于画面中上，笔记本屏幕在画面右下角发光，文件列表文字朝镜头，底部 1/4 留字幕"
+              },
+              "description": "苏晴把 U 盘插进笔记本侧面的接口，屏幕立刻跳出文件夹列表（文字后期叠加：“回扣明细”“假合同_2023”“录音_11月”）；她整个人僵在椅子上没有动，双手离开键盘悬在半空",
+              "lighting": "屏幕蓝光自下而上打在苏晴脸上，形成冷调底光，背景几乎全黑",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "把 U 盘插入接口，双手离开键盘，盯着屏幕",
+                  "emotion": "屏息、紧张"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "为什么把它留给我？",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "U盘接入的系统提示音",
+                "窗外持续的雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh03",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "high",
+                "movement": "push_in",
+                "composition": "9:16 竖幅，笔记本屏幕填满画面，录音波形位于上半部，包厢照片位于下半部，底部 1/4 为字幕安全区"
+              },
+              "description": "镜头对准笔记本屏幕：一段录音波形正在播放，旁边是一张会所包厢的模糊照片，桌边有两个看不清脸的人影在推一个牛皮纸文件袋；屏幕表面有轻微反光与像素颗粒，镜头缓慢推近照片上的文件袋",
+              "lighting": "屏幕自发光为主，画面四周压暗，冷蓝色调",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "录音播放的沙沙底噪",
+                "急促的心跳声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh04",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "9:16 竖幅，苏晴双眼位于画面上三分之一，屏幕冷光从画面右侧打来，底部 1/4 留作字幕安全区"
+              },
+              "description": "苏晴的双眼占据画面，屏幕的冷光反在睁大的眼睛里，瞳孔慢慢收缩；她身体不由自主地向前倾，呼吸变浅，睫毛投下一小片颤动的阴影",
+              "lighting": "侧向冷蓝屏幕光为唯一主光，脸部另一半沉入黑暗",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "身体前倾盯着屏幕，呼吸变浅",
+                  "emotion": "从震惊到恍然"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "原来他抢的不止我的方案。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "录音播放的沙沙底噪渐弱",
+                "急促的心跳声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh05",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "9:16 竖幅，苏晴坐在画面中央偏上，握拳的右手在画面下缘，屏幕光从侧后方打来，底部 1/4 为字幕安全区"
+              },
+              "description": "苏晴在椅子上坐直，把 U 盘握进掌心，指节一点点发白，屏幕的蓝光从侧面打过来，她的下颌线绷紧，眼神从惊惶慢慢凝成决意；镜头小幅低角度推近她的脸",
+              "lighting": "侧逆的屏幕冷光勾出下颌与鼻梁轮廓，背景全暗",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "坐直身体，把 U 盘握紧在掌心",
+                  "emotion": "狠厉、下定决心"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "明天全员大会，我要他亲口认。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.75,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "椅子腿挪动的轻响",
+                "一声低沉的弦乐顿点"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh06",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "9:16 竖幅，手机屏幕位于画面中央偏上，屏幕下方露出书桌木纹，底部 1/4 为字幕安全区"
+              },
+              "description": "桌上的手机屏幕亮起，弹出一条消息气泡（文字后期叠加：“王振让你明早九点全员大会发言，别迟到。”），发信人头像显示为林娜；屏幕光在昏暗的桌面上投出一小片白，旁边是翻开的速写本和一截耳机线",
+              "lighting": "手机屏幕自发光照亮桌面局部，周围极暗，冷白与暖木色对比",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "消息提示音",
+                "雨声渐弱"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh07",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "9:16 竖幅，苏晴侧脸与握 U 盘的手同框，手停在画面下三分之一，底部 1/4 为字幕安全区"
+              },
+              "description": "苏晴捏着 U 盘的那只手停在半空没有放下，指腹压着标签边缘；她视线还落在手机屏幕上，嘴角缓缓扯出一个很轻的冷笑，窗外的雨声渐渐退成背景",
+              "lighting": "屏幕余光扫过手指与下颌，其余部分压暗，冷调低照度",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "手指停在 U 盘上不动，视线落在手机屏幕上",
+                  "emotion": "一愣之后的冷笑"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0011",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "正好，我也想在大会上说话。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声渐弱后的静默",
+                "一声轻微的衣料摩擦声"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

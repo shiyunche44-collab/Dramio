@@ -1,0 +1,6 @@
+{
+  "outcome": "invalid",
+  "issues": [
+    "警告 $.scenes[0].shots[1].duration.hint_s: 台词估算朗读 5.7 秒（每秒 4.5 字），超过镜头时长 5.5 秒"
+  ]
+}

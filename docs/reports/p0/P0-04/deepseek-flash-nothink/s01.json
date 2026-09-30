@@ -1,0 +1,734 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "series_yuye",
+    "title": "雨夜反击",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "写实电影感，冷蓝色雨夜与暖黄室内形成对比，浅景深",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_suwan",
+      "name": "苏晚",
+      "gender": "female",
+      "age": 26,
+      "role": "protagonist",
+      "bio": "入职三年的设计师，方案被上司据为己有后遭到辞退，隐忍但不服输。",
+      "appearance": "黑色及肩直发，淡妆，眼神倔强，身高约 165 厘米，身形偏瘦",
+      "costume": "米白色针织开衫、浅蓝衬衫、黑色直筒裤、白色帆布鞋",
+      "voice": "年轻女声，清亮偏柔；委屈时带鼻音，反击时低而坚定"
+    },
+    {
+      "id": "char_luchen",
+      "name": "陆沉",
+      "gender": "male",
+      "age": 32,
+      "role": "antagonist",
+      "bio": "设计总监，表面温和有礼，暗中窃取下属的方案署名。",
+      "appearance": "短发背头，金丝眼镜，轮廓分明，身高约 183 厘米",
+      "costume": "深灰色三件套西装、银色腕表",
+      "voice": "低沉男声，语速偏慢，客气里带着压迫感"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "纸箱里的U盘",
+      "synopsis": "雨夜，苏晚被辞退，上司陆沉假意撑伞、冷言嘲讽。回到出租屋，她在纸箱底发现一枚不属于自己的 U 盘，里面是陆沉窃取方案的监控录像。第二天的方案评审会上，她带着录像当众质问陆沉，却收到一条陌生短信：他不是一个人。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "写字楼门口",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "玻璃幕墙写字楼门口的台阶，大雨，积水映着霓虹"
+          },
+          "summary": "苏晚抱着纸箱被辞退，陆沉撑伞嘲讽，苏晚发誓拿回方案",
+          "mood": "sad",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "ELS",
+                "angle": "high",
+                "movement": "static",
+                "composition": "俯拍写字楼门口，旋转门在画面中上部，主体居中偏上，底部约 1/4 预留字幕和平台 UI 安全区，冷蓝色雨夜霓虹反射积水"
+              },
+              "description": "雨夜俯拍玻璃幕墙写字楼门口，旋转门缓缓转动，积水里倒映着霓虹灯，门口空无一人，大雨倾盆",
+              "lighting": "冷蓝色雨夜，霓虹反射在积水上，门口暖光微弱",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "大雨声",
+                "旋转门转动声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 4.2
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "low",
+                "movement": "tracking",
+                "composition": "苏晚居中偏上，抱纸箱走出旋转门，底部约 1/4 预留字幕安全区，雨丝斜落"
+              },
+              "description": "苏晚抱着纸箱走出旋转门，停在台阶上，雨很快打湿她的头发，她强忍泪水，脚步踩在积水中",
+              "lighting": "冷蓝色雨夜，玻璃幕墙反射霓虹，人物面部暗部较多",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "抱着纸箱走出旋转门，停在台阶上",
+                  "emotion": "强忍泪水，疲惫"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_suwan",
+                  "kind": "voiceover",
+                  "text": "入职三年，我只用了十分钟收拾工位。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.4,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "脚步踩水声",
+                "大雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏晚面部居中偏上，雨水打湿头发贴在脸颊，底部约 1/4 预留字幕安全区"
+              },
+              "description": "苏晚脸部特写，雨水顺着脸颊流下，分不清是雨还是泪，她咬紧嘴唇，眼神从委屈转为倔强",
+              "lighting": "冷蓝色雨夜光，面部轮廓光，眼中有霓虹反光",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "站在台阶上淋雨，咬紧嘴唇",
+                  "emotion": "委屈转为愤怒，倔强"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_suwan",
+                  "kind": "voiceover",
+                  "text": "我以为，努力就够了。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.5,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "大雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh04",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "tilt",
+                "composition": "陆沉举黑伞站在高一级台阶上俯视，苏晚在画面下方回头，主体居中偏上，底部预留字幕安全区"
+              },
+              "description": "一把黑伞遮到苏晚头顶，陆沉站在她身后的台阶上俯视，似笑非笑，苏晚回头错愕",
+              "lighting": "黑伞下阴影，冷蓝色环境光，伞面反光",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "举伞站在高一级台阶上俯视苏晚",
+                  "emotion": "似笑非笑，居高临下"
+                },
+                {
+                  "character_id": "char_suwan",
+                  "action": "回头看向陆沉",
+                  "emotion": "错愕"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨打伞面声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh05",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "陆沉面部居中偏上，金丝眼镜反光，底部约 1/4 预留字幕安全区"
+              },
+              "description": "陆沉近景，金丝眼镜后眼神轻蔑，嘴角微微上扬，说出嘲讽的话",
+              "lighting": "侧逆光，冷蓝色雨夜光勾勒轮廓，眼镜有反光",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "俯视苏晚，轻蔑开口",
+                  "emotion": "嘲讽，得意"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_luchen",
+                  "kind": "dialogue",
+                  "text": "方案，我会替你好好完成的。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.4,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "大雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh06",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "苏晚面部特写居中偏上，雨水顺脸颊流下，底部约 1/4 预留字幕安全区"
+              },
+              "description": "苏晚脸部特写，雨水顺着脸颊流下，她咬紧嘴唇，直视陆沉，眼神里委屈转为愤怒",
+              "lighting": "冷蓝色雨夜光，面部湿润反光，眼中怒火",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "直视陆沉，咬紧嘴唇",
+                  "emotion": "委屈转为愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_suwan",
+                  "kind": "dialogue",
+                  "text": "那是我熬了三个月的方案。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "大雨声",
+                "雨打伞面声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh07",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "pan",
+                "composition": "陆沉把伞塞给苏晚，转身走进雨中，主体居中偏上，底部预留字幕安全区"
+              },
+              "description": "陆沉把黑伞塞进苏晚手里，说完转身走进雨中，背影冷漠，苏晚握住伞柄",
+              "lighting": "冷蓝色雨夜，陆沉走入暗处，苏晚被伞影覆盖",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "把伞塞给苏晚，转身走进雨中",
+                  "emotion": "冷淡，不屑"
+                },
+                {
+                  "character_id": "char_suwan",
+                  "action": "握住伞柄，站在原地",
+                  "emotion": "不服输"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_luchen",
+                  "kind": "dialogue",
+                  "text": "证据呢？没有证据，就别再闹了。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.5,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声渐大",
+                "脚步踩水声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh08",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏晚面部特写，手握伞柄，眼神坚定，底部约 1/4 预留字幕安全区"
+              },
+              "description": "苏晚握紧伞柄，抬头望向陆沉离去的方向，雨水顺着伞沿滴落，眼神坚定不服输",
+              "lighting": "伞下阴影，冷蓝色雨夜光，面部有微弱反光",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "握紧伞柄，抬头望向雨幕",
+                  "emotion": "愤怒，坚定"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_suwan",
+                  "kind": "dialogue",
+                  "text": "总有一天，我会拿回来。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.5,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "大雨声",
+                "雨滴落地声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "苏晚的出租屋",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "狭小的出租屋，一盏台灯，窗外下着雨"
+          },
+          "summary": "苏晚在纸箱底发现 U 盘，看到陆沉窃取方案的监控录像",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "high",
+                "movement": "static",
+                "composition": "狭小出租屋全景，苏晚坐在地板上居中偏下，湿透纸箱在面前，底部约 1/4 预留字幕安全区，暖黄台灯与窗外冷蓝雨夜对比"
+              },
+              "description": "狭小出租屋全景，苏晚坐在地板上，湿透的纸箱放在面前，台灯发出暖黄光，窗外下着雨",
+              "lighting": "暖黄台灯为主光，窗外冷蓝色雨夜光，室内昏暗",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "放下纸箱，瘫坐在地板上",
+                  "emotion": "疲惫，失落"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_suwan",
+                  "kind": "voiceover",
+                  "text": "他说得对，我什么都没有。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.5,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "窗外雨声",
+                "纸箱落地声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 4.0
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "手部大特写居中，撕开纸箱底部胶带，露出银色 U 盘，底部约 1/4 预留字幕安全区"
+              },
+              "description": "苏晚的手撕开纸箱底部的一段胶带，露出一枚银色 U 盘，镜头聚焦在手指和 U 盘上",
+              "lighting": "暖黄台灯光照射，手部细节清晰，背景虚化",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "手撕开纸箱底部胶带，发现 U 盘",
+                  "emotion": "迟疑，意外"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_suwan",
+                  "kind": "voiceover",
+                  "text": "纸箱底下，粘着一枚不属于我的U盘。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.4,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "胶带撕开声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "苏晚面部特写，手中捏着 U 盘举到眼前，瞳孔微缩，底部约 1/4 预留字幕安全区"
+              },
+              "description": "苏晚捏起 U 盘举到眼前，瞳孔微缩，脸上映着台灯的暖光，表情震惊",
+              "lighting": "暖黄台灯光照亮面部，背景暗，U 盘反光",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "捏起 U 盘举到眼前",
+                  "emotion": "震惊，疑惑"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_suwan",
+                  "kind": "dialogue",
+                  "text": "会是谁……偷偷在帮我？",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "轻微呼吸声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh04",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏晚面部被笔记本屏幕光照亮，屏幕在画面一侧显示监控录像，主体居中偏上，底部约 1/4 预留字幕安全区"
+              },
+              "description": "笔记本电脑屏幕的光照亮苏晚的脸，屏幕里播放着深夜办公室的监控录像，陆沉的身影出现在画面中，苏晚由震惊转为坚定",
+              "lighting": "笔记本屏幕冷白光照亮面部，与台灯暖光混合，背景昏暗",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "盯着屏幕，慢慢坐直身体",
+                  "emotion": "由震惊转为坚定"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_suwan",
+                  "kind": "dialogue",
+                  "text": "陆沉，原来你连署名都是偷的。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "键盘敲击声",
+                "电脑提示音",
+                "雨声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "公司会议室",
+            "int_ext": "INT",
+            "time_of_day": "day",
+            "description": "明亮的玻璃会议室，长桌两侧坐满同事，大屏幕显示方案页，正在开方案评审会"
+          },
+          "summary": "苏晚拿出监控录像当众质问陆沉，陆沉慌乱地喊保安；随即她收到一条陌生短信，留下悬念",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "明亮玻璃会议室全景，陆沉站在大屏幕前居中偏上，长桌两侧坐满同事，底部约 1/4 预留字幕安全区"
+              },
+              "description": "明亮的玻璃会议室，长桌两侧坐满同事，大屏幕显示方案页，陆沉站在屏幕前主持方案评审会",
+              "lighting": "明亮冷白日光灯，玻璃幕墙透入日光，整体高调",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "站在大屏幕前整理领带，面向众人",
+                  "emotion": "志得意满"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0011",
+                  "speaker": "char_luchen",
+                  "kind": "dialogue",
+                  "text": "各位，这是我主导的新品方案。",
+                  "delivery": {
+                    "emotion": "happy",
+                    "intensity": 0.5,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "会议室嘈杂声",
+                "投影仪风扇声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 4.8
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "苏晚推门而入，举起 U 盘，居中偏上，底部约 1/4 预留字幕安全区"
+              },
+              "description": "会议室的门被推开，苏晚走进来，举起手中的 U 盘，冷静带着讥讽，所有人转头看她",
+              "lighting": "门外冷光与室内暖光交汇，苏晚身上有轮廓光",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "推门而入，举起 U 盘",
+                  "emotion": "冷静，带着讥讽"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0012",
+                  "speaker": "char_suwan",
+                  "kind": "dialogue",
+                  "text": "陆总监，这段监控录像，要不要当众放给大家看看？",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "推门声",
+                "议论声戛然而止"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "陆沉面部特写居中偏上，笑容僵住，额头渗汗，底部约 1/4 预留字幕安全区"
+              },
+              "description": "陆沉的笑容僵在脸上，额头渗出细汗，后退半步，眼神慌乱",
+              "lighting": "冷白日光灯，面部油光可见，背景虚化",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "笑容僵住，后退半步",
+                  "emotion": "惊慌，恐惧"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0013",
+                  "speaker": "char_luchen",
+                  "kind": "dialogue",
+                  "text": "你……你怎么会有这个？",
+                  "delivery": {
+                    "emotion": "fearful",
+                    "intensity": 0.7,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "会议室寂静",
+                "心跳声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh04",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "陆沉近景居中偏上，气急败坏大喊，底部约 1/4 预留字幕安全区"
+              },
+              "description": "陆沉气急败坏地指向门口，大喊保安，表情扭曲，领带歪斜",
+              "lighting": "冷白日光灯，面部阴影加重",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "指向门口，大喊保安",
+                  "emotion": "愤怒，慌乱"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0014",
+                  "speaker": "char_luchen",
+                  "kind": "dialogue",
+                  "text": "保安！把她带出去！",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "拍桌声",
+                "椅子挪动声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh05",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏晚手机屏幕特写，陌生短信文字后期叠加，画面底部约 1/4 预留字幕安全区"
+              },
+              "description": "苏晚手中的手机屏幕亮起，显示一条陌生短信，文字后期叠加：‘他不是一个人。’",
+              "lighting": "手机屏幕光照亮苏晚手指，环境光冷白",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "低头看手机屏幕",
+                  "emotion": "刚扬起的笑容收住，警觉"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "手机震动声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh06",
+              "duration": {
+                "hint_s": 3.8
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "苏晚面部近景居中偏上，眼神警觉，底部约 1/4 预留字幕安全区"
+              },
+              "description": "苏晚抬起头，眼神警觉，嘴角的笑容消失，望向会议室前方，画面定格在她凝重的表情",
+              "lighting": "冷白日光灯，面部半侧阴影，眼神光突出",
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "抬头，眼神警觉地望向某处",
+                  "emotion": "焦虑，警觉"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0015",
+                  "speaker": "char_suwan",
+                  "kind": "voiceover",
+                  "text": "可我没想到，真正的对手，还藏在后面。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "心跳声",
+                "会议室低语声"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
