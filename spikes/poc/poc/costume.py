@@ -18,6 +18,9 @@ calls.jsonl 与 summary 不写图像数据；图像保存在 runs/<run_id>/image
 - --export 运行目录 目标目录：第 1 轮图像（文件名带 sha256 前 8 位）+ manifest.json + run-summary.json + run-calls.jsonl；
 - --verify 证据根目录：复核每个 manifest 的图像 sha256 / 字节数 / 宽高、与 summary 和 calls 的对应、Seedance 可用性标注、费用合计；
 - --cards 证据根目录：按角色生成定妆卡 <角色 id>.md（markdown 并排展示，不拼图）。
+
+Job / Item / Runner / execute_jobs / summarize / 证据复核的公共部分（check_files、check_calls）被 poc/keyframe.py（P0-07）复用：
+Job.char_id / Item.char_id 是“主体 id”（这里是角色 id，keyframe 里是 shot_id），Runner 用 new_item / call_extra 两个钩子附加各自的字段。
 """
 
 from __future__ import annotations
@@ -223,7 +226,7 @@ class Settings:
 @dataclass
 class Item:
     round: int
-    char_id: str
+    char_id: str  # 主体 id：角色 id（keyframe 为 shot_id）
     kind: str
     label: str
     section: str
@@ -282,13 +285,23 @@ class Runner:
     def _price(self, job: Job) -> float:
         return pricing.image_cny(seedream.PROVIDER, self.s.model_id, pricing.size_pixels(job.size), len(job.refs))
 
-    def item(self, job: Job, rnd: int, out_dir: Path) -> Item:
-        sample = f"r{rnd}"
-        it = Item(
+    def new_item(self, job: Job, rnd: int, key: str) -> Item:
+        """这一张的 Item（尚未请求）；子类重载以附加自己的字段。"""
+        return Item(
             round=rnd, char_id=job.char_id, kind=job.kind, label=job.label, section=job.section, size=job.size,
             prompt=job.prompt, refs=[{"path": r.path, "sha256": r.sha256} for r in job.refs],
-            node_key=node_key(self.s.model_id, job, sample), t2i_original=not job.refs,
+            node_key=key, t2i_original=not job.refs,
         )
+
+    def call_extra(self, job: Job, rnd: int, retry: int) -> dict[str, Any]:
+        """写入 calls.jsonl 的 extra；子类重载以附加自己的字段。"""
+        return {
+            "candidate": self.s.label, "round": rnd, "char_id": job.char_id, "kind": job.kind, "label": job.label,
+            "retry": retry, "size": job.size, "refs": [r.sha256 for r in job.refs], "billing": self.billing,
+        }
+
+    def item(self, job: Job, rnd: int, out_dir: Path) -> Item:
+        it = self.new_item(job, rnd, node_key(self.s.model_id, job, f"r{rnd}"))
         uris = [seedream.data_uri(r.data, r.fmt) for r in job.refs]
         t0 = time.monotonic()
         try:
@@ -301,10 +314,7 @@ class Runner:
                 with self.run.call(seedream.PROVIDER, "image", model=self.s.model_id, node_key=it.node_key) as call:
                     call.cost_basis = "estimate"
                     call.cost_cny = 0.0
-                    call.extra = {
-                        "candidate": self.s.label, "round": rnd, "char_id": job.char_id, "kind": job.kind, "label": job.label,
-                        "retry": retry, "size": job.size, "refs": [r.sha256 for r in job.refs], "billing": self.billing,
-                    }
+                    call.extra = self.call_extra(job, rnd, retry)
                     try:
                         res = self.gen_fn(
                             job.prompt, model=self.s.model_id, size=job.size, refs=uris or None, watermark=WATERMARK,
@@ -402,7 +412,46 @@ def summarize(settings: Settings, items: list[Item], n_expected: int) -> dict[st
     }
 
 
-def _load_ref(path: Path) -> Ref:
+def execute_jobs(runner: Runner, jobs: list[Job], rounds: int, run: Run, out: TextIO) -> tuple[list[Item], str | None]:
+    """按轮顺序逐张生成；Abort（费用上限 / 账号级错误）后停止，返回 (已处理的 Item, 中止原因)。"""
+    items: list[Item] = []
+    aborted = None
+    for rnd in range(1, rounds + 1):
+        out_dir = run.dir / "images" / f"r{rnd}"
+        for job in jobs:
+            try:
+                it = runner.item(job, rnd, out_dir)
+            except Abort as exc:
+                aborted = str(exc)
+                if exc.item is not None and exc.item.requests:
+                    if isinstance(exc, CostLimit):
+                        exc.item.error, exc.item.error_kind = f"aborted: {aborted}", "aborted"
+                    items.append(exc.item)  # 未完成，按失败计，已产生的费用计入合计
+                print(f"r{rnd} {job.char_id} {job.kind}-{job.label}: 中止：{aborted}", file=out)
+                break
+            items.append(it)
+            print(
+                f"r{rnd} {job.char_id} {job.kind}-{job.label}: {'成功 ' + str(it.width) + 'x' + str(it.height) if it.ok else '失败 ' + (it.error or '')}"
+                f"  {it.elapsed_s:.1f}s  重试 {it.transient_failures}  ¥{it.cost_cny:.2f}",
+                file=out,
+            )
+        if aborted:
+            break
+    return items, aborted
+
+
+def price_block(model_id: str, billing: str) -> dict[str, Any]:
+    """summary 中的单价说明。"""
+    return {
+        "model": model_id,
+        **asdict(pricing.IMAGE_PRICES[(seedream.PROVIDER, model_id)]),
+        "tier_pixels": pricing.IMAGE_TIER_PIXELS,
+        "source": pricing.IMAGE_PRICE_SOURCE,
+        **({"note": pricing.PLAN_COST_NOTE} if billing == "plan" else {}),
+    }
+
+
+def load_ref(path: Path) -> Ref:
     data = path.read_bytes()
     info = images.image_info(data)
     try:
@@ -451,7 +500,7 @@ def run_costume(
             return 2
         for cid in chars:
             try:
-                bases[cid] = _load_ref(Path(settings.bases[cid]))
+                bases[cid] = load_ref(Path(settings.bases[cid]))
             except (OSError, images.ImageFormatError) as exc:
                 print(f"主图不可用 {settings.bases[cid]}：{exc}", file=out)
                 return 2
@@ -468,29 +517,7 @@ def run_costume(
     with Run("costume", args, base_dir=base_dir, secrets=providers.secret_values(env)) as run:
         runner = Runner(run, settings, env, gen_fn=gen_fn, sleep=sleep)
         print(f"run_id: {run.run_id}  方案: {settings.label}  模型: {settings.model_id}（{billing}）  角色: {', '.join(chars)}  每轮 {len(jobs)} 张", file=out)
-        items: list[Item] = []
-        aborted = None
-        for rnd in range(1, settings.rounds + 1):
-            out_dir = run.dir / "images" / f"r{rnd}"
-            for job in jobs:
-                try:
-                    it = runner.item(job, rnd, out_dir)
-                except Abort as exc:
-                    aborted = str(exc)
-                    if exc.item is not None and exc.item.requests:
-                        if isinstance(exc, CostLimit):
-                            exc.item.error, exc.item.error_kind = f"aborted: {aborted}", "aborted"
-                        items.append(exc.item)  # 未完成，按失败计，已产生的费用计入合计
-                    print(f"r{rnd} {job.char_id} {job.kind}-{job.label}: 中止：{aborted}", file=out)
-                    break
-                items.append(it)
-                print(
-                    f"r{rnd} {job.char_id} {job.kind}-{job.label}: {'成功 ' + str(it.width) + 'x' + str(it.height) if it.ok else '失败 ' + (it.error or '')}"
-                    f"  {it.elapsed_s:.1f}s  重试 {it.transient_failures}  ¥{it.cost_cny:.2f}",
-                    file=out,
-                )
-            if aborted:
-                break
+        items, aborted = execute_jobs(runner, jobs, settings.rounds, run, out)
         summary = summarize(settings, items, len(jobs) * settings.rounds)
         summary.update(
             run_id=run.run_id,
@@ -502,13 +529,7 @@ def run_costume(
             billing=billing,
             aborted=aborted,
             spent_cny_total=round(runner.spent, 6),
-            price={
-                "model": settings.model_id,
-                **asdict(pricing.IMAGE_PRICES[(seedream.PROVIDER, settings.model_id)]),
-                "tier_pixels": pricing.IMAGE_TIER_PIXELS,
-                "source": pricing.IMAGE_PRICE_SOURCE,
-                **({"note": pricing.PLAN_COST_NOTE} if billing == "plan" else {}),
-            },
+            price=price_block(settings.model_id, billing),
         )
         run.write_json("summary.json", summary)
         ok = aborted is None and summary["ok"] == summary["n_expected"]
@@ -585,20 +606,9 @@ def _read_calls(path: Path, problems: list[str], where: str) -> list[dict[str, A
     return calls
 
 
-def verify_dir(d: Path) -> list[str]:
-    """复核一个证据目录（含 manifest.json、run-summary.json、run-calls.jsonl）。返回问题列表。"""
-    problems: list[str] = []
-    where = d.name
-    manifest = json.loads((d / "manifest.json").read_text(encoding="utf-8"))
-    summary = json.loads((d / "run-summary.json").read_text(encoding="utf-8"))
-    calls = _read_calls(d / "run-calls.jsonl", problems, where)
-    if b";base64," in (d / "run-summary.json").read_bytes() or b"b64_json" in (d / "run-summary.json").read_bytes():
-        problems.append(f"{where}：run-summary 含 base64 图像数据")
-    if manifest["run_id"] != summary["run_id"]:
-        problems.append(f"{where}：manifest 与 run-summary 的 run_id 不一致")
-    for e in manifest["images"]:
-        if e.get("seedance_eligible") and (e.get("refs") or not e.get("t2i_original")):
-            problems.append(f"{where}：{e['file']} 有参考图却标为 seedance_eligible")
+def check_files(d: Path, entries: list[dict[str, Any]], where: str, problems: list[str]) -> None:
+    """复核 manifest 中每张已入库图像：存在、是有效图像、sha256 / 字节数 / 宽高与 manifest 一致、文件名带 sha256 前 8 位。"""
+    for e in entries:
         if not e.get("committed", True):
             continue
         path = d / e["file"]
@@ -615,10 +625,14 @@ def verify_dir(d: Path) -> list[str]:
                 problems.append(f"{where}：{e['file']} 的 {key} 为 {got}，manifest 记为 {e[key]}")
         if not Path(e["file"]).stem.endswith(info.sha256[:8]):
             problems.append(f"{where}：{e['file']} 文件名中的 sha256 前缀与内容不符")
-    listed = {(e["char_id"], e["kind"], e["label"]): e["sha256"] for e in manifest["images"]}
-    ok_items = {(i["char_id"], i["kind"], i["label"]): i["sha256"] for i in summary["items"] if i["ok"] and i["round"] == manifest["round"]}
-    if listed != ok_items:
-        problems.append(f"{where}：manifest 与 run-summary 第 {manifest['round']} 轮成功项不一致（{len(listed)} / {len(ok_items)}）")
+
+
+def check_calls(d: Path, manifest: Mapping[str, Any], summary: Mapping[str, Any], where: str, problems: list[str]) -> None:
+    """复核 run-calls.jsonl 与 run-summary.json / manifest 的对应：无图像数据、成功请求数、sha256、口径、费用合计。"""
+    calls = _read_calls(d / "run-calls.jsonl", problems, where)
+    summary_bytes = (d / "run-summary.json").read_bytes()
+    if b";base64," in summary_bytes or b"b64_json" in summary_bytes:
+        problems.append(f"{where}：run-summary 含 base64 图像数据")
     ok_calls = [c for c in calls if c.get("status") == "ok"]
     n_ok = sum(1 for i in summary["items"] if i["ok"])
     if len(ok_calls) != n_ok:
@@ -634,10 +648,29 @@ def verify_dir(d: Path) -> list[str]:
     total = round(sum(float(c.get("cost_cny") or 0) for c in calls), 6)
     if abs(total - float(summary["spent_cny_total"])) > 0.01:
         problems.append(f"{where}：run-calls 费用合计 ¥{total} 与 run-summary ¥{summary['spent_cny_total']} 不一致")
+
+
+def verify_dir(d: Path) -> list[str]:
+    """复核一个证据目录（含 manifest.json、run-summary.json、run-calls.jsonl）。返回问题列表。"""
+    problems: list[str] = []
+    where = d.name
+    manifest = json.loads((d / "manifest.json").read_text(encoding="utf-8"))
+    summary = json.loads((d / "run-summary.json").read_text(encoding="utf-8"))
+    if manifest["run_id"] != summary["run_id"]:
+        problems.append(f"{where}：manifest 与 run-summary 的 run_id 不一致")
+    for e in manifest["images"]:
+        if e.get("seedance_eligible") and (e.get("refs") or not e.get("t2i_original")):
+            problems.append(f"{where}：{e['file']} 有参考图却标为 seedance_eligible")
+    check_files(d, manifest["images"], where, problems)
+    listed = {(e["char_id"], e["kind"], e["label"]): e["sha256"] for e in manifest["images"]}
+    ok_items = {(i["char_id"], i["kind"], i["label"]): i["sha256"] for i in summary["items"] if i["ok"] and i["round"] == manifest["round"]}
+    if listed != ok_items:
+        problems.append(f"{where}：manifest 与 run-summary 第 {manifest['round']} 轮成功项不一致（{len(listed)} / {len(ok_items)}）")
+    check_calls(d, manifest, summary, where, problems)
     return problems
 
 
-def run_verify(root: Path, out: TextIO | None = None) -> int:
+def run_verify(root: Path, out: TextIO | None = None, verify: Callable[[Path], list[str]] = verify_dir) -> int:
     out = sys.stdout if out is None else out
     manifests = sorted(root.rglob("manifest.json"))
     if not manifests:
@@ -648,7 +681,7 @@ def run_verify(root: Path, out: TextIO | None = None) -> int:
     total = 0.0
     for m in manifests:
         n_images += len(json.loads(m.read_text(encoding="utf-8"))["images"])
-        problems += verify_dir(m.parent)
+        problems += verify(m.parent)
     for calls_path in sorted(root.rglob("run-calls.jsonl")):
         total += sum(float(json.loads(ln).get("cost_cny") or 0) for ln in calls_path.read_text(encoding="utf-8").splitlines() if ln.strip())
     print(f"复核 {len(manifests)} 个证据目录、{n_images} 张图像；全部 run-calls 费用合计 ¥{total:.2f}", file=out)

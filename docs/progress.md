@@ -62,10 +62,10 @@
 ## 子任务
 
 - [x] 1. 可达性与方案选定：实测 pip、GitHub release、HuggingFace / ModelScope；试装 insightface 或 dlib-bin + face_recognition_models，各跑通一次“检测 + 特征”；结论写入交接日志
-- [ ] 2. `poc/face.py` 骨架：Embedder 协议与选定后端、余弦相似度、最小脸阈值、伪造后端单测
-- [ ] 3. 基准库、双人指派、统计（分位数、直方图）、`face` CLI（`--json` / `--csv`）与离线单测
+- [x] 2. `poc/face.py` 骨架：Embedder 协议与选定后端、余弦相似度、最小脸阈值、伪造后端单测
+- [x] 3. 基准库、双人指派、统计（分位数、直方图）、`face` CLI（`--json` / `--csv`）与离线单测
 - [ ] 4. 度量校准与有效性验证（¥0）：P0-06 派生图与其它主图、异性角色互比，定 τ，记局限
-- [ ] 5. `keyframe.v1` 与 `poc/keyframe.py` 规划层（离线）：三方案提示词、参考图映射、可度量性预标注、计价、node_key；`costume --verify docs/reports/p0/P0-06` 仍返回 0；单测
+- [x] 5. `keyframe.v1` 与 `poc/keyframe.py` 规划层（离线）：三方案提示词、参考图映射、可度量性预标注、计价、node_key；`costume --verify docs/reports/p0/P0-06` 仍返回 0；单测
 - [ ] 6. 冒烟（约 ¥1）：单人镜头 B 方案、双人镜头 C 方案（4 张参考图），确认 pro 接受多参考图与 1152×2048，检查是否照抄参考图姿态或背景
 - [ ] 7. 首帧生成第 1 轮（约 ¥11，A/B/C 各 12 镜头 + 空镜，37 张；`--max-cost-cny` ≤ 20）
 - [ ] 8. 首帧生成第 2 轮（约 ¥11，只留统计）
@@ -154,3 +154,4 @@
 | 2026-09-30 | P0-06 | 完成：Seedream 定妆（flash / v4 / pro 主图各 6 张；pro 派生 text / ref / sheet 76/76；flash 派生因欠费不完整，留作对照）；D-006 选定两个角色 pro `main-02` + `ref`；报告 `docs/reports/p0/P0-06.md`、定妆卡、证据 9 个目录。P0-06 标为 ✅，进度指针移到 P0-07 | verifier 12/12 通过（单测 205 个无网络通过；`--verify` 86 张、¥31.48；16.94 MB ≤ 18 MB；密钥无泄露；改动范围合规）；arch-reviewer 无阻断项，建议已处理。费用 ¥31.48（按量实付 ¥6.88，其余为 Agent Plan 等价费用，不实付；另有重复运行的 pro 派生等价 ¥23.40 未入库） | P0-07 关键帧与一致性度量（以 pro `main-02` 为身份参考）；P0-08 前确认 Agent Plan 能否调 Seedance |
 | 2026-09-30 | P0-07 | 开工：同步主线；step-planner 出计划，写入步骤卡与 14 个子任务。用户要求 P0-08 用 MiniMax 海螺视频：`MINIMAX_API_KEY` 已配置，但 `api.minimaxi.com`、`api.minimax.io` 在当前容器被网络策略拦截（CONNECT 403），需放行域名（新会话生效），模型 ID 待域名放行后核实；不影响 P0-07 | `make arch-check` 通过。费用 ¥0 | 子任务 1：人脸方案可达性实测 |
 | 2026-09-30 | P0-07 | 子任务 1 完成：PyPI、`github.com` release 及重定向域名 `release-assets.githubusercontent.com` 可达（HuggingFace、ModelScope 仍被拦）；venv 装 numpy / onnxruntime / opencv-python-headless / insightface 2.0，下载 buffalo_l（SCRFD det_10g + ArcFace w600k_r50，289 MB，不入库）。P0-06 主图检测成功率 6/6（置信 0.87–0.90，脸框约 140×200 px）；同角色 main 图互比 0.59–0.76，异性互比 -0.04–0.08，区分度足够；特写 / 三视图正脸可检出，背面无脸。选定后端 arcface | 实测命令输出；`make arch-check` 通过。费用 ¥0 | 子任务 2：`poc/face.py` |
+| 2026-09-30 | P0-07 | 子任务 2、3、5 完成：`poc/face.py`（arcface 后端懒加载、anchor / bank 两种口径、多人指派与置信差、分位数与直方图、`--json` / `--csv`、`--manifest` 逐镜头表）、`poc/keyframe.py` + `keyframe.v1`（text / ref1 / ref2 三方案，空镜共用，`--dry-run` / `--export` / `--verify`，可度量性预标注：ep01 为 1 个 no、2 个 maybe、10 个 yes）、costume 最小重构（Runner 钩子，`costume --verify` 结果不变）、pyproject `face` extras、README。真实后端在 P0-06 图上试跑通过；`--scheme all` 每轮 37 张预计 ¥11.46 | 279 个单测通过（新增 74 个，不联网、不需要 numpy）；`costume --verify docs/reports/p0/P0-06` 返回 0（86 张、¥31.48）；`make arch-check`、`make drama-ir-check` 通过。费用 ¥0 | 子任务 4：度量校准；子任务 6：冒烟 |
