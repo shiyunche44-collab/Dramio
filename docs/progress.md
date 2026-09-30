@@ -23,17 +23,44 @@
 
 - **当前里程碑**：M0.1 准备
 - **当前步骤**：P0-01
-- **步骤状态**：未开始
-- **工作分支**：—
+- **步骤状态**：进行中
+- **工作分支**：claude/ecstatic-euler-z68coi
 - **PR**：—
 
 ## 步骤卡
 
 （开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
 
+- **步骤**：P0-01 验证脚手架
+- **目标**：可运行的 `spikes/poc` Python 项目；`python -m poc doctor` 逐个报告供应商密钥状态（未配置 / 已配置 / 可用 / 无效 / 不可达 / 错误）；每次运行输出到 `runs/<run_id>/`；统一的 `run.call()` 把每次模型调用的耗时和费用写入 `calls.jsonl`，供 P0-03 ~ P0-11 复用。
+- **做**：`spikes/poc/`（pyproject、`dependencies = []`、Python ≥ 3.11）；标准库 `.env` 解析（`spikes/poc/.env`，进程环境优先）；供应商注册表（能力类别、变量名、免费探测方式、需放行域名）；`runs/<run_id>/` 固定在 `spikes/poc/runs/`（可用 `POC_RUNS_DIR` 覆盖）、`meta.json`、`calls.jsonl`；`doctor`（`--offline`、`--require`、并发探测、只用免费 GET 接口，无法确认免费接口的供应商只检查是否配置）；unittest；README；在 progress.md 前置条件中写入变量名和域名。
+- **不做**：任何生成或付费调用；选定供应商；引入 SDK 或第三方依赖；价格表与费用汇总；node_key 缓存与 `run` 子命令（P0-12）；ffmpeg 等本地工具检查；把 spikes 测试接入 CI（涉及 `.github/`，留给 P1-01）；修改 archcheck 规则、`.claude/`、ADR。
+- **验收**：
+  1. 无密钥环境中 `cd spikes/poc && python3 -m poc doctor` 返回 0，每家供应商一行“未配置”并列出缺少的变量名，末尾有按能力类别的覆盖统计；
+  2. 状态判定有 mock `urlopen` 的单元测试：MISSING / OK / INVALID(401/403) / UNREACHABLE(URLError、超时) / ERROR(5xx) / `--offline` 下 CONFIGURED 且不访问网络；
+  3. `--require` 退出码有单元测试；
+  4. 密钥哨兵值不出现在 stdout、`doctor.json`、`calls.jsonl`、`meta.json`；`.env` 与 `runs/` 被忽略，`.env.example` 被跟踪；
+  5. `.env` 加载有单元测试，且进程环境优先；
+  6. 每次运行生成 `spikes/poc/runs/<run_id>/`（`meta.json`、`doctor.json`、`calls.jsonl`）；从仓库根目录运行也不产生顶层 `runs/`，之后 `make arch-check` 通过；
+  7. `run.call()` 成功、失败各一次得到 2 行合法 JSON，字段齐全，失败行含 `error` 且异常原样抛出；
+  8. 在线探测全部是免费 GET 接口，本步费用 ¥0；
+  9. `python3 -m unittest discover -s spikes/poc/tests -t spikes/poc` 通过；`make arch-check` 通过；
+  10. 无第三方依赖；无新顶层目录；未改 `rules.toml`、`exceptions.toml`、`.claude/`、`.github/`；
+  11. README 与 progress.md 前置条件列出全部变量名和需放行的域名；
+  12. 真实密钥在线得到 OK：需用户配置密钥、放行域名后确认，放到 P0-03 的阻塞检查中完成（不阻塞本步）。
+- **涉及**：roadmap §3；governance.md §3（spikes 说明）、§5.1；architecture.md §7.1、§7.4、§15；ADR-0004、0008、0010（仅参考）；INV-03、INV-11。
+- **估时**：0.5 天
+
 ## 子任务
 
 （开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
+
+- [ ] 项目骨架：pyproject、`poc/__main__.py`（argparse）、`.gitignore`（`runs/`、`!.env.example`）、`tests/`
+- [ ] 配置加载与供应商注册表：`poc/config.py`、`poc/providers.py`、`.env.example`，附单元测试
+- [ ] 运行目录与调用记录：`poc/runlog.py`（run_id、meta.json、`run.call()` → calls.jsonl），附单元测试
+- [ ] doctor 命令：状态判定、并发探测、`--offline`、`--require`、doctor.json，附 mock 单元测试与密钥不泄露测试
+- [ ] 文档：`spikes/poc/README.md`；progress.md 前置条件写入变量名与域名
+- [ ] 验证：从 `spikes/poc` 与仓库根目录运行 doctor，输出写入交接日志；unittest 与 `make arch-check`
 
 ## 本步费用
 
