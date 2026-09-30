@@ -22,39 +22,22 @@
 ## 当前状态
 
 - **当前里程碑**：M0.2 单项能力摸底
-- **当前步骤**：P0-03
-- **步骤状态**：进行中
+- **当前步骤**：P0-04
+- **步骤状态**：未开始
 - **工作分支**：claude/lucid-hamilton-r7bd4w
 - **PR**：—
 
 ## 步骤卡
 
-- **步骤**：P0-03 剧本生成
-- **目标**：`python3 -m poc script` 把一句话梗概经 DeepSeek 生成为 1 集 DramaIR v0 剧本，自动严格校验、有限次修复、记录费用；产出 5 份通过严格校验的样本、候选对比和评分表
-- **做**：`poc/llm.py`（OpenAI 兼容 Chat 客户端，urllib，JSON 模式，失败分类）；`poc/pricing.py`（单价，注明来源与日期，费用为估算，用余额差复核）；`poc/prompts/script.v1.md`（Schema + 从 `checks` 常量渲染的语义规则，spikes 内版本化）；`poc/script.py`（生成 → 解析 → `validate` strict → 最多 2 轮修复 → `runs/<run_id>/samples/`、`summary.json`、费用保险）；CLI `python3 -m poc script`（默认梗概取 ep01 的 `series.logline`）；离线单元测试；真实评测 `deepseek-flash` 门禁批次 n=5 与 `deepseek-v4-pro` 对比批次 n=5（冒烟后追加第三个候选：flash 关闭思维链 n=5）；证据入库 `docs/reports/p0/P0-03/`；结论报告 `docs/reports/p0/P0-03.md`（含 agent 初评）；登记 D-003 人工评分
-- **不做**：其他供应商 LLM 评测（无密钥或被拦截，报告列为待补测）；分镜评测（P0-04）及下游环节；node_key 缓存与串联（P0-12）；多集、审稿 Agent；Prompt 迁入 `packages/prompts`；修改 DramaIR Schema、阈值、ep01 及任何 CODEOWNERS 路径；新增 pip 依赖
-- **验收**：1）`cd spikes/poc && python3 -m poc script --n 5` 退出码 0，产物齐全；2）同一次运行顺序生成 5 份、不挑选，每份最终产物 `validate --strict` 0 错误 0 警告、自动修复 ≤ 2 轮，任一失败整批重跑且失败批次写入报告；3）`docs/reports/p0/P0-03/s*.json` 独立 `validate --strict` 通过，每份 1 集、logline 与输入一致；4）summary 与报告含首次通过率与每份修复轮数；5）calls.jsonl 每次尝试 1 行（provider、model、usage、cost_cny、cost_basis、extra.attempt），本步费用 ≤ ¥100 且与“已花费”一致；6）runs 与报告中不含密钥；7）离线单元测试全部通过（不设密钥也通过）；8）报告含样例、单价、耗时、失败率、推荐方案、评分表和标注“agent 初评（非人工）”的初评；9）D-003 人工评分由用户给出后写入报告（此前保持 🔄）；10）`make arch-check`、`make drama-ir-check` 通过，ep01 sha256 不变；11）改动只在 `spikes/poc/`、`docs/reports/p0/`、`docs/progress.md`、`docs/roadmap.md`
-- **涉及**：architecture §4、§5.1.2、§5.1.4；ADR-0002、ADR-0004（P0 豁免）、ADR-0010；governance §3 注（spikes 不受 INV-01 ~ INV-10 约束）；INV-03；TD-001
-- **估时**：1.5 天
+（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
 
 ## 子任务
 
-- [x] LLM 客户端与计价：`poc/llm.py`、`poc/pricing.py`，离线测试 `tests/test_llm.py`
-- [x] Prompt：`poc/prompts/script.v1.md` 与 Prompt 构建（Schema + checks 常量规则），`poc` 能找到 `dramio_drama_ir`，加测试
-- [x] 生成流程 `poc/script.py`：生成、解析、严格校验、修复、产物、summary、费用保险，离线测试 `tests/test_script.py`
-- [x] CLI `python3 -m poc script` 与 README 用法，加 CLI 测试
-- [x] 真实冒烟：`deepseek-flash`、`deepseek-v4-pro` 各 1 次，确认 JSON 模式与输出长度，实测单价并更新“已花费”
-- [x] 门禁批次：`deepseek-flash` `--n 5`（失败则改 Prompt 后整批重跑，全部记录）
-- [x] 对比批次：`deepseek-v4-pro` `--n 5`
-- [x] 证据入库 `docs/reports/p0/P0-03/` 并独立复验
-- [x] 评分表与 agent 初评（含 ep01 锚点）
-- [x] 结论报告 `docs/reports/p0/P0-03.md`
-- [x] 登记 D-003（人工评分），更新本步费用
-- [ ] 验证（verifier）、评审（arch-reviewer）、交付
+（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
 
 ## 本步费用
 
-- **已花费**：¥2.44（估算上界，22 次调用：冒烟 3 份 ¥0.48 + 三个候选各 5 份 ¥1.96；账户余额实际减少 ¥1.46）
+- **已花费**：¥0
 - **上限**：¥100
 
 ## 待决事项
@@ -65,7 +48,7 @@
 |---|---|---|---|---|---|---|
 | D-001 | P0-01 | archcheck 查不出产品代码经 `PYTHONPATH=spikes/poc` 用 `import poc` 依赖 spikes（INV-03 守卫缺口，评审时在临时副本中复现）。是否在 `tools/archcheck/rules.toml` 的 `[aliases]` 中加 `"poc" = "spikes"`？ | A：加这一行别名（受保护路径，单独 PR，由你审阅合并）；B：暂不处理，P1-01 前一并处理 | A：改动一行，立即补上缺口；目前还没有产品代码，不会误报 | 已决 | A：在 `rules.toml` 的 `[aliases]` 中加 `"poc" = "spikes"`，单独 PR 由用户审阅合并（2026-09-30，用户：“补上漏洞”） |
 | D-002 | P0-02 | 是否确认标准样例《雨夜反击》第 1 集作为 P0-03 ~ P0-13 所有评测的**固定输入**（确认后冻结，不再原地修改）？ | A：确认 `packages/drama-ir/examples/v0/ep01.json`（sha256 `cd02daef022c…`），可读版本 `packages/drama-ir/examples/v0/ep01.md`；B：按你的意见修改后再确认（说明要改什么） | A：2 角色、3 场、13 镜头、15 句台词、60 秒；覆盖空镜、道具插入、画外音、音效、3 种场景情绪，结尾有悬念；已按验收审阅修正剧情自洽问题 | 已决 | A：确认 `packages/drama-ir/examples/v0/ep01.json`（sha256 `cd02daef022c6e78227ef3bf366adb2b5142a979a803bcf4373cdb8765a6fb59`）为 P0-03 ~ P0-13 评测的固定输入，冻结（2026-09-30，用户） |
-| D-003 | P0-03 | 剧本生成的人工评分与默认方案：15 份样本都已通过严格校验，“有人工评分记录”需要你打分；同时确认默认 LLM | A：15 份全部人工评分；B：人工抽评 3 份——flash s04（初评最高）、flash s03（flash 最低）、v4-pro s01（初评判为不可用），其余沿用 agent 初评；C：只确认 agent 初评，不打分。默认方案候选：`deepseek-flash`（思维链开）/ `deepseek-v4-pro` / flash 关思维链。样本与评分表：`docs/reports/p0/P0-03.md`、`docs/reports/p0/P0-03/<候选>/sNN.md` | B + `deepseek-flash`：抽评工作量小，而且是真正的人工评分（C 不满足验收本意）；flash 初评均分 3.89 最高、5/5 通过、每集约 ¥0.10、53 秒。回复示例：`/decide D-003 B flash-s04:4,5,4,4,4,5,4 flash-s03:… v4pro-s01:… 默认 flash`（7 个数依次为 D1 ~ D7） | 待决 | |
+| D-003 | P0-03 | 剧本生成的人工评分与默认方案：15 份样本都已通过严格校验，“有人工评分记录”需要你打分；同时确认默认 LLM | A：15 份全部人工评分；B：人工抽评 3 份——flash s04（初评最高）、flash s03（flash 最低）、v4-pro s01（初评判为不可用），其余沿用 agent 初评；C：只确认 agent 初评，不打分。默认方案候选：`deepseek-flash`（思维链开）/ `deepseek-v4-pro` / flash 关思维链。样本与评分表：`docs/reports/p0/P0-03.md`、`docs/reports/p0/P0-03/<候选>/sNN.md` | B + `deepseek-flash`：抽评工作量小，而且是真正的人工评分（C 不满足验收本意）；flash 初评均分 3.89 最高、5/5 通过、每集约 ¥0.10、53 秒。回复示例：`/decide D-003 B flash-s04:4,5,4,4,4,5,4 flash-s03:… v4pro-s01:… 默认 flash`（7 个数依次为 D1 ~ D7） | 已决 | 人工评分：flash s04“不错”（认可）；其余 14 份沿用 agent 初评，报告中注明；默认 LLM 定为 `deepseek-flash`（思维链默认开）（2026-09-30，用户） |
 
 ## 已知的前置条件
 
@@ -100,3 +83,4 @@
 | 2026-09-30 | P0-02 | 收尾：合入 D-002 决定记录；P0-02 标为 ✅，M0.1 完成；进度指针移到 M0.2 P0-03 | 样例 sha256 复核与 D-002 一致（`cd02daef022c…`）；`make drama-ir-check`、`make arch-check` 通过。费用 ¥0 | M0.2：P0-03 剧本生成（需先配置供应商密钥与放行域名，见“已知的前置条件”） |
 | 2026-09-30 | P0-03 | 未开工：用户提供 DeepSeek 密钥，写入 `spikes/poc/.env`（git 忽略，不入库）；`python3 -m poc doctor --require deepseek` 报 `UNREACHABLE(Tunnel 403)`，`api.deepseek.com` 被网络策略拦截。M0.2 其余步骤（P0-04 ~ P0-11）同样依赖尚未配置或被拦截的供应商，全部阻塞 | doctor 退出码 1；`make arch-check` 通过。费用 ¥0 | 用户放行 `api.deepseek.com` 并在云环境设置中添加 `DEEPSEEK_API_KEY` 后，新会话开始 P0-03 |
 | 2026-09-30 | P0-03 | 实现与评测完成，等待 D-003：`poc/llm.py`（OpenAI 兼容 Chat、JSON 模式、失败分类、余额查询）、`poc/pricing.py`、Prompt `script.v1`、`poc/script.py`（严格校验 + 最多 2 轮修复、瞬时故障重试、费用保险）、CLI `python3 -m poc script`；三个候选（deepseek-flash、flash 关思维链、deepseek-v4-pro）各 5 份全部通过严格校验；证据与结论报告 `docs/reports/p0/P0-03.md`（含 agent 初评）。按评审修复：费用中止时 summary 计入未完成样本的费用、`write_json` 脱敏兜底、入库证据去掉余额绝对值、补交冒烟证据 | verifier 第 1–8、10、11 条通过，第 9 条（人工评分）待用户；75 个离线单元测试通过；15 份报告样本独立 `validate --strict` 通过；`make arch-check`、`make drama-ir-check` 通过；评审无阻断项。费用估算 ¥2.44（余额实际减少 ¥1.46） | 用户决定 D-003 后把人工评分写入报告，P0-03 标为 ✅；M0.2 其余步骤：P0-04 依赖 P0-03，P0-05/06/10 缺供应商密钥或域名被拦截 |
+| 2026-09-30 | P0-03 | 收尾：D-003 已决（人工认可 flash s04“不错”，其余沿用 agent 初评；默认 LLM `deepseek-flash`），人工评分写入报告；P0-03 标为 ✅，进度指针移到 P0-04 | verifier 第 1–11 条全部满足（第 9 条由 D-003 满足）；`make arch-check` 通过。本步费用 ¥2.44（估算，余额实际减少 ¥1.46） | P0-04 分镜拆解（DeepSeek 可用，不受阻塞）；P0-05/06/10 仍缺供应商密钥或域名被拦截 |
