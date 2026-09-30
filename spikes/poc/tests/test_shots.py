@@ -230,6 +230,13 @@ class MergeAndGateTest(unittest.TestCase):
         self.assertEqual(len(issues), 1)
         self.assertTrue(issues[0].startswith("$.episodes[0].scenes[0].shots[0].duration.hint_s"))
 
+    def test_h4_equal_is_ok(self):
+        checks = script.drama_ir().checks
+        doc = copy.deepcopy(EP01)
+        shot = doc["episodes"][0]["scenes"][0]["shots"][0]
+        shot["duration"]["hint_s"] = sum(checks.speech_seconds(line) for line in shot["dialogue"])  # 正好念完
+        self.assertNotIn("H4", [g for g, _ in shots.gate_issues(doc)])
+
     def _mut(self, mutate):
         doc = copy.deepcopy(EP01)
         mutate(doc)
