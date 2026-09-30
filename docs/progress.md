@@ -23,17 +23,49 @@
 
 - **当前里程碑**：M0.1 准备
 - **当前步骤**：P0-02
-- **步骤状态**：未开始
-- **工作分支**：—
+- **步骤状态**：进行中
+- **工作分支**：claude/ecstatic-euler-z68coi
 - **PR**：—
 
 ## 步骤卡
 
 （开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
 
+- **步骤**：P0-02 DramaIR v0 与标准样例
+- **目标**：最小 DramaIR v0 JSON Schema、一集手写的 1 分钟标准样例、零依赖的校验命令；P0-03 ~ P0-13 以该样例为固定输入，P0-03 用同一命令检查 LLM 输出。
+- **做**：
+  - `packages/drama-ir/schema/v0/drama.schema.json`：JSON Schema 2020-12，`$defs` 定义剧、角色、集、场、镜、台词；只用结构关键字（`type`、`properties`、`required`、`additionalProperties: false`、`items`、`enum`、`$ref`、`$defs`、`title`、`description`、`$schema`、`$id`），全部字段 required、不用 null；字段是 architecture.md §4.2 的子集，命名与嵌套对齐。
+  - 标准样例 `packages/drama-ir/examples/v0/ep01.json`：中文竖屏，约 60 秒，2 个角色，约 3 场、约 12 个镜头、约 15 句台词；含空镜、道具插入、画外音、音效、至少 2 种场景情绪；结尾有钩子；纯虚构。
+  - Python 包 `packages/drama-ir/python/dramio_drama_ir/`（仅标准库）：子集 Schema 校验器（遇到不支持的关键字报错）；语义校验（错误 / 警告两级，`--strict`）；`validate [--strict] [--json] FILE...`（退出码 0 / 1 / 2）；`render FILE` 输出 Markdown 剧本摘要；错误带 JSON 路径；不定义镜像 Schema 的类型（INV-02）。
+  - `examples/v0/ep01.md` 由 `render` 生成并提交，有一致性测试；单元测试用变异样例生成反例；装了 `jsonschema` 时做可选的差分测试。
+  - Makefile `drama-ir-check`；`packages/drama-ir/README.md`；architecture.md §4 加指向 v0 的说明；tech-debt.md 登记 TD-001（v0 无生成类型与兼容性检查，P1-03 偿还）。
+  - 登记 D-002：确认 `ep01.json`（附 sha256）为 P0 评测的固定输入。
+- **不做**：生成 zod / pydantic 类型、兼容性检查（P1-03）；Take、Bible、Location、Prop、Look、`generation_policy`、`locks`、`resolved_s`、revision；spikes 接入校验、LLM 生成剧本（P0-03）；第三方依赖与打包（P1-01）；把校验接入 CI；ADR 变更。
+- **验收**：
+  1. `make drama-ir-check` 返回 0，其中 `validate --strict` 对 `ep01.json` 0 错误 0 警告；
+  2. 样例规模：角色 2；镜头 10–14；台词 13–17；`hint_s` 合计 50–70 秒；至少 1 个无人物镜头、1 句 `voiceover`、1 个非空 `sfx`；
+  3. 反例都返回 1 并给出 JSON 路径，至少覆盖：speaker 不存在、shot_id 重复、缺必需字段、多余字段、非法枚举、`hint_s` 越界、时长偏离；
+  4. Schema 只用支持的关键字；注入不支持的关键字时报错；
+  5. `ep01.md` 与 `render` 输出逐字一致（有测试）；
+  6. 在 `spikes/poc` 下经 `PYTHONPATH=../../packages/drama-ir/python` 能 `import dramio_drama_ir` 并校验样例得到 0 错误；
+  7. 包代码只 import 标准库和本包；`make arch-check` 通过；
+  8. 没有镜像 Schema 的类或类型定义（INV-02，评审项）；
+  9. tech-debt.md 有 TD-001；architecture.md §4 有指向 v0 的说明；
+  10. 团队确认样例作为固定输入：需用户确认，登记 D-002。
+- **涉及**：architecture.md §4.1、§4.2、§5.3、§15；governance.md §3（INV-02）、§4.1、§7.2；ADR-0002（Proposed，本步与之一致）、ADR-0008；INV-02、INV-03、INV-11。
+- **估时**：1 天（最多 1.5 天）
+
 ## 子任务
 
 （开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
+
+- [ ] Schema：`schema/v0/drama.schema.json` 与 README 字段说明表
+- [ ] 子集 Schema 校验器与 `load_schema`，附单元测试
+- [ ] 语义校验与 `validate` 命令行（`--strict`、`--json`、退出码），附反例测试
+- [ ] 标准样例 `examples/v0/ep01.json`，`validate --strict` 零警告
+- [ ] `render` 子命令与 `ep01.md`，一致性测试；可选 `jsonschema` 差分测试
+- [ ] Makefile `drama-ir-check`；README 用法与冻结规则；architecture.md §4 指向说明；tech-debt.md TD-001
+- [ ] 验证与交付：verifier 验收；登记 D-002（附 sha256）；PR 等用户审阅合并
 
 ## 本步费用
 
