@@ -1,0 +1,9 @@
+[project]
+name = "poc"
+version = "0.0.0"
+description = "Dramio P0 技术验证脚手架（spikes，一次性代码，P1 结束前删除）"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv]
+package = false
