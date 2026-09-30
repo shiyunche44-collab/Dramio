@@ -27,6 +27,7 @@ import base64
 import http.client
 import json
 import os
+import re
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass, field
 from typing import Any
@@ -140,8 +141,16 @@ def _error_from(obj: Any) -> tuple[str | None, str]:
     return None, ""
 
 
+_ACCOUNT_RE = re.compile(r"(account\s+)\d+", re.IGNORECASE)
+
+
+def _scrub(text: str, secrets) -> str:
+    """脱敏：密钥值，以及错误信息里的方舟账号 ID（如 ModelNotOpen 的“Your account 123…”）。"""
+    return _ACCOUNT_RE.sub(r"\1***", config.redact(text, secrets))
+
+
 def _classify(status: int, code: str | None, message: str, secrets) -> ImageError:
-    text = config.redact(f"HTTP {status} code={code} {message}".strip(), secrets)
+    text = _scrub(f"HTTP {status} code={code} {message}".strip(), secrets)
     if code and any(m in code for m in _MODERATION_MARKERS):
         return ImageError("moderation", text, http_status=status, api_code=code, transient=False)
     return ImageError("http", text, http_status=status, api_code=code)
@@ -226,7 +235,7 @@ def generate(
     try:
         resp = (transport or _default_transport)(request, timeout)
     except ImageError as exc:
-        exc.args = (config.redact(str(exc), secrets),)
+        exc.args = (_scrub(str(exc), secrets),)
         raise
     request_id = resp.headers.get("x-request-id") or resp.headers.get("x-tt-logid")
     if resp.status != 200:
@@ -243,8 +252,8 @@ def generate(
     except ImageError as exc:
         if exc.api_code and any(m in exc.api_code for m in _MODERATION_MARKERS):
             raise ImageError(
-                "moderation", config.redact(str(exc), secrets), http_status=200, api_code=exc.api_code, transient=False
+                "moderation", _scrub(str(exc), secrets), http_status=200, api_code=exc.api_code, transient=False
             ) from None
-        exc.args = (config.redact(str(exc), secrets),)
+        exc.args = (_scrub(str(exc), secrets),)
         raise
     return ImageResult(images, usage, request_id, model_echo)
