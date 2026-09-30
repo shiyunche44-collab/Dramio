@@ -27,6 +27,21 @@ class SchemaSelfCheckTest(unittest.TestCase):
         with self.assertRaises(SchemaError):
             check_schema(schema)
 
+    def test_malformed_schema_fails_closed(self):
+        cases = {
+            "未知 type": lambda s: s["$defs"]["duration"]["properties"]["hint_s"].update(type="float"),
+            "enum 不是列表": lambda s: s["$defs"]["series"]["properties"]["aspect_ratio"].update(enum="9:16 16:9"),
+            "required 不是列表": lambda s: s["$defs"]["duration"].update(required="hint_s"),
+            "properties 不是对象": lambda s: s["$defs"]["duration"].update(properties=[]),
+            "$ref 无法解析": lambda s: s["properties"].update(series={"$ref": "#/$defs/nope"}),
+            "$ref 旁有其他关键字": lambda s: s["properties"]["series"].update(type="object"),
+        }
+        for name, mutate in cases.items():
+            schema = load_schema()
+            mutate(schema)
+            with self.assertRaises(SchemaError, msg=name):
+                check_schema(schema)
+
     def test_load_schema_returns_copy(self):
         load_schema()["title"] = "changed"
         self.assertEqual(load_schema()["title"], "DramaIR v0")
@@ -78,6 +93,17 @@ class StructuralTest(unittest.TestCase):
                 "$.episodes[0].scenes[0].shots[0].sfx",
             ],
         )
+
+    def test_integer_accepts_integral_float_like_json_schema(self):
+        doc = sample()
+        doc["episodes"][0]["number"] = 1.0
+        self.assertEqual(validate(doc).errors, [])
+
+    def test_nan_and_infinity_are_rejected(self):
+        for bad in (float("nan"), float("inf"), float("-inf")):
+            doc = sample()
+            doc["episodes"][0]["target_duration_s"] = bad
+            self.assertEqual(paths(validate(doc)), ["$.episodes[0].target_duration_s"], bad)
 
     def test_root_not_object(self):
         self.assertEqual(paths(validate([])), ["$"])

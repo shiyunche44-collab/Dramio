@@ -7,10 +7,36 @@ from typing import Any
 
 from dramio_drama_ir.checks import CHARS_PER_SECOND, speech_seconds
 
-SHOT_SIZES = {"ECU": "大特写", "CU": "特写", "MCU": "近景", "MS": "中景", "MLS": "中远景", "LS": "远景", "ELS": "大远景"}
-ANGLES = {"eye_level": "平视", "high": "俯拍", "low": "仰拍", "overhead": "顶拍", "dutch": "斜角"}
-MOVEMENTS = {"static": "固定", "push_in": "推", "pull_out": "拉", "pan": "摇", "tilt": "俯仰", "tracking": "跟", "handheld": "手持"}
-KINDS = {"dialogue": "", "voiceover": "（画外）"}
+# 枚举值 → 中文标签。键必须与 Schema 的 enum 完全一致（有测试守护）；缺失时回退显示原值。
+LABELS: dict[str, dict[str, str]] = {
+    "shot_size": {"ECU": "大特写", "CU": "特写", "MCU": "近景", "MS": "中景", "MLS": "中远景", "LS": "远景", "ELS": "大远景"},
+    "angle": {"eye_level": "平视", "high": "俯拍", "low": "仰拍", "overhead": "顶拍", "dutch": "斜角"},
+    "movement": {
+        "static": "固定", "push_in": "推", "pull_out": "拉", "pan": "摇", "tilt": "俯仰", "tracking": "跟", "handheld": "手持",
+    },
+    "kind": {"dialogue": "", "voiceover": "（画外）"},
+    "gender": {"female": "女", "male": "男", "other": "其他"},
+    "role": {"protagonist": "主角", "antagonist": "反派", "supporting": "配角"},
+    "int_ext": {"INT": "内景", "EXT": "外景"},
+    "time_of_day": {"day": "日", "night": "夜", "dawn": "清晨", "dusk": "黄昏"},
+    "mood": {
+        "tense": "紧张", "warm": "温暖", "sad": "悲伤", "romantic": "浪漫", "suspense": "悬疑",
+        "comic": "喜剧", "uplifting": "振奋", "neutral": "平静",
+    },
+    "emotion": {
+        "neutral": "平静", "happy": "开心", "sad": "悲伤", "angry": "愤怒", "fearful": "恐惧", "surprised": "惊讶",
+        "disgusted": "厌恶", "tender": "温柔", "anxious": "焦虑", "sarcastic": "讥讽",
+    },
+}
+
+
+def _label(field: str, value: str) -> str:
+    return LABELS[field].get(value, value)
+
+
+def _sentence(text: str) -> str:
+    text = text.rstrip()
+    return text if text.endswith(("。", "！", "？", ".", "!", "?")) else text + "。"
 
 
 def _cell(text: str) -> str:
@@ -36,7 +62,10 @@ def render_markdown(doc: dict[str, Any]) -> str:
         "|---|---|---|---|---|---|---|---|",
     ]
     for c in doc["characters"]:
-        cells = [c["id"], c["name"], f"{c['gender']} / {c['age']}", c["role"], c["bio"], c["appearance"], c["costume"], c["voice"]]
+        cells = [
+            c["id"], c["name"], f"{_label('gender', c['gender'])} / {c['age']}", _label("role", c["role"]),
+            c["bio"], c["appearance"], c["costume"], c["voice"],
+        ]
         out.append("| " + " | ".join(_cell(str(x)) for x in cells) + " |")
 
     for ep in doc["episodes"]:
@@ -49,9 +78,10 @@ def render_markdown(doc: dict[str, Any]) -> str:
             st = sc["setting"]
             out += [
                 "",
-                f"### {sc['scene_id']}　{st['int_ext']}. {st['location']} · {st['time_of_day']} · 情绪 {sc['mood']}",
+                f"### {sc['scene_id']}　{_label('int_ext', st['int_ext'])} · {st['location']} · "
+                f"{_label('time_of_day', st['time_of_day'])} · 情绪：{_label('mood', sc['mood'])}",
                 "",
-                f"{st['description']}。{sc['summary']}。",
+                _sentence(st["description"]) + _sentence(sc["summary"]),
                 "",
                 "| # | 时长 | 景别 / 角度 / 运镜 | 画面 | 台词 | 音效 |",
                 "|---|---|---|---|---|---|",
@@ -59,11 +89,11 @@ def render_markdown(doc: dict[str, Any]) -> str:
             for shot in sc["shots"]:
                 n += 1
                 f = shot["framing"]
-                framing = f"{SHOT_SIZES[f['shot_size']]} / {ANGLES[f['angle']]} / {MOVEMENTS[f['movement']]}"
+                framing = " / ".join(_label(k, f[k]) for k in ("shot_size", "angle", "movement"))
                 cast = "；".join(f"{names[c['character_id']]}：{c['action']}（{c['emotion']}）" for c in shot["characters"])
                 picture = shot["description"] + (f"<br>{cast}" if cast else "<br>（空镜）")
                 said = "<br>".join(
-                    f"**{names[l['speaker']]}**{KINDS[l['kind']]}：{l['text']}（{l['delivery']['emotion']}）"
+                    f"**{names[l['speaker']]}**{_label('kind', l['kind'])}：{l['text']}（{_label('emotion', l['delivery']['emotion'])}）"
                     for l in shot["dialogue"]
                 )
                 hint = shot["duration"]["hint_s"]

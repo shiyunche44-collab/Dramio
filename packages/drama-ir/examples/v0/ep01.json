@@ -29,7 +29,7 @@
       "role": "antagonist",
       "bio": "设计总监，表面温和有礼，暗中窃取下属的方案署名。",
       "appearance": "短发背头，金丝眼镜，轮廓分明，身高约 183 厘米",
-      "costume": "深灰色三件套西装、黑色长柄伞、银色腕表",
+      "costume": "深灰色三件套西装、银色腕表",
       "voice": "低沉男声，语速偏慢，客气里带着压迫感"
     }
   ],
@@ -38,7 +38,7 @@
       "id": "ep01",
       "number": 1,
       "title": "纸箱里的U盘",
-      "synopsis": "雨夜，苏晚被辞退，上司陆沉假意撑伞、冷言嘲讽。回到出租屋，她在纸箱底发现一枚不属于自己的 U 盘，里面是陆沉窃取方案的监控录像。第二天发布会上，她当众揭穿陆沉，却收到一条陌生短信：他不是一个人。",
+      "synopsis": "雨夜，苏晚被辞退，上司陆沉假意撑伞、冷言嘲讽。回到出租屋，她在纸箱底发现一枚不属于自己的 U 盘，里面是陆沉窃取方案的监控录像。第二天的方案评审会上，她带着录像当众质问陆沉，却收到一条陌生短信：他不是一个人。",
       "target_duration_s": 60,
       "scenes": [
         {
@@ -209,12 +209,12 @@
                 "movement": "static",
                 "composition": "双人镜头，左右对峙，下方 1/4 预留字幕安全区"
               },
-              "description": "陆沉把伞塞进苏晚手里，转身走进雨中；苏晚握紧伞柄",
+              "description": "陆沉把伞塞进苏晚手里，说完转身走进雨中；苏晚握紧伞柄",
               "lighting": "冷蓝色夜景，背景霓虹虚化",
               "characters": [
                 {
                   "character_id": "char_luchen",
-                  "action": "把伞塞给苏晚，转身离开",
+                  "action": "把伞塞给苏晚，说完转身离开",
                   "emotion": "冷淡"
                 },
                 {
@@ -310,11 +310,17 @@
                 "shot_size": "ECU",
                 "angle": "overhead",
                 "movement": "static",
-                "composition": "U 盘位于画面中心，下方 1/4 预留字幕安全区"
+                "composition": "U 盘与手部位于画面中心，下方 1/4 预留字幕安全区"
               },
-              "description": "道具插入：纸箱底部用胶带粘着一枚银色 U 盘，便签上写着“备份”",
+              "description": "道具插入：苏晚的手撕开纸箱底部的一段胶带，露出一枚银色 U 盘",
               "lighting": "台灯暖光，金属反光",
-              "characters": [],
+              "characters": [
+                {
+                  "character_id": "char_suwan",
+                  "action": "手撕开胶带（只露出手部）",
+                  "emotion": "迟疑"
+                }
+              ],
               "dialogue": [
                 {
                   "line_id": "l_0008",
@@ -357,7 +363,7 @@
                   "line_id": "l_0009",
                   "speaker": "char_suwan",
                   "kind": "dialogue",
-                  "text": "这不是我的……是谁放进来的？",
+                  "text": "会是谁……偷偷在帮我？",
                   "delivery": {
                     "emotion": "surprised",
                     "intensity": 0.6,
@@ -413,9 +419,9 @@
             "location": "公司会议室",
             "int_ext": "INT",
             "time_of_day": "day",
-            "description": "明亮的玻璃会议室，长桌，大屏幕显示方案发布页"
+            "description": "明亮的玻璃会议室，长桌两侧坐满同事，大屏幕显示方案页，正在开方案评审会"
           },
-          "summary": "苏晚闯入发布会当众揭穿陆沉，随即收到陌生短信，留下悬念",
+          "summary": "苏晚拿出监控录像当众质问陆沉，陆沉慌乱地喊保安；随即她收到一条陌生短信，留下悬念",
           "mood": "tense",
           "shots": [
             {
@@ -424,12 +430,12 @@
                 "hint_s": 4
               },
               "framing": {
-                "shot_size": "LS",
+                "shot_size": "MS",
                 "angle": "eye_level",
-                "movement": "pan",
-                "composition": "陆沉在大屏前偏右，下方 1/4 预留字幕安全区"
+                "movement": "static",
+                "composition": "陆沉居中偏右，身后是大屏幕，前景同事后脑虚化，下方 1/4 预留字幕安全区"
               },
-              "description": "明亮的玻璃会议室，陆沉站在大屏幕前，同事们坐在长桌两侧",
+              "description": "陆沉站在大屏幕前主持方案评审，前景是坐在长桌边的同事",
               "lighting": "白天自然光，明亮通透",
               "characters": [
                 {
@@ -470,7 +476,7 @@
                 {
                   "character_id": "char_suwan",
                   "action": "推门而入，举起U盘",
-                  "emotion": "冷静坚定"
+                  "emotion": "冷静，带着讥讽"
                 }
               ],
               "dialogue": [
@@ -478,7 +484,7 @@
                   "line_id": "l_0012",
                   "speaker": "char_suwan",
                   "kind": "dialogue",
-                  "text": "陆总监，这个方案的源文件，要不要当众打开看看？",
+                  "text": "陆总监，这段监控录像，要不要当众放给大家看看？",
                   "delivery": {
                     "emotion": "sarcastic",
                     "intensity": 0.6,
@@ -488,7 +494,7 @@
               ],
               "sfx": [
                 "推门声",
-                "会议室安静下来"
+                "议论声戛然而止"
               ]
             },
             {
@@ -546,9 +552,9 @@
                 "shot_size": "CU",
                 "angle": "eye_level",
                 "movement": "static",
-                "composition": "人脸偏左，手机屏幕在右下，下方 1/4 预留字幕安全区"
+                "composition": "人脸偏左，手机在画面右侧中部，避开下方 1/4 字幕安全区"
               },
-              "description": "苏晚嘴角刚扬起，手机屏幕亮起一条陌生短信：“小心，他不是一个人。”",
+              "description": "苏晚嘴角刚扬起，手机屏幕亮起一条陌生短信（短信文字后期叠加）",
               "lighting": "白天自然光，手机屏幕冷光",
               "characters": [
                 {

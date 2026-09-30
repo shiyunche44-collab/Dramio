@@ -1007,7 +1007,7 @@ dramio/
 │   ├── render/                 # 时间线、FFmpeg 渲染、转码
 │   └── qc/                     # 自动质检
 ├── packages/
-│   ├── drama-ir/               # DramaIR JSON Schema + 生成的 TS/Python 类型
+│   ├── drama-ir/               # DramaIR JSON Schema + 生成的 TS/Python 类型（v0 暂为 python/ 下的手写校验器，见 TD-001）
 │   ├── prompts/                # 版本化 Prompt 模板与编译器
 │   ├── node-sdk/               # 节点插件 SDK
 │   └── ui/                     # 共享 UI 组件

@@ -75,6 +75,36 @@ class CliTest(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertIn("无法读取", err)
 
+    def test_nan_literal_is_invalid_json(self):
+        text = SAMPLE.read_text(encoding="utf-8").replace('"target_duration_s": 60', '"target_duration_s": NaN')
+        self.assertIn("NaN", text)
+        code, out, _ = run("validate", "--strict", self.write(text))
+        self.assertEqual(code, 1)
+        self.assertIn("NaN 不是合法的 JSON 数值", out)
+
+    def test_non_utf8_is_read_error(self):
+        path = Path(self.tmp.name) / "gbk.json"
+        path.write_bytes("{\"标题\": 1}".encode("gbk"))
+        code, _, err = run("validate", str(path))
+        self.assertEqual(code, 2)
+        self.assertIn("不是 UTF-8", err)
+
+    def test_bad_schema_is_usage_error(self):
+        from unittest import mock
+
+        with mock.patch("dramio_drama_ir.checks.load_schema", return_value={"type": "float"}):
+            code, _, err = run("validate", str(SAMPLE))
+        self.assertEqual(code, 2)
+        self.assertIn("Schema 不合法", err)
+
+    def test_read_error_does_not_hide_other_results(self):
+        missing = str(Path(self.tmp.name) / "nope.json")
+        code, out, _ = run("validate", "--json", missing, str(SAMPLE))
+        self.assertEqual(code, 2)
+        data = json.loads(out)
+        self.assertEqual([r["ok"] for r in data], [False, True])
+        self.assertIn("read_error", data[0])
+
     def test_render_refuses_invalid(self):
         doc = sample()
         del doc["series"]["title"]
@@ -99,6 +129,25 @@ class RenderTest(unittest.TestCase):
             "ep01.md 与 render 输出不一致；运行 python3 -m dramio_drama_ir render ... > ep01.md 重新生成",
         )
 
+    def test_labels_cover_schema_enums_exactly(self):
+        from dramio_drama_ir import load_schema
+        from dramio_drama_ir.render import LABELS
+
+        defs = load_schema()["$defs"]
+        owners = {
+            "shot_size": "framing", "angle": "framing", "movement": "framing", "kind": "line",
+            "gender": "character", "role": "character", "int_ext": "setting", "time_of_day": "setting",
+            "mood": "scene", "emotion": "delivery",
+        }
+        self.assertEqual(set(LABELS), set(owners))
+        for field, owner in owners.items():
+            self.assertEqual(set(LABELS[field]), set(defs[owner]["properties"][field]["enum"]), field)
+
+    def test_no_double_full_stop(self):
+        doc = sample()
+        doc["episodes"][0]["scenes"][0]["summary"] += "。"
+        self.assertNotIn("。。", render_markdown(doc))
+
     def test_render_mentions_every_line(self):
         md = render_markdown(sample())
         for shot in (s for sc in sample()["episodes"][0]["scenes"] for s in sc["shots"]):
@@ -120,6 +169,9 @@ class DifferentialTest(unittest.TestCase):
         d = sample(); d["characters"][0]["x"] = 1; docs.append(d)
         d = sample(); d["episodes"][0]["scenes"][0]["mood"] = "angry"; docs.append(d)
         d = sample(); d["characters"][0]["age"] = "26"; docs.append(d)
+        d = sample(); d["characters"][0]["age"] = True; docs.append(d)
+        d = sample(); d["episodes"][0]["number"] = 1.0; docs.append(d)
+        d = sample(); d["episodes"][0]["scenes"][0]["shots"][0]["sfx"] = [1]; docs.append(d)
         validator = jsonschema.Draft202012Validator(schema)
         for doc in docs:
             self.assertEqual(not structural_issues(doc, schema), validator.is_valid(doc))

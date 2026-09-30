@@ -3,7 +3,8 @@
     python3 -m dramio_drama_ir validate [--strict] [--json] FILE...
     python3 -m dramio_drama_ir render FILE
 
-validate 退出码：0 通过；1 文档不合法（--strict 时警告也算）；2 用法或读取错误。
+validate 退出码：0 通过；1 文档不合法（--strict 时警告也算）；2 用法或读取错误（文件无法读取、不是 UTF-8、Schema 不合法）。
+有文件读取失败时仍会继续校验其余文件。
 """
 
 from __future__ import annotations
@@ -16,28 +17,54 @@ from pathlib import Path
 from dramio_drama_ir.checks import validate
 from dramio_drama_ir.render import render_markdown
 from dramio_drama_ir.report import Issue, Report
+from dramio_drama_ir.schema import SchemaError
+
+
+class ReadError(Exception):
+    """文件无法读取或不是 UTF-8，或 Schema 本身不合法：属于用法 / 环境错误（退出码 2）。"""
+
+
+def _reject_constant(name: str) -> None:
+    raise ValueError(f"{name} 不是合法的 JSON 数值")
 
 
 def _load(path: str) -> tuple[object, Report | None]:
-    """返回 (文档, None)；JSON 语法错误时返回 (None, 含错误的 Report)。读取失败时抛 OSError。"""
-    text = Path(path).read_text(encoding="utf-8")
+    """返回 (文档, None)；不是合法 JSON 时返回 (None, 含错误的 Report)。无法读取时抛 ReadError。"""
     try:
-        return json.loads(text), None
+        text = Path(path).read_text(encoding="utf-8")
+    except OSError as exc:
+        raise ReadError(f"无法读取：{exc.strerror or exc}") from None
+    except UnicodeDecodeError:
+        raise ReadError("无法读取：文件不是 UTF-8 编码") from None
+    try:
+        return json.loads(text, parse_constant=_reject_constant), None
     except json.JSONDecodeError as exc:
         return None, Report(errors=[Issue("$", f"不是合法的 JSON：第 {exc.lineno} 行第 {exc.colno} 列，{exc.msg}")])
+    except ValueError as exc:  # NaN / Infinity
+        return None, Report(errors=[Issue("$", f"不是合法的 JSON：{exc}")])
+
+
+def _check(path: str) -> tuple[object, Report]:
+    doc, report = _load(path)
+    if report is None:
+        try:
+            report = validate(doc)
+        except SchemaError as exc:
+            raise ReadError(f"Schema 不合法：{exc}") from None
+    return doc, report
 
 
 def cmd_validate(args: argparse.Namespace) -> int:
     results = []
-    failed = False
+    failed = usage_error = False
     for path in args.files:
         try:
-            doc, report = _load(path)
-        except OSError as exc:
-            print(f"{path}: 无法读取：{exc.strerror or exc}", file=sys.stderr)
-            return 2
-        if report is None:
-            report = validate(doc)
+            _, report = _check(path)
+        except ReadError as exc:
+            usage_error = True
+            print(f"{path}: {exc}", file=sys.stderr)
+            results.append({"file": path, "ok": False, "read_error": str(exc), "errors": [], "warnings": []})
+            continue
         ok = report.ok(strict=args.strict)
         failed |= not ok
         results.append({"file": path, "ok": ok, **report.to_dict()})
@@ -50,17 +77,15 @@ def cmd_validate(args: argparse.Namespace) -> int:
             print(f"{path}: {verdict}（{len(report.errors)} 个错误，{len(report.warnings)} 个警告）")
     if args.json:
         print(json.dumps(results, ensure_ascii=False, indent=2))
-    return 1 if failed else 0
+    return 2 if usage_error else 1 if failed else 0
 
 
 def cmd_render(args: argparse.Namespace) -> int:
     try:
-        doc, report = _load(args.file)
-    except OSError as exc:
-        print(f"{args.file}: 无法读取：{exc.strerror or exc}", file=sys.stderr)
+        doc, report = _check(args.file)
+    except ReadError as exc:
+        print(f"{args.file}: {exc}", file=sys.stderr)
         return 2
-    if report is None:
-        report = validate(doc)
     if report.errors:
         for issue in report.errors:
             print(f"{args.file}: 错误 {issue}", file=sys.stderr)
