@@ -22,45 +22,18 @@
 ## 当前状态
 
 - **当前里程碑**：M0.1 准备
-- **当前步骤**：P0-01
-- **步骤状态**：进行中
-- **工作分支**：claude/ecstatic-euler-z68coi
+- **当前步骤**：P0-02
+- **步骤状态**：未开始
+- **工作分支**：—
 - **PR**：—
 
 ## 步骤卡
 
 （开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
 
-- **步骤**：P0-01 验证脚手架
-- **目标**：可运行的 `spikes/poc` Python 项目；`python -m poc doctor` 逐个报告供应商密钥状态（未配置 / 已配置 / 可用 / 无效 / 不可达 / 错误）；每次运行输出到 `runs/<run_id>/`；统一的 `run.call()` 把每次模型调用的耗时和费用写入 `calls.jsonl`，供 P0-03 ~ P0-11 复用。
-- **做**：`spikes/poc/`（pyproject、`dependencies = []`、Python ≥ 3.11）；标准库 `.env` 解析（`spikes/poc/.env`，进程环境优先）；供应商注册表（能力类别、变量名、免费探测方式、需放行域名）；`runs/<run_id>/` 固定在 `spikes/poc/runs/`（可用 `POC_RUNS_DIR` 覆盖）、`meta.json`、`calls.jsonl`；`doctor`（`--offline`、`--require`、并发探测、只用免费 GET 接口，无法确认免费接口的供应商只检查是否配置）；unittest；README；在 progress.md 前置条件中写入变量名和域名。
-- **不做**：任何生成或付费调用；选定供应商；引入 SDK 或第三方依赖；价格表与费用汇总；node_key 缓存与 `run` 子命令（P0-12）；ffmpeg 等本地工具检查；把 spikes 测试接入 CI（涉及 `.github/`，留给 P1-01）；修改 archcheck 规则、`.claude/`、ADR。
-- **验收**：
-  1. 无密钥环境中 `cd spikes/poc && python3 -m poc doctor` 返回 0，每家供应商一行“未配置”并列出缺少的变量名，末尾有按能力类别的覆盖统计；
-  2. 状态判定有 mock `urlopen` 的单元测试：MISSING / OK / INVALID(401/403) / UNREACHABLE(URLError、超时) / ERROR(5xx) / `--offline` 下 CONFIGURED 且不访问网络；
-  3. `--require` 退出码有单元测试；
-  4. 密钥哨兵值不出现在 stdout、`doctor.json`、`calls.jsonl`、`meta.json`；`.env` 与 `runs/` 被忽略，`.env.example` 被跟踪；
-  5. `.env` 加载有单元测试，且进程环境优先；
-  6. 每次运行生成 `spikes/poc/runs/<run_id>/`（`meta.json`、`doctor.json`、`calls.jsonl`）；从仓库根目录运行也不产生顶层 `runs/`，之后 `make arch-check` 通过；
-  7. `run.call()` 成功、失败各一次得到 2 行合法 JSON，字段齐全，失败行含 `error` 且异常原样抛出；
-  8. 在线探测全部是免费 GET 接口，本步费用 ¥0；
-  9. `python3 -m unittest discover -s spikes/poc/tests -t spikes/poc` 通过；`make arch-check` 通过；
-  10. 无第三方依赖；无新顶层目录；未改 `rules.toml`、`exceptions.toml`、`.claude/`、`.github/`；
-  11. README 与 progress.md 前置条件列出全部变量名和需放行的域名；
-  12. 真实密钥在线得到 OK：需用户配置密钥、放行域名后确认，放到 P0-03 的阻塞检查中完成（不阻塞本步）。
-- **涉及**：roadmap §3；governance.md §3（spikes 说明）、§5.1；architecture.md §7.1、§7.4、§15；ADR-0004、0008、0010（仅参考）；INV-03、INV-11。
-- **估时**：0.5 天
-
 ## 子任务
 
 （开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
-
-- [x] 项目骨架：pyproject、`poc/__main__.py`（argparse）、`.gitignore`（`runs/`、`!.env.example`）、`tests/`
-- [x] 配置加载与供应商注册表：`poc/config.py`、`poc/providers.py`、`.env.example`，附单元测试
-- [x] 运行目录与调用记录：`poc/runlog.py`（run_id、meta.json、`run.call()` → calls.jsonl），附单元测试
-- [x] doctor 命令：状态判定、并发探测、`--offline`、`--require`、doctor.json，附 mock 单元测试与密钥不泄露测试
-- [x] 文档：`spikes/poc/README.md`；progress.md 前置条件写入变量名与域名
-- [ ] 验证：从 `spikes/poc` 与仓库根目录运行 doctor，输出写入交接日志；unittest 与 `make arch-check`
 
 ## 本步费用
 
@@ -73,6 +46,7 @@
 
 | 编号 | 步骤 | 问题 | 候选 | 推荐与理由 | 状态 | 决定 |
 |---|---|---|---|---|---|---|
+| D-001 | P0-01 | archcheck 查不出产品代码经 `PYTHONPATH=spikes/poc` 用 `import poc` 依赖 spikes（INV-03 守卫缺口，评审时在临时副本中复现）。是否在 `tools/archcheck/rules.toml` 的 `[aliases]` 中加 `"poc" = "spikes"`？ | A：加这一行别名（受保护路径，单独 PR，由你审阅合并）；B：暂不处理，P1-01 前一并处理 | A：改动一行，立即补上缺口；目前还没有产品代码，不会误报 | 待决 | |
 
 ## 已知的前置条件
 
@@ -88,7 +62,7 @@
   - Replicate `REPLICATE_API_TOKEN` · `api.replicate.com`、`replicate.delivery`
   - Google Gemini / Veo `GEMINI_API_KEY` · `generativelanguage.googleapis.com`
   - Runway `RUNWAYML_API_SECRET` · `api.dev.runwayml.com`
-- 当前云容器（2026-09-30）：没有任何供应商密钥；除 `api.anthropic.com` 外，上述供应商域名都被网络策略拦截（doctor 报 `UNREACHABLE`）。
+- 当前云容器（2026-09-30）：没有任何供应商密钥；`api.anthropic.com`、`generativelanguage.googleapis.com` 可以访问，其余供应商域名被网络策略拦截（doctor 报 `UNREACHABLE`）。
 - ADR-0001 ~ 0010 目前为 Proposed，在 P0-14 统一评审。
 - GitHub 上需要用户手动完成：把默认分支改为 `main`；为 `main` 开启分支保护（要求 `arch-check` 通过，不要求 Code Owner 评审）。
 
@@ -99,3 +73,4 @@
 | 日期 | 步骤 | 做了什么 | 验证 | 下一步 |
 |---|---|---|---|---|
 | 2026-09-30 | — | 搭建自主推进工作流：`/continue`、`/step`、`/progress`、`/decide`，3 个子代理，SessionStart 与 Stop hooks，进度一致性检查 | `make arch-check` 通过 | 用户说“继续当前进度”后开始 M0.1（P0-01、P0-02） |
+| 2026-09-30 | P0-01 | `spikes/poc` 验证脚手架：标准库 `.env` 加载（进程环境优先）；11 家候选供应商注册表（变量名、能力、免费探测、域名）；`runs/<run_id>/`（meta.json、calls.jsonl、doctor.json）与 `Run.call()` 调用记录；`python -m poc doctor`（`--offline`、`--require`，只用免费只读 GET，不跟随重定向）；README；前置条件写入变量名与域名。评审阻断项（含换行的密钥可能泄露并导致崩溃）已修复 | verifier 第 1–11 条通过、第 12 条（真实密钥得到 OK）按约定移到 P0-03 的阻塞检查；38 个单元测试通过；`make arch-check` 通过。容器实测：无密钥时 11 家 `MISSING`、退出码 0；伪造密钥时 anthropic `INVALID(401)`、gemini `INVALID(400 API_KEY_INVALID)`、deepseek 等 `UNREACHABLE(Tunnel 403)`。费用 ¥0 | P0-02 DramaIR v0 与标准样例；D-001 待用户决定 |
