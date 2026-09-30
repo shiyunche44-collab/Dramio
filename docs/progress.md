@@ -30,7 +30,7 @@
 ## 步骤卡
 
 - **步骤**：P0-06 角色定妆（估时 1 天，可能 1–1.5 天）
-- **目标**：用方舟 Seedream（已开通 5.0 flash 与 4.0；5.0 pro 未开通，按用户“先用低阶模型跑通流程”的要求改为 flash 对比 4.0）为 ep01（D-002）的苏晚、陆沉各生成一套定妆：文生图主图 + 三视图（正 / 侧 / 背）+ 表情集；主图原样保存并记录 sha256，供 P0-07 / P0-08 作身份参考；对比出默认定妆路线，由用户（D-006）为每个角色选定一套。
+- **目标**：用方舟 Seedream（阶段 1 用按量付费的 5.0 flash 对比 4.0；账号改为 Agent Plan 后只能用 5.0 pro，按 D-007 主图与阶段 2 用 pro 重跑，flash 结果留作对照）为 ep01（D-002）的苏晚、陆沉各生成一套定妆：文生图主图 + 三视图（正 / 侧 / 背）+ 表情集；主图原样保存并记录 sha256，供 P0-07 / P0-08 作身份参考；对比出默认定妆路线，由用户（D-006）为每个角色选定一套。
 - **做**：
   - 冒烟核实方舟图像接口 `POST /api/v3/images/generations`：`model`、`prompt`、`size`（9:16、≤1.5K 档）、`response_format`（优先 `b64_json`）、`watermark`、`seed`、参考图 `image` 传法（data URI）、响应与错误字段、审核拒绝错误码；结果写入报告“接口”一节。
   - `poc/seedream.py`（标准库，可注入 transport，复用 `doctor.urlopen`，`config.redact` 脱敏）：失败分类 network / http / api_error / moderation / bad_response / empty，区分瞬时；每个请求经 `Run.call()` 记账，填写 `node_key`（只记录、不缓存）；calls.jsonl 与 summary 不写 base64。
@@ -69,7 +69,7 @@
 - [x] 7. 派生阶段 text / ref / sheet（5.0 pro / flash 不支持组图，group 改为 sheet 设定板）（manifest `t2i_original` / `seedance_eligible`）+ 单测
 - [x] 8. 离线 `--export` / `--verify` + 单测；README costume 一节
 - [x] 9. 评测阶段 1：主图 12 张，agent 初评选推荐主图与模型（flash 6/6、v4 6/6；推荐 flash，苏晚 main-02、陆沉 main-02）
-- [ ] 10. 评测阶段 2：text / ref / sheet × 2 角色 × 2 轮
+- [ ] 10. 评测阶段 2：text / ref / sheet × 2 角色 × 2 轮（D-007：先补 pro 主图 6 张，run `20260930-201207-costume-3165` 6/6，初评选苏晚、陆沉 main-02；派生用 pro + costume.v2）
 - [ ] 11. 证据导出、定妆卡、体积检查、`--verify` 返回 0
 - [ ] 12. 报告 `docs/reports/p0/P0-06.md`、登记 D-006、更新本步费用
 - [ ] 13. 验证（verifier）、评审（arch-reviewer）、交付 PR
@@ -90,6 +90,7 @@
 | D-003 | P0-03 | 剧本生成的人工评分与默认方案：15 份样本都已通过严格校验，“有人工评分记录”需要你打分；同时确认默认 LLM | A：15 份全部人工评分；B：人工抽评 3 份——flash s04（初评最高）、flash s03（flash 最低）、v4-pro s01（初评判为不可用），其余沿用 agent 初评；C：只确认 agent 初评，不打分。默认方案候选：`deepseek-flash`（思维链开）/ `deepseek-v4-pro` / flash 关思维链。样本与评分表：`docs/reports/p0/P0-03.md`、`docs/reports/p0/P0-03/<候选>/sNN.md` | B + `deepseek-flash`：抽评工作量小，而且是真正的人工评分（C 不满足验收本意）；flash 初评均分 3.89 最高、5/5 通过、每集约 ¥0.10、53 秒。回复示例：`/decide D-003 B flash-s04:4,5,4,4,4,5,4 flash-s03:… v4pro-s01:… 默认 flash`（7 个数依次为 D1 ~ D7） | 已决 | 人工评分：flash s04“不错”（认可）；其余 14 份沿用 agent 初评，报告中注明；默认 LLM 定为 `deepseek-flash`（思维链默认开）（2026-09-30，用户） |
 | D-004 | P0-05 | 配音默认方案与角色音色（主观，需试听）：4 个候选 180/180 成功、同音字折叠后 CER 全为 0、费用与耗时几乎相同，差别只在听感 | A `plain`（首选音色，无指令）；B `instruct`（加语音指令）；C `instruct-speed`（指令 + 语速映射）；D `alt-instruct-speed`（次选音色 苏晚 清新女声 / 陆沉 儒雅逸辰 + 指令 + 语速）。整集试听 `docs/reports/p0/P0-05/<候选>/ep01.mp3`；音色初选 `docs/reports/p0/P0-05/voices/`；报告 `docs/reports/p0/P0-05.md` | C + 音色 苏晚 知性灿灿 2.0（`zh_female_cancan_uranus_bigtts`）/ 陆沉 高冷沉稳 2.0（`zh_male_gaolengchenwen_uranus_bigtts`）：语速映射实测生效（speed 0.9 的句子长 7%–18%），指令不计费、不影响 CER，音色贴合角色描述、初选无重试；若觉得指令腔调不自然则选 A。回复示例：`/decide D-004 C` 或 `/decide D-004 A 苏晚改清新女声` | 已决 | C `instruct-speed`：苏晚 知性灿灿 2.0（`zh_female_cancan_uranus_bigtts`）、陆沉 高冷沉稳 2.0（`zh_male_gaolengchenwen_uranus_bigtts`），加语音指令（`tts-instruct.v1`），并把 `delivery.speed` 映射到 `speech_rate`，作为默认配音方案（2026-09-30，用户） |
 | D-005 | P0-06 | 定妆图是否关闭 Seedream 的可见“AI 生成”水印（与 INV-08 相关：定妆图是内部中间资产、不发布，成片 AIGC 标识由 P0-11 负责） | A：关闭（`watermark=false`）；B：保留 | A：水印会污染作为参考图的定妆图；INV-08 约束生产环境，P0 不属于生产 | 已决 | A：定妆图关闭可见水印（`watermark=false`）（2026-09-30，用户：“关掉水印”） |
+| D-007 | P0-06 | 方舟改为 Agent Plan 包月套餐（新 Key 只能调 `/api/plan/v3`，图像只支持 Seedream 5.0 pro；flash / 4.0 返回 `UnsupportedModel`，新 Key 在按量付费的 `/api/v3` 上鉴权失败）后，P0-06 剩余评测怎么跑 | A：改用套餐内的 5.0 pro，主图 6 张 + 阶段 2（text / ref / sheet × 2 角色 × 2 轮）全部用 pro 重跑，flash 结果留作对照；B：给按量付费账户充值、换回旧 Key，按原计划用 flash 补跑（约 ¥4.8） | A：同模型内可比，费用走套餐额度；代价是推荐模型变为 pro（按量刊例价 ¥0.30 / 张，flash ¥0.12），结论中注明 | 已决 | A：改用 Agent Plan 的 5.0 pro 重跑（2026-09-30，用户：“选a”）。实现：`ARK_BILLING=plan`（默认）/ `payg`；plan 调用的 `cost_cny` 记按量刊例价的等价费用、不实付 |
 
 ## 已知的前置条件
 
