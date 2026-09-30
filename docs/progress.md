@@ -54,7 +54,7 @@
   8. `make arch-check`、`make drama-ir-check` 通过；ep01.json sha256 仍为 `cd02daef022c6e78227ef3bf366adb2b5142a979a803bcf4373cdb8765a6fb59`。
   9. 设置了密钥时 `grep -rF "$ARK_API_KEY" docs spikes/poc --exclude=.env` 无匹配；calls.jsonl 与 summary 不含 base64 图像（每行 < 16 KB）。
   10. 改动只涉及 `spikes/poc/`、`docs/reports/p0/`、`docs/progress.md`、`docs/roadmap.md`；`pyproject.toml` 的 `dependencies` 仍为 `[]`。
-  11. `du -sb docs/reports/p0/P0-06` ≤ 10 MB（主图原图必须入库，runs/ 不入库）；超额时先降派生图尺寸或表情数，主图原图不降级。
+  11. `du -sb docs/reports/p0/P0-06` ≤ 16 MB（D-008，原 10 MB；主图原图必须入库，runs/ 不入库）；超额时先降派生图尺寸或表情数，主图原图不降级。
   12. 定妆选定（需用户确认）：D-006 登记每个角色的候选主图与派生方式、推荐与理由、定妆卡路径；用户选定后写入报告。
 - **涉及**：architecture.md §5.2.1–5.2.3、§9.3、§9.4；ADR-0004、ADR-0005、ADR-0006；INV-01、INV-02、INV-05、INV-06、INV-07、INV-08（D-005）、INV-10；vendor-volcengine.md §1 第 3 条、§3.2；D-002。
 
@@ -91,6 +91,7 @@
 | D-004 | P0-05 | 配音默认方案与角色音色（主观，需试听）：4 个候选 180/180 成功、同音字折叠后 CER 全为 0、费用与耗时几乎相同，差别只在听感 | A `plain`（首选音色，无指令）；B `instruct`（加语音指令）；C `instruct-speed`（指令 + 语速映射）；D `alt-instruct-speed`（次选音色 苏晚 清新女声 / 陆沉 儒雅逸辰 + 指令 + 语速）。整集试听 `docs/reports/p0/P0-05/<候选>/ep01.mp3`；音色初选 `docs/reports/p0/P0-05/voices/`；报告 `docs/reports/p0/P0-05.md` | C + 音色 苏晚 知性灿灿 2.0（`zh_female_cancan_uranus_bigtts`）/ 陆沉 高冷沉稳 2.0（`zh_male_gaolengchenwen_uranus_bigtts`）：语速映射实测生效（speed 0.9 的句子长 7%–18%），指令不计费、不影响 CER，音色贴合角色描述、初选无重试；若觉得指令腔调不自然则选 A。回复示例：`/decide D-004 C` 或 `/decide D-004 A 苏晚改清新女声` | 已决 | C `instruct-speed`：苏晚 知性灿灿 2.0（`zh_female_cancan_uranus_bigtts`）、陆沉 高冷沉稳 2.0（`zh_male_gaolengchenwen_uranus_bigtts`），加语音指令（`tts-instruct.v1`），并把 `delivery.speed` 映射到 `speech_rate`，作为默认配音方案（2026-09-30，用户） |
 | D-005 | P0-06 | 定妆图是否关闭 Seedream 的可见“AI 生成”水印（与 INV-08 相关：定妆图是内部中间资产、不发布，成片 AIGC 标识由 P0-11 负责） | A：关闭（`watermark=false`）；B：保留 | A：水印会污染作为参考图的定妆图；INV-08 约束生产环境，P0 不属于生产 | 已决 | A：定妆图关闭可见水印（`watermark=false`）（2026-09-30，用户：“关掉水印”） |
 | D-007 | P0-06 | 方舟改为 Agent Plan 包月套餐（新 Key 只能调 `/api/plan/v3`，图像只支持 Seedream 5.0 pro；flash / 4.0 返回 `UnsupportedModel`，新 Key 在按量付费的 `/api/v3` 上鉴权失败）后，P0-06 剩余评测怎么跑 | A：改用套餐内的 5.0 pro，主图 6 张 + 阶段 2（text / ref / sheet × 2 角色 × 2 轮）全部用 pro 重跑，flash 结果留作对照；B：给按量付费账户充值、换回旧 Key，按原计划用 flash 补跑（约 ¥4.8） | A：同模型内可比，费用走套餐额度；代价是推荐模型变为 pro（按量刊例价 ¥0.30 / 张，flash ¥0.12），结论中注明 | 已决 | A：改用 Agent Plan 的 5.0 pro 重跑（2026-09-30，用户：“选a”）。实现：`ARK_BILLING=plan`（默认）/ `payg`；plan 调用的 `cost_cny` 记按量刊例价的等价费用、不实付 |
+| D-008 | P0-06 | 证据体积超上限：加入 pro 主图后 `docs/reports/p0/P0-06` 为 10.95 MB（步骤卡上限 10 MB），pro 派生第 1 轮入库后预计 13–15 MB | A：上限放宽到 16 MB，flash 对照证据完整保留；B：保持 10 MB，删除已入库的 flash 派生图，只留 run-summary / calls | A：flash 是 pro 的对照组，删图后无法复核对比结论 | 已决 | A：上限放宽到 16 MB（2026-09-30，用户：“a”） |
 
 ## 已知的前置条件
 
