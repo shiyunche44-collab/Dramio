@@ -1,6 +1,7 @@
 import io
 import json
 import os
+import shutil
 import socket
 import subprocess
 import sys
@@ -91,6 +92,40 @@ class ClassifyTest(DoctorTestCase):
         for code in (401, 403):
             result = self.check(http_error(code))[0]
             self.assertEqual((result.status, result.http_status), (doctor.INVALID, code))
+
+    def test_google_invalid_key_400(self):
+        body = b'{"error": {"code": 400, "details": [{"reason": "API_KEY_INVALID"}]}}'
+        err = HTTPError("https://example.invalid", 400, "bad", {}, io.BytesIO(body))
+        self.assertEqual(self.check(err)[0].status, doctor.INVALID)
+        self.assertEqual(self.check(http_error(400))[0].status, doctor.ERROR)
+
+    def test_redirect_is_error_and_not_followed(self):
+        self.assertEqual(self.check(http_error(302))[0].status, doctor.ERROR)
+        handler = doctor._NoRedirect()
+        self.assertIsNone(handler.redirect_request(None, None, 302, "Found", {}, "https://evil.invalid/"))
+
+    def test_unexpected_exception_is_error_without_message(self):
+        result = self.check(ValueError(f"Invalid header value {SENTINEL!r}"))[0]
+        self.assertEqual(result.status, doctor.ERROR)
+        self.assertEqual(result.detail, "探测异常：ValueError")
+
+    def test_whitespace_only_is_missing_and_padding_is_stripped(self):
+        p = providers.BY_NAME["anthropic"]
+        with mock.patch("poc.doctor.urlopen") as urlopen:
+            result = doctor.check_provider(p, {"ANTHROPIC_API_KEY": " \n"}, None)
+        self.assertEqual(result.status, doctor.MISSING)
+        urlopen.assert_not_called()
+        with mock.patch("poc.doctor.urlopen", return_value=FakeResponse(200)) as urlopen:
+            result = doctor.check_provider(p, {"ANTHROPIC_API_KEY": f"  {SENTINEL}\n"}, None)
+        self.assertEqual(result.status, doctor.OK)
+        self.assertEqual(urlopen.call_args.args[0].get_header("X-api-key"), SENTINEL)
+
+    def test_control_chars_are_invalid_without_network(self):
+        p = providers.BY_NAME["anthropic"]
+        with mock.patch("poc.doctor.urlopen") as urlopen:
+            result = doctor.check_provider(p, {"ANTHROPIC_API_KEY": "sk-a\nb"}, None)
+        self.assertEqual(result.status, doctor.INVALID)
+        urlopen.assert_not_called()
 
     def test_server_error(self):
         self.assertEqual(self.check(http_error(503))[0].status, doctor.ERROR)
@@ -185,7 +220,7 @@ class SecretLeakTest(DoctorTestCase):
                 raise r
             return r
 
-        with mock.patch.dict(os.environ, env), mock.patch("poc.doctor.urlopen", side_effect=fake):
+        with mock.patch("poc.doctor.urlopen", side_effect=fake):
             _, out, run_dir = self.doctor(env)
         self.assert_no_leak(out, "stdout")
         for f in ("meta.json", "doctor.json", "calls.jsonl"):
@@ -195,8 +230,9 @@ class SecretLeakTest(DoctorTestCase):
 class CliTest(unittest.TestCase):
     """真实进程：无密钥环境（清空供应商变量、不读 .env），从 spikes/poc 与仓库根目录运行。"""
 
-    def run_cli(self, cwd: Path, runs_dir: Path | None, *args: str):
+    def run_cli(self, cwd: Path, runs_dir: Path | None, *args: str, extra_env: dict | None = None):
         env = {k: v for k, v in os.environ.items() if k not in providers.all_env_vars()}
+        env.update(extra_env or {})
         env["POC_ENV_FILE"] = "/nonexistent/.env"
         env["PYTHONPATH"] = str(POC_DIR)
         env.pop("POC_RUNS_DIR", None)
@@ -213,18 +249,36 @@ class CliTest(unittest.TestCase):
             self.assertEqual(proc.stdout.count("MISSING"), len(providers.PROVIDERS))
             self.assertEqual(len(list(Path(tmp).iterdir())), 1)
 
+    def output_dir(self, stdout: str) -> Path:
+        (line,) = [l for l in stdout.splitlines() if l.startswith("输出：")]
+        path = Path(line[len("输出："):])
+        self.addCleanup(shutil.rmtree, path, True)
+        return path
+
     def test_from_repo_root_writes_under_spikes_poc(self):
-        before = set((POC_DIR / "runs").glob("*")) if (POC_DIR / "runs").exists() else set()
+        root_runs_existed = (REPO_ROOT / "runs").exists()
         proc = self.run_cli(REPO_ROOT, None, "--offline")
         self.assertEqual(proc.returncode, 0, proc.stderr)
-        self.assertFalse((REPO_ROOT / "runs").exists())
-        new = set((POC_DIR / "runs").glob("*")) - before
-        self.assertEqual(len(new), 1)
-        for path in new:
-            for f in path.iterdir():
-                f.unlink()
-            path.rmdir()
+        run_dir = self.output_dir(proc.stdout)
+        self.assertEqual(run_dir.parent, POC_DIR / "runs")
+        self.assertTrue((run_dir / "doctor.json").is_file())
+        if not root_runs_existed:
+            self.assertFalse((REPO_ROOT / "runs").exists())
 
+    def test_secret_with_newline_never_leaks(self):
+        """真实进程 + 真实 urllib：密钥含换行时不能崩溃，也不能出现在任何输出中。"""
+        secret = "sk-SENTINEL-7f3a9c2e\nb1d4a68"
+        with tempfile.TemporaryDirectory() as tmp:
+            proc = self.run_cli(POC_DIR, Path(tmp), "--timeout", "0.01", extra_env={"ANTHROPIC_API_KEY": secret})
+            self.assertEqual(proc.returncode, 0, proc.stderr)
+            (run_dir,) = Path(tmp).iterdir()
+            texts = {"stdout": proc.stdout, "stderr": proc.stderr}
+            for f in run_dir.iterdir():
+                texts[f.name] = f.read_text(encoding="utf-8")
+        for where, text in texts.items():
+            for fragment in ("SENTINEL", "7f3a9c2e", "b1d4a68"):
+                self.assertNotIn(fragment, text, where)
+        self.assertIn("INVALID", proc.stdout)
 
 if __name__ == "__main__":
     unittest.main()

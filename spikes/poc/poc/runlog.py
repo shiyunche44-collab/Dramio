@@ -68,8 +68,16 @@ class CallRecord:
 
 
 class Run:
-    def __init__(self, command: str, args: dict[str, Any] | None = None, base_dir: Path | None = None):
+    def __init__(
+        self,
+        command: str,
+        args: dict[str, Any] | None = None,
+        base_dir: Path | None = None,
+        secrets: list[str] | None = None,
+    ):
+        """secrets：写入 calls.jsonl 前要脱敏的密钥值；默认取当前进程环境中已配置的密钥。"""
         self.command = command
+        self._secrets = providers.secret_values(os.environ) if secrets is None else secrets
         self.run_id = new_run_id(command)
         self.dir = (base_dir or runs_dir()) / self.run_id
         self.calls_path = self.dir / "calls.jsonl"
@@ -128,11 +136,16 @@ class Run:
             self._append(record)
 
     def _append(self, record: CallRecord) -> None:
-        # 在 finally 中调用，不能抛异常以免覆盖调用本身的异常；非法取值只做标记
+        # 在 finally 中调用，不能抛异常，否则会覆盖调用本身的异常
         if record.cost_basis is not None and record.cost_basis not in COST_BASES:
             record.extra["invalid_cost_basis"] = True
-        line = json.dumps(asdict(record), ensure_ascii=False)
-        line = config.redact(line, providers.secret_values(os.environ))
+        try:
+            line = json.dumps(asdict(record), ensure_ascii=False, default=str)
+        except Exception as exc:  # 例如 usage / extra 中有循环引用
+            fallback = {k: getattr(record, k) for k in ("run_id", "provider", "capability", "model", "node_key")}
+            fallback.update(status=record.status, elapsed_ms=record.elapsed_ms, serialize_error=type(exc).__name__)
+            line = json.dumps(fallback, ensure_ascii=False, default=str)
+        line = config.redact(line, self._secrets)
         with self._lock, self.calls_path.open("a", encoding="utf-8") as f:
             f.write(line + "\n")
             f.flush()

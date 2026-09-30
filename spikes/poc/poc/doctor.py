@@ -22,7 +22,7 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict, dataclass, field
 from typing import TextIO
 from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from poc import config, providers
 from poc.providers import CAPABILITIES, Provider
@@ -74,57 +74,102 @@ def _result(p: Provider, status: str, detail: str, **kw) -> Result:
     )
 
 
-def classify_http(code: int) -> tuple[str, str]:
+def classify_http(code: int, body: str = "") -> tuple[str, str]:
     if 200 <= code < 300:
         return OK, f"HTTP {code}"
     if code == 429:
         return OK, "HTTP 429：密钥有效，但被限流"
     if code in (401, 403):
         return INVALID, f"HTTP {code}：密钥无效或无权限"
+    if code == 400 and "API_KEY_INVALID" in body:  # Google 对无效密钥返回 400
+        return INVALID, "HTTP 400：API_KEY_INVALID，密钥无效"
+    if 300 <= code < 400:
+        return ERROR, f"HTTP {code}：重定向（为避免鉴权头外泄，不跟随）"
     return ERROR, f"HTTP {code}"
+
+
+def _has_control_chars(value: str) -> bool:
+    return any(ord(ch) < 32 or ord(ch) == 127 for ch in value)
 
 
 def check_provider(
     p: Provider, env: Mapping[str, str], run: Run | None, offline: bool = False, timeout: float = DEFAULT_TIMEOUT
 ) -> Result:
-    missing = [v for v in p.env if not env.get(v)]
+    # 首尾空白（例如粘贴时多出的换行）不算密钥的一部分；只含空白视为未配置
+    values = {v: (env.get(v) or "").strip() for v in (*p.env, *p.optional_env)}
+    missing = [v for v in p.env if not values[v]]
     if missing:
         return _result(p, MISSING, "缺少 " + "、".join(missing), missing=missing)
+    bad = [v for v in p.env if _has_control_chars(values[v])]
+    if bad:
+        return _result(p, INVALID, "、".join(bad) + " 含换行等非法字符，请检查（未发请求）")
     if offline:
         return _result(p, CONFIGURED, "离线模式，未在线验证")
     if p.probe is None:
         return _result(p, CONFIGURED, "无已确认的免费校验接口，只检查是否配置")
 
-    headers = {"User-Agent": USER_AGENT, "Accept": "application/json", **p.probe.headers(env)}
+    secrets = providers.secret_values(env)
+    headers = {"User-Agent": USER_AGENT, "Accept": "application/json", **p.probe.headers(values)}
     request = Request(p.probe.url, headers=headers, method="GET")
     code: int | None = None
     if run is None:
         status, detail, code = _probe(request, timeout)
+        detail = config.redact(detail, secrets)
     else:
         with run.call(provider=p.name, capability="doctor.probe") as call:
             call.cost_cny = 0.0
             call.cost_basis = "free"
             call.extra = {"probe": p.probe.description}
             status, detail, code = _probe(request, timeout)
+            detail = config.redact(detail, secrets)
             if status != OK:
                 call.status = "error"
                 call.error = f"{status}: {detail}"
             call.extra["http_status"] = code
-    detail = config.redact(detail, providers.secret_values(env))
     return _result(p, status, detail, http_status=code)
 
 
+class _NoRedirect(HTTPRedirectHandler):
+    """不跟随重定向：urllib 跟随时会把鉴权头带到新的主机。3xx 以 HTTPError 返回。"""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+_OPENER = build_opener(_NoRedirect)
+
+
+def urlopen(request: Request, timeout: float):
+    return _OPENER.open(request, timeout=timeout)
+
+
 def _probe(request: Request, timeout: float) -> tuple[str, str, int | None]:
+    """探测一次；任何异常都转换为状态，不向外抛出。"""
     try:
         with urlopen(request, timeout=timeout) as resp:
             code = resp.status
+        body = ""
     except HTTPError as exc:  # 供应商返回了 HTTP 响应
         code = exc.code
+        try:
+            body = exc.read(4096).decode("utf-8", "replace")
+        except Exception:
+            body = ""
     except (URLError, OSError) as exc:  # 网络层失败：DNS、连接、超时、代理 CONNECT 被拒、TLS
         reason = getattr(exc, "reason", exc)
         return UNREACHABLE, f"网络不可达：{reason}（检查网络策略是否放行该域名）", None
-    status, detail = classify_http(code)
+    except Exception as exc:  # 兜底：只记录异常类型，异常消息可能含请求头（密钥）
+        return ERROR, f"探测异常：{type(exc).__name__}", None
+    status, detail = classify_http(code, body)
     return status, detail, code
+
+
+def _safe_check(p: Provider, env: Mapping[str, str], run: Run, offline: bool, timeout: float) -> Result:
+    """单个供应商出错不能拖垮整份报告；只记录异常类型，异常消息可能含密钥。"""
+    try:
+        return check_provider(p, env, run, offline=offline, timeout=timeout)
+    except Exception as exc:
+        return _result(p, ERROR, f"检查异常：{type(exc).__name__}")
 
 
 def coverage(results: list[Result]) -> dict[str, dict[str, int]]:
@@ -155,11 +200,10 @@ def run_doctor(
         print(f"未知的供应商：{', '.join(unknown)}；可选：{', '.join(providers.BY_NAME)}", file=out)
         return 2
 
-    with Run("doctor", {"offline": offline, "require": require, "timeout": timeout}, base_dir=base_dir) as run:
+    args = {"offline": offline, "require": require, "timeout": timeout}
+    with Run("doctor", args, base_dir=base_dir, secrets=providers.secret_values(env)) as run:
         with ThreadPoolExecutor(max_workers=8) as pool:
-            results = list(
-                pool.map(lambda p: check_provider(p, env, run, offline=offline, timeout=timeout), providers.PROVIDERS)
-            )
+            results = list(pool.map(lambda p: _safe_check(p, env, run, offline, timeout), providers.PROVIDERS))
         cov = coverage(results)
         failed = [n for n in require if next(r for r in results if r.provider == n).status != OK]
         run.write_json(

@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 from collections.abc import MutableMapping
 from pathlib import Path
@@ -59,8 +60,14 @@ def load_env(path: Path | None = None, environ: MutableMapping[str, str] | None 
 
 
 def redact(text: str, secrets: list[str]) -> str:
-    """把文本中出现的密钥值替换为 ***，用于记录错误信息前的兜底。"""
+    """把文本中出现的密钥值替换为 ***，用于记录错误信息前的兜底。
+
+    同时替换原值、去除首尾空白后的值，以及 repr / JSON 转义后的形式（含换行等字符时二者不同）。
+    """
+    forms: set[str] = set()
     for secret in secrets:
-        if secret and len(secret) >= 4:
-            text = text.replace(secret, "***")
+        for value in (secret, secret.strip()):
+            forms.update({value, repr(value)[1:-1], json.dumps(value)[1:-1]})
+    for form in sorted((f for f in forms if len(f) >= 4), key=len, reverse=True):
+        text = text.replace(form, "***")
     return text
