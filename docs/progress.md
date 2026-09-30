@@ -63,7 +63,7 @@
 - [x] 5. 定候选与音色（音色列表与 TTS 接口文档已读，`context_texts` / `speech_rate` 已确认；冒烟 `20260930-155850-tts-73b3`：陆沉 5 句全部成功）
 - [x] 6. CLI `python3 -m poc tts`（生成 + `--metrics` 互斥、`--max-cost-cny`），README 一节
 - [x] 7. 正式评测：音色初选 6 个音色（`20260930-160232` ~ `160636`）；候选 A–D 各 3 轮 × 15 句（`20260930-160729-tts-6688`、`161030-tts-8fed`、`161329-tts-ed5c`、`161629-tts-b795`），180/180 成功
-- [ ] 8. 证据入库、报告 `docs/reports/p0/P0-05.md`、登记 D-004
+- [x] 8. 证据入库、报告 `docs/reports/p0/P0-05.md`、登记 D-004
 - [ ] 9. 验证（verifier）、评审（arch-reviewer）、交付 PR
 
 ## 本步费用
@@ -80,6 +80,7 @@
 | D-001 | P0-01 | archcheck 查不出产品代码经 `PYTHONPATH=spikes/poc` 用 `import poc` 依赖 spikes（INV-03 守卫缺口，评审时在临时副本中复现）。是否在 `tools/archcheck/rules.toml` 的 `[aliases]` 中加 `"poc" = "spikes"`？ | A：加这一行别名（受保护路径，单独 PR，由你审阅合并）；B：暂不处理，P1-01 前一并处理 | A：改动一行，立即补上缺口；目前还没有产品代码，不会误报 | 已决 | A：在 `rules.toml` 的 `[aliases]` 中加 `"poc" = "spikes"`，单独 PR 由用户审阅合并（2026-09-30，用户：“补上漏洞”） |
 | D-002 | P0-02 | 是否确认标准样例《雨夜反击》第 1 集作为 P0-03 ~ P0-13 所有评测的**固定输入**（确认后冻结，不再原地修改）？ | A：确认 `packages/drama-ir/examples/v0/ep01.json`（sha256 `cd02daef022c…`），可读版本 `packages/drama-ir/examples/v0/ep01.md`；B：按你的意见修改后再确认（说明要改什么） | A：2 角色、3 场、13 镜头、15 句台词、60 秒；覆盖空镜、道具插入、画外音、音效、3 种场景情绪，结尾有悬念；已按验收审阅修正剧情自洽问题 | 已决 | A：确认 `packages/drama-ir/examples/v0/ep01.json`（sha256 `cd02daef022c6e78227ef3bf366adb2b5142a979a803bcf4373cdb8765a6fb59`）为 P0-03 ~ P0-13 评测的固定输入，冻结（2026-09-30，用户） |
 | D-003 | P0-03 | 剧本生成的人工评分与默认方案：15 份样本都已通过严格校验，“有人工评分记录”需要你打分；同时确认默认 LLM | A：15 份全部人工评分；B：人工抽评 3 份——flash s04（初评最高）、flash s03（flash 最低）、v4-pro s01（初评判为不可用），其余沿用 agent 初评；C：只确认 agent 初评，不打分。默认方案候选：`deepseek-flash`（思维链开）/ `deepseek-v4-pro` / flash 关思维链。样本与评分表：`docs/reports/p0/P0-03.md`、`docs/reports/p0/P0-03/<候选>/sNN.md` | B + `deepseek-flash`：抽评工作量小，而且是真正的人工评分（C 不满足验收本意）；flash 初评均分 3.89 最高、5/5 通过、每集约 ¥0.10、53 秒。回复示例：`/decide D-003 B flash-s04:4,5,4,4,4,5,4 flash-s03:… v4pro-s01:… 默认 flash`（7 个数依次为 D1 ~ D7） | 已决 | 人工评分：flash s04“不错”（认可）；其余 14 份沿用 agent 初评，报告中注明；默认 LLM 定为 `deepseek-flash`（思维链默认开）（2026-09-30，用户） |
+| D-004 | P0-05 | 配音默认方案与角色音色（主观，需试听）：4 个候选 180/180 成功、同音字折叠后 CER 全为 0、费用与耗时几乎相同，差别只在听感 | A `plain`（首选音色，无指令）；B `instruct`（加语音指令）；C `instruct-speed`（指令 + 语速映射）；D `alt-instruct-speed`（次选音色 苏晚 清新女声 / 陆沉 儒雅逸辰 + 指令 + 语速）。整集试听 `docs/reports/p0/P0-05/<候选>/ep01.mp3`；音色初选 `docs/reports/p0/P0-05/voices/`；报告 `docs/reports/p0/P0-05.md` | C + 音色 苏晚 知性灿灿 2.0（`zh_female_cancan_uranus_bigtts`）/ 陆沉 高冷沉稳 2.0（`zh_male_gaolengchenwen_uranus_bigtts`）：语速映射实测生效（speed 0.9 的句子长 7%–18%），指令不计费、不影响 CER，音色贴合角色描述、初选无重试；若觉得指令腔调不自然则选 A。回复示例：`/decide D-004 C` 或 `/decide D-004 A 苏晚改清新女声` | 待决 | — |
 
 ## 已知的前置条件
 
