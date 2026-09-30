@@ -1,0 +1,1054 @@
+{
+ "run_id": "20260930-214128-keyframe-895f",
+ "candidate": "keyframe-all-r1",
+ "stage": "keyframe",
+ "schemes": [
+  "text",
+  "ref1",
+  "ref2"
+ ],
+ "model_id": "doubao-seedream-5-0-pro-260628",
+ "prompt_version": "keyframe.v1",
+ "watermark": false,
+ "output_format": "jpeg",
+ "billing": "plan",
+ "source": {
+  "path": "packages/drama-ir/examples/v0/ep01.json",
+  "sha256": "cd02daef022c6e78227ef3bf366adb2b5142a979a803bcf4373cdb8765a6fb59"
+ },
+ "references": {
+  "char_suwan": {
+   "main": {
+    "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+    "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+   },
+   "neutral": {
+    "path": "docs/reports/p0/P0-06/derive-ref-pro/char_suwan/expression-neutral-4801b37f.jpg",
+    "sha256": "4801b37f1fce031871c370fdb5fd02cab60a05522d8392502cb95d20fd0cc41b"
+   }
+  },
+  "char_luchen": {
+   "main": {
+    "path": "docs/reports/p0/P0-06/main-pro/char_luchen/main-02-33b545ed.jpg",
+    "sha256": "33b545ed6b7fd5dd81e6da8c8fc9763a4d956acdd25185f8df9b4bc13329a227"
+   },
+   "neutral": {
+    "path": "docs/reports/p0/P0-06/derive-ref-pro/char_luchen/expression-neutral-0686460e.jpg",
+    "sha256": "0686460e273725e1fd6ade7c792ca1983081be5f28b50e4b63db656823403e96"
+   }
+  }
+ },
+ "round": 1,
+ "images": [
+  {
+   "shot_id": "ep01_sc01_sh01",
+   "characters": [],
+   "scheme": "shared",
+   "round": 1,
+   "file": "ep01_sc01_sh01/keyframe-shared-98c48661.jpg",
+   "sha256": "98c48661be2c80cda624891fe99e800b66e94b483498419bb82f4462078ae4b8",
+   "bytes": 356591,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908045231524ab1b857f955f8c19d0609a2b480a31ee3a043",
+   "node_key": "cefb76f04a4507ea163a01fc752339a91f189e993bd3a0f432d655483c3c952d",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "no",
+   "measurable_reason": "空镜",
+   "selected": true,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc01_sh02",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "text",
+   "round": 1,
+   "file": "ep01_sc01_sh02/keyframe-text-72625182.jpg",
+   "sha256": "72625182c05890a899b462dfdac539d6ae8f8d14c5cc9e5275a656af8a1e8881",
+   "bytes": 373094,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790804549625e2db60196941ae600372cde67b7e8ab1fdd6cb",
+   "node_key": "c0f07ae5d3f91e94454fd351047327dd7ed5c994b623d5f56f99f36421dbe81a",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc01_sh03",
+   "characters": [
+    "char_luchen",
+    "char_suwan"
+   ],
+   "scheme": "text",
+   "round": 1,
+   "file": "ep01_sc01_sh03/keyframe-text-1d9c48a5.jpg",
+   "sha256": "1d9c48a5dc80026b4b815cfe8ff53d688e1b9869a4bfb9711e9ba648f5ae807d",
+   "bytes": 334357,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908045905595ff81645323f0060132cd8f23da37b471ead8a",
+   "node_key": "71446ee7a7ee5744ff9231b3bad32cb34fecfefbb91b16254054cc392bc9c002",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc01_sh04",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "text",
+   "round": 1,
+   "file": "ep01_sc01_sh04/keyframe-text-1ebb8512.jpg",
+   "sha256": "1ebb8512d5d4e2790bfe9016dee30c816b389dfbaf0d323e155a46333be40dfe",
+   "bytes": 311057,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790804633117689dd86c635c9e312c9248b59ca51b20b2b297",
+   "node_key": "dcd4a4d3149e86565595336317f81437fee6f9cf87fcd11b409cf3cc88e5ef48",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc01_sh05",
+   "characters": [
+    "char_luchen",
+    "char_suwan"
+   ],
+   "scheme": "text",
+   "round": 1,
+   "file": "ep01_sc01_sh05/keyframe-text-33ffe6d4.jpg",
+   "sha256": "33ffe6d4245b0f728e5c3fbe2faa0f901752bfbb6b9508f36e1c42bc8689c1d9",
+   "bytes": 352761,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908046681186a00aaadbf856d05e5e786a533a144222eb6d2",
+   "node_key": "f40d2a20e535bdde970de2a8e21c95f00e2794dfd6570e1f2c0378ae95a72ca9",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": true,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc02_sh01",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "text",
+   "round": 1,
+   "file": "ep01_sc02_sh01/keyframe-text-30547a0b.jpg",
+   "sha256": "30547a0b98e1212f6fc7b4e13c42cfbf8d6f14b3bf3621f3623e225837832d18",
+   "bytes": 263939,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908047097160451d664a5d5fd238884dd8fb7ca7e60e69ac1",
+   "node_key": "9951cebcb29ea280a63504954a7f3249d3031333674602c923f81349fe7f2c7e",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "maybe",
+   "measurable_reason": "景别 MLS 偏远，人脸像素可能过小；机位 high（俯拍），人脸可能被遮挡或偏小",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc02_sh02",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "text",
+   "round": 1,
+   "file": "ep01_sc02_sh02/keyframe-text-6cbf8ae1.jpg",
+   "sha256": "6cbf8ae15a74bc9402140aa2136c31ce3d2ebae31c98002031fa35d6e6c370cb",
+   "bytes": 192691,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790804749811db75dded7c19a7df720a76be3f48b5591b36f7",
+   "node_key": "15fc985ac0e71cf7d0e877e50545defcd4458e2c86d3e3ee715d8766741262a0",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "maybe",
+   "measurable_reason": "大特写（ECU），可能只拍到手或局部；描述为手部特写，人脸可能不入画；机位 overhead（俯拍），人脸可能被遮挡或偏小",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc02_sh03",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "text",
+   "round": 1,
+   "file": "ep01_sc02_sh03/keyframe-text-4a8bf448.jpg",
+   "sha256": "4a8bf448fa9b4a2e06d29079d5c624f33b9369a893cda9243ef3a91640197f29",
+   "bytes": 219193,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790804778846b775ef38f1ee27b2e55af1b66efc6d9542d9b6",
+   "node_key": "f5f4dda17ff4b833dc8b4727028a03afe80510256f2c30bb6aebde112178f454",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc02_sh04",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "text",
+   "round": 1,
+   "file": "ep01_sc02_sh04/keyframe-text-414f22bc.jpg",
+   "sha256": "414f22bc584517494ec325a049227e7e4389171aebe5d76b57f98b3c7c01156f",
+   "bytes": 229912,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790804809801e2072246f9b346463aacd406787833576cb299",
+   "node_key": "cf280265e12ce39b24880a605006f256d4fc75959f5d9f810742a2acf025a0a3",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc03_sh01",
+   "characters": [
+    "char_luchen"
+   ],
+   "scheme": "text",
+   "round": 1,
+   "file": "ep01_sc03_sh01/keyframe-text-2470feb2.jpg",
+   "sha256": "2470feb24fd5c89dc91871af8d89806b1e5d178fbcf898700dc6f3ad76fbc9ea",
+   "bytes": 263004,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790804842045c4b4c21807da17f108ce4c4545791d8ec8466b",
+   "node_key": "153fd108b662d984b31c3f51e5e01bb8bacdd5739af8bca74a804da3a15d0bb1",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc03_sh02",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "text",
+   "round": 1,
+   "file": "ep01_sc03_sh02/keyframe-text-3b8a9bb9.jpg",
+   "sha256": "3b8a9bb9428cb8f3df1779712f82649c877fa2581605e5775040c21a8c8c34eb",
+   "bytes": 252665,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790804876721c1ced5ca0212b988f246557958b32345f18a81",
+   "node_key": "15ae639f1de1a9fd014c796e446d0993b13de70a70b77b3e93018a1a7592e8b2",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc03_sh03",
+   "characters": [
+    "char_luchen"
+   ],
+   "scheme": "text",
+   "round": 1,
+   "file": "ep01_sc03_sh03/keyframe-text-20fef4ab.jpg",
+   "sha256": "20fef4ab0c33d4b425915cc831f40d6d2e922514a8406e6e62bc587c2ae9e3dd",
+   "bytes": 265940,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790804911508e9364cfcb645e8222cc1f22dec5fb7367cd681",
+   "node_key": "fbdd34e4af8e281a37a488d682c857e64cad7ca1a3121a9d9a16d671746c90a3",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc03_sh04",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "text",
+   "round": 1,
+   "file": "ep01_sc03_sh04/keyframe-text-964888c5.jpg",
+   "sha256": "964888c5c624b00cac9d13582cd4378281eefc802c08f5290821a6395836e69b",
+   "bytes": 248536,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908049516426baea902239f26d786b4cc818bae24a81baf67",
+   "node_key": "3bf87fcb6299035b112e1fb812f9acfd59fd02cf459cf09bf31dc8b220857413",
+   "size": "1152x2048",
+   "refs": [],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc01_sh02",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref1",
+   "round": 1,
+   "file": "ep01_sc01_sh02/keyframe-ref1-8cfabfb7.jpg",
+   "sha256": "8cfabfb7f83b8dfa3534d31c430507d20553752e9caf2ec695de3ed708930660",
+   "bytes": 308693,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908049963816c7b67136913b8291adfcb1079846bf493bc4b",
+   "node_key": "34504237f920550e2edd75883f67b329018e961e519a645c67a1c29218989d64",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": true,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc01_sh03",
+   "characters": [
+    "char_luchen",
+    "char_suwan"
+   ],
+   "scheme": "ref1",
+   "round": 1,
+   "file": "ep01_sc01_sh03/keyframe-ref1-11d9acd6.jpg",
+   "sha256": "11d9acd623c75ca9ce7b9c592c51cec76ba5e970af3d0cc6020a7236450c2143",
+   "bytes": 301425,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "02179080505892553952e287ddd1b7d9109cd0048896ba08781eb",
+   "node_key": "073eae7f4280f6a3fcf717b3280662e540a6f7744e95bda1b8cb48398a049334",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_luchen/main-02-33b545ed.jpg",
+     "sha256": "33b545ed6b7fd5dd81e6da8c8fc9763a4d956acdd25185f8df9b4bc13329a227"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc01_sh04",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref1",
+   "round": 1,
+   "file": "ep01_sc01_sh04/keyframe-ref1-4deb7713.jpg",
+   "sha256": "4deb7713c065a1669c0442b471b0c46aaac0d15bdcca0100d1e5f96722afbcea",
+   "bytes": 284771,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790805131842006c460d0b2d36d003716bcb3522c0d1282d79",
+   "node_key": "169a541df0873214e61bf38c00214a5c6544cb271a4b49028b5c4b49bc11d3b7",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc01_sh05",
+   "characters": [
+    "char_luchen",
+    "char_suwan"
+   ],
+   "scheme": "ref1",
+   "round": 1,
+   "file": "ep01_sc01_sh05/keyframe-ref1-a1d07b28.jpg",
+   "sha256": "a1d07b285b07914bf981d714084e7bb5766d1e00c540806cb5bca9b1b01011d8",
+   "bytes": 350629,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "02179080518673156b91a760308be63bbfdbcf334da2c5cf400cb",
+   "node_key": "1a8be7ff1532efb8ff4b931cf3623312695f8e91a603d3b5a9300acb3c1c2c36",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_luchen/main-02-33b545ed.jpg",
+     "sha256": "33b545ed6b7fd5dd81e6da8c8fc9763a4d956acdd25185f8df9b4bc13329a227"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc02_sh01",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref1",
+   "round": 1,
+   "file": "ep01_sc02_sh01/keyframe-ref1-63b30eff.jpg",
+   "sha256": "63b30effdd8e78ef63852ef797d78daceaa8ce0ef321f1a23cc4c8218c41c300",
+   "bytes": 294893,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790805249280a3a94bdc8ab7718b894d5a0168b39b20b56052",
+   "node_key": "ea096b25cba6e567e23d544bdd55067a40d1aa581d0e71df5e407ccf9fc7d1f9",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    }
+   ],
+   "measurable": "maybe",
+   "measurable_reason": "景别 MLS 偏远，人脸像素可能过小；机位 high（俯拍），人脸可能被遮挡或偏小",
+   "selected": true,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc02_sh02",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref1",
+   "round": 1,
+   "file": "ep01_sc02_sh02/keyframe-ref1-166b8c1a.jpg",
+   "sha256": "166b8c1aabf111efc441811c9da05a8428ebd4eb7194c88d62a59f27010c48cc",
+   "bytes": 226693,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790805326186b6ab61b028b46eec1be4b86a7f38a82b21e5a6",
+   "node_key": "1460cd71b2f467bd2d2daa5eba2cefdb2e82693f3119490720db235a1c778d7a",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    }
+   ],
+   "measurable": "maybe",
+   "measurable_reason": "大特写（ECU），可能只拍到手或局部；描述为手部特写，人脸可能不入画；机位 overhead（俯拍），人脸可能被遮挡或偏小",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc02_sh03",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref1",
+   "round": 1,
+   "file": "ep01_sc02_sh03/keyframe-ref1-3b1bc503.jpg",
+   "sha256": "3b1bc503d3ad41adbb00fb95135ee1d8bdfce7d4e7e83c450cefea2cec6b3b80",
+   "bytes": 205582,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790805397968b3148bc0f12eba71a521be8450222824905bae",
+   "node_key": "498ddc5f9f06890c36c3a28760e9313286a2b7e3d9d772f0ac25f153543328e0",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc02_sh04",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref1",
+   "round": 1,
+   "file": "ep01_sc02_sh04/keyframe-ref1-bdb40dc1.jpg",
+   "sha256": "bdb40dc10b7a9fb492e0ecf5a10ced141f3e9dd3a494328882b49bc5b4b997b8",
+   "bytes": 264036,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790805469726764cb85af6e95477278739ec97beec4b866a10",
+   "node_key": "6a0f915061379daa70488e5220b69fcd15b3cd2abaf3d1986fbfc060c363d783",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc03_sh01",
+   "characters": [
+    "char_luchen"
+   ],
+   "scheme": "ref1",
+   "round": 1,
+   "file": "ep01_sc03_sh01/keyframe-ref1-7abcf9bf.jpg",
+   "sha256": "7abcf9bf64888d0b2b06472fb777456ffbac945b01868293ce90e631dd0fbe45",
+   "bytes": 239257,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "02179080555810982fbdb39865d08dcb106487b8dd17a6d8b3887",
+   "node_key": "a9a05945b257bdc459b4880206888ca678b47b0d65dc37f78a1798e039cc81b6",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_luchen/main-02-33b545ed.jpg",
+     "sha256": "33b545ed6b7fd5dd81e6da8c8fc9763a4d956acdd25185f8df9b4bc13329a227"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": true,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc03_sh02",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref1",
+   "round": 1,
+   "file": "ep01_sc03_sh02/keyframe-ref1-3c2370df.jpg",
+   "sha256": "3c2370df7eebbaee9528e4e356ed92edab088d0eb23f7ad5832232772ca11142",
+   "bytes": 244397,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790805636916612e4074fd6abbc441fdb5db4a1923c55ed78d",
+   "node_key": "bb7ec6bc0e4afa90ad7ba8b377d2189893a1951e284a4c0b1586053fab47d8be",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": true,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc03_sh03",
+   "characters": [
+    "char_luchen"
+   ],
+   "scheme": "ref1",
+   "round": 1,
+   "file": "ep01_sc03_sh03/keyframe-ref1-3cba2cef.jpg",
+   "sha256": "3cba2cefe0e2189813517c1f25d1bdd5d5c01c8534ae94e95ab2256e9700982e",
+   "bytes": 220773,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790805733729fb89e181bd9b21545a0eb5a18e7fe8de8d94c0",
+   "node_key": "89807f3deef9927e4a862dc530b2a158ccd5c858fc31111bf8ba4cc00237628f",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_luchen/main-02-33b545ed.jpg",
+     "sha256": "33b545ed6b7fd5dd81e6da8c8fc9763a4d956acdd25185f8df9b4bc13329a227"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc03_sh04",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref1",
+   "round": 1,
+   "file": "ep01_sc03_sh04/keyframe-ref1-b63802e8.jpg",
+   "sha256": "b63802e85d203bac755f29b9da97a32f4d78d39b1dbf05669225ae6a711f9160",
+   "bytes": 222215,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908058053582aa527f157b6a110efda50fc2be4a17a6c3a40",
+   "node_key": "91c3ce26c2af80ef0212c9266f8ef40d2147d43f2dc1752c11dff4aafd15f773",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc01_sh02",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref2",
+   "round": 1,
+   "file": "ep01_sc01_sh02/keyframe-ref2-3dcb45bb.jpg",
+   "sha256": "3dcb45bbd37151400e242788aa00323d5755b6ed20285a449679bbc6330cc90f",
+   "bytes": 329073,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908058934252d60f60bba313662d1f7bb8a224af9f41f88c9",
+   "node_key": "09d002e59f6528492656446967fc0e6a7fb18bd1567cd7f8fb8b9706c4818843",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_suwan/expression-neutral-4801b37f.jpg",
+     "sha256": "4801b37f1fce031871c370fdb5fd02cab60a05522d8392502cb95d20fd0cc41b"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc01_sh03",
+   "characters": [
+    "char_luchen",
+    "char_suwan"
+   ],
+   "scheme": "ref2",
+   "round": 1,
+   "file": "ep01_sc01_sh03/keyframe-ref2-6c1b3e8a.jpg",
+   "sha256": "6c1b3e8a62a8795a1ff391ac595c73648f5b94f80aa4a42e8b53deaddbe8fbc7",
+   "bytes": 304203,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908059701033472b452131530d7d1d28285be3fe78be508fa",
+   "node_key": "a881fb56f9f5dff944e5062f1a74029e37f982e871d08dbdd1a8c2c51eac8f65",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_suwan/expression-neutral-4801b37f.jpg",
+     "sha256": "4801b37f1fce031871c370fdb5fd02cab60a05522d8392502cb95d20fd0cc41b"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_luchen/main-02-33b545ed.jpg",
+     "sha256": "33b545ed6b7fd5dd81e6da8c8fc9763a4d956acdd25185f8df9b4bc13329a227"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_luchen/expression-neutral-0686460e.jpg",
+     "sha256": "0686460e273725e1fd6ade7c792ca1983081be5f28b50e4b63db656823403e96"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": true,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc01_sh04",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref2",
+   "round": 1,
+   "file": "ep01_sc01_sh04/keyframe-ref2-17ff7be5.jpg",
+   "sha256": "17ff7be5e8aefc5ebfe3af299bc98fe50ab244b1b64991c249468509218cc985",
+   "bytes": 297586,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790806046839226d55c1868491c89c6234734c8c3308bbeade",
+   "node_key": "3be89e019edbe422af35fe950ef2d14c04b2a1706ca81422d0398279c16b0d6b",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_suwan/expression-neutral-4801b37f.jpg",
+     "sha256": "4801b37f1fce031871c370fdb5fd02cab60a05522d8392502cb95d20fd0cc41b"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": true,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc01_sh05",
+   "characters": [
+    "char_luchen",
+    "char_suwan"
+   ],
+   "scheme": "ref2",
+   "round": 1,
+   "file": "ep01_sc01_sh05/keyframe-ref2-cd59da3d.jpg",
+   "sha256": "cd59da3d9d9f76f7973a222534ecf094d49e4f8de7f6d9320d343ac94b286429",
+   "bytes": 355205,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908060990434d276ae6b5ce6fd767138ff54dc0bd26af034c",
+   "node_key": "1c146acf99ef3e642cebfd4e1b91f1cd9d549eab42c03a77041ef6fe38502035",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_suwan/expression-neutral-4801b37f.jpg",
+     "sha256": "4801b37f1fce031871c370fdb5fd02cab60a05522d8392502cb95d20fd0cc41b"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_luchen/main-02-33b545ed.jpg",
+     "sha256": "33b545ed6b7fd5dd81e6da8c8fc9763a4d956acdd25185f8df9b4bc13329a227"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_luchen/expression-neutral-0686460e.jpg",
+     "sha256": "0686460e273725e1fd6ade7c792ca1983081be5f28b50e4b63db656823403e96"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc02_sh01",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref2",
+   "round": 1,
+   "file": "ep01_sc02_sh01/keyframe-ref2-56568d7f.jpg",
+   "sha256": "56568d7feb880f5976117173e93e4d03942d26b2e864a038f3dd08fa03c5351a",
+   "bytes": 276782,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790806180706a494df944a230ff836cdfb3920056d771a6be1",
+   "node_key": "301d2105efa17cb766ec42ece78e9f8e20db470d06ede57172a08b163e271b10",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_suwan/expression-neutral-4801b37f.jpg",
+     "sha256": "4801b37f1fce031871c370fdb5fd02cab60a05522d8392502cb95d20fd0cc41b"
+    }
+   ],
+   "measurable": "maybe",
+   "measurable_reason": "景别 MLS 偏远，人脸像素可能过小；机位 high（俯拍），人脸可能被遮挡或偏小",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc02_sh02",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref2",
+   "round": 1,
+   "file": "ep01_sc02_sh02/keyframe-ref2-17931403.jpg",
+   "sha256": "179314034a0ceaa6dfa22ae90a4e885b09922bfe33f379f43a4ad32fefe8304d",
+   "bytes": 278379,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790806239976833b5625726f7c6da3e0b25f98b670c6df5845",
+   "node_key": "98c450a4d0b425659bd649b7acc2b60ae15f787c5ad1a95997dcfe866b35de38",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_suwan/expression-neutral-4801b37f.jpg",
+     "sha256": "4801b37f1fce031871c370fdb5fd02cab60a05522d8392502cb95d20fd0cc41b"
+    }
+   ],
+   "measurable": "maybe",
+   "measurable_reason": "大特写（ECU），可能只拍到手或局部；描述为手部特写，人脸可能不入画；机位 overhead（俯拍），人脸可能被遮挡或偏小",
+   "selected": true,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc02_sh03",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref2",
+   "round": 1,
+   "file": "ep01_sc02_sh03/keyframe-ref2-433a02f5.jpg",
+   "sha256": "433a02f5108b2e744cf6b9d2b68758ad9519d47fa8844b0c48044328827c6c40",
+   "bytes": 257964,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908063053788a3884a21a15d86e034982e8477ecac6b670ba",
+   "node_key": "2d7e84c3b2218338d867f1e122b725937c2afac29ecbb6cca2a7babe6d5b968d",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_suwan/expression-neutral-4801b37f.jpg",
+     "sha256": "4801b37f1fce031871c370fdb5fd02cab60a05522d8392502cb95d20fd0cc41b"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": true,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc02_sh04",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref2",
+   "round": 1,
+   "file": "ep01_sc02_sh04/keyframe-ref2-91bcf845.jpg",
+   "sha256": "91bcf8453587fd5bbedcb4a06a42be432427f3f222d8b82b3f63c4ec118ffa72",
+   "bytes": 278996,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790806372913ed42e8978f7887761870c2af59029dd7ba8f9a",
+   "node_key": "ae8bc5583af25125c7dbc29e37b7a391d137fb5bbda4fe92a5a10244ec11ab2a",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_suwan/expression-neutral-4801b37f.jpg",
+     "sha256": "4801b37f1fce031871c370fdb5fd02cab60a05522d8392502cb95d20fd0cc41b"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": true,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc03_sh01",
+   "characters": [
+    "char_luchen"
+   ],
+   "scheme": "ref2",
+   "round": 1,
+   "file": "ep01_sc03_sh01/keyframe-ref2-48c36f4e.jpg",
+   "sha256": "48c36f4e459fb3c17c31cfe7aee7457744ce67dcf5d25506897bc4ae17b143fe",
+   "bytes": 235430,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790806452062c1c60125965d8547be0192a9260db7d2173dd4",
+   "node_key": "8bb6a72285b6f0a77272881fbc25cb8f1105c0750cc568bd2af3ef511f183501",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_luchen/main-02-33b545ed.jpg",
+     "sha256": "33b545ed6b7fd5dd81e6da8c8fc9763a4d956acdd25185f8df9b4bc13329a227"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_luchen/expression-neutral-0686460e.jpg",
+     "sha256": "0686460e273725e1fd6ade7c792ca1983081be5f28b50e4b63db656823403e96"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc03_sh02",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref2",
+   "round": 1,
+   "file": "ep01_sc03_sh02/keyframe-ref2-bb0e636e.jpg",
+   "sha256": "bb0e636efc60a8933164c04b85c54fac1fde20435938ea8074daa4a24b10fa33",
+   "bytes": 253614,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "021790806530327d6bdab3051f46472bfd942e874cc5db0c3ee37",
+   "node_key": "b2fb842258653dd083db28e77ed11d1bf47b4d91350ee2c4367b49c1fbdb4e52",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_suwan/expression-neutral-4801b37f.jpg",
+     "sha256": "4801b37f1fce031871c370fdb5fd02cab60a05522d8392502cb95d20fd0cc41b"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": false,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc03_sh03",
+   "characters": [
+    "char_luchen"
+   ],
+   "scheme": "ref2",
+   "round": 1,
+   "file": "ep01_sc03_sh03/keyframe-ref2-3106ee25.jpg",
+   "sha256": "3106ee251fae978fd23796f949d9b0d2db13d73eb6f8912fb478cbfafe91b90e",
+   "bytes": 241763,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908066230714424d60fbe7ca4e6a3438a81f2515be6f549a3",
+   "node_key": "c575272f127dbdb613a6afad6023856ebca6ef43e121e814eb00532b5fd87910",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_luchen/main-02-33b545ed.jpg",
+     "sha256": "33b545ed6b7fd5dd81e6da8c8fc9763a4d956acdd25185f8df9b4bc13329a227"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_luchen/expression-neutral-0686460e.jpg",
+     "sha256": "0686460e273725e1fd6ade7c792ca1983081be5f28b50e4b63db656823403e96"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": true,
+   "committed": true
+  },
+  {
+   "shot_id": "ep01_sc03_sh04",
+   "characters": [
+    "char_suwan"
+   ],
+   "scheme": "ref2",
+   "round": 1,
+   "file": "ep01_sc03_sh04/keyframe-ref2-dba802ec.jpg",
+   "sha256": "dba802ecc97b01554aa381775d0b09ab1e84cbdd59841485e2430303fc6145dc",
+   "bytes": 274809,
+   "width": 1152,
+   "height": 2048,
+   "reported_size": "1152x2048",
+   "request_id": "0217908067575665ffee7bd9f8ed62699b3e2c08b3f23753fcaa2",
+   "node_key": "4987d0a11be62978b88547041734ca155109c6296bdd494bd0ca617f443d2610",
+   "size": "1152x2048",
+   "refs": [
+    {
+     "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+     "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd"
+    },
+    {
+     "path": "docs/reports/p0/P0-06/derive-ref-pro/char_suwan/expression-neutral-4801b37f.jpg",
+     "sha256": "4801b37f1fce031871c370fdb5fd02cab60a05522d8392502cb95d20fd0cc41b"
+    }
+   ],
+   "measurable": "yes",
+   "measurable_reason": "",
+   "selected": true,
+   "committed": true
+  }
+ ]
+}

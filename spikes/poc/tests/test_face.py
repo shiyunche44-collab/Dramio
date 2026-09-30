@@ -154,11 +154,21 @@ class MeasureTest(unittest.TestCase):
         single = self.measure("one", [mkface(emb=unit(10))], expected=["A"])
         self.assertIsNone(single.instances[0].margin)
 
-    def test_more_faces_than_characters_takes_best(self):
-        r = self.measure("crowd", [mkface(0, emb=unit(30)), mkface(200, emb=unit(5)), mkface(400, emb=unit(85)), mkface(600, emb=unit(45))])
+    def test_more_faces_than_characters_pick_best(self):
+        r = self.measure("crowd", [mkface(0, emb=unit(30)), mkface(200, emb=unit(5)), mkface(400, emb=unit(85)), mkface(600, emb=unit(45))], pick="best")
         i = self.by_char(r)
         self.assertEqual(r.n_faces, 4)
         self.assertEqual((i["A"].bbox[0], i["B"].bbox[0]), (200.0, 400.0))
+
+    def test_more_faces_than_characters_default_takes_largest(self):
+        # 背景路人脸（小）恰好更像参考图：默认只取面积最大的 len(角色) 张，不被“更像”的小脸带偏
+        faces = [mkface(0, size=60, emb=unit(2)), mkface(200, size=150, emb=unit(40)), mkface(400, size=140, emb=unit(60)), mkface(600, size=50, emb=unit(88))]
+        r = self.measure("crowd-largest", faces)
+        i = self.by_char(r)
+        self.assertEqual(r.n_faces, 4)
+        self.assertEqual({i["A"].bbox[0], i["B"].bbox[0]}, {200.0, 400.0})
+        best = self.by_char(self.measure("crowd-largest-best", faces, pick="best"))
+        self.assertEqual({best["A"].bbox[0], best["B"].bbox[0]}, {0.0, 600.0})
 
     def test_fewer_faces_than_characters_marks_missing(self):
         r = self.measure("one-face", [mkface(emb=unit(80))])

@@ -279,13 +279,20 @@ def _r4(x: float) -> float:
 
 
 def measure_image(
-    embedder: Embedder, data: bytes, image: str, expected: Sequence[str], bank: Bank, th: Thresholds, assign_by: str = "bank", **meta: Any,
+    embedder: Embedder, data: bytes, image: str, expected: Sequence[str], bank: Bank, th: Thresholds, assign_by: str = "bank", pick: str = "largest", **meta: Any,
 ) -> ImageResult:
-    """检测 → 过滤 → 与应有角色做最优指派 → 每个角色一个实例。"""
+    """检测 → 过滤 → 与应有角色做最优指派 → 每个角色一个实例。
+
+    脸数多于应有角色数时（背景路人），pick 决定哪些脸参与指派：
+    - largest（默认）只取面积最大的 len(角色) 张，即画面主体；不偏向“恰好更像”的路人脸；
+    - best 所有可用脸都参与，取相似度最高的（会系统性高估，仅作对照）。
+    """
     faces = sorted(embedder.detect(data), key=lambda f: (round(f.bbox[0], 1), round(f.bbox[1], 1), -f.det_score))
     infos = [FaceInfo([round(x, 1) for x in f.bbox], _r4(f.det_score), round(f.width, 1), round(f.height, 1), face_reason(f, th)) for f in faces]
     usable = [i for i, info in enumerate(infos) if info.reason is None]
     chars = list(expected)
+    if pick == "largest" and len(usable) > len(chars):
+        usable = sorted(sorted(usable, key=lambda i: -(faces[i].width * faces[i].height))[: len(chars)])
     sims = [[(bank.best if assign_by == "bank" else bank.anchor)(c, faces[i]) for c in chars] for i in usable]
     assigned = {c: f for f, c in best_assignment(sims)}
     if not faces:
@@ -451,7 +458,7 @@ def _table(header: list[str], rows: list[list[str]]) -> list[str]:
 def render_text(report: Mapping[str, Any], results: Sequence[ImageResult]) -> str:
     th = report["thresholds"]
     lines = [
-        f"后端 {report['backend']}  最小人脸 {th['min_face_px']:g} px  最小检测分 {th['min_det_score']:g}  指派口径 {report['assign_by']}",
+        f"后端 {report['backend']}  最小人脸 {th['min_face_px']:g} px  最小检测分 {th['min_det_score']:g}  指派口径 {report['assign_by']}  多脸取 {report.get('pick', 'largest')}",
         "基准库（第 1 张为锚点）：",
     ]
     for cid, refs in report["references"].items():
@@ -550,6 +557,7 @@ def run_face(
     th: Thresholds = Thresholds(),
     expect: Sequence[str] | None = None,
     assign_by: str = "bank",
+    pick: str = "largest",
     json_path: Path | None = None,
     csv_path: Path | None = None,
     out: TextIO | None = None,
@@ -580,13 +588,14 @@ def run_face(
                 skipped.append(display_path(t.path))
                 continue
             try:
-                results.append(measure_image(embedder, data, display_path(t.path), expected, bank, th, assign_by, **t.meta))
+                results.append(measure_image(embedder, data, display_path(t.path), expected, bank, th, assign_by, pick, **t.meta))
             except FaceError as exc:
                 raise FaceError(f"{display_path(t.path)}：{exc}") from None
     except FaceError as exc:
         print(str(exc), file=out)
         return 2
     report = build_report(embedder.name, th, bank, results, assign_by, skipped)
+    report["pick"] = pick
     out.write(render_text(report, results))
     if json_path is not None:
         json_path.write_text(render_json(report), encoding="utf-8")
@@ -615,7 +624,7 @@ def _cmd(args: argparse.Namespace) -> int:
         return 2
     return run_face(
         refs, targets, embedder, Thresholds(args.min_face_px, args.min_det_score),
-        expect=[c.strip() for c in args.expect.split(",") if c.strip()] if args.expect else None,
+        expect=[c.strip() for c in args.expect.split(",") if c.strip()] if args.expect else None, pick=args.pick,
         json_path=Path(args.json) if args.json else None, csv_path=Path(args.csv) if args.csv else None,
     )
 
@@ -629,6 +638,7 @@ def add_parser(sub) -> None:
     p.add_argument("--backend", choices=BACKENDS, default="arcface", help="人脸后端（默认 arcface）")
     p.add_argument("--json", metavar="PATH", help="写出 JSON（含逐图、逐实例与统计）")
     p.add_argument("--csv", metavar="PATH", help="写出 CSV（每个（图像, 角色）实例一行）")
+    p.add_argument("--pick", choices=("largest", "best"), default="largest", help="脸数多于角色数时：largest 只取面积最大的几张（默认，画面主体）/ best 取相似度最高的（会高估，仅作对照）")
     p.add_argument("--min-face-px", type=float, default=DEFAULT_MIN_FACE_PX, help=f"脸框短边小于它记“脸太小”（默认 {DEFAULT_MIN_FACE_PX}）")
     p.add_argument("--min-det-score", type=float, default=DEFAULT_MIN_DET_SCORE, help=f"检测分低于它记“分数低”（默认 {DEFAULT_MIN_DET_SCORE}）")
     p.add_argument("--det-size", type=int, default=DEFAULT_DET_SIZE, help=f"arcface 检测输入边长（默认 {DEFAULT_DET_SIZE}；脸很小时调大）")

@@ -1,0 +1,44 @@
+image,shot_id,scheme,round,pre_measurable,char_id,n_faces,measurable,reason,anchor,bank,margin,det_score,face_px,bbox
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh01/keyframe-shared-98c48661.jpg,ep01_sc01_sh01,shared,1,no,,0,0,空镜,,,,,,
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh02/keyframe-text-72625182.jpg,ep01_sc01_sh02,text,1,yes,char_suwan,1,1,,0.3061,0.3421,,0.8834,92.2,537.4 621.1 629.6 749.4
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh02/keyframe-ref1-8cfabfb7.jpg,ep01_sc01_sh02,ref1,1,yes,char_suwan,1,1,,0.7779,0.7779,,0.8845,147.4,511.0 655.8 658.5 863.1
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh02/keyframe-ref2-3dcb45bb.jpg,ep01_sc01_sh02,ref2,1,yes,char_suwan,1,1,,0.6005,0.7717,,0.9068,177.1,508.0 634.0 685.1 882.6
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh03/keyframe-text-1d9c48a5.jpg,ep01_sc01_sh03,text,1,yes,char_luchen,2,1,,0.6371,0.6371,0.5836,0.8759,123.0,561.4 326.8 684.5 475.2
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh03/keyframe-text-1d9c48a5.jpg,ep01_sc01_sh03,text,1,yes,char_suwan,2,1,,0.4658,0.4658,0.4294,0.8140,125.6,387.8 626.4 513.5 797.7
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh03/keyframe-ref1-11d9acd6.jpg,ep01_sc01_sh03,ref1,1,yes,char_luchen,2,1,,0.4418,0.5115,0.3103,0.8512,192.6,462.4 333.2 655.1 561.3
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh03/keyframe-ref1-11d9acd6.jpg,ep01_sc01_sh03,ref1,1,yes,char_suwan,2,1,,0.6820,0.6820,0.5441,0.8914,187.0,352.2 788.4 539.2 1044.8
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh03/keyframe-ref2-6c1b3e8a.jpg,ep01_sc01_sh03,ref2,1,yes,char_luchen,2,1,,0.6497,0.7361,0.6157,0.8923,151.1,588.0 292.6 739.2 493.4
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh03/keyframe-ref2-6c1b3e8a.jpg,ep01_sc01_sh03,ref2,1,yes,char_suwan,2,1,,0.4849,0.7232,0.5290,0.8112,257.5,340.9 1016.0 598.4 1353.0
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh04/keyframe-text-1ebb8512.jpg,ep01_sc01_sh04,text,1,yes,char_suwan,1,1,,0.5204,0.5204,,0.9007,170.5,501.9 360.0 672.4 585.9
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh04/keyframe-ref1-4deb7713.jpg,ep01_sc01_sh04,ref1,1,yes,char_suwan,1,1,,0.6876,0.6876,,0.8340,523.8,346.7 490.4 870.5 1218.6
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh04/keyframe-ref2-17ff7be5.jpg,ep01_sc01_sh04,ref2,1,yes,char_suwan,1,1,,0.6065,0.7444,,0.8303,376.3,405.1 432.3 781.4 992.8
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh05/keyframe-text-33ffe6d4.jpg,ep01_sc01_sh05,text,1,yes,char_luchen,2,1,,0.3653,0.3653,0.3247,0.7726,123.4,320.6 218.8 444.1 388.2
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh05/keyframe-text-33ffe6d4.jpg,ep01_sc01_sh05,text,1,yes,char_suwan,2,1,,0.3725,0.3725,0.2005,0.7638,113.5,790.9 343.2 904.3 521.8
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh05/keyframe-ref1-a1d07b28.jpg,ep01_sc01_sh05,ref1,1,yes,char_luchen,2,1,,0.3704,0.3704,0.2966,0.8266,91.8,375.7 563.5 467.5 698.7
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh05/keyframe-ref1-a1d07b28.jpg,ep01_sc01_sh05,ref1,1,yes,char_suwan,2,1,,0.1959,0.2207,0.1494,0.8352,88.0,778.8 659.4 866.8 790.9
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh05/keyframe-ref2-cd59da3d.jpg,ep01_sc01_sh05,ref2,1,yes,char_luchen,2,1,,0.2961,0.2961,0.3122,0.7254,112.5,355.0 354.8 467.4 531.4
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh05/keyframe-ref2-cd59da3d.jpg,ep01_sc01_sh05,ref2,1,yes,char_suwan,2,1,,0.4830,0.4830,0.3716,0.8000,106.0,745.8 578.7 851.7 731.0
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh01/keyframe-text-30547a0b.jpg,ep01_sc02_sh01,text,1,maybe,char_suwan,1,1,,0.5395,0.5395,,0.8838,147.2,402.7 948.2 549.9 1140.9
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh01/keyframe-ref1-63b30eff.jpg,ep01_sc02_sh01,ref1,1,maybe,char_suwan,1,1,,0.7617,0.7617,,0.8871,141.3,707.5 905.9 848.8 1096.3
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh01/keyframe-ref2-56568d7f.jpg,ep01_sc02_sh01,ref2,1,maybe,char_suwan,1,1,,0.5097,0.6210,,0.8394,134.4,554.1 1010.3 688.5 1192.8
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh02/keyframe-text-6cbf8ae1.jpg,ep01_sc02_sh02,text,1,maybe,char_suwan,0,0,无脸,,,,,,
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh02/keyframe-ref1-166b8c1a.jpg,ep01_sc02_sh02,ref1,1,maybe,char_suwan,0,0,无脸,,,,,,
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh02/keyframe-ref2-17931403.jpg,ep01_sc02_sh02,ref2,1,maybe,char_suwan,0,0,无脸,,,,,,
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh03/keyframe-text-4a8bf448.jpg,ep01_sc02_sh03,text,1,yes,char_suwan,1,1,,0.5429,0.5429,,0.8253,214.8,531.3 416.0 746.1 739.6
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh03/keyframe-ref1-3b1bc503.jpg,ep01_sc02_sh03,ref1,1,yes,char_suwan,1,1,,0.5486,0.5486,,0.8252,411.9,571.9 619.3 983.8 1211.4
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh03/keyframe-ref2-433a02f5.jpg,ep01_sc02_sh03,ref2,1,yes,char_suwan,1,1,,0.6253,0.8235,,0.8335,325.5,459.2 556.8 784.7 1019.2
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh04/keyframe-text-414f22bc.jpg,ep01_sc02_sh04,text,1,yes,char_suwan,1,1,,0.4056,0.4757,,0.8025,280.3,402.8 615.8 683.1 1006.8
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh04/keyframe-ref1-bdb40dc1.jpg,ep01_sc02_sh04,ref1,1,yes,char_suwan,1,1,,0.5848,0.5848,,0.8596,186.6,424.1 779.1 610.8 1032.8
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh04/keyframe-ref2-91bcf845.jpg,ep01_sc02_sh04,ref2,1,yes,char_suwan,1,1,,0.5458,0.7452,,0.8694,191.9,340.5 658.2 532.4 949.7
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh01/keyframe-text-2470feb2.jpg,ep01_sc03_sh01,text,1,yes,char_luchen,6,1,,0.5484,0.5484,,0.9168,172.6,614.8 416.7 787.4 642.8
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh01/keyframe-ref1-7abcf9bf.jpg,ep01_sc03_sh01,ref1,1,yes,char_luchen,5,1,,0.7555,0.7555,,0.8950,140.2,654.0 476.2 794.3 664.1
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh01/keyframe-ref2-48c36f4e.jpg,ep01_sc03_sh01,ref2,1,yes,char_luchen,5,1,,0.6043,0.6582,,0.8783,111.5,635.9 662.4 747.3 812.7
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh02/keyframe-text-3b8a9bb9.jpg,ep01_sc03_sh02,text,1,yes,char_suwan,3,1,,0.4949,0.4949,,0.9030,155.1,537.5 486.3 692.6 691.7
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh02/keyframe-ref1-3c2370df.jpg,ep01_sc03_sh02,ref1,1,yes,char_suwan,8,1,,0.7624,0.7624,,0.9088,155.2,518.7 626.1 673.9 824.4
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh02/keyframe-ref2-bb0e636e.jpg,ep01_sc03_sh02,ref2,1,yes,char_suwan,8,1,,0.5638,0.6179,,0.8697,139.8,264.9 565.4 404.6 747.7
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh03/keyframe-text-20fef4ab.jpg,ep01_sc03_sh03,text,1,yes,char_luchen,6,1,,0.4224,0.4575,,0.8095,242.6,454.3 360.2 696.9 706.2
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh03/keyframe-ref1-3cba2cef.jpg,ep01_sc03_sh03,ref1,1,yes,char_luchen,6,1,,0.6706,0.6706,,0.8957,208.8,453.0 258.7 661.8 568.6
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh03/keyframe-ref2-3106ee25.jpg,ep01_sc03_sh03,ref2,1,yes,char_luchen,9,1,,0.6650,0.7600,,0.9017,223.4,505.8 551.1 729.2 865.7
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh04/keyframe-text-964888c5.jpg,ep01_sc03_sh04,text,1,yes,char_suwan,5,1,,0.5226,0.5226,,0.7905,253.6,322.5 456.8 576.2 803.2
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh04/keyframe-ref1-b63802e8.jpg,ep01_sc03_sh04,ref1,1,yes,char_suwan,4,1,,0.6138,0.6138,,0.7870,472.6,34.5 545.7 507.1 1292.1
+docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh04/keyframe-ref2-dba802ec.jpg,ep01_sc03_sh04,ref2,1,yes,char_suwan,5,1,,0.5699,0.7636,,0.7536,333.8,273.7 661.7 607.4 1123.3
