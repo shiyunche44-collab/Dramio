@@ -22,7 +22,7 @@
 ## 当前状态
 
 - **当前里程碑**：M0.1 准备
-- **当前步骤**：P0-01
+- **当前步骤**：P0-02
 - **步骤状态**：未开始
 - **工作分支**：—
 - **PR**：—
@@ -46,10 +46,23 @@
 
 | 编号 | 步骤 | 问题 | 候选 | 推荐与理由 | 状态 | 决定 |
 |---|---|---|---|---|---|---|
+| D-001 | P0-01 | archcheck 查不出产品代码经 `PYTHONPATH=spikes/poc` 用 `import poc` 依赖 spikes（INV-03 守卫缺口，评审时在临时副本中复现）。是否在 `tools/archcheck/rules.toml` 的 `[aliases]` 中加 `"poc" = "spikes"`？ | A：加这一行别名（受保护路径，单独 PR，由你审阅合并）；B：暂不处理，P1-01 前一并处理 | A：改动一行，立即补上缺口；目前还没有产品代码，不会误报 | 待决 | |
 
 ## 已知的前置条件
 
-- P0-03 起需要调用模型供应商 API：需要在云环境设置中添加对应的密钥环境变量（变量名在 P0-01 中确定），并在网络设置中放行供应商域名。新会话才会生效。
+- P0-03 起需要调用模型供应商 API：在云环境设置中添加要评测的供应商的密钥环境变量，并在网络设置中放行其域名，新会话才会生效。用 `cd spikes/poc && python3 -m poc doctor --require <供应商>` 确认可用。变量名与域名（P0-01 确定，详见 `spikes/poc/README.md`）：
+  - Anthropic `ANTHROPIC_API_KEY` · `api.anthropic.com`
+  - 阿里云百炼 `DASHSCOPE_API_KEY` · `dashscope.aliyuncs.com`
+  - DeepSeek `DEEPSEEK_API_KEY` · `api.deepseek.com`
+  - 火山方舟 `ARK_API_KEY` · `ark.cn-beijing.volces.com`
+  - MiniMax `MINIMAX_API_KEY`（可选 `MINIMAX_GROUP_ID`）· `api.minimaxi.com`
+  - ElevenLabs `ELEVENLABS_API_KEY` · `api.elevenlabs.io`
+  - 可灵 `KLING_ACCESS_KEY`、`KLING_SECRET_KEY` · `api-beijing.klingai.com`
+  - fal `FAL_KEY` · `fal.run`、`queue.fal.run`
+  - Replicate `REPLICATE_API_TOKEN` · `api.replicate.com`、`replicate.delivery`
+  - Google Gemini / Veo `GEMINI_API_KEY` · `generativelanguage.googleapis.com`
+  - Runway `RUNWAYML_API_SECRET` · `api.dev.runwayml.com`
+- 当前云容器（2026-09-30）：没有任何供应商密钥；`api.anthropic.com`、`generativelanguage.googleapis.com` 可以访问，其余供应商域名被网络策略拦截（doctor 报 `UNREACHABLE`）。
 - ADR-0001 ~ 0010 目前为 Proposed，在 P0-14 统一评审。
 - GitHub 上需要用户手动完成：把默认分支改为 `main`；为 `main` 开启分支保护（要求 `arch-check` 通过，不要求 Code Owner 评审）。
 
@@ -60,3 +73,4 @@
 | 日期 | 步骤 | 做了什么 | 验证 | 下一步 |
 |---|---|---|---|---|
 | 2026-09-30 | — | 搭建自主推进工作流：`/continue`、`/step`、`/progress`、`/decide`，3 个子代理，SessionStart 与 Stop hooks，进度一致性检查 | `make arch-check` 通过 | 用户说“继续当前进度”后开始 M0.1（P0-01、P0-02） |
+| 2026-09-30 | P0-01 | `spikes/poc` 验证脚手架：标准库 `.env` 加载（进程环境优先）；11 家候选供应商注册表（变量名、能力、免费探测、域名）；`runs/<run_id>/`（meta.json、calls.jsonl、doctor.json）与 `Run.call()` 调用记录；`python -m poc doctor`（`--offline`、`--require`，只用免费只读 GET，不跟随重定向）；README；前置条件写入变量名与域名。评审阻断项（含换行的密钥可能泄露并导致崩溃）已修复 | verifier 第 1–11 条通过、第 12 条（真实密钥得到 OK）按约定移到 P0-03 的阻塞检查；38 个单元测试通过；`make arch-check` 通过。容器实测：无密钥时 11 家 `MISSING`、退出码 0；伪造密钥时 anthropic `INVALID(401)`、gemini `INVALID(400 API_KEY_INVALID)`、deepseek 等 `UNREACHABLE(Tunnel 403)`。费用 ¥0 | P0-02 DramaIR v0 与标准样例；D-001 待用户决定 |

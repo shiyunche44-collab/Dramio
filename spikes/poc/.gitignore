@@ -1,0 +1,4 @@
+# 每次运行的输出，不入库
+runs/
+# 根目录 .gitignore 的 `.env.*` 会忽略示例文件，这里放回来；真正的 .env 仍被忽略
+!.env.example
