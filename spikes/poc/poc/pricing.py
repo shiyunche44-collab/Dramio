@@ -71,7 +71,7 @@ def asr_cny(provider: str, resource: str, seconds: float) -> float:
 # ---- 图像（P0-06）：按张计价 ----
 # 来源：方舟模型价格 doc 82379/1544106（2026-09-30 读取）：
 # Seedream 5.0 pro 单图生成 ≤261 万像素（1.5K 及以下）¥0.30 / 张，>261 万像素 ¥0.60 / 张；参考图首张免费、第 2 张起 ¥0.02 / 张；
-# Seedream 5.0 flash ¥0.12 / 张，参考图免费。只对成功生成的图片计费（usage.generated_images），审核未通过不计费。
+# Seedream 5.0 flash ¥0.12 / 张、Seedream 4.0 ¥0.20 / 张，参考图免费。只对成功生成的图片计费（usage.generated_images），审核未通过不计费。
 IMAGE_PRICE_SOURCE = "方舟模型价格 doc 82379/1544106（2026-09-30）"
 IMAGE_TIER_PIXELS = 2_610_000
 
@@ -86,6 +86,7 @@ class ImagePrice:
 IMAGE_PRICES: dict[tuple[str, str], ImagePrice] = {
     ("ark", "doubao-seedream-5-0-pro-260628"): ImagePrice(0.30, 0.60, 0.02),
     ("ark", "doubao-seedream-5-0-flash-260915"): ImagePrice(0.12, 0.12, 0.0),
+    ("ark", "doubao-seedream-4-0-20260415"): ImagePrice(0.20, 0.20, 0.0),
 }
 _TIER_PIXELS = {"1k": 1024 * 1024, "1.5k": 1536 * 1536, "2k": 2048 * 2048}
 

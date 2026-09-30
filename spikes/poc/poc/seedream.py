@@ -3,12 +3,12 @@
 接口：POST https://ark.cn-beijing.volces.com/api/v3/images/generations（文档 82379/1541523，2026-09-30 读取）
 鉴权：`Authorization: Bearer <ARK_API_KEY>`。不跟随重定向（沿用 doctor 的 opener）。
 
-请求要点（Seedream 5.0 pro / flash）：
-- `size`：档位 `1K` / `1.5K` / `2K`（默认 2K），或 `宽x高`（总像素 [921600, 4624220]，宽高比 [1/16, 16]）；
+请求要点（Seedream 5.0 pro / flash；4.0 另见各处注明）：
+- `size`：档位 `1K` / `1.5K` / `2K`（默认 2K），或 `宽x高`（总像素 [921600, 4624220]，宽高比 [1/16, 16]；4.0 上限 4096x4096）；
 - `image`：参考图，URL 或 `data:image/<小写格式>;base64,...`，最多 10 张；
-- `response_format`：`url`（24 小时有效）或 `b64_json`；`output_format`：`jpeg`（默认）/ `png`；
+- `response_format`：`url`（24 小时有效）或 `b64_json`；`output_format`：`jpeg`（默认）/ `png`（只有 5.0 支持，4.0 不传）；
 - `watermark`：默认 true（右下角“AI 生成”），本项目定妆图取 false（D-005）；
-- 不支持组图 `sequential_image_generation`、流式输出；文档没有 `seed` 参数。
+- 5.0 pro / flash 不支持组图 `sequential_image_generation`、流式输出（4.0 支持，本项目不用）；文档没有 `seed` 参数。
 响应：`data[]`（`b64_json` 或 `url`、`size`、`output_format`）、`usage`（`generated_images`、`input_images`、`output_tokens`）；
 整个请求失败时返回 `error{code, message}`。
 
@@ -46,7 +46,10 @@ DEFAULT_TIMEOUT = 180.0
 MODELS = {
     "pro": "doubao-seedream-5-0-pro-260628",
     "flash": "doubao-seedream-5-0-flash-260915",
+    "v4": "doubao-seedream-4-0-20260415",
 }
+# output_format 只有 5.0 系列支持（文档 82379/1541523）；4.0 不传，默认输出 jpeg
+OUTPUT_FORMAT_MODELS = {MODELS["pro"], MODELS["flash"]}
 MAX_REFS = 10
 _MODERATION_MARKERS = ("SensitiveContent", "RiskDetection", "ContentFilter")
 _TRANSIENT_CODES = ("ServerOverloaded", "InternalServiceError", "RateLimitExceeded", "QuotaExceeded.Concurrency")
@@ -124,9 +127,10 @@ def build_body(
         "prompt": prompt,
         "size": size,
         "response_format": response_format,
-        "output_format": output_format,
         "watermark": watermark,
     }
+    if model in OUTPUT_FORMAT_MODELS:
+        body["output_format"] = output_format
     if refs:
         if len(refs) > MAX_REFS:
             raise ValueError(f"参考图最多 {MAX_REFS} 张")

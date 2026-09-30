@@ -30,7 +30,7 @@
 ## 步骤卡
 
 - **步骤**：P0-06 角色定妆（估时 1 天，可能 1–1.5 天）
-- **目标**：用方舟 Seedream 5.0 为 ep01（D-002）的苏晚、陆沉各生成一套定妆：文生图主图 + 三视图（正 / 侧 / 背）+ 表情集；主图原样保存并记录 sha256，供 P0-07 / P0-08 作身份参考；对比出默认定妆路线，由用户（D-006）为每个角色选定一套。
+- **目标**：用方舟 Seedream（已开通 5.0 flash 与 4.0；5.0 pro 未开通，按用户“先用低阶模型跑通流程”的要求改为 flash 对比 4.0）为 ep01（D-002）的苏晚、陆沉各生成一套定妆：文生图主图 + 三视图（正 / 侧 / 背）+ 表情集；主图原样保存并记录 sha256，供 P0-07 / P0-08 作身份参考；对比出默认定妆路线，由用户（D-006）为每个角色选定一套。
 - **做**：
   - 冒烟核实方舟图像接口 `POST /api/v3/images/generations`：`model`、`prompt`、`size`（9:16、≤1.5K 档）、`response_format`（优先 `b64_json`）、`watermark`、`seed`、参考图 `image` 传法（data URI）、响应与错误字段、审核拒绝错误码；结果写入报告“接口”一节。
   - `poc/seedream.py`（标准库，可注入 transport，复用 `doctor.urlopen`，`config.redact` 脱敏）：失败分类 network / http / api_error / moderation / bad_response / empty，区分瞬时；每个请求经 `Run.call()` 记账，填写 `node_key`（只记录、不缓存）；calls.jsonl 与 summary 不写 base64。
@@ -39,14 +39,14 @@
   - Prompt 模板 `costume.v1`（主图、三视图、表情、ref 版、设定板），字段运行时取自 ep01 `characters[]` 与 `series.visual_style`（INV-02）；表情集 = neutral + 该角色在 ep01 `delivery.emotion` 中出现过的值（≤6）；允许修订 1 次为 v2 并在报告说明。
   - 所有请求 `watermark=false`（D-005）。
   - CLI `python3 -m poc costume`：`--stage main --model pro|flash --n 3`；`--stage derive --mode text|ref|group --base <主图>`；`--max-cost-cny`；离线 `--export`、`--verify`，与生成参数互斥（退出码 2）。
-  - 评测：阶段 1 主图 2 角色 × {pro, flash} × 3 张；阶段 2 以 agent 初评推荐主图为基础、固定阶段 1 推荐模型，比较 text / ref / sheet 三种派生方式（5.0 pro / flash 不支持组图，sheet 为单张文生图设定板：三视图横排一张、表情网格一张），每角色 3 视图 + 表情集，2 轮（第 2 轮只留统计）。
+  - 评测：阶段 1 主图 2 角色 × {flash, v4（`doubao-seedream-4-0-20260415`）} × 3 张；阶段 2 以 agent 初评推荐主图为基础、固定阶段 1 推荐模型，比较 text / ref / sheet 三种派生方式（5.0 pro / flash 不支持组图，sheet 为单张文生图设定板：三视图横排一张、表情网格一张），每角色 3 视图 + 表情集，2 轮（第 2 轮只留统计）。
   - manifest 标注 `t2i_original` / `seedance_eligible`：只标在无参考图的文生图原始产物上；ref 派生标为不可用。
   - 证据入库 `docs/reports/p0/P0-06/`：主图原图字节不改动；`manifest.json`；每角色定妆卡 `<角色>.md`（markdown 并排，不拼图）；`run-summary.json` / `run-calls.jsonl`；冒烟证据 `smoke/`。报告 `docs/reports/p0/P0-06.md`（结论、接口、方法、候选对比、agent 初评、Seedance 可用性与 30 天到期日、费用、待补测、给 P0-07 / P0-08 的建议）；README 增加 costume 一节；登记 D-006。
 - **不做**：人脸相似度与一致性量化（P0-07）；镜头关键帧（P0-07）；验证 Seedance 是否接受定妆图（P0-08）；其它图像供应商、即梦 / DreamO（无 AK/SK）、MediaKit（被拦截）；场景道具定妆；LoRA / 身份保持插件；修改 DramaIR Schema 或 ep01；模型网关、CAS、缓存命中；doctor 对 ark 的探测；提示词写法系统对比；拼图、缩略图、新增 Python 依赖。
 - **验收**（全部可离线复核）：
   1. `cd spikes/poc && python3 -m unittest discover -s tests -t .` 全部通过且不访问网络；新增测试覆盖请求体（文生图 / 单参考图 / 多参考图）、响应解析（b64 / url / 无图）、错误分类与瞬时判定、计价（档位、参考图加价、拒绝不计费、瞬时失败全额）、模板渲染与表情集推导、JPEG / PNG 尺寸解析、`--verify` 正反例、离线与生成参数互斥。
   2. 冒烟核实的接口事实写入报告“接口”一节（端点、参数、响应字段、尺寸限制、参考图传法、计费依据、`watermark` 取值、审核拒绝错误码或“未遇到”）；冒烟 `run-calls.jsonl` 入库 `P0-06/smoke/`。
-  3. 主图：2 角色 × {pro, flash} × 3 = 12 张文生图原始产物入库，sha256 与 manifest 一致；失败张数与原因记在 summary。
+  3. 主图：2 角色 × {flash, v4} × 3 = 12 张文生图原始产物入库，sha256 与 manifest 一致；失败张数与原因记在 summary。
   4. 派生：每个角色在 text / ref / sheet 下各有三视图 + 表情集的第 1 轮产物或失败记录；第 2 轮统计写入 run-summary。
   5. 对比表数字（成功 / 首次成功、失败类型、每张与每角色一套的耗时和费用、输出尺寸）可从入库 `run-summary.json` / `run-calls.jsonl` 复算。
   6. 入库 `run-calls.jsonl` 的 `cost_cny` 合计与报告和“本步费用”一致（±¥0.01），冒烟在账内；本步总费用 ≤ ¥100。
@@ -60,7 +60,7 @@
 
 ## 子任务
 
-- [ ] 1. 冒烟核实方舟图像接口（flash，≤5 次，约 ¥1）：b64 / url、size 限制、watermark / seed、data URI 参考图、usage 与错误体、单张字节数（文档已读：5.0 pro / flash 不支持组图与 seed；阻塞于模型未开通）
+- [x] 1. 冒烟核实方舟图像接口（flash，≤5 次，约 ¥1）：b64 / url、size 限制、watermark / seed、data URI 参考图、usage 与错误体、单张字节数（run `20260930-194423-costume-smoke-b617`，¥0.56；url 下载域名被拦截，只能用 b64_json）
 - [x] 2. `pricing` 图像单价与计价 + 单测
 - [x] 3. `poc/seedream.py` 客户端（请求构造、解析、错误分类、脱敏）+ 单测
 - [x] 4. 图像文件工具（sha256、JPEG / PNG 宽高）+ 单测
@@ -76,7 +76,7 @@
 
 ## 本步费用
 
-- **已花费**：¥0
+- **已花费**：¥0.56（估算：冒烟 ¥0.56）
 - **上限**：¥100
 
 ## 待决事项
@@ -139,3 +139,4 @@
 | 2026-09-30 | P0-06 | 开工：PR #8 合并后按用户允许同步会话分支；step-planner 出计划，写入步骤卡与 13 个子任务。D-005 已决（定妆图关闭可见水印）；定妆选定登记为 D-006（待评测后） | `make arch-check` 通过。费用 ¥0 | 子任务 1：冒烟核实方舟图像接口 |
 | 2026-09-30 | P0-06 | 阻塞：读取方舟图片生成 API 文档（82379/1541523）与模型价格（82379/1544106）：5.0 pro / flash 不支持组图与 seed，`watermark` 默认 true，9:16 在 1.5K 档为 1152×2048（≤261 万像素，pro ¥0.30 / 张，flash ¥0.12）；派生方式 group 改为 sheet（单张文生图设定板）。冒烟：Seedream 5.0 pro / flash 均返回 404 `ModelNotOpen`（账号未开通），Seedance 2.5 / 2.0 / fast / mini 同样未开通；4 次请求均未计费。先做不需要调用 API 的子任务 2–8 | `poc/seedream.py` 初稿；冒烟 run `20260930-193316-costume-smoke-9f87`、`20260930-193327-costume-smoke-808c`。费用 ¥0 | 用户在方舟控制台“开通管理”开通 Seedream 5.0 pro / flash（P0-08 还需 Seedance 2.5 / 2.0 系列）后重跑冒烟 |
 | 2026-09-30 | P0-06 | 不依赖 API 的部分完成（子任务 2–8）：`poc/images.py`（JPEG SOF / PNG IHDR 宽高、sha256）、`pricing` 图像按张计价（档位 261 万像素、pro 第 2 张参考图起加价）、`poc/seedream.py`（错误分类、计费口径 `billable`、密钥与账号 ID 脱敏）、模板 `costume.v1`、`poc/costume.py`（main / derive text·ref·sheet、重试、费用保险、node_key、`--export` / `--verify` / `--cards`）、README 一节 | 197 个单元测试通过（新增 39 个，全部离线）；`make arch-check` 通过。费用 ¥0 | 仍阻塞：等用户在方舟控制台开通 Seedream 5.0 pro / flash，之后做子任务 1（冒烟）、9–13 |
+| 2026-09-30 | P0-06 | 用户开通低阶模型，要求“先跑通整个流程”。实测已开通：Seedream 5.0 flash、Seedream 4.0（`doubao-seedream-4-0-20260415`，¥0.20 / 张，不支持 `output_format`）、Seedance 1.0 pro fast；未开通：Seedream 5.0 pro、Seedance 2.x 全系列。主图候选改为 flash 对比 v4。冒烟：flash 文生图 / 单参考图生图成功（约 10 秒 / 张，1152×2048，约 170 KB），v4 文生图成功（约 500 KB）；url 返回的下载域名 `ark-acg-cn-beijing.tos-cn-beijing.volces.com` 被网络策略拦截，只用 b64_json；尺寸小于 921600 像素返回 400 InvalidParameter（不计费） | 冒烟 calls 入库 `docs/reports/p0/P0-06/smoke/`（账号 ID 已脱敏）。费用 ¥0.56 | 子任务 9：主图 flash / v4 各 3 张 × 2 角色 |
