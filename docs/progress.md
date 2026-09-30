@@ -64,7 +64,7 @@
 - [x] 1. 可达性与方案选定：实测 pip、GitHub release、HuggingFace / ModelScope；试装 insightface 或 dlib-bin + face_recognition_models，各跑通一次“检测 + 特征”；结论写入交接日志
 - [x] 2. `poc/face.py` 骨架：Embedder 协议与选定后端、余弦相似度、最小脸阈值、伪造后端单测
 - [x] 3. 基准库、双人指派、统计（分位数、直方图）、`face` CLI（`--json` / `--csv`）与离线单测
-- [ ] 4. 度量校准与有效性验证（¥0）：P0-06 派生图与其它主图、异性角色互比，定 τ，记局限
+- [x] 4. 度量校准与有效性验证（¥0）：P0-06 派生图与其它主图、异性角色互比，定 τ，记局限
 - [x] 5. `keyframe.v1` 与 `poc/keyframe.py` 规划层（离线）：三方案提示词、参考图映射、可度量性预标注、计价、node_key；`costume --verify docs/reports/p0/P0-06` 仍返回 0；单测
 - [ ] 6. 冒烟（约 ¥1）：单人镜头 B 方案、双人镜头 C 方案（4 张参考图），确认 pro 接受多参考图与 1152×2048，检查是否照抄参考图姿态或背景
 - [ ] 7. 首帧生成第 1 轮（约 ¥11，A/B/C 各 12 镜头 + 空镜，37 张；`--max-cost-cny` ≤ 20）
@@ -155,3 +155,4 @@
 | 2026-09-30 | P0-07 | 开工：同步主线；step-planner 出计划，写入步骤卡与 14 个子任务。用户要求 P0-08 用 MiniMax 海螺视频：`MINIMAX_API_KEY` 已配置，但 `api.minimaxi.com`、`api.minimax.io` 在当前容器被网络策略拦截（CONNECT 403），需放行域名（新会话生效），模型 ID 待域名放行后核实；不影响 P0-07 | `make arch-check` 通过。费用 ¥0 | 子任务 1：人脸方案可达性实测 |
 | 2026-09-30 | P0-07 | 子任务 1 完成：PyPI、`github.com` release 及重定向域名 `release-assets.githubusercontent.com` 可达（HuggingFace、ModelScope 仍被拦）；venv 装 numpy / onnxruntime / opencv-python-headless / insightface 2.0，下载 buffalo_l（SCRFD det_10g + ArcFace w600k_r50，289 MB，不入库）。P0-06 主图检测成功率 6/6（置信 0.87–0.90，脸框约 140×200 px）；同角色 main 图互比 0.59–0.76，异性互比 -0.04–0.08，区分度足够；特写 / 三视图正脸可检出，背面无脸。选定后端 arcface | 实测命令输出；`make arch-check` 通过。费用 ¥0 | 子任务 2：`poc/face.py` |
 | 2026-09-30 | P0-07 | 子任务 2、3、5 完成：`poc/face.py`（arcface 后端懒加载、anchor / bank 两种口径、多人指派与置信差、分位数与直方图、`--json` / `--csv`、`--manifest` 逐镜头表）、`poc/keyframe.py` + `keyframe.v1`（text / ref1 / ref2 三方案，空镜共用，`--dry-run` / `--export` / `--verify`，可度量性预标注：ep01 为 1 个 no、2 个 maybe、10 个 yes）、costume 最小重构（Runner 钩子，`costume --verify` 结果不变）、pyproject `face` extras、README。真实后端在 P0-06 图上试跑通过；`--scheme all` 每轮 37 张预计 ¥11.46 | 279 个单测通过（新增 74 个，不联网、不需要 numpy）；`costume --verify docs/reports/p0/P0-06` 返回 0（86 张、¥31.48）；`make arch-check`、`make drama-ir-check` 通过。费用 ¥0 | 子任务 4：度量校准；子任务 6：冒烟 |
+| 2026-09-30 | P0-07 | 子任务 4 完成（度量校准，¥0）：以两个角色的 pro `main-02` 为锚点，对 P0-06 全部 11 个图像目录评分（汇总 `docs/reports/p0/P0-07/calibration.json`）。有效性：`derive-ref-pro` 中位 0.62（陆沉）/ 0.64（苏晚）> `derive-text-pro` 0.51 / 0.52 > `derive-sheet-pro` 0.52 / 0.33，与 P0-06 初评“ref 最像、text 有漂移、sheet 不是同一张脸”一致；异性角色互比中位 0.06–0.08、最大 0.21；“同描述但不同脸”的参照（他家模型 flash / v4 主图 + flash 文生图，23 个实例）中位 0.34、P90 0.43、P95 0.46、最大 0.52。**预设判据（先定规则再看首帧结果）**：τ = 0.45（≈ 不同人参照的 P95）；“错人区间” < 0.30（低于参照的大部分，且高于异性最大 0.21）；0.30–0.45 记“存疑”；“可用”= 可度量实例 ≥ 80% 相似度 ≥ τ、中位数 ≥ τ、无错人实例、目视抽查 ≥12 张无换脸或服装严重漂移。局限：只有 2 个角色、无同性别真正“不同人”的 pro 样本；pro 同描述独立采样本身偏向同一张脸（main-pro 互比 0.64–0.76），所以 text 方案的基线可能不低；首帧脸更小时相似度会下降，报告按 `face_px` 分层说明 | 试跑输出；`make arch-check` 通过。费用 ¥0 | 子任务 6：冒烟（约 ¥1）|
