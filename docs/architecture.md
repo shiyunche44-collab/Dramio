@@ -284,6 +284,7 @@ flowchart TB
 - `generation_policy` 决定这个镜头走哪条生成路线（见 5.4）。
 - `locks` 记录被人工锁定的字段或产物，锁定后上游变更也不会触发重算。
 - DramaIR 用 **JSON Schema** 定义，自动生成 TypeScript（zod）和 Python（pydantic）类型，前后端和 Worker 共用一份定义。
+- 当前实现：P0 草案 [DramaIR v0](../packages/drama-ir/schema/v0/drama.schema.json)（P0-02），字段是本节示例的子集，地点和时间放在场的 `setting` 上；与本示例的差异及标准样例见 [packages/drama-ir/README.md](../packages/drama-ir/README.md)。v0 暂无生成类型（[TD-001](tech-debt.md#td-001)），P1-03 升级为 v1。
 
 ### 4.3 版本管理
 
@@ -1006,7 +1007,7 @@ dramio/
 │   ├── render/                 # 时间线、FFmpeg 渲染、转码
 │   └── qc/                     # 自动质检
 ├── packages/
-│   ├── drama-ir/               # DramaIR JSON Schema + 生成的 TS/Python 类型
+│   ├── drama-ir/               # DramaIR JSON Schema + 生成的 TS/Python 类型（v0 暂为 python/ 下的手写校验器，见 TD-001）
 │   ├── prompts/                # 版本化 Prompt 模板与编译器
 │   ├── node-sdk/               # 节点插件 SDK
 │   └── ui/                     # 共享 UI 组件

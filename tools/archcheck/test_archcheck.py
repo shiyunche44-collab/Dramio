@@ -126,6 +126,17 @@ class DependencyTest(RepoCase):
         self.write("workers/video/a.py", "from ...spikes.poc import run\n")
         self.assertEqual(self.rules_hit(self.run_check()), ["dependency"])
 
+    def test_spikes_poc_package_cannot_be_imported(self) -> None:
+        # 经 PYTHONPATH=spikes/poc 引用 poc 包，同样是依赖 spikes（D-001）
+        self.write("workers/llm/a.py", "from poc.runlog import Run\n")
+        self.write("apps/api/b.py", "import poc\n")
+        self.assertEqual(self.rules_hit(self.run_check()), ["dependency", "dependency"])
+
+    def test_poc_imports_inside_spikes_and_similar_names_pass(self) -> None:
+        self.write("spikes/poc/poc/doctor.py", "from poc import config\n")
+        self.write("workers/llm/a.py", "import pocket\nfrom pocketbase import x\n")
+        self.assertEqual(self.rules_hit(self.run_check()), [])
+
     def test_same_zone_relative_import_passes(self) -> None:
         self.write("workers/video/a.py", "from .helpers import clip\nfrom ..common import io\n")
         self.assertEqual(self.rules_hit(self.run_check()), [])

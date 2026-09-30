@@ -1,0 +1,500 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dramio.dev/schema/drama-ir/v0/drama.schema.json",
+  "title": "DramaIR v0",
+  "description": "P0 草案：剧本数据的最小结构（剧、角色、集、场、镜、台词）。只用结构关键字；值域与引用关系由语义校验负责。见 packages/drama-ir/README.md。",
+  "type": "object",
+  "properties": {
+    "ir_version": {
+      "type": "string",
+      "description": "DramaIR 版本，v0 为 0.x.y"
+    },
+    "series": {
+      "$ref": "#/$defs/series"
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/character"
+      },
+      "description": "角色"
+    },
+    "episodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/episode"
+      },
+      "description": "集"
+    }
+  },
+  "required": [
+    "ir_version",
+    "series",
+    "characters",
+    "episodes"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "series": {
+      "type": "object",
+      "title": "剧 Series",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "剧的 id，小写字母开头，只含小写字母、数字、下划线"
+        },
+        "title": {
+          "type": "string",
+          "description": "剧名"
+        },
+        "logline": {
+          "type": "string",
+          "description": "一句话梗概（P0-03 剧本生成的输入）"
+        },
+        "genre": {
+          "type": "string",
+          "description": "类型，如“都市逆袭”“古装甜宠”"
+        },
+        "visual_style": {
+          "type": "string",
+          "description": "整体视觉风格，与具体模型无关"
+        },
+        "aspect_ratio": {
+          "type": "string",
+          "enum": [
+            "9:16",
+            "16:9",
+            "1:1"
+          ],
+          "description": "画幅"
+        },
+        "language": {
+          "type": "string",
+          "description": "语言代码，如 zh-CN"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "logline",
+        "genre",
+        "visual_style",
+        "aspect_ratio",
+        "language"
+      ],
+      "additionalProperties": false
+    },
+    "character": {
+      "type": "object",
+      "title": "角色 Character",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "角色 id，如 char_linxi"
+        },
+        "name": {
+          "type": "string",
+          "description": "角色名"
+        },
+        "gender": {
+          "type": "string",
+          "enum": [
+            "female",
+            "male",
+            "other"
+          ],
+          "description": "性别"
+        },
+        "age": {
+          "type": "integer",
+          "description": "年龄"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "protagonist",
+            "antagonist",
+            "supporting"
+          ],
+          "description": "戏份定位"
+        },
+        "bio": {
+          "type": "string",
+          "description": "人物小传"
+        },
+        "appearance": {
+          "type": "string",
+          "description": "外貌描述（P0-06 定妆的输入）"
+        },
+        "costume": {
+          "type": "string",
+          "description": "本集服装"
+        },
+        "voice": {
+          "type": "string",
+          "description": "声音描述：音色、年龄感、语气（P0-05 配音的输入）"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "gender",
+        "age",
+        "role",
+        "bio",
+        "appearance",
+        "costume",
+        "voice"
+      ],
+      "additionalProperties": false
+    },
+    "episode": {
+      "type": "object",
+      "title": "集 Episode",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "集 id，如 ep01"
+        },
+        "number": {
+          "type": "integer",
+          "description": "集数，从 1 开始"
+        },
+        "title": {
+          "type": "string",
+          "description": "集标题"
+        },
+        "synopsis": {
+          "type": "string",
+          "description": "本集梗概"
+        },
+        "target_duration_s": {
+          "type": "number",
+          "description": "目标时长（秒）"
+        },
+        "scenes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scene"
+          },
+          "description": "场，按播出顺序"
+        }
+      },
+      "required": [
+        "id",
+        "number",
+        "title",
+        "synopsis",
+        "target_duration_s",
+        "scenes"
+      ],
+      "additionalProperties": false
+    },
+    "setting": {
+      "type": "object",
+      "title": "场景设定 Setting",
+      "properties": {
+        "location": {
+          "type": "string",
+          "description": "地点"
+        },
+        "int_ext": {
+          "type": "string",
+          "enum": [
+            "INT",
+            "EXT"
+          ],
+          "description": "内景 / 外景"
+        },
+        "time_of_day": {
+          "type": "string",
+          "enum": [
+            "day",
+            "night",
+            "dawn",
+            "dusk"
+          ],
+          "description": "时间"
+        },
+        "description": {
+          "type": "string",
+          "description": "场景环境描述"
+        }
+      },
+      "required": [
+        "location",
+        "int_ext",
+        "time_of_day",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "scene": {
+      "type": "object",
+      "title": "场 Scene",
+      "properties": {
+        "scene_id": {
+          "type": "string",
+          "description": "场 id，如 ep01_sc01"
+        },
+        "setting": {
+          "$ref": "#/$defs/setting"
+        },
+        "summary": {
+          "type": "string",
+          "description": "本场剧情概要"
+        },
+        "mood": {
+          "type": "string",
+          "enum": [
+            "tense",
+            "warm",
+            "sad",
+            "romantic",
+            "suspense",
+            "comic",
+            "uplifting",
+            "neutral"
+          ],
+          "description": "本场情绪基调（P0-10 选 BGM）"
+        },
+        "shots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/shot"
+          },
+          "description": "镜头，按播出顺序"
+        }
+      },
+      "required": [
+        "scene_id",
+        "setting",
+        "summary",
+        "mood",
+        "shots"
+      ],
+      "additionalProperties": false
+    },
+    "duration": {
+      "type": "object",
+      "title": "时长 Duration",
+      "properties": {
+        "hint_s": {
+          "type": "number",
+          "description": "建议时长（秒），0 < hint_s ≤ 10；配音后回填的 resolved_s 在 v1 加入"
+        }
+      },
+      "required": [
+        "hint_s"
+      ],
+      "additionalProperties": false
+    },
+    "framing": {
+      "type": "object",
+      "title": "构图 Framing",
+      "properties": {
+        "shot_size": {
+          "type": "string",
+          "enum": [
+            "ECU",
+            "CU",
+            "MCU",
+            "MS",
+            "MLS",
+            "LS",
+            "ELS"
+          ],
+          "description": "景别：大特写 / 特写 / 近景 / 中景 / 中远景 / 远景 / 大远景"
+        },
+        "angle": {
+          "type": "string",
+          "enum": [
+            "eye_level",
+            "high",
+            "low",
+            "overhead",
+            "dutch"
+          ],
+          "description": "机位角度"
+        },
+        "movement": {
+          "type": "string",
+          "enum": [
+            "static",
+            "push_in",
+            "pull_out",
+            "pan",
+            "tilt",
+            "tracking",
+            "handheld"
+          ],
+          "description": "运镜"
+        },
+        "composition": {
+          "type": "string",
+          "description": "构图说明，如字幕安全区"
+        }
+      },
+      "required": [
+        "shot_size",
+        "angle",
+        "movement",
+        "composition"
+      ],
+      "additionalProperties": false
+    },
+    "shot_character": {
+      "type": "object",
+      "title": "出镜角色 ShotCharacter",
+      "properties": {
+        "character_id": {
+          "type": "string",
+          "description": "出镜角色 id"
+        },
+        "action": {
+          "type": "string",
+          "description": "动作"
+        },
+        "emotion": {
+          "type": "string",
+          "description": "表情与情绪"
+        }
+      },
+      "required": [
+        "character_id",
+        "action",
+        "emotion"
+      ],
+      "additionalProperties": false
+    },
+    "delivery": {
+      "type": "object",
+      "title": "演绎 Delivery",
+      "properties": {
+        "emotion": {
+          "type": "string",
+          "enum": [
+            "neutral",
+            "happy",
+            "sad",
+            "angry",
+            "fearful",
+            "surprised",
+            "disgusted",
+            "tender",
+            "anxious",
+            "sarcastic"
+          ],
+          "description": "情绪"
+        },
+        "intensity": {
+          "type": "number",
+          "description": "情绪强度，0–1"
+        },
+        "speed": {
+          "type": "number",
+          "description": "语速倍率，0.5–2"
+        }
+      },
+      "required": [
+        "emotion",
+        "intensity",
+        "speed"
+      ],
+      "additionalProperties": false
+    },
+    "line": {
+      "type": "object",
+      "title": "台词 Line",
+      "properties": {
+        "line_id": {
+          "type": "string",
+          "description": "台词 id，如 l_0001"
+        },
+        "speaker": {
+          "type": "string",
+          "description": "说话角色 id"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "dialogue",
+            "voiceover"
+          ],
+          "description": "dialogue：出镜说话，需要口型；voiceover：画外音或内心独白，不做口型"
+        },
+        "text": {
+          "type": "string",
+          "description": "台词文本"
+        },
+        "delivery": {
+          "$ref": "#/$defs/delivery"
+        }
+      },
+      "required": [
+        "line_id",
+        "speaker",
+        "kind",
+        "text",
+        "delivery"
+      ],
+      "additionalProperties": false
+    },
+    "shot": {
+      "type": "object",
+      "title": "镜头 Shot",
+      "properties": {
+        "shot_id": {
+          "type": "string",
+          "description": "镜头 id，如 ep01_sc01_sh01"
+        },
+        "duration": {
+          "$ref": "#/$defs/duration"
+        },
+        "framing": {
+          "$ref": "#/$defs/framing"
+        },
+        "description": {
+          "type": "string",
+          "description": "画面描述，与具体模型无关（P0-07 关键帧的输入）"
+        },
+        "lighting": {
+          "type": "string",
+          "description": "光线"
+        },
+        "characters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/shot_character"
+          },
+          "description": "出镜角色；空镜为空列表"
+        },
+        "dialogue": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/line"
+          },
+          "description": "本镜头的台词，按顺序"
+        },
+        "sfx": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "音效描述"
+        }
+      },
+      "required": [
+        "shot_id",
+        "duration",
+        "framing",
+        "description",
+        "lighting",
+        "characters",
+        "dialogue",
+        "sfx"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

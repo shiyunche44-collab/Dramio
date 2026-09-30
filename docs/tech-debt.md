@@ -9,4 +9,4 @@
 
 | 编号 | 描述 | 类型 | 关联豁免 / ADR | Owner | 偿还条件 | 状态 |
 |---|---|---|---|---|---|---|
-| — | （暂无） | | | | | |
+| <a id="td-001"></a>TD-001 | DramaIR v0 没有生成类型，也没有 Schema 兼容性检查；用 `packages/drama-ir/python/dramio_drama_ir` 中手写的子集校验器（只支持结构关键字）加语义校验代替 | 阶段性简化（governance §7.2 DramaIR 🟡 草案 Schema） | ADR-0002 | @shiyunche44-collab | P1-03：Schema v1、生成 zod / pydantic 类型、CI 检查生成一致性与向后兼容 | 计划中 |
