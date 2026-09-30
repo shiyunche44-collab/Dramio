@@ -57,6 +57,8 @@ spikes = ["packages"]
 "@dramio/analytics" = "analytics"
 "@dramio/*" = "packages"
 "dramio_*" = "packages"
+# spikes/poc 的 Python 包名（P0-01）：产品代码经 PYTHONPATH 引用 `poc` 也视为依赖 spikes（D-001）
+"poc" = "spikes"
 
 # ---------------------------------------------------------------------------
 # 模型供应商 SDK 只能出现在模型网关内（INV-01）
