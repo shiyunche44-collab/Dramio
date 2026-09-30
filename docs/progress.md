@@ -40,9 +40,9 @@
 ## 子任务
 
 - [x] LLM 客户端与计价：`poc/llm.py`、`poc/pricing.py`，离线测试 `tests/test_llm.py`
-- [ ] Prompt：`poc/prompts/script.v1.md` 与 Prompt 构建（Schema + checks 常量规则），`poc` 能找到 `dramio_drama_ir`，加测试
-- [ ] 生成流程 `poc/script.py`：生成、解析、严格校验、修复、产物、summary、费用保险，离线测试 `tests/test_script.py`
-- [ ] CLI `python3 -m poc script` 与 README 用法，加 CLI 测试
+- [x] Prompt：`poc/prompts/script.v1.md` 与 Prompt 构建（Schema + checks 常量规则），`poc` 能找到 `dramio_drama_ir`，加测试
+- [x] 生成流程 `poc/script.py`：生成、解析、严格校验、修复、产物、summary、费用保险，离线测试 `tests/test_script.py`
+- [x] CLI `python3 -m poc script` 与 README 用法，加 CLI 测试
 - [ ] 真实冒烟：`deepseek-flash`、`deepseek-v4-pro` 各 1 次，确认 JSON 模式与输出长度，实测单价并更新“已花费”
 - [ ] 门禁批次：`deepseek-flash` `--n 5`（失败则改 Prompt 后整批重跑，全部记录）
 - [ ] 对比批次：`deepseek-v4-pro` `--n 5`
