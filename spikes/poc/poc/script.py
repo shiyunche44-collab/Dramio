@@ -46,6 +46,13 @@ def drama_ir():
     return dramio_drama_ir
 
 
+def drama_ir_render():
+    drama_ir()
+    import dramio_drama_ir.render
+
+    return dramio_drama_ir.render
+
+
 def default_logline() -> tuple[str, str]:
     """标准样例 ep01 的梗概（D-002 固定输入）及样例文件的 sha256。"""
     raw = SAMPLE_EP01.read_bytes()
@@ -144,7 +151,7 @@ class Sample:
 
 
 class CostLimit(Exception):
-    pass
+    sample: "Sample | None" = None  # 中止时未完成的样本
 
 
 ChatFn = Callable[..., llm.ChatResult]
@@ -234,6 +241,26 @@ class Generator:
         result = Sample(sample=name)
         messages = list(self.base_messages)
         t_sample = time.monotonic()
+        try:
+            self._attempts(result, messages, dir_)
+        except CostLimit as exc:
+            # 中止时把这份未完成的样本也交给调用方，它已花的费用要计入 summary
+            last = result.attempts[-1] if result.attempts else None
+            if last is not None and not last.outcome:
+                last.outcome, last.detail = "aborted", str(exc)
+            exc.sample = self._finish(result, t_sample)
+            raise
+        return self._finish(result, t_sample)
+
+    def _finish(self, result: Sample, t_sample: float) -> Sample:
+        if not result.passed:
+            result.repairs = max(len(result.attempts) - 1, 0)
+        result.cost_cny = round(sum(a.cost_cny for a in result.attempts), 6)
+        result.elapsed_s = round(time.monotonic() - t_sample, 1)
+        return result
+
+    def _attempts(self, result: Sample, messages: list[dict[str, str]], dir_: Path) -> None:
+        name = result.sample
         for k in range(self.s.max_repairs + 1):
             attempt = Attempt(attempt=k, outcome="")
             result.attempts.append(attempt)
@@ -258,19 +285,12 @@ class Generator:
                 result.repairs = k
                 result.stats = doc_stats(doc)
                 (dir_ / "final.json").write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-                from dramio_drama_ir.render import render_markdown
-
-                (dir_ / "final.md").write_text(render_markdown(doc), encoding="utf-8")
+                (dir_ / "final.md").write_text(drama_ir_render().render_markdown(doc), encoding="utf-8")
                 break
             messages = self.base_messages + [
                 {"role": "assistant", "content": res.text},
                 {"role": "user", "content": repair_prompt(issues)},
             ]
-        if not result.passed:
-            result.repairs = len(result.attempts) - 1
-        result.cost_cny = round(sum(a.cost_cny for a in result.attempts), 6)
-        result.elapsed_s = round(time.monotonic() - t_sample, 1)
-        return result
 
     def _check(self, text: str, attempt: Attempt) -> tuple[list[str], Any]:
         try:
@@ -373,6 +393,8 @@ def run_script(
                 s = gen.sample(name, samples_dir)
             except CostLimit as exc:
                 aborted = str(exc)
+                if exc.sample is not None and exc.sample.attempts:
+                    samples.append(exc.sample)  # 未完成，按失败计，费用计入合计
                 print(f"{name}: 中止：{aborted}", file=out)
                 break
             samples.append(s)
@@ -388,6 +410,7 @@ def run_script(
         summary.update(
             run_id=run.run_id,
             n_requested=n,
+            spent_cny_total=round(gen.spent, 4),  # 与 calls.jsonl 的 cost_cny 合计一致
             logline=logline,
             logline_source=source,
             aborted=aborted,

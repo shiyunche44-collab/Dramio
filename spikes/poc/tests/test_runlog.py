@@ -81,6 +81,14 @@ class RunlogTest(unittest.TestCase):
                 raise ValueError(repr("sk-SECRET-123\n"))
         self.assertNotIn("SECRET", run.calls_path.read_text(encoding="utf-8"))
 
+    def test_write_json_is_redacted(self):
+        run = runlog.Run("demo", {"note": "key sk-SECRET-456"}, base_dir=self.base, secrets=["sk-SECRET-456"])
+        run.write_json("summary.json", {"detail": "HTTP 401 sk-SECRET-456"})
+        run.finish()
+        for name in ("meta.json", "summary.json"):
+            self.assertNotIn("SECRET", (run.dir / name).read_text(encoding="utf-8"), name)
+        self.assertEqual(json.loads((run.dir / "summary.json").read_text(encoding="utf-8")), {"detail": "HTTP 401 ***"})
+
     def test_run_dir_env_override(self):
         with mock.patch.dict(os.environ, {"POC_RUNS_DIR": str(self.base / "custom")}):
             run = runlog.Run("demo")

@@ -235,7 +235,8 @@
     "output": 8.0,
     "source": "2026-09-30 余额差校准（保守上界）"
   },
-  "balance_before_cny": 123.39,
-  "balance_after_cny": 123.39,
-  "balance_delta_cny": 0.0
+  "balance_before_cny": null,
+  "balance_after_cny": null,
+  "balance_delta_cny": 0.0,
+  "balance_note": "入库时去掉了账户余额绝对值（原始值保留在本地 runs/，只报告余额差）"
 }

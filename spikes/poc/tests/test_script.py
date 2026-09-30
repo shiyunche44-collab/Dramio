@@ -207,6 +207,18 @@ class GenerateTest(ScriptTestCase):
         self.assertIn("已达上限", summary["aborted"])
         self.assertIn("中止", out)
 
+    def test_cost_limit_summary_counts_unfinished_sample(self):
+        chat = FakeChat(ok(broken_ep01()))
+        code, run_dir, summary, _ = self.run_script(chat, n=5, max_cost_cny=0.1)
+        self.assertEqual(code, 1)
+        calls = [json.loads(line) for line in (run_dir / "calls.jsonl").read_text(encoding="utf-8").splitlines()]
+        self.assertEqual(len(calls), 2)  # 第 2 次后超限，第 3 次请求前中止
+        spent = round(sum(c["cost_cny"] for c in calls), 4)
+        self.assertEqual(summary["cost_cny_total"], spent)
+        self.assertEqual(summary["spent_cny_total"], spent)
+        self.assertEqual((summary["n"], summary["passed"]), (1, 0))
+        self.assertEqual([a["outcome"] for a in summary["samples"][0]["attempts"]], ["invalid", "invalid", "aborted"])
+
     def test_calls_jsonl_and_no_secret_leak(self):
         chat = FakeChat(ok(broken_ep01()), ok(EP01_TEXT))
         self.run_script(chat, n=2)

@@ -1,0 +1,667 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "series_u_drive",
+    "title": "离职纸箱里的U盘",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "写实都市夜景，冷蓝雨夜与办公室冷白光对比，高对比度，浅景深，竖屏近景为主",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_su",
+      "name": "苏念",
+      "gender": "female",
+      "age": 26,
+      "role": "protagonist",
+      "bio": "新锐设计公司主创设计师，才华出众但资历浅，被上司长期压制，性格外柔内刚。",
+      "appearance": "清瘦高挑，齐肩黑发被雨打湿，素净五官，眼神倔强，穿黑色风衣",
+      "costume": "黑色风衣内搭白衬衫，怀里抱着纸箱，胸口工牌尚未摘下",
+      "voice": "清亮偏冷的年轻女声，压着情绪，尾音发颤，内心独白坚定"
+    },
+    {
+      "id": "char_jiang",
+      "name": "姜蔓",
+      "gender": "female",
+      "age": 38,
+      "role": "antagonist",
+      "bio": "设计总监，公司当红人物，惯于把下属作品据为己有，表面优雅体面。",
+      "appearance": "妆容精致，利落短发，珍珠耳钉，穿米色西装套裙",
+      "costume": "米色西装套裙，胸针，手指上戴宽版金属戒指",
+      "voice": "温婉中带居高临下的女声，语速慢，笑意里透着冷"
+    },
+    {
+      "id": "char_lu",
+      "name": "陆沉",
+      "gender": "male",
+      "age": 30,
+      "role": "supporting",
+      "bio": "同组资深设计师，沉默寡言，对姜蔓的做法早有不满，暗中留意一切。",
+      "appearance": "身形挺拔，短碎发，胡茬干净，深灰帽衫外套工装夹克",
+      "costume": "深灰帽衫外搭工装夹克，背着通勤单肩包",
+      "voice": "低沉平稳的男声，话少，语气克制"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "雨夜纸箱",
+      "synopsis": "苏念在庆功会上被姜蔓当众抹去方案署名，随后被以末位淘汰为由辞退。雨夜收拾纸箱时，她在箱底发现一枚没有署名的U盘，里面的文件让她决定当众反击。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "设计公司会议室",
+            "int_ext": "INT",
+            "time_of_day": "day",
+            "description": "长条会议桌，投影幕布亮着设计稿，桌上有香槟杯和蛋糕，落地窗外是灰白城市天际线"
+          },
+          "summary": "庆功会上姜蔓把苏念的方案说成自己的，苏念当众质疑反被羞辱。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "苏念位于画面右侧三分之一，背景虚化的投影幕布"
+              },
+              "description": "会议室里，投影幕布上是城市焕新设计方案，苏念站在长桌边看着幕布上自己的设计稿，署名处被人改成了姜蔓的名字，文字后期叠加；她手指微微发白地捏着香槟杯",
+              "lighting": "会议室顶灯冷白，幕布反光在苏念脸上",
+              "characters": [
+                {
+                  "character_id": "char_su",
+                  "action": "盯着幕布上的署名，握紧香槟杯",
+                  "emotion": "震惊、隐忍"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_su",
+                  "kind": "voiceover",
+                  "text": "那是我的稿子？名字怎么是她？",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "会议室内隐约掌声",
+                "香槟气泡声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 6
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "static",
+                "composition": "姜蔓居中偏左，身后是众同事，前景是香槟塔"
+              },
+              "description": "姜蔓站在投影幕布前举杯微笑，朝众人点头，苏念在她身后半步处；姜蔓用指节敲了敲屏幕上的署名，文字后期叠加",
+              "lighting": "顶灯打在姜蔓身上，脸部高光柔和",
+              "characters": [
+                {
+                  "character_id": "char_jiang",
+                  "action": "举杯致谢，敲了敲幕布上的署名",
+                  "emotion": "得意、从容"
+                },
+                {
+                  "character_id": "char_su",
+                  "action": "站在半步外，嘴唇抿紧",
+                  "emotion": "压抑、愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_jiang",
+                  "kind": "dialogue",
+                  "text": "这个方案，是我熬了三个通宵的心血。",
+                  "delivery": {
+                    "emotion": "happy",
+                    "intensity": 0.6,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "玻璃杯轻碰声",
+                "会议室低声附和"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "苏念侧脸，画面留白在右侧，同事陆沉在背景虚化处"
+              },
+              "description": "苏念放下酒杯，向前半步看向姜蔓，陆沉在人群后方抬眼望向她，手里握着一份文件",
+              "lighting": "侧逆光勾出苏念轮廓，背景偏暗",
+              "characters": [
+                {
+                  "character_id": "char_su",
+                  "action": "放下杯子，向前质问",
+                  "emotion": "质问、坚定"
+                },
+                {
+                  "character_id": "char_lu",
+                  "action": "人群后方抬眼注视苏念",
+                  "emotion": "警觉、沉默"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_su",
+                  "kind": "dialogue",
+                  "text": "姜总监，第三稿的图层记录还在我电脑里。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.7,
+                    "speed": 1.05
+                  }
+                }
+              ],
+              "sfx": [
+                "会议室瞬间安静",
+                "空调低鸣"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh04",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "push_in",
+                "composition": "姜蔓仰头俯视苏念，脸部占据画面主体，眼镜反光"
+              },
+              "description": "姜蔓居高临下俯视苏念，嘴角带笑，抬手将胸针扶正，身后同事面面相觑",
+              "lighting": "顶光压在姜蔓眉眼上，冷光锐利",
+              "characters": [
+                {
+                  "character_id": "char_jiang",
+                  "action": "俯视苏念，整理胸针",
+                  "emotion": "轻蔑、冷静"
+                },
+                {
+                  "character_id": "char_su",
+                  "action": "被众人注视，肩膀微绷",
+                  "emotion": "不甘、发紧"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_jiang",
+                  "kind": "dialogue",
+                  "text": "苏念，职场上，讲证据，也讲位置。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.7,
+                    "speed": 0.85
+                  }
+                }
+              ],
+              "sfx": [
+                "衣料摩擦声",
+                "酒杯轻放桌面"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh05",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "姜蔓与苏念对站，背景同事呈弧线排列"
+              },
+              "description": "姜蔓转身宣布散会，朝门口走，苏念站在桌前不动，桌上被推过来的信封滑到她手边",
+              "lighting": "会议室灯被关掉一半，光从落地窗斜入",
+              "characters": [
+                {
+                  "character_id": "char_jiang",
+                  "action": "转身走向门口，回身示意信封",
+                  "emotion": "公事公办、冷酷"
+                },
+                {
+                  "character_id": "char_su",
+                  "action": "低头看滑到手边的信封",
+                  "emotion": "错愕、发凉"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_jiang",
+                  "kind": "dialogue",
+                  "text": "顺便，公司决定优化末位。今晚，你收拾东西。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.6,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "椅子挪动声",
+                "门被推开"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "公司楼下街道",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "暴雨中的街道，霓虹灯牌被雨水晕开，路边停着车，玻璃幕墙大厦在雨幕中模糊"
+          },
+          "summary": "苏念抱着纸箱站在雨里，被保安催促离开，姜蔓的车从她身边驶过。",
+          "mood": "sad",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "low",
+                "movement": "pull_out",
+                "composition": "苏念孤身站在雨幕中，大厦在画面左侧高耸"
+              },
+              "description": "雨夜街道，苏念抱着半满的纸箱站在公司楼下，纸箱上搭着一条湿透的围巾，霓虹倒映在积水中；她抬头看大厦高层亮着的灯",
+              "lighting": "冷蓝雨夜，霓虹高光反射，地面水洼反光",
+              "characters": [
+                {
+                  "character_id": "char_su",
+                  "action": "抱着纸箱站在雨里抬头",
+                  "emotion": "失落、茫然"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_su",
+                  "kind": "voiceover",
+                  "text": "三年心血，换来一个纸箱。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.7,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "大雨声",
+                "轮胎碾过积水"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "pan",
+                "composition": "姜蔓的车从右入画向左行驶，苏念在画面边缘"
+              },
+              "description": "一辆深色轿车从苏念身边驶过，后座车窗降下一条缝，露出姜蔓的侧影，她没看苏念，车门溅起的水花打湿苏念裤脚",
+              "lighting": "车灯扫过苏念，雨丝在光柱中发亮",
+              "characters": [
+                {
+                  "character_id": "char_jiang",
+                  "action": "坐在后座，侧脸望向另一侧",
+                  "emotion": "漠然、无视"
+                },
+                {
+                  "character_id": "char_su",
+                  "action": "被水花溅到，后退半步",
+                  "emotion": "屈辱、咬牙"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_jiang",
+                  "kind": "voiceover",
+                  "text": "别怪环境，怪你不够狠。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.5,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "车窗升降声",
+                "轮胎溅水声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "苏念半身，手把纸箱抱紧护在胸前"
+              },
+              "description": "苏念低头护住纸箱，雨水顺着发梢滴到箱盖，她的手腕上贴着工牌挂绳，衣角被风吹起",
+              "lighting": "街灯顶光偏冷，雨点打亮轮廓",
+              "characters": [
+                {
+                  "character_id": "char_su",
+                  "action": "低头护住纸箱，快步走向街边",
+                  "emotion": "倔强、狼狈"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_su",
+                  "kind": "voiceover",
+                  "text": "我会回来的。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "脚步踩水"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "苏念出租屋",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "狭小出租屋，窗上有雨痕，书桌堆着图纸，暖色台灯与冷窗光形成冷暖对比"
+          },
+          "summary": "苏念在出租屋清点纸箱，从箱底摸出一枚无标记U盘，插入电脑后看到加密项目文件夹，署名是她自己。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "overhead",
+                "movement": "static",
+                "composition": "俯拍书桌，纸箱里的物品摊开构图"
+              },
+              "description": "出租屋书桌上，苏念把纸箱里的东西一件件拿出，湿围巾搭在椅背，桌上摆着绘图笔、记事本，箱子底部有一层硬纸板",
+              "lighting": "台灯暖黄主光，窗外冷蓝补光",
+              "characters": [
+                {
+                  "character_id": "char_su",
+                  "action": "把纸箱里的东西摊开清点",
+                  "emotion": "疲惫、平静"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_su",
+                  "kind": "voiceover",
+                  "text": "笔、本子、备用方案……全了。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.4,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "物品轻放桌面",
+                "窗外雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "箱底与U盘占据画面中心，苏念的手指入画"
+              },
+              "description": "苏念掀开纸箱底部硬纸板，指尖碰到一枚黑色U盘，侧边没有标识，金属接口反光，明显不是她的东西",
+              "lighting": "台灯低角度打在手和U盘上，形成长阴影",
+              "characters": [
+                {
+                  "character_id": "char_su",
+                  "action": "捏起U盘翻看",
+                  "emotion": "疑惑、警觉"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_su",
+                  "kind": "voiceover",
+                  "text": "这不是我的东西。谁放进来的？",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "纸板摩擦声",
+                "雨点敲窗"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 6
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "苏念侧后位，笔记本屏幕在画面右侧占据三分之一"
+              },
+              "description": "苏念把U盘插入笔记本，屏幕亮起，弹出一排加密文件夹，其中一个文件夹名为她负责的项目代号，缩略图是她被删掉的初稿",
+              "lighting": "屏幕冷光打在苏念脸上，与台灯暖光形成对比",
+              "characters": [
+                {
+                  "character_id": "char_su",
+                  "action": "插上U盘，紧盯屏幕",
+                  "emotion": "震惊、紧张"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0011",
+                  "speaker": "char_su",
+                  "kind": "voiceover",
+                  "text": "这是……我的废弃终稿？连删除记录都在。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.9,
+                    "speed": 1.05
+                  }
+                }
+              ],
+              "sfx": [
+                "电脑提示音",
+                "硬盘读取声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh04",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏念脸部特写，屏幕反光落在瞳孔里"
+              },
+              "description": "苏念盯着屏幕，指尖缓缓离开鼠标，屏幕上一行文件名滚动，屏幕反光映在她眼里，她慢慢坐直",
+              "lighting": "屏幕冷光单侧照明，背景暗",
+              "characters": [
+                {
+                  "character_id": "char_su",
+                  "action": "慢慢坐直，握紧鼠标",
+                  "emotion": "醒悟、决绝"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0012",
+                  "speaker": "char_su",
+                  "kind": "voiceover",
+                  "text": "有人把真相，塞进了我的纸箱。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.8,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声渐弱",
+                "鼠标轻响"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "苏念出租屋",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "同一出租屋，窗外雨转小，手机屏幕光在昏暗房间里格外刺眼"
+          },
+          "summary": "苏念收到匿名消息，约她明天在公司年度终审会上“还方案一个署名”，她握紧U盘决定反击。",
+          "mood": "uplifting",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏念坐在桌前，手机光从下方打亮她的脸"
+              },
+              "description": "苏念坐在桌前，手机屏幕突然亮起，一条来自未知号码的消息弹出，文字后期叠加；她盯着屏幕，呼吸一顿",
+              "lighting": "手机冷光自下而上，房间其余部分昏暗",
+              "characters": [
+                {
+                  "character_id": "char_su",
+                  "action": "解锁手机查看消息",
+                  "emotion": "警觉、紧张"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0013",
+                  "speaker": "char_su",
+                  "kind": "voiceover",
+                  "text": "明天上午十点，终审会。位置，我帮你留着。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.7,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "消息提示音",
+                "手机震动"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "苏念面部与U盘同框，U盘在前景虚化"
+              },
+              "description": "苏念把U盘放到手机旁，深吸一口气，抬眼看向窗外渐停的雨；她拇指按下屏幕，给未知号码回了一个字",
+              "lighting": "屏幕光与窗外路灯冷光交叠，脸部半明半暗",
+              "characters": [
+                {
+                  "character_id": "char_su",
+                  "action": "把U盘放在手机旁，回复消息",
+                  "emotion": "坚定、燃烧"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0014",
+                  "speaker": "char_su",
+                  "kind": "voiceover",
+                  "text": "姜蔓，这次轮到你了。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "手机发送音",
+                "雨声初歇的滴水声"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

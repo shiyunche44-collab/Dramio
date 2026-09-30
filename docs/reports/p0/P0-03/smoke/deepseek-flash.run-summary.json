@@ -1,0 +1,100 @@
+{
+  "settings": {
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "prompt_version": "script.v1",
+    "target_s": 60,
+    "max_repairs": 2,
+    "temperature": null,
+    "max_tokens": 32000,
+    "thinking": "default",
+    "reasoning_effort": null,
+    "max_cost_cny": 3.0
+  },
+  "n": 1,
+  "passed": 1,
+  "first_pass": 0,
+  "first_pass_rate": 0.0,
+  "pass_rate": 1.0,
+  "repairs": [
+    1
+  ],
+  "attempts_total": 2,
+  "requests_total": 2,
+  "failed_attempts_by_kind": {
+    "invalid": 1
+  },
+  "prompt_tokens_total": 10280,
+  "completion_tokens_total": 18633,
+  "reasoning_tokens_total": 9641,
+  "cost_cny_total": 0.1656,
+  "cost_cny_per_sample_avg": 0.1656,
+  "cost_cny_per_sample_max": 0.1656,
+  "elapsed_s_per_sample_avg": 70.6,
+  "elapsed_s_per_sample_max": 70.6,
+  "samples": [
+    {
+      "sample": "s01",
+      "passed": true,
+      "first_pass": false,
+      "repairs": 1,
+      "attempts": [
+        {
+          "attempt": 0,
+          "outcome": "invalid",
+          "errors": 4,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 2804,
+          "completion_tokens": 13190,
+          "reasoning_tokens": 8681,
+          "cost_cny": 0.111128,
+          "elapsed_s": 53.9,
+          "detail": ""
+        },
+        {
+          "attempt": 1,
+          "outcome": "pass",
+          "errors": 0,
+          "warnings": 0,
+          "requests": 1,
+          "prompt_tokens": 7476,
+          "completion_tokens": 5443,
+          "reasoning_tokens": 960,
+          "cost_cny": 0.054464,
+          "elapsed_s": 16.6,
+          "detail": ""
+        }
+      ],
+      "stats": {
+        "characters": 3,
+        "episodes": 1,
+        "scenes": 4,
+        "shots": 13,
+        "lines": 11,
+        "duration_s": 65.5
+      },
+      "cost_cny": 0.165592,
+      "elapsed_s": 70.6
+    }
+  ],
+  "run_id": "20260930-121242-script-5332",
+  "n_requested": 1,
+  "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+  "logline_source": {
+    "type": "sample",
+    "path": "packages/drama-ir/examples/v0/ep01.json",
+    "sha256": "cd02daef022c6e78227ef3bf366adb2b5142a979a803bcf4373cdb8765a6fb59"
+  },
+  "aborted": null,
+  "price": {
+    "input_cache_hit": 0.5,
+    "input_cache_miss": 2.0,
+    "output": 8.0,
+    "source": "2026-09-30 余额差校准（保守上界）"
+  },
+  "balance_before_cny": null,
+  "balance_after_cny": null,
+  "balance_delta_cny": 0.0,
+  "balance_note": "入库时去掉了账户余额绝对值（原始值保留在本地 runs/，只报告余额差）"
+}
