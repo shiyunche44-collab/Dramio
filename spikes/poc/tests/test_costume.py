@@ -78,6 +78,13 @@ class TemplateTest(unittest.TestCase):
         self.assertEqual([(j.label, j.size) for j in sheet], [("views", "2048x1152"), ("expressions", "1536x1536")])
         self.assertIn("5 个表情", sheet[1].prompt)
 
+    def test_small_sizes_meet_minimum_pixels(self):
+        for size in costume.SMALL_SIZES.values():
+            w, h = (int(x) for x in size.split("x"))
+            self.assertGreaterEqual(w * h, 921600)
+        jobs = costume.plan_jobs(self.doc, "derive", ["char_suwan"], mode="sheet", sizes=costume.SMALL_SIZES)
+        self.assertEqual([j.size for j in jobs], ["1280x720", "960x960"])
+
     def test_node_key_depends_on_inputs(self):
         job = costume.plan_jobs(self.doc, "main", ["char_suwan"], n=1)[0]
         k = costume.node_key("m", job, "r1")
@@ -146,6 +153,17 @@ class RunTest(unittest.TestCase):
         self.assertEqual(calls[0]["cost_cny"], 0.0)
         self.assertEqual(summary["failures_by_kind"], {"moderation": 1})
         self.assertEqual(summary["ok"], 1)
+
+    def test_account_level_error_aborts_run(self):
+        gen = FakeGen(None, seedream.ImageError("http", "HTTP 403 code=AccountOverdueError", http_status=403, api_code="AccountOverdueError"))
+        code, run_dir, _ = self.run_costume(costume.Settings("main", "flash", ["char_suwan"], n=3), gen)
+        self.assertEqual(code, 1)
+        self.assertEqual(len(gen.calls), 2)
+        summary, calls = self.load(run_dir)
+        self.assertIn("账号级错误", summary["aborted"])
+        self.assertEqual((summary["ok"], summary["n_attempted"]), (1, 2))
+        self.assertEqual(summary["failures_by_kind"], {"http": 1})
+        self.assertEqual(calls[1]["cost_cny"], 0.0)
 
     def test_retries_exhausted(self):
         errs = [seedream.ImageError("network", "reset") for _ in range(costume.TRANSIENT_RETRIES + 1)]
@@ -277,7 +295,7 @@ class CliTest(unittest.TestCase):
 
     def test_offline_and_generation_are_exclusive(self):
         for argv in (["--verify", "x", "--stage", "main"], ["--export", "a", "b", "--model", "pro"], ["--cards", "x", "--verify", "y"],
-                     ["--stage", "main"], ["--stage", "derive", "--model", "pro"], ["--stage", "main", "--model", "pro", "--mode", "ref"]):
+                     ["--stage", "main"], ["--stage", "derive", "--model", "pro"], ["--stage", "main", "--model", "pro", "--mode", "ref"], ["--verify", "x", "--small"]):
             with self.subTest(argv=argv):
                 code, _ = self.parse(argv)
                 self.assertEqual(code, 2)

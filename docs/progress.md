@@ -68,7 +68,7 @@
 - [x] 6. `poc/costume.py` 主图阶段 + 注册 CLI + 单测
 - [x] 7. 派生阶段 text / ref / sheet（5.0 pro / flash 不支持组图，group 改为 sheet 设定板）（manifest `t2i_original` / `seedance_eligible`）+ 单测
 - [x] 8. 离线 `--export` / `--verify` + 单测；README costume 一节
-- [ ] 9. 评测阶段 1：主图 12 张，agent 初评选推荐主图与模型
+- [x] 9. 评测阶段 1：主图 12 张，agent 初评选推荐主图与模型（flash 6/6、v4 6/6；推荐 flash，苏晚 main-02、陆沉 main-02）
 - [ ] 10. 评测阶段 2：text / ref / sheet × 2 角色 × 2 轮
 - [ ] 11. 证据导出、定妆卡、体积检查、`--verify` 返回 0
 - [ ] 12. 报告 `docs/reports/p0/P0-06.md`、登记 D-006、更新本步费用
@@ -76,7 +76,7 @@
 
 ## 本步费用
 
-- **已花费**：¥0.56（估算：冒烟 ¥0.56）
+- **已花费**：¥6.88（估算：冒烟 ¥0.56，主图 flash ¥0.72 / v4 ¥1.40，派生 text ¥1.56 / ref ¥1.68 / sheet ¥0.96）
 - **上限**：¥100
 
 ## 待决事项
@@ -140,3 +140,4 @@
 | 2026-09-30 | P0-06 | 阻塞：读取方舟图片生成 API 文档（82379/1541523）与模型价格（82379/1544106）：5.0 pro / flash 不支持组图与 seed，`watermark` 默认 true，9:16 在 1.5K 档为 1152×2048（≤261 万像素，pro ¥0.30 / 张，flash ¥0.12）；派生方式 group 改为 sheet（单张文生图设定板）。冒烟：Seedream 5.0 pro / flash 均返回 404 `ModelNotOpen`（账号未开通），Seedance 2.5 / 2.0 / fast / mini 同样未开通；4 次请求均未计费。先做不需要调用 API 的子任务 2–8 | `poc/seedream.py` 初稿；冒烟 run `20260930-193316-costume-smoke-9f87`、`20260930-193327-costume-smoke-808c`。费用 ¥0 | 用户在方舟控制台“开通管理”开通 Seedream 5.0 pro / flash（P0-08 还需 Seedance 2.5 / 2.0 系列）后重跑冒烟 |
 | 2026-09-30 | P0-06 | 不依赖 API 的部分完成（子任务 2–8）：`poc/images.py`（JPEG SOF / PNG IHDR 宽高、sha256）、`pricing` 图像按张计价（档位 261 万像素、pro 第 2 张参考图起加价）、`poc/seedream.py`（错误分类、计费口径 `billable`、密钥与账号 ID 脱敏）、模板 `costume.v1`、`poc/costume.py`（main / derive text·ref·sheet、重试、费用保险、node_key、`--export` / `--verify` / `--cards`）、README 一节 | 197 个单元测试通过（新增 39 个，全部离线）；`make arch-check` 通过。费用 ¥0 | 仍阻塞：等用户在方舟控制台开通 Seedream 5.0 pro / flash，之后做子任务 1（冒烟）、9–13 |
 | 2026-09-30 | P0-06 | 用户开通低阶模型，要求“先跑通整个流程”。实测已开通：Seedream 5.0 flash、Seedream 4.0（`doubao-seedream-4-0-20260415`，¥0.20 / 张，不支持 `output_format`）、Seedance 1.0 pro fast；未开通：Seedream 5.0 pro、Seedance 2.x 全系列。主图候选改为 flash 对比 v4。冒烟：flash 文生图 / 单参考图生图成功（约 10 秒 / 张，1152×2048，约 170 KB），v4 文生图成功（约 500 KB）；url 返回的下载域名 `ark-acg-cn-beijing.tos-cn-beijing.volces.com` 被网络策略拦截，只用 b64_json；尺寸小于 921600 像素返回 400 InvalidParameter（不计费） | 冒烟 calls 入库 `docs/reports/p0/P0-06/smoke/`（账号 ID 已脱敏）。费用 ¥0.56 | 子任务 9：主图 flash / v4 各 3 张 × 2 角色 |
+| 2026-09-30 | P0-06 | 评测阶段 1 完成、阶段 2 部分完成后**方舟账号欠费**。主图（run `194549-costume-9c0b` flash、`194549-costume-ae73` v4）：各 6/6；v4 有 1 次 IncompleteRead 重试（按全额计）。agent 初评：flash 贴合描述、同角色 3 张脸稳定、无多余配饰；v4 苏晚 3/3 加了描述外的手表、main-02 未正对镜头，陆沉 3/3 裁到大腿（不是全身）、背景偏蓝；推荐 flash，苏晚 main-02（`e76b9c27`）、陆沉 main-02（`e5962809`）。派生（flash、`--small` 720×1280 / 1280×720 / 960×960，控制体积；2 轮）：sheet 8/8；text 13/34、ref 14/34，其余为 403 `AccountOverdueError`（不计费），第 1 轮缺陆沉表情 text 5 张、ref 3 张。初评：ref 身份最接近主图；text 脸明显漂移（苏晚 angry 像另一个人，陆沉侧面更年轻、衬衫变深色）；sheet 板内一致但与主图不是同一张脸，且 `$style`（冷蓝色雨夜）泄漏成背景（苏晚三视图板、陆沉表情板），陆沉表情板手表跑到翻领上——模板需修订为 costume.v2（设定板去掉剧集风格）。新增：账号级错误（欠费、未开通、鉴权）立即中止整次运行；`--small`；证据导出、定妆卡、smoke 目录整理 | `--verify` 5 个目录 42 张通过，费用合计 ¥6.88；证据 9.96 MB（上限 10 MB，补跑会超出，需调整上限或降级）；单测全部通过。费用 ¥6.88 | 用户为方舟账号充值后：补跑陆沉 text / ref（`--char char_luchen`，约 ¥3.8）、costume.v2 设定板（约 ¥1）；然后写报告、登记 D-006 |

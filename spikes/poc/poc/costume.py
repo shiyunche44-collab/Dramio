@@ -46,6 +46,8 @@ MAX_EXPRESSIONS = 6
 WATERMARK = False  # D-005
 OUTPUT_FORMAT = "jpeg"
 SIZES = {"portrait": "1152x2048", "landscape": "2048x1152", "square": "1536x1536"}  # 均 ≤261 万像素（pro 低价档）
+# --small：接口允许的最小像素数（921600），用于派生图，控制入库体积（主图不用）
+SMALL_SIZES = {"portrait": "720x1280", "landscape": "1280x720", "square": "960x960"}
 VIEWS = [("front", "正面"), ("side", "左侧面"), ("back", "背面")]
 GENDER_ZH = {"female": "女性", "male": "男性"}
 EXPRESSION_ZH: dict[str, str] = {
@@ -148,6 +150,7 @@ def plan_jobs(
     mode: str | None = None,
     bases: Mapping[str, Ref] | None = None,
     version: str = PROMPT_VERSION,
+    sizes: Mapping[str, str] = SIZES,
 ) -> list[Job]:
     t = load_templates(version)
     jobs: list[Job] = []
@@ -155,23 +158,23 @@ def plan_jobs(
         v = character_vars(doc, cid)
         if stage == "main":
             prompt = t["main"].substitute(v)
-            jobs += [Job(cid, "main", f"{i:02d}", "main", prompt, SIZES["portrait"]) for i in range(1, n + 1)]
+            jobs += [Job(cid, "main", f"{i:02d}", "main", prompt, sizes["portrait"]) for i in range(1, n + 1)]
             continue
         exprs = expressions_for(doc, cid)
         if mode == "sheet":
-            jobs.append(Job(cid, "sheet", "views", "view_sheet", t["view_sheet"].substitute(v), SIZES["landscape"]))
+            jobs.append(Job(cid, "sheet", "views", "view_sheet", t["view_sheet"].substitute(v), sizes["landscape"]))
             jobs.append(Job(
                 cid, "sheet", "expressions", "expression_sheet",
                 t["expression_sheet"].substitute(v, expressions="、".join(EXPRESSION_ZH[e].split("，")[0] for e in exprs), count=len(exprs)),
-                SIZES["square"],
+                sizes["square"],
             ))
             continue
         refs = [bases[cid]] if mode == "ref" else []
         suffix = "_ref" if mode == "ref" else ""
         for key, zh in VIEWS:
-            jobs.append(Job(cid, "view", key, "view" + suffix, t["view" + suffix].substitute(v, view=zh), SIZES["portrait"], list(refs)))
+            jobs.append(Job(cid, "view", key, "view" + suffix, t["view" + suffix].substitute(v, view=zh), sizes["portrait"], list(refs)))
         for e in exprs:
-            jobs.append(Job(cid, "expression", e, "expression" + suffix, t["expression" + suffix].substitute(v, expression=EXPRESSION_ZH[e]), SIZES["portrait"], list(refs)))
+            jobs.append(Job(cid, "expression", e, "expression" + suffix, t["expression" + suffix].substitute(v, expression=EXPRESSION_ZH[e]), sizes["portrait"], list(refs)))
     return jobs
 
 
@@ -205,6 +208,7 @@ class Settings:
     max_cost_cny: float = 15.0
     prompt_version: str = PROMPT_VERSION
     name: str | None = None
+    small: bool = False  # 用 SMALL_SIZES
 
     @property
     def model_id(self) -> str:
@@ -249,10 +253,16 @@ class Item:
         return self.ok and self.t2i_original
 
 
-class CostLimit(Exception):
+class Abort(Exception):
+    """中止整次运行：费用上限（CostLimit）或账号级错误（欠费、模型未开通、鉴权失败）。"""
+
     def __init__(self, message: str, item: "Item | None" = None):
         super().__init__(message)
         self.item = item  # 中止时正在处理的一张（已产生的请求与费用要计入 summary）
+
+
+class CostLimit(Abort):
+    pass
 
 
 GenerateFn = Callable[..., seedream.ImageResult]
@@ -307,6 +317,8 @@ class Runner:
                         self.spent += cost
                         it.cost_cny += cost
                         it.error, it.error_kind = str(exc), exc.kind
+                        if exc.fatal:
+                            raise Abort(f"账号级错误，中止运行：{exc}", it)
                         if not exc.transient or retry == TRANSIENT_RETRIES:
                             return it
                         it.transient_failures += 1
@@ -438,7 +450,10 @@ def run_costume(
     if settings.rounds < 1 or settings.n < 1:
         print("--rounds 与 --n 至少为 1", file=out)
         return 2
-    jobs = plan_jobs(doc, settings.stage, chars, n=settings.n, mode=settings.mode, bases=bases, version=settings.prompt_version)
+    jobs = plan_jobs(
+        doc, settings.stage, chars, n=settings.n, mode=settings.mode, bases=bases, version=settings.prompt_version,
+        sizes=SMALL_SIZES if settings.small else SIZES,
+    )
     source = {"path": str(episode.relative_to(script.REPO_ROOT)) if episode.is_relative_to(script.REPO_ROOT) else str(episode), "sha256": sha}
     base_info = {cid: {"path": r.path, "sha256": r.sha256} for cid, r in bases.items()}
     args = {"source": source, **asdict(settings), "bases": base_info, "watermark": WATERMARK}
@@ -452,10 +467,11 @@ def run_costume(
             for job in jobs:
                 try:
                     it = runner.item(job, rnd, out_dir)
-                except CostLimit as exc:
+                except Abort as exc:
                     aborted = str(exc)
                     if exc.item is not None and exc.item.requests:
-                        exc.item.error, exc.item.error_kind = f"aborted: {aborted}", "aborted"
+                        if isinstance(exc, CostLimit):
+                            exc.item.error, exc.item.error_kind = f"aborted: {aborted}", "aborted"
                         items.append(exc.item)  # 未完成，按失败计，已产生的费用计入合计
                     print(f"r{rnd} {job.char_id} {job.kind}-{job.label}: 中止：{aborted}", file=out)
                     break
@@ -634,13 +650,14 @@ def write_cards(root: Path, episode: Path = script.SAMPLE_EP01, out: TextIO | No
     """每个角色一张定妆卡 <角色 id>.md：按证据目录分节，图片用 HTML <img> 并排（GitHub 可渲染，不拼图）。"""
     out = sys.stdout if out is None else out
     doc, _ = load_episode(episode)
-    manifests = sorted(root.rglob("manifest.json"))
+    # 主图在前，派生在后
+    manifests = sorted(root.rglob("manifest.json"), key=lambda m: (not m.parent.name.startswith("main"), m.parent.as_posix()))
     if not manifests:
         print(f"{root} 下没有 manifest.json", file=out)
         return 2
     for c in doc["characters"]:
         lines = [f"# 定妆卡：{c['name']}（`{c['id']}`）", "", f"- 外貌：{c['appearance']}", f"- 服装：{c['costume']}",
-                 "- 由 `python3 -m poc costume --cards` 生成；✔ 表示文生图原始产物（Seedance 可信），✘ 表示图生图。", ""]
+                 "- 由 `python3 -m poc costume --cards` 生成；✔ 表示没有参考图的文生图原始产物（`seedance_eligible`），✘ 表示图生图。", ""]
         for m in manifests:
             man = json.loads(m.read_text(encoding="utf-8"))
             entries = [e for e in man["images"] if e["char_id"] == c["id"] and e.get("committed", True)]
@@ -675,7 +692,7 @@ def _parse_bases(items: list[str] | None, parser) -> dict[str, str]:
 
 def _cmd(args: argparse.Namespace) -> int:
     generation = [o for o, v in (("--stage", args.stage), ("--model", args.model), ("--mode", args.mode), ("--char", args.char),
-                                  ("--n", args.n), ("--rounds", args.rounds), ("--base", args.base), ("--name", args.name)) if v is not None]
+                                  ("--n", args.n), ("--rounds", args.rounds), ("--base", args.base), ("--name", args.name), ("--small", args.small or None)) if v is not None]
     offline = [o for o, v in (("--export", args.export), ("--verify", args.verify), ("--cards", args.cards)) if v is not None]
     if offline:
         if len(offline) > 1:
@@ -703,6 +720,7 @@ def _cmd(args: argparse.Namespace) -> int:
         bases=_parse_bases(args.base, args.parser),
         max_cost_cny=args.max_cost_cny,
         name=args.name,
+        small=args.small,
     )
     return run_costume(settings)
 
@@ -717,6 +735,7 @@ def add_parser(sub) -> None:
     p.add_argument("--rounds", type=int, default=None, help="轮数（默认 1）")
     p.add_argument("--base", action="append", metavar="角色=主图路径", help="derive 阶段每个角色的主图，可重复")
     p.add_argument("--name", help="方案名（默认 main-<模型> / derive-<方式>-<模型>）")
+    p.add_argument("--small", action="store_true", help="用接口允许的最小尺寸（竖 720x1280、横 1280x720、方 960x960），控制入库体积")
     p.add_argument("--max-cost-cny", type=float, default=15.0, help="本次运行累计估算费用上限（元），预计超出即中止")
     p.add_argument("--export", nargs=2, metavar=("运行目录", "目标目录"), help="离线：把一次运行的第 1 轮整理成入库证据")
     p.add_argument("--verify", metavar="证据根目录", help="离线：复核证据目录（sha256、尺寸、manifest 与 calls 对应、费用）")

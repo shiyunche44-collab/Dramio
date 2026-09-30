@@ -124,6 +124,13 @@ class ErrorTest(unittest.TestCase):
         self.assertNotIn("2132580628", str(exc))
         self.assertNotIn(SENTINEL, str(exc))
         self.assertIn("account ***", str(exc))
+        self.assertTrue(exc.fatal)
+
+    def test_overdue_is_fatal_and_not_billed(self):
+        exc = self.call(resp(403, err_body("AccountOverdueError", "overdue balance")))
+        self.assertTrue(exc.fatal)
+        self.assertFalse(exc.billable)
+        self.assertFalse(self.call(resp(500, b"x")).fatal)
 
     def test_moderation(self):
         for status in (400, 200):

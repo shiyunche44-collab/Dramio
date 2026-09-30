@@ -52,6 +52,8 @@ MODELS = {
 OUTPUT_FORMAT_MODELS = {MODELS["pro"], MODELS["flash"]}
 MAX_REFS = 10
 _MODERATION_MARKERS = ("SensitiveContent", "RiskDetection", "ContentFilter")
+# 账号级错误：换哪张图都会失败（欠费、模型未开通、鉴权失败），调用方应中止整次运行
+FATAL_CODES = ("AccountOverdueError", "ModelNotOpen", "AuthenticationError", "InvalidEndpointOrModel.NotFound")
 _TRANSIENT_CODES = ("ServerOverloaded", "InternalServiceError", "RateLimitExceeded", "QuotaExceeded.Concurrency")
 
 
@@ -70,6 +72,10 @@ class ImageError(Exception):
                 or any(c in (api_code or "") for c in _TRANSIENT_CODES)
             )
         self.transient = transient
+
+    @property
+    def fatal(self) -> bool:
+        return self.kind == "config" or (self.api_code or "") in FATAL_CODES or self.http_status == 401
 
     @property
     def billable(self) -> bool:
