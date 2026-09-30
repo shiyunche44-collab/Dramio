@@ -6,6 +6,7 @@ AI 短剧自动化生产平台：选题 → 剧本 → 角色/场景设定 → �
 
 - [架构设计方案](docs/architecture.md)
 - [架构治理与落地保障](docs/governance.md)：不变量、ADR 流程、自动检查、分阶段落地、演进触发条件
+- [分步实施路线图](docs/roadmap.md)：P0 ~ P3 拆成的小步骤与当前进度
 - [架构决策记录（ADR）](docs/adr/README.md)
 - [技术债与豁免登记](docs/tech-debt.md)
 

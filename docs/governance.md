@@ -156,19 +156,19 @@ make arch-check      # 运行规则自测 + 检查整个仓库
 
 ### 5.2 随阶段补充的检查
 
-| 检查 | 工具（建议） | 对应不变量 | 上线阶段 |
+| 检查 | 工具（建议） | 对应不变量 | 上线步骤（见 [roadmap](roadmap.md)） |
 |---|---|---|---|
-| DramaIR 生成类型与 Schema 一致（重新生成后无差异） | 代码生成脚本 + `git diff --exit-code` | INV-02 | P1 |
-| DramaIR Schema 向后兼容（与 main 分支比较，破坏性变更必须升主版本） | JSON Schema 差异比较脚本 | INV-02 | P1 |
-| 单体内模块边界（TS） | dependency-cruiser | INV-03 | P1 |
-| Worker 内部分层（Python） | import-linter | INV-03 | P1 |
-| 数据库迁移：业务表必须有 `tenant_id` 并启用 RLS | 迁移文件检查脚本 | INV-09 | P1 |
-| 生产配置不允许关闭合规步骤 | 配置 Schema 校验 | INV-08 | P1 |
-| 模型网关适配器契约测试（录制的请求/响应） | 共享测试套件 | INV-01 | P1 |
-| Temporal Workflow 回放测试（防止非确定性变更） | Temporal SDK Replayer | INV-04 | P2 |
-| 评测集回归（一致性、瑕疵率、成本、延迟） | `evals/` + CI 定时任务 | INV-10 | P2 |
-| 单位成片成本预算（评测样片的成本不超过基线 + 阈值） | 评测任务输出成本报告 | INV-07 | P2 |
-| API 性能预算（p95 延迟） | 压测脚本 | — | P2 |
+| DramaIR 生成类型与 Schema 一致（重新生成后无差异） | 代码生成脚本 + `git diff --exit-code` | INV-02 | P1-03 |
+| DramaIR Schema 向后兼容（与 main 分支比较，破坏性变更必须升主版本） | JSON Schema 差异比较脚本 | INV-02 | P1-03 |
+| 单体内模块边界（TS） | dependency-cruiser | INV-03 | P1-27 |
+| Worker 内部分层（Python） | import-linter | INV-03 | P1-27 |
+| 数据库迁移：业务表必须有 `tenant_id` 并启用 RLS | 迁移文件检查脚本 | INV-09 | P1-04 |
+| 生产配置不允许关闭合规步骤 | 配置 Schema 校验 | INV-08 | P1-24 |
+| 模型网关适配器契约测试（录制的请求/响应） | 共享测试套件 | INV-01 | P1-27 |
+| Temporal Workflow 回放测试（防止非确定性变更） | Temporal SDK Replayer | INV-04 | P2-17 |
+| 评测集回归（一致性、瑕疵率、成本、延迟） | `evals/` + CI 定时任务 | INV-10 | P2-18 |
+| 单位成片成本预算（评测样片的成本不超过基线 + 阈值） | 评测任务输出成本报告 | INV-07 | P2-18 |
+| API 性能预算（p95 延迟） | 压测脚本 | — | P2-19 |
 
 每上线一项检查，就在本表中标注，并在 `rules.toml` 或 CI 配置中落地。
 
@@ -209,6 +209,8 @@ link = "docs/tech-debt.md#td-001"
 
 ## 7. 分阶段落地
 
+本节定义各阶段的组件范围和退出标准；具体拆成哪些小步骤、按什么顺序做，见 [roadmap.md](roadmap.md)。
+
 ### 7.1 行走骨架（Walking Skeleton）
 
 **不要一层一层地建，要先打通最细的全链路，再逐步加厚。**
@@ -234,7 +236,7 @@ flowchart LR
 
 | 组件 | P0 验证 | P1 MVP | P2 规模化 | P3 平台化 |
 |---|---|---|---|---|
-| DramaIR | 🟡 草案 Schema | ✅ v1 + 生成类型 | ✅ + 兼容性检查 | ✅ |
+| DramaIR | 🟡 草案 Schema | ✅ v1 + 生成类型 + 兼容性检查 | ✅ | ✅ |
 | Temporal 编排 | — 脚本串联 | ✅ | ✅ + 回放测试 | ✅ |
 | 模型网关 | — 在 spikes 中直连 | 🟡 静态路由，每能力 1–2 家 | ✅ 动态路由、熔断、A/B | ✅ |
 | 内容寻址存储 | 🟡 本地目录 | ✅ | ✅ + 生命周期 | ✅ + 跨区域复制 |
@@ -364,6 +366,7 @@ flowchart LR
 - [x] AI 助手约束：`CLAUDE.md`、`REVIEW.md`
 - [x] PR 模板与 CODEOWNERS：`.github/`
 - [x] 技术债登记簿：`docs/tech-debt.md`
+- [x] 分步实施路线图：`docs/roadmap.md`
 
 ### 13.2 需要在 GitHub 上手动设置
 
