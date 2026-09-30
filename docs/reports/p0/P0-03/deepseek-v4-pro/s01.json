@@ -1,0 +1,486 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "designer_revenge",
+    "title": "雨夜反击",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "冷色调雨夜，办公室暖光对比，竖屏电影感，强调人物面部特写",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_linxia",
+      "name": "林夏",
+      "gender": "female",
+      "age": 28,
+      "role": "protagonist",
+      "bio": "才华横溢的设计师，被上司长期打压，性格坚韧，在绝境中爆发。",
+      "appearance": "短发，面容清秀，眼神倔强，身穿白色衬衫，外披灰色外套。",
+      "costume": "本集穿白色衬衫、深色西装裤，外套因雨淋湿。",
+      "voice": "年轻女声，坚定中带疲惫，语速中等。"
+    },
+    {
+      "id": "char_wang",
+      "name": "王总",
+      "gender": "male",
+      "age": 40,
+      "role": "antagonist",
+      "bio": "部门总监，剽窃下属成果，势利跋扈，心狠手辣。",
+      "appearance": "微胖，梳油头，戴金丝眼镜，穿深色西装，表情傲慢。",
+      "costume": "本集穿藏蓝色西装，系领带。",
+      "voice": "中年男声，低沉傲慢，语速稍快。"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "雨夜辞退",
+      "synopsis": "雨夜，林夏被上司王总抢走方案并当众辞退，在离职纸箱里发现神秘U盘，决心返回公司反击。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "王总办公室",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "现代办公室，窗外雨夜，办公桌上堆满文件，一盏台灯亮着，光线昏暗，墙上时钟指向晚上九点。"
+          },
+          "summary": "王总将林夏的方案占为己有，并当众羞辱辞退她。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 6
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "林夏与王总分处画面两侧，王总在前，林夏在后，焦点在王总摔文件的手上。"
+              },
+              "description": "王总站在办公桌后，猛地将一份设计案摔在桌上，文件散开，林夏站在桌前震惊地看着他。窗外雨丝拍打玻璃。",
+              "lighting": "室内暖色台灯为主，窗外冷色雨夜反光，形成冷暖对比。",
+              "characters": [
+                {
+                  "character_id": "char_wang",
+                  "action": "摔文件，指着林夏",
+                  "emotion": "愤怒傲慢"
+                },
+                {
+                  "character_id": "char_linxia",
+                  "action": "站立，身体前倾",
+                  "emotion": "震惊委屈"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_wang",
+                  "kind": "dialogue",
+                  "text": "林夏，这方案就是垃圾，你还敢署名？",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.2
+                  }
+                }
+              ],
+              "sfx": [
+                "拍桌声",
+                "雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 6
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "林夏在画面中央，王总在背景办公桌后。"
+              },
+              "description": "林夏上前一步，双手撑在办公桌沿，质问王总；王总坐在转椅上，身体后仰，冷笑。桌上散落的设计案封面可见林夏的名字被划掉，改为王总的名字。",
+              "lighting": "台灯从侧面打亮林夏的面部，王总处于阴影中。",
+              "characters": [
+                {
+                  "character_id": "char_linxia",
+                  "action": "上前撑桌，手指向文件",
+                  "emotion": "愤怒不甘"
+                },
+                {
+                  "character_id": "char_wang",
+                  "action": "坐在椅子上，抱臂冷笑",
+                  "emotion": "轻蔑"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_linxia",
+                  "kind": "dialogue",
+                  "text": "王总，这明明是我熬了三个月的方案，你凭什么盗用？",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": []
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "王总面部特写，林夏在画面边缘模糊。"
+              },
+              "description": "王总从抽屉里拿出一个纸箱扔到林夏脚下，纸箱在地面滑行，王总指了指门，表情不耐烦。林夏低头看着纸箱。",
+              "lighting": "头顶灯光直射王总，形成强硬阴影。",
+              "characters": [
+                {
+                  "character_id": "char_wang",
+                  "action": "扔纸箱，指门",
+                  "emotion": "傲慢无情"
+                },
+                {
+                  "character_id": "char_linxia",
+                  "action": "低头看纸箱，身体僵硬",
+                  "emotion": "屈辱"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_wang",
+                  "kind": "dialogue",
+                  "text": "收拾东西，滚蛋，公司不需要你这种废物。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.95,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "纸箱滑动声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "公司大厅",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "宽敞的公司前台大厅，灯火通明，玻璃大门外雨幕模糊，保安站在门口。"
+          },
+          "summary": "林夏被保安推出公司，王总冷漠离开。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "林夏被保安从画面右侧推向左侧，王总站在门内背景处。"
+              },
+              "description": "公司玻璃大门打开，保安将抱着纸箱的林夏推出门外，纸箱险些掉落，林夏踉跄后退，雨水溅到她身上。王总站在大厅内，双手插兜，冷漠地看着。",
+              "lighting": "大厅内暖光，门外冷雨夜，林夏处于明暗交界。",
+              "characters": [
+                {
+                  "character_id": "char_linxia",
+                  "action": "被推，抱紧纸箱，踉跄",
+                  "emotion": "愤怒无助"
+                },
+                {
+                  "character_id": "char_wang",
+                  "action": "站在门内，双手插兜",
+                  "emotion": "冷漠"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_linxia",
+                  "kind": "dialogue",
+                  "text": "放开我！你们不能这样！",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "推门声",
+                "雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "high",
+                "movement": "static",
+                "composition": "王总站在台阶上俯视，林夏在台阶下仰视，形成权力对比。"
+              },
+              "description": "王总走到门口，居高临下地看着雨中的林夏，挥了挥手示意保安关门。林夏站在雨中，浑身湿透，死死盯着王总。",
+              "lighting": "门内顶光，王总面部半明半暗，林夏被雨淋湿，反光。",
+              "characters": [
+                {
+                  "character_id": "char_wang",
+                  "action": "挥手示意关门",
+                  "emotion": "得意轻蔑"
+                },
+                {
+                  "character_id": "char_linxia",
+                  "action": "站在雨中，抬头怒视",
+                  "emotion": "愤怒不甘"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_wang",
+                  "kind": "dialogue",
+                  "text": "从今天起，你被开除了。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.9,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "关门声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "公司外街道",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "雨夜街道，路灯昏黄，雨水打湿地面，行人稀少，林夏抱着纸箱站在路边。"
+          },
+          "summary": "林夏在雨中翻看纸箱，意外发现神秘U盘。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "eye_level",
+                "movement": "pan",
+                "composition": "林夏抱着纸箱在雨中独行，路灯将她的影子拉长。"
+              },
+              "description": "林夏抱着被雨水打湿的纸箱，沿着街道慢慢走，路灯昏黄，雨水顺着她的发梢滴落。纸箱底部开始软化，有东西若隐若现。",
+              "lighting": "路灯昏黄，雨丝在光中闪烁，整体蓝灰色调。",
+              "characters": [
+                {
+                  "character_id": "char_linxia",
+                  "action": "抱纸箱行走，神情恍惚",
+                  "emotion": "绝望"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨声",
+                "脚步声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "林夏蹲在路边，纸箱翻倒，一个银色U盘从纸箱夹层掉出，特写U盘。"
+              },
+              "description": "林夏走到路边蹲下，把纸箱放在地上，纸箱底部裂开，一个银色U盘滚落到积水旁。林夏疑惑地捡起U盘，雨水冲刷着U盘表面。",
+              "lighting": "路灯直射，U盘反光刺眼。",
+              "characters": [
+                {
+                  "character_id": "char_linxia",
+                  "action": "蹲下，捡起U盘",
+                  "emotion": "疑惑"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_linxia",
+                  "kind": "dialogue",
+                  "text": "这是什么？",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.5,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨水滴落声",
+                "金属碰撞声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "U盘特写，林夏的手指握着U盘，背景虚化的雨夜街道。"
+              },
+              "description": "林夏将U盘举到眼前，U盘上刻着‘机密’二字（文字后期叠加），雨水顺着U盘滑落。林夏的眼神从迷茫转为坚定。",
+              "lighting": "U盘表面反光，照亮林夏的眼睛。",
+              "characters": [
+                {
+                  "character_id": "char_linxia",
+                  "action": "举起U盘，凝视",
+                  "emotion": "从疑惑转为坚定"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_linxia",
+                  "kind": "voiceover",
+                  "text": "王总，你等着。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "心跳声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "公司大楼正门外",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "公司大楼正门，霓虹灯牌在雨夜中闪烁，雨水冲刷台阶，林夏站在门外仰头望楼。"
+          },
+          "summary": "林夏握紧U盘，决心返回公司当众反击。",
+          "mood": "uplifting",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "林夏站在公司大楼前，仰视大楼，U盘握在胸前，雨水从她脸上滑落。"
+              },
+              "description": "林夏冒雨回到公司大楼前，站在台阶下，仰头望着灯火通明的大楼，手中紧握U盘。雨水打湿她的全身，但她眼神坚定。",
+              "lighting": "大楼外墙霓虹灯紫色与蓝色光映在林夏身上，形成冷峻气氛。",
+              "characters": [
+                {
+                  "character_id": "char_linxia",
+                  "action": "手握U盘，抬头望楼",
+                  "emotion": "坚定"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_linxia",
+                  "kind": "voiceover",
+                  "text": "我会让你付出代价。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "雷声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "林夏面部特写，U盘举到镜头前，背景是公司大门。"
+              },
+              "description": "林夏闭上眼睛深吸一口气，再睁眼时目光如刀，她将U盘举起对准公司大门，迈步向前。画面定格在她坚毅的侧脸。",
+              "lighting": "暖色室内光从大门透出，与冷色雨夜形成强烈对比。",
+              "characters": [
+                {
+                  "character_id": "char_linxia",
+                  "action": "举U盘，迈步走向大门",
+                  "emotion": "决绝"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_linxia",
+                  "kind": "voiceover",
+                  "text": "反击，现在开始。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 1.0,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "心跳声",
+                "雨声"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

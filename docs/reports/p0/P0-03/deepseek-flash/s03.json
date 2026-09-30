@@ -1,0 +1,645 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "drama_usb_counter",
+    "title": "雨夜离职，U盘反击",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "写实都市质感，冷调雨夜蓝灰与会议室冷白对比，浅景深竖屏近景为主，克制的电影感打光",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_suqing",
+      "name": "苏晴",
+      "gender": "female",
+      "age": 26,
+      "role": "protagonist",
+      "bio": "独立家具设计师，入职三年，主导的方案被上司赵霖反复署名抢功。性格倔强、隐忍，证据意识强，一旦握住把柄就绝不回头。",
+      "appearance": "清瘦高挑，齐肩黑发被雨打湿贴在颊边，五官干净，眼神倔强，素颜。",
+      "costume": "米白色针织衫外搭深灰长风衣，肩上斜挎帆布包，怀里抱着装满杂物的白色纸箱。",
+      "voice": "清亮偏冷的女声，语速平稳，情绪压在喉咙里，爆发时有金属般的硬度。"
+    },
+    {
+      "id": "char_zhaolin",
+      "name": "赵霖",
+      "gender": "male",
+      "age": 45,
+      "role": "antagonist",
+      "bio": "公司设计总监，靠着抢下属方案一路升职，习惯用人情和资历压人，私下把公司方案倒卖给外部客户。",
+      "appearance": "微胖，背头油亮，金丝边眼镜，下巴微抬，笑起来眼角有细纹。",
+      "costume": "深蓝色定制西装，白衬衫不系最上一颗扣，腕上戴金属表。",
+      "voice": "低沉油滑的男中音，语速慢，带居高临下的腔调。"
+    },
+    {
+      "id": "char_linxiao",
+      "name": "林晓",
+      "gender": "female",
+      "age": 24,
+      "role": "supporting",
+      "bio": "苏晴的同事兼好友，入职一年，是唯一在公司里替苏晴说话的人。",
+      "appearance": "短发圆脸，眼睛大，脸颊有婴儿肥，动作利落。",
+      "costume": "姜黄色连帽卫衣，背着黑色双肩包，手里一把透明雨伞。",
+      "voice": "清脆快速的少女音，情绪外放，着急时语速更快。"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "雨夜辞退",
+      "synopsis": "方案评审会上，赵霖当众把苏晴的成果据为己有，并在雨夜把她辞退。苏晴抱着离职纸箱走出大楼，在纸箱里发现一枚不属于自己的 U 盘，里面的内容让她决定第二天当众反击。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "公司大会议室",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "深夜的会议室只开了一半灯，投影幕布上打着设计方案封面，长桌旁散落着没喝完的纸杯，落地窗外是下雨的城市夜景。"
+          },
+          "summary": "苏晴的提案被赵霖当众认领，她当场反驳却被一句话压回。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "人物置于竖屏中下部，上方留给发亮的投影幕布，字幕安全区在画面下三分之一"
+              },
+              "description": "夜晚的公司大会议室，投影幕布上打出一份设计方案封面，苏晴抱着文件站在幕布前，指节泛白，赵霖背对她站在一侧，背景是几位同事虚化的背影。",
+              "lighting": "冷白日光灯顶光，投影的蓝光斜打在苏晴脸上，一半脸在阴影里",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "抱着文件站在投影幕前，指尖抠住文件夹边缘",
+                  "emotion": "强压愤怒、紧绷"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "这个方案，我熬了三十个通宵。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.6,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "投影仪风扇的低鸣",
+                "窗外雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "static",
+                "composition": "赵霖占画面右侧三分之二，左侧留出投影幕布的一角"
+              },
+              "description": "赵霖转身面对会议室，双手插兜抬起下巴微笑，身后是投影幕布上的方案封面，背景是几位同事虚化的背影。",
+              "lighting": "顶光在他眼镜片上反出一片白光，脸部下缘偏暗",
+              "characters": [
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "转身抬手示意，嘴角上扬",
+                  "emotion": "得意、居高临下"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_zhaolin",
+                  "kind": "dialogue",
+                  "text": "方案是我带队做的，苏晴只做整理。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.6,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "会议室里零星的翻纸声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "面部居竖屏中央偏上，背景为虚化的投影光斑"
+              },
+              "description": "特写苏晴的脸，睫毛轻颤，她死死盯着前方，身侧的拳头在风衣袖口里缓缓攥紧。",
+              "lighting": "冷白光从侧面打来，半边脸落在阴影里，眼眶微微发红",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "攥紧拳头，抬起头直视前方",
+                  "emotion": "愤怒、不服"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "赵总监，这是我自己做的。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "椅子腿刮地的一轻响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh04",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "赵霖在画面右侧，左侧留给虚化的苏晴肩线"
+              },
+              "description": "赵霖摘下金丝边眼镜慢条斯理地擦拭，嘴角轻蔑地一撇，目光越过苏晴看向会议室门口。",
+              "lighting": "顶光打亮他半个额头，眼窝藏在阴影里",
+              "characters": [
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "摘下眼镜擦拭，抬下巴朝门口一扬",
+                  "emotion": "轻蔑、不耐烦"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_zhaolin",
+                  "kind": "dialogue",
+                  "text": "那你去跟HR说吧。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.5,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "眼镜布摩擦的细响"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "写字楼门口台阶",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "大雨中的写字楼旋转门前，暖黄的门口灯与蓝色路灯光交界，台阶上积着水，雨点砸出密集的水花。"
+          },
+          "summary": "苏晴抱着离职纸箱走进大雨，林晓撑伞追出来，纸箱里露出一枚陌生的 U 盘。",
+          "mood": "sad",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh05",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "两人共撑一把伞位于竖屏中下部，上方是密集的雨幕"
+              },
+              "description": "夜晚的写字楼门口，苏晴抱着装满杂物的纸箱走出旋转门，林晓撑着一把透明伞小跑上前，把伞倾向苏晴，自己半边肩膀露在雨里，苏晴抬头看了她一眼。",
+              "lighting": "门口暖黄灯从背后打来，雨滴在伞面反出细碎白光",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "抱着纸箱站在台阶上，肩膀被雨打湿",
+                  "emotion": "麻木、疲惫"
+                },
+                {
+                  "character_id": "char_linxiao",
+                  "action": "小跑上前举伞，另一只手扶住纸箱一角",
+                  "emotion": "着急又心疼"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_linxiao",
+                  "kind": "dialogue",
+                  "text": "晴姐，他们太过分了！",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.2
+                  }
+                },
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "没事，我习惯了。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.5,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "暴雨声",
+                "远处闷雷"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh06",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "面部居竖屏中央，伞沿压在上方形成暗边"
+              },
+              "description": "特写苏晴的脸，雨水顺着脸颊流下，她扯了一下嘴角露出一个很淡的笑，怀里的纸箱被抱得更紧，透明伞的边缘压在她头顶。",
+              "lighting": "路灯冷蓝色侧光，雨珠在睫毛上反光",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "把纸箱往怀里收紧，扯出一个淡笑",
+                  "emotion": "疲惫、隐忍"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "忍了三年，我早就习惯了。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.6,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "雨点打在伞面的密集声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh07",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "纸箱内景特写，U 盘位于竖屏中心偏下"
+              },
+              "description": "俯拍纸箱内部，纸箱底积了一层雨水，散落着笔筒、图纸和一只摔坏的马克杯，杂物之间斜躺着一枚银色金属 U 盘，表面反着冷光。",
+              "lighting": "路灯冷光扫过箱内，U 盘金属面反出一点刺眼的高光",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "雷声",
+                "雨水滴落在纸板上的闷响"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "街边便利店屋檐下",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "便利店卷帘门半闭，屋檐下的灯箱发白，旁边一张塑料凳上摊着一台旧笔记本电脑，雨从屋檐外垂成一道水帘。"
+          },
+          "summary": "苏晴在屋檐下翻纸箱，发现那枚 U 盘，插上电脑后看到赵霖倒卖方案的证据。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh08",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "high",
+                "movement": "static",
+                "composition": "人物蹲在竖屏下半部，屋檐水帘占画面上半部"
+              },
+              "description": "夜晚的便利店屋檐下，苏晴蹲在地上翻动纸箱，从一堆图纸中间拈出一枚银色 U 盘，举到眼皮底下看，纸箱里还塞着湿透的方案纸。",
+              "lighting": "便利店灯箱的白光照在她手上，U 盘表面反出一道细光",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "蹲着翻纸箱，捏起 U 盘贴在眼前看",
+                  "emotion": "疑惑、警觉"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "这不是我的东西……谁放进去的？",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.6,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "屋檐滴水声",
+                "远处车辆驶过水面的声音"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh09",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "overhead",
+                "movement": "static",
+                "composition": "笔记本屏幕占据画面上半部，屏幕文字位于画面上三分之一"
+              },
+              "description": "俯拍旧笔记本电脑的屏幕，苏晴的手指把 U 盘推入接口，屏幕亮起，逐条列出文件夹名称（文字后期叠加：项目备份、转账截图、客户名单），屏幕蓝光映在她湿透的袖口上。",
+              "lighting": "屏幕蓝光是唯一主光，照亮手指与键盘",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "把 U 盘插入接口，手指停在触控板上",
+                  "emotion": "屏息、紧张"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "全是赵霖卖公司方案的转账截图。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "电脑启动的电子提示音"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh10",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "面部居竖屏中央，屏幕蓝光从下方打上来"
+              },
+              "description": "特写苏晴的脸，眼睛一点点睁大，瞳孔里映着屏幕上滚动的截图缩略图，她的呼吸变重，雨水顺着发梢滴在键盘上。",
+              "lighting": "屏幕蓝光自下而上打在脸上，背景是雨夜的黑色",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "盯着屏幕，慢慢直起背",
+                  "emotion": "震惊、愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "原来他一直在卖公司的方案。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "鼠标滚轮滑动声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh11",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "pull_out",
+                "composition": "人物位于竖屏中下部，上方留出雨中的大楼轮廓"
+              },
+              "description": "苏晴站起来，把 U 盘攥在掌心贴在胸口，抬头望向雨幕里那栋亮着零星灯光的写字楼，便利店灯箱在她身后发白。",
+              "lighting": "灯箱顶光勾出人物轮廓，雨丝在光里发亮",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "站直身子，握紧 U 盘抬头望楼",
+                  "emotion": "决绝、冷静"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0011",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "明天，我要当众还给他。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声渐弱",
+                "低沉的弦乐渐入"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "公司大会议室",
+            "int_ext": "INT",
+            "time_of_day": "day",
+            "description": "白天的会议室，百叶窗把阳光切成横条，投影已经开着，长桌两侧坐满人，赵霖站在投影幕布前拿话筒讲话。"
+          },
+          "summary": "次日例会上苏晴闯入，把 U 盘插进投影主机，当众放出赵霖倒卖方案的证据。",
+          "mood": "uplifting",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh12",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "pan",
+                "composition": "赵霖在画面左侧讲话，右侧尽头是刚被推开的门"
+              },
+              "description": "白天的公司会议室，赵霖站在投影幕布前拿着话筒讲话，长桌两侧坐着七八个同事，玻璃门被推开，苏晴抱着手臂站在门口，所有人的头一起转过去。",
+              "lighting": "百叶窗切出的条状日光横过画面，赵霖站在逆光里",
+              "characters": [
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "拿着话筒回头，身体微微后仰",
+                  "emotion": "不耐烦、戒备"
+                },
+                {
+                  "character_id": "char_suqing",
+                  "action": "站在门口，一步跨进会议室",
+                  "emotion": "冷静、笃定"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0012",
+                  "speaker": "char_zhaolin",
+                  "kind": "dialogue",
+                  "text": "苏晴，你已经被辞退了。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "话筒回授的轻微蜂鸣",
+                "椅子转动声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh13",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "人物偏右，左侧留出投影主机的接口区"
+              },
+              "description": "苏晴走到投影主机前，弯腰把银色 U 盘推进接口，动作干脆，长桌两侧的同事们屏住呼吸，赵霖的话筒垂在身侧。",
+              "lighting": "日光条从她脸上滑过，屏幕光从下方补亮",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "弯腰把 U 盘插入投影主机接口",
+                  "emotion": "平静、挑衅"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0013",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "给我三分钟，说完我就走。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.5,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "接口插入的轻响",
+                "会议室内突然的安静"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh14",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "投影大屏占画面上半部，人物分立下方左右两侧"
+              },
+              "description": "投影幕布亮起，铺满转账截图与聊天记录界面（文字后期叠加：转账金额、聊天记录），赵霖站在幕布前脸色煞白，话筒从手里滑落，同事们齐齐回头看他，苏晴手按在桌面站在投影旁。",
+              "lighting": "屏幕白光整体照亮会议室，赵霖的脸被映得没有血色",
+              "characters": [
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "后退半步，话筒脱手掉在桌上",
+                  "emotion": "惊恐、僵硬"
+                },
+                {
+                  "character_id": "char_suqing",
+                  "action": "手按桌面站在投影旁，直视赵霖",
+                  "emotion": "冷静、胜利"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0014",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "赵总监，你卖方案的聊天记录，全在这里。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.8,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "话筒落桌的砰响",
+                "全场抽气声",
+                "音乐急停"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

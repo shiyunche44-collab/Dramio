@@ -1,0 +1,477 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "series_udisk_revenge",
+    "title": "离职U盘",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "冷调都市写实，雨夜霓虹与办公室冷白光对比，手持近景增强压迫感",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_suqing",
+      "name": "苏晴",
+      "gender": "female",
+      "age": 26,
+      "role": "protagonist",
+      "bio": "入行三年的平面设计师，作品被直属上司林志强长期冒名顶替，性格隐忍但内心执拗，被辞退后决定不再退让。",
+      "appearance": "清瘦白皙，齐肩黑发微湿，眉眼清冷锐利，黑眼圈明显，手指沾着素描铅笔灰。",
+      "costume": "米白针织衫外罩深灰长风衣，下身黑裤，胸前挂着未摘的蓝色工牌，怀里抱着一个旧纸箱。",
+      "voice": "清亮偏冷的年轻女声，语速偏快，情绪压抑时尾音发颤。"
+    },
+    {
+      "id": "char_linzhiqiang",
+      "name": "林志强",
+      "gender": "male",
+      "age": 42,
+      "role": "antagonist",
+      "bio": "设计部总监，惯用手段把下属方案据为己有，擅长在人前扮演体面管理者，对苏晴既防备又不屑。",
+      "appearance": "中等身材，发际线偏高，梳背头，戴金丝边眼镜，衬衫绷在腹部。",
+      "costume": "深蓝条纹西装，未系领带，口袋插着一支金色钢笔，袖扣闪亮。",
+      "voice": "浑厚油滑的中年男声，惯用假笑式的上扬尾音，威胁时压低嗓子。"
+    },
+    {
+      "id": "char_xiaozhou",
+      "name": "小周",
+      "gender": "male",
+      "age": 23,
+      "role": "supporting",
+      "bio": "设计部实习生，崇拜苏晴的稿子，胆子小但心里明白，是部门里唯一对苏晴表达过同情的人。",
+      "appearance": "瘦高，圆框眼镜，脸上带点雀斑，头发蓬松。",
+      "costume": "浅灰卫衣外套公司马甲，牛仔裤，脖子上挂着工牌。",
+      "voice": "清亮略紧张的年轻男声，说话快而小声。"
+    },
+    {
+      "id": "char_hr",
+      "name": "HR张姐",
+      "gender": "female",
+      "age": 38,
+      "role": "supporting",
+      "bio": "人事主管，负责执行公司的裁员决定，态度职业化冷淡，从不追问上面的对错。",
+      "appearance": "干练短发，细眉，唇色偏暗红，身形挺拔。",
+      "costume": "黑色职业套装，胸前别着公司徽章，手里夹着急辞文件袋。",
+      "voice": "冷静平稳的中音女声，语气不带起伏，像在念文件。"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "雨夜离职",
+      "synopsis": "苏晴加班做出的方案被上司林志强当众据为己有，随后被HR以冗余为由辞退；她在雨夜收拾离职纸箱时发现一枚来历不明的U盘，U盘里存着能证明方案归属的原始记录。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "公司设计部办公室",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "夜晚的开放式办公区，顶灯只剩一列亮着，工位隔板上贴满方案草图，白板上还写着被林志强大大圈出的项目名。窗外是雨夜霓虹。"
+          },
+          "summary": "苏晴展示方案，林志强当众把功劳揽到自己身上，苏晴第一次试图反驳。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 8
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "苏晴居中偏左，身后是亮着屏幕的工位，右侧留出林志强西装的虚影，字幕安全区在上方三分之一"
+              },
+              "description": "夜晚办公室，苏晴站在投影幕前，手臂抬起指向幕布上的设计稿，桌面台灯把她的侧脸照白。幕布上是被放大的包装设计图，右后方林志强背手站着，金丝眼镜反光。",
+              "lighting": "冷白顶灯加台灯侧光，逆光轮廓在雨夜窗上打出一层霓虹色边",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "站在投影幕前讲解方案，手指点向幕布",
+                  "emotion": "强撑镇定，下颌线绷紧"
+                },
+                {
+                  "character_id": "char_linzhiqiang",
+                  "action": "背手站在她右后方，微微仰头看幕布",
+                  "emotion": "似笑非笑，居高临下"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "这个系列的视觉核心，是我熬了三个通宵改出来的。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.6,
+                    "speed": 1.05
+                  }
+                },
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_linzhiqiang",
+                  "kind": "dialogue",
+                  "text": "小苏，团队项目，讲的是团队。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.5,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "雨点敲玻璃",
+                "投影仪低鸣",
+                "远处键盘声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏晴面部特写居右，左侧虚化的是林志强的手指点在方案页脚"
+              },
+              "description": "办公室冷光下，苏晴低头看向自己被翻开的方案打印稿，林志强的手指压着页脚，遮住了她的署名。稿纸右下角原本写名字的位置被一块黑色马克笔涂掉。",
+              "lighting": "顶灯从上方直落，稿纸反光，苏晴眼下一片阴影",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "盯着被涂黑的署名位置，呼吸变沉",
+                  "emotion": "隐忍，眼底发红"
+                },
+                {
+                  "character_id": "char_linzhiqiang",
+                  "action": "手指压在稿纸上，轻轻敲了两下",
+                  "emotion": "从容得意"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "署名那栏，是不是写错了？",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "纸张翻动",
+                "雨声渐强"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 6
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "过肩视角，林志强在前景背对镜头，苏晴在中景成了被压迫的小主体"
+              },
+              "description": "开放式办公区里，林志强站在工位过道中央，十几名同事抬头看过来，小周抱着文件站在最边上，急忙把视线移开。林志强摊开两手，语气温和却像宣判。",
+              "lighting": "一半工位灯已熄灭，只剩林志强头顶一盏亮灯，像聚光灯",
+              "characters": [
+                {
+                  "character_id": "char_linzhiqiang",
+                  "action": "摊开手，环视众人",
+                  "emotion": "伪善，居高临下"
+                },
+                {
+                  "character_id": "char_suqing",
+                  "action": "站在他身后半步，抱紧自己的笔记本",
+                  "emotion": "被当众钉住，僵直"
+                },
+                {
+                  "character_id": "char_xiaozhou",
+                  "action": "抱着文件站在最远处，飞快低头看鞋",
+                  "emotion": "紧张、同情又不敢说话"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_linzhiqiang",
+                  "kind": "dialogue",
+                  "text": "方案是我带着她做的。年轻人，别太急。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.55,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "椅子滑动",
+                "低声议论"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "公司人事会议室",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "狭小的会议室，白墙，桌上只亮着一盏台灯，桌上摆着两份文件和一个牛皮纸档案袋，窗外雨声不断。"
+          },
+          "summary": "HR宣布辞退，苏晴签字，拿到装着私人物品的纸箱。",
+          "mood": "sad",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 7
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "俯拍桌面，两份文件占据下方三分之一，苏晴的手和HR的手分别在桌两边"
+              },
+              "description": "会议室长桌，台灯照着摊开的辞退文件，HR张姐把笔推到苏晴面前，苏晴的手停在纸面上没有立刻去拿。窗外雨幕在玻璃上淌成竖线。",
+              "lighting": "单盏台灯俯照，四周压暗，氛围逼仄",
+              "characters": [
+                {
+                  "character_id": "char_hr",
+                  "action": "把钢笔滑到苏晴面前，合上文件夹的一半",
+                  "emotion": "职业性的平静"
+                },
+                {
+                  "character_id": "char_suqing",
+                  "action": "手悬在文件上方，没碰笔",
+                  "emotion": "麻木里带不甘"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_hr",
+                  "kind": "dialogue",
+                  "text": "公司架构调整，你的岗位取消了。签这里。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.35,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "笔帽轻响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "苏晴正脸偏左，右前景是推过来的纸箱边缘，雨光落在她瞳孔里"
+              },
+              "description": "苏晴抬头，接过HR递来的旧纸箱。纸箱边缘被透明胶带加固过，上面贴着写有她名字的便签。她的工牌已经被摘下，挂在纸箱提手上晃。",
+              "lighting": "台灯从右上打来，脸半明半暗",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "接过纸箱，把工牌从脖子上取下来攥在手里",
+                  "emotion": "沉默，眼底压着泪"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "三年。连一句为什么，都懒得给我。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.65,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "工牌塑料壳轻碰",
+                "纸张摩擦"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "公司一楼大厅及门口",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "挑高的一楼大厅，正门是整面玻璃，门外是雨夜街道和湿亮的霓虹。大厅地面反着冷白光。"
+          },
+          "summary": "苏晴抱着纸箱走到雨中，在纸箱夹层发现U盘并查看内容。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "苏晴背影居中，两侧是空旷大厅柱子，玻璃门外雨幕形成天然框景"
+              },
+              "description": "苏晴抱着纸箱独自穿行在空旷的公司一楼大厅，玻璃门外雨很大，街灯把雨丝打成一道道银线。她的反光倒影在潮湿地砖上跟着她走。",
+              "lighting": "冷白吊灯加门外街灯暖光，冷暖在玻璃门前交界",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "抱着纸箱往门口走，脚步放慢",
+                  "emotion": "孤独、疲惫"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "高跟鞋踏地回声",
+                "大门外雨声轰鸣"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "纸箱内侧面特写，U盘在中央，雨珠从上方落下形成高光点"
+              },
+              "description": "门外屋檐下，苏晴在纸箱里翻找湿掉的素描本，指尖碰到夹层里一块硬物——一枚黑色U盘，外壳磨旧，贴着一小条褪色标签。她把它捏在手心。",
+              "lighting": "街灯从侧上方打亮金属接口，雨夜背景虚化成灯斑",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "翻纸箱，从夹层掏出U盘，捏在指间",
+                  "emotion": "愣住、警觉"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "这不是我的东西。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨滴打纸箱",
+                "金属轻微碰撞"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 7
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "high",
+                "movement": "push_in",
+                "composition": "手机屏幕与U盘占据画面中心，苏晴的下巴虚在上缘，屏幕内容位于字幕安全区内"
+              },
+              "description": "苏晴用外套盖着手机遮雨，把U盘插进转接头。手机屏幕上跳出文件名列表：设计终稿_署名确认版、邮件导出_林志强、发送时间记录。她的眼睛在屏幕光里放大。",
+              "lighting": "屏幕冷光从下往上照脸，雨夜的暖街灯成为背景散景",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "用身体挡雨看手机屏幕，拇指快速滑动",
+                  "emotion": "震惊转为愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_suqing",
+                  "kind": "voiceover",
+                  "text": "署我自己名字的终稿。还有他发给客户的邮件。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.75,
+                    "speed": 1.05
+                  }
+                }
+              ],
+              "sfx": [
+                "插头轻响",
+                "雨声",
+                "手机提示音"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh04",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "仰拍苏晴，雨从头顶落下，远处公司大楼灯牌悬在她身后上方"
+              },
+              "description": "雨幕中，苏晴慢慢抬起头，望向身后公司大楼二层还亮着灯的会议室窗口，那里人影走动，像是最后一场会还没散。她攥紧U盘，纸箱的角被雨水压塌。",
+              "lighting": "街灯背光勾勒雨中人影，玻璃大楼反光铺在她身后",
+              "characters": [
+                {
+                  "character_id": "char_suqing",
+                  "action": "抬头望楼上的亮灯窗口，握紧手里的U盘",
+                  "emotion": "决绝，愤怒被点起来"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_suqing",
+                  "kind": "dialogue",
+                  "text": "明天早上，我还会回来。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.85,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "闷雷",
+                "雨声增强",
+                "远处玻璃门开合"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

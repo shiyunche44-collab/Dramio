@@ -44,9 +44,9 @@
 - [x] 生成流程 `poc/script.py`：生成、解析、严格校验、修复、产物、summary、费用保险，离线测试 `tests/test_script.py`
 - [x] CLI `python3 -m poc script` 与 README 用法，加 CLI 测试
 - [x] 真实冒烟：`deepseek-flash`、`deepseek-v4-pro` 各 1 次，确认 JSON 模式与输出长度，实测单价并更新“已花费”
-- [ ] 门禁批次：`deepseek-flash` `--n 5`（失败则改 Prompt 后整批重跑，全部记录）
-- [ ] 对比批次：`deepseek-v4-pro` `--n 5`
-- [ ] 证据入库 `docs/reports/p0/P0-03/` 并独立复验
+- [x] 门禁批次：`deepseek-flash` `--n 5`（失败则改 Prompt 后整批重跑，全部记录）
+- [x] 对比批次：`deepseek-v4-pro` `--n 5`
+- [x] 证据入库 `docs/reports/p0/P0-03/` 并独立复验
 - [ ] 评分表与 agent 初评（含 ep01 锚点）
 - [ ] 结论报告 `docs/reports/p0/P0-03.md`
 - [ ] 登记 D-003（人工评分），更新本步费用
@@ -54,7 +54,7 @@
 
 ## 本步费用
 
-- **已花费**：¥0.48（估算；冒烟 3 次：flash ¥0.17、v4-pro ¥0.28、flash 关思维链 ¥0.04。余额差复核延迟入账，报告中给出）
+- **已花费**：¥2.44（估算，偏保守；冒烟 3 份 ¥0.48 + 三个候选各 5 份 ¥1.96。账户余额实际减少 ¥1.46，余额有入账延迟，报告中复核）
 - **上限**：¥100
 
 ## 待决事项

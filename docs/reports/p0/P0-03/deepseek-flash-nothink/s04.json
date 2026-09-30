@@ -1,0 +1,506 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "series_shine_design",
+    "title": "离职纸箱里的U盘",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "都市冷调写实风，低饱和灰蓝，高对比冷光，雨夜反光质感，竖屏构图强调人物压迫感与眼神特写",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_linn",
+      "name": "林诺",
+      "gender": "female",
+      "age": 26,
+      "role": "protagonist",
+      "bio": "广告公司资深设计师，能力出众却一直被直属上司压榨。性格隐忍克制，但在被剥夺成果后决意反击。",
+      "appearance": "清瘦高挑，鹅蛋脸，眼神清亮带倔强，黑色齐肩短发微湿，素颜，锁骨线条分明",
+      "costume": "深灰衬衫外搭驼色风衣，怀里抱着一个淋湿的牛皮纸离职纸箱",
+      "voice": "清冷偏低的年轻女声，语气克制，情绪激动时尾音发颤"
+    },
+    {
+      "id": "char_zhou",
+      "name": "周总",
+      "gender": "male",
+      "age": 42,
+      "role": "antagonist",
+      "bio": "公司创意总监，惯于抢占下属成果，油滑强势，擅长当众立人设博信任。",
+      "appearance": "中等偏壮，方脸，发际线后移，梳背头，戴金边眼镜，一身熨帖深色西装",
+      "costume": "黑蓝色西装三件套，口袋插巾，腕表显眼",
+      "voice": "中低音男声，语速从容，带居高临下的压迫感与假客套"
+    },
+    {
+      "id": "char_xiaoman",
+      "name": "小满",
+      "gender": "female",
+      "age": 24,
+      "role": "supporting",
+      "bio": "公司前台兼行政，林诺唯一还愿意说话的同事，胆小但重情义，掌握内部消息。",
+      "appearance": "圆脸，齐刘海，个子娇小，手脚勤快，眼神闪躲又担忧",
+      "costume": "米白色针织开衫配公司工牌吊绳",
+      "voice": "明亮偏快的少女音，带怯意，压低声音说话"
+    },
+    {
+      "id": "char_lei",
+      "name": "雷哥",
+      "gender": "male",
+      "age": 33,
+      "role": "supporting",
+      "bio": "公司保安，冷硬但讲规矩，负责在雨夜清场送人离开，偶尔留下一丝人情缝隙。",
+      "appearance": "寸头，国字脸，身材高壮，制服笔挺，脖颈挂对讲机",
+      "costume": "深色保安制服外罩透明雨衣，手持电筒",
+      "voice": "沉稳粗哑的中年男声，简短命令式"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "雨夜离职箱",
+      "synopsis": "林诺的方案在庆功会大屏上署了周总的名，她去质问反被当场辞退。雨夜被赶出公司时，她在离职纸箱夹层里发现一枚无标识U盘，小满暗示里面有周总的秘密。林诺盯着U盘的冷光，决定回来当众反击。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "广告公司开放办公区",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "深夜的开放办公区，落地窗外下着大雨，电脑屏幕成排熄灭，只有庆功会的大屏还亮着。工位间挂着气球与彩带。"
+          },
+          "summary": "庆功会上，大屏显示方案署名是周总，林诺上前质问被当众辞退。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "林诺位于画面下三分之一，身后是发亮的庆功大屏，字幕安全区留上方"
+              },
+              "description": "林诺抱着一叠打印稿站在办公区中央，仰头盯着庆功大屏；大屏上是方案的大字标题与署名【文字后期叠加：感谢创意总监的卓越方案】，她手里的稿纸边角被攥皱",
+              "lighting": "冷蓝屏幕光从后侧打来，人物正面半明半暗",
+              "characters": [
+                {
+                  "character_id": "char_linn",
+                  "action": "攥紧打印稿，仰头看大屏",
+                  "emotion": "难以置信，脸色发白"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_linn",
+                  "kind": "voiceover",
+                  "text": "这个方案，是我熬了三十七个通宵做的。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.6,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "电脑散热嗡鸣",
+                "雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 6
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "周总居中站在台上，林诺在画面右前景背对镜头露半肩，形成对峙构图"
+              },
+              "description": "周总站在小展台前举杯致谢，微笑向全场示意，背后大屏方案标题在他头顶亮着【文字后期叠加：年度最佳创意】；林诺从人群前方挤到他面前，仰脸直视他",
+              "lighting": "台面暖光与屏幕冷光交错，周总面部被暖光照亮",
+              "characters": [
+                {
+                  "character_id": "char_zhou",
+                  "action": "举杯致意，另一只手自然下压示意李诺退开",
+                  "emotion": "从容，带着居高临下的笑意"
+                },
+                {
+                  "character_id": "char_linn",
+                  "action": "挡在台前，抬手指向大屏",
+                  "emotion": "愤怒，眼眶泛红"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_linn",
+                  "kind": "dialogue",
+                  "text": "周总，这方案是我的名字！",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.05
+                  }
+                }
+              ],
+              "sfx": [
+                "玻璃杯轻碰",
+                "人群窃窃私语"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 7
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "周总位于画面左上，林诺右下，两人对角线站位，中间隔着一只举起的酒杯"
+              },
+              "description": "周总放下酒杯，压低声音凑近林诺，脸上一副为公司着想的无奈表情；林诺站着不动，手指关节发白地攥住自己的工牌",
+              "lighting": "顶灯冷白，周总眼镜片反光遮住眼神",
+              "characters": [
+                {
+                  "character_id": "char_zhou",
+                  "action": "放下酒杯，凑近压低声音说话，抬手看表",
+                  "emotion": "伪善，略带不耐烦"
+                },
+                {
+                  "character_id": "char_linn",
+                  "action": "攥住工牌，胸口起伏",
+                  "emotion": "憋怒，强忍"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_zhou",
+                  "kind": "dialogue",
+                  "text": "小林，方案是团队的。你情绪不稳，明天别来了。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.7,
+                    "speed": 0.95
+                  }
+                },
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_linn",
+                  "kind": "dialogue",
+                  "text": "你抢了我的东西，还赶我走？",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.95,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "酒杯放桌声",
+                "雨声加强"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh04",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "pull_out",
+                "composition": "林诺的脸在画面中央被俯拍挤压，周围是模糊的围观人群"
+              },
+              "description": "林诺站在原地，四周同事慢慢退开形成一圈空隙，有人低头刷手机，有人别开脸；她手里的打印稿被自己捏出一道深折痕",
+              "lighting": "高角度冷光，脸颊阴影重，眼神反光",
+              "characters": [
+                {
+                  "character_id": "char_linn",
+                  "action": "环视四周寻找支持，没人回应",
+                  "emotion": "孤立无援，屈辱"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_linn",
+                  "kind": "voiceover",
+                  "text": "没有一个人替我说话。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "人群细碎脚步声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "公司一楼大堂与门口",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "深夜公司大堂，前台灯只开一半，自动门外大雨倾盆，雨水打在地砖上溅起水雾，旋转门外停着空的出租车。"
+          },
+          "summary": "林诺抱着离职纸箱被保安送出，小满追上来塞台词并暗示箱中秘密。",
+          "mood": "sad",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "high",
+                "movement": "tracking",
+                "composition": "林诺背对镜头走向自动门，雨幕在门框中形成明亮竖条，人物居中偏右"
+              },
+              "description": "林诺抱着牛皮纸箱独自穿过空旷大堂走向自动门，纸箱角已经淋湿泛深，脚下地砖被雨水打亮；雷哥走在前面半步，侧身替她挡着门",
+              "lighting": "大堂暖黄筒灯与门外冷蓝雨光交界，人物处在交界线上",
+              "characters": [
+                {
+                  "character_id": "char_linn",
+                  "action": "抱着纸箱低头快走",
+                  "emotion": "麻木，眼眶未干"
+                },
+                {
+                  "character_id": "char_lei",
+                  "action": "撑开门，侧身等候",
+                  "emotion": "公事公办，略有同情"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_lei",
+                  "kind": "dialogue",
+                  "text": "东西拿好，别落下了。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.4,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "自动门开合声",
+                "暴雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "小满从画面左侧追上，与林诺并排，背景是雨幕玻璃门"
+              },
+              "description": "小满小跑追上，抓住林诺纸箱边缘，左右张望确认没人，压低声音凑到她耳边；林诺停步侧脸，雨水顺着玻璃门滑下映在两人之间",
+              "lighting": "门口冷蓝侧光，小满的脸半藏在阴影中",
+              "characters": [
+                {
+                  "character_id": "char_xiaoman",
+                  "action": "抓住纸箱边，凑近耳语",
+                  "emotion": "紧张，愧疚"
+                },
+                {
+                  "character_id": "char_linn",
+                  "action": "停下脚步，侧头听",
+                  "emotion": "疲惫，微怔"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_xiaoman",
+                  "kind": "dialogue",
+                  "text": "诺姐，你箱子里夹层有东西，别在这看。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.8,
+                    "speed": 1.15
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "鞋底踩水声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "push_in",
+                "composition": "俯拍纸箱内部，箱底夹层露出一角深色U盘，人物手部入画，安全区在上方"
+              },
+              "description": "林诺走到门口台阶下，蹲在没雨的檐下掀开纸箱夹层，指尖碰到一枚无标识的深色金属U盘，表面映着远处路灯的一点冷光；雨水在箱子边缘敲出细密水花",
+              "lighting": "路灯冷光仅照亮U盘一角，其余压在暗部",
+              "characters": [
+                {
+                  "character_id": "char_linn",
+                  "action": "蹲下翻找夹层，捏起U盘",
+                  "emotion": "惊讶，警觉"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_linn",
+                  "kind": "voiceover",
+                  "text": "这是什么？谁会把它放进我的箱子？",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.75,
+                    "speed": 1.05
+                  }
+                }
+              ],
+              "sfx": [
+                "雨滴打纸箱",
+                "远处车驶过"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "公司门外雨夜街道",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "公司大楼门外的人行道，雨夜，路灯发白光，路面积水倒映大楼logo，行人稀少，一辆出租车驶过溅起水花。"
+          },
+          "summary": "林诺在雨中握紧U盘，手机弹出周总群里嘲讽的消息，她转身决定回去当众反击。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "林诺在画面左三分之二，右侧留出湿路的反光延伸感，竖屏纵深构图"
+              },
+              "description": "林诺站在路灯下，一手抱箱子一手捏着U盘，雨水打湿她额前头发；她低头看U盘，盒里的打印稿一角露在外面被雨淋皱",
+              "lighting": "顶路灯光在她头顶形成冷白晕圈，脸部阴影深",
+              "characters": [
+                {
+                  "character_id": "char_linn",
+                  "action": "捏着U盘看，另一只手护住纸箱",
+                  "emotion": "冷静下来，眼神变锐"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_linn",
+                  "kind": "voiceover",
+                  "text": "周总，你以为我走了，就没人知道了吗？",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.6,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "车轮碾水声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "俯拍手机屏幕上的一条群消息，水滴在屏幕上化开，文字后期叠加"
+              },
+              "description": "林诺湿冷的手指划开手机，公司群里一条消息亮着，发件人是周总【文字后期叠加：今晚的庆功很成功，感谢大家配合，特别遗憾有人掉了队】，屏幕上雨水晕开字迹",
+              "lighting": "手机屏幕冷白直射手指与雨滴",
+              "characters": [
+                {
+                  "character_id": "char_linn",
+                  "action": "拇指划过屏幕，停在那条消息上",
+                  "emotion": "被刺到，冷笑"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "手机提示音",
+                "雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "林诺正脸居中，U盘举到脸侧，背景是雨中大楼logo虚化"
+              },
+              "description": "林诺缓缓抬头，雨水顺着睫毛落下，她看着身后大楼，把U盘举在脸侧，拇指按在U盘接头上，像在按一枚开关；纸箱被她夹在身侧不再护着",
+              "lighting": "脸上冷白顶光加强，眼神有亮光，背景暗下去",
+              "characters": [
+                {
+                  "character_id": "char_linn",
+                  "action": "举U盘对着大楼，转身",
+                  "emotion": "决意，带一丝凛冽"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_linn",
+                  "kind": "voiceover",
+                  "text": "明天，我要在所有人面前，让他还回来。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.85,
+                    "speed": 1.05
+                  }
+                }
+              ],
+              "sfx": [
+                "雷声远处滚过",
+                "雨声渐强"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

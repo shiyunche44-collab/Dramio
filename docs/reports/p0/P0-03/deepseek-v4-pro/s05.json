@@ -1,0 +1,589 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "drama_rainy_revenge",
+    "title": "雨夜反击",
+    "logline": "被上司抢走方案、雨夜被辞退的设计师，在离职纸箱里发现一枚神秘 U 盘，决定当众反击。",
+    "genre": "都市逆袭",
+    "visual_style": "冷色调都市写实，雨夜霓虹光，办公室冷暖对比",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_linxi",
+      "name": "林晓",
+      "gender": "female",
+      "age": 27,
+      "role": "protagonist",
+      "bio": "才华横溢却被上司打压的UI设计师，性格坚韧，雨夜被辞退后凭借U盘反击。",
+      "appearance": "干练短发，黑框眼镜，眼神疲惫但锐利，身形清瘦。",
+      "costume": "灰色长款风衣，内搭白色衬衫，深色牛仔裤，运动鞋。",
+      "voice": "年轻女声，清晰坚定，情绪起伏明显。"
+    },
+    {
+      "id": "char_zhouming",
+      "name": "周明",
+      "gender": "male",
+      "age": 45,
+      "role": "antagonist",
+      "bio": "设计总监，善于抢功，自私傲慢，为保住职位不择手段。",
+      "appearance": "微胖，油亮背头，眼神阴鸷，穿剪裁考究的深色西装。",
+      "costume": "深灰色高级西装，白衬衫，深色领带。",
+      "voice": "中年男声，低沉傲慢，语速偏慢。"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "雨夜被辞",
+      "synopsis": "设计师林晓雨夜被上司周明辞退并夺走方案，却在离职纸箱中发现神秘U盘，掌握周明窃取方案证据，决定返回公司当众反击。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "设计总监办公室",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "宽敞办公室，落地窗映出雨夜霓虹，办公桌整洁，台灯亮着。"
+          },
+          "summary": "周明抢走林晓的设计方案并宣布辞退她。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "俯拍特写，设计稿占画面中心，周明的手压在稿纸上，字幕安全区在下半部。"
+              },
+              "description": "特写：周明的手将一叠设计稿重重拍在办公桌上，稿纸首页印着“林晓”的签名和项目logo。台灯从侧面打亮稿纸，窗外雨夜霓虹虚化。",
+              "lighting": "台灯暖光为主，窗外冷色霓虹为辅，高反差。",
+              "characters": [
+                {
+                  "character_id": "char_zhouming",
+                  "action": "右手拍在稿纸上，身体前倾",
+                  "emotion": "冷酷"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_zhouming",
+                  "kind": "dialogue",
+                  "text": "林晓，你被辞退了。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "纸张拍击声",
+                "雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 5.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "双人同框，周明在左，林晓在右，林晓位于画面焦点。"
+              },
+              "description": "中景：林晓站在办公桌前，惊愕地瞪着周明；周明坐在皮椅上，翘着腿，手指敲着稿纸，轻蔑地笑。林晓双手紧握成拳。",
+              "lighting": "办公室顶灯与台灯混合，林晓面部光线偏冷。",
+              "characters": [
+                {
+                  "character_id": "char_zhouming",
+                  "action": "翘腿坐在皮椅上，手指敲击稿纸",
+                  "emotion": "轻蔑"
+                },
+                {
+                  "character_id": "char_linxi",
+                  "action": "站立，身体前倾，握拳",
+                  "emotion": "震惊愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_zhouming",
+                  "kind": "dialogue",
+                  "text": "你的方案，以后归我。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                },
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_linxi",
+                  "kind": "dialogue",
+                  "text": "这是我的方案！",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "手指敲桌声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "林晓面部特写，眼神占画面1/3，泪光与怒意并存。"
+              },
+              "description": "近景：林晓眼眶泛红，紧咬下唇，强忍着没让眼泪掉下来。她深吸一口气，眼神从委屈转为冷硬。",
+              "lighting": "侧面冷光，面部明暗分明。",
+              "characters": [
+                {
+                  "character_id": "char_linxi",
+                  "action": "强忍泪水，咬唇，眼神冷硬",
+                  "emotion": "屈辱坚持"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "公司大楼门口",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "雨夜的公司大门台阶，上方有雨棚，街灯昏黄，雨水成帘。"
+          },
+          "summary": "林晓抱着纸箱离开公司，在雨中失落。",
+          "mood": "sad",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh04",
+              "duration": {
+                "hint_s": 4.0
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "林晓从玻璃门走出，背影占据画面中轴。"
+              },
+              "description": "中远景：公司玻璃门打开，林晓抱着一个装满杂物的纸箱走出来，保安没有阻拦。雨从雨棚边缘滴落，她站在台阶上，抬头看雨。",
+              "lighting": "街灯昏黄，门口灯光惨白，雨幕形成光斑。",
+              "characters": [
+                {
+                  "character_id": "char_linxi",
+                  "action": "抱纸箱走出，抬头看雨",
+                  "emotion": "失落"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_linxi",
+                  "kind": "voiceover",
+                  "text": "三年，就这样被踢出来。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.6,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "玻璃门关闭声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh05",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "high",
+                "movement": "static",
+                "composition": "林晓站在台阶下，低头看纸箱，雨水溅湿裤脚。"
+              },
+              "description": "中景：林晓抱着纸箱走下台阶，站在雨中，纸箱有被雨水打湿的痕迹。她低头看了看纸箱里的物品，眼神空洞。",
+              "lighting": "顶光，霓虹灯在身后形成光晕。",
+              "characters": [
+                {
+                  "character_id": "char_linxi",
+                  "action": "下台阶，低头看纸箱",
+                  "emotion": "迷茫"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨声",
+                "脚步声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh06",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "手机屏幕占据画面上半，林晓面部在下方，屏幕反射光。"
+              },
+              "description": "近景：林晓掏出手机，屏幕显示群聊页面，文字后期叠加：“你已被移出‘设计部’群聊”。她苦笑，锁屏，将手机塞回口袋。",
+              "lighting": "屏幕光打在脸上，周围暗。",
+              "characters": [
+                {
+                  "character_id": "char_linxi",
+                  "action": "看手机，锁屏",
+                  "emotion": "苦笑"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_linxi",
+                  "kind": "voiceover",
+                  "text": "连群都踢了。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.5,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "短信提示音",
+                "雨声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "公交站候车亭",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "街边公交站，有长椅和广告灯箱，雨水顺着遮雨棚流下。"
+          },
+          "summary": "林晓在纸箱里发现神秘U盘，用手机读取后听到周明窃取方案的录音，决定反击。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh07",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "林晓坐在长椅上，纸箱放旁边，手在箱内翻找。"
+              },
+              "description": "中景：林晓坐在公交站长椅上，把纸箱放在腿上，翻找物品。她手指触到一个硬物，拿出一个黑色U盘，疑惑地端详。",
+              "lighting": "广告灯箱的冷白光从背后照亮轮廓，正面偏暗。",
+              "characters": [
+                {
+                  "character_id": "char_linxi",
+                  "action": "翻纸箱，拿出U盘端详",
+                  "emotion": "疑惑"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_linxi",
+                  "kind": "dialogue",
+                  "text": "这是什么？",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.5,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "雨声",
+                "翻动物品声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh08",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "U盘与手机接口特写，屏幕内容后期叠加。"
+              },
+              "description": "大特写：林晓用转接头将黑色U盘插入手机，手机屏幕亮起，文件管理器显示一个音频文件，文字后期叠加：“录音_项目X_最终版.wav”。她点开文件。",
+              "lighting": "手机屏幕冷光，背景虚化。",
+              "characters": [
+                {
+                  "character_id": "char_linxi",
+                  "action": "插U盘，点开文件",
+                  "emotion": "专注"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "点击声",
+                "电流音"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh09",
+              "duration": {
+                "hint_s": 6.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "林晓戴耳机听录音，面部表情变化，背景雨幕。"
+              },
+              "description": "近景：林晓戴上耳机，手机放在耳边。画面逐渐推近，她眉头紧锁，瞳孔震动，脸色因愤怒而涨红。突然她摘下耳机，咬紧牙关。",
+              "lighting": "广告灯箱冷光，面部明暗交替。",
+              "characters": [
+                {
+                  "character_id": "char_linxi",
+                  "action": "戴耳机听，摘下耳机",
+                  "emotion": "愤怒震惊"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_linxi",
+                  "kind": "voiceover",
+                  "text": "周明，你果然偷了我的方案。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.0
+                  }
+                },
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_linxi",
+                  "kind": "voiceover",
+                  "text": "这次，我不会放过你。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "耳机中模糊音频",
+                "雨声",
+                "心跳声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh10",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "static",
+                "composition": "林晓从长椅站起，仰拍，身后广告灯箱发光。"
+              },
+              "description": "中景：林晓猛地站起身，将U盘紧紧攥在掌心，眼神坚定地望向来时的路。她把手机塞回口袋，深吸一口气。",
+              "lighting": "广告灯箱在身后形成光晕，正面低角度打光。",
+              "characters": [
+                {
+                  "character_id": "char_linxi",
+                  "action": "站起，握紧U盘，望向公司方向",
+                  "emotion": "坚定"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨声",
+                "起身衣料摩擦声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "公司会议室门外走廊",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "公司高层会议室外的走廊，磨砂玻璃门透出会议室内光线，门缝传出人声。"
+          },
+          "summary": "林晓返回公司，站在会议室门外，手握U盘，准备当众反击。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh11",
+              "duration": {
+                "hint_s": 4.0
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "林晓沿走廊快速走向镜头，雨水从她发梢滴落。"
+              },
+              "description": "中远景：林晓浑身湿透，快步穿过公司走廊，手中紧握黑色U盘。走廊灯光在她背后拉出长影。",
+              "lighting": "走廊顶灯冷白，地面有雨水反光。",
+              "characters": [
+                {
+                  "character_id": "char_linxi",
+                  "action": "快步走，握U盘",
+                  "emotion": "愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_linxi",
+                  "kind": "voiceover",
+                  "text": "既然你无情，别怪我无义。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "脚步声",
+                "衣服滴水声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh12",
+              "duration": {
+                "hint_s": 4.5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "林晓站在会议室门口，画面一侧是磨砂玻璃门，门内人影晃动。"
+              },
+              "description": "近景：林晓停在会议室门外，透过磨砂玻璃能看到里面人影。门内传来周明得意的声音。林晓低头看了一眼U盘，嘴角微微上扬。",
+              "lighting": "门内暖光透出，门外冷光，形成冷暖对比。",
+              "characters": [
+                {
+                  "character_id": "char_linxi",
+                  "action": "站在门口，听门内动静",
+                  "emotion": "冷笑"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_zhouming",
+                  "kind": "voiceover",
+                  "text": "这个项目，以后就是我的功劳。",
+                  "delivery": {
+                    "emotion": "happy",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "门内模糊人声",
+                "雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh13",
+              "duration": {
+                "hint_s": 7.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "林晓推开门，画面推向会议室内，众人回头。"
+              },
+              "description": "中景：林晓猛地推开会议室门，会议室内灯光刺眼，周明和几位同事转头看向门口。林晓举起手中的U盘，眼神凌厉。",
+              "lighting": "会议室顶灯明亮，林晓从暗处进入明处。",
+              "characters": [
+                {
+                  "character_id": "char_linxi",
+                  "action": "推门，举起U盘",
+                  "emotion": "果决"
+                },
+                {
+                  "character_id": "char_zhouming",
+                  "action": "从椅子上转头，惊愕",
+                  "emotion": "震惊"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0011",
+                  "speaker": "char_linxi",
+                  "kind": "dialogue",
+                  "text": "周总，你的好戏，该收场了。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.0
+                  }
+                },
+                {
+                  "line_id": "l_0012",
+                  "speaker": "char_linxi",
+                  "kind": "dialogue",
+                  "text": "我手里的优盘，就是证据。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.9,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "门猛地推开声",
+                "椅子挪动声",
+                "雨声渐弱"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
