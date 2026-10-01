@@ -35,9 +35,9 @@ def analyze(video_dir: Path, manifest_path: Path, out_dir: Path) -> dict[str, An
             face_images.append({"shot_id": shot_id, "characters": item["characters"], "scheme": f.label, "round": 1,
                                 "file": f"frames/{shot_id}/{f.label}.jpg", "measurable": item.get("measurable")})
     (out_dir / "face-manifest.json").write_text(json.dumps({"references": manifest["references"], "images": face_images}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    write_table(video_dir, out_dir)
     result = {"source_manifest": str(manifest_path), "count": len(rows), "shots": rows}
     (out_dir / "metrics.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    write_table(video_dir, out_dir)  # 必须在 metrics.json 写完之后：表读的是这次的度量
     return result
 
 

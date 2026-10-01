@@ -22,63 +22,22 @@
 ## 当前状态
 
 - **当前里程碑**：M0.2 单项能力摸底
-- **当前步骤**：P0-08
-- **步骤状态**：进行中
+- **当前步骤**：P0-11
+- **步骤状态**：未开始
 - **工作分支**：claude/sweet-lamport-cwwsvb
 - **PR**：—
 
-## P0-08 图生视频
+## 步骤卡
 
-- **目标**：`python3 -m poc video` 把 P0-07 选定的 13 张首帧（9:16）逐镜头生成视频片段。首选候选 MiniMax-H3（用户指定）；对照：MiniMax-H3-Max（极速版）、MiniMax-Hailuo-2.3（v1）、Ark Seedance（账号能用才评测）。给出单价、耗时、失败率与失败类型、实际分辨率与时长、是否带音频、首帧保真与人脸一致性，留下可复核证据和 `docs/reports/p0/P0-08.md`；下游 P0-09、P0-11 可直接取用片段。
-- **做**：
-  - 输入：`docs/reports/p0/P0-07/keyframe-r1/manifest.json` 中 `selected==true` 的 13 张首帧（原样 JPEG，sha256 校验，`data:image/jpeg;base64,…` 内联）。镜头时长取 ep01 的 `duration.hint_s`（5 个 4 秒、8 个 5 秒，合计 60 秒）；H3 支持 4–15 秒，H3-Max 5–15 秒（4 秒镜头取 5 秒再裁），Hailuo-2.3 只有 6 / 10 秒（取 6 秒再裁）。
-  - 运动提示词 `poc/prompts/video.v1.md`：字段运行时取自 ep01（description、characters[].action / emotion、lighting、framing.movement），只写起始画面之后发生的运动，不写台词与口型。
-  - `poc/minimax.py`（H3 / H3-Max 走 `POST /v2/video_generation`，查询 `GET /v2/query/video_generation/{task_id}`，成功取 `task.content.url`；Hailuo-2.3 走 v1）、`poc/seedance.py`、`poc/media.py`（ffprobe / ffmpeg：实际分辨率、时长、fps、音频流、抽帧、SSIM、运动量、裁剪）、`poc/pricing.py` 视频一节、`poc/video.py`（`--candidate`、`--resolution`、`--shots`、`--workers`、`--max-cost-cny`、`--dry-run`、`--resume`、`--export`、`--verify`）。task_id 提交后立即写入 `tasks.jsonl`，`--resume` 只查询不重复提交；下载不带 Authorization。
-  - 度量：对视频抽帧，复用 `python3 -m poc face --manifest` 算首 / 中 / 末帧相对首帧与定妆参考的人脸相似度（τ=0.45，侧脸小脸低估沿用 P0-07 的说明）；首帧 SSIM、运动量；agent 初评（缩略条，非盲评，主观结论登记待决事项）。
-  - 证据体积：视频文件大，冒烟后按实际字节数外推，超 12 MB 先登记待决事项再入库；`runs/` 不入库，片段会话结束会丢失，报告写明“给 P0-09 / P0-11”的取用与重生成本。
-- **不做**：口型同步与原生音画同步的效果评价（P0-09，本步只记录“产物是否带音频流”）；拼接、字幕、混音、AIGC 标识、OTIO（P0-11）；不接模型网关，不做缓存（P0-12）；不重生首帧，不处理“主体延伸到底部”的遗留（D-011 已接受）；不做超分插帧（只记录与 1080×1920 的差距）；不评测 MiniMax、Ark 之外的视频供应商；不新增 ADR，不改 `rules.toml` / `exceptions.toml`；**不用非法参数探测去碰会创建任务的路径**，任何会创建任务的请求都必须是经本地校验的合法请求。
-- **验收**：
-  1. `python3 -m poc video --dry-run` 离线列出每个任务的首帧 sha256、提示词、duration、预计费用、node_key，不需要密钥、不发请求；单元测试离线通过；`make arch-check`、`make drama-ir-check` 通过。
-  2. H3 冒烟：至少 1 个任务成功并下载，ffprobe 可解析，记录取回字段、下载域名、实际分辨率 / 时长 / fps、是否有音频流、usage、耗时。
-  3. 每个评测过的“候选 × 分辨率”给出元 / 秒，注明来源（usage、响应金额或账单核对）。
-  4. 耗时（提交到成功）、失败率（最终成功数 / 任务数、首次成功数、失败类型分布）按候选 × 分辨率给出，并说明样本量小。
-  5. 效果对比：H3 768P 覆盖 13 个镜头；其余格子按预算规则执行，范围写进报告；逐镜头表含 SSIM、人脸相似度（首 / 中 / 末 / 最小）、运动量、实际分辨率与时长。
-  6. agent 初评（主观，需用户确认）：按运动自然度、提示词符合度、人脸稳定性、瑕疵、运镜符合度，标明“非盲评、缩略图”，登记待决事项。
-  7. Ark Seedance 给出明确结论（可评测 / 不可用及原因 / 被域名拦截及主机名），并写清 Agent Plan 能否调 Seedance、首帧（图生图 vs 文生图原始产物）是否被接受。
-  8. Hailuo-2.3 与 H3-Max 各有至少 1 次冒烟结论（可用 / 不可用及错误码）；不可用不算失败。
-  9. `python3 -m poc video --verify docs/reports/p0/P0-08` 返回 0（sha256、ffprobe 实际值、费用合计与 calls 对应、无密钥）；`du -sb` 不超过 12 MB（超限先登记待决事项）。
-  10. 本步费用 ≤ ¥100，每次运行都设 `--max-cost-cny`；progress.md “本步费用”与 calls 合计一致；“给 P0-09 / P0-11”一节写明片段位置、原生音频情况、分辨率差距、文件体积。
-- **涉及**：architecture.md §5.4；ADR-0004 / 0005 / 0006（Proposed，只作产品化参照，P0 直连只限 spikes）；INV-02（只读 DramaIR）、INV-03（不 import spikes）。
-- **估时**：1.5–2 天；预计费用约 ¥70–80（H3 768P 全集 ¥30、H3-Max 480P ¥22、2K 1 个 ¥4、Hailuo 4 个 ¥8、Seedance ¥5、冒烟与重试）。
-- **已核实的事实（2026-09-30，文档 `platform.minimax.cn/docs/llms.txt`）**：
-  - `MiniMax-H3`：768P / 2K，4–15 秒；768P ¥0.50 / 秒，2K ¥0.80 / 秒；首帧图 5 张以内免费。`MiniMax-H3-Max`（极速版）：480P / 768P，5–15 秒，480P ¥0.33 / 秒，768P ¥0.50 / 秒，首帧图 2 张以内免费；`extra.prompt_expansion_mode`：disabled / balanced（默认）/ quality；`aigc_watermark` 默认 false。`MiniMax-Hailuo-2.3`（v1）：768P 6 秒 ¥2.00，10 秒 ¥4.00。失败或命中审核的任务不计费。
-  - V2 请求体：`model`、`content`（必含非空 text；图生视频首帧 `{"type":"image_url","image_url":{"url":…},"role":"first_frame"}`，url 可为公网 URL / `mm_file://` / `data:image/<格式>;base64,…`）、`resolution`、`duration`（必填）、`ratio`（图生视频恒为 adaptive，由首帧决定）、`extra`、`callback_url`、`aigc_watermark`；图片限制 JPG / PNG / WEBP / HEIC，≤30 MB，边长 256–5760，宽高比 0.4–2.5，请求体 ≤64 MB。接口名称里 t2va / i2va / r2va 的 “a” 指带音频：多模态参考可带参考音频与“角色说话：…”，是否默认带音频流待冒烟实测（对 P0-09 选路线很关键）。
-  - 查询 `GET /v2/query/video_generation/{task_id}`：`task.status` ∈ queued / running / succeeded / failed / cancelled；成功时 `task.content.url`（限时下载链接，请及时转存，过期可重新查询）、`task.usage`（total_seconds / output_seconds / input_image_count / total_tokens …）；失败时 `task.error.code / message`。任务记录保留 7 天。错误类型：400 参数、401 鉴权、402 余额不足（账号级，立即中止）、422 命中敏感内容（首帧被拒）、429 限流、500。
-  - 限流：Video Generation V2（H3）300 RPM。
-  - 视频 CDN 域名（文档示例 `video-product.cdn.minimax.io`、`cdn.hailuoai.com`）在当前容器均被拦（CONNECT 403）；实际域名要看第一次成功任务的 `content.url`，被拦则需用户放行，任务结果保留 7 天，放行后新会话可重新取回。
+（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
 
 ## 子任务
 
-- [x] A1 环境：确认 ffmpeg / ffprobe（已有，6.1.1）与 h264 解码；重装 `[face]` extras 并下载 buffalo_l 权重；读 manifest 的 13 张 selected 首帧并校验 sha256，对照 ep01 的 hint_s
-- [x] A2 读方舟视频文档（`docs.volcengine.com` 82379/1520757 创建任务、82379/1544106 价格、82379/2366394 Agent Plan 兼容模型）：Seedance model id、请求结构、first_frame 写法、时长与分辨率范围、token 单价、Plan 是否含视频、产物 URL 与有效期
-- [x] A3 `poc/media.py`（ffprobe、抽帧、SSIM、运动量、裁剪；单元测试用 ffmpeg 合成视频，不联网）
-- [x] A4 `poc/minimax.py`（H3 / H3-Max v2；Hailuo-2.3 v1；提交、查询、下载、失败分类、`tasks.jsonl` 持久化、下载不带鉴权头；假 transport 单测）
-- [x] A5 `poc/seedance.py`（按 A2 结论，`--dry-run` 与单测）
-- [x] A6 `poc/pricing.py` 视频一节（带 `verified` 标记，已知单价见上）与 `poc/prompts/video.v1.md`
-- [x] A7 `poc/video.py` 与 CLI（规划、执行、`--resume`、费用保险、`--dry-run`、`--export`、`--verify`、伪 manifest 抽帧并调用 `face`）
-- [x] A8 `make arch-check`、单测通过；`--dry-run` 打印 13 镜头的 H3 请求预览
-- [x] B1 H3 冒烟 1（合法请求，1 个）：`ep01_sc01_sh02`，768P，4 秒（约 ¥2）。目的：首帧 data URI 是否接受、`content.url` 下载域名、耗时、usage、是否带音频流；发出前本地校验请求体
-- [x] B2 停下检查点：下载被拦 / 任务失败 / 任务创建但拿不到结果，则不继续 B3 起的调用
-- [x] B3（未做：额度用尽，按 2026-10-01 用户决定收尾，登记 D-014）H3-Max 480P 5 秒冒烟（约 ¥1.65）与 Hailuo-2.3 768P 6 秒冒烟（¥2）：确认账号是否可用
-- [x] B4（结论：本账号 Agent Plan 不能调 Seedance，见交接日志 2026-10-01）Ark 冒烟：先免费 GET 路径，再按“空镜 → sc01_sh05（文生图首帧）→ 一张图生图首帧”的顺序，480P 短时长；任一步被拒或被拦即停止 Ark 线
-- [x] B5（按实测：体积 13.2 MB 超限，登记 D-013）按实测单价定矩阵并写入预估；证据体积外推，超 12 MB 先登记待决事项
-- [x] C1 H3 768P 完成 9/13（缺 4 个镜头：额度用尽）；C2、C3、C4 未做（D-014）；C5 Seedance 不可用；C6 只对瞬时错误重试，超时任务先 `--resume`
-- [x] D1（工具已就绪：`poc/video_metrics.py` / `--analyze`；9 个 H3 视频已度量，13 个到齐后重跑）对成功视频跑 `media.py`（分辨率、时长、fps、码率、音频流、SSIM、运动量）；D2 抽帧跑 `face --manifest`；D3 全镜头缩略条与 agent 初评；D4 汇总并写 `docs/reports/p0/P0-08.md`（含“给 P0-09 / P0-11”一节）；D5 `--export` 与 `--verify`；D6 登记待决事项（默认候选与分辨率、证据体积、域名放行、Ark 线路、账单核对）
-- [ ] E1 README `video` 一节与 progress.md 前置条件更新；E2 verifier、arch-reviewer，按 ship.md 交付 PR
+（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
 
 ## 本步费用
 
-- **已花费**：¥23.00（估算：H3 768P 冒烟 5 秒 + 全量已成功的 9 个任务共 41 秒，按 ¥0.50 / 秒；账单待核对；全量原 calls 记录随旧容器丢失，需据任务列表 usage 重建）
+- **已花费**：¥0
 - **上限**：¥100
 
 ## 待决事项
@@ -99,8 +58,7 @@
 | D-010 | P0-07 | 证据体积超上限：37 张 pro 首帧（平均 276 KB，步骤卡估算时按 160 KB）入库后 `docs/reports/p0/P0-07` 为 10.83 MB（步骤卡上限 10 MB；含补充的 faces、pick-best、校准 JSON） | A：上限放宽到 11 MB，全部保留；B：只入库选定的 13 张 + 各方案各镜头的 r1 缩略说明（减到约 4 MB，但逐方案对比图没了，`faces-r1.json` 里的图像路径失效）；C：入库 `ref2` 与选定图（约 7 MB），`text` / `ref1` 只留统计 | A：只超 0.83 MB；三个方案的原图是报告对比结论与目视评分的依据，P0-08 也会按 manifest 引用 | 已决 | A：上限放宽到 11 MB，全部保留（2026-09-30，用户：“三个都按照建议来”） |
 | D-011 | P0-07 | 默认一致性方案与目视评分（主观）：推荐 `ref2`，但按预设判据“无错人实例（< 0.30）”严格算三个方案都不达标（`ref2` 有 1 个，r1 `sc01_sh05` 陆沉 0.296，目视为侧脸误判）；agent 目视抽查（缩略图，非盲评）三个方案基本无法区分，都没有发现换脸，只有 `sc01_sh05` 侧脸双人镜头 `text` / `ref1` 略差（3 分），评分表见报告 §6；**“底部 1/4 留白”没有做到**：约 7 / 13 个镜头主体延伸到画面底部，是否可作字幕安全区也请一并确认 | A：采纳 `ref2` 为默认方案，`sc01_sh05` 按“度量局限”处理；B：单人镜头 `ref1`、双人及多人镜头 `ref2`；C：不采纳，要求补测（例如对 `sc01_sh05` 这类侧脸双人镜头加候选数，或改用更严判据）。各方案首帧在 `docs/reports/p0/P0-07/keyframe-r1/`，逐镜头表见 [P0-07.md](reports/p0/P0-07.md) §3 | A：`ref2` 下尾最好（P10 0.48、92% ≥ τ），双人镜头最稳，P0-08 按 manifest 里选定的首帧取；B 与 A 差别主要在 `ref1` 单人镜头中位数更高（0.67 vs 0.57），但 `ref1` 下尾更差，建议 P1-12 用“多候选 + 打分选优”解决而不是在 P0 分方案 | 已决 | A：采纳 `ref2` 为默认一致性方案，`sc01_sh05` 按度量局限处理；“底部 1/4 留白”接受现状，记为遗留问题（字幕区留到 P0-11 后期处理或 P1 收紧 Prompt）（2026-09-30，用户：“三个都按照建议来”） |
 | D-012 | P0-08 | 图生视频的默认方案与目视评分（主观）：只有 H3 768P 有数据（9/13 个镜头），agent 初评（缩略条、非盲评）见报告 §5 | A：采纳 H3 768P 为 P0 默认图生视频方案，`sc01_sh05`（人物走出画面）按“提示词问题”处理；B：先不定默认，等补测 H3-Max / Hailuo-2.3 / 2K 后再选；C：不采纳（说明原因）。片段 `docs/reports/p0/P0-08/full-h3/videos/`，缩略条 `full-h3/analysis/sheets/`，逐镜头表见 [P0-08.md](reports/p0/P0-08.md) §3 | A：9 个镜头里 8 个可直接用，身份稳定、首帧保真 SSIM ≥ 0.93，0 次生成失败；没有对照数据时 B 只是拖延，补测发现更好的候选时再改默认即可 | 待决 | |
-| D-013 | P0-08 | 证据体积超上限：`docs/reports/p0/P0-08` 现为 13.2 MB（步骤卡上限 12 MB，已不含 3.3 MB 抽帧图），补齐 4 个镜头后预计约 17 MB | A：上限放宽到 18 MB，全部保留；B：保持 12 MB，只入库全量视频与账本，删除冒烟视频（1.1 MB）和缩略条；C：视频不入库，只留账本、sha256 与缩略条（片段由任务记录重取，保留 7 天，会过期） | A：视频是 P0-09 / P0-11 的输入，过期后重生成要花钱；P0 证据不再继续增长 | 待决 | |
-| D-014 | P0-08 | 未评测部分怎么处理：MiniMax Token Plan 额度用尽（缺 4 个镜头，H3-Max / Hailuo-2.3 / 2K 冒烟未做，约 ¥20）；Ark Seedance 在 Agent Plan 下不可用 | A：等你补额度（升级 Token Plan 或购买积分）后另开补测，命令见报告 §8，P0-08 先按现有数据合并；B：不补测，P0 的结论只覆盖 H3 768P，报告注明；C：另外要评测 Seedance 时，提供含视频的套餐档位或按量付费 Key | A：补 4 个镜头是 P0-11 换成真实视频的前提，花费小（约 ¥9.5）；Seedance 不阻塞 P0 | 待决 | |
+| D-013 | P0-08 | 未评测部分怎么处理：MiniMax Token Plan 额度用尽（缺 4 个镜头，H3-Max / Hailuo-2.3 / 2K 冒烟未做，约 ¥20）；Ark Seedance 在 Agent Plan 下不可用 | A：等你补额度（升级 Token Plan 或购买积分）后另开补测，命令见报告 §8，P0-08 先按现有数据合并；B：不补测，P0 的结论只覆盖 H3 768P，报告注明；C：另外要评测 Seedance 时，提供含视频的套餐档位或按量付费 Key | A：补 4 个镜头是 P0-11 换成真实视频的前提，花费小（约 ¥9.5）；Seedance 不阻塞 P0 | 待决 | |
 
 ## 已知的前置条件
 
@@ -179,3 +137,4 @@
 | 2026-10-01 | P0-08 | 用户说“继续”：下载域名已放行，sc02_sh02 取回，H3 768P 现有 9/13 个视频（sc01_sh01–05、sc02_sh01–02、sc03_sh01–02）；sc01_sh03 本次下载遇一次 `RemoteDisconnected`，本地沿用已入库文件。MiniMax 额度仍用尽（429 `2056`），sc02_sh03 / sh04、sc03_sh03 / sh04 未生成。不依赖额度的部分已做：`poc/video_metrics.py` 与 `video --analyze`（ffprobe、首帧 SSIM、运动量、首 / 中 / 末帧抽帧、缩略条、伪 manifest），装好 `[face]` extras 与 buffalo_l 权重并对 9 个视频跑 `face --manifest`（`full-h3/analysis/`；抽帧 3.3 MB 不入库）；`contact_sheet` 增加 `tile_height`（比例略不同的图才能 hstack）。实测：768×1344、24 fps、H.264 + AAC（有音频）；4 秒镜头实际 4.46 秒、5 秒镜头 5.17 秒；首帧 SSIM 0.93–0.97 | 296 个单测通过；`make arch-check` 通过。费用估算仍 ¥23.00（无新提交） | 额度恢复后补 4 个镜头；Ark 线（A2 文档、B4 冒烟）不依赖 MiniMax 额度，可先做 |
 | 2026-10-01 | P0-08 | Ark 线冒烟完成，结论 **不可用**：套餐路径 `GET /api/plan/v3/contents/generations/tasks` 免费探测 200（`total=0`）；对空镜 sc01_sh01（480p、4 秒、合法请求）依次提交 Seedance 2.0-mini / 2.0-fast / 2.0 / 2.5，带日期 ID 与文档里不带日期的套餐别名（`doubao-seedance-2.0-mini` 等）两种写法全部 404 `UnsupportedModel`“does not support the agent plan feature”（8 次，未创建任务、不计费）；按量路径 `/api/v3` 同一 Key 返回 401。推断：当前套餐档位不含视频（文档写视频只在 Large / Max 档），或需要按量付费 Key；因此图生图首帧是否被 Seedance 接受（人脸限制）没有机会验证。代码侧：`seedance.PLAN_ALIASES`（plan 计费时请求体用别名）、修正 Ark 费用估算（原用首帧 1152×2048 像素高估约 5 倍，现用输出分辨率像素）、2 个单测。证据 `docs/reports/p0/P0-08/smoke-seedance/` | 298 个单测通过；`make arch-check` 见提交前。Ark 费用 ¥0 | 若要评测 Seedance：升级到含视频的套餐档位，或给出按量付费 Key（`ARK_BILLING=payg`，1.0 pro fast 480p 约 ¥0.4 / 个冒烟）；否则 P0-08 只评测 MiniMax 三个候选并在报告写明 |
 | 2026-10-01 | P0-08 | 再次探测 MiniMax 额度（H3 768P sc02_sh03，合法请求）仍 429 `2056`，未创建任务。对 9 个已有片段先做目视初评草稿（缩略条、非盲评，13 个到齐后再汇总登记待决事项）：sc01_sh02 缓慢推近、哭泣表情自然、身份稳定；sc03_sh02 推近、人脸与服装一致；sc01_sh05 双人镜头末帧陆沉走出画面（提示词只写“继续动作”，运动超出预期），苏晚保持稳定 | 298 个单测通过；`make arch-check` 通过。费用估算仍 ¥23.00 | 等 MiniMax 额度恢复（或升级套餐）后补 4 个镜头，再做 H3-Max / Hailuo-2.3 / 2K 冒烟与全量度量、报告、D6 待决事项 |
+| 2026-10-01 | P0-08 | 按用户决定（“先用现有视频进行后续流程”）以现有数据收尾：H3 768P 9/13 个镜头（缺 sc02_sh03、sc02_sh04、sc03_sh03、sc03_sh04）；H3-Max / Hailuo-2.3 / 2K 未测（MiniMax Token Plan 额度用尽，429 `2056`）；Ark Seedance 在 Agent Plan 下不可用（`UnsupportedModel`）。新增：`video --reconcile`（账本 `ledger.json`，免费查询任务并重新下载比对 sha256，确认旧会话丢失记录后重建的“任务 ↔ 镜头”对应全部正确）、`--analyze`（ffprobe / SSIM / 运动量 / 抽帧 / 缩略条 / `table.md`）、扩充的 `--verify`；评审后修正：额度 / 账号级错误中止整次运行、`--resume` 不重复追加记录且不重复计费、非审核类失败任务可重新提交、成功后先记费用再下载、`--workers` 空转参数删除。报告 `docs/reports/p0/P0-08.md`（含逐镜头表、agent 初评、给 P0-09 / P0-11 一节、补测命令）；登记 D-012（默认方案与初评）、D-013（未评测部分怎么处理） | verifier：第 1、2、6、7、9、10 条满足，第 3、4、5 条部分、第 8 条未做（与报告 §2 一致，缺口已登记），其发现的体积口径、tokens 速率、措辞问题已修正（入库体积 9.89 MB ≤ 12 MB，D-013 原体积决定撤销）；arch-reviewer 无阻断项，建议 1–3、5–7 已处理；311 个单测通过；`--verify ... --max-bytes 12582912` 返回 0；`make arch-check`、`make drama-ir-check` 通过。本步费用 ¥23.00（账本，按文档单价估算，账单待核对） | P0-11 剪辑合成（缺的 4 个镜头用首帧缓推占位，补入后重跑）；额度恢复后补测见报告 §8；D-012 / D-013 待用户；用户需核对 MiniMax 账单 |

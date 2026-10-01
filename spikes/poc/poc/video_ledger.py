@@ -10,6 +10,7 @@ import json
 import os
 import re
 import statistics
+import subprocess
 import time
 from collections import Counter
 from pathlib import Path
@@ -73,12 +74,18 @@ def _matches_remote(client: minimax.Client, url: str, sha256: str, attempts: int
 def reconcile(out: Path, client: minimax.Client, *, redownload: bool = True) -> dict[str, Any]:
     """查询 tasks.jsonl 里每个任务（免费 GET），与 out/videos/<shot_id>.mp4 对账，写 out/ledger.json。"""
     rows: list[dict[str, Any]] = []
+    last_ok: dict[str, str] = {}  # shot_id → 最后一个成功任务的 task_id（同一镜头重新提交过时，本地视频只对应它）
+    states: dict[str, Any] = {}
+    for task_id, rec in _tasks(out).items():
+        states[task_id] = client.query(task_id, minimax.spec_of(rec["model"]).api)
+        if states[task_id].status == "succeeded":
+            last_ok[rec["shot_id"]] = task_id
     for task_id, rec in _tasks(out).items():
         model, resolution = rec["model"], rec["resolution"]
         api = minimax.spec_of(model).api
-        state = client.query(task_id, api)
-        seconds = state.usage.get("output_seconds") if state.status == "succeeded" else None
-        cost = pricing.video_cost("minimax", model, resolution, rec["duration"], output_seconds=seconds) if seconds else None
+        state = states[task_id]
+        seconds = state.usage.get("output_seconds") if state.status == "succeeded" else None  # v1（Hailuo）没有 usage：按请求时长查固定价
+        cost = pricing.video_cost("minimax", model, resolution, rec["duration"], output_seconds=seconds) if state.status == "succeeded" else None
         video = out / "videos" / f"{rec['shot_id']}.mp4"
         row: dict[str, Any] = {
             "shot_id": rec["shot_id"], "task_id": task_id, "node_key": rec["node_key"], "model": model, "resolution": resolution,
@@ -87,7 +94,7 @@ def reconcile(out: Path, client: minimax.Client, *, redownload: bool = True) -> 
             "cost_cny": cost.cny if cost else 0.0, "cost_basis": "usage × 文档单价（账单待核对）" if cost else "未成功任务不计费",
             "video_host": minimax.host_of(state.video_url) if state.video_url else None, "video": None,
         }
-        if video.is_file():
+        if video.is_file() and last_ok.get(rec["shot_id"]) == task_id:
             info = media.probe(video)
             row["video"] = {
                 "path": f"videos/{video.name}", "bytes": video.stat().st_size, "sha256": _sha256(video),
@@ -139,11 +146,11 @@ def verify_ledger(directory: Path) -> list[str]:
     for row in ledger["tasks"]:
         label = f"{directory.name}/{row['shot_id']}"
         total += row["cost_cny"]
-        if row["node_key"] in seen_keys:
-            errors.append(f"{label} node_key 重复")
-        seen_keys.add(row["node_key"])
         if row["status"] != "succeeded":
             continue
+        if row["node_key"] in seen_keys:
+            errors.append(f"{label} 同一 node_key 有多个成功任务（重复提交，重复计费）")
+        seen_keys.add(row["node_key"])
         meta = row["video"]
         if meta is None:
             errors.append(f"{label} 任务已成功但本地没有视频")
@@ -163,12 +170,25 @@ def verify_ledger(directory: Path) -> list[str]:
             errors.append(f"{label} ffprobe 实际值与账本不一致")
         if meta.get("sha256_matches_remote") is False:
             errors.append(f"{label} 本地文件与供应商任务产物不是同一个（镜头对应可能错位）")
+        elif meta.get("sha256_matches_remote") is None:
+            errors.append(f"{label} 没有与供应商产物比对过 sha256（重跑 --reconcile）")
         if row["cost_cny"] <= 0:
             errors.append(f"{label} 成功任务没有费用")
+    listed = {row["video"]["path"] for row in ledger["tasks"] if row.get("video")}
+    for orphan in sorted((directory / "videos").glob("*.mp4")) if (directory / "videos").is_dir() else []:
+        if f"videos/{orphan.name}" not in listed:
+            errors.append(f"{directory.name}/{orphan.name} 不在账本里（没有对应的成功任务）")
     if abs(total - ledger["totals"]["cost_cny"]) > 1e-6:
         errors.append(f"{directory.name} 费用合计 {total:.6f} 与 totals {ledger['totals']['cost_cny']} 不一致")
     return errors
 
 
 def du_bytes(root: Path) -> int:
-    return sum(p.stat().st_size for p in root.rglob("*") if p.is_file())
+    """证据体积：在 git 仓库里按“会入库的文件”（已跟踪 + 未忽略的新文件）计，忽略的本地产物（如抽帧）不算；否则按目录下全部文件。"""
+    try:
+        proc = subprocess.run(["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard", "--", "."], cwd=root,
+                              capture_output=True, check=True, timeout=30)
+        files = [root / name for name in proc.stdout.decode("utf-8").split("\0") if name]
+    except (OSError, subprocess.SubprocessError):
+        files = [p for p in root.rglob("*") if p.is_file()]
+    return sum(f.stat().st_size for f in files if f.is_file())

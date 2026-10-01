@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-01",
+  "note": "免费只读 GET 探测（seedance.Client.probe_list），不创建任务、不计费；结果为当日实测输出的记录",
+  "plan": {
+    "path": "/api/plan/v3/contents/generations/tasks",
+    "result": {
+      "ok": true,
+      "billing": "plan",
+      "total": 0,
+      "items": 0
+    }
+  },
+  "payg": {
+    "path": "/api/v3/contents/generations/tasks",
+    "result": "HTTP 401 AuthenticationError（同一个 Agent Plan Key；没有按量付费 Key）"
+  }
+}

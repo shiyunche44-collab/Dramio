@@ -65,10 +65,21 @@ class LedgerVerifyTest(unittest.TestCase):
         self.assertTrue(any("带签名" in e for e in errors))
         self.assertTrue(any("Bearer" in e for e in errors))
 
+    def test_unverified_remote_and_orphan_video_are_reported(self):
+        self.ledger["tasks"][0]["video"]["sha256_matches_remote"] = None
+        self._write()
+        make_video(self.dir / "videos" / "stray.mp4", seconds=1)
+        errors = video.verify(self.dir)[1]
+        self.assertTrue(any("没有与供应商产物比对" in e for e in errors))
+        self.assertTrue(any("stray.mp4" in e and "不在账本里" in e for e in errors))
+
     def test_size_limit(self):
         ok, errors = video.verify(self.dir, max_bytes=10)
         self.assertFalse(ok)
         self.assertTrue(any("体积" in e for e in errors))
+
+    def test_size_counts_files_without_git(self):
+        self.assertGreater(video_ledger.du_bytes(self.dir), 0)
 
 
 if __name__ == "__main__":
