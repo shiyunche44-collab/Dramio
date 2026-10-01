@@ -22,18 +22,40 @@
 ## 当前状态
 
 - **当前里程碑**：M0.2 单项能力摸底
-- **当前步骤**：P0-09
-- **步骤状态**：未开始
-- **工作分支**：claude/sweet-lamport-cwwsvb
+- **当前步骤**：P0-10
+- **步骤状态**：进行中
+- **工作分支**：claude/alternatives-without-minimax-p8zurl
 - **PR**：—
 
 ## 步骤卡
 
-（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
+**P0-10 音乐音效（本次只做离线部分，不依赖 MiniMax，不发任何付费请求）**
+
+- **目标**：`python3 -m poc music` 能读 ep01，按场景情绪规划 BGM 段（时长、中文描述 prompt、预估费用），按镜头 `sfx` 标签出音效规划表；仓库里有火山 V4 签名客户端（单测覆盖）和 BGM 响度时长度量工具。缺 AK/SK 时，在线评测与“可商用”结论登记为阻塞。
+- **做**：① `poc/volc_sign.py`（V4 签名 + `GenBGMForTime` 瘦客户端，纯标准库，时钟与 transport 可注入）；② 注册表新增 `volc_music`（`VOLC_ACCESSKEY` / `VOLC_SECRETKEY`，域名 `open.volcengineapi.com`），同步 `.env.example` / README；③ `poc/music.py` + CLI `music`（`--dry-run`、`--basis hint`、`--analyze`、`--max-cost-cny`）；④ Prompt `poc/prompts/bgm.v1.md` + 8 个 `scene.mood` 的情绪映射表（测试从 schema 读枚举）；⑤ `sfx_plan()` 规则表，覆盖 ep01 的 12 个音效标签，未命中标 `uncategorized`；⑥ `music --analyze`：时长偏差 / LUFS / 真峰值 / LRA / 首尾静音 / 末段电平，并给出相对对白的增益建议；⑦ `pricing.music_cny`（¥0.002 / 秒，`verified=False`）；⑧ 报告骨架 `docs/reports/p0/P0-10.md`（来源盘点，全部标“未实测”）。
+- **不做**：任何真实付费请求（含 GenBGMForTime、MiniMax 音乐、Seed Audio、ElevenLabs）；把 BGM / 音效混入成片，也不改 compose / render / OTIO（归 P0-12 / P1）；音效库采购或下载；人声 / 歌词 / 歌曲；内容审核与 AIGC 标识；新建 `packages/prompts`（沿用 `poc/prompts/` 现有做法，迁移留给 P0-14 / P1）；改 `rules.toml` / `exceptions.toml`。
+- **验收（离线可验证）**：① 签名单测与固定向量逐字节一致（RFC 4231 HMAC 向量 + 官方文档示例或官方 SDK 生成的黄金值），反例改任一字段签名必变，SK 不出现在任何输出；② `python3 -m unittest discover tests` 全绿（不联网、不需密钥）；③ `music --dry-run` 退出码 0，不要求密钥、不写 `runs/`，打印 3 个场景 BGM 段（起止、时长、prompt、版本 `bgm.v1`）与预估费用（成片口径 63.5 秒 ≈ ¥0.127），各段覆盖成片全长无空洞；④ 8 个情绪全部有映射，prompt 全中文、无 `$` 残留；⑤ 12 个音效标签 0 丢失，类别按规则表分配，未知标签进 `uncategorized`；⑥ `--analyze` 对已知电平合成音频可复核（降 6 dB → LUFS 约降 6，±0.3）；⑦ 无密钥且无 `--dry-run` 退出码 2；`doctor` 出现 `volc_music`；⑧ `make arch-check`、`make drama-ir-check` 通过，改动只在 `spikes/poc` 与 `docs/`；⑨ 报告骨架每条结论带出处与“未实测 / 已读条款”标注；⑩ 密钥不泄露（SENTINEL 测试）。
+- **验收（待在线评测，阻塞：缺 `VOLC_ACCESSKEY` / `VOLC_SECRETKEY`，账号需开通音乐生成）**：⑪ 一次真实 GenBGMForTime 冒烟（签名被接受、返回结构、时长误差、账单对账）；⑫ ep01 三个场景各至少 1 段真实 BGM 并由用户试听评分；⑬ 生成 BGM 的 `--analyze` 实测；⑭ “至少一种可商用的 BGM 来源”的书面依据（授权范围、AIGC 标识、至少一个免版权曲库的条款），属合规判断，需用户确认。
+- **涉及**：architecture.md §5.6、§7.1；INV-01（spikes 沿用 P0 做法）、INV-10（P0 沿用 `poc/prompts/`）；无需新 ADR。文件：`spikes/poc/poc/{volc_sign,music,providers,pricing,media,__main__}.py`、`poc/prompts/bgm.v1.md`、`tests/test_{volc_sign,music}.py`、`.env.example`、README、`docs/reports/p0/P0-10.md`。
+- **估时**：离线约 1 天；在线收尾约 0.25 天（阻塞）。**费用**：离线 ¥0；在线预估 < ¥1，远低于上限。
+- **状态说明**：只做离线部分，P0-10 不会标 ✅；在线评测与商用授权由待决事项登记，等用户提供 AK/SK 与确认。
 
 ## 子任务
 
-（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
+- [ ] 1. 读火山文档并留痕：`GenBGMForTime` 请求 / 响应参数、是否异步及查询接口，V4 签名字段细节，产品简介 / 计费 / 用户协议；写入报告“接口摘录”，标明文档没给全的字段（决定后面所有字段名，最先做）
+- [ ] 2. `poc/volc_sign.py` 签名核心：规范请求、StringToSign、派生密钥、Authorization；时钟注入
+- [ ] 3. `tests/test_volc_sign.py`：RFC 4231 向量、文档示例或 SDK 黄金向量、反例、query 排序与编码、SK 不泄露
+- [ ] 4. `volc_sign` 瘦客户端与错误分类，fake transport 测试（成功、鉴权失败、签名错、限流、网络、非 JSON）
+- [ ] 5. 注册表 `volc_music`、`.env.example`、README 密钥表、`pricing.music_cny`；`test_config` / `test_doctor` 通过
+- [ ] 6. 情绪映射表与 Prompt 模板 `bgm.v1`；测试从 schema 读 mood 枚举，prompt 全中文、无残留 `$`
+- [ ] 7. BGM 规划 `plan_bgm()`：compose 口径与 `--basis hint` 两种时间轴、段间交叉淡化余量、node_key
+- [ ] 8. `music --dry-run` CLI 接线；无密钥非 dry-run 退出码 2；不写 `runs/`、不联网
+- [ ] 9. 音效规则表与 `sfx_plan()`：12 个标签全覆盖，未知标签 `uncategorized`，`status=unsourced`
+- [ ] 10. `music --analyze`：LUFS / 真峰值 / LRA / 首尾静音 / 末段电平 / 时长偏差；合成音频测试
+- [ ] 11. 混音增益建议（相对 P0-11 对白轨），标注“待在线样本调参”
+- [ ] 12. 报告骨架 `docs/reports/p0/P0-10.md`：来源盘点、条款摘录、阻塞清单、在线评测命令、验收对照表
+- [ ] 13. 文档同步：README `music` 一节、progress 前置条件、`vendor-volcengine.md` §7 勘误（如有）
+- [ ] 14. 验证与交付：全部单测、`make arch-check`、`make drama-ir-check`；登记阻塞待决事项（提供 AK/SK 与确认商用授权）；verifier、arch-reviewer、PR
 
 ## 本步费用
 
