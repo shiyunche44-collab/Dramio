@@ -1,0 +1,12 @@
+{
+  "run_id": "20261001-010804-video-d9be",
+  "command": "video",
+  "args": {
+    "candidate": "doubao-seedance-2-0-fast-260128",
+    "count": 1
+  },
+  "started_at": "2026-10-01T01:08:04.335Z",
+  "ended_at": "2026-10-01T01:08:06.567Z",
+  "status": "ok",
+  "python": "3.11.15"
+}

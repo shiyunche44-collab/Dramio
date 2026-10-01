@@ -60,7 +60,7 @@
 ## 子任务
 
 - [x] A1 环境：确认 ffmpeg / ffprobe（已有，6.1.1）与 h264 解码；重装 `[face]` extras 并下载 buffalo_l 权重；读 manifest 的 13 张 selected 首帧并校验 sha256，对照 ep01 的 hint_s
-- [ ] A2 读方舟视频文档（`docs.volcengine.com` 82379/1520757 创建任务、82379/1544106 价格、82379/2366394 Agent Plan 兼容模型）：Seedance model id、请求结构、first_frame 写法、时长与分辨率范围、token 单价、Plan 是否含视频、产物 URL 与有效期
+- [x] A2 读方舟视频文档（`docs.volcengine.com` 82379/1520757 创建任务、82379/1544106 价格、82379/2366394 Agent Plan 兼容模型）：Seedance model id、请求结构、first_frame 写法、时长与分辨率范围、token 单价、Plan 是否含视频、产物 URL 与有效期
 - [x] A3 `poc/media.py`（ffprobe、抽帧、SSIM、运动量、裁剪；单元测试用 ffmpeg 合成视频，不联网）
 - [x] A4 `poc/minimax.py`（H3 / H3-Max v2；Hailuo-2.3 v1；提交、查询、下载、失败分类、`tasks.jsonl` 持久化、下载不带鉴权头；假 transport 单测）
 - [x] A5 `poc/seedance.py`（按 A2 结论，`--dry-run` 与单测）
@@ -70,7 +70,7 @@
 - [x] B1 H3 冒烟 1（合法请求，1 个）：`ep01_sc01_sh02`，768P，4 秒（约 ¥2）。目的：首帧 data URI 是否接受、`content.url` 下载域名、耗时、usage、是否带音频流；发出前本地校验请求体
 - [x] B2 停下检查点：下载被拦 / 任务失败 / 任务创建但拿不到结果，则不继续 B3 起的调用
 - [ ] B3 H3-Max 480P 5 秒冒烟（约 ¥1.65）与 Hailuo-2.3 768P 6 秒冒烟（¥2）：确认账号是否可用
-- [ ] B4 Ark 冒烟：先免费 GET 路径，再按“空镜 → sc01_sh05（文生图首帧）→ 一张图生图首帧”的顺序，480P 短时长；任一步被拒或被拦即停止 Ark 线
+- [x] B4（结论：本账号 Agent Plan 不能调 Seedance，见交接日志 2026-10-01）Ark 冒烟：先免费 GET 路径，再按“空镜 → sc01_sh05（文生图首帧）→ 一张图生图首帧”的顺序，480P 短时长；任一步被拒或被拦即停止 Ark 线
 - [ ] B5 按实测单价定矩阵并写入预估；证据体积外推，超 12 MB 先登记待决事项
 - [ ] C1 H3 768P 全部 13 镜头；C2 H3-Max 480P 全部或缩减；C3 H3 2K 1 个镜头；C4 Hailuo-2.3 约 4 个镜头；C5 Seedance（若可用）；C6 只对瞬时错误重试，超时任务先 `--resume`
 - [ ] D1（工具已就绪：`poc/video_metrics.py` / `--analyze`；9 个 H3 视频已度量，13 个到齐后重跑）对成功视频跑 `media.py`（分辨率、时长、fps、码率、音频流、SSIM、运动量）；D2 抽帧跑 `face --manifest`；D3 全镜头缩略条与 agent 初评；D4 汇总并写 `docs/reports/p0/P0-08.md`（含“给 P0-09 / P0-11”一节）；D5 `--export` 与 `--verify`；D6 登记待决事项（默认候选与分辨率、证据体积、域名放行、Ark 线路、账单核对）
@@ -173,3 +173,4 @@
 | 2026-09-30 | P0-08 | MiniMax Key 已写入本地 git 忽略 .env（权限 600）。H3 冒烟成功：task 447520187924892，usage 5 秒，实际 768×1344 / 5.1667s / 24fps，含 AAC 音频，1,134,327 字节，SSIM 0.909406；全量 13 镜头运行已启动，task_id 保存在 full-h3/tasks.jsonl，尚在生成 | 冒烟估算 ¥2.50；全量预算 ¥50、预计 ¥30；不得在运行中重复启动生成 | 等 full-h3 运行完成，补全评测及证据体积决定；P0-08 保持进行中 |
 | 2026-10-01 | P0-08 | 阻塞，已存档：新容器里旧的 full-h3 运行已不存在（只留下 8 个已入库视频，`tasks.jsonl` 与 calls 丢失）。用 `GET /v2/query/video_generation`（不带 task_id，只读）列出账号任务，按创建顺序与时长对回 9 个全量任务（sc01_sh01 / sh05 / sh02 / sc02_sh01 / sc03_sh01 / sh02 / sc01_sh03 / sh04 / sc02_sh02，durations 逐一吻合），重建 `full-h3/tasks.jsonl`。`--resume` 续跑两处受阻：① 视频下载域名 `algeng-video-infer.oss-cn-shanghai.aliyuncs.com` 在本容器被拦（CONNECT 403），已成功的 sc02_sh02 任务取不回（任务记录保留 7 天，至约 10-07）；② 提交 sc02_sh03 / sh04、sc03_sh03 / sh04 全部 429 `2056`“已达到 Token Plan 用量上限”（账号级，未创建任务、不计费）。`full-h3/run-summary.json` 如实记录这 13 条错误，之后重跑会覆盖 | 全量 9/13 已生成，其中 8 个已入库并可解析；未发起任何新的计费请求。`make arch-check` 见提交前复核 | 需要用户：① 在云环境网络设置放行 `algeng-video-infer.oss-cn-shanghai.aliyuncs.com`（新会话生效；同一域名也是后续所有 H3 视频的下载地址）；② 给 MiniMax Token Plan 升级或补充积分（剩余 4 个镜头约 ¥9.5，H3-Max / Hailuo-2.3 冒烟与 2K 另需约 ¥10）。两项完成后新会话执行 `python3 -m poc video --candidate h3 --resolution 768P --resume --export ../../docs/reports/p0/P0-08/full-h3 --max-cost-cny 50`；M0.2 内无其他可做步骤（P0-10 只有 MiniMax 密钥可用，同样受额度限制） |
 | 2026-10-01 | P0-08 | 用户说“继续”：下载域名已放行，sc02_sh02 取回，H3 768P 现有 9/13 个视频（sc01_sh01–05、sc02_sh01–02、sc03_sh01–02）；sc01_sh03 本次下载遇一次 `RemoteDisconnected`，本地沿用已入库文件。MiniMax 额度仍用尽（429 `2056`），sc02_sh03 / sh04、sc03_sh03 / sh04 未生成。不依赖额度的部分已做：`poc/video_metrics.py` 与 `video --analyze`（ffprobe、首帧 SSIM、运动量、首 / 中 / 末帧抽帧、缩略条、伪 manifest），装好 `[face]` extras 与 buffalo_l 权重并对 9 个视频跑 `face --manifest`（`full-h3/analysis/`；抽帧 3.3 MB 不入库）；`contact_sheet` 增加 `tile_height`（比例略不同的图才能 hstack）。实测：768×1344、24 fps、H.264 + AAC（有音频）；4 秒镜头实际 4.46 秒、5 秒镜头 5.17 秒；首帧 SSIM 0.93–0.97 | 296 个单测通过；`make arch-check` 通过。费用估算仍 ¥23.00（无新提交） | 额度恢复后补 4 个镜头；Ark 线（A2 文档、B4 冒烟）不依赖 MiniMax 额度，可先做 |
+| 2026-10-01 | P0-08 | Ark 线冒烟完成，结论 **不可用**：套餐路径 `GET /api/plan/v3/contents/generations/tasks` 免费探测 200（`total=0`）；对空镜 sc01_sh01（480p、4 秒、合法请求）依次提交 Seedance 2.0-mini / 2.0-fast / 2.0 / 2.5，带日期 ID 与文档里不带日期的套餐别名（`doubao-seedance-2.0-mini` 等）两种写法全部 404 `UnsupportedModel`“does not support the agent plan feature”（8 次，未创建任务、不计费）；按量路径 `/api/v3` 同一 Key 返回 401。推断：当前套餐档位不含视频（文档写视频只在 Large / Max 档），或需要按量付费 Key；因此图生图首帧是否被 Seedance 接受（人脸限制）没有机会验证。代码侧：`seedance.PLAN_ALIASES`（plan 计费时请求体用别名）、修正 Ark 费用估算（原用首帧 1152×2048 像素高估约 5 倍，现用输出分辨率像素）、2 个单测。证据 `docs/reports/p0/P0-08/smoke-seedance/` | 298 个单测通过；`make arch-check` 见提交前。Ark 费用 ¥0 | 若要评测 Seedance：升级到含视频的套餐档位，或给出按量付费 Key（`ARK_BILLING=payg`，1.0 pro fast 480p 约 ¥0.4 / 个冒烟）；否则 P0-08 只评测 MiniMax 三个候选并在报告写明 |

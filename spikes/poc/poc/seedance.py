@@ -88,6 +88,13 @@ MODELS = {
 DEFAULT_MODEL = "1.0-pro-fast"
 # Agent Plan（Large / Max 档）支持的视频模型；1.0 系列不在套餐内（文档 82379/2366394）
 PLAN_MODELS = {MODELS["2.0"], MODELS["2.0-fast"], MODELS["2.0-mini"], MODELS["2.5"]}
+# Agent Plan 文档（82379/2366394）里的视频模型名是不带日期的别名；带日期的 ID 在套餐路径返回 404 UnsupportedModel（2026-10-01 冒烟）
+PLAN_ALIASES = {
+    MODELS["2.0"]: "doubao-seedance-2.0",
+    MODELS["2.0-fast"]: "doubao-seedance-2.0-fast",
+    MODELS["2.0-mini"]: "doubao-seedance-2.0-mini",
+    MODELS["2.5"]: "doubao-seedance-2.5",
+}
 EXPIRES_AFTER_S = 3600  # execution_expires_after 取允许范围的下限：崩溃或超时后的任务尽快过期，不在队列里留 48 小时
 
 
@@ -225,11 +232,11 @@ class VideoRequest:
     def ratio(self) -> str:
         return "adaptive"  # 首帧任务：宽高比随首帧图（2.5 只支持 adaptive）
 
-    def body(self, image_uri: str | None = None) -> dict[str, Any]:
+    def body(self, image_uri: str | None = None, billing: str = "payg") -> dict[str, Any]:
         info = images.image_info(self.image)
         uri = image_uri if image_uri is not None else data_uri(self.image, info.fmt)
         body: dict[str, Any] = {
-            "model": self.model,
+            "model": PLAN_ALIASES.get(self.model, self.model) if billing == "plan" else self.model,
             "content": [
                 {"type": "text", "text": self.prompt},
                 {"type": "image_url", "image_url": {"url": uri}, "role": "first_frame"},
@@ -424,7 +431,7 @@ class Client:
         request.validate()
         billing = self.billing
         check_model(request.model, billing)
-        resp = self._send("POST", TASK_PATHS[billing], request.body())
+        resp = self._send("POST", TASK_PATHS[billing], request.body(billing=billing))
         return Submitted(parse_submit(resp.body, self._secrets()), _header(resp, "x-request-id", "x-tt-logid"))
 
     def query(self, task_id: str, api: str = "ark") -> TaskState:

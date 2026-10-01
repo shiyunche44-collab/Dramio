@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from poc import video
+from poc import seedance, video
 
 
 class VideoPlanTest(unittest.TestCase):
@@ -27,6 +27,16 @@ class VideoPlanTest(unittest.TestCase):
             ok, errors = video.verify(Path(td))
         self.assertFalse(ok)
         self.assertIn("run-summary", errors[0])
+
+    def test_ark_cost_uses_output_resolution_not_keyframe_pixels(self):
+        job = video.plan(candidate="2.0-mini", resolution="480p", shots=["ep01_sc01_sh01"])[0]
+        self.assertLess(video._cost(job).cny, 1.5)
+
+    def test_plan_billing_uses_undated_model_alias(self):
+        job = video.plan(candidate="2.0-mini", resolution="480p", shots=["ep01_sc01_sh01"])[0]
+        request = seedance.VideoRequest(job.model, job.resolution.lower(), job.duration, job.prompt, Path(job.image_path).read_bytes())
+        self.assertEqual(request.body(billing="plan")["model"], "doubao-seedance-2.0-mini")
+        self.assertEqual(request.body()["model"], job.model)
 
 
 if __name__ == "__main__":

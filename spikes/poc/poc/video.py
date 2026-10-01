@@ -70,7 +70,9 @@ def plan(manifest_path: Path = DEFAULT_MANIFEST, ir_path: Path = DEFAULT_IR, can
     return jobs
 
 def _cost(job: Job):
-    return pricing.video_cost("minimax" if job.model.startswith("MiniMax") else "ark", job.model, job.resolution, job.duration, pixels=1152*2048)
+    if job.model.startswith("MiniMax"):
+        return pricing.video_cost("minimax", job.model, job.resolution, job.duration)
+    return pricing.video_cost("ark", job.model, job.resolution, job.duration, pixels=seedance.output_pixels(job.model, job.resolution))
 
 def _client(model: str, env: dict[str, str]):
     return minimax.Client(env=env) if model.startswith("MiniMax") else seedance.Client(env=env)
