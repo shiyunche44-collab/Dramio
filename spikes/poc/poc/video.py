@@ -10,7 +10,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
-from poc import config, media, minimax, pricing, runlog, seedance
+from poc import config, media, minimax, pricing, runlog, seedance, video_ledger
 
 ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_IR = ROOT / "packages/drama-ir/examples/v0/ep01.json"
@@ -121,21 +121,17 @@ def run_jobs(jobs: list[Job], out: Path, *, dry_run: bool = False, resume: bool 
     (out/"run-summary.json").write_text(json.dumps(summary,ensure_ascii=False,indent=2)+"\n")
     return summary
 
-def verify(path: Path) -> tuple[bool, list[str]]:
-    errors=[]
-    summary=path/"run-summary.json"
-    if not summary.is_file(): return False,["缺少 run-summary.json"]
-    data=_load(summary)
-    for r in data.get("jobs",[]):
-        if r.get("status") == "error":
-            errors.append(f"任务失败 {r.get('shot_id')}: {r.get('error', 'unknown error')}")
-            continue
-        if r.get("status")=="succeeded":
-            p=path/"videos"/f"{r['shot_id']}.mp4"
-            if not p.is_file(): errors.append(f"缺少视频：{p}")
-            else:
-                try: media.probe(p)
-                except Exception as e: errors.append(f"媒体不可解析 {p.name}: {e}")
+def verify(path: Path, max_bytes: int | None = None) -> tuple[bool, list[str]]:
+    """离线核验证据目录：每个带 ledger.json 的子目录（含自身）对账；全目录扫密钥与带签名链接；可选体积上限。"""
+    ledgers = sorted({p.parent for p in [path / video_ledger.LEDGER, *path.glob(f"*/{video_ledger.LEDGER}")] if p.is_file()})
+    if not ledgers:
+        return False, ["缺少 run-summary.json 或 ledger.json（先用 --reconcile 生成账本）"]
+    errors: list[str] = []
+    for directory in ledgers:
+        errors += video_ledger.verify_ledger(directory)
+    errors += video_ledger._scan_secrets(path)
+    if max_bytes is not None and (size := video_ledger.du_bytes(path)) > max_bytes:
+        errors.append(f"证据体积 {size} 字节超过上限 {max_bytes}")
     return not errors, errors
 
 def _cmd(args: argparse.Namespace) -> int:
@@ -143,8 +139,11 @@ def _cmd(args: argparse.Namespace) -> int:
         from poc import video_metrics
         out = Path(args.analyze); result = video_metrics.analyze(out, Path(args.manifest), out / "analysis")
         print(json.dumps({"count": result["count"], "out": str(out / "analysis")}, ensure_ascii=False)); return 0
+    if args.reconcile:
+        out = Path(args.reconcile); ledger = video_ledger.reconcile(out, minimax.Client(env=dict(os.environ)))
+        print(json.dumps(ledger["totals"], ensure_ascii=False, indent=2)); return 0
     if args.verify:
-        ok, errors=verify(Path(args.verify)); print(json.dumps({"ok":ok,"errors":errors},ensure_ascii=False,indent=2)); return 0 if ok else 1
+        ok, errors=verify(Path(args.verify), args.max_bytes); print(json.dumps({"ok":ok,"errors":errors},ensure_ascii=False,indent=2)); return 0 if ok else 1
     jobs=plan(Path(args.manifest),Path(args.ir),args.candidate,args.resolution,args.shots)
     result=run_jobs(jobs,Path(args.export or DEFAULT_OUT),dry_run=args.dry_run,resume=args.resume,max_cost_cny=args.max_cost_cny)
     print(json.dumps(result,ensure_ascii=False,indent=2)); return 0
@@ -153,5 +152,5 @@ def add_parser(sub) -> None:
     p=sub.add_parser("video",help="关键帧 → 图生视频片段（P0-08）")
     p.add_argument("--candidate",choices=tuple(ALIASES),default="h3"); p.add_argument("--resolution",default="768P")
     p.add_argument("--shots",action="append"); p.add_argument("--manifest",default=str(DEFAULT_MANIFEST)); p.add_argument("--ir",default=str(DEFAULT_IR))
-    p.add_argument("--workers",type=int,default=1); p.add_argument("--max-cost-cny",type=float,default=100.0); p.add_argument("--dry-run",action="store_true"); p.add_argument("--resume",action="store_true"); p.add_argument("--export",help="输出目录"); p.add_argument("--verify",metavar="目录"); p.add_argument("--analyze",metavar="目录",help="对目录下 videos/*.mp4 做 ffprobe / SSIM / 运动量 / 抽帧，写入 <目录>/analysis")
+    p.add_argument("--max-cost-cny",type=float,default=100.0); p.add_argument("--dry-run",action="store_true"); p.add_argument("--resume",action="store_true"); p.add_argument("--export",help="输出目录"); p.add_argument("--verify",metavar="目录"); p.add_argument("--reconcile",metavar="目录",help="免费查询 tasks.jsonl 里的任务并与本地视频对账，写 <目录>/ledger.json（需 MINIMAX_API_KEY）"); p.add_argument("--max-bytes",type=int,help="--verify 时的证据体积上限（字节）"); p.add_argument("--analyze",metavar="目录",help="对目录下 videos/*.mp4 做 ffprobe / SSIM / 运动量 / 抽帧，写入 <目录>/analysis")
     p.set_defaults(func=_cmd)
