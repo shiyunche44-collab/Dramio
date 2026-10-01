@@ -109,6 +109,15 @@ PROVIDERS: tuple[Provider, ...] = (
         notes="新版控制台 API Key（x-api-key 头）；无免费校验接口，只检查是否配置",
     ),
     Provider(
+        name="volc_music",
+        label="豆包音乐（火山引擎 OpenAPI）",
+        capabilities=("music_sfx",),
+        env=("VOLC_ACCESSKEY", "VOLC_SECRETKEY"),
+        domains=("open.volcengineapi.com",),
+        notes="IAM 访问密钥（AK / SK，V4 签名，建议子账号）；QueryUsage 是只读用量查询，可作在线校验，但需要签名，doctor 只检查是否配置。"
+        "产物下载域名 v{1-50}-default.douyinvod.com 另需放行；需企业认证并开通 AI 音乐生成",
+    ),
+    Provider(
         name="minimax",
         label="MiniMax",
         capabilities=("tts", "video", "music_sfx"),

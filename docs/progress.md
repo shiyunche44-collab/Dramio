@@ -46,7 +46,7 @@
 - [x] 2. `poc/volc_sign.py` 签名核心：规范请求、StringToSign、派生密钥、Authorization；时钟注入
 - [x] 3. `tests/test_volc_sign.py`：RFC 4231 向量、文档示例或 SDK 黄金向量、反例、query 排序与编码、SK 不泄露
 - [x] 4. `volc_sign` 瘦客户端与错误分类，fake transport 测试（成功、鉴权失败、签名错、限流、网络、非 JSON）
-- [ ] 5. 注册表 `volc_music`、`.env.example`、README 密钥表、`pricing.music_cny`；`test_config` / `test_doctor` 通过
+- [x] 5. 注册表 `volc_music`、`.env.example`、README 密钥表、`pricing.music_cny`；`test_config` / `test_doctor` 通过
 - [ ] 6. 情绪映射表与 Prompt 模板 `bgm.v1`；测试从 schema 读 mood 枚举，prompt 全中文、无残留 `$`
 - [ ] 7. BGM 规划 `plan_bgm()`：compose 口径与 `--basis hint` 两种时间轴、段间交叉淡化余量、node_key
 - [ ] 8. `music --dry-run` CLI 接线；无密钥非 dry-run 退出码 2；不写 `runs/`、不联网

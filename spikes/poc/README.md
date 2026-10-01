@@ -29,6 +29,7 @@ python3 -m unittest discover -s tests -t .  # 单元测试
 | DeepSeek | `deepseek` | LLM | `DEEPSEEK_API_KEY` | `GET /models` | `api.deepseek.com` |
 | 火山方舟 Ark | `ark` | LLM、图像、视频 | `ARK_API_KEY` | 只检查是否配置 | `ark.cn-beijing.volces.com` |
 | 豆包语音（火山引擎） | `volc_speech` | 配音 TTS、语音识别 ASR | `VOLC_SPEECH_API_KEY`（新版控制台 API Key） | 只检查是否配置 | `openspeech.bytedance.com` |
+| 豆包音乐（火山引擎 OpenAPI） | `volc_music` | 音乐 BGM | `VOLC_ACCESSKEY`、`VOLC_SECRETKEY`（IAM 访问密钥，与上面的 Bearer Key 是两套凭证） | 只检查是否配置 | `open.volcengineapi.com`；产物 `v{1-50}-default.douyinvod.com` |
 | MiniMax | `minimax` | TTS、视频、音乐音效 | `MINIMAX_API_KEY`（可选 `MINIMAX_GROUP_ID`） | 只检查是否配置 | `api.minimaxi.com` |
 | ElevenLabs | `elevenlabs` | TTS、音乐音效 | `ELEVENLABS_API_KEY` | `GET /v1/user` | `api.elevenlabs.io` |
 | 可灵 Kling | `kling` | 图像、视频、口型 | `KLING_ACCESS_KEY`、`KLING_SECRET_KEY` | 只检查是否配置 | `api-beijing.klingai.com` |

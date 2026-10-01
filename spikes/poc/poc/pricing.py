@@ -69,6 +69,20 @@ def asr_cny(provider: str, resource: str, seconds: float) -> float:
     return round(seconds * ASR_CNY_PER_HOUR[(provider, resource)] / 3600, 6)
 
 
+# ---- 音乐（P0-10）：按成功生成的时长（秒）计价 ----
+# 来源：豆包音乐产品计费 doc 84992/1404661（2026-10-01 读取）：后付费 ¥0.002 / 秒，按最终成功生成的时长计（示例 200 秒 = ¥0.4）。
+# 文档示例价，**未核对账单**（verified=False）；预付费资源包另计，P0 按后付费刊例价保守估算。
+MUSIC_CNY_PER_SECOND: dict[tuple[str, str], float] = {
+    ("volc_music", "GenBGMForTime"): 0.002,
+}
+MUSIC_PRICE_SOURCE = "豆包音乐产品计费 doc 84992/1404661（后付费刊例价，2026-10-01，未核对账单）"
+MUSIC_PRICE_VERIFIED = False
+
+
+def music_cny(provider: str, action: str, seconds: float) -> float:
+    return round(seconds * MUSIC_CNY_PER_SECOND[(provider, action)], 6)
+
+
 # ---- 图像（P0-06）：按张计价 ----
 # 来源：方舟模型价格 doc 82379/1544106（2026-09-30 读取）：
 # Seedream 5.0 pro 单图生成 ≤261 万像素（1.5K 及以下）¥0.30 / 张，>261 万像素 ¥0.60 / 张；参考图首张免费、第 2 张起 ¥0.02 / 张；
