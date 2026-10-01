@@ -137,6 +137,10 @@ def verify(path: Path) -> tuple[bool, list[str]]:
     return not errors, errors
 
 def _cmd(args: argparse.Namespace) -> int:
+    if args.analyze:
+        from poc import video_metrics
+        out = Path(args.analyze); result = video_metrics.analyze(out, Path(args.manifest), out / "analysis")
+        print(json.dumps({"count": result["count"], "out": str(out / "analysis")}, ensure_ascii=False)); return 0
     if args.verify:
         ok, errors=verify(Path(args.verify)); print(json.dumps({"ok":ok,"errors":errors},ensure_ascii=False,indent=2)); return 0 if ok else 1
     jobs=plan(Path(args.manifest),Path(args.ir),args.candidate,args.resolution,args.shots)
@@ -147,5 +151,5 @@ def add_parser(sub) -> None:
     p=sub.add_parser("video",help="关键帧 → 图生视频片段（P0-08）")
     p.add_argument("--candidate",choices=tuple(ALIASES),default="h3"); p.add_argument("--resolution",default="768P")
     p.add_argument("--shots",action="append"); p.add_argument("--manifest",default=str(DEFAULT_MANIFEST)); p.add_argument("--ir",default=str(DEFAULT_IR))
-    p.add_argument("--workers",type=int,default=1); p.add_argument("--max-cost-cny",type=float,default=100.0); p.add_argument("--dry-run",action="store_true"); p.add_argument("--resume",action="store_true"); p.add_argument("--export",help="输出目录"); p.add_argument("--verify",metavar="目录")
+    p.add_argument("--workers",type=int,default=1); p.add_argument("--max-cost-cny",type=float,default=100.0); p.add_argument("--dry-run",action="store_true"); p.add_argument("--resume",action="store_true"); p.add_argument("--export",help="输出目录"); p.add_argument("--verify",metavar="目录"); p.add_argument("--analyze",metavar="目录",help="对目录下 videos/*.mp4 做 ffprobe / SSIM / 运动量 / 抽帧，写入 <目录>/analysis")
     p.set_defaults(func=_cmd)

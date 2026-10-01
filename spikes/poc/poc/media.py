@@ -273,8 +273,8 @@ def trim(src: Path | str, dst: Path | str, seconds: float, info: MediaInfo | Non
     return TrimResult(dst, True, info.duration_s, out.duration_s, seconds)
 
 
-def contact_sheet(frames: list[Path | str], out: Path | str, tile_width: int = 160) -> Path:
-    """把若干帧缩到同一宽度后横向拼成一张 jpg（帧数 ≥ 1）。"""
+def contact_sheet(frames: list[Path | str], out: Path | str, tile_width: int = 160, tile_height: int | None = None) -> Path:
+    """把若干帧缩到同一宽度后横向拼成一张 jpg（帧数 ≥ 1）。比例略有差异的帧（如 768×1344 与 1152×2048）要传 tile_height 才能 hstack。"""
     if not frames:
         raise MediaError("没有帧可拼")
     out = Path(out)
@@ -282,7 +282,8 @@ def contact_sheet(frames: list[Path | str], out: Path | str, tile_width: int = 1
     cmd = [FFMPEG, "-nostdin", "-v", "error", "-y"]
     for f in frames:
         cmd += ["-i", str(f)]
-    scaled = ";".join(f"[{i}:v]scale={tile_width}:-2[s{i}]" for i in range(len(frames)))
+    height = tile_height if tile_height else -2
+    scaled = ";".join(f"[{i}:v]scale={tile_width}:{height}[s{i}]" for i in range(len(frames)))
     if len(frames) == 1:
         graph, label = scaled, "[s0]"
     else:
