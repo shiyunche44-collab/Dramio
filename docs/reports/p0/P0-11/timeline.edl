@@ -1,0 +1,78 @@
+TITLE: ep01（交换用）
+
+001  ep01sc01 V     C        00:00:00:00 00:00:04:10 00:00:00:00 00:00:04:10
+* FROM CLIP NAME:  ep01_sc01_sh01
+* FROM CLIP: ../P0-08/full-h3/videos/ep01_sc01_sh01.mp4
+* OTIO TRUNCATED REEL NAME FROM: ep01_sc01_sh01.mp4
+* LOC: 00:00:00:00 RED     大雨声
+* LOC: 00:00:00:00 RED     旋转门转动声
+002  ep01sc01 V     C        00:00:04:09 00:00:04:10 00:00:04:10 00:00:04:12
+M2   ep01_sc01_sh01 冻结尾帧		0.0			00:00:04:09
+* FROM CLIP NAME:  ep01_sc01_sh01 冻结尾帧 FF
+* * FREEZE FRAME
+* FROM CLIP: ../P0-08/full-h3/videos/ep01_sc01_sh01.mp4
+* OTIO TRUNCATED REEL NAME FROM: ep01_sc01_sh01.mp4
+003  ep01sc01 V     C        00:00:00:00 00:00:05:00 00:00:04:12 00:00:09:12
+* FROM CLIP NAME:  ep01_sc01_sh02
+* FROM CLIP: ../P0-08/full-h3/videos/ep01_sc01_sh02.mp4
+* OTIO TRUNCATED REEL NAME FROM: ep01_sc01_sh02.mp4
+* LOC: 00:00:00:00 RED     脚步踩水声
+004  ep01sc01 V     C        00:00:00:00 00:00:05:00 00:00:09:12 00:00:14:12
+* FROM CLIP NAME:  ep01_sc01_sh03
+* FROM CLIP: ../P0-08/full-h3/videos/ep01_sc01_sh03.mp4
+* OTIO TRUNCATED REEL NAME FROM: ep01_sc01_sh03.mp4
+* LOC: 00:00:00:00 RED     雨打伞面声
+005  ep01sc01 V     C        00:00:00:00 00:00:05:00 00:00:14:12 00:00:19:12
+* FROM CLIP NAME:  ep01_sc01_sh04
+* FROM CLIP: ../P0-08/full-h3/videos/ep01_sc01_sh04.mp4
+* OTIO TRUNCATED REEL NAME FROM: ep01_sc01_sh04.mp4
+006  ep01sc01 V     C        00:00:00:00 00:00:05:04 00:00:19:12 00:00:24:16
+* FROM CLIP NAME:  ep01_sc01_sh05
+* FROM CLIP: ../P0-08/full-h3/videos/ep01_sc01_sh05.mp4
+* OTIO TRUNCATED REEL NAME FROM: ep01_sc01_sh05.mp4
+* LOC: 00:00:00:00 RED     雨声渐大
+007  ep01sc01 V     C        00:00:05:03 00:00:05:04 00:00:24:16 00:00:26:13
+M2   ep01_sc01_sh05 冻结尾帧		0.0			00:00:05:03
+* FROM CLIP NAME:  ep01_sc01_sh05 冻结尾帧 FF
+* * FREEZE FRAME
+* FROM CLIP: ../P0-08/full-h3/videos/ep01_sc01_sh05.mp4
+* OTIO TRUNCATED REEL NAME FROM: ep01_sc01_sh05.mp4
+008  ep01sc02 V     C        00:00:00:00 00:00:04:00 00:00:26:13 00:00:30:13
+* FROM CLIP NAME:  ep01_sc02_sh01
+* FROM CLIP: ../P0-08/full-h3/videos/ep01_sc02_sh01.mp4
+* OTIO TRUNCATED REEL NAME FROM: ep01_sc02_sh01.mp4
+* LOC: 00:00:00:00 RED     窗外雨声
+009  ep01sc02 V     C        00:00:00:00 00:00:04:00 00:00:30:13 00:00:34:13
+* FROM CLIP NAME:  ep01_sc02_sh02
+* FROM CLIP: ../P0-08/full-h3/videos/ep01_sc02_sh02.mp4
+* OTIO TRUNCATED REEL NAME FROM: ep01_sc02_sh02.mp4
+* LOC: 00:00:00:00 RED     胶带撕开声
+010  keyframe V     C        00:00:00:00 00:00:05:00 00:00:34:13 00:00:39:13
+* FROM CLIP NAME:  ep01_sc02_sh03
+* FROM CLIP: ../P0-07/keyframe-r1/ep01_sc02_sh03/keyframe-ref2-433a02f5.jpg
+* OTIO TRUNCATED REEL NAME FROM: keyframe-ref2-433a02f5.jpg
+011  keyframe V     C        00:00:00:00 00:00:05:00 00:00:39:13 00:00:44:13
+* FROM CLIP NAME:  ep01_sc02_sh04
+* FROM CLIP: ../P0-07/keyframe-r1/ep01_sc02_sh04/keyframe-ref2-91bcf845.jpg
+* OTIO TRUNCATED REEL NAME FROM: keyframe-ref2-91bcf845.jpg
+* LOC: 00:00:00:00 RED     键盘敲击声
+* LOC: 00:00:00:00 RED     电脑提示音
+012  ep01sc03 V     C        00:00:00:00 00:00:04:00 00:00:44:13 00:00:48:13
+* FROM CLIP NAME:  ep01_sc03_sh01
+* FROM CLIP: ../P0-08/full-h3/videos/ep01_sc03_sh01.mp4
+* OTIO TRUNCATED REEL NAME FROM: ep01_sc03_sh01.mp4
+013  ep01sc03 V     C        00:00:00:00 00:00:05:04 00:00:48:13 00:00:53:17
+* FROM CLIP NAME:  ep01_sc03_sh02
+* FROM CLIP: ../P0-08/full-h3/videos/ep01_sc03_sh02.mp4
+* OTIO TRUNCATED REEL NAME FROM: ep01_sc03_sh02.mp4
+* LOC: 00:00:00:00 RED     推门声
+* LOC: 00:00:00:00 RED     议论声戛然而止
+014  keyframe V     C        00:00:00:00 00:00:04:19 00:00:53:17 00:00:58:12
+* FROM CLIP NAME:  ep01_sc03_sh03
+* FROM CLIP: ../P0-07/keyframe-r1/ep01_sc03_sh03/keyframe-ref2-3106ee25.jpg
+* OTIO TRUNCATED REEL NAME FROM: keyframe-ref2-3106ee25.jpg
+015  keyframe V     C        00:00:00:00 00:00:05:00 00:00:58:12 00:01:03:12
+* FROM CLIP NAME:  ep01_sc03_sh04
+* FROM CLIP: ../P0-07/keyframe-r1/ep01_sc03_sh04/keyframe-ref2-dba802ec.jpg
+* OTIO TRUNCATED REEL NAME FROM: keyframe-ref2-dba802ec.jpg
+* LOC: 00:00:00:00 RED     手机震动声

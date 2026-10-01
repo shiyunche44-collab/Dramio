@@ -162,3 +162,22 @@ class PureFunctionTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@unittest.skipUnless(media.available(), "没有 ffmpeg / ffprobe")
+class AudioProbeTest(unittest.TestCase):
+    def test_probe_audio_loudness_and_tags(self):
+        with tempfile.TemporaryDirectory() as td:
+            clip = make_video(Path(td) / "a.mp4", seconds=2)
+            info = media.probe_audio(clip)
+            self.assertEqual((info.codec, info.channels), ("aac", 1))  # 夹具的 sine 是单声道
+            silent = make_video(Path(td) / "n.mp4", seconds=1, audio=False)
+            self.assertIsNone(media.probe_audio(silent))
+            loud = media.loudness(clip)
+            self.assertIsNotNone(loud.integrated_lufs)
+            self.assertLess(loud.integrated_lufs, 0)
+            self.assertEqual(media.format_tags(clip).get("aigc"), None)
+            tagged = Path(td) / "t.mp4"
+            media._run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", str(clip), "-c", "copy", "-metadata", "AIGC={\"Label\":\"1\"}",
+                        "-movflags", "+use_metadata_tags", str(tagged)])
+            self.assertEqual(media.format_tags(tagged)["aigc"], '{"Label":"1"}')

@@ -23,7 +23,7 @@ SECRET_ENV = ("MINIMAX_API_KEY", "MINIMAX_GROUP_ID", "ARK_API_KEY", "DEEPSEEK_AP
 # 带签名的下载链接不能入库（只记录主机名）
 SIGNED_URL = re.compile(r"(Signature|X-Amz-Signature|OSSAccessKeyId|Expires)=", re.IGNORECASE)
 BEARER = re.compile(r"Bearer\s+[A-Za-z0-9._\-]{16,}")
-TEXT_SUFFIXES = {".json", ".jsonl", ".md", ".txt", ".csv"}
+TEXT_SUFFIXES = {".json", ".jsonl", ".md", ".txt", ".csv", ".ass", ".srt", ".xml", ".edl", ".otio"}
 
 
 def _sha256(path: Path) -> str:
