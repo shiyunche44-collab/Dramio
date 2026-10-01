@@ -37,36 +37,8 @@
     {
       "shot_id": "ep01_sc01_sh05",
       "node_key": "a62cf349b8b144791fcb5ccff4707ef50956348327dad8dca27df658e6ba63aa",
-      "task_id": "447523672453388",
-      "model": "MiniMax-H3",
-      "resolution": "768P",
-      "duration": 5,
-      "status": "succeeded",
-      "usage": {
-        "total_seconds": 5,
-        "input_seconds": 0,
-        "output_seconds": 5,
-        "input_image_count": 1,
-        "total_tokens": 175765,
-        "prompt_tokens": 13020,
-        "completion_tokens": 162745
-      },
-      "bytes": 1229423,
-      "media": {
-        "width": 768,
-        "height": 1344,
-        "duration_s": 5.1667,
-        "format_duration_s": 5.167,
-        "fps": 24.0,
-        "bit_rate": 1903499,
-        "size_bytes": 1229423,
-        "video_codec": "h264",
-        "audio_codec": "aac",
-        "has_audio": true,
-        "nb_frames": 124,
-        "pix_fmt": "yuv420p",
-        "container": "mov,mp4,m4a,3gp,3g2,mj2"
-      }
+      "status": "error",
+      "error": "download: network: URLError: [Errno 104] Connection reset by peer host=algeng-video-infer.oss-cn-shanghai.aliyuncs.com"
     },
     {
       "shot_id": "ep01_sc01_sh02",
@@ -318,5 +290,5 @@
     }
   ],
   "count": 11,
-  "success": 9
+  "success": 8
 }
