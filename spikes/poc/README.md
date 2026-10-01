@@ -258,7 +258,7 @@ python3 -m poc music --analyze 某.wav 或目录      # 离线度量：时长（
 python3 -m poc music --only ep01_sc01 --max-cost-cny 1   # 在线生成（需 VOLC_ACCESSKEY / VOLC_SECRETKEY，否则退出码 2）
 ```
 
-- **单次最短 30 秒**（v5.0 `Duration` 有效范围 [30, 120]）：ep01 每场约 20 秒，所以 `gen_s = max(30, ceil(播放时长))`，多出的部分合成时裁掉；3 段共 90 秒 ≈ ¥0.18（¥0.002 / 秒，文档示例价，未核对账单）。
+- **单次最短 30 秒**（v5.0 `Duration` 有效范围 [30, 120]）：ep01 每场约 19–27 秒，所以 `gen_s = max(30, ceil(播放时长))`，多出的部分合成时裁掉；3 段共 90 秒 ≈ ¥0.18（¥0.002 / 秒，文档示例价，未核对账单）。
 - **提示词** `poc/prompts/bgm.v1.md`：全中文（接口只支持中文），变量来自 DramaIR 的 `series` 与 `scene.setting`；`scene.mood` 经 `MOOD_TABLE` 映射（键与 schema 枚举一一对应，单测校验）；不放 `scene.summary`（人名与剧情对纯音乐没有帮助）。
 - **音效规则表** `SFX_RULES`：按关键词归类为环境铺底 / 拟音 / 提示音 / 人群，先匹配先赢；未命中标 `uncategorized`，不静默丢弃。所有条目 `status=unsourced`——没有选定音效来源，起止与增益只是初值。
 - **异步任务**：`GenBGMForTime` 提交 → `QuerySong` 轮询（Status 0 / 1 / 2 / 3）→ 下载（文档说默认 wav，但链路可能转码成 mp4，落盘前 ffprobe）；`SongDetail.Duration` 是计费依据。签名在 `poc/volc_sign.py`（V4，纯标准库，单测对照文档示例向量与官方 SDK 生成值）。

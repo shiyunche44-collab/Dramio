@@ -300,7 +300,9 @@ def build_submit_body(
     aigc_watermark: bool | None = None,
     implicit_watermark: Mapping[str, str] | None = None,
 ) -> dict[str, Any]:
-    """GenBGMForTime 请求体（v5.0）。只写文档明确的字段；未指定的可选项不发（`EnableInputRewrite`、`TosBucket`、`CallbackURL` 缺省即默认）。"""
+    """GenBGMForTime 请求体（v5.0）。只写文档明确的字段；
+    AigcWatermark / ImplicitWaterMark：P0 的 BGM 是中间产物，调用方默认不传；生产（模型网关）必须无条件请求，不得提供关闭开关（INV-08）。
+未指定的可选项不发（`EnableInputRewrite`、`TosBucket`、`CallbackURL` 缺省即默认）。"""
     if not text.strip():
         raise ValueError("Text 不能为空")
     body: dict[str, Any] = {"Text": text, "Version": "v5.0"}

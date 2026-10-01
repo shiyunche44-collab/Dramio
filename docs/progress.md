@@ -55,7 +55,7 @@
 - [x] 11. 混音增益建议（相对 P0-11 对白轨），标注“待在线样本调参”
 - [x] 12. 报告骨架 `docs/reports/p0/P0-10.md`：来源盘点、条款摘录、阻塞清单、在线评测命令、验收对照表
 - [x] 13. 文档同步：README `music` 一节、progress 前置条件、`vendor-volcengine.md` §7 勘误（如有）
-- [ ] 14. 验证与交付：全部单测、`make arch-check`、`make drama-ir-check`；登记阻塞待决事项（提供 AK/SK 与确认商用授权）；verifier、arch-reviewer、PR
+- [x] 14. 验证与评审：全部单测、`make arch-check`、`make drama-ir-check`；登记阻塞待决事项 D-016；verifier、arch-reviewer（PR 与合并待用户确认，见交接日志）
 
 ## 本步费用
 
@@ -170,3 +170,4 @@
 | 2026-10-01 | D-015 | 用户选 B：`docs/reports/p0/P0-11/timeline.xml` / `timeline.edl` 在 DaVinci Resolve / Premiere 里的真实导入暂不验证，留到 P0-14 复审 ADR-0009 时再做；不影响 P0-12 / P0-13；决定写入 `docs/reports/p0/P0-11.md` 末尾 | — | D-013、D-014 仍待决；M0.2 的 P0-09、P0-10 仍被阻塞（MediaKit 域名与 Key、MiniMax 额度） |
 | 2026-10-01 | D-014 | 用户选原声 `off`、字幕与角标样式 A：`python3 -m poc compose` 的默认 `--ambient off` 不变，成片不用重渲染；决定写入 `docs/reports/p0/P0-11.md` 末尾；占位镜头仍不作为视频效果评价，补入 4 个真实镜头后重跑 `python3 -m poc compose` 即可 | — | D-013 仍待决；M0.2 的 P0-09、P0-10 仍被阻塞（MediaKit 域名与 Key、MiniMax 额度） |
 | 2026-10-01 | P0-08 | 按用户提供的用量页截图（M Plan Explore 月度会员：5h 限额已用 0%、4 小时 59 分钟后重置；周限额已用 76%）重试补 4 个镜头：`--resume` 查询已有 9 个任务后，提交 sc02_sh03 仍返回 429 `2056`“已达到 Token Plan 用量上限”，按设计中止其余 3 个（未创建任务、不计费）。结论：不是 5 小时窗口（已重置）也不是周限额（76%）；`2056` 更可能指向视频生成的单独额度或需要积分。`full-h3/run-summary.json` 与 `runs/` 记录这次尝试 | 9 个视频与账本不变；费用 ¥0（未创建任务） | 需要用户在 MiniMax 控制台确认：用量页下方是否有视频生成的单独额度；或点“充值积分”（页面写“订阅配额用完后自动使用积分”）；补充后再重试同一条 `--resume` 命令（约 ¥9.5） |
+| 2026-10-01 | P0-10 | 离线部分完成，**步骤保持进行中**（在线评测与“可商用”结论阻塞，D-016）：读火山音乐文档（站内内容接口 `getDocDetail`，WebFetch 只得空壳）并写入报告 §3；`poc/volc_sign.py`（V4 签名 + 提交 / `QuerySong` 轮询 / `QueryUsage` / 下载，纯标准库，签名对照文档示例向量与官方 SDK 生成值逐字节一致）；`python3 -m poc music`（`--dry-run` / `--export` / `--analyze` / 有密钥时生成，fake transport 测试）；情绪映射 + `bgm.v1`；12 条音效规则；`media` 加 LRA / 窗口响度 / 平均音量 / 静音检测；`volc_music` 注册。发现：单次最短 30 秒（ep01 每场 19–27 秒，所以生成 ≥ 30 秒再裁，3 段共 90 秒 ≈ ¥0.18）、任务异步、只支持企业认证用户。GitHub 推送保护拦截了文档示例的 Access Key ID，改用占位 AK 只核对文档给出的 Signature | verifier：离线 1–10 条通过、11–14 如实标阻塞，发现的重复计费路径（轮询 / 下载失败会重新提交）已修；arch-reviewer 无阻断项，建议 1–3 已处理、4–5 已在报告注明；416 个单测通过（5 skip）；`make arch-check`、`make drama-ir-check` 通过。费用 ¥0 | 用户决定 D-016（提供 AK/SK、放行下载域名、确认商用授权，或改评估免版权曲库）；PR 尚未创建（等用户确认）；M0.2 其余：P0-09 离线预检未做，D-013 待决 |
