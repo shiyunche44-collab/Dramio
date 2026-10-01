@@ -1,0 +1,1222 @@
+{
+  "plan": {
+    "total_s": 63.5,
+    "shots": [
+      {
+        "shot_id": "ep01_sc01_sh01",
+        "hint_s": 4.0,
+        "target_frames": 108,
+        "start_frames": 0,
+        "source": "real",
+        "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc01_sh01.mp4",
+        "video_sha256": "9479872e919047536db696b833370bc94eb5844903d2acd91c8877fc031cb095",
+        "video_s": 4.4583,
+        "video_has_audio": true,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh01/keyframe-shared-98c48661.jpg",
+        "keyframe_sha256": "98c48661be2c80cda624891fe99e800b66e94b483498419bb82f4462078ae4b8",
+        "extend_s": 0.0417,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0001",
+            "speaker": "char_suwan",
+            "kind": "voiceover",
+            "text": "入职三年，我只用了十分钟收拾工位。",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0001.mp3",
+            "mp3_sha256": "9396b5cdb13b3262f48a5d623d301faf8a0a561a3d04257c26787975871471a5",
+            "src_in_s": 0.35,
+            "src_out_s": 4.43,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.98,
+            "file_s": 4.728
+          }
+        ],
+        "sfx": [
+          "大雨声",
+          "旋转门转动声"
+        ],
+        "characters": [],
+        "target_s": 4.5,
+        "placeholder": false
+      },
+      {
+        "shot_id": "ep01_sc01_sh02",
+        "hint_s": 5.0,
+        "target_frames": 120,
+        "start_frames": 108,
+        "source": "real",
+        "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc01_sh02.mp4",
+        "video_sha256": "a83013b5d6e7ff0f14089a65d069c3f0d0750044234463f63ea34000afaa0829",
+        "video_s": 5.1667,
+        "video_has_audio": true,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh02/keyframe-ref1-8cfabfb7.jpg",
+        "keyframe_sha256": "8cfabfb7f83b8dfa3534d31c430507d20553752e9caf2ec695de3ed708930660",
+        "extend_s": 0.0,
+        "trim_s": 0.1667,
+        "lines": [
+          {
+            "line_id": "l_0002",
+            "speaker": "char_suwan",
+            "kind": "voiceover",
+            "text": "我以为，努力就够了。",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0002.mp3",
+            "mp3_sha256": "9d2bc972ec0765a1a6d5fd074fb678d127dc403448831488ca1d5371b20aabd0",
+            "src_in_s": 0.26,
+            "src_out_s": 2.66,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.3,
+            "file_s": 2.952
+          }
+        ],
+        "sfx": [
+          "脚步踩水声"
+        ],
+        "characters": [
+          "char_suwan"
+        ],
+        "target_s": 5.0,
+        "placeholder": false
+      },
+      {
+        "shot_id": "ep01_sc01_sh03",
+        "hint_s": 5.0,
+        "target_frames": 120,
+        "start_frames": 228,
+        "source": "real",
+        "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc01_sh03.mp4",
+        "video_sha256": "456e058f19199e560c4feef85997242e46694af6ac98a47ed54e448cd2319584",
+        "video_s": 5.1667,
+        "video_has_audio": true,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh03/keyframe-ref2-6c1b3e8a.jpg",
+        "keyframe_sha256": "6c1b3e8a62a8795a1ff391ac595c73648f5b94f80aa4a42e8b53deaddbe8fbc7",
+        "extend_s": 0.0,
+        "trim_s": 0.1667,
+        "lines": [
+          {
+            "line_id": "l_0003",
+            "speaker": "char_luchen",
+            "kind": "dialogue",
+            "text": "方案，我会替你好好完成的。",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0003.mp3",
+            "mp3_sha256": "bdfaab4ad30efaf935daa89e5997f3d5c4d770d9118aa9436cf7239d07e3ffd9",
+            "src_in_s": 0.44,
+            "src_out_s": 3.6,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.06,
+            "file_s": 3.6
+          }
+        ],
+        "sfx": [
+          "雨打伞面声"
+        ],
+        "characters": [
+          "char_luchen",
+          "char_suwan"
+        ],
+        "target_s": 5.0,
+        "placeholder": false
+      },
+      {
+        "shot_id": "ep01_sc01_sh04",
+        "hint_s": 5.0,
+        "target_frames": 120,
+        "start_frames": 348,
+        "source": "real",
+        "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc01_sh04.mp4",
+        "video_sha256": "05b71463040afe029e742828e004adafaebbd013b1efe05d4e01c245b5410bee",
+        "video_s": 5.1667,
+        "video_has_audio": true,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh04/keyframe-ref2-17ff7be5.jpg",
+        "keyframe_sha256": "17ff7be5e8aefc5ebfe3af299bc98fe50ab244b1b64991c249468509218cc985",
+        "extend_s": 0.0,
+        "trim_s": 0.1667,
+        "lines": [
+          {
+            "line_id": "l_0004",
+            "speaker": "char_suwan",
+            "kind": "dialogue",
+            "text": "那是我熬了三个月的方案。",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0004.mp3",
+            "mp3_sha256": "acd2067819087dbef21fc187e56b13a1bb30d56b47ebac201460fff50fa8cec4",
+            "src_in_s": 0.26,
+            "src_out_s": 2.22,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 1.86,
+            "file_s": 2.424
+          }
+        ],
+        "sfx": [],
+        "characters": [
+          "char_suwan"
+        ],
+        "target_s": 5.0,
+        "placeholder": false
+      },
+      {
+        "shot_id": "ep01_sc01_sh05",
+        "hint_s": 5.0,
+        "target_frames": 169,
+        "start_frames": 468,
+        "source": "real",
+        "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc01_sh05.mp4",
+        "video_sha256": "9e05a3065170c00afce4f8a8ec3f0c608a2fff2b1ccab9bf9924379bd6788250",
+        "video_s": 5.1667,
+        "video_has_audio": true,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh05/keyframe-text-33ffe6d4.jpg",
+        "keyframe_sha256": "33ffe6d4245b0f728e5c3fbe2faa0f901752bfbb6b9508f36e1c42bc8689c1d9",
+        "extend_s": 1.875,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0005",
+            "speaker": "char_luchen",
+            "kind": "dialogue",
+            "text": "证据呢？没有证据，就别再闹了。",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0005.mp3",
+            "mp3_sha256": "b85e4f7c1ea2fdf0c8da8df93e06512acf94f4739c4fc348198f315630f91443",
+            "src_in_s": 0.3,
+            "src_out_s": 4.34,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.94,
+            "file_s": 4.416
+          },
+          {
+            "line_id": "l_0006",
+            "speaker": "char_suwan",
+            "kind": "dialogue",
+            "text": "总有一天，我会拿回来。",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0006.mp3",
+            "mp3_sha256": "5bd2c6ae4b73ea71e211af4fcb73b781426bfde20570fea828e980acc1773fbd",
+            "src_in_s": 0.35,
+            "src_out_s": 2.75,
+            "start_s": 4.39,
+            "speech_start_s": 4.54,
+            "speech_end_s": 6.54,
+            "file_s": 2.832
+          }
+        ],
+        "sfx": [
+          "雨声渐大"
+        ],
+        "characters": [
+          "char_luchen",
+          "char_suwan"
+        ],
+        "target_s": 7.0417,
+        "placeholder": false
+      },
+      {
+        "shot_id": "ep01_sc02_sh01",
+        "hint_s": 4.0,
+        "target_frames": 96,
+        "start_frames": 637,
+        "source": "real",
+        "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc02_sh01.mp4",
+        "video_sha256": "41823131bb3d4eed002c1955d740b8273426fb68b8d2bccb25e8a1e416a6f36a",
+        "video_s": 4.4583,
+        "video_has_audio": true,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh01/keyframe-ref1-63b30eff.jpg",
+        "keyframe_sha256": "63b30effdd8e78ef63852ef797d78daceaa8ce0ef321f1a23cc4c8218c41c300",
+        "extend_s": 0.0,
+        "trim_s": 0.4583,
+        "lines": [
+          {
+            "line_id": "l_0007",
+            "speaker": "char_suwan",
+            "kind": "voiceover",
+            "text": "他说得对，我什么都没有。",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0007.mp3",
+            "mp3_sha256": "5b9b48ec53e7856363409d12c06b4f887a5cf39d49f83b85a0d31cd5abfdf48b",
+            "src_in_s": 0.43,
+            "src_out_s": 3.27,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.74,
+            "file_s": 3.408
+          }
+        ],
+        "sfx": [
+          "窗外雨声"
+        ],
+        "characters": [
+          "char_suwan"
+        ],
+        "target_s": 4.0,
+        "placeholder": false
+      },
+      {
+        "shot_id": "ep01_sc02_sh02",
+        "hint_s": 4.0,
+        "target_frames": 96,
+        "start_frames": 733,
+        "source": "real",
+        "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc02_sh02.mp4",
+        "video_sha256": "d56b7d77209a7fd794139834926326d8404a9a775f5284a4009227b69f197123",
+        "video_s": 4.4583,
+        "video_has_audio": true,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh02/keyframe-ref2-17931403.jpg",
+        "keyframe_sha256": "179314034a0ceaa6dfa22ae90a4e885b09922bfe33f379f43a4ad32fefe8304d",
+        "extend_s": 0.0,
+        "trim_s": 0.4583,
+        "lines": [
+          {
+            "line_id": "l_0008",
+            "speaker": "char_suwan",
+            "kind": "voiceover",
+            "text": "纸箱底下，粘着一枚不属于我的U盘。",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0008.mp3",
+            "mp3_sha256": "56ca180078227aacd2fb9ac4c6077182596219858e3f96c36c1970936d33abf7",
+            "src_in_s": 0.3,
+            "src_out_s": 3.62,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.22,
+            "file_s": 3.864
+          }
+        ],
+        "sfx": [
+          "胶带撕开声"
+        ],
+        "characters": [
+          "char_suwan"
+        ],
+        "target_s": 4.0,
+        "placeholder": false
+      },
+      {
+        "shot_id": "ep01_sc02_sh03",
+        "hint_s": 5.0,
+        "target_frames": 120,
+        "start_frames": 829,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh03/keyframe-ref2-433a02f5.jpg",
+        "keyframe_sha256": "433a02f5108b2e744cf6b9d2b68758ad9519d47fa8844b0c48044328827c6c40",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0009",
+            "speaker": "char_suwan",
+            "kind": "dialogue",
+            "text": "会是谁……偷偷在帮我？",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0009.mp3",
+            "mp3_sha256": "6bd2154b63d02dc415aa60f8f4ba59aaabd46c3b7f8ff4aba40d146384de5ba5",
+            "src_in_s": 0.28,
+            "src_out_s": 2.56,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.18,
+            "file_s": 2.808
+          }
+        ],
+        "sfx": [],
+        "characters": [
+          "char_suwan"
+        ],
+        "target_s": 5.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh04",
+        "hint_s": 5.0,
+        "target_frames": 120,
+        "start_frames": 949,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh04/keyframe-ref2-91bcf845.jpg",
+        "keyframe_sha256": "91bcf8453587fd5bbedcb4a06a42be432427f3f222d8b82b3f63c4ec118ffa72",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0010",
+            "speaker": "char_suwan",
+            "kind": "dialogue",
+            "text": "陆沉，原来你连署名都是偷的。",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0010.mp3",
+            "mp3_sha256": "f6464c0548c6d5924dbf92aab13439db6fa60ea8550e1a4344c6cf347f011fb1",
+            "src_in_s": 0.37,
+            "src_out_s": 3.49,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.02,
+            "file_s": 3.648
+          }
+        ],
+        "sfx": [
+          "键盘敲击声",
+          "电脑提示音"
+        ],
+        "characters": [
+          "char_suwan"
+        ],
+        "target_s": 5.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh01",
+        "hint_s": 4.0,
+        "target_frames": 96,
+        "start_frames": 1069,
+        "source": "real",
+        "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc03_sh01.mp4",
+        "video_sha256": "dcd7d2a24d2643b7685efa88c14b1e3aa032ed2898a5c1031a7104c413ac11b1",
+        "video_s": 4.4583,
+        "video_has_audio": true,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh01/keyframe-ref1-7abcf9bf.jpg",
+        "keyframe_sha256": "7abcf9bf64888d0b2b06472fb777456ffbac945b01868293ce90e631dd0fbe45",
+        "extend_s": 0.0,
+        "trim_s": 0.4583,
+        "lines": [
+          {
+            "line_id": "l_0011",
+            "speaker": "char_luchen",
+            "kind": "dialogue",
+            "text": "各位，这是我主导的新品方案。",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0011.mp3",
+            "mp3_sha256": "c054e400f996be7b6950b054ecbfea3004e19629a52be20c5d19e5ac459eec7a",
+            "src_in_s": 0.29,
+            "src_out_s": 3.25,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.86,
+            "file_s": 3.48
+          }
+        ],
+        "sfx": [],
+        "characters": [
+          "char_luchen"
+        ],
+        "target_s": 4.0,
+        "placeholder": false
+      },
+      {
+        "shot_id": "ep01_sc03_sh02",
+        "hint_s": 5.0,
+        "target_frames": 124,
+        "start_frames": 1165,
+        "source": "real",
+        "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc03_sh02.mp4",
+        "video_sha256": "1aa2a14810c50da915036e71f3ac3d16c65386aa0e2339c10128de387f26a0df",
+        "video_s": 5.1667,
+        "video_has_audio": true,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh02/keyframe-ref1-3c2370df.jpg",
+        "keyframe_sha256": "3c2370df7eebbaee9528e4e356ed92edab088d0eb23f7ad5832232772ca11142",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0012",
+            "speaker": "char_suwan",
+            "kind": "dialogue",
+            "text": "陆总监，这段监控录像，要不要当众放给大家看看？",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0012.mp3",
+            "mp3_sha256": "e5a6308871b307ea9838c9a12109800a04b80f559be32fe4fee87e143a256f8a",
+            "src_in_s": 0.35,
+            "src_out_s": 5.11,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 4.66,
+            "file_s": 5.232
+          }
+        ],
+        "sfx": [
+          "推门声",
+          "议论声戛然而止"
+        ],
+        "characters": [
+          "char_suwan"
+        ],
+        "target_s": 5.1667,
+        "placeholder": false
+      },
+      {
+        "shot_id": "ep01_sc03_sh03",
+        "hint_s": 4.0,
+        "target_frames": 115,
+        "start_frames": 1289,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh03/keyframe-ref2-3106ee25.jpg",
+        "keyframe_sha256": "3106ee251fae978fd23796f949d9b0d2db13d73eb6f8912fb478cbfafe91b90e",
+        "extend_s": 0.7917,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0013",
+            "speaker": "char_luchen",
+            "kind": "dialogue",
+            "text": "你……你怎么会有这个？",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0013.mp3",
+            "mp3_sha256": "61ec79a029dd30d497abba80450d238faf49ea0f50698664f04506a21155a4f4",
+            "src_in_s": 0.24,
+            "src_out_s": 2.44,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.1,
+            "file_s": 2.568
+          },
+          {
+            "line_id": "l_0014",
+            "speaker": "char_luchen",
+            "kind": "dialogue",
+            "text": "保安！把她带出去！",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0014.mp3",
+            "mp3_sha256": "b3f13ba6246f88476b0d1d9b62793ba56eafee7417f198f2cce0e6444a61984c",
+            "src_in_s": 0.25,
+            "src_out_s": 2.232,
+            "start_s": 2.55,
+            "speech_start_s": 2.7,
+            "speech_end_s": 4.3,
+            "file_s": 2.232
+          }
+        ],
+        "sfx": [],
+        "characters": [
+          "char_luchen"
+        ],
+        "target_s": 4.7917,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh04",
+        "hint_s": 5.0,
+        "target_frames": 120,
+        "start_frames": 1404,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh04/keyframe-ref2-dba802ec.jpg",
+        "keyframe_sha256": "dba802ecc97b01554aa381775d0b09ab1e84cbdd59841485e2430303fc6145dc",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0015",
+            "speaker": "char_suwan",
+            "kind": "voiceover",
+            "text": "可我没想到，真正的对手，还藏在后面。",
+            "mp3": "docs/reports/p0/P0-05/C-instruct-speed/l_0015.mp3",
+            "mp3_sha256": "306fb15b6220ba8ceb240a4da3fde1de94059c5c2eda901925a76d024594b819",
+            "src_in_s": 0.29,
+            "src_out_s": 4.29,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.9,
+            "file_s": 4.44
+          }
+        ],
+        "sfx": [
+          "手机震动声"
+        ],
+        "characters": [
+          "char_suwan"
+        ],
+        "target_s": 5.0,
+        "placeholder": true
+      }
+    ],
+    "ir_sha256": "cd02daef022c6e78227ef3bf366adb2b5142a979a803bcf4373cdb8765a6fb59",
+    "warnings": [
+      "ep01_sc01_sh01：台词需要 4.50 秒，比 hint_s 4 秒长",
+      "ep01_sc01_sh05：台词需要 7.04 秒，比 hint_s 5 秒长",
+      "ep01_sc03_sh02：台词需要 5.17 秒，比 hint_s 5 秒长",
+      "ep01_sc03_sh03：台词需要 4.79 秒，比 hint_s 4 秒长"
+    ]
+  },
+  "selection": [
+    {
+      "shot_id": "ep01_sc01_sh01",
+      "source": "real",
+      "placeholder": false,
+      "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc01_sh01.mp4",
+      "video_sha256": "9479872e919047536db696b833370bc94eb5844903d2acd91c8877fc031cb095",
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh01/keyframe-shared-98c48661.jpg",
+      "keyframe_sha256": "98c48661be2c80cda624891fe99e800b66e94b483498419bb82f4462078ae4b8",
+      "target_s": 4.5,
+      "extend_s": 0.0417
+    },
+    {
+      "shot_id": "ep01_sc01_sh02",
+      "source": "real",
+      "placeholder": false,
+      "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc01_sh02.mp4",
+      "video_sha256": "a83013b5d6e7ff0f14089a65d069c3f0d0750044234463f63ea34000afaa0829",
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh02/keyframe-ref1-8cfabfb7.jpg",
+      "keyframe_sha256": "8cfabfb7f83b8dfa3534d31c430507d20553752e9caf2ec695de3ed708930660",
+      "target_s": 5.0,
+      "extend_s": 0.0
+    },
+    {
+      "shot_id": "ep01_sc01_sh03",
+      "source": "real",
+      "placeholder": false,
+      "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc01_sh03.mp4",
+      "video_sha256": "456e058f19199e560c4feef85997242e46694af6ac98a47ed54e448cd2319584",
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh03/keyframe-ref2-6c1b3e8a.jpg",
+      "keyframe_sha256": "6c1b3e8a62a8795a1ff391ac595c73648f5b94f80aa4a42e8b53deaddbe8fbc7",
+      "target_s": 5.0,
+      "extend_s": 0.0
+    },
+    {
+      "shot_id": "ep01_sc01_sh04",
+      "source": "real",
+      "placeholder": false,
+      "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc01_sh04.mp4",
+      "video_sha256": "05b71463040afe029e742828e004adafaebbd013b1efe05d4e01c245b5410bee",
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh04/keyframe-ref2-17ff7be5.jpg",
+      "keyframe_sha256": "17ff7be5e8aefc5ebfe3af299bc98fe50ab244b1b64991c249468509218cc985",
+      "target_s": 5.0,
+      "extend_s": 0.0
+    },
+    {
+      "shot_id": "ep01_sc01_sh05",
+      "source": "real",
+      "placeholder": false,
+      "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc01_sh05.mp4",
+      "video_sha256": "9e05a3065170c00afce4f8a8ec3f0c608a2fff2b1ccab9bf9924379bd6788250",
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc01_sh05/keyframe-text-33ffe6d4.jpg",
+      "keyframe_sha256": "33ffe6d4245b0f728e5c3fbe2faa0f901752bfbb6b9508f36e1c42bc8689c1d9",
+      "target_s": 7.0417,
+      "extend_s": 1.875
+    },
+    {
+      "shot_id": "ep01_sc02_sh01",
+      "source": "real",
+      "placeholder": false,
+      "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc02_sh01.mp4",
+      "video_sha256": "41823131bb3d4eed002c1955d740b8273426fb68b8d2bccb25e8a1e416a6f36a",
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh01/keyframe-ref1-63b30eff.jpg",
+      "keyframe_sha256": "63b30effdd8e78ef63852ef797d78daceaa8ce0ef321f1a23cc4c8218c41c300",
+      "target_s": 4.0,
+      "extend_s": 0.0
+    },
+    {
+      "shot_id": "ep01_sc02_sh02",
+      "source": "real",
+      "placeholder": false,
+      "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc02_sh02.mp4",
+      "video_sha256": "d56b7d77209a7fd794139834926326d8404a9a775f5284a4009227b69f197123",
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh02/keyframe-ref2-17931403.jpg",
+      "keyframe_sha256": "179314034a0ceaa6dfa22ae90a4e885b09922bfe33f379f43a4ad32fefe8304d",
+      "target_s": 4.0,
+      "extend_s": 0.0
+    },
+    {
+      "shot_id": "ep01_sc02_sh03",
+      "source": "placeholder",
+      "placeholder": true,
+      "video": null,
+      "video_sha256": null,
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh03/keyframe-ref2-433a02f5.jpg",
+      "keyframe_sha256": "433a02f5108b2e744cf6b9d2b68758ad9519d47fa8844b0c48044328827c6c40",
+      "target_s": 5.0,
+      "extend_s": 0.0
+    },
+    {
+      "shot_id": "ep01_sc02_sh04",
+      "source": "placeholder",
+      "placeholder": true,
+      "video": null,
+      "video_sha256": null,
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc02_sh04/keyframe-ref2-91bcf845.jpg",
+      "keyframe_sha256": "91bcf8453587fd5bbedcb4a06a42be432427f3f222d8b82b3f63c4ec118ffa72",
+      "target_s": 5.0,
+      "extend_s": 0.0
+    },
+    {
+      "shot_id": "ep01_sc03_sh01",
+      "source": "real",
+      "placeholder": false,
+      "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc03_sh01.mp4",
+      "video_sha256": "dcd7d2a24d2643b7685efa88c14b1e3aa032ed2898a5c1031a7104c413ac11b1",
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh01/keyframe-ref1-7abcf9bf.jpg",
+      "keyframe_sha256": "7abcf9bf64888d0b2b06472fb777456ffbac945b01868293ce90e631dd0fbe45",
+      "target_s": 4.0,
+      "extend_s": 0.0
+    },
+    {
+      "shot_id": "ep01_sc03_sh02",
+      "source": "real",
+      "placeholder": false,
+      "video": "docs/reports/p0/P0-08/full-h3/videos/ep01_sc03_sh02.mp4",
+      "video_sha256": "1aa2a14810c50da915036e71f3ac3d16c65386aa0e2339c10128de387f26a0df",
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh02/keyframe-ref1-3c2370df.jpg",
+      "keyframe_sha256": "3c2370df7eebbaee9528e4e356ed92edab088d0eb23f7ad5832232772ca11142",
+      "target_s": 5.1667,
+      "extend_s": 0.0
+    },
+    {
+      "shot_id": "ep01_sc03_sh03",
+      "source": "placeholder",
+      "placeholder": true,
+      "video": null,
+      "video_sha256": null,
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh03/keyframe-ref2-3106ee25.jpg",
+      "keyframe_sha256": "3106ee251fae978fd23796f949d9b0d2db13d73eb6f8912fb478cbfafe91b90e",
+      "target_s": 4.7917,
+      "extend_s": 0.7917
+    },
+    {
+      "shot_id": "ep01_sc03_sh04",
+      "source": "placeholder",
+      "placeholder": true,
+      "video": null,
+      "video_sha256": null,
+      "keyframe": "docs/reports/p0/P0-07/keyframe-r1/ep01_sc03_sh04/keyframe-ref2-dba802ec.jpg",
+      "keyframe_sha256": "dba802ecc97b01554aa381775d0b09ab1e84cbdd59841485e2430303fc6145dc",
+      "target_s": 5.0,
+      "extend_s": 0.0
+    }
+  ],
+  "ambient": "off",
+  "nodes": {
+    "nodes": [
+      {
+        "kind": "segment",
+        "name": "ep01_sc01_sh01",
+        "key": "a9dad98d076ab0bfafba68278692f1cbc88d67b4500503f1eb7a8186866841c7",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-a9dad98d076ab0bfafba6827.mp4",
+        "seconds": 3.85
+      },
+      {
+        "kind": "segment",
+        "name": "ep01_sc01_sh02",
+        "key": "b21b85afe78903a12524a9ef47298998a23bb2c74866ca461c511df1752f1730",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-b21b85afe78903a12524a9ef.mp4",
+        "seconds": 4.76
+      },
+      {
+        "kind": "segment",
+        "name": "ep01_sc01_sh03",
+        "key": "ce8b7a4a7e4cb73cceeca567a40533fb84fa88ecc1b06aa8883badf5ccc23e7a",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-ce8b7a4a7e4cb73cceeca567.mp4",
+        "seconds": 3.87
+      },
+      {
+        "kind": "segment",
+        "name": "ep01_sc01_sh04",
+        "key": "f1db82852fb55029b767038b32626f99529b1443924e0452e01825539a59729f",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-f1db82852fb55029b767038b.mp4",
+        "seconds": 4.61
+      },
+      {
+        "kind": "segment",
+        "name": "ep01_sc01_sh05",
+        "key": "d6baa21a605800cb35a596fc7ca584bbbb24ecf5837344f2f43c04f6ddc48bb6",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-d6baa21a605800cb35a596fc.mp4",
+        "seconds": 4.89
+      },
+      {
+        "kind": "segment",
+        "name": "ep01_sc02_sh01",
+        "key": "ed236e39c7735f5ca7159a0e8730c57daed48435a572cb6c32c22d767bd456a9",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-ed236e39c7735f5ca7159a0e.mp4",
+        "seconds": 2.89
+      },
+      {
+        "kind": "segment",
+        "name": "ep01_sc02_sh02",
+        "key": "c69f65343cee614bbadcb3b81858fc0e11d6ac00f80a9c49d77052d181a8fe7b",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-c69f65343cee614bbadcb3b8.mp4",
+        "seconds": 2.78
+      },
+      {
+        "kind": "segment",
+        "name": "ep01_sc02_sh03",
+        "key": "0ed44a0af506cef08d24012a32ebf2bd13ed264fb27316661d7bf42b615bfbd1",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-0ed44a0af506cef08d24012a.mp4",
+        "seconds": 5.03
+      },
+      {
+        "kind": "segment",
+        "name": "ep01_sc02_sh04",
+        "key": "859bc54248b533a99597893ee9b1b9160bf566142f07ec533d9da1e696e4f2c2",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-859bc54248b533a99597893e.mp4",
+        "seconds": 5.15
+      },
+      {
+        "kind": "segment",
+        "name": "ep01_sc03_sh01",
+        "key": "89d656c2012e80f5e1793f66e60df1a9ee2813b14782bfa30646e2a074ab6f04",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-89d656c2012e80f5e1793f66.mp4",
+        "seconds": 2.55
+      },
+      {
+        "kind": "segment",
+        "name": "ep01_sc03_sh02",
+        "key": "55ddddb959d52846bdc1fb6e7ed2de3b8206c5128409101de73746648c91bb92",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-55ddddb959d52846bdc1fb6e.mp4",
+        "seconds": 4.69
+      },
+      {
+        "kind": "segment",
+        "name": "ep01_sc03_sh03",
+        "key": "843de2b490993111674a9daf1ae08c5d41d17bc5ac1be8fb327c306922a82598",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-843de2b490993111674a9daf.mp4",
+        "seconds": 4.56
+      },
+      {
+        "kind": "segment",
+        "name": "ep01_sc03_sh04",
+        "key": "188fbb4f896754a8abdde9d06d16d921f6ae7e9112a21a46856be5e1747bcf5b",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-188fbb4f896754a8abdde9d0.mp4",
+        "seconds": 4.76
+      },
+      {
+        "kind": "audio_mix",
+        "name": "off",
+        "key": "e0b3fe34534c87963cf1afa92dcd46c89ee9dde0bf5cfa0a3c748dd82c5d14d8",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/audio-e0b3fe34534c87963cf1afa9.wav",
+        "seconds": 2.97
+      },
+      {
+        "kind": "audio_mix",
+        "name": "low",
+        "key": "d667200cc25ab284db2b67f8aea9bfa0673fc1b576349066d097a16af69ce790",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/audio-d667200cc25ab284db2b67f8.wav",
+        "seconds": 2.99
+      },
+      {
+        "kind": "audio_mix",
+        "name": "duck",
+        "key": "897ea5c25b626a6e9b68b999fb6b18d51035881acad27ac91be49eacfb6c7ac1",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/audio-897ea5c25b626a6e9b68b999.wav",
+        "seconds": 3.23
+      },
+      {
+        "kind": "final",
+        "name": "final",
+        "key": "041748696474501fd20fe1610d36c8f5edabfa9d1e5cc7819660e82adc3af957",
+        "hit": false,
+        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/final-041748696474501fd20fe161.mp4",
+        "seconds": 38.31
+      }
+    ],
+    "hits": 0,
+    "misses": 17
+  },
+  "elapsed_s": 114.85,
+  "tools": {
+    "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+  },
+  "audio_variants": {
+    "off": {
+      "file": "audio/ambient-off.m4a",
+      "lufs": -16.0,
+      "true_peak_dbtp": -4.6,
+      "node_key": "e0b3fe34534c87963cf1afa92dcd46c89ee9dde0bf5cfa0a3c748dd82c5d14d8",
+      "hit": false,
+      "premix_lufs": -18.8,
+      "ambient_native_lufs_mean": -18.4,
+      "dialogue_minus_ambient_db": null
+    },
+    "low": {
+      "file": "audio/ambient-low.m4a",
+      "lufs": -16.0,
+      "true_peak_dbtp": -4.5,
+      "node_key": "d667200cc25ab284db2b67f8aea9bfa0673fc1b576349066d097a16af69ce790",
+      "hit": false,
+      "premix_lufs": -18.9,
+      "ambient_native_lufs_mean": -18.4,
+      "dialogue_minus_ambient_db": 23.6
+    },
+    "duck": {
+      "file": "audio/ambient-duck.m4a",
+      "lufs": -16.0,
+      "true_peak_dbtp": -4.0,
+      "node_key": "897ea5c25b626a6e9b68b999fb6b18d51035881acad27ac91be49eacfb6c7ac1",
+      "hit": false,
+      "premix_lufs": -19.2,
+      "ambient_native_lufs_mean": -18.4,
+      "dialogue_minus_ambient_db": 11.6
+    }
+  },
+  "exchange": {
+    "fcp_xml": {
+      "file": "timeline.xml",
+      "ok": true,
+      "tracks": [
+        [
+          "",
+          "Video",
+          15
+        ],
+        [
+          "",
+          "Audio",
+          30
+        ],
+        [
+          "",
+          "Audio",
+          12
+        ]
+      ],
+      "duration_frames": 1524
+    },
+    "cmx_3600": {
+      "file": "timeline.edl",
+      "ok": true,
+      "tracks": [
+        [
+          "V",
+          "Video",
+          15
+        ]
+      ],
+      "duration_frames": 1524
+    }
+  },
+  "face_overlap": [
+    {
+      "shot_id": "ep01_sc01_sh01",
+      "source": "real",
+      "cues": 1,
+      "faces_measured": 0,
+      "max_face_bottom_px": 0,
+      "intersects": false,
+      "hits": []
+    },
+    {
+      "shot_id": "ep01_sc01_sh02",
+      "source": "real",
+      "cues": 1,
+      "faces_measured": 3,
+      "max_face_bottom_px": 811,
+      "intersects": false,
+      "hits": []
+    },
+    {
+      "shot_id": "ep01_sc01_sh03",
+      "source": "real",
+      "cues": 1,
+      "faces_measured": 6,
+      "max_face_bottom_px": 1268,
+      "intersects": false,
+      "hits": []
+    },
+    {
+      "shot_id": "ep01_sc01_sh04",
+      "source": "real",
+      "cues": 1,
+      "faces_measured": 3,
+      "max_face_bottom_px": 1094,
+      "intersects": false,
+      "hits": []
+    },
+    {
+      "shot_id": "ep01_sc01_sh05",
+      "source": "real",
+      "cues": 2,
+      "faces_measured": 5,
+      "max_face_bottom_px": 503,
+      "intersects": false,
+      "hits": []
+    },
+    {
+      "shot_id": "ep01_sc02_sh01",
+      "source": "real",
+      "cues": 1,
+      "faces_measured": 3,
+      "max_face_bottom_px": 1028,
+      "intersects": false,
+      "hits": []
+    },
+    {
+      "shot_id": "ep01_sc02_sh02",
+      "source": "real",
+      "cues": 1,
+      "faces_measured": 0,
+      "max_face_bottom_px": 0,
+      "intersects": false,
+      "hits": []
+    },
+    {
+      "shot_id": "ep01_sc02_sh03",
+      "source": "placeholder",
+      "cues": 1,
+      "faces_measured": 1,
+      "max_face_bottom_px": 955,
+      "intersects": false,
+      "hits": []
+    },
+    {
+      "shot_id": "ep01_sc02_sh04",
+      "source": "placeholder",
+      "cues": 1,
+      "faces_measured": 1,
+      "max_face_bottom_px": 885,
+      "intersects": false,
+      "hits": []
+    },
+    {
+      "shot_id": "ep01_sc03_sh01",
+      "source": "real",
+      "cues": 1,
+      "faces_measured": 3,
+      "max_face_bottom_px": 632,
+      "intersects": false,
+      "hits": []
+    },
+    {
+      "shot_id": "ep01_sc03_sh02",
+      "source": "real",
+      "cues": 1,
+      "faces_measured": 3,
+      "max_face_bottom_px": 858,
+      "intersects": false,
+      "hits": []
+    },
+    {
+      "shot_id": "ep01_sc03_sh03",
+      "source": "placeholder",
+      "cues": 2,
+      "faces_measured": 1,
+      "max_face_bottom_px": 800,
+      "intersects": false,
+      "hits": []
+    },
+    {
+      "shot_id": "ep01_sc03_sh04",
+      "source": "placeholder",
+      "cues": 1,
+      "faces_measured": 1,
+      "max_face_bottom_px": 1061,
+      "intersects": false,
+      "hits": []
+    }
+  ],
+  "final": {
+    "file": "final.mp4",
+    "bytes": 17159547,
+    "sha256": "309b0cb3056855fb2df1c2e01df3bdef2a783d47525676b7a2ff69d01fbcb258",
+    "width": 1080,
+    "height": 1920,
+    "fps": 24.0,
+    "duration_s": 63.5,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "pix_fmt": "yuv420p",
+    "lufs": -16.0,
+    "true_peak_dbtp": -4.1
+  },
+  "cues": [
+    {
+      "line_id": "l_0001",
+      "shot_id": "ep01_sc01_sh01",
+      "start_s": 0.3,
+      "end_s": 3.98
+    },
+    {
+      "line_id": "l_0002",
+      "shot_id": "ep01_sc01_sh02",
+      "start_s": 4.8,
+      "end_s": 6.8
+    },
+    {
+      "line_id": "l_0003",
+      "shot_id": "ep01_sc01_sh03",
+      "start_s": 9.8,
+      "end_s": 12.56
+    },
+    {
+      "line_id": "l_0004",
+      "shot_id": "ep01_sc01_sh04",
+      "start_s": 14.8,
+      "end_s": 16.36
+    },
+    {
+      "line_id": "l_0005",
+      "shot_id": "ep01_sc01_sh05",
+      "start_s": 19.8,
+      "end_s": 23.44
+    },
+    {
+      "line_id": "l_0006",
+      "shot_id": "ep01_sc01_sh05",
+      "start_s": 24.04,
+      "end_s": 26.04
+    },
+    {
+      "line_id": "l_0007",
+      "shot_id": "ep01_sc02_sh01",
+      "start_s": 26.842,
+      "end_s": 29.282
+    },
+    {
+      "line_id": "l_0008",
+      "shot_id": "ep01_sc02_sh02",
+      "start_s": 30.842,
+      "end_s": 33.762
+    },
+    {
+      "line_id": "l_0009",
+      "shot_id": "ep01_sc02_sh03",
+      "start_s": 34.842,
+      "end_s": 36.722
+    },
+    {
+      "line_id": "l_0010",
+      "shot_id": "ep01_sc02_sh04",
+      "start_s": 39.842,
+      "end_s": 42.562
+    },
+    {
+      "line_id": "l_0011",
+      "shot_id": "ep01_sc03_sh01",
+      "start_s": 44.842,
+      "end_s": 47.402
+    },
+    {
+      "line_id": "l_0012",
+      "shot_id": "ep01_sc03_sh02",
+      "start_s": 48.842,
+      "end_s": 53.202
+    },
+    {
+      "line_id": "l_0013",
+      "shot_id": "ep01_sc03_sh03",
+      "start_s": 54.008,
+      "end_s": 55.808
+    },
+    {
+      "line_id": "l_0014",
+      "shot_id": "ep01_sc03_sh03",
+      "start_s": 56.408,
+      "end_s": 58.008
+    },
+    {
+      "line_id": "l_0015",
+      "shot_id": "ep01_sc03_sh04",
+      "start_s": 58.8,
+      "end_s": 62.4
+    }
+  ],
+  "cost_cny": 0.0,
+  "dialogue_onsets": [
+    {
+      "line_id": "l_0001",
+      "cue_start_s": 0.3,
+      "onset_s": 0.357,
+      "offset_s": 0.057
+    },
+    {
+      "line_id": "l_0002",
+      "cue_start_s": 4.8,
+      "onset_s": 4.949,
+      "offset_s": 0.149
+    },
+    {
+      "line_id": "l_0003",
+      "cue_start_s": 9.8,
+      "onset_s": 9.779,
+      "offset_s": -0.021
+    },
+    {
+      "line_id": "l_0004",
+      "cue_start_s": 14.8,
+      "onset_s": 14.894,
+      "offset_s": 0.094
+    },
+    {
+      "line_id": "l_0005",
+      "cue_start_s": 19.8,
+      "onset_s": 19.852,
+      "offset_s": 0.052
+    },
+    {
+      "line_id": "l_0006",
+      "cue_start_s": 24.04,
+      "onset_s": 23.979,
+      "offset_s": -0.061
+    },
+    {
+      "line_id": "l_0007",
+      "cue_start_s": 26.842,
+      "onset_s": 26.832,
+      "offset_s": -0.01
+    },
+    {
+      "line_id": "l_0008",
+      "cue_start_s": 30.842,
+      "onset_s": 30.906,
+      "offset_s": 0.064
+    },
+    {
+      "line_id": "l_0009",
+      "cue_start_s": 34.842,
+      "onset_s": 34.892,
+      "offset_s": 0.05
+    },
+    {
+      "line_id": "l_0010",
+      "cue_start_s": 39.842,
+      "onset_s": 39.828,
+      "offset_s": -0.014
+    },
+    {
+      "line_id": "l_0011",
+      "cue_start_s": 44.842,
+      "onset_s": 44.896,
+      "offset_s": 0.054
+    },
+    {
+      "line_id": "l_0012",
+      "cue_start_s": 48.842,
+      "onset_s": 48.864,
+      "offset_s": 0.022
+    },
+    {
+      "line_id": "l_0013",
+      "cue_start_s": 54.008,
+      "onset_s": 54.097,
+      "offset_s": 0.089
+    },
+    {
+      "line_id": "l_0014",
+      "cue_start_s": 56.408,
+      "onset_s": 56.442,
+      "offset_s": 0.034
+    },
+    {
+      "line_id": "l_0015",
+      "cue_start_s": 58.8,
+      "onset_s": 58.877,
+      "offset_s": 0.077
+    }
+  ]
+}

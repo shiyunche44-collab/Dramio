@@ -19,6 +19,7 @@ from typing import Any
 from poc import media, subtitles
 
 RENDER_VERSION = "1"
+AMBIENT_GAIN_DB = {"off": None, "low": -24.0, "duck": -12.0}  # H3 原声的基础增益；duck 档再被对白侧链压低
 LUFS_TARGET = -16.0
 TRUE_PEAK_TARGET = -1.5
 SAMPLE_RATE = 48000
@@ -114,7 +115,7 @@ def render_segment(shot: dict[str, Any], cache: Cache, size: tuple[int, int], fp
 
 
 def audio_key(spec: dict[str, Any], ambient: str) -> str:
-    amb = [(c["sha256"], c["start_frames"], round(c["dur_s"], 4), c["gain_db"]) for c in spec["ambient_clips"] if c["enabled"]] if ambient != "off" else []
+    amb = [(c["sha256"], c["start_frames"], round(c["dur_s"], 4), AMBIENT_GAIN_DB[ambient]) for c in spec["ambient_clips"]] if ambient != "off" else []
     lines = [(ln["sha256"], round(ln["in_s"], 4), round(ln["dur_s"], 4), ln["start_frames"]) for ln in spec["lines"]]
     return _key({"v": RENDER_VERSION, "kind": "audio", "ambient": ambient, "amb": amb, "lines": lines, "total": spec["total_frames"],
                  "lufs": LUFS_TARGET, "tp": TRUE_PEAK_TARGET, "sr": SAMPLE_RATE})
@@ -136,13 +137,11 @@ def _graph(spec: dict[str, Any], ambient: str, fps: int) -> tuple[list[str], str
     parts.append("".join(dlg) + f"amix=inputs={len(dlg)}:normalize=0:duration=longest[dlgmix]")
     amb: list[str] = []
     if ambient != "off":
-        for c in spec["ambient_clips"]:
-            if not c["enabled"]:
-                continue
+        for c in spec["ambient_clips"]:  # 原声 clip 在 OTIO 里总是存在（enabled 只反映成片所选档位），对比各档时按档位增益全部混入
             inputs += ["-i", c["media"]]
             ms = round(c["start_frames"] / fps * 1000)
             parts.append(f"[{idx}:a]atrim=duration={c['dur_s']:.4f},asetpts=PTS-STARTPTS,aresample={SAMPLE_RATE},"
-                         f"aformat=channel_layouts=stereo,volume={c['gain_db']}dB,adelay={ms}|{ms}[a{idx}]")
+                         f"aformat=channel_layouts=stereo,volume={AMBIENT_GAIN_DB[ambient]}dB,adelay={ms}|{ms}[a{idx}]")
             amb.append(f"[a{idx}]")
             idx += 1
     if amb:
@@ -179,6 +178,18 @@ def render_audio(spec: dict[str, Any], ambient: str, cache: Cache, fps: int) -> 
                             "-c:a", "pcm_s16le", str(tmp)], timeout=600)
     tmp.replace(dst)
     return Node("audio_mix", ambient, key, False, str(dst), round(time.monotonic() - t0, 2))
+
+
+def premix_loudness(spec: dict[str, Any], ambient: str, cache: Cache, fps: int) -> float | None:
+    """归一化之前的混音响度（LUFS）。off 档只有对白；其它档减去 off 档 = 混入原声后整体被抬高了多少 dB（越小说明原声相对对白越轻）。"""
+    inputs, graph = _graph(spec, ambient, fps)
+    tmp = cache.root / f"premix-{ambient}.wav"
+    media._run([media.FFMPEG, "-nostdin", "-v", "error", "-y", *inputs, "-filter_complex", graph, "-map", "[padded]", "-t", f"{spec['total_frames'] / fps:.4f}",
+                "-c:a", "pcm_s16le", str(tmp)], timeout=600)
+    try:
+        return media.loudness(tmp).integrated_lufs
+    finally:
+        tmp.unlink(missing_ok=True)
 
 
 # ---- 终混 ----

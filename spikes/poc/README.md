@@ -225,6 +225,26 @@ python3 -m poc video --verify ../../docs/reports/p0/P0-08 --max-bytes 12582912  
 - `--analyze` 的人脸相似度要先抽帧再跑 `face --manifest <目录>/analysis/face-manifest.json`（需要 `[face]` extras，参考图见 manifest 的 `references`），输出 `faces.json` 后再运行一次 `--analyze` 生成 `table.md`；抽帧图（`analysis/frames/`，约 3 MB）不入库，由视频重新生成。
 - Ark Seedance：本账号 Agent Plan 下 2.0 / 2.0-fast / 2.0-mini / 2.5 全部返回 404 `UnsupportedModel`（带日期的 ID 和 `PLAN_ALIASES` 里的套餐别名都试过），详见 `docs/reports/p0/P0-08.md`。
 
+## compose：剪辑合成（P0-11）
+
+ep01 + P0-05 方案 C 配音 + P0-08 的 H3 片段 → OTIO 时间线 → FFmpeg 渲染 1080×1920 成片（H.264 + AAC，24 fps），带字幕、混音、AIGC 标识。不调任何付费 API，费用 ¥0。
+
+```bash
+pip install -e '.[otio]'                                   # opentimelineio + 适配器（只有真正渲染和导出才需要；--dry-run、单元测试不需要）
+python3 -m poc compose --dry-run                           # 离线：镜头表（来源 / hint / 目标时长 / 延长 / 台词窗口），不写文件
+python3 -m poc compose                                     # 渲染到 docs/reports/p0/P0-11/（默认 --ambient off）
+python3 -m poc compose --ambient duck                      # H3 原声：off / low（−24 dB）/ duck（−12 dB 再被对白侧链压低）
+python3 -m poc compose --verify ../../docs/reports/p0/P0-11   # 离线核验证据（退出码 0 / 1）
+```
+
+- **按镜头自动选片**：`docs/reports/p0/P0-08/full-h3/videos/<shot_id>.mp4` 存在且 ffprobe 能解析 → real；不存在 → placeholder（P0-07 选定首帧缓慢推近，最大 1.08 倍，画面左下角有“占位·静帧”标签）；存在但损坏 → 报错，不会静默改用占位。镜头清单不写死，**补入真实片段后重跑 `python3 -m poc compose` 即可**：镜头目标时长只由 `hint_s` 与台词窗口决定，与素材真假无关，所以时间线、配音、字幕时间都不变，只有被替换镜头的画面变。
+- **时长**：目标 = max(`hint_s`，头 0.15 + 台词剪辑窗口 + 句间 0.2 + 尾 0.25)，台词窗口取 ASR 的语音起止（前后各留 0.15 / 0.25 秒，OTIO 里是对 mp3 的 source_range，非破坏性）。真实片段比目标短时冻结尾帧补足，最多 2 秒（超限报错，不加速、不截断台词）；比目标长时裁掉尾部。
+- **OTIO**（`timeline.otio`，渲染器只读它）：V1 画面、A1 对白、A2 环境声（H3 自带音频，`enabled` 随 `--ambient`）、A3 BGM / A4 SFX 空轨（P0-10 未做，镜头的 `sfx` 标签记在 V1 clip 的 marker 上）、S1 字幕与 O1 角标（GeneratorReference，NLE 不一定识别，字幕另有 `subtitles.srt`）；素材路径相对 OTIO 所在目录。交换格式用只含 V1 / A1 / A2 的视图导出 `timeline.xml`（FCP7 XML）与 `timeline.edl`（只含视频轨），导入剪辑软件后需要重新链接素材（相对路径）。
+- **渲染**：每镜头先合成 1080×1920 画面段（768×1344 先缩放到高 1920 再居中裁到 1080，每侧丢约 8 px，不做超分），再拼接 + 字幕（ASS，WenQuanYi Zen Hei）+ AIGC 角标；对白逐句放置、48 kHz 立体声、两遍 loudnorm 到 −16 LUFS（真峰值 ≤ −1.5）；编码 CRF 23、码率上限 2.5 Mbps。
+- **AIGC 标识没有关闭开关**（无参数、无环境变量，单测断言）：全片可见角标“AI生成”，容器元数据 `AIGC`（JSON，字段待对照 GB 45438-2025 确认，可用 `ffprobe -show_format` 读取）。
+- **缓存**：节点 `segment` / `audio_mix` / `final` 各有 `node_key`（输入内容 sha256，含渲染版本号），缓存在 `runs/compose-cache/`（不入库）；`compose-manifest.json` 记录每个节点的命中与耗时。冷启动全量约 2 分钟，全命中约 10 秒。
+- **`--verify`** 检查：规格（1080×1920、24 fps、h264 / aac / yuv420p）、音视频时长差 ≤ 50 ms、总时长与规划一致、AIGC 标签与角标（5 个采样帧的角标区域有白色文字）、字幕 cue 数 = 台词数且落在各自镜头窗口内、对白起声与字幕起点偏差 ≤ 0.2 秒、响度 −16 ±1.5 LUFS 与真峰值 ≤ −1 dBTP、OTIO 往返读写与 clip 数与 placeholder 标记、FCP7 XML / EDL 回读时长、真实片段 sha256、体积 ≤ 28 MB（按入库文件计）、无费用记录与密钥。字幕框与人脸框的相交检查是几何估算，只给提示。
+
 ## 运行记录
 
 ```

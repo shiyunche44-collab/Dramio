@@ -19,11 +19,11 @@ from pathlib import Path
 from typing import Any
 
 from poc import subtitles
+from poc.render import AMBIENT_GAIN_DB
 from poc.compose import FPS, HEIGHT, ROOT, WIDTH, Plan
 
 INSTALL_HINT = "缺少 opentimelineio：pip install -e '.[otio]'（OpenTimelineIO + OpenTimelineIO-Plugins，导出 FCP7 XML / EDL 要用后者）"
 AMBIENT_MODES = ("off", "low", "duck")
-AMBIENT_GAIN_DB = {"off": None, "low": -24.0, "duck": -12.0}  # duck：基础增益 −12 dB，渲染时再被对白侧链压低
 BADGE_TEXT = "AI生成"
 TRACKS = ("V1 画面", "A1 对白", "A2 环境声", "A3 BGM", "A4 SFX", "S1 字幕", "O1 标识")
 

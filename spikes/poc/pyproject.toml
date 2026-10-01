@@ -8,6 +8,8 @@ dependencies = []
 [project.optional-dependencies]
 # poc face（P0-07）的人脸后端 arcface；核心保持零依赖，单元测试不需要它们
 face = ["numpy", "opencv-python-headless", "onnxruntime", "insightface"]
+# poc compose（P0-11）：OTIO 时间线与 FCP7 XML / EDL 适配器（适配器在 0.18 起拆到 Plugins 包）；--dry-run 与单元测试不需要
+otio = ["OpenTimelineIO==0.18.1", "OpenTimelineIO-Plugins==0.18.1"]
 
 [tool.uv]
 package = false
