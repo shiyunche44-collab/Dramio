@@ -47,12 +47,12 @@
 - [x] 3. `tests/test_volc_sign.py`：RFC 4231 向量、文档示例或 SDK 黄金向量、反例、query 排序与编码、SK 不泄露
 - [x] 4. `volc_sign` 瘦客户端与错误分类，fake transport 测试（成功、鉴权失败、签名错、限流、网络、非 JSON）
 - [x] 5. 注册表 `volc_music`、`.env.example`、README 密钥表、`pricing.music_cny`；`test_config` / `test_doctor` 通过
-- [ ] 6. 情绪映射表与 Prompt 模板 `bgm.v1`；测试从 schema 读 mood 枚举，prompt 全中文、无残留 `$`
-- [ ] 7. BGM 规划 `plan_bgm()`：compose 口径与 `--basis hint` 两种时间轴、段间交叉淡化余量、node_key
-- [ ] 8. `music --dry-run` CLI 接线；无密钥非 dry-run 退出码 2；不写 `runs/`、不联网
-- [ ] 9. 音效规则表与 `sfx_plan()`：12 个标签全覆盖，未知标签 `uncategorized`，`status=unsourced`
-- [ ] 10. `music --analyze`：LUFS / 真峰值 / LRA / 首尾静音 / 末段电平 / 时长偏差；合成音频测试
-- [ ] 11. 混音增益建议（相对 P0-11 对白轨），标注“待在线样本调参”
+- [x] 6. 情绪映射表与 Prompt 模板 `bgm.v1`；测试从 schema 读 mood 枚举，prompt 全中文、无残留 `$`
+- [x] 7. BGM 规划 `plan_bgm()`：compose 口径与 `--basis hint` 两种时间轴、段间交叉淡化余量、node_key
+- [x] 8. `music --dry-run` CLI 接线；无密钥非 dry-run 退出码 2；不写 `runs/`、不联网
+- [x] 9. 音效规则表与 `sfx_plan()`：12 个标签全覆盖，未知标签 `uncategorized`，`status=unsourced`
+- [x] 10. `music --analyze`：LUFS / 真峰值 / LRA / 首尾静音 / 末段电平 / 时长偏差；合成音频测试
+- [x] 11. 混音增益建议（相对 P0-11 对白轨），标注“待在线样本调参”
 - [ ] 12. 报告骨架 `docs/reports/p0/P0-10.md`：来源盘点、条款摘录、阻塞清单、在线评测命令、验收对照表
 - [ ] 13. 文档同步：README `music` 一节、progress 前置条件、`vendor-volcengine.md` §7 勘误（如有）
 - [ ] 14. 验证与交付：全部单测、`make arch-check`、`make drama-ir-check`；登记阻塞待决事项（提供 AK/SK 与确认商用授权）；verifier、arch-reviewer、PR

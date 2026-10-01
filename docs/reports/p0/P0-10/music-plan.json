@@ -1,0 +1,268 @@
+{
+  "ir_sha256": "cd02daef022c6e78227ef3bf366adb2b5142a979a803bcf4373cdb8765a6fb59",
+  "basis": "compose",
+  "total_s": 63.5,
+  "prompt_version": "bgm.v1",
+  "model_version": "v5.0",
+  "segments": [
+    {
+      "scene_id": "ep01_sc01",
+      "mood": "sad",
+      "start_s": 0.0,
+      "end_s": 27.0417,
+      "play_s": 27.0417,
+      "gen_s": 30,
+      "trim_s": 2.9583,
+      "fade_in_s": 0.0,
+      "fade_out_s": 1.0,
+      "text": "为短剧《雨夜反击》（类型：都市逆袭）的一场夜晚室外戏配背景音乐，地点是写字楼门口：玻璃幕墙写字楼门口的台阶，大雨，积水映着霓虹。纯音乐，无人声，无歌词，没有旁白。曲风：忧伤克制的电影配乐。情绪：悲伤、压抑、克制。乐器：钢琴、大提琴、弦乐铺底。速度：慢速，约 60 BPM。作为对白下方的背景音乐使用：旋律简洁，动态平稳，中低频不抢人声，不要突然的高潮或爆发，结尾自然收束并渐弱。",
+      "prompt_version": "bgm.v1",
+      "node_key": "6f128bf4c411b03b79e556a89257e207294978d1c9bf1a34721a37ab0c14a8d3",
+      "est_cny": 0.06
+    },
+    {
+      "scene_id": "ep01_sc02",
+      "mood": "suspense",
+      "start_s": 26.0417,
+      "end_s": 45.0417,
+      "play_s": 19.0,
+      "gen_s": 30,
+      "trim_s": 11.0,
+      "fade_in_s": 1.0,
+      "fade_out_s": 1.0,
+      "text": "为短剧《雨夜反击》（类型：都市逆袭）的一场夜晚室内戏配背景音乐，地点是苏晚的出租屋：狭小的出租屋，一盏台灯，窗外下着雨。纯音乐，无人声，无歌词，没有旁白。曲风：悬疑氛围配乐。情绪：悬疑、神秘、不安。乐器：合成器氛围垫、钢琴单音、低频弦乐。速度：慢速，约 70 BPM。作为对白下方的背景音乐使用：旋律简洁，动态平稳，中低频不抢人声，不要突然的高潮或爆发，结尾自然收束并渐弱。",
+      "prompt_version": "bgm.v1",
+      "node_key": "0167a835d1b8213e08acec571cdfe88d2fd510f85cebcad6417548eef5db2b2f",
+      "est_cny": 0.06
+    },
+    {
+      "scene_id": "ep01_sc03",
+      "mood": "tense",
+      "start_s": 44.0417,
+      "end_s": 63.5,
+      "play_s": 19.4583,
+      "gen_s": 30,
+      "trim_s": 10.5417,
+      "fade_in_s": 1.0,
+      "fade_out_s": 1.5,
+      "text": "为短剧《雨夜反击》（类型：都市逆袭）的一场白天室内戏配背景音乐，地点是公司会议室：明亮的玻璃会议室，长桌两侧坐满同事，大屏幕显示方案页，正在开方案评审会。纯音乐，无人声，无歌词，没有旁白。曲风：紧张悬疑的电影配乐，低频脉冲推进。情绪：紧张、压迫、不安。乐器：低音提琴、弦乐颤音、打击乐脉冲。速度：中速偏快，约 100 BPM。作为对白下方的背景音乐使用：旋律简洁，动态平稳，中低频不抢人声，不要突然的高潮或爆发，结尾自然收束并渐弱。",
+      "prompt_version": "bgm.v1",
+      "node_key": "d7174d967ca315668fedc48ff5e5802d254fb20dbb847db4c8fed975a3923d75",
+      "est_cny": 0.06
+    }
+  ],
+  "sfx": [
+    {
+      "shot_id": "ep01_sc01_sh01",
+      "tag": "大雨声",
+      "category": "ambience",
+      "label": "环境铺底（雨）",
+      "start_s": 0.0,
+      "end_s": 4.5,
+      "loop": true,
+      "gain_db": -26.0,
+      "note": "整镜循环；“渐大”等变化用增益包络，规则只给整镜",
+      "sources": [
+        "音效库检索（未选库）",
+        "文本生成（如 Seed Audio，未评测）",
+        "H3 视频原声（待评估，D-014 选 off）"
+      ],
+      "status": "unsourced"
+    },
+    {
+      "shot_id": "ep01_sc01_sh01",
+      "tag": "旋转门转动声",
+      "category": "foley",
+      "label": "拟音（点音效）",
+      "start_s": 0.2,
+      "end_s": 1.7,
+      "loop": false,
+      "gain_db": -18.0,
+      "note": "",
+      "sources": [
+        "音效库检索（未选库）",
+        "文本生成（如 Seed Audio，未评测）",
+        "H3 视频原声（待评估，D-014 选 off）"
+      ],
+      "status": "unsourced"
+    },
+    {
+      "shot_id": "ep01_sc01_sh02",
+      "tag": "脚步踩水声",
+      "category": "foley_loop",
+      "label": "脚步拟音（整镜）",
+      "start_s": 4.5,
+      "end_s": 9.5,
+      "loop": true,
+      "gain_db": -20.0,
+      "note": "随镜头内人物走动，起止需对齐画面",
+      "sources": [
+        "音效库检索（未选库）",
+        "文本生成（如 Seed Audio，未评测）",
+        "H3 视频原声（待评估，D-014 选 off）"
+      ],
+      "status": "unsourced"
+    },
+    {
+      "shot_id": "ep01_sc01_sh03",
+      "tag": "雨打伞面声",
+      "category": "ambience",
+      "label": "环境铺底（雨）",
+      "start_s": 9.5,
+      "end_s": 14.5,
+      "loop": true,
+      "gain_db": -26.0,
+      "note": "整镜循环；“渐大”等变化用增益包络，规则只给整镜",
+      "sources": [
+        "音效库检索（未选库）",
+        "文本生成（如 Seed Audio，未评测）",
+        "H3 视频原声（待评估，D-014 选 off）"
+      ],
+      "status": "unsourced"
+    },
+    {
+      "shot_id": "ep01_sc01_sh05",
+      "tag": "雨声渐大",
+      "category": "ambience",
+      "label": "环境铺底（雨）",
+      "start_s": 19.5,
+      "end_s": 26.5417,
+      "loop": true,
+      "gain_db": -26.0,
+      "note": "整镜循环；“渐大”等变化用增益包络，规则只给整镜",
+      "sources": [
+        "音效库检索（未选库）",
+        "文本生成（如 Seed Audio，未评测）",
+        "H3 视频原声（待评估，D-014 选 off）"
+      ],
+      "status": "unsourced"
+    },
+    {
+      "shot_id": "ep01_sc02_sh01",
+      "tag": "窗外雨声",
+      "category": "ambience",
+      "label": "环境铺底（雨）",
+      "start_s": 26.5417,
+      "end_s": 30.5417,
+      "loop": true,
+      "gain_db": -26.0,
+      "note": "整镜循环；“渐大”等变化用增益包络，规则只给整镜",
+      "sources": [
+        "音效库检索（未选库）",
+        "文本生成（如 Seed Audio，未评测）",
+        "H3 视频原声（待评估，D-014 选 off）"
+      ],
+      "status": "unsourced"
+    },
+    {
+      "shot_id": "ep01_sc02_sh02",
+      "tag": "胶带撕开声",
+      "category": "foley",
+      "label": "拟音（点音效）",
+      "start_s": 30.7417,
+      "end_s": 32.2417,
+      "loop": false,
+      "gain_db": -18.0,
+      "note": "",
+      "sources": [
+        "音效库检索（未选库）",
+        "文本生成（如 Seed Audio，未评测）",
+        "H3 视频原声（待评估，D-014 选 off）"
+      ],
+      "status": "unsourced"
+    },
+    {
+      "shot_id": "ep01_sc02_sh04",
+      "tag": "键盘敲击声",
+      "category": "foley",
+      "label": "拟音（点音效）",
+      "start_s": 39.7417,
+      "end_s": 41.2417,
+      "loop": false,
+      "gain_db": -18.0,
+      "note": "",
+      "sources": [
+        "音效库检索（未选库）",
+        "文本生成（如 Seed Audio，未评测）",
+        "H3 视频原声（待评估，D-014 选 off）"
+      ],
+      "status": "unsourced"
+    },
+    {
+      "shot_id": "ep01_sc02_sh04",
+      "tag": "电脑提示音",
+      "category": "ui",
+      "label": "提示音 / 震动（点音效）",
+      "start_s": 39.7417,
+      "end_s": 40.7417,
+      "loop": false,
+      "gain_db": -20.0,
+      "note": "手机 / 电脑提示通常出现在动作之后，起点待对齐画面",
+      "sources": [
+        "音效库检索（未选库）",
+        "文本生成（如 Seed Audio，未评测）",
+        "H3 视频原声（待评估，D-014 选 off）"
+      ],
+      "status": "unsourced"
+    },
+    {
+      "shot_id": "ep01_sc03_sh02",
+      "tag": "推门声",
+      "category": "foley",
+      "label": "拟音（点音效）",
+      "start_s": 48.7417,
+      "end_s": 50.2417,
+      "loop": false,
+      "gain_db": -18.0,
+      "note": "",
+      "sources": [
+        "音效库检索（未选库）",
+        "文本生成（如 Seed Audio，未评测）",
+        "H3 视频原声（待评估，D-014 选 off）"
+      ],
+      "status": "unsourced"
+    },
+    {
+      "shot_id": "ep01_sc03_sh02",
+      "tag": "议论声戛然而止",
+      "category": "crowd_cut",
+      "label": "人群声（带截止点）",
+      "start_s": 48.5417,
+      "end_s": 50.0417,
+      "loop": false,
+      "gain_db": -22.0,
+      "note": "“戛然而止”：截止点应对齐动作 / 对白起点，规则只给默认时长，需人工定",
+      "sources": [
+        "音效库检索（未选库）",
+        "文本生成（如 Seed Audio，未评测）",
+        "H3 视频原声（待评估，D-014 选 off）"
+      ],
+      "status": "unsourced"
+    },
+    {
+      "shot_id": "ep01_sc03_sh04",
+      "tag": "手机震动声",
+      "category": "ui",
+      "label": "提示音 / 震动（点音效）",
+      "start_s": 58.7,
+      "end_s": 59.7,
+      "loop": false,
+      "gain_db": -20.0,
+      "note": "手机 / 电脑提示通常出现在动作之后，起点待对齐画面",
+      "sources": [
+        "音效库检索（未选库）",
+        "文本生成（如 Seed Audio，未评测）",
+        "H3 视频原声（待评估，D-014 选 off）"
+      ],
+      "status": "unsourced"
+    }
+  ],
+  "coverage_problems": [],
+  "estimate": {
+    "gen_s_total": 90,
+    "cost_cny": 0.18,
+    "unit_cny_per_s": 0.002,
+    "verified": false,
+    "source": "豆包音乐产品计费 doc 84992/1404661（后付费刊例价，2026-10-01，未核对账单）"
+  }
+}

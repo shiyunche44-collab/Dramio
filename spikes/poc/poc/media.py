@@ -299,6 +299,10 @@ def contact_sheet(frames: list[Path | str], out: Path | str, tile_width: int = 1
 
 _LUFS_RE = re.compile(r"^\s+I:\s+(-?[0-9.]+|-inf)\s+LUFS", re.MULTILINE)
 _TPEAK_RE = re.compile(r"^\s+Peak:\s+(-?[0-9.]+|-inf)\s+dBFS", re.MULTILINE)
+_LRA_RE = re.compile(r"^\s+LRA:\s+(-?[0-9.]+)\s+LU\s*$", re.MULTILINE)
+_MEAN_VOLUME_RE = re.compile(r"mean_volume:\s*(-?[0-9.]+|-inf)\s+dB")
+_SILENCE_START_RE = re.compile(r"silence_start:\s*(-?[0-9.]+)")
+_SILENCE_END_RE = re.compile(r"silence_end:\s*(-?[0-9.]+)")
 
 
 @dataclass(frozen=True)
@@ -329,14 +333,54 @@ def probe_audio(path: Path | str) -> AudioInfo | None:
 class Loudness:
     integrated_lufs: float | None  # 整体响度（EBU R128）；静音或太短为 None
     true_peak_dbtp: float | None  # 真峰值（ebur128 peak=true）
+    loudness_range_lu: float | None = None  # 响度范围 LRA（P0-10 加，默认 None 以兼容旧调用）
 
 
-def loudness(path: Path | str, stream: str = "a:0") -> Loudness:
-    """整体响度与真峰值（ffmpeg ebur128，peak=true）。"""
-    proc = _run([FFMPEG, "-nostdin", "-nostats", "-hide_banner", "-i", str(path), "-map", stream, "-af", "ebur128=peak=true", "-f", "null", "-"], timeout=300)
+def loudness(path: Path | str, stream: str = "a:0", start_s: float | None = None, dur_s: float | None = None) -> Loudness:
+    """整体响度、真峰值与 LRA（ffmpeg ebur128，peak=true）。start_s / dur_s 只量一个时间窗（输入侧 -ss / -t）。"""
+    window: list[str] = []
+    if start_s is not None:
+        window += ["-ss", f"{start_s:.3f}"]
+    if dur_s is not None:
+        window += ["-t", f"{dur_s:.3f}"]
+    proc = _run([FFMPEG, "-nostdin", "-nostats", "-hide_banner", *window, "-i", str(path), "-map", stream, "-af", "ebur128=peak=true", "-f", "null", "-"], timeout=300)
     summary = proc.stderr.rsplit("Summary:", 1)[-1]  # 只取末尾汇总，不取逐帧输出
-    lufs, peak = _LUFS_RE.search(summary), _TPEAK_RE.search(summary)
-    return Loudness(_float(lufs.group(1)) if lufs else None, _float(peak.group(1)) if peak else None)
+    lufs, peak, lra = _LUFS_RE.search(summary), _TPEAK_RE.search(summary), _LRA_RE.search(summary)
+    return Loudness(_float(lufs.group(1)) if lufs else None, _float(peak.group(1)) if peak else None, _float(lra.group(1)) if lra else None)
+
+
+def mean_volume_db(path: Path | str, start_s: float | None = None, dur_s: float | None = None) -> float | None:
+    """平均音量（dB，ffmpeg volumedetect，即全段 RMS 的 dB 值，没有响度门限）。start_s / dur_s 只量一个时间窗；全静音为 None。"""
+    window: list[str] = []
+    if start_s is not None:
+        window += ["-ss", f"{start_s:.3f}"]
+    if dur_s is not None:
+        window += ["-t", f"{dur_s:.3f}"]
+    proc = _run([FFMPEG, "-nostdin", "-nostats", "-hide_banner", *window, "-i", str(path), "-map", "0:a:0", "-af", "volumedetect", "-f", "null", "-"], timeout=300)
+    m = _MEAN_VOLUME_RE.search(proc.stderr)
+    return _float(m.group(1)) if m else None
+
+
+def format_duration(path: Path | str) -> float | None:
+    """容器级时长（秒）；部分 mp3 / wav 的音频流没有 duration，用它兜底。"""
+    proc = _run([FFPROBE, "-v", "error", "-print_format", "json", "-show_format", str(path)], timeout=60)
+    try:
+        return _float((json.loads(proc.stdout).get("format") or {}).get("duration"))
+    except ValueError:
+        raise MediaError("ffprobe 输出不是 JSON") from None
+
+
+def silences(path: Path | str, noise_db: float = -50.0, min_s: float = 0.1) -> list[tuple[float, float | None]]:
+    """静音段 (起, 止)（ffmpeg silencedetect）；文件末尾仍在静音中时止为 None。"""
+    proc = _run([FFMPEG, "-nostdin", "-nostats", "-hide_banner", "-i", str(path), "-map", "0:a:0", "-af", f"silencedetect=noise={noise_db}dB:d={min_s}", "-f", "null", "-"], timeout=300)
+    out: list[tuple[float, float | None]] = []
+    for line in proc.stderr.splitlines():
+        m_start, m_end = _SILENCE_START_RE.search(line), _SILENCE_END_RE.search(line)
+        if m_start:
+            out.append((max(0.0, float(m_start.group(1))), None))
+        elif m_end and out and out[-1][1] is None:
+            out[-1] = (out[-1][0], float(m_end.group(1)))
+    return out
 
 
 def format_tags(path: Path | str) -> dict[str, str]:
