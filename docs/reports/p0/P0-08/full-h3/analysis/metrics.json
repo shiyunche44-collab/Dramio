@@ -1,0 +1,285 @@
+{
+  "source_manifest": "/home/user/Dramio/docs/reports/p0/P0-07/keyframe-r1/manifest.json",
+  "count": 9,
+  "shots": [
+    {
+      "shot_id": "ep01_sc01_sh01",
+      "characters": [],
+      "measurable": "no",
+      "keyframe_sha256": "98c48661be2c80cda624891fe99e800b66e94b483498419bb82f4462078ae4b8",
+      "video_bytes": 664161,
+      "media": {
+        "width": 768,
+        "height": 1344,
+        "duration_s": 4.4583,
+        "format_duration_s": 4.4583,
+        "fps": 24.0,
+        "bit_rate": 1191765,
+        "size_bytes": 664161,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "has_audio": true,
+        "nb_frames": 107,
+        "pix_fmt": "yuv420p",
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "ssim_first": 0.928571,
+      "motion": {
+        "mean": 0.1539,
+        "p95": 0.3257,
+        "max": 0.4385,
+        "pairs": 106
+      }
+    },
+    {
+      "shot_id": "ep01_sc01_sh02",
+      "characters": [
+        "char_suwan"
+      ],
+      "measurable": "yes",
+      "keyframe_sha256": "8cfabfb7f83b8dfa3534d31c430507d20553752e9caf2ec695de3ed708930660",
+      "video_bytes": 1284322,
+      "media": {
+        "width": 768,
+        "height": 1344,
+        "duration_s": 5.1667,
+        "format_duration_s": 5.167,
+        "fps": 24.0,
+        "bit_rate": 1988499,
+        "size_bytes": 1284322,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "has_audio": true,
+        "nb_frames": 124,
+        "pix_fmt": "yuv420p",
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "ssim_first": 0.950052,
+      "motion": {
+        "mean": 3.251,
+        "p95": 5.7983,
+        "max": 8.535,
+        "pairs": 123
+      }
+    },
+    {
+      "shot_id": "ep01_sc01_sh03",
+      "characters": [
+        "char_luchen",
+        "char_suwan"
+      ],
+      "measurable": "yes",
+      "keyframe_sha256": "6c1b3e8a62a8795a1ff391ac595c73648f5b94f80aa4a42e8b53deaddbe8fbc7",
+      "video_bytes": 826713,
+      "media": {
+        "width": 768,
+        "height": 1344,
+        "duration_s": 5.1667,
+        "format_duration_s": 5.167,
+        "fps": 24.0,
+        "bit_rate": 1279989,
+        "size_bytes": 826713,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "has_audio": true,
+        "nb_frames": 124,
+        "pix_fmt": "yuv420p",
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "ssim_first": 0.951792,
+      "motion": {
+        "mean": 0.6395,
+        "p95": 0.9329,
+        "max": 1.3245,
+        "pairs": 123
+      }
+    },
+    {
+      "shot_id": "ep01_sc01_sh04",
+      "characters": [
+        "char_suwan"
+      ],
+      "measurable": "yes",
+      "keyframe_sha256": "17ff7be5e8aefc5ebfe3af299bc98fe50ab244b1b64991c249468509218cc985",
+      "video_bytes": 1165899,
+      "media": {
+        "width": 768,
+        "height": 1344,
+        "duration_s": 5.1667,
+        "format_duration_s": 5.167,
+        "fps": 24.0,
+        "bit_rate": 1805146,
+        "size_bytes": 1165899,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "has_audio": true,
+        "nb_frames": 124,
+        "pix_fmt": "yuv420p",
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "ssim_first": 0.952942,
+      "motion": {
+        "mean": 2.125,
+        "p95": 3.0459,
+        "max": 3.444,
+        "pairs": 123
+      }
+    },
+    {
+      "shot_id": "ep01_sc01_sh05",
+      "characters": [
+        "char_luchen",
+        "char_suwan"
+      ],
+      "measurable": "yes",
+      "keyframe_sha256": "33ffe6d4245b0f728e5c3fbe2faa0f901752bfbb6b9508f36e1c42bc8689c1d9",
+      "video_bytes": 1229423,
+      "media": {
+        "width": 768,
+        "height": 1344,
+        "duration_s": 5.1667,
+        "format_duration_s": 5.167,
+        "fps": 24.0,
+        "bit_rate": 1903499,
+        "size_bytes": 1229423,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "has_audio": true,
+        "nb_frames": 124,
+        "pix_fmt": "yuv420p",
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "ssim_first": 0.931809,
+      "motion": {
+        "mean": 1.7223,
+        "p95": 2.651,
+        "max": 3.0827,
+        "pairs": 123
+      }
+    },
+    {
+      "shot_id": "ep01_sc02_sh01",
+      "characters": [
+        "char_suwan"
+      ],
+      "measurable": "maybe",
+      "keyframe_sha256": "63b30effdd8e78ef63852ef797d78daceaa8ce0ef321f1a23cc4c8218c41c300",
+      "video_bytes": 694349,
+      "media": {
+        "width": 768,
+        "height": 1344,
+        "duration_s": 4.4583,
+        "format_duration_s": 4.4583,
+        "fps": 24.0,
+        "bit_rate": 1245934,
+        "size_bytes": 694349,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "has_audio": true,
+        "nb_frames": 107,
+        "pix_fmt": "yuv420p",
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "ssim_first": 0.941914,
+      "motion": {
+        "mean": 0.379,
+        "p95": 0.7326,
+        "max": 1.0324,
+        "pairs": 106
+      }
+    },
+    {
+      "shot_id": "ep01_sc02_sh02",
+      "characters": [
+        "char_suwan"
+      ],
+      "measurable": "maybe",
+      "keyframe_sha256": "179314034a0ceaa6dfa22ae90a4e885b09922bfe33f379f43a4ad32fefe8304d",
+      "video_bytes": 613887,
+      "media": {
+        "width": 768,
+        "height": 1344,
+        "duration_s": 4.4583,
+        "format_duration_s": 4.4583,
+        "fps": 24.0,
+        "bit_rate": 1101554,
+        "size_bytes": 613887,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "has_audio": true,
+        "nb_frames": 107,
+        "pix_fmt": "yuv420p",
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "ssim_first": 0.953194,
+      "motion": {
+        "mean": 0.496,
+        "p95": 0.9095,
+        "max": 1.3263,
+        "pairs": 106
+      }
+    },
+    {
+      "shot_id": "ep01_sc03_sh01",
+      "characters": [
+        "char_luchen"
+      ],
+      "measurable": "yes",
+      "keyframe_sha256": "7abcf9bf64888d0b2b06472fb777456ffbac945b01868293ce90e631dd0fbe45",
+      "video_bytes": 531813,
+      "media": {
+        "width": 768,
+        "height": 1344,
+        "duration_s": 4.4583,
+        "format_duration_s": 4.4583,
+        "fps": 24.0,
+        "bit_rate": 954281,
+        "size_bytes": 531813,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "has_audio": true,
+        "nb_frames": 107,
+        "pix_fmt": "yuv420p",
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "ssim_first": 0.970333,
+      "motion": {
+        "mean": 0.4564,
+        "p95": 0.8935,
+        "max": 1.4805,
+        "pairs": 106
+      }
+    },
+    {
+      "shot_id": "ep01_sc03_sh02",
+      "characters": [
+        "char_suwan"
+      ],
+      "measurable": "yes",
+      "keyframe_sha256": "3c2370df7eebbaee9528e4e356ed92edab088d0eb23f7ad5832232772ca11142",
+      "video_bytes": 1192595,
+      "media": {
+        "width": 768,
+        "height": 1344,
+        "duration_s": 5.1667,
+        "format_duration_s": 5.167,
+        "fps": 24.0,
+        "bit_rate": 1846479,
+        "size_bytes": 1192595,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "has_audio": true,
+        "nb_frames": 124,
+        "pix_fmt": "yuv420p",
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "ssim_first": 0.968858,
+      "motion": {
+        "mean": 2.4574,
+        "p95": 3.9978,
+        "max": 5.368,
+        "pairs": 123
+      }
+    }
+  ]
+}

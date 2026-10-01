@@ -1,0 +1,317 @@
+{
+  "tasks": [
+    {
+      "shot_id": "ep01_sc01_sh01",
+      "task_id": "447517919965499",
+      "node_key": "7c85b97528f18cfdd2a8fb43b431248e4283ddfa0c5fff72dbfafe645744724d",
+      "model": "MiniMax-H3",
+      "resolution": "768P",
+      "requested_duration_s": 4,
+      "status": "succeeded",
+      "usage": {
+        "total_seconds": 4,
+        "input_seconds": 0,
+        "output_seconds": 4,
+        "input_image_count": 1,
+        "total_tokens": 143216,
+        "prompt_tokens": 13020,
+        "completion_tokens": 130196
+      },
+      "latency_s": 121,
+      "cost_cny": 2.0,
+      "cost_basis": "usage × 文档单价（账单待核对）",
+      "video_host": "algeng-video-infer.oss-cn-shanghai.aliyuncs.com",
+      "video": {
+        "path": "videos/ep01_sc01_sh01.mp4",
+        "bytes": 664161,
+        "sha256": "9479872e919047536db696b833370bc94eb5844903d2acd91c8877fc031cb095",
+        "width": 768,
+        "height": 1344,
+        "duration_s": 4.4583,
+        "fps": 24.0,
+        "has_audio": true,
+        "sha256_matches_remote": true
+      }
+    },
+    {
+      "shot_id": "ep01_sc01_sh05",
+      "task_id": "447523672453388",
+      "node_key": "a62cf349b8b144791fcb5ccff4707ef50956348327dad8dca27df658e6ba63aa",
+      "model": "MiniMax-H3",
+      "resolution": "768P",
+      "requested_duration_s": 5,
+      "status": "succeeded",
+      "usage": {
+        "total_seconds": 5,
+        "input_seconds": 0,
+        "output_seconds": 5,
+        "input_image_count": 1,
+        "total_tokens": 175765,
+        "prompt_tokens": 13020,
+        "completion_tokens": 162745
+      },
+      "latency_s": 156,
+      "cost_cny": 2.5,
+      "cost_basis": "usage × 文档单价（账单待核对）",
+      "video_host": "algeng-video-infer.oss-cn-shanghai.aliyuncs.com",
+      "video": {
+        "path": "videos/ep01_sc01_sh05.mp4",
+        "bytes": 1229423,
+        "sha256": "9e05a3065170c00afce4f8a8ec3f0c608a2fff2b1ccab9bf9924379bd6788250",
+        "width": 768,
+        "height": 1344,
+        "duration_s": 5.1667,
+        "fps": 24.0,
+        "has_audio": true,
+        "sha256_matches_remote": true
+      }
+    },
+    {
+      "shot_id": "ep01_sc01_sh02",
+      "task_id": "447519225590071",
+      "node_key": "a3f36a13a72f8d3b8ca0bc1aad527696e63e6c54ba61ccca5e9ac86174a3c2fe",
+      "model": "MiniMax-H3",
+      "resolution": "768P",
+      "requested_duration_s": 5,
+      "status": "succeeded",
+      "usage": {
+        "total_seconds": 5,
+        "input_seconds": 0,
+        "output_seconds": 5,
+        "input_image_count": 1,
+        "total_tokens": 175765,
+        "prompt_tokens": 13020,
+        "completion_tokens": 162745
+      },
+      "latency_s": 182,
+      "cost_cny": 2.5,
+      "cost_basis": "usage × 文档单价（账单待核对）",
+      "video_host": "algeng-video-infer.oss-cn-shanghai.aliyuncs.com",
+      "video": {
+        "path": "videos/ep01_sc01_sh02.mp4",
+        "bytes": 1284322,
+        "sha256": "a83013b5d6e7ff0f14089a65d069c3f0d0750044234463f63ea34000afaa0829",
+        "width": 768,
+        "height": 1344,
+        "duration_s": 5.1667,
+        "fps": 24.0,
+        "has_audio": true,
+        "sha256_matches_remote": true
+      }
+    },
+    {
+      "shot_id": "ep01_sc02_sh01",
+      "task_id": "447524112806293",
+      "node_key": "3f048b6fcd4396064ffa238a97e12d8554642627ca9c9ac1cf4341e3724e8961",
+      "model": "MiniMax-H3",
+      "resolution": "768P",
+      "requested_duration_s": 4,
+      "status": "succeeded",
+      "usage": {
+        "total_seconds": 4,
+        "input_seconds": 0,
+        "output_seconds": 4,
+        "input_image_count": 1,
+        "total_tokens": 143216,
+        "prompt_tokens": 13020,
+        "completion_tokens": 130196
+      },
+      "latency_s": 156,
+      "cost_cny": 2.0,
+      "cost_basis": "usage × 文档单价（账单待核对）",
+      "video_host": "algeng-video-infer.oss-cn-shanghai.aliyuncs.com",
+      "video": {
+        "path": "videos/ep01_sc02_sh01.mp4",
+        "bytes": 694349,
+        "sha256": "41823131bb3d4eed002c1955d740b8273426fb68b8d2bccb25e8a1e416a6f36a",
+        "width": 768,
+        "height": 1344,
+        "duration_s": 4.4583,
+        "fps": 24.0,
+        "has_audio": true,
+        "sha256_matches_remote": true
+      }
+    },
+    {
+      "shot_id": "ep01_sc03_sh01",
+      "task_id": "447523376476580",
+      "node_key": "fca9fb96042afe8abb9ead303a9e67c264fd6830fb8171829e11da9e5557c539",
+      "model": "MiniMax-H3",
+      "resolution": "768P",
+      "requested_duration_s": 4,
+      "status": "succeeded",
+      "usage": {
+        "total_seconds": 4,
+        "input_seconds": 0,
+        "output_seconds": 4,
+        "input_image_count": 1,
+        "total_tokens": 143216,
+        "prompt_tokens": 13020,
+        "completion_tokens": 130196
+      },
+      "latency_s": 150,
+      "cost_cny": 2.0,
+      "cost_basis": "usage × 文档单价（账单待核对）",
+      "video_host": "algeng-video-infer.oss-cn-shanghai.aliyuncs.com",
+      "video": {
+        "path": "videos/ep01_sc03_sh01.mp4",
+        "bytes": 531813,
+        "sha256": "dcd7d2a24d2643b7685efa88c14b1e3aa032ed2898a5c1031a7104c413ac11b1",
+        "width": 768,
+        "height": 1344,
+        "duration_s": 4.4583,
+        "fps": 24.0,
+        "has_audio": true,
+        "sha256_matches_remote": true
+      }
+    },
+    {
+      "shot_id": "ep01_sc03_sh02",
+      "task_id": "447523376476586",
+      "node_key": "011d368175e1b0698c200d71af160d8cf0519b7ddb794cd787d94c677628353b",
+      "model": "MiniMax-H3",
+      "resolution": "768P",
+      "requested_duration_s": 5,
+      "status": "succeeded",
+      "usage": {
+        "total_seconds": 5,
+        "input_seconds": 0,
+        "output_seconds": 5,
+        "input_image_count": 1,
+        "total_tokens": 175765,
+        "prompt_tokens": 13020,
+        "completion_tokens": 162745
+      },
+      "latency_s": 167,
+      "cost_cny": 2.5,
+      "cost_basis": "usage × 文档单价（账单待核对）",
+      "video_host": "algeng-video-infer.oss-cn-shanghai.aliyuncs.com",
+      "video": {
+        "path": "videos/ep01_sc03_sh02.mp4",
+        "bytes": 1192595,
+        "sha256": "1aa2a14810c50da915036e71f3ac3d16c65386aa0e2339c10128de387f26a0df",
+        "width": 768,
+        "height": 1344,
+        "duration_s": 5.1667,
+        "fps": 24.0,
+        "has_audio": true,
+        "sha256_matches_remote": true
+      }
+    },
+    {
+      "shot_id": "ep01_sc01_sh03",
+      "task_id": "447527841567111",
+      "node_key": "51efb1b8aedce62537de3b6c52e80979032fe31a649a632aa8db024c56dc0be2",
+      "model": "MiniMax-H3",
+      "resolution": "768P",
+      "requested_duration_s": 5,
+      "status": "succeeded",
+      "usage": {
+        "total_seconds": 5,
+        "input_seconds": 0,
+        "output_seconds": 5,
+        "input_image_count": 1,
+        "total_tokens": 175765,
+        "prompt_tokens": 13020,
+        "completion_tokens": 162745
+      },
+      "latency_s": 133,
+      "cost_cny": 2.5,
+      "cost_basis": "usage × 文档单价（账单待核对）",
+      "video_host": "algeng-video-infer.oss-cn-shanghai.aliyuncs.com",
+      "video": {
+        "path": "videos/ep01_sc01_sh03.mp4",
+        "bytes": 826713,
+        "sha256": "456e058f19199e560c4feef85997242e46694af6ac98a47ed54e448cd2319584",
+        "width": 768,
+        "height": 1344,
+        "duration_s": 5.1667,
+        "fps": 24.0,
+        "has_audio": true,
+        "sha256_matches_remote": true
+      }
+    },
+    {
+      "shot_id": "ep01_sc01_sh04",
+      "task_id": "447529411244288",
+      "node_key": "b7eb60de5d7b1e1d9216a1c36b19297716f84a385c204169aadef44c8ad3b1e1",
+      "model": "MiniMax-H3",
+      "resolution": "768P",
+      "requested_duration_s": 5,
+      "status": "succeeded",
+      "usage": {
+        "total_seconds": 5,
+        "input_seconds": 0,
+        "output_seconds": 5,
+        "input_image_count": 1,
+        "total_tokens": 175765,
+        "prompt_tokens": 13020,
+        "completion_tokens": 162745
+      },
+      "latency_s": 171,
+      "cost_cny": 2.5,
+      "cost_basis": "usage × 文档单价（账单待核对）",
+      "video_host": "algeng-video-infer.oss-cn-shanghai.aliyuncs.com",
+      "video": {
+        "path": "videos/ep01_sc01_sh04.mp4",
+        "bytes": 1165899,
+        "sha256": "05b71463040afe029e742828e004adafaebbd013b1efe05d4e01c245b5410bee",
+        "width": 768,
+        "height": 1344,
+        "duration_s": 5.1667,
+        "fps": 24.0,
+        "has_audio": true,
+        "sha256_matches_remote": true
+      }
+    },
+    {
+      "shot_id": "ep01_sc02_sh02",
+      "task_id": "447529496228231",
+      "node_key": "36bae218af0d0a1ec6a5c004f84804aee72ac1a413eb07ffe5cf4b4caecf4446",
+      "model": "MiniMax-H3",
+      "resolution": "768P",
+      "requested_duration_s": 4,
+      "status": "succeeded",
+      "usage": {
+        "total_seconds": 4,
+        "input_seconds": 0,
+        "output_seconds": 4,
+        "input_image_count": 1,
+        "total_tokens": 143216,
+        "prompt_tokens": 13020,
+        "completion_tokens": 130196
+      },
+      "latency_s": 445,
+      "cost_cny": 2.0,
+      "cost_basis": "usage × 文档单价（账单待核对）",
+      "video_host": "algeng-video-infer.oss-cn-shanghai.aliyuncs.com",
+      "video": {
+        "path": "videos/ep01_sc02_sh02.mp4",
+        "bytes": 613887,
+        "sha256": "d56b7d77209a7fd794139834926326d8404a9a775f5284a4009227b69f197123",
+        "width": 768,
+        "height": 1344,
+        "duration_s": 4.4583,
+        "fps": 24.0,
+        "has_audio": true,
+        "sha256_matches_remote": true
+      }
+    }
+  ],
+  "totals": {
+    "tasks": 9,
+    "succeeded": 9,
+    "output_seconds": 41,
+    "cost_cny": 20.5,
+    "latency_s": {
+      "min": 121,
+      "median": 156,
+      "max": 445
+    }
+  },
+  "failures_in_runs": {
+    "download": 10,
+    "rate_limit": 8
+  },
+  "note": "latency_s = 供应商 updated_at − created_at（提交到完成）；费用依据 usage.output_seconds 与文档单价，未与账单核对。"
+}

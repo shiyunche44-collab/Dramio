@@ -1,0 +1,12 @@
+{
+  "run_id": "20261001-010923-video-c850",
+  "command": "video",
+  "args": {
+    "candidate": "doubao-seedance-2-5-260628",
+    "count": 1
+  },
+  "started_at": "2026-10-01T01:09:23.949Z",
+  "ended_at": "2026-10-01T01:09:26.245Z",
+  "status": "ok",
+  "python": "3.11.15"
+}

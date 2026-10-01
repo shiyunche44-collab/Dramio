@@ -1,0 +1,2254 @@
+{
+  "backend": "arcface",
+  "thresholds": {
+    "min_face_px": 40,
+    "min_det_score": 0.5
+  },
+  "assign_by": "bank",
+  "references": {
+    "char_suwan": [
+      {
+        "path": "docs/reports/p0/P0-06/main-pro/char_suwan/main-02-4e6cf20a.jpg",
+        "sha256": "4e6cf20af7790e3ac6f350839a54afc023a01f70c9b0401ccee037205221c8bd",
+        "det_score": 0.8773,
+        "face_px": 143.2
+      },
+      {
+        "path": "docs/reports/p0/P0-06/derive-ref-pro/char_suwan/expression-neutral-4801b37f.jpg",
+        "sha256": "4801b37f1fce031871c370fdb5fd02cab60a05522d8392502cb95d20fd0cc41b",
+        "det_score": 0.851,
+        "face_px": 313.2
+      }
+    ],
+    "char_luchen": [
+      {
+        "path": "docs/reports/p0/P0-06/main-pro/char_luchen/main-02-33b545ed.jpg",
+        "sha256": "33b545ed6b7fd5dd81e6da8c8fc9763a4d956acdd25185f8df9b4bc13329a227",
+        "det_score": 0.8694,
+        "face_px": 134.6
+      },
+      {
+        "path": "docs/reports/p0/P0-06/derive-ref-pro/char_luchen/expression-neutral-0686460e.jpg",
+        "sha256": "0686460e273725e1fd6ade7c792ca1983081be5f28b50e4b63db656823403e96",
+        "det_score": 0.751,
+        "face_px": 253.6
+      }
+    ]
+  },
+  "skipped_same_as_reference": [],
+  "images": [
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh01/f000.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [],
+      "characters": [],
+      "shot_id": "ep01_sc01_sh01",
+      "scheme": "f000",
+      "round": 1,
+      "pre_measurable": "no"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh01/f050.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [],
+      "characters": [],
+      "shot_id": "ep01_sc01_sh01",
+      "scheme": "f050",
+      "round": 1,
+      "pre_measurable": "no"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh01/f100.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [],
+      "characters": [],
+      "shot_id": "ep01_sc01_sh01",
+      "scheme": "f100",
+      "round": 1,
+      "pre_measurable": "no"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh02/f000.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            339.5,
+            431.7,
+            438.8,
+            567.4
+          ],
+          "det_score": 0.8982,
+          "width": 99.3,
+          "height": 135.7,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5674,
+          "bank": 0.5674,
+          "margin": null,
+          "det_score": 0.8982,
+          "face_px": 99.3,
+          "bbox": [
+            339.5,
+            431.7,
+            438.8,
+            567.4
+          ]
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc01_sh02",
+      "scheme": "f000",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh02/f050.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            368.6,
+            326.6,
+            512.4,
+            523.6
+          ],
+          "det_score": 0.8793,
+          "width": 143.7,
+          "height": 197.1,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.441,
+          "bank": 0.441,
+          "margin": null,
+          "det_score": 0.8793,
+          "face_px": 143.7,
+          "bbox": [
+            368.6,
+            326.6,
+            512.4,
+            523.6
+          ]
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc01_sh02",
+      "scheme": "f050",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh02/f100.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            333.6,
+            308.2,
+            489.7,
+            521.2
+          ],
+          "det_score": 0.8389,
+          "width": 156.2,
+          "height": 213.1,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.4047,
+          "bank": 0.4788,
+          "margin": null,
+          "det_score": 0.8389,
+          "face_px": 156.2,
+          "bbox": [
+            333.6,
+            308.2,
+            489.7,
+            521.2
+          ]
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc01_sh02",
+      "scheme": "f100",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh03/f000.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            227.6,
+            663.6,
+            398.1,
+            887.5
+          ],
+          "det_score": 0.8135,
+          "width": 170.5,
+          "height": 224.0,
+          "reason": null
+        },
+        {
+          "bbox": [
+            392.3,
+            191.3,
+            491.9,
+            324.1
+          ],
+          "det_score": 0.8872,
+          "width": 99.6,
+          "height": 132.7,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.553,
+          "bank": 0.646,
+          "margin": 0.5042,
+          "det_score": 0.8872,
+          "face_px": 99.6,
+          "bbox": [
+            392.3,
+            191.3,
+            491.9,
+            324.1
+          ]
+        },
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.49,
+          "bank": 0.6705,
+          "margin": 0.5408,
+          "det_score": 0.8135,
+          "face_px": 170.5,
+          "bbox": [
+            227.6,
+            663.6,
+            398.1,
+            887.5
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen",
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc01_sh03",
+      "scheme": "f000",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh03/f050.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            219.6,
+            664.6,
+            386.8,
+            883.9
+          ],
+          "det_score": 0.8113,
+          "width": 167.1,
+          "height": 219.4,
+          "reason": null
+        },
+        {
+          "bbox": [
+            406.1,
+            192.0,
+            503.9,
+            323.5
+          ],
+          "det_score": 0.8918,
+          "width": 97.9,
+          "height": 131.5,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5635,
+          "bank": 0.6507,
+          "margin": 0.571,
+          "det_score": 0.8918,
+          "face_px": 97.9,
+          "bbox": [
+            406.1,
+            192.0,
+            503.9,
+            323.5
+          ]
+        },
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5009,
+          "bank": 0.6524,
+          "margin": 0.5325,
+          "det_score": 0.8113,
+          "face_px": 167.1,
+          "bbox": [
+            219.6,
+            664.6,
+            386.8,
+            883.9
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen",
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc01_sh03",
+      "scheme": "f050",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh03/f100.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            224.0,
+            659.6,
+            388.5,
+            879.4
+          ],
+          "det_score": 0.798,
+          "width": 164.5,
+          "height": 219.8,
+          "reason": null
+        },
+        {
+          "bbox": [
+            407.5,
+            194.4,
+            505.6,
+            325.7
+          ],
+          "det_score": 0.894,
+          "width": 98.0,
+          "height": 131.3,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5405,
+          "bank": 0.6146,
+          "margin": 0.558,
+          "det_score": 0.894,
+          "face_px": 98.0,
+          "bbox": [
+            407.5,
+            194.4,
+            505.6,
+            325.7
+          ]
+        },
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.4644,
+          "bank": 0.6264,
+          "margin": 0.495,
+          "det_score": 0.798,
+          "face_px": 164.5,
+          "bbox": [
+            224.0,
+            659.6,
+            388.5,
+            879.4
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen",
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc01_sh03",
+      "scheme": "f100",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh04/f000.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            271.3,
+            285.7,
+            521.2,
+            651.4
+          ],
+          "det_score": 0.8517,
+          "width": 249.9,
+          "height": 365.7,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.6108,
+          "bank": 0.7344,
+          "margin": null,
+          "det_score": 0.8517,
+          "face_px": 249.9,
+          "bbox": [
+            271.3,
+            285.7,
+            521.2,
+            651.4
+          ]
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc01_sh04",
+      "scheme": "f000",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh04/f050.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            255.0,
+            243.0,
+            548.5,
+            678.4
+          ],
+          "det_score": 0.8222,
+          "width": 293.5,
+          "height": 435.4,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.4347,
+          "bank": 0.5862,
+          "margin": null,
+          "det_score": 0.8222,
+          "face_px": 293.5,
+          "bbox": [
+            255.0,
+            243.0,
+            548.5,
+            678.4
+          ]
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc01_sh04",
+      "scheme": "f050",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh04/f100.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            228.6,
+            216.5,
+            599.4,
+            765.7
+          ],
+          "det_score": 0.8725,
+          "width": 370.9,
+          "height": 549.1,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5287,
+          "bank": 0.5823,
+          "margin": null,
+          "det_score": 0.8725,
+          "face_px": 370.9,
+          "bbox": [
+            228.6,
+            216.5,
+            599.4,
+            765.7
+          ]
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc01_sh04",
+      "scheme": "f100",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh05/f000.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            211.5,
+            143.5,
+            294.6,
+            254.8
+          ],
+          "det_score": 0.7974,
+          "width": 83.1,
+          "height": 111.3,
+          "reason": null
+        },
+        {
+          "bbox": [
+            526.6,
+            229.0,
+            602.5,
+            342.4
+          ],
+          "det_score": 0.7519,
+          "width": 76.0,
+          "height": 113.4,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.252,
+          "bank": 0.252,
+          "margin": 0.2423,
+          "det_score": 0.7974,
+          "face_px": 83.1,
+          "bbox": [
+            211.5,
+            143.5,
+            294.6,
+            254.8
+          ]
+        },
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.2982,
+          "bank": 0.2982,
+          "margin": 0.22,
+          "det_score": 0.7519,
+          "face_px": 76.0,
+          "bbox": [
+            526.6,
+            229.0,
+            602.5,
+            342.4
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen",
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc01_sh05",
+      "scheme": "f000",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh05/f050.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            153.8,
+            183.2,
+            218.5,
+            284.2
+          ],
+          "det_score": 0.7991,
+          "width": 64.7,
+          "height": 101.0,
+          "reason": null
+        },
+        {
+          "bbox": [
+            521.7,
+            232.0,
+            595.6,
+            344.5
+          ],
+          "det_score": 0.7611,
+          "width": 73.9,
+          "height": 112.4,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.2602,
+          "bank": 0.2602,
+          "margin": 0.2997,
+          "det_score": 0.7991,
+          "face_px": 64.7,
+          "bbox": [
+            153.8,
+            183.2,
+            218.5,
+            284.2
+          ]
+        },
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.2083,
+          "bank": 0.2215,
+          "margin": 0.1692,
+          "det_score": 0.7611,
+          "face_px": 73.9,
+          "bbox": [
+            521.7,
+            232.0,
+            595.6,
+            344.5
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen",
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc01_sh05",
+      "scheme": "f050",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc01_sh05/f100.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            516.0,
+            238.4,
+            587.5,
+            352.1
+          ],
+          "det_score": 0.747,
+          "width": 71.5,
+          "height": 113.6,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": false,
+          "reason": "未检出",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        },
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.0994,
+          "bank": 0.1084,
+          "margin": 0.0532,
+          "det_score": 0.747,
+          "face_px": 71.5,
+          "bbox": [
+            516.0,
+            238.4,
+            587.5,
+            352.1
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen",
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc01_sh05",
+      "scheme": "f100",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc02_sh01/f000.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            470.9,
+            593.9,
+            563.9,
+            719.8
+          ],
+          "det_score": 0.8732,
+          "width": 93.0,
+          "height": 125.9,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.633,
+          "bank": 0.633,
+          "margin": null,
+          "det_score": 0.8732,
+          "face_px": 93.0,
+          "bbox": [
+            470.9,
+            593.9,
+            563.9,
+            719.8
+          ]
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc02_sh01",
+      "scheme": "f000",
+      "round": 1,
+      "pre_measurable": "maybe"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc02_sh01/f050.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            489.3,
+            568.4,
+            576.0,
+            684.4
+          ],
+          "det_score": 0.8556,
+          "width": 86.8,
+          "height": 116.0,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.4425,
+          "bank": 0.4425,
+          "margin": null,
+          "det_score": 0.8556,
+          "face_px": 86.8,
+          "bbox": [
+            489.3,
+            568.4,
+            576.0,
+            684.4
+          ]
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc02_sh01",
+      "scheme": "f050",
+      "round": 1,
+      "pre_measurable": "maybe"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc02_sh01/f100.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            508.7,
+            590.3,
+            591.4,
+            698.8
+          ],
+          "det_score": 0.8287,
+          "width": 82.7,
+          "height": 108.5,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.3903,
+          "bank": 0.3903,
+          "margin": null,
+          "det_score": 0.8287,
+          "face_px": 82.7,
+          "bbox": [
+            508.7,
+            590.3,
+            591.4,
+            698.8
+          ]
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc02_sh01",
+      "scheme": "f100",
+      "round": 1,
+      "pre_measurable": "maybe"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc02_sh02/f000.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": false,
+          "reason": "无脸",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc02_sh02",
+      "scheme": "f000",
+      "round": 1,
+      "pre_measurable": "maybe"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc02_sh02/f050.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": false,
+          "reason": "无脸",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc02_sh02",
+      "scheme": "f050",
+      "round": 1,
+      "pre_measurable": "maybe"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc02_sh02/f100.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": false,
+          "reason": "无脸",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc02_sh02",
+      "scheme": "f100",
+      "round": 1,
+      "pre_measurable": "maybe"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc03_sh01/f000.jpg",
+      "n_faces": 5,
+      "faces": [
+        {
+          "bbox": [
+            4.8,
+            686.5,
+            66.4,
+            781.7
+          ],
+          "det_score": 0.7726,
+          "width": 61.6,
+          "height": 95.2,
+          "reason": null
+        },
+        {
+          "bbox": [
+            48.3,
+            646.5,
+            105.4,
+            732.6
+          ],
+          "det_score": 0.7558,
+          "width": 57.1,
+          "height": 86.1,
+          "reason": null
+        },
+        {
+          "bbox": [
+            91.1,
+            646.0,
+            126.9,
+            704.4
+          ],
+          "det_score": 0.6392,
+          "width": 35.8,
+          "height": 58.3,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            434.3,
+            310.5,
+            528.5,
+            436.0
+          ],
+          "det_score": 0.8936,
+          "width": 94.2,
+          "height": 125.6,
+          "reason": null
+        },
+        {
+          "bbox": [
+            702.3,
+            630.9,
+            753.0,
+            695.4
+          ],
+          "det_score": 0.8827,
+          "width": 50.6,
+          "height": 64.5,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.563,
+          "bank": 0.563,
+          "margin": null,
+          "det_score": 0.8936,
+          "face_px": 94.2,
+          "bbox": [
+            434.3,
+            310.5,
+            528.5,
+            436.0
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen"
+      ],
+      "shot_id": "ep01_sc03_sh01",
+      "scheme": "f000",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc03_sh01/f050.jpg",
+      "n_faces": 6,
+      "faces": [
+        {
+          "bbox": [
+            -6.5,
+            680.0,
+            63.1,
+            769.3
+          ],
+          "det_score": 0.683,
+          "width": 69.6,
+          "height": 89.3,
+          "reason": null
+        },
+        {
+          "bbox": [
+            48.6,
+            647.8,
+            105.8,
+            732.3
+          ],
+          "det_score": 0.7853,
+          "width": 57.3,
+          "height": 84.5,
+          "reason": null
+        },
+        {
+          "bbox": [
+            91.0,
+            646.7,
+            126.3,
+            703.2
+          ],
+          "det_score": 0.618,
+          "width": 35.3,
+          "height": 56.4,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            442.4,
+            311.6,
+            534.0,
+            437.0
+          ],
+          "det_score": 0.9014,
+          "width": 91.7,
+          "height": 125.5,
+          "reason": null
+        },
+        {
+          "bbox": [
+            641.6,
+            640.4,
+            680.6,
+            691.8
+          ],
+          "det_score": 0.5301,
+          "width": 39.0,
+          "height": 51.3,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            739.6,
+            621.0,
+            767.0,
+            689.1
+          ],
+          "det_score": 0.6581,
+          "width": 27.4,
+          "height": 68.2,
+          "reason": "脸太小"
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5804,
+          "bank": 0.5804,
+          "margin": null,
+          "det_score": 0.9014,
+          "face_px": 91.7,
+          "bbox": [
+            442.4,
+            311.6,
+            534.0,
+            437.0
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen"
+      ],
+      "shot_id": "ep01_sc03_sh01",
+      "scheme": "f050",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc03_sh01/f100.jpg",
+      "n_faces": 5,
+      "faces": [
+        {
+          "bbox": [
+            3.2,
+            684.6,
+            66.7,
+            774.5
+          ],
+          "det_score": 0.7296,
+          "width": 63.5,
+          "height": 89.9,
+          "reason": null
+        },
+        {
+          "bbox": [
+            48.0,
+            645.8,
+            103.8,
+            732.9
+          ],
+          "det_score": 0.7736,
+          "width": 55.8,
+          "height": 87.1,
+          "reason": null
+        },
+        {
+          "bbox": [
+            91.7,
+            647.0,
+            125.6,
+            703.2
+          ],
+          "det_score": 0.6009,
+          "width": 33.9,
+          "height": 56.2,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            446.2,
+            315.1,
+            539.2,
+            442.2
+          ],
+          "det_score": 0.8984,
+          "width": 92.9,
+          "height": 127.1,
+          "reason": null
+        },
+        {
+          "bbox": [
+            700.1,
+            633.4,
+            750.8,
+            698.4
+          ],
+          "det_score": 0.8885,
+          "width": 50.7,
+          "height": 65.0,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5345,
+          "bank": 0.5525,
+          "margin": null,
+          "det_score": 0.8984,
+          "face_px": 92.9,
+          "bbox": [
+            446.2,
+            315.1,
+            539.2,
+            442.2
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen"
+      ],
+      "shot_id": "ep01_sc03_sh01",
+      "scheme": "f100",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc03_sh02/f000.jpg",
+      "n_faces": 8,
+      "faces": [
+        {
+          "bbox": [
+            48.7,
+            564.4,
+            103.3,
+            633.2
+          ],
+          "det_score": 0.8468,
+          "width": 54.6,
+          "height": 68.8,
+          "reason": null
+        },
+        {
+          "bbox": [
+            117.4,
+            543.6,
+            153.9,
+            599.0
+          ],
+          "det_score": 0.7988,
+          "width": 36.5,
+          "height": 55.4,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            155.2,
+            523.0,
+            187.5,
+            563.8
+          ],
+          "det_score": 0.7898,
+          "width": 32.3,
+          "height": 40.8,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            186.8,
+            503.1,
+            216.9,
+            542.9
+          ],
+          "det_score": 0.7846,
+          "width": 30.0,
+          "height": 39.9,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            346.1,
+            410.7,
+            447.8,
+            540.9
+          ],
+          "det_score": 0.9043,
+          "width": 101.7,
+          "height": 130.2,
+          "reason": null
+        },
+        {
+          "bbox": [
+            530.9,
+            500.5,
+            560.8,
+            540.4
+          ],
+          "det_score": 0.776,
+          "width": 29.9,
+          "height": 39.9,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            563.0,
+            511.6,
+            595.5,
+            556.7
+          ],
+          "det_score": 0.7816,
+          "width": 32.5,
+          "height": 45.1,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            656.2,
+            558.4,
+            710.9,
+            632.7
+          ],
+          "det_score": 0.8338,
+          "width": 54.6,
+          "height": 74.4,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.7124,
+          "bank": 0.7124,
+          "margin": null,
+          "det_score": 0.9043,
+          "face_px": 101.7,
+          "bbox": [
+            346.1,
+            410.7,
+            447.8,
+            540.9
+          ]
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc03_sh02",
+      "scheme": "f000",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc03_sh02/f050.jpg",
+      "n_faces": 6,
+      "faces": [
+        {
+          "bbox": [
+            115.3,
+            564.9,
+            163.5,
+            624.8
+          ],
+          "det_score": 0.8136,
+          "width": 48.2,
+          "height": 59.9,
+          "reason": null
+        },
+        {
+          "bbox": [
+            174.6,
+            526.8,
+            200.1,
+            562.4
+          ],
+          "det_score": 0.5341,
+          "width": 25.5,
+          "height": 35.6,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            202.0,
+            507.9,
+            229.4,
+            547.5
+          ],
+          "det_score": 0.7757,
+          "width": 27.3,
+          "height": 39.6,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            310.0,
+            410.9,
+            437.0,
+            568.9
+          ],
+          "det_score": 0.9073,
+          "width": 127.1,
+          "height": 158.0,
+          "reason": null
+        },
+        {
+          "bbox": [
+            512.6,
+            506.5,
+            541.5,
+            545.3
+          ],
+          "det_score": 0.7612,
+          "width": 28.9,
+          "height": 38.8,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            546.6,
+            518.1,
+            579.8,
+            560.2
+          ],
+          "det_score": 0.7463,
+          "width": 33.2,
+          "height": 42.1,
+          "reason": "脸太小"
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5081,
+          "bank": 0.5081,
+          "margin": null,
+          "det_score": 0.9073,
+          "face_px": 127.1,
+          "bbox": [
+            310.0,
+            410.9,
+            437.0,
+            568.9
+          ]
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc03_sh02",
+      "scheme": "f050",
+      "round": 1,
+      "pre_measurable": "yes"
+    },
+    {
+      "image": "docs/reports/p0/P0-08/full-h3/analysis/frames/ep01_sc03_sh02/f100.jpg",
+      "n_faces": 3,
+      "faces": [
+        {
+          "bbox": [
+            109.3,
+            540.5,
+            155.3,
+            601.3
+          ],
+          "det_score": 0.6519,
+          "width": 46.1,
+          "height": 60.8,
+          "reason": null
+        },
+        {
+          "bbox": [
+            266.0,
+            400.7,
+            414.1,
+            600.4
+          ],
+          "det_score": 0.8959,
+          "width": 148.1,
+          "height": 199.8,
+          "reason": null
+        },
+        {
+          "bbox": [
+            531.4,
+            515.6,
+            561.8,
+            555.5
+          ],
+          "det_score": 0.5359,
+          "width": 30.4,
+          "height": 39.9,
+          "reason": "脸太小"
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_suwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.4443,
+          "bank": 0.4443,
+          "margin": null,
+          "det_score": 0.8959,
+          "face_px": 148.1,
+          "bbox": [
+            266.0,
+            400.7,
+            414.1,
+            600.4
+          ]
+        }
+      ],
+      "characters": [
+        "char_suwan"
+      ],
+      "shot_id": "ep01_sc03_sh02",
+      "scheme": "f100",
+      "round": 1,
+      "pre_measurable": "yes"
+    }
+  ],
+  "stats": {
+    "overall": {
+      "instances": 30,
+      "measurable": 26,
+      "measurable_rate": 0.8667,
+      "anchor": {
+        "n": 26,
+        "min": 0.0994,
+        "p10": 0.2561,
+        "p25": 0.4122,
+        "median": 0.4955,
+        "p75": 0.5605,
+        "p90": 0.5956,
+        "max": 0.7124,
+        "mean": 0.4625
+      },
+      "bank": {
+        "n": 26,
+        "min": 0.1084,
+        "p10": 0.2561,
+        "p25": 0.4414,
+        "median": 0.5652,
+        "p75": 0.6314,
+        "p90": 0.6614,
+        "max": 0.7344,
+        "mean": 0.5084
+      },
+      "histogram": {
+        "anchor": [
+          [
+            0.05,
+            1
+          ],
+          [
+            0.1,
+            0
+          ],
+          [
+            0.15,
+            0
+          ],
+          [
+            0.2,
+            1
+          ],
+          [
+            0.25,
+            3
+          ],
+          [
+            0.3,
+            0
+          ],
+          [
+            0.35,
+            1
+          ],
+          [
+            0.4,
+            5
+          ],
+          [
+            0.45,
+            2
+          ],
+          [
+            0.5,
+            5
+          ],
+          [
+            0.55,
+            5
+          ],
+          [
+            0.6,
+            2
+          ],
+          [
+            0.65,
+            0
+          ],
+          [
+            0.7,
+            1
+          ]
+        ],
+        "bank": [
+          [
+            0.1,
+            1
+          ],
+          [
+            0.15,
+            0
+          ],
+          [
+            0.2,
+            1
+          ],
+          [
+            0.25,
+            3
+          ],
+          [
+            0.3,
+            0
+          ],
+          [
+            0.35,
+            1
+          ],
+          [
+            0.4,
+            3
+          ],
+          [
+            0.45,
+            1
+          ],
+          [
+            0.5,
+            1
+          ],
+          [
+            0.55,
+            6
+          ],
+          [
+            0.6,
+            4
+          ],
+          [
+            0.65,
+            3
+          ],
+          [
+            0.7,
+            2
+          ]
+        ]
+      }
+    },
+    "by_scheme": {
+      "f000": {
+        "instances": 10,
+        "measurable": 9,
+        "measurable_rate": 0.9,
+        "anchor": {
+          "n": 9,
+          "min": 0.252,
+          "p10": 0.289,
+          "p25": 0.49,
+          "median": 0.563,
+          "p75": 0.6108,
+          "p90": 0.6489,
+          "max": 0.7124,
+          "mean": 0.52
+        },
+        "bank": {
+          "n": 9,
+          "min": 0.252,
+          "p10": 0.289,
+          "p25": 0.563,
+          "median": 0.633,
+          "p75": 0.6705,
+          "p90": 0.7168,
+          "max": 0.7344,
+          "mean": 0.5641
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.25,
+              2
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              0
+            ],
+            [
+              0.4,
+              0
+            ],
+            [
+              0.45,
+              1
+            ],
+            [
+              0.5,
+              0
+            ],
+            [
+              0.55,
+              3
+            ],
+            [
+              0.6,
+              2
+            ],
+            [
+              0.65,
+              0
+            ],
+            [
+              0.7,
+              1
+            ]
+          ],
+          "bank": [
+            [
+              0.25,
+              2
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              0
+            ],
+            [
+              0.4,
+              0
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.5,
+              0
+            ],
+            [
+              0.55,
+              2
+            ],
+            [
+              0.6,
+              2
+            ],
+            [
+              0.65,
+              1
+            ],
+            [
+              0.7,
+              2
+            ]
+          ]
+        }
+      },
+      "f050": {
+        "instances": 10,
+        "measurable": 9,
+        "measurable_rate": 0.9,
+        "anchor": {
+          "n": 9,
+          "min": 0.2083,
+          "p10": 0.2498,
+          "p25": 0.4347,
+          "median": 0.4425,
+          "p75": 0.5081,
+          "p90": 0.5669,
+          "max": 0.5804,
+          "mean": 0.4377
+        },
+        "bank": {
+          "n": 9,
+          "min": 0.2215,
+          "p10": 0.2525,
+          "p25": 0.441,
+          "median": 0.5081,
+          "p75": 0.5862,
+          "p90": 0.651,
+          "max": 0.6524,
+          "mean": 0.4826
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.2,
+              1
+            ],
+            [
+              0.25,
+              1
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              0
+            ],
+            [
+              0.4,
+              3
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.5,
+              2
+            ],
+            [
+              0.55,
+              2
+            ]
+          ],
+          "bank": [
+            [
+              0.2,
+              1
+            ],
+            [
+              0.25,
+              1
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              0
+            ],
+            [
+              0.4,
+              2
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.5,
+              1
+            ],
+            [
+              0.55,
+              2
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              0.65,
+              2
+            ]
+          ]
+        }
+      },
+      "f100": {
+        "instances": 10,
+        "measurable": 8,
+        "measurable_rate": 0.8,
+        "anchor": {
+          "n": 8,
+          "min": 0.0994,
+          "p10": 0.303,
+          "p25": 0.4011,
+          "median": 0.4543,
+          "p75": 0.5302,
+          "p90": 0.5363,
+          "max": 0.5405,
+          "mean": 0.4259
+        },
+        "bank": {
+          "n": 8,
+          "min": 0.1084,
+          "p10": 0.3057,
+          "p25": 0.4308,
+          "median": 0.5156,
+          "p75": 0.5904,
+          "p90": 0.6181,
+          "max": 0.6264,
+          "mean": 0.4747
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.05,
+              1
+            ],
+            [
+              0.1,
+              0
+            ],
+            [
+              0.15,
+              0
+            ],
+            [
+              0.2,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              1
+            ],
+            [
+              0.4,
+              2
+            ],
+            [
+              0.45,
+              1
+            ],
+            [
+              0.5,
+              3
+            ]
+          ],
+          "bank": [
+            [
+              0.1,
+              1
+            ],
+            [
+              0.15,
+              0
+            ],
+            [
+              0.2,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              1
+            ],
+            [
+              0.4,
+              1
+            ],
+            [
+              0.45,
+              1
+            ],
+            [
+              0.5,
+              0
+            ],
+            [
+              0.55,
+              2
+            ],
+            [
+              0.6,
+              2
+            ]
+          ]
+        }
+      }
+    },
+    "by_char": {
+      "char_luchen": {
+        "instances": 9,
+        "measurable": 8,
+        "measurable_rate": 0.8889,
+        "anchor": {
+          "n": 8,
+          "min": 0.252,
+          "p10": 0.2577,
+          "p25": 0.4659,
+          "median": 0.5468,
+          "p75": 0.5631,
+          "p90": 0.5686,
+          "max": 0.5804,
+          "mean": 0.4809
+        },
+        "bank": {
+          "n": 8,
+          "min": 0.252,
+          "p10": 0.2577,
+          "p25": 0.4794,
+          "median": 0.5717,
+          "p75": 0.6225,
+          "p90": 0.6474,
+          "max": 0.6507,
+          "mean": 0.5149
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.25,
+              2
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              0
+            ],
+            [
+              0.4,
+              0
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.5,
+              2
+            ],
+            [
+              0.55,
+              4
+            ]
+          ],
+          "bank": [
+            [
+              0.25,
+              2
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              0
+            ],
+            [
+              0.4,
+              0
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.5,
+              0
+            ],
+            [
+              0.55,
+              3
+            ],
+            [
+              0.6,
+              2
+            ],
+            [
+              0.65,
+              1
+            ]
+          ]
+        }
+      },
+      "char_suwan": {
+        "instances": 21,
+        "measurable": 18,
+        "measurable_rate": 0.8571,
+        "anchor": {
+          "n": 18,
+          "min": 0.0994,
+          "p10": 0.2712,
+          "p25": 0.4122,
+          "median": 0.4543,
+          "p75": 0.5235,
+          "p90": 0.6175,
+          "max": 0.7124,
+          "mean": 0.4544
+        },
+        "bank": {
+          "n": 18,
+          "min": 0.1084,
+          "p10": 0.2752,
+          "p25": 0.4414,
+          "median": 0.5377,
+          "p75": 0.6314,
+          "p90": 0.6831,
+          "max": 0.7344,
+          "mean": 0.5054
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.05,
+              1
+            ],
+            [
+              0.1,
+              0
+            ],
+            [
+              0.15,
+              0
+            ],
+            [
+              0.2,
+              1
+            ],
+            [
+              0.25,
+              1
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              1
+            ],
+            [
+              0.4,
+              5
+            ],
+            [
+              0.45,
+              2
+            ],
+            [
+              0.5,
+              3
+            ],
+            [
+              0.55,
+              1
+            ],
+            [
+              0.6,
+              2
+            ],
+            [
+              0.65,
+              0
+            ],
+            [
+              0.7,
+              1
+            ]
+          ],
+          "bank": [
+            [
+              0.1,
+              1
+            ],
+            [
+              0.15,
+              0
+            ],
+            [
+              0.2,
+              1
+            ],
+            [
+              0.25,
+              1
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              1
+            ],
+            [
+              0.4,
+              3
+            ],
+            [
+              0.45,
+              1
+            ],
+            [
+              0.5,
+              1
+            ],
+            [
+              0.55,
+              3
+            ],
+            [
+              0.6,
+              2
+            ],
+            [
+              0.65,
+              2
+            ],
+            [
+              0.7,
+              2
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "pick": "largest"
+}

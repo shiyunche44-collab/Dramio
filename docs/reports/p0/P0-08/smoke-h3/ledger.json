@@ -1,0 +1,52 @@
+{
+  "tasks": [
+    {
+      "shot_id": "ep01_sc01_sh02",
+      "task_id": "447520187924892",
+      "node_key": "a3f36a13a72f8d3b8ca0bc1aad527696e63e6c54ba61ccca5e9ac86174a3c2fe",
+      "model": "MiniMax-H3",
+      "resolution": "768P",
+      "requested_duration_s": 5,
+      "status": "succeeded",
+      "usage": {
+        "total_seconds": 5,
+        "input_seconds": 0,
+        "output_seconds": 5,
+        "input_image_count": 1,
+        "total_tokens": 175765,
+        "prompt_tokens": 13020,
+        "completion_tokens": 162745
+      },
+      "latency_s": 135,
+      "cost_cny": 2.5,
+      "cost_basis": "usage × 文档单价（账单待核对）",
+      "video_host": "algeng-video-infer.oss-cn-shanghai.aliyuncs.com",
+      "video": {
+        "path": "videos/ep01_sc01_sh02.mp4",
+        "bytes": 1134327,
+        "sha256": "a60cf6e9ca8378592f127e4ccbf1b66b68ca0b18cb85f7d0a67bdc338fbc64c9",
+        "width": 768,
+        "height": 1344,
+        "duration_s": 5.1667,
+        "fps": 24.0,
+        "has_audio": true,
+        "sha256_matches_remote": true
+      }
+    }
+  ],
+  "totals": {
+    "tasks": 1,
+    "succeeded": 1,
+    "output_seconds": 5,
+    "cost_cny": 2.5,
+    "latency_s": {
+      "min": 135,
+      "median": 135,
+      "max": 135
+    }
+  },
+  "failures_in_runs": {
+    "config": 1
+  },
+  "note": "latency_s = 供应商 updated_at − created_at（提交到完成）；费用依据 usage.output_seconds 与文档单价，未与账单核对。"
+}
