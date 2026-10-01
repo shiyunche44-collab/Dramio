@@ -207,8 +207,36 @@
     {
       "shot_id": "ep01_sc01_sh03",
       "node_key": "51efb1b8aedce62537de3b6c52e80979032fe31a649a632aa8db024c56dc0be2",
-      "status": "error",
-      "error": "download: network: RemoteDisconnected: Remote end closed connection without response host=algeng-video-infer.oss-cn-shanghai.aliyuncs.com"
+      "task_id": "447527841567111",
+      "model": "MiniMax-H3",
+      "resolution": "768P",
+      "duration": 5,
+      "status": "succeeded",
+      "usage": {
+        "total_seconds": 5,
+        "input_seconds": 0,
+        "output_seconds": 5,
+        "input_image_count": 1,
+        "total_tokens": 175765,
+        "prompt_tokens": 13020,
+        "completion_tokens": 162745
+      },
+      "bytes": 826713,
+      "media": {
+        "width": 768,
+        "height": 1344,
+        "duration_s": 5.1667,
+        "format_duration_s": 5.167,
+        "fps": 24.0,
+        "bit_rate": 1279989,
+        "size_bytes": 826713,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "has_audio": true,
+        "nb_frames": 124,
+        "pix_fmt": "yuv420p",
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      }
     },
     {
       "shot_id": "ep01_sc01_sh04",
@@ -285,24 +313,10 @@
       "error": "rate_limit: HTTP 429 type=rate_limit_error code=2056 已达到 Token Plan 用量上限：请升级 Token Plan 套餐或购买积分补充用量。 (2056)"
     },
     {
-      "shot_id": "ep01_sc02_sh04",
-      "node_key": "2c60b6b65702a2e74fe35b8140ca49a52757b245729f0829d56ad9ef4070f01d",
-      "status": "error",
-      "error": "rate_limit: HTTP 429 type=rate_limit_error code=2056 已达到 Token Plan 用量上限：请升级 Token Plan 套餐或购买积分补充用量。 (2056)"
-    },
-    {
-      "shot_id": "ep01_sc03_sh03",
-      "node_key": "2220d57dd2eaa8c0a15a965c25625fc7ab6aeb4e19b2edc6ae92cda7ca0cf79c",
-      "status": "error",
-      "error": "rate_limit: HTTP 429 type=rate_limit_error code=2056 已达到 Token Plan 用量上限：请升级 Token Plan 套餐或购买积分补充用量。 (2056)"
-    },
-    {
-      "shot_id": "ep01_sc03_sh04",
-      "node_key": "d04a380d478497cf80e8ca4aa2a05f319ad82ee3132f5e60d9e86440671cfade",
-      "status": "error",
-      "error": "rate_limit: HTTP 429 type=rate_limit_error code=2056 已达到 Token Plan 用量上限：请升级 Token Plan 套餐或购买积分补充用量。 (2056)"
+      "status": "aborted",
+      "error": "账号级 / 额度错误，中止其余 3 个镜头：rate_limit: HTTP 429 type=rate_limit_error code=2056 已达到 Token Plan 用量上限：请升级 Token Plan 套餐或购买积分补充用量。 (2056)"
     }
   ],
-  "count": 13,
-  "success": 8
+  "count": 11,
+  "success": 9
 }
