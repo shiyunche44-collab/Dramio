@@ -206,6 +206,25 @@ python3 -m poc keyframe --verify ../../docs/reports/p0/P0-07 [--require-selected
 - `--verify`：复核 sha256 / 字节数 / 宽高（1152×2048）、文件名前缀、manifest 与 summary / calls 的对应、每个方案的参考图数量（text 0、ref1 每角色 1、ref2 每角色 2）、参考图文件 sha256、`selected` 每镜头至多 1 张（`--require-selected`：每镜头必须有 1 张）、watermark、输入 ep01 的 sha256、费用合计、run-calls 无 base64 图像数据。
 - 用 `face` 度量首帧：`python3 -m poc face --refs ... --manifest <证据目录>/manifest.json`。
 
+## video：图生视频（P0-08）
+
+P0-07 选定首帧（manifest 中 `selected`，sha256 校验后以 `data:image/jpeg;base64,…` 内联）→ 逐镜头视频片段。时长取 ep01 的 `duration.hint_s`，提示词模板 `poc/prompts/video.v1.md`（只写起始画面之后的运动，不写台词与口型）。候选：`h3`（MiniMax-H3，走 `/v2/video_generation`）、`h3max`、`hailuo23`（v1）、Ark Seedance（`1.0-pro-fast` / `2.0*` / `2.5`）。
+
+```bash
+python3 -m poc video --candidate h3 --resolution 768P --dry-run                      # 离线：首帧 sha256、提示词、duration、预计费用、node_key
+python3 -m poc video --candidate h3 --resolution 768P --shots ep01_sc01_sh02 --max-cost-cny 5 --export ../../docs/reports/p0/P0-08/smoke-h3   # 冒烟
+python3 -m poc video --candidate h3 --resolution 768P --resume --export ../../docs/reports/p0/P0-08/full-h3 --max-cost-cny 50   # 全量；--resume 只查询 tasks.jsonl 里已有的任务，不重复提交
+python3 -m poc video --reconcile ../../docs/reports/p0/P0-08/full-h3                  # 免费查询任务并与本地视频对账，写 ledger.json（含重新下载比对 sha256）
+python3 -m poc video --analyze ../../docs/reports/p0/P0-08/full-h3                    # ffprobe / 首帧 SSIM / 运动量 / 抽帧 / 缩略条 / 伪 manifest / table.md
+python3 -m poc video --verify ../../docs/reports/p0/P0-08 --max-bytes 12582912       # 离线核验证据
+```
+
+- 顺序执行：每个任务提交后立即把 `task_id` 写入 `tasks.jsonl`，再轮询到终态并下载；下载请求不带 Authorization，记录里只有主机名（H3 的下载域名是 `algeng-video-infer.oss-cn-shanghai.aliyuncs.com`，需要在网络策略里放行）。没有并发参数：H3 单个任务从提交到完成约 2–7 分钟，全集串行约 30–40 分钟。
+- `--reconcile` 是费用与成败的依据：运行目录里的 `run-summary.json` / `calls.jsonl` 会被每次 `--resume` 覆盖或追加，不能单独当账。账本按 `usage.output_seconds × 文档单价` 计费、`updated_at − created_at` 记耗时，并把本地文件重新下载比对 sha256（代理隧道偶发中断，重试 4 次，仍失败记 `null`，不等于不一致）。
+- `--verify` 对每个带 `ledger.json` 的目录检查：视频存在、sha256 与 ffprobe 实际宽高 / 时长与账本一致、与远端产物是同一个文件、费用合计、`node_key` 不重复；对整个目录扫描密钥环境变量的值、Bearer 令牌、带签名的下载链接；`--max-bytes` 检查体积。
+- `--analyze` 的人脸相似度要先抽帧再跑 `face --manifest <目录>/analysis/face-manifest.json`（需要 `[face]` extras，参考图见 manifest 的 `references`），输出 `faces.json` 后再运行一次 `--analyze` 生成 `table.md`；抽帧图（`analysis/frames/`，约 3 MB）不入库，由视频重新生成。
+- Ark Seedance：本账号 Agent Plan 下 2.0 / 2.0-fast / 2.0-mini / 2.5 全部返回 404 `UnsupportedModel`（带日期的 ID 和 `PLAN_ALIASES` 里的套餐别名都试过），详见 `docs/reports/p0/P0-08.md`。
+
 ## 运行记录
 
 ```

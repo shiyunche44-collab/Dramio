@@ -69,11 +69,11 @@
 - [x] A8 `make arch-check`、单测通过；`--dry-run` 打印 13 镜头的 H3 请求预览
 - [x] B1 H3 冒烟 1（合法请求，1 个）：`ep01_sc01_sh02`，768P，4 秒（约 ¥2）。目的：首帧 data URI 是否接受、`content.url` 下载域名、耗时、usage、是否带音频流；发出前本地校验请求体
 - [x] B2 停下检查点：下载被拦 / 任务失败 / 任务创建但拿不到结果，则不继续 B3 起的调用
-- [ ] B3 H3-Max 480P 5 秒冒烟（约 ¥1.65）与 Hailuo-2.3 768P 6 秒冒烟（¥2）：确认账号是否可用
+- [x] B3（未做：额度用尽，按 2026-10-01 用户决定收尾，登记 D-014）H3-Max 480P 5 秒冒烟（约 ¥1.65）与 Hailuo-2.3 768P 6 秒冒烟（¥2）：确认账号是否可用
 - [x] B4（结论：本账号 Agent Plan 不能调 Seedance，见交接日志 2026-10-01）Ark 冒烟：先免费 GET 路径，再按“空镜 → sc01_sh05（文生图首帧）→ 一张图生图首帧”的顺序，480P 短时长；任一步被拒或被拦即停止 Ark 线
-- [ ] B5 按实测单价定矩阵并写入预估；证据体积外推，超 12 MB 先登记待决事项
-- [ ] C1 H3 768P 全部 13 镜头；C2 H3-Max 480P 全部或缩减；C3 H3 2K 1 个镜头；C4 Hailuo-2.3 约 4 个镜头；C5 Seedance（若可用）；C6 只对瞬时错误重试，超时任务先 `--resume`
-- [ ] D1（工具已就绪：`poc/video_metrics.py` / `--analyze`；9 个 H3 视频已度量，13 个到齐后重跑）对成功视频跑 `media.py`（分辨率、时长、fps、码率、音频流、SSIM、运动量）；D2 抽帧跑 `face --manifest`；D3 全镜头缩略条与 agent 初评；D4 汇总并写 `docs/reports/p0/P0-08.md`（含“给 P0-09 / P0-11”一节）；D5 `--export` 与 `--verify`；D6 登记待决事项（默认候选与分辨率、证据体积、域名放行、Ark 线路、账单核对）
+- [x] B5（按实测：体积 13.2 MB 超限，登记 D-013）按实测单价定矩阵并写入预估；证据体积外推，超 12 MB 先登记待决事项
+- [x] C1 H3 768P 完成 9/13（缺 4 个镜头：额度用尽）；C2、C3、C4 未做（D-014）；C5 Seedance 不可用；C6 只对瞬时错误重试，超时任务先 `--resume`
+- [x] D1（工具已就绪：`poc/video_metrics.py` / `--analyze`；9 个 H3 视频已度量，13 个到齐后重跑）对成功视频跑 `media.py`（分辨率、时长、fps、码率、音频流、SSIM、运动量）；D2 抽帧跑 `face --manifest`；D3 全镜头缩略条与 agent 初评；D4 汇总并写 `docs/reports/p0/P0-08.md`（含“给 P0-09 / P0-11”一节）；D5 `--export` 与 `--verify`；D6 登记待决事项（默认候选与分辨率、证据体积、域名放行、Ark 线路、账单核对）
 - [ ] E1 README `video` 一节与 progress.md 前置条件更新；E2 verifier、arch-reviewer，按 ship.md 交付 PR
 
 ## 本步费用
@@ -98,6 +98,9 @@
 | D-009 | P0-06 | 证据体积再次超上限：pro 派生第 1 轮入库后 `docs/reports/p0/P0-06` 为 16.94 MB（D-008 上限 16 MB）；派生图已是接口最小尺寸，主图原图不能降级 | A：上限放宽到 18 MB，全部保留；B：删除已入库的 flash `derive-text-flash`、`derive-ref-flash` 图像（因欠费不完整，约 4.1 MB），只留 run-summary / calls；C：pro 派生每角色只入库 neutral 加 2 个表情（重新导出，约减 1.5 MB） | A：只超 0.94 MB；flash 派生是 pro 的对照组，报告的对比结论依赖这些图；P0 证据不再继续增长（P0-07 起证据放各自目录） | 已决 | A：上限放宽到 18 MB，全部保留（2026-09-30，用户：“选择a”） |
 | D-010 | P0-07 | 证据体积超上限：37 张 pro 首帧（平均 276 KB，步骤卡估算时按 160 KB）入库后 `docs/reports/p0/P0-07` 为 10.83 MB（步骤卡上限 10 MB；含补充的 faces、pick-best、校准 JSON） | A：上限放宽到 11 MB，全部保留；B：只入库选定的 13 张 + 各方案各镜头的 r1 缩略说明（减到约 4 MB，但逐方案对比图没了，`faces-r1.json` 里的图像路径失效）；C：入库 `ref2` 与选定图（约 7 MB），`text` / `ref1` 只留统计 | A：只超 0.83 MB；三个方案的原图是报告对比结论与目视评分的依据，P0-08 也会按 manifest 引用 | 已决 | A：上限放宽到 11 MB，全部保留（2026-09-30，用户：“三个都按照建议来”） |
 | D-011 | P0-07 | 默认一致性方案与目视评分（主观）：推荐 `ref2`，但按预设判据“无错人实例（< 0.30）”严格算三个方案都不达标（`ref2` 有 1 个，r1 `sc01_sh05` 陆沉 0.296，目视为侧脸误判）；agent 目视抽查（缩略图，非盲评）三个方案基本无法区分，都没有发现换脸，只有 `sc01_sh05` 侧脸双人镜头 `text` / `ref1` 略差（3 分），评分表见报告 §6；**“底部 1/4 留白”没有做到**：约 7 / 13 个镜头主体延伸到画面底部，是否可作字幕安全区也请一并确认 | A：采纳 `ref2` 为默认方案，`sc01_sh05` 按“度量局限”处理；B：单人镜头 `ref1`、双人及多人镜头 `ref2`；C：不采纳，要求补测（例如对 `sc01_sh05` 这类侧脸双人镜头加候选数，或改用更严判据）。各方案首帧在 `docs/reports/p0/P0-07/keyframe-r1/`，逐镜头表见 [P0-07.md](reports/p0/P0-07.md) §3 | A：`ref2` 下尾最好（P10 0.48、92% ≥ τ），双人镜头最稳，P0-08 按 manifest 里选定的首帧取；B 与 A 差别主要在 `ref1` 单人镜头中位数更高（0.67 vs 0.57），但 `ref1` 下尾更差，建议 P1-12 用“多候选 + 打分选优”解决而不是在 P0 分方案 | 已决 | A：采纳 `ref2` 为默认一致性方案，`sc01_sh05` 按度量局限处理；“底部 1/4 留白”接受现状，记为遗留问题（字幕区留到 P0-11 后期处理或 P1 收紧 Prompt）（2026-09-30，用户：“三个都按照建议来”） |
+| D-012 | P0-08 | 图生视频的默认方案与目视评分（主观）：只有 H3 768P 有数据（9/13 个镜头），agent 初评（缩略条、非盲评）见报告 §5 | A：采纳 H3 768P 为 P0 默认图生视频方案，`sc01_sh05`（人物走出画面）按“提示词问题”处理；B：先不定默认，等补测 H3-Max / Hailuo-2.3 / 2K 后再选；C：不采纳（说明原因）。片段 `docs/reports/p0/P0-08/full-h3/videos/`，缩略条 `full-h3/analysis/sheets/`，逐镜头表见 [P0-08.md](reports/p0/P0-08.md) §3 | A：9 个镜头里 8 个可直接用，身份稳定、首帧保真 SSIM ≥ 0.93，0 次生成失败；没有对照数据时 B 只是拖延，补测发现更好的候选时再改默认即可 | 待决 | |
+| D-013 | P0-08 | 证据体积超上限：`docs/reports/p0/P0-08` 现为 13.2 MB（步骤卡上限 12 MB，已不含 3.3 MB 抽帧图），补齐 4 个镜头后预计约 17 MB | A：上限放宽到 18 MB，全部保留；B：保持 12 MB，只入库全量视频与账本，删除冒烟视频（1.1 MB）和缩略条；C：视频不入库，只留账本、sha256 与缩略条（片段由任务记录重取，保留 7 天，会过期） | A：视频是 P0-09 / P0-11 的输入，过期后重生成要花钱；P0 证据不再继续增长 | 待决 | |
+| D-014 | P0-08 | 未评测部分怎么处理：MiniMax Token Plan 额度用尽（缺 4 个镜头，H3-Max / Hailuo-2.3 / 2K 冒烟未做，约 ¥20）；Ark Seedance 在 Agent Plan 下不可用 | A：等你补额度（升级 Token Plan 或购买积分）后另开补测，命令见报告 §8，P0-08 先按现有数据合并；B：不补测，P0 的结论只覆盖 H3 768P，报告注明；C：另外要评测 Seedance 时，提供含视频的套餐档位或按量付费 Key | A：补 4 个镜头是 P0-11 换成真实视频的前提，花费小（约 ¥9.5）；Seedance 不阻塞 P0 | 待决 | |
 
 ## 已知的前置条件
 
@@ -120,6 +123,7 @@
 - 火山引擎能力盘点（2026-09-30）：见 [reports/p0/vendor-volcengine.md](reports/p0/vendor-volcengine.md)。火山可覆盖 P0-03 ~ P0-11 全部环节；只需方舟 `ARK_API_KEY` + MediaKit API Key 两个 Bearer Key（MediaKit 可代理方舟图像 / 视频和 Seed Audio）。当前可达：`ark.cn-beijing.volces.com`、`visual.volcengineapi.com`、`open.volcengineapi.com`；被拦截：`mediakit.cn-beijing.volces.com`（`openspeech.bytedance.com` 已于同日放行，见下一条）。注意 Seedance 不接受直接上传的真人人脸参考，只信任同账号 30 天内 Seedance 2.x / Seedream 5.0 文生图的原始产物或平台授权素材。
 - 火山引擎密钥（2026-09-30 更新）：云环境已配置 `ARK_API_KEY`（`GET /api/v3/models` 返回 200，含 Seedream 5.0、Seedance 2.0）与 `VOLC_SPEECH_API_KEY`；`openspeech.bytedance.com` 已放行（代理隧道偶发中途断开，客户端需重试）。豆包语音该 Key 已授权：TTS 2.0（`seed-tts-2.0`）、录音文件识别 2.0 标准版（`volc.seedasr.auc`，submit / query，可内联 base64）；未授权（403 `45000030`）：TTS 1.0（`seed-tts-1.0`）、ASR 1.0（`volc.bigasr.auc`）、极速版（`*.auc_turbo`）。`mediakit.cn-beijing.volces.com` 仍被拦截。
 - MiniMax 海螺视频（2026-09-30 实测，P0-08 用户指定候选）：`api.minimaxi.com` 已放行，`MINIMAX_API_KEY` 在国内站有效（国际站 `api.minimax.io` 报 `invalid api key`，不要用）。`GET /v1/models` 只列文本模型（MiniMax-M3 / M2.x），不含视频模型；视频模型 ID 用“非法 `duration` 探测”核实（请求在校验阶段失败，不创建任务、不计费）：**`MiniMax-H3` 存在，且必须走 `POST /v2/video_generation`**（v1 报“该模型请使用 /v2/video_generation 接口”）；`MiniMax-Hailuo-2.3`、`MiniMax-Hailuo-02` 走 v1（时长只支持 6s / 10s）；`MiniMax-Hailuo-3`、`Hailuo-3`、`MiniMax-Hailuo-H3` 不存在。v2 请求体：`model`、`content`（数组，必填，`{"type":"text","text":…}`，首帧图的写法待实测）、`resolution`（必填，合法值待实测）、`ratio`（`adaptive` / `16:9` / `4:3` / `1:1` / `3:4` / `9:16` / `21:9`）、`duration`（4–15 秒整数）。`resolution` 合法值 `480P` / `768P` / `2K`；首帧写法 `{"type":"image_url","image_url":{"url":…},"role":"first_frame"}`，url 必须是 `http(s)://` 或 `data:…;base64,…`（可直接内联，不需要图床）；提交返回 `{"task_id":…}`，查询 `GET /v2/query/video_generation?task_id=…` 返回 `{"items":[{id,model,status,error,resolution,duration,ratio,usage,…}],"total":1}`（失败时 `status=failed` 且 `error.code / message`；成功时取视频文件的字段与路径待实测）。单价未知，先 1 次冒烟实测。**探测事故**：为摸清首帧写法发了 1 个带非法图片地址（`notaurl`）的请求，接口没有在校验阶段拒绝，而是创建了任务 `447505300464052`，随即 `failed`、`usage` 为空（预计不计费，待在控制台余额核对）；此后不再用探测请求去碰会创建任务的路径。
+- MiniMax 视频（2026-10-01 更新）：H3 的视频下载域名是 `algeng-video-infer.oss-cn-shanghai.aliyuncs.com`（已放行，隧道偶发中断需重试）；Token Plan 用量已用尽（提交返回 429 `2056`，账号级），补测前需升级套餐或购买积分；Ark Seedance 在当前 Agent Plan 下不可用（`UnsupportedModel`），详见 [reports/p0/P0-08.md](reports/p0/P0-08.md)。
 - ADR-0001 ~ 0010 目前为 Proposed，在 P0-14 统一评审。
 - GitHub 上需要用户手动完成：把默认分支改为 `main`；为 `main` 开启分支保护（要求 `arch-check` 通过，不要求 Code Owner 评审）。
 
