@@ -240,11 +240,29 @@ python3 -m poc compose --verify ../../docs/reports/p0/P0-11   # 离线核验证�
 
 - **按镜头自动选片**：`docs/reports/p0/P0-08/full-h3/videos/<shot_id>.mp4` 存在且 ffprobe 能解析 → real；不存在 → placeholder（P0-07 选定首帧缓慢推近，最大 1.08 倍，画面左下角有“占位·静帧”标签）；存在但损坏 → 报错，不会静默改用占位。镜头清单不写死，**补入真实片段后重跑 `python3 -m poc compose` 即可**：镜头目标时长只由 `hint_s` 与台词窗口决定，与素材真假无关，所以时间线、配音、字幕时间都不变，只有被替换镜头的画面变。
 - **时长**：目标 = max(`hint_s`，头 0.15 + 台词剪辑窗口 + 句间 0.2 + 尾 0.25)，台词窗口取 ASR 的语音起止（前后各留 0.15 / 0.25 秒，OTIO 里是对 mp3 的 source_range，非破坏性）。真实片段比目标短时冻结尾帧补足，最多 2 秒（超限报错，不加速、不截断台词）；比目标长时裁掉尾部。
-- **OTIO**（`timeline.otio`，渲染器只读它）：V1 画面、A1 对白、A2 环境声（H3 自带音频，`enabled` 随 `--ambient`）、A3 BGM / A4 SFX 空轨（P0-10 未做，镜头的 `sfx` 标签记在 V1 clip 的 marker 上）、S1 字幕与 O1 角标（GeneratorReference，NLE 不一定识别，字幕另有 `subtitles.srt`）；素材路径相对 OTIO 所在目录。交换格式用只含 V1 / A1 / A2 的视图导出 `timeline.xml`（FCP7 XML）与 `timeline.edl`（只含视频轨），导入剪辑软件后需要重新链接素材（相对路径）。
+- **OTIO**（`timeline.otio`，渲染器只读它）：V1 画面、A1 对白、A2 环境声（H3 自带音频，`enabled` 随 `--ambient`）、A3 BGM / A4 SFX 空轨（P0-10 只做规划与度量、不混入成片，镜头的 `sfx` 标签记在 V1 clip 的 marker 上）、S1 字幕与 O1 角标（GeneratorReference，NLE 不一定识别，字幕另有 `subtitles.srt`）；素材路径相对 OTIO 所在目录。交换格式用只含 V1 / A1 / A2 的视图导出 `timeline.xml`（FCP7 XML）与 `timeline.edl`（只含视频轨），导入剪辑软件后需要重新链接素材（相对路径）。
 - **渲染**：每镜头先合成 1080×1920 画面段（768×1344 先缩放到高 1920 再居中裁到 1080，每侧丢约 8 px，不做超分），再拼接 + 字幕（ASS，WenQuanYi Zen Hei）+ AIGC 角标；对白逐句放置、48 kHz 立体声、两遍 loudnorm 到 −16 LUFS（真峰值 ≤ −1.5）；编码 CRF 23、码率上限 2.5 Mbps。
 - **AIGC 标识没有关闭开关**（无参数、无环境变量，单测断言）：全片可见角标“AI生成”，容器元数据 `AIGC`（JSON，字段待对照 GB 45438-2025 确认，可用 `ffprobe -show_format` 读取）。
 - **缓存**：节点 `segment` / `audio_mix` / `final` 各有 `node_key`（输入内容 sha256，含渲染版本号），缓存在 `runs/compose-cache/`（不入库）；`compose-manifest.json` 记录每个节点的命中与耗时。冷启动全量约 2 分钟，全命中约 10 秒。
 - **`--verify`** 检查：规格（1080×1920、24 fps、h264 / aac / yuv420p）、音视频时长差 ≤ 50 ms、总时长与规划一致、AIGC 标签与角标（5 个采样帧的角标区域有白色文字）、字幕 cue 数 = 台词数且落在各自镜头窗口内、对白起声与字幕起点偏差 ≤ 0.2 秒、响度 −16 ±1.5 LUFS 与真峰值 ≤ −1 dBTP、OTIO 往返读写与 clip 数与 placeholder 标记、FCP7 XML / EDL 回读时长、真实片段 sha256、体积 ≤ 28 MB（按入库文件计）、无费用记录与密钥。字幕框与人脸框的相交检查是几何估算，只给提示。
+
+## music：BGM 与音效（P0-10，离线部分）
+
+按场景情绪规划 BGM、按镜头标签规划音效、度量 BGM 音频；有火山 IAM 访问密钥时可生成（**离线阶段没有真实调用过**，接口字段来自文档，见 `docs/reports/p0/P0-10.md` §3）。
+
+```bash
+python3 -m poc music --dry-run                    # 离线：3 个场景的 BGM 段（起止 / 时长 / 提示词 / node_key）、12 条音效、预估费用；不要密钥、不联网、不写 runs/
+python3 -m poc music --dry-run --basis hint       # 时间轴改用 hint_s 累加（60 秒）；默认 compose = 成片口径（63.5 秒，需要 ffprobe）
+python3 -m poc music --export ../../docs/reports/p0/P0-10        # 同上并写 music-plan.json
+python3 -m poc music --analyze 某.wav 或目录      # 离线度量：时长（对照规划）、LUFS / 真峰值 / LRA、首尾静音、末 1 秒电平落差、相对对白轨的混音增益建议
+python3 -m poc music --only ep01_sc01 --max-cost-cny 1   # 在线生成（需 VOLC_ACCESSKEY / VOLC_SECRETKEY，否则退出码 2）
+```
+
+- **单次最短 30 秒**（v5.0 `Duration` 有效范围 [30, 120]）：ep01 每场约 20 秒，所以 `gen_s = max(30, ceil(播放时长))`，多出的部分合成时裁掉；3 段共 90 秒 ≈ ¥0.18（¥0.002 / 秒，文档示例价，未核对账单）。
+- **提示词** `poc/prompts/bgm.v1.md`：全中文（接口只支持中文），变量来自 DramaIR 的 `series` 与 `scene.setting`；`scene.mood` 经 `MOOD_TABLE` 映射（键与 schema 枚举一一对应，单测校验）；不放 `scene.summary`（人名与剧情对纯音乐没有帮助）。
+- **音效规则表** `SFX_RULES`：按关键词归类为环境铺底 / 拟音 / 提示音 / 人群，先匹配先赢；未命中标 `uncategorized`，不静默丢弃。所有条目 `status=unsourced`——没有选定音效来源，起止与增益只是初值。
+- **异步任务**：`GenBGMForTime` 提交 → `QuerySong` 轮询（Status 0 / 1 / 2 / 3）→ 下载（文档说默认 wav，但链路可能转码成 mp4，落盘前 ffprobe）；`SongDetail.Duration` 是计费依据。签名在 `poc/volc_sign.py`（V4，纯标准库，单测对照文档示例向量与官方 SDK 生成值）。
+- 在线评测与“可商用”结论阻塞中，条件见 `docs/reports/p0/P0-10.md` §5。
 
 ## 运行记录
 
