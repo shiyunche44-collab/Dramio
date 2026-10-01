@@ -293,3 +293,57 @@ def contact_sheet(frames: list[Path | str], out: Path | str, tile_width: int = 1
     if not out.exists() or out.stat().st_size == 0:
         raise MediaError("缩略条生成失败")
     return out
+
+
+# ---- 音频与响度（P0-11） ----
+
+_LUFS_RE = re.compile(r"^\s+I:\s+(-?[0-9.]+|-inf)\s+LUFS", re.MULTILINE)
+_TPEAK_RE = re.compile(r"^\s+Peak:\s+(-?[0-9.]+|-inf)\s+dBFS", re.MULTILINE)
+
+
+@dataclass(frozen=True)
+class AudioInfo:
+    codec: str
+    sample_rate: int
+    channels: int
+    duration_s: float | None
+
+
+def probe_audio(path: Path | str) -> AudioInfo | None:
+    """第一条音频流的编码、采样率、声道数、时长；没有音频流返回 None（视频或纯音频文件都行）。"""
+    path = Path(path)
+    if not path.is_file():
+        raise MediaError(f"文件不存在：{path}")
+    proc = _run([FFPROBE, "-v", "error", "-print_format", "json", "-show_streams", "-select_streams", "a:0", str(path)], timeout=60)
+    try:
+        streams = json.loads(proc.stdout).get("streams") or []
+    except ValueError:
+        raise MediaError("ffprobe 输出不是 JSON") from None
+    if not streams:
+        return None
+    s = streams[0]
+    return AudioInfo(str(s.get("codec_name") or ""), _int(s.get("sample_rate")) or 0, _int(s.get("channels")) or 0, _float(s.get("duration")))
+
+
+@dataclass(frozen=True)
+class Loudness:
+    integrated_lufs: float | None  # 整体响度（EBU R128）；静音或太短为 None
+    true_peak_dbtp: float | None  # 真峰值（ebur128 peak=true）
+
+
+def loudness(path: Path | str, stream: str = "a:0") -> Loudness:
+    """整体响度与真峰值（ffmpeg ebur128，peak=true）。"""
+    proc = _run([FFMPEG, "-nostdin", "-nostats", "-hide_banner", "-i", str(path), "-map", stream, "-af", "ebur128=peak=true", "-f", "null", "-"], timeout=300)
+    summary = proc.stderr.rsplit("Summary:", 1)[-1]  # 只取末尾汇总，不取逐帧输出
+    lufs, peak = _LUFS_RE.search(summary), _TPEAK_RE.search(summary)
+    return Loudness(_float(lufs.group(1)) if lufs else None, _float(peak.group(1)) if peak else None)
+
+
+def format_tags(path: Path | str) -> dict[str, str]:
+    """容器级元数据标签（键统一小写）。"""
+    proc = _run([FFPROBE, "-v", "error", "-print_format", "json", "-show_format", str(path)], timeout=60)
+    try:
+        tags = (json.loads(proc.stdout).get("format") or {}).get("tags") or {}
+    except ValueError:
+        raise MediaError("ffprobe 输出不是 JSON") from None
+    return {str(k).lower(): str(v) for k, v in tags.items()}
