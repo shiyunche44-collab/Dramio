@@ -429,6 +429,18 @@ def _suffix(codec: str) -> str:
     return {"pcm_s16le": ".wav", "pcm_s24le": ".wav", "mp3": ".mp3", "aac": ".m4a", "flac": ".flac"}.get(codec, ".bin")
 
 
+def _retry_same_task(fn: Callable[[], Any], retries: int, sleep: Callable[[float], None]) -> Any:
+    """对已提交的任务重试取结果：只重试 transient 的 VolcError（task_failed 不在此重试，由外层决定是否重新提交）。"""
+    for attempt in range(1, retries + 2):
+        try:
+            return fn()
+        except volc_sign.VolcError as exc:
+            if exc.kind == "task_failed" or not exc.transient or attempt > retries:
+                raise
+            sleep(2.0 ** attempt)
+    raise AssertionError("unreachable")
+
+
 def generate(
     segments: list[BgmSegment],
     out_dir: Path,
@@ -461,7 +473,8 @@ def generate(
                 raise CostLimit(f"累计 ¥{spent:.3f} + 本段 ¥{seg.est_cny:.3f} 将超过上限 ¥{max_cost_cny:g}")
             res = GenResult(seg.scene_id, seg.node_key, None, None, None, seg.gen_s, None, 0.0, False)
             body = volc_sign.build_submit_body(seg.text, seg.gen_s)
-            for attempt in range(1, retries + 2):
+            submitted_unresolved = 0.0  # 已提交但没拿到结果的任务：可能已计费，计入费用保险
+            for attempt in range(1, retries + 2):  # 外层只在“提交失败”或“任务失败且码可重试”时重新提交
                 res.attempts = attempt
                 try:
                     with run.call(volc_sign.PROVIDER, "music_sfx", model=f"{volc_sign.ACTION_SUBMIT}/{MODEL_VERSION}", node_key=seg.node_key) as call:
@@ -470,27 +483,42 @@ def generate(
                         call.request_id = sub.task_id
                         call.cost_cny, call.cost_basis = 0.0, "free"  # 提交本身不计费，成功后按时长记账
                     res.task_id = sub.task_id
-                    st = volc_sign.poll_song(sub.task_id, env=env, transport=transport, clock=clock, sleep=sleep)
-                    audio = volc_sign.download(st.audio_url or "", transport=transport)
+                    submitted_unresolved = seg.est_cny
+                    # 轮询与下载在原 task_id 上就地重试，不重新提交（重新提交 = 再付一次费）
+                    st = _retry_same_task(lambda: volc_sign.poll_song(sub.task_id, env=env, transport=transport, clock=clock, sleep=sleep), retries, sleep)
+                    audio = _retry_same_task(lambda: volc_sign.download(st.audio_url or "", transport=transport), retries, sleep)
                     billed = st.duration_s if st.duration_s is not None else float(seg.gen_s)
                     cost = pricing.music_cny(volc_sign.PROVIDER, volc_sign.ACTION_SUBMIT, billed)
                     with run.call(volc_sign.PROVIDER, "music_sfx", model=f"{volc_sign.ACTION_QUERY}/{MODEL_VERSION}", node_key=seg.node_key) as call:
                         call.extra = {"scene_id": seg.scene_id, "op": "result", "task_id": sub.task_id, "raw": st.raw}
                         call.cost_cny, call.cost_basis = cost, "estimate"
                         call.usage = {"duration_s": billed, "bytes": len(audio)}
+                    submitted_unresolved = 0.0
+                    spent += cost  # 任务已成功并计费，先记账再落盘（落盘失败不会丢账）
+                    res.billed_s, res.cost_cny = billed, cost
                     tmp = out_dir / f".{seg.scene_id}.part"
                     tmp.write_bytes(audio)
                     info = probe(tmp)
                     dest = out_dir / f"{seg.scene_id}{_suffix(info.codec) if info else '.bin'}"
                     tmp.replace(dest)
-                    res.file, res.sha256, res.billed_s, res.cost_cny, res.ok, res.error = dest.name, hashlib.sha256(audio).hexdigest(), billed, cost, True, None
-                    spent += cost
+                    res.file, res.sha256, res.ok, res.error = dest.name, hashlib.sha256(audio).hexdigest(), True, None
                     break
-                except volc_sign.VolcError as exc:
-                    res.error = f"{exc.kind}: {exc} (code={exc.api_code})"
-                    if not exc.transient or attempt > retries:
+                except (volc_sign.VolcError, media.MediaError, OSError) as exc:
+                    if getattr(exc, "kind", "") == "task_failed":
+                        submitted_unresolved = 0.0  # 失败的任务不计费（按最终成功生成的时长计费）
+                    res.error = str(exc) + (f" (code={exc.api_code})" if getattr(exc, "api_code", None) is not None else "")
+                    if res.billed_s is not None:  # 已计费但落盘失败：不再重新提交
+                        break
+                    transient = getattr(exc, "transient", False)
+                    if getattr(exc, "kind", "") != "task_failed" and res.task_id and submitted_unresolved:
+                        break  # 提交过且轮询 / 下载重试耗尽：不重新提交
+                    if not transient or attempt > retries:
                         break
                     sleep(2.0 ** attempt)
+            spent += submitted_unresolved
+            res.cost_cny = res.cost_cny or submitted_unresolved
+            if submitted_unresolved:
+                res.error = f"{res.error}；任务 {res.task_id} 已提交但没有取回结果，可能已计费（按请求时长 ¥{submitted_unresolved:.3f} 计入费用保险），可用 QuerySong 查询"
             results.append(res)
             print(f"{seg.scene_id}: {'ok' if res.ok else '失败'} {res.file or res.error}", file=out)
         manifest = {"prompt_version": PROMPT_VERSION, "model_version": MODEL_VERSION, "results": [asdict(r) for r in results], "cost_cny": round(spent, 6), "cost_basis": "estimate"}

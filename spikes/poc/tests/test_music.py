@@ -293,8 +293,10 @@ class AnalyzeTest(unittest.TestCase):
 class FakeNet:
     """按动作分流的假 transport：提交 / 查询 / 下载。"""
 
-    def __init__(self, fail_submit=(), statuses=(2,), audio=b"", status_code=200):
+    def __init__(self, fail_submit=(), statuses=(2,), audio=b"", status_code=200, fail_query=(), fail_download=()):
         self.fail_submit = list(fail_submit)
+        self.fail_query = list(fail_query)
+        self.fail_download = list(fail_download)
         self.statuses = list(statuses)
         self.requests = []
         self.audio = audio
@@ -309,10 +311,18 @@ class FakeNet:
             n = len([r for r in self.requests if "GenBGMForTime" in r.full_url])
             return volc_sign.Response(200, {}, json.dumps({"Code": 0, "Result": {"TaskID": f"task-{n}", "PredictedWaitTime": 1}}).encode())
         if "Action=QuerySong" in url:
+            if self.fail_query:
+                code = self.fail_query.pop(0)
+                return volc_sign.Response(200, {}, json.dumps({"Code": code, "Message": "busy"}).encode())
             st = self.statuses.pop(0) if len(self.statuses) > 1 else self.statuses[0]
             detail = {"AudioUrl": "https://v1-default.douyinvod.com/a.wav?sig=1", "Duration": 30.5} if st == 2 else {}
             return volc_sign.Response(200, {}, json.dumps({"Code": 0, "Result": {"TaskID": "t", "Status": st, "SongDetail": detail}}).encode())
+        if self.fail_download:
+            return volc_sign.Response(self.fail_download.pop(0), {}, b"")
         return volc_sign.Response(200, {}, self.audio)
+
+    def count(self, action):
+        return len([r for r in self.requests if f"Action={action}" in r.full_url])
 
 
 class GenerateTest(unittest.TestCase):
@@ -372,6 +382,56 @@ class GenerateTest(unittest.TestCase):
         res, _ = self.gen(net, only="ep01_sc01")
         self.assertEqual((res[0].ok, res[0].attempts, res[0].cost_cny), (False, 1, 0.0))
         self.assertIn("200022", res[0].error)
+
+    def test_transient_poll_error_retries_the_same_task_without_resubmitting(self):
+        net = FakeNet(fail_query=[200023], audio=b"x")
+        res, _ = self.gen(net, only="ep01_sc01")
+        self.assertTrue(res[0].ok)
+        self.assertEqual((net.count("GenBGMForTime"), net.count("QuerySong")), (1, 2))
+
+    def test_transient_download_error_retries_the_download_only(self):
+        net = FakeNet(fail_download=[502], audio=b"x")
+        res, _ = self.gen(net, only="ep01_sc01")
+        self.assertTrue(res[0].ok)
+        self.assertEqual(net.count("GenBGMForTime"), 1)
+
+    def test_unresolved_submitted_task_counts_toward_the_cost_guard(self):
+        net = FakeNet(fail_download=[502, 502, 502, 502], audio=b"x")
+        res, text = self.gen(net, only="ep01_sc01")
+        self.assertFalse(res[0].ok)
+        self.assertEqual(net.count("GenBGMForTime"), 1)  # 没有为取不回结果而重新提交
+        self.assertAlmostEqual(res[0].cost_cny, self.segs[0].est_cny)
+        self.assertIn("可能已计费", res[0].error)
+        manifest = json.loads((self.dir / "out" / "bgm-manifest.json").read_text(encoding="utf-8"))
+        self.assertAlmostEqual(manifest["cost_cny"], self.segs[0].est_cny)
+
+    def test_retryable_task_failure_resubmits_and_is_not_charged(self):
+        net = FakeNet(statuses=[3, 2], audio=b"x")
+        res, _ = self.gen(net, only="ep01_sc01")
+        self.assertEqual(res[0].ok, False)  # 失败码 300061 不可重试
+        # 300067 才可重试
+        resp = lambda st: volc_sign.Response(200, {}, json.dumps({"Code": 0, "Result": {"TaskID": "t", "Status": st, "FailureReason": {"Code": 300067, "Msg": "retry"}, "SongDetail": {"AudioUrl": "https://v1-default.douyinvod.com/a.wav", "Duration": 30.0} if st == 2 else {}}}).encode())
+        class Net2(FakeNet):
+            def __call__(self, request, timeout):
+                if "Action=QuerySong" in request.full_url:
+                    self.requests.append(request)
+                    return resp(3 if self.count("QuerySong") == 1 else 2)
+                return super().__call__(request, timeout)
+        net2 = Net2(audio=b"x")
+        res, _ = self.gen(net2, only="ep01_sc01")
+        self.assertTrue(res[0].ok)
+        self.assertEqual((net2.count("GenBGMForTime"), res[0].attempts), (2, 2))
+        self.assertAlmostEqual(res[0].cost_cny, 30.0 * 0.002)
+
+    def test_probe_failure_after_billing_is_reported_without_resubmitting(self):
+        def bad_probe(path):
+            raise media.MediaError("ffprobe 失败")
+        net = FakeNet(audio=b"x")
+        res, _ = self.gen(net, only="ep01_sc01", probe=bad_probe)
+        self.assertFalse(res[0].ok)
+        self.assertEqual(net.count("GenBGMForTime"), 1)
+        self.assertGreater(res[0].cost_cny, 0)  # 已计费，账不能丢
+        self.assertIn("ffprobe", res[0].error)
 
     def test_failed_task_is_reported(self):
         res, _ = self.gen(FakeNet(statuses=[3]), only="ep01_sc01")
