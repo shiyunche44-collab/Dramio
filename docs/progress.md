@@ -22,59 +22,18 @@
 ## 当前状态
 
 - **当前里程碑**：M0.2 单项能力摸底
-- **当前步骤**：P0-11
-- **步骤状态**：进行中
+- **当前步骤**：P0-09
+- **步骤状态**：未开始
 - **工作分支**：claude/sweet-lamport-cwwsvb
 - **PR**：—
 
-## P0-11 剪辑合成
+## 步骤卡
 
-- **目标**：用 ep01 + P0-05 方案 C 配音 + P0-08 的 H3 片段（缺镜头用首帧缓推占位），自动生成可渲染的 OTIO 时间线，再由 FFmpeg 渲染出带字幕、混音、AIGC 标识的 1080×1920 竖屏成片，并导出到专业剪辑软件格式。
-- **做**：
-  - `python3 -m poc compose`：**按镜头自动选片**（`docs/reports/p0/P0-08/full-h3/videos/<shot_id>.mp4` 存在且可解析就用真实片段，否则用 P0-07 manifest `selected` 首帧做缓慢推近占位；不写死镜头清单，文件损坏时报错不静默降级）。占位镜头 OTIO 打 `placeholder=true`，成片内烧入小标签“占位·静帧”（补入真实片段后自动消失），报告单列、不当作真实视频评价。
-  - 时长与台词放置：镜头时长 = max(`hint_s`，头留白 + 台词有效窗口之和 + 句间隔 + 尾留白)，台词窗口取 ASR 的 start / end（OTIO 里是对原 mp3 的 `source_range`，非破坏性）；时长与素材真假无关，补入真实片段后只有画面像素变；超过真实片段原生时长时冻结尾帧补足，每镜头最多延长 2 秒（实现时由 1.5 放宽：sc01_sh05 需要 1.88 秒），超限 dry-run 报错，不加速不截断台词。
-  - OTIO（`opentimelineio==0.18.1`，`[otio]` extras，缺依赖给安装提示、退出码 2，`--dry-run` 不需要）：视频轨、对白轨（每句一个 clip）、环境声轨、BGM 与 SFX 空轨（P0-10 未做，`sfx` 标签只记录）、字幕轨与标识层（GeneratorReference）；clip metadata 含 `shot_id`、`source`、`placeholder`、`sha256`；素材相对路径；渲染器只读 OTIO（ADR-0009）。
-  - FFmpeg 渲染：每镜头先合成 1080×1920、24 fps、yuv420p 画面段再拼接；768×1344（4:7）先缩放到高 1920 再居中裁到 1080（每侧丢约 8 px，不做超分，记录放大 1.43 倍）；字幕来自 ep01 台词，ASS 烧入（WenQuanYi Zen Hei）并输出 `subtitles.srt`；AIGC 可见角标全片显示且**没有关闭开关**；容器元数据写 `AIGC` JSON（字段对照 GB 45438-2025，标为待确认）；对白逐句 `adelay` 放置，统一 48 kHz 立体声，整体响度约 −16 LUFS；H.264 + AAC，CRF 23 配 2.5 Mbps 上限。
-  - 混音对比：H3 原声 off / low（约 −24 dB）/ duck 三档，只对音频出变体并用 ebur128 度量；成片用推荐档（试听前保守选 off，`--ambient` 可切换），登记待用户试听。
-  - 导入自检：`timeline.otio` 往返读写；FCP7 XML / EDL 导出并回读（交换用视图只含视频与对白轨，字幕走 SRT）；“能导入 DaVinci / Premiere”登记为待用户确认。
-  - 按输入哈希缓存（节点 `segment` / `audio_mix` / `final`，`node_key`，`runs/compose-cache/`，记录命中与未命中）；`compose --verify`；报告 `docs/reports/p0/P0-11.md`、README `compose` 一节。
-- **不做**：P0-09 口型同步（作为已知局限）；P0-10 BGM 与音效（只留空轨）；转场、调色、超分插帧、花字模板、sc03_sh04 的短信文字叠加；字级字幕；任何付费 API 与重新生成视频（补 4 个镜头属 D-013）；修改 DramaIR、ADR 状态、`rules.toml`；新增顶层目录；真实剪辑软件里的导入验证（待用户）。
-- **验收**：
-  1. `compose --dry-run` 退出码 0、不写文件，列出 13 镜头来源（现为 9 real + 4 placeholder）、`hint_s`、目标时长、延长秒数、台词窗口、预计体积，无镜头超过 2 秒延长上限。
-  2. `compose` 产出 `final.mp4`：ffprobe 为 1080×1920、24 fps、H.264 + AAC、yuv420p，音视频时长相差 ≤ 50 ms，总时长等于 OTIO 时长（±1 帧）。
-  3. `compose-manifest.json` 记录每镜头选择结果与每个片段 sha256；占位镜头与 OTIO metadata 一致；报告列出占位镜头并声明不作为真实视频评价。
-  4. 增量缓存：连续运行两次，第二次全部命中；单测用合成素材模拟“占位 → 真实”，断言只重算该镜头的 `segment` 与 `final`（`ambient=off` 时 `audio_mix` 命中；改 `--ambient` 只重算 `audio_mix` 与 `final`）。
-  5. `compose --verify <目录>` 退出码 0：规格、AIGC 元数据、角标（采样帧 ROI）、字幕 cue 数等于台词数并落在各自镜头窗口内；违例退出码 1。
-  6. 字幕不遮挡人脸：用已有人脸 bbox（P0-08 `analysis/faces.json`、P0-07 `faces-r1.json`）做表，逐镜头列出相交情况与处理（D-011 已接受底部 1/4 留白只部分做到）。
-  7. AIGC：`ffprobe -show_format` 读到 `AIGC` 标签；角标全片可见；CLI 无关闭选项（单测）；样式与合规性标“需用户确认”。
-  8. 混音：成片响度 −16 LUFS ±1.5、真峰值 ≤ −1 dBTP；三档变体的响度与对白信噪比入报告；每句对白起声与字幕起点偏差 ≤ 0.2 秒（实现时由 100 ms 放宽：ASR 精度与静音检测阈值所限，实测最大 0.149 秒）；默认档与听感标“需用户确认”。
-  9. OTIO：往返读写一致，视频轨 13 个 clip、对白 15 个；至少一种交换格式（FCP7 XML 或 EDL）导出并回读成功，记录实际可用的适配器；“能导入 DaVinci / Premiere”标“需用户确认”并给出导入与重定位步骤。
-  10. 缺 `opentimelineio` 时 `compose` 给出安装提示、退出码 2；`--dry-run` 与全部单测不受影响（相关用例 skip）。
-  11. 证据体积：`du -sb docs/reports/p0/P0-11`（按入库文件计）≤ 28 MB，超限先登记待决事项。
-  12. 费用 ¥0：证据中无费用记录，代码不 import 任何供应商 SDK。
-  13. 报告含一页结论（效果样例、耗时、费用、推荐）、放大与裁边差距、混音对比、字幕与角标位置、占位镜头清单、补入真实片段的重跑方法、遗留问题、“给 P0-12”一节。
-  14. 单测、`make arch-check`、`make drama-ir-check` 通过。
-- **涉及**：architecture.md §5.7、§5.8.1、§13.1；ADR-0009（Proposed，只作参照）；INV-05（`node_key`）、INV-08（P0 默认开启、不提供关闭开关）、INV-03（只在 `spikes/poc`）。
-- **估时**：1.5 天（可能到 2 天；`--verify` 的能量包络与人脸相交检查可降为一次性度量，适配器不可用时登记）。预计费用 ¥0。
-- **登记待决事项（实现后）**：成片主观评价、混音默认档、字幕与角标样式（试听 / 目视）；OTIO 在真实剪辑软件的导入；证据体积若超限。
+（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
 
 ## 子任务
 
-- [x] 1 环境摸底：实测 ffmpeg 滤镜（subtitles / zoompan / sidechaincompress / loudnorm / ebur128 / amix）；装 `opentimelineio==0.18.1` 并列适配器（fcp_xml / cmx_3600）；对 9 个 H3 片段做音频探测（采样率、声道、电平）；试放大加居中裁剪；确认自定义元数据标签 ffprobe 可读
-- [x] 2 `pyproject.toml` 加 `[otio]` extras；`media.py` 加 `probe_audio`、ebur128 / 静音度量，单测
-- [x] 3 `poc/compose.py` 规划层：读 IR / manifest / 配音，按镜头自动选片，台词窗口（复用 `tts.metrics_for_dir`），时长与延长上限，`--dry-run` 镜头表，单测
-- [x] 4 `poc/subtitles.py`：换行、长句切 cue、ASS 与 SRT、字幕框几何，单测
-- [x] 5 `poc/otio_timeline.py`：中性 spec 与 OTIO 双向转换（轨道、空轨、GeneratorReference、冻结尾帧、metadata、相对路径），缺依赖提示，往返单测
-- [x] 6 `poc/render.py` 画面段：缩放居中裁剪、冻结尾帧、占位缓推与标签，节点 `segment` / `node_key`，合成素材单测
-- [x] 7 音频：逐句放置、48 kHz 立体声、环境声三档、响度归一化，节点 `audio_mix`，三个变体度量
-- [x] 8 最终合成：concat、字幕、AIGC 角标、容器元数据、混流，节点 `final`；断言角标无关闭参数
-- [x] 9 CLI `compose`（`--dry-run` / `--export` / `--verify` / `--ambient` / `--max-bytes`），缓存目录与 `compose-manifest.json`
-- [x] 10 导出与适配器自检：`timeline.otio` 往返、FCP7 XML / EDL 导出与回读、交换用视图
-- [x] 11 `--verify`：规格、元数据、角标、字幕 cue 与镜头窗口、字幕与人脸相交、响度、体积
-- [x] 12 增量缓存测试：占位 → 真实只重算被替换镜头与 final；二次运行全命中
-- [x] 13 真实渲染（9 real + 4 placeholder）：证据、抽帧、缩略条，体积对照 28 MB
-- [x] 14 报告 `docs/reports/p0/P0-11.md`、README `compose` 一节、待决事项与交接日志
-- [ ] 15 验证：验收逐条跑，单测、`make arch-check`、`make drama-ir-check`，verifier、arch-reviewer，按 ship.md 交付 PR
+（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
 
 ## 本步费用
 
@@ -183,3 +142,4 @@
 | 2026-10-01 | P0-08 | 按用户决定（“先用现有视频进行后续流程”）以现有数据收尾：H3 768P 9/13 个镜头（缺 sc02_sh03、sc02_sh04、sc03_sh03、sc03_sh04）；H3-Max / Hailuo-2.3 / 2K 未测（MiniMax Token Plan 额度用尽，429 `2056`）；Ark Seedance 在 Agent Plan 下不可用（`UnsupportedModel`）。新增：`video --reconcile`（账本 `ledger.json`，免费查询任务并重新下载比对 sha256，确认旧会话丢失记录后重建的“任务 ↔ 镜头”对应全部正确）、`--analyze`（ffprobe / SSIM / 运动量 / 抽帧 / 缩略条 / `table.md`）、扩充的 `--verify`；评审后修正：额度 / 账号级错误中止整次运行、`--resume` 不重复追加记录且不重复计费、非审核类失败任务可重新提交、成功后先记费用再下载、`--workers` 空转参数删除。报告 `docs/reports/p0/P0-08.md`（含逐镜头表、agent 初评、给 P0-09 / P0-11 一节、补测命令）；登记 D-012（默认方案与初评）、D-013（未评测部分怎么处理） | verifier：第 1、2、6、7、9、10 条满足，第 3、4、5 条部分、第 8 条未做（与报告 §2 一致，缺口已登记），其发现的体积口径、tokens 速率、措辞问题已修正（入库体积 9.89 MB ≤ 12 MB，D-013 原体积决定撤销）；arch-reviewer 无阻断项，建议 1–3、5–7 已处理；311 个单测通过；`--verify ... --max-bytes 12582912` 返回 0；`make arch-check`、`make drama-ir-check` 通过。本步费用 ¥23.00（账本，按文档单价估算，账单待核对） | P0-11 剪辑合成（缺的 4 个镜头用首帧缓推占位，补入后重跑）；额度恢复后补测见报告 §8；D-012 / D-013 待用户；用户需核对 MiniMax 账单 |
 | 2026-10-01 | D-012 | 用户选 A：H3 768P 为 P0 默认图生视频方案，`sc01_sh05` 按提示词问题处理；决定写入报告 `docs/reports/p0/P0-08.md` §10。H3-Max / Hailuo-2.3 / 2K 补测仍由 D-013 决定，补测发现更优候选时再修订默认 | — | P0-11 继续（步骤规划进行中）；P0-12 串联使用 H3 768P |
 | 2026-10-01 | P0-11 | 开工：step-planner 出计划，写入步骤卡与 15 个子任务（按镜头自动选片、占位缓推、OTIO、FFmpeg 渲染、三档混音对比、AIGC 角标与元数据、缓存增量；估时 1.5–2 天，费用 ¥0） | `make arch-check` 见提交前 | 子任务 1：环境摸底 |
+| 2026-10-01 | P0-11 | 剪辑合成完成：`python3 -m poc compose`（规划 `compose.py`、字幕 `subtitles.py`、OTIO `otio_timeline.py`、渲染 `render.py`、命令与核验 `compose_cmd.py`）。ep01 + P0-05 方案 C 配音 + 9 个 H3 真实片段 + 4 个首帧缓推占位 → 63.50 秒 1080×1920 成片（17.2 MB，H.264 + AAC，−16.0 LUFS / −4.1 dBTP，逐句字幕，右上角“AI生成”角标且无关闭开关，容器元数据 AIGC），OTIO + FCP7 XML + EDL + SRT 一并导出；按镜头自动选片，补入真实片段后重跑只重算被替换镜头与终混；三档原声对比（off / low / duck）。冷启动约 117 秒，全命中约 14 秒，费用 ¥0。评审后加固：角标取常量并要求覆盖全片、滤镜里不出现用户可控路径、渲染前重新哈希素材、缓存 key 补全参数 / 字体 / ffmpeg 版本、临时文件清理、ASS 转义、`--verify` 重新测量。登记 D-014（成片观感、混音默认档、字幕与角标样式）、D-015（OTIO 导入真实剪辑软件）。报告 `docs/reports/p0/P0-11.md` | verifier：14 条全部满足（含放宽两处：延长上限 2 秒、对白起声偏差 0.2 秒），发现的 6 处文字与口径问题已修；arch-reviewer 无阻断项，建议 1–9 已处理（`--verify` 是一致性自检，不防有意伪造）；341 个单测（装 OTIO 全过，没装 5 个 skip）；`make arch-check`、`make drama-ir-check` 通过；证据 19.6 MB ≤ 28 MB。本步费用 ¥0 | M0.2 剩余 P0-09 口型同步（后期路线要 MediaKit：域名 `mediakit.cn-beijing.volces.com` 被拦、无 `MEDIAKIT_API_KEY`；原生音画路线要重新生成视频：MiniMax 额度用尽）与 P0-10 音乐音效（只有 MiniMax 密钥，同样受额度限制）全部被阻塞；D-012 已决，D-013（补测）、D-014、D-015 待用户；补入 4 个镜头后重跑 `python3 -m poc compose` 即可 |
