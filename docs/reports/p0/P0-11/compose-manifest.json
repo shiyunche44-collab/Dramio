@@ -692,144 +692,146 @@
       {
         "kind": "segment",
         "name": "ep01_sc01_sh01",
-        "key": "a9dad98d076ab0bfafba68278692f1cbc88d67b4500503f1eb7a8186866841c7",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-a9dad98d076ab0bfafba6827.mp4",
-        "seconds": 3.85
+        "key": "1cfbc0ccde11a983fac71d65223b3ba1e496e8892c84ff64d68ec4574b2e36f2",
+        "hit": true,
+        "path": "segment-1cfbc0ccde11a983fac71d65.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "segment",
         "name": "ep01_sc01_sh02",
-        "key": "b21b85afe78903a12524a9ef47298998a23bb2c74866ca461c511df1752f1730",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-b21b85afe78903a12524a9ef.mp4",
-        "seconds": 4.76
+        "key": "957bc8b883a00c281d76187b6ecf3dce9cae9823dc43087dfca16841a554bc2c",
+        "hit": true,
+        "path": "segment-957bc8b883a00c281d76187b.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "segment",
         "name": "ep01_sc01_sh03",
-        "key": "ce8b7a4a7e4cb73cceeca567a40533fb84fa88ecc1b06aa8883badf5ccc23e7a",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-ce8b7a4a7e4cb73cceeca567.mp4",
-        "seconds": 3.87
+        "key": "ee8eb8009a62bbbb82295e525ee3e779649118996e4803a46c9e1a5811103474",
+        "hit": true,
+        "path": "segment-ee8eb8009a62bbbb82295e52.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "segment",
         "name": "ep01_sc01_sh04",
-        "key": "f1db82852fb55029b767038b32626f99529b1443924e0452e01825539a59729f",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-f1db82852fb55029b767038b.mp4",
-        "seconds": 4.61
+        "key": "064858e8fadc07274268043b236eeabeb1c5891abf5e50c86bd1ad85d39aef02",
+        "hit": true,
+        "path": "segment-064858e8fadc07274268043b.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "segment",
         "name": "ep01_sc01_sh05",
-        "key": "d6baa21a605800cb35a596fc7ca584bbbb24ecf5837344f2f43c04f6ddc48bb6",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-d6baa21a605800cb35a596fc.mp4",
-        "seconds": 4.89
+        "key": "74eb8801dbe94d622954298bd7c84c0481529e10059622fb6b374103861a8cef",
+        "hit": true,
+        "path": "segment-74eb8801dbe94d622954298b.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "segment",
         "name": "ep01_sc02_sh01",
-        "key": "ed236e39c7735f5ca7159a0e8730c57daed48435a572cb6c32c22d767bd456a9",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-ed236e39c7735f5ca7159a0e.mp4",
-        "seconds": 2.89
+        "key": "0f1ed98c76b43fef91631dd461b29af4eab9c98f5c8691c55df9988ab79e6125",
+        "hit": true,
+        "path": "segment-0f1ed98c76b43fef91631dd4.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "segment",
         "name": "ep01_sc02_sh02",
-        "key": "c69f65343cee614bbadcb3b81858fc0e11d6ac00f80a9c49d77052d181a8fe7b",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-c69f65343cee614bbadcb3b8.mp4",
-        "seconds": 2.78
+        "key": "5ecf6bc657169bf5b6a3c8b4ea704283904bdea9556a783b7f0e1f0f0ef67393",
+        "hit": true,
+        "path": "segment-5ecf6bc657169bf5b6a3c8b4.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "segment",
         "name": "ep01_sc02_sh03",
-        "key": "0ed44a0af506cef08d24012a32ebf2bd13ed264fb27316661d7bf42b615bfbd1",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-0ed44a0af506cef08d24012a.mp4",
-        "seconds": 5.03
+        "key": "aef3648e15053fccdb2c02a4bd6e3f9d68120da14dff65387b46c436119c918b",
+        "hit": true,
+        "path": "segment-aef3648e15053fccdb2c02a4.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "segment",
         "name": "ep01_sc02_sh04",
-        "key": "859bc54248b533a99597893ee9b1b9160bf566142f07ec533d9da1e696e4f2c2",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-859bc54248b533a99597893e.mp4",
-        "seconds": 5.15
+        "key": "c5d2481d1b4b4f90134150645e9e74be0a996c5cc9402c232bdb4596cdd2b38b",
+        "hit": true,
+        "path": "segment-c5d2481d1b4b4f9013415064.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "segment",
         "name": "ep01_sc03_sh01",
-        "key": "89d656c2012e80f5e1793f66e60df1a9ee2813b14782bfa30646e2a074ab6f04",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-89d656c2012e80f5e1793f66.mp4",
-        "seconds": 2.55
+        "key": "1343b147c3421a97a7c18b5d80c26763c7dc88cafc114af660732339216f065e",
+        "hit": true,
+        "path": "segment-1343b147c3421a97a7c18b5d.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "segment",
         "name": "ep01_sc03_sh02",
-        "key": "55ddddb959d52846bdc1fb6e7ed2de3b8206c5128409101de73746648c91bb92",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-55ddddb959d52846bdc1fb6e.mp4",
-        "seconds": 4.69
+        "key": "72f1affb61100cf71e581602cb079a0f71f96a4b1b7d27da6ea9dfb426b83844",
+        "hit": true,
+        "path": "segment-72f1affb61100cf71e581602.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "segment",
         "name": "ep01_sc03_sh03",
-        "key": "843de2b490993111674a9daf1ae08c5d41d17bc5ac1be8fb327c306922a82598",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-843de2b490993111674a9daf.mp4",
-        "seconds": 4.56
+        "key": "6bc55a8bfc6f9de5bbd18a5de095b2985397165b6856529762a0fb059f9debb0",
+        "hit": true,
+        "path": "segment-6bc55a8bfc6f9de5bbd18a5d.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "segment",
         "name": "ep01_sc03_sh04",
-        "key": "188fbb4f896754a8abdde9d06d16d921f6ae7e9112a21a46856be5e1747bcf5b",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/segment-188fbb4f896754a8abdde9d0.mp4",
-        "seconds": 4.76
+        "key": "aede7743443c1af616ae9968d5372efbfe1d63c91e7560c1c877dc9b4f742dd3",
+        "hit": true,
+        "path": "segment-aede7743443c1af616ae9968.mp4",
+        "seconds": 0.0
       },
       {
         "kind": "audio_mix",
         "name": "off",
-        "key": "e0b3fe34534c87963cf1afa92dcd46c89ee9dde0bf5cfa0a3c748dd82c5d14d8",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/audio-e0b3fe34534c87963cf1afa9.wav",
-        "seconds": 2.97
+        "key": "674afb4797965e6918aa2bfce38351b6b07ad8452ce444b1fb8bccf93e750430",
+        "hit": true,
+        "path": "audio-674afb4797965e6918aa2bfc.wav",
+        "seconds": 0.0
       },
       {
         "kind": "audio_mix",
         "name": "low",
-        "key": "d667200cc25ab284db2b67f8aea9bfa0673fc1b576349066d097a16af69ce790",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/audio-d667200cc25ab284db2b67f8.wav",
-        "seconds": 2.99
+        "key": "e5e338bad6d7c6f2316416064fb405807fd99548f57552d43ff273cd2b815de6",
+        "hit": true,
+        "path": "audio-e5e338bad6d7c6f231641606.wav",
+        "seconds": 0.0
       },
       {
         "kind": "audio_mix",
         "name": "duck",
-        "key": "897ea5c25b626a6e9b68b999fb6b18d51035881acad27ac91be49eacfb6c7ac1",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/audio-897ea5c25b626a6e9b68b999.wav",
-        "seconds": 3.23
+        "key": "cb4b608ee33bb09a790c8c7a15c12fdd6351f960a17a8acdcd9fea6ab4b806fb",
+        "hit": true,
+        "path": "audio-cb4b608ee33bb09a790c8c7a.wav",
+        "seconds": 0.0
       },
       {
         "kind": "final",
         "name": "final",
-        "key": "041748696474501fd20fe1610d36c8f5edabfa9d1e5cc7819660e82adc3af957",
-        "hit": false,
-        "path": "/home/user/Dramio/spikes/poc/runs/compose-cache/final-041748696474501fd20fe161.mp4",
-        "seconds": 38.31
+        "key": "a912caea6d519ff28e3cc7631e0409613278b4acdebfcb508db2c24a6b437b01",
+        "hit": true,
+        "path": "final-a912caea6d519ff28e3cc763.mp4",
+        "seconds": 0.0
       }
     ],
-    "hits": 0,
-    "misses": 17
+    "hits": 17,
+    "misses": 0
   },
-  "elapsed_s": 114.85,
+  "otio_sha256": "6ceae871c9cd5d00c6906c8d52e367ee96f4324328708c96171fb2eb6b7c7980",
+  "badge_text": "AI生成",
+  "elapsed_s": 13.97,
   "tools": {
     "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
   },
@@ -838,8 +840,8 @@
       "file": "audio/ambient-off.m4a",
       "lufs": -16.0,
       "true_peak_dbtp": -4.6,
-      "node_key": "e0b3fe34534c87963cf1afa92dcd46c89ee9dde0bf5cfa0a3c748dd82c5d14d8",
-      "hit": false,
+      "node_key": "674afb4797965e6918aa2bfce38351b6b07ad8452ce444b1fb8bccf93e750430",
+      "hit": true,
       "premix_lufs": -18.8,
       "ambient_native_lufs_mean": -18.4,
       "dialogue_minus_ambient_db": null
@@ -848,8 +850,8 @@
       "file": "audio/ambient-low.m4a",
       "lufs": -16.0,
       "true_peak_dbtp": -4.5,
-      "node_key": "d667200cc25ab284db2b67f8aea9bfa0673fc1b576349066d097a16af69ce790",
-      "hit": false,
+      "node_key": "e5e338bad6d7c6f2316416064fb405807fd99548f57552d43ff273cd2b815de6",
+      "hit": true,
       "premix_lufs": -18.9,
       "ambient_native_lufs_mean": -18.4,
       "dialogue_minus_ambient_db": 23.6
@@ -858,8 +860,8 @@
       "file": "audio/ambient-duck.m4a",
       "lufs": -16.0,
       "true_peak_dbtp": -4.0,
-      "node_key": "897ea5c25b626a6e9b68b999fb6b18d51035881acad27ac91be49eacfb6c7ac1",
-      "hit": false,
+      "node_key": "cb4b608ee33bb09a790c8c7a15c12fdd6351f960a17a8acdcd9fea6ab4b806fb",
+      "hit": true,
       "premix_lufs": -19.2,
       "ambient_native_lufs_mean": -18.4,
       "dialogue_minus_ambient_db": 11.6
@@ -869,6 +871,7 @@
     "fcp_xml": {
       "file": "timeline.xml",
       "ok": true,
+      "sha256": "d06e757fbbeec2e494c2a1a399f25a06f2b08b1f1843aacaccf3a2c74ac1c2bc",
       "tracks": [
         [
           "",
@@ -891,6 +894,7 @@
     "cmx_3600": {
       "file": "timeline.edl",
       "ok": true,
+      "sha256": "d83dc6ee1b7cfa7d8c9d037d0722ebd6788172f3235b125ce0da8fe08f92310e",
       "tracks": [
         [
           "V",
@@ -1022,8 +1026,8 @@
   ],
   "final": {
     "file": "final.mp4",
-    "bytes": 17159547,
-    "sha256": "309b0cb3056855fb2df1c2e01df3bdef2a783d47525676b7a2ff69d01fbcb258",
+    "bytes": 17168383,
+    "sha256": "37d8ffb0491de9c9a73f256bc6f7ceae0834ddbf6b921b411d7521ad326a9421",
     "width": 1080,
     "height": 1920,
     "fps": 24.0,

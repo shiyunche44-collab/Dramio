@@ -16,15 +16,15 @@ from __future__ import annotations
 import copy
 import os
 from pathlib import Path
+from urllib.parse import quote, unquote, urlsplit
 from typing import Any
 
 from poc import subtitles
-from poc.render import AMBIENT_GAIN_DB
+from poc.render import AMBIENT_GAIN_DB, BADGE_TEXT
 from poc.compose import FPS, HEIGHT, ROOT, WIDTH, Plan
 
 INSTALL_HINT = "缺少 opentimelineio：pip install -e '.[otio]'（OpenTimelineIO + OpenTimelineIO-Plugins，导出 FCP7 XML / EDL 要用后者）"
 AMBIENT_MODES = ("off", "low", "duck")
-BADGE_TEXT = "AI生成"
 TRACKS = ("V1 画面", "A1 对白", "A2 环境声", "A3 BGM", "A4 SFX", "S1 字幕", "O1 标识")
 
 
@@ -53,8 +53,15 @@ def _sec_frames(seconds: float) -> int:
 
 
 def _url(path: str, base: Path, absolute: bool) -> str:
+    """素材地址：绝对（file:// URI，已百分号编码）或相对 OTIO 目录（逐段百分号编码，保留 /）。"""
     full = (ROOT / path).resolve()
-    return full.as_uri() if absolute else os.path.relpath(full, base)
+    return full.as_uri() if absolute else quote(os.path.relpath(full, base))
+
+
+def _resolve(url: str, base: Path) -> Path:
+    """_url 的逆：file:// 或相对地址 → 绝对路径（解码百分号）；统一用于所有轨道。"""
+    parts = urlsplit(url)
+    return Path(unquote(parts.path)) if parts.scheme == "file" else (base / unquote(url)).resolve()
 
 
 def build(plan: Plan, base_dir: Path, ambient: str = "off", absolute: bool = False):
@@ -108,6 +115,8 @@ def build(plan: Plan, base_dir: Path, ambient: str = "off", absolute: bool = Fal
         for ln in shot.lines:
             start = shot.start_frames + _sec_frames(ln.start_s)
             dur = _sec_frames(ln.dur_s)
+            if start < cursor:
+                raise ValueError(f"{ln.line_id}：对白起点 {start} 帧早于上一句的终点 {cursor} 帧（台词重叠）")
             if start > cursor:
                 tracks["A1 对白"].append(otio.schema.Gap(source_range=_range(otio, 0, start - cursor)))
             ref = otio.schema.ExternalReference(target_url=_url(ln.mp3, base_dir, absolute))
@@ -185,8 +194,7 @@ def to_spec(tl, base_dir: Path) -> dict[str, Any]:
             shots[-1]["freeze_frames"] = int(meta["frames"])
             t += int(meta["frames"])
             continue
-        url = item.media_reference.target_url
-        path = (Path(url[7:]) if url.startswith("file://") else (base_dir / url)).resolve()
+        path = _resolve(item.media_reference.target_url, base_dir)
         shots.append({
             "shot_id": meta["shot_id"], "source": meta["source"], "placeholder": bool(meta["placeholder"]), "media": str(path),
             "sha256": meta.get("sha256"), "start_frames": t, "native_frames": dur, "target_frames": int(meta["target_frames"]),
@@ -198,7 +206,7 @@ def to_spec(tl, base_dir: Path) -> dict[str, Any]:
         dur = int(round(item.duration().value))
         if isinstance(item, otio.schema.Clip):
             meta = _meta(item)
-            lines.append({**meta, "media": str((base_dir / item.media_reference.target_url).resolve()), "start_frames": cursor,
+            lines.append({**meta, "media": str(_resolve(item.media_reference.target_url, base_dir)), "start_frames": cursor,
                           "in_s": item.source_range.start_time.value / FPS, "dur_s": dur / FPS})
         cursor += dur
     ambient, cursor = [], 0
@@ -206,11 +214,12 @@ def to_spec(tl, base_dir: Path) -> dict[str, Any]:
         dur = int(round(item.duration().value))
         if isinstance(item, otio.schema.Clip):
             meta = _meta(item)
-            ambient.append({**meta, "media": str((base_dir / item.media_reference.target_url).resolve()), "start_frames": cursor,
+            ambient.append({**meta, "media": str(_resolve(item.media_reference.target_url, base_dir)), "start_frames": cursor,
                             "dur_s": dur / FPS, "enabled": item.enabled})
         cursor += dur
     cues_ = [_meta(i) for i in by_name["S1 字幕"] if isinstance(i, otio.schema.Clip)]
-    badge = _meta(by_name["O1 标识"][0])
+    badge_item = by_name["O1 标识"][0]
+    badge = {**_meta(badge_item), "frames": int(round(badge_item.duration().value))}
     return {"fps": dm.get("fps", FPS), "size": dm.get("size", [WIDTH, HEIGHT]), "ambient": dm.get("ambient", "off"), "ir_sha256": dm.get("ir_sha256"),
             "total_frames": int(round(tl.duration().value)), "shots": shots, "lines": lines, "ambient_clips": ambient, "cues": cues_, "badge": badge}
 

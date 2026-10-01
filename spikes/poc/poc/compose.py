@@ -170,6 +170,8 @@ def plan(
                 raise ComposeError(f"{sid}：缺少台词 {dlg['line_id']} 的配音")
             src_in = max(0.0, m["speech_start_s"] - PAD_BEFORE_S)
             src_out = min(m["file_s"], m["speech_end_s"] + PAD_AFTER_S)
+            if src_out <= src_in:
+                raise ComposeError(f"{sid}：台词 {dlg['line_id']} 的剪辑窗口为空（ASR 起止 {m['speech_start_s']}–{m['speech_end_s']}）")
             mp3 = tts_dir / f"{dlg['line_id']}.mp3"
             line = LinePlan(
                 dlg["line_id"], dlg["speaker"], dlg["kind"], dlg["text"], _rel(mp3), m["sha256"], round(src_in, 4), round(src_out, 4),
@@ -188,7 +190,8 @@ def plan(
                 raise ComposeError(f"{sid}：视频片段存在但不可解析（{exc}）；删除它才会改用占位") from None
             video_s = float(info.duration_s)
             extend = max(0.0, target / FPS - video_s)
-            if extend > MAX_EXTEND_S + 1e-9:
+            native_frames = max(1, int(video_s * FPS + 1e-6))  # OTIO 里真实片段占的整帧数；冻结帧数 = 目标 − 这个，上限按帧比较
+            if target - min(target, native_frames) > MAX_EXTEND_S * FPS + 1e-9:
                 raise ComposeError(f"{sid}：目标 {target / FPS:.2f} 秒比片段 {video_s:.2f} 秒长 {extend:.2f} 秒，超过延长上限 {MAX_EXTEND_S} 秒")
             sp = ShotPlan(
                 sid, hint, target, cursor, "real", _rel(video_path), sha256_file(video_path), video_s, bool(info.has_audio),

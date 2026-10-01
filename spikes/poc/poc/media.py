@@ -43,9 +43,9 @@ def available() -> bool:
     return shutil.which(FFMPEG) is not None and shutil.which(FFPROBE) is not None
 
 
-def _run(cmd: list[str], timeout: float = DEFAULT_TIMEOUT) -> subprocess.CompletedProcess[str]:
+def _run(cmd: list[str], timeout: float = DEFAULT_TIMEOUT, cwd: Path | str | None = None) -> subprocess.CompletedProcess[str]:
     try:
-        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, errors="replace")
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, errors="replace", cwd=cwd)
     except FileNotFoundError:
         raise MediaError(f"找不到 {cmd[0]}（需要安装 ffmpeg）") from None
     except subprocess.TimeoutExpired:
@@ -347,3 +347,17 @@ def format_tags(path: Path | str) -> dict[str, str]:
     except ValueError:
         raise MediaError("ffprobe 输出不是 JSON") from None
     return {str(k).lower(): str(v) for k, v in tags.items()}
+
+
+_VERSION: list[str] = []
+
+
+def version() -> str:
+    """`ffmpeg -version` 的第一行（进缓存 key：版本变了，输出字节可能变）；没有 ffmpeg 返回空串。"""
+    if not _VERSION:
+        try:
+            first = _run([FFMPEG, "-version"], timeout=30).stdout.splitlines()
+        except MediaError:
+            first = []
+        _VERSION.append(first[0] if first else "")
+    return _VERSION[0]

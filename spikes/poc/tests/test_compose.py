@@ -96,6 +96,13 @@ class SubtitleTest(unittest.TestCase):
             lo, hi = windows[c.shot_id]
             self.assertTrue(lo <= c.start_s < c.end_s <= hi + 1e-6)
 
+    def test_ass_text_cannot_inject_override_tags(self):
+        self.assertNotIn("{", subtitles.ass_text("a{\\an8}b"))
+        self.assertNotIn("}", subtitles.ass_text("a{\\an8}b"))
+        self.assertNotIn("\\", subtitles.ass_text("a\\Nb"))
+        with self.assertRaises(ValueError):
+            subtitles.wrap("字" * 30)
+
     def test_ass_and_srt(self):
         with tempfile.TemporaryDirectory() as td:
             cues = subtitles.cues(compose.plan(videos_dir=Path(td)))

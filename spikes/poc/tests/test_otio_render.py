@@ -113,6 +113,7 @@ class RenderTest(unittest.TestCase):
         self._td = tempfile.TemporaryDirectory()
         self.dir = Path(self._td.name)
         self.clip = make_video(self.dir / "clip.mp4", seconds=2, size="144x256")
+        self.clip2 = make_video(self.dir / "clip2.mp4", seconds=2, size="144x256", source="color")  # 内容不同：缓存按内容寻址，相同内容的镜头会共用一个画面段
         self.png = still(self.dir / "key.png")
         self.wav = tone(self.dir / "l.wav")
         self.ass = self.dir / "s.ass"
@@ -122,15 +123,17 @@ class RenderTest(unittest.TestCase):
         self._td.cleanup()
 
     def spec(self, second_real: bool, ambient="off"):
+        sha = lambda path: render._sha(Path(path))  # noqa: E731 渲染前会重新哈希素材，记录必须是真实哈希
+
         def shot(sid, start, real):
-            return {"shot_id": sid, "source": "real" if real else "placeholder", "placeholder": not real, "media": str(self.clip if real else self.png),
-                    "sha256": ("c" if real else "k") + sid, "start_frames": start, "native_frames": 48 if real else 36, "target_frames": 48,
+            return {"shot_id": sid, "source": "real" if real else "placeholder", "placeholder": not real, "media": str((self.clip if sid == "s1" else self.clip2) if real else self.png),
+                    "sha256": sha((self.clip if sid == "s1" else self.clip2) if real else self.png), "start_frames": start, "native_frames": 48 if real else 36, "target_frames": 48,
                     "freeze_frames": 0, "zoom": None if real else {"from": 1.0, "to": 1.08}, "hint_s": 2.0}
         return {
             "fps": 24, "size": [144, 256], "ambient": ambient, "total_frames": 96, "shots": [shot("s1", 0, True), shot("s2", 48, second_real)],
-            "lines": [{"sha256": "w1", "media": str(self.wav), "in_s": 0.0, "dur_s": 0.8, "start_frames": 4}],
-            "ambient_clips": [{"sha256": "c" + "s1", "media": str(self.clip), "start_frames": 0, "dur_s": 2.0, "gain_db": -24.0, "enabled": ambient != "off"}],
-            "cues": [], "badge": {"text": "AI生成"},
+            "lines": [{"line_id": "l_1", "sha256": sha(self.wav), "media": str(self.wav), "in_s": 0.0, "dur_s": 0.8, "start_frames": 4}],
+            "ambient_clips": [{"shot_id": "s1", "sha256": sha(self.clip), "media": str(self.clip), "start_frames": 0, "dur_s": 2.0, "gain_db": -24.0, "enabled": ambient != "off"}],
+            "cues": [], "badge": {"text": render.BADGE_TEXT, "frames": 96},
         }
 
     def run_render(self, spec, ambient="off"):
@@ -162,6 +165,46 @@ class RenderTest(unittest.TestCase):
         self.run_render(self.spec(False))
         r = self.run_render(self.spec(False, "low"), "low")
         self.assertEqual(sorted(n.kind for n in r.nodes if not n.hit), ["audio_mix", "final"])
+
+    def test_missing_or_altered_badge_is_refused(self):
+        spec = self.spec(False)
+        spec["badge"] = {"text": "", "frames": 96}
+        with self.assertRaises(render.RenderError):
+            self.run_render(spec)
+        spec["badge"] = {"text": render.BADGE_TEXT, "frames": 10}
+        with self.assertRaises(render.RenderError):
+            self.run_render(spec)
+
+    def test_replaced_source_file_is_refused_not_served_from_cache(self):
+        spec = self.spec(False)
+        self.run_render(spec)
+        self.clip.write_bytes(self.clip.read_bytes() + b"x")  # 规划之后素材被换了，记录里的 sha256 还是旧的
+        with self.assertRaises(render.RenderError):
+            self.run_render(spec)
+
+    def test_special_characters_in_paths_do_not_break_filters(self):
+        weird = self.dir / "d[1];x'y%z"
+        out = render.render(self.spec(False), weird / "out", weird / "cache", self.ass)
+        self.assertEqual(media.probe(out.final).nb_frames, 96)
+
+    def test_render_params_are_part_of_the_cache_key(self):
+        cache = render.Cache(self.dir / "c")
+        shot = self.spec(False)["shots"][0]
+        before = render.segment_key(shot, (144, 256), 24, cache)
+        old = render.RENDER_PARAMS["segment"]["crf"]
+        render.RENDER_PARAMS["segment"]["crf"] = old + 1
+        try:
+            cache2 = render.Cache(self.dir / "c2")
+            self.assertNotEqual(before, render.segment_key(shot, (144, 256), 24, cache2))
+        finally:
+            render.RENDER_PARAMS["segment"]["crf"] = old
+
+    def test_failed_render_leaves_no_temp_files(self):
+        spec = self.spec(False)
+        spec["shots"][0]["media"] = str(self.dir / "missing.mp4")
+        with self.assertRaises(render.RenderError):
+            self.run_render(spec)
+        self.assertEqual(list((self.dir / "cache").glob("*.part*")), [])
 
     def test_audio_is_normalized(self):
         r = self.run_render(self.spec(False))

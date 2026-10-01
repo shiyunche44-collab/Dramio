@@ -43,7 +43,7 @@
   1. `compose --dry-run` 退出码 0、不写文件，列出 13 镜头来源（现为 9 real + 4 placeholder）、`hint_s`、目标时长、延长秒数、台词窗口、预计体积，无镜头超过 2 秒延长上限。
   2. `compose` 产出 `final.mp4`：ffprobe 为 1080×1920、24 fps、H.264 + AAC、yuv420p，音视频时长相差 ≤ 50 ms，总时长等于 OTIO 时长（±1 帧）。
   3. `compose-manifest.json` 记录每镜头选择结果与每个片段 sha256；占位镜头与 OTIO metadata 一致；报告列出占位镜头并声明不作为真实视频评价。
-  4. 增量缓存：连续运行两次，第二次全部命中；单测用合成素材模拟“占位 → 真实”，断言只重算该镜头的 `segment` 与 `audio_mix`、`final`。
+  4. 增量缓存：连续运行两次，第二次全部命中；单测用合成素材模拟“占位 → 真实”，断言只重算该镜头的 `segment` 与 `final`（`ambient=off` 时 `audio_mix` 命中；改 `--ambient` 只重算 `audio_mix` 与 `final`）。
   5. `compose --verify <目录>` 退出码 0：规格、AIGC 元数据、角标（采样帧 ROI）、字幕 cue 数等于台词数并落在各自镜头窗口内；违例退出码 1。
   6. 字幕不遮挡人脸：用已有人脸 bbox（P0-08 `analysis/faces.json`、P0-07 `faces-r1.json`）做表，逐镜头列出相交情况与处理（D-011 已接受底部 1/4 留白只部分做到）。
   7. AIGC：`ffprobe -show_format` 读到 `AIGC` 标签；角标全片可见；CLI 无关闭选项（单测）；样式与合规性标“需用户确认”。

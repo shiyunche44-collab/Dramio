@@ -92,13 +92,18 @@ def onset_offsets(dialogue_audio: Path, cue_list: list[dict[str, Any]]) -> list[
 
 
 def _tool_versions() -> dict[str, str]:
-    import subprocess
-    out = subprocess.run(["ffmpeg", "-version"], capture_output=True, text=True).stdout.splitlines()[0]
-    return {"ffmpeg": out}
+    return {"ffmpeg": media.version() or "（没有 ffmpeg）"}
 
 
 def _load_faces(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+
+
+def _nodes_for_manifest(result: render.Result) -> dict[str, Any]:
+    d = result.as_dict()
+    for n in d["nodes"]:
+        n["path"] = Path(n["path"]).name  # 只记缓存文件名，不把本机绝对路径写进入库的证据
+    return d
 
 
 def run_compose(args: argparse.Namespace, out=sys.stdout) -> int:
@@ -158,7 +163,7 @@ def run_compose(args: argparse.Namespace, out=sys.stdout) -> int:
         try:
             otio_timeline.export(view, dest / name, adapter)
             back = otio_timeline.require_otio().adapters.read_from_file(str(dest / name), adapter_name=adapter)
-            exchange[adapter] = {"file": name, "ok": True, "tracks": [(t.name, str(t.kind), len(t)) for t in back.tracks],
+            exchange[adapter] = {"file": name, "ok": True, "sha256": compose.sha256_file(dest / name), "tracks": [(t.name, str(t.kind), len(t)) for t in back.tracks],
                                  "duration_frames": int(round(back.duration().value))}
         except Exception as exc:  # noqa: BLE001 - 适配器的任何失败都如实记录
             exchange[adapter] = {"file": name, "ok": False, "error": f"{type(exc).__name__}: {exc}"[:300]}
@@ -178,7 +183,8 @@ def run_compose(args: argparse.Namespace, out=sys.stdout) -> int:
         jpg.unlink()
     frames_dir.rmdir()
     manifest = {
-        "plan": p.as_dict(), "selection": compose.manifest_entries(p), "ambient": args.ambient, "nodes": result.as_dict(),
+        "plan": p.as_dict(), "selection": compose.manifest_entries(p), "ambient": args.ambient, "nodes": _nodes_for_manifest(result),
+        "otio_sha256": compose.sha256_file(otio_path), "badge_text": render.BADGE_TEXT,
         "elapsed_s": round(time.monotonic() - started, 2), "tools": _tool_versions(), "audio_variants": variants, "exchange": exchange,
         "face_overlap": face_overlap_table(p, _load_faces(FACES_P08), _load_faces(FACES_P07)),
         "final": {"file": "final.mp4", "bytes": final.stat().st_size, "sha256": compose.sha256_file(final), "width": info.width, "height": info.height,
@@ -213,16 +219,27 @@ def _roi_ymax(video: Path, t: float, x: int, y: int, w: int, h: int) -> float:
 
 
 def verify(directory: Path, max_bytes: int = SIZE_LIMIT_BYTES) -> tuple[bool, list[str], list[str]]:
-    """返回 (是否通过, 错误, 提示)。错误 → 退出码 1；提示只是需要人看的事项。"""
+    """返回 (是否通过, 错误, 提示)。错误 → 退出码 1；提示只是需要人看的事项。
+    注意：这是对证据目录的“一致性自检”——manifest 与成片 / OTIO / 字幕 / 导出文件互相核对，并重新测量响度、对白起声、角标；不防有意伪造。"""
     errors: list[str] = []
     notes: list[str] = []
+    try:
+        _verify(directory, max_bytes, errors, notes)
+    except (KeyError, TypeError, ValueError, IndexError, media.MediaError) as exc:
+        errors.append(f"证据结构不完整或不可解析：{type(exc).__name__}: {exc}")
+    return not errors, errors, notes
+
+
+def _verify(directory: Path, max_bytes: int, errors: list[str], notes: list[str]) -> None:
     mpath = directory / "compose-manifest.json"
     if not mpath.is_file():
-        return False, ["缺少 compose-manifest.json"], notes
+        errors.append("缺少 compose-manifest.json")
+        return
     man = json.loads(mpath.read_text(encoding="utf-8"))
     final = directory / "final.mp4"
     if not final.is_file():
-        return False, ["缺少 final.mp4"], notes
+        errors.append("缺少 final.mp4")
+        return
     info = media.probe(final)
     if (info.width, info.height) != (compose.WIDTH, compose.HEIGHT):
         errors.append(f"分辨率 {info.width}×{info.height} 不是 1080×1920")
@@ -241,8 +258,9 @@ def verify(directory: Path, max_bytes: int = SIZE_LIMIT_BYTES) -> tuple[bool, li
     # AIGC 隐式标识 + 可见角标
     tag = media.format_tags(final).get("aigc")
     try:
-        if json.loads(tag or "")["Label"] != "1":
-            errors.append("AIGC 元数据 Label 不是 1")
+        meta = json.loads(tag or "")
+        if meta["Label"] != "1" or not re.fullmatch(r"[0-9a-f]{32}", meta["ProduceID"]) or meta["ContentProducer"] != "Dramio-P0-spike":
+            errors.append("AIGC 元数据的 Label / ProduceID / ContentProducer 不符合约定")
     except (ValueError, KeyError, TypeError):
         errors.append("容器元数据里没有可解析的 AIGC 标签")
     x0, y0, w, h = 760, 50, 280, 90
@@ -255,6 +273,12 @@ def verify(directory: Path, max_bytes: int = SIZE_LIMIT_BYTES) -> tuple[bool, li
     srt_cues = _srt_cues(directory / "subtitles.srt") if (directory / "subtitles.srt").is_file() else []
     if len(man["cues"]) != n_lines or len(srt_cues) != n_lines:
         errors.append(f"字幕 cue 数（manifest {len(man['cues'])}，srt {len(srt_cues)}）不等于台词数 {n_lines}")
+    for i, c in enumerate(man["cues"]):
+        if i < len(srt_cues) and (abs(srt_cues[i][0] - c["start_s"]) > 0.01 or abs(srt_cues[i][1] - c["end_s"]) > 0.01):
+            errors.append(f"subtitles.srt 第 {i + 1} 条的时间与 manifest 不一致")
+    ass_file = directory / "subtitles.ass"
+    if not ass_file.is_file() or ass_file.read_text(encoding="utf-8").count("\nDialogue: ") != n_lines:
+        errors.append("subtitles.ass 缺失或事件数不等于台词数")
     for c in man["cues"]:
         s = shots[c["shot_id"]]
         lo, hi = s["start_frames"] / compose.FPS, (s["start_frames"] + s["target_frames"]) / compose.FPS
@@ -269,13 +293,21 @@ def verify(directory: Path, max_bytes: int = SIZE_LIMIT_BYTES) -> tuple[bool, li
         errors.append(f"真峰值 {live.true_peak_dbtp} dBTP 高于 −1")
     if (lufs, tp) != (live.integrated_lufs, live.true_peak_dbtp):
         notes.append("manifest 里的响度与重新测量的不同（ffmpeg 版本差异？）")
-    offsets = [abs(r["offset_s"]) for r in man.get("dialogue_onsets", []) if r["offset_s"] is not None]
-    if len(offsets) != n_lines or max(offsets, default=1.0) > ONSET_TOLERANCE_S:
-        errors.append(f"对白起声与字幕起点偏差超过 {ONSET_TOLERANCE_S} 秒或有句子没检测到（最大 {max(offsets, default=None)}）")
+    dlg_audio = directory / "audio" / "ambient-off.m4a"
+    if not dlg_audio.is_file():
+        errors.append("缺少 audio/ambient-off.m4a（对白起声检查用）")
+    else:
+        live_onsets = onset_offsets(dlg_audio, man["cues"])  # 重新测量，不信 manifest 里记的
+        offsets = [abs(r["offset_s"]) for r in live_onsets if r["offset_s"] is not None]
+        if len(offsets) != n_lines or max(offsets, default=1.0) > ONSET_TOLERANCE_S:
+            errors.append(f"对白起声与字幕起点偏差超过 {ONSET_TOLERANCE_S} 秒或有句子没检测到（最大 {max(offsets, default=None)}）")
     # 选片与占位：manifest 与磁盘一致；占位镜头在 OTIO 里同样标记
     for sel in man["selection"]:
         if sel["source"] == "real":
-            path = compose.ROOT / sel["video"]
+            path = (compose.ROOT / sel["video"]).resolve()
+            if Path(sel["video"]).is_absolute() or compose.ROOT.resolve() not in path.parents:
+                errors.append(f"{sel['shot_id']}：片段路径必须是仓库内的相对路径")
+                continue
             if not path.is_file() or compose.sha256_file(path) != sel["video_sha256"]:
                 errors.append(f"{sel['shot_id']}：真实片段缺失或 sha256 与 manifest 不一致")
         elif sel["video"] is not None:
@@ -294,6 +326,15 @@ def verify(directory: Path, max_bytes: int = SIZE_LIMIT_BYTES) -> tuple[bool, li
             errors.append("OTIO 里的 placeholder 标记与 manifest 不一致")
         if int(round(tl.duration().value)) != int(round(total_s * compose.FPS)):
             errors.append("OTIO 总时长与规划不一致")
+        if compose.sha256_file(directory / "timeline.otio") != man.get("otio_sha256"):
+            errors.append("timeline.otio 的 sha256 与 manifest 不一致")
+        badge = tracks["O1 标识"][0]
+        if badge.metadata["dramio"]["text"] != render.BADGE_TEXT or int(round(badge.duration().value)) != int(round(total_s * compose.FPS)):
+            errors.append("OTIO 里的角标缺失或没有覆盖全片")
+        want = {sel["shot_id"]: sel["video_sha256"] or sel["keyframe_sha256"] for sel in man["selection"]}
+        got = {c.metadata["dramio"]["shot_id"]: c.metadata["dramio"].get("sha256") for c in v}
+        if want != got:
+            errors.append("OTIO 里的素材 sha256 与 manifest 的选片记录不一致")
         text = otio.adapters.write_to_string(tl, adapter_name="otio_json")
         if otio.adapters.write_to_string(otio.adapters.read_from_string(text, adapter_name="otio_json"), adapter_name="otio_json") != text:
             errors.append("OTIO 往返读写不一致")
@@ -303,9 +344,21 @@ def verify(directory: Path, max_bytes: int = SIZE_LIMIT_BYTES) -> tuple[bool, li
     if not ok_exchange:
         errors.append("FCP7 XML 与 EDL 都没有导出成功")
     for k in ok_exchange:
-        frames_back = man["exchange"][k]["duration_frames"]
-        if frames_back != int(round(total_s * compose.FPS)):
-            errors.append(f"{k} 回读时长 {frames_back} 帧与规划不一致")
+        entry = man["exchange"][k]
+        path = directory / entry["file"]
+        if not path.is_file() or compose.sha256_file(path) != entry.get("sha256"):
+            errors.append(f"{entry['file']} 缺失或 sha256 与 manifest 不一致")
+            continue
+        try:
+            back = otio_timeline.require_otio().adapters.read_from_file(str(path), adapter_name=k)  # 重新读一遍，不信 manifest 里记的时长
+        except otio_timeline.OtioMissing:
+            notes.append(f"没有安装 opentimelineio，跳过 {entry['file']} 的重新读取")
+            continue
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"{entry['file']} 无法读回：{type(exc).__name__}: {exc}")
+            continue
+        if int(round(back.duration().value)) != int(round(total_s * compose.FPS)):
+            errors.append(f"{entry['file']} 回读时长与规划不一致")
     # 字幕与人脸
     bad = [r["shot_id"] for r in man["face_overlap"] if r["intersects"]]
     if bad:
@@ -317,7 +370,6 @@ def verify(directory: Path, max_bytes: int = SIZE_LIMIT_BYTES) -> tuple[bool, li
     if man.get("cost_cny", 0) != 0 or list(directory.rglob("calls.jsonl")):
         errors.append("P0-11 不应有费用或调用记录")
     errors += video_ledger._scan_secrets(directory)
-    return not errors, errors, notes
 
 
 def run_verify(directory: Path, max_bytes: int, out=sys.stdout) -> int:

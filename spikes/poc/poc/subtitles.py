@@ -35,7 +35,9 @@ class Cue:
 
 
 def wrap(text: str, max_chars: int = MAX_CHARS) -> list[str]:
-    """至多两行：不超过 max_chars 不换行；否则在最接近中点的标点后换行（没有标点就从中点硬切）。"""
+    """至多两行：不超过 max_chars 不换行；否则在最接近中点的标点后换行（没有标点就从中点硬切）。超过两行容量（2 × max_chars）报错：ASS 不自动换行，会溢出画面。"""
+    if len(text) > 2 * max_chars:
+        raise ValueError(f"台词太长（{len(text)} 字，一条字幕最多 {2 * max_chars} 字）：{text[:20]}…")
     if len(text) <= max_chars:
         return [text]
     mid = len(text) / 2
@@ -54,6 +56,11 @@ def cues(plan: Plan) -> list[Cue]:
         for ln in shot.lines:
             out.append(Cue(ln.line_id, shot.shot_id, ln.kind, ln.text, round(base + ln.speech_start_s, 3), round(base + ln.speech_end_s, 3)))
     return out
+
+
+def ass_text(text: str) -> str:
+    """ASS 文本转义：{ } 会开启覆盖标签、\\ 开头的是转义序列、换行会断开 Dialogue 行；统一换成全角 / 空格，行内换行由 wrap 用 \\N 控制。"""
+    return text.replace("\\", "＼").replace("{", "｛").replace("}", "｝").replace("\r", " ").replace("\n", " ")
 
 
 def _ass_time(t: float) -> str:
@@ -79,7 +86,7 @@ def ass(items: list[Cue], font_name: str = FONT_NAME) -> str:
     )
     events = []
     for c in items:
-        text = "\\N".join(c.lines)
+        text = "\\N".join(ass_text(x) for x in c.lines)
         style = "Voiceover" if c.kind == "voiceover" else "Dialogue"
         events.append(f"Dialogue: 0,{_ass_time(c.start_s)},{_ass_time(c.end_s)},{style},{c.line_id},0,0,0,,{text}")
     return head + "\n".join(events) + "\n"
