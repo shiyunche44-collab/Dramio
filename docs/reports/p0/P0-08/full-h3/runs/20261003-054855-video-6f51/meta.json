@@ -1,0 +1,12 @@
+{
+  "run_id": "20261003-054855-video-6f51",
+  "command": "video",
+  "args": {
+    "candidate": "MiniMax-H3",
+    "count": 1
+  },
+  "started_at": "2026-10-03T05:48:55.636Z",
+  "ended_at": "2026-10-03T05:48:58.320Z",
+  "status": "ok",
+  "python": "3.11.15"
+}
