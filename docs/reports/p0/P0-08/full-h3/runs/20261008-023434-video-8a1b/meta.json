@@ -1,12 +1,12 @@
 {
-  "run_id": "20261008-023352-video-da3d",
+  "run_id": "20261008-023434-video-8a1b",
   "command": "video",
   "args": {
     "candidate": "MiniMax-H3",
     "count": 13
   },
-  "started_at": "2026-10-08T02:33:52.741Z",
-  "ended_at": "2026-10-08T02:34:26.618Z",
+  "started_at": "2026-10-08T02:34:34.997Z",
+  "ended_at": "2026-10-08T02:35:04.487Z",
   "status": "ok",
   "python": "3.13.16"
 }
