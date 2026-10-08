@@ -151,21 +151,45 @@ class MouthTracker:
             cap.release()
 
     def opening_series(self, video: Path | str):
-        """逐帧开合（未检出为 NaN）与每帧嘴部包围盒（给缩略条用）。取检测分最高的人脸。"""
+        """逐帧开合（未检出为 NaN）与每帧嘴部包围盒（给缩略条用）。
+
+        多人画面（例如虚化的前景人物）里“每帧取检测分最高的脸”会在人物之间来回切换，所以改为跟踪同一张脸：
+        以全片检测分最高的一次检测为起点，向前后逐帧选与上一帧脸中心最近的脸（距离超过脸宽 1.5 倍则视为未检出）。
+        """
         np = _np()
-        values, boxes = [], []
+        per_frame = []
         for img in self.frames(video):
-            faces = self._app.get(img)
-            if not faces:
-                values.append(float("nan"))
-                boxes.append(None)
-                continue
-            f = max(faces, key=lambda x: x.det_score)
-            lm = f.landmark_2d_106
-            values.append(lip_opening(lm))
+            per_frame.append([(f.det_score, f.bbox, f.landmark_2d_106) for f in self._app.get(img)])
+        n = len(per_frame)
+        values = np.full(n, np.nan)
+        boxes: list = [None] * n
+        seed = max(((i, f) for i, fs in enumerate(per_frame) for f in fs), key=lambda t: t[1][0], default=None)
+        if seed is None:
+            return values, boxes
+        chosen: dict[int, tuple] = {seed[0]: seed[1]}
+
+        def center(bb):
+            return ((bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2)
+
+        def follow(order):
+            prev = seed[1]
+            for i in order:
+                if not per_frame[i]:
+                    continue
+                pc, width = center(prev[1]), prev[1][2] - prev[1][0]
+                best = min(per_frame[i], key=lambda f: (center(f[1])[0] - pc[0]) ** 2 + (center(f[1])[1] - pc[1]) ** 2)
+                cc = center(best[1])
+                if ((cc[0] - pc[0]) ** 2 + (cc[1] - pc[1]) ** 2) ** 0.5 <= 1.5 * width:
+                    chosen[i] = best
+                    prev = best
+
+        follow(range(seed[0] + 1, n))
+        follow(range(seed[0] - 1, -1, -1))
+        for i, (_score, _bb, lm) in chosen.items():
+            values[i] = lip_opening(lm)
             lips = lm[52:72]
-            boxes.append((float(lips[:, 0].min()), float(lips[:, 1].min()), float(lips[:, 0].max()), float(lips[:, 1].max())))
-        return np.asarray(values), boxes
+            boxes[i] = (float(lips[:, 0].min()), float(lips[:, 1].min()), float(lips[:, 0].max()), float(lips[:, 1].max()))
+        return values, boxes
 
 
 # ---- 判据 ----

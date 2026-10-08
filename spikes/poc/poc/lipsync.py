@@ -393,6 +393,12 @@ def run_jobs(
 def _cmd(args: argparse.Namespace) -> int:
     routes = tuple(r.strip().upper() for r in args.routes.split(",") if r.strip())
     out = Path(args.export or DEFAULT_OUT)
+    if args.analyze:
+        from poc import lipsync_eval
+
+        result = lipsync_eval.analyze(out, args.shots)
+        print(lipsync_eval.render_table(result))
+        return 0
     try:
         jobs = plan(routes, args.shots, args.resolution, out)
         if args.dry_run:
@@ -417,4 +423,5 @@ def add_parser(sub) -> None:
     p.add_argument("--dry-run", action="store_true", help="离线列出任务与脱敏请求预览，不提交")
     p.add_argument("--resume", action="store_true", help="沿用 tasks.jsonl 里已提交的任务，只查询 / 下载")
     p.add_argument("--export", help="输出目录")
+    p.add_argument("--analyze", action="store_true", help="对已有片段算 M1–M4（ASR + 嘴部开合），写 <输出目录>/analysis/")
     p.set_defaults(func=_cmd)

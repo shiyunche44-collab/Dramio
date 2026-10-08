@@ -1,0 +1,489 @@
+{
+  "criteria": {
+    "cer_max": 0.15,
+    "onset_tol_s": 0.2,
+    "r_margin_over_control": 0.15,
+    "silence_ratio_max": 0.3,
+    "measurable_min": 0.8,
+    "surrogates": 200,
+    "face_tau": 0.45,
+    "tempo_range": [
+      0.8,
+      1.25
+    ]
+  },
+  "rows": [
+    {
+      "route": "对照",
+      "shot_id": "ep01_sc01_sh04",
+      "text": "那是我熬了三个月的方案。",
+      "cer": 0.0,
+      "speech_windows": [
+        [
+          0.3,
+          1.86
+        ]
+      ],
+      "metrics": {
+        "measurable": true,
+        "detected_frac": 1.0,
+        "speech_onset_s": 0.3,
+        "mouth_onset_s": 0.0417,
+        "onset_delta_s": -0.2583,
+        "r0": 0.3955,
+        "surrogate_p95": 0.3628,
+        "best_lag_s": 0.2083,
+        "best_r": 0.5342,
+        "silence_ratio": 0.0536,
+        "m2_pass": false,
+        "m3_pass": true,
+        "m4_pass": true,
+        "notes": [],
+        "n_frames": 124
+      },
+      "m5": null
+    },
+    {
+      "route": "A",
+      "shot_id": "ep01_sc01_sh04",
+      "text": "那是我熬了三个月的方案。",
+      "asr_text": "那是我熬了三个月的方案。",
+      "cer": 0.0,
+      "speech_windows": [
+        [
+          2.72,
+          4.72
+        ]
+      ],
+      "metrics": {
+        "measurable": true,
+        "detected_frac": 1.0,
+        "speech_onset_s": 2.72,
+        "mouth_onset_s": 1.7083,
+        "onset_delta_s": -1.0117,
+        "r0": 0.5454,
+        "surrogate_p95": 0.472,
+        "best_lag_s": 0.0,
+        "best_r": 0.5454,
+        "silence_ratio": 0.3532,
+        "m2_pass": false,
+        "m3_pass": true,
+        "m4_pass": false,
+        "notes": [],
+        "n_frames": 124,
+        "r0_minus_control": 0.1499,
+        "m3_full_pass": false
+      },
+      "m1_pass": true,
+      "m5": {
+        "ssim_first": 0.953,
+        "face_bank_min": 0.6438,
+        "face_bank_mean": 0.7056,
+        "face_pass": true
+      }
+    },
+    {
+      "route": "C",
+      "shot_id": "ep01_sc01_sh04",
+      "text": "那是我熬了三个月的方案。",
+      "cer": 0.0,
+      "speech_windows": [
+        [
+          2.72,
+          4.72
+        ]
+      ],
+      "c_plan": [
+        {
+          "line_id": "l_0004",
+          "tempo": 0.78,
+          "delay_s": 2.5277,
+          "feasible": false,
+          "target_window": [
+            2.72,
+            4.72
+          ]
+        }
+      ],
+      "metrics": {
+        "measurable": false,
+        "detected_frac": 0.0,
+        "speech_onset_s": null,
+        "mouth_onset_s": null,
+        "onset_delta_s": null,
+        "r0": null,
+        "surrogate_p95": null,
+        "best_lag_s": null,
+        "best_r": null,
+        "silence_ratio": null,
+        "m2_pass": null,
+        "m3_pass": null,
+        "m4_pass": null,
+        "notes": [
+          "路线 C 不可行：句数不一致或变速超出 0.8–1.25"
+        ],
+        "r0_minus_control": null,
+        "m3_full_pass": null
+      },
+      "m1_pass": true,
+      "m5": null
+    },
+    {
+      "route": "B",
+      "shot_id": "ep01_sc01_sh04",
+      "text": "那是我熬了三个月的方案。",
+      "asr_text": "那是我熬了三个月的方案。",
+      "cer": 0.0,
+      "speech_windows": [
+        [
+          2.51,
+          4.15
+        ]
+      ],
+      "dub_match": {
+        "corr": 0.9929,
+        "lag_s": 2.4
+      },
+      "metrics": {
+        "measurable": true,
+        "detected_frac": 1.0,
+        "speech_onset_s": 2.51,
+        "mouth_onset_s": 1.6667,
+        "onset_delta_s": -0.8433,
+        "r0": 0.7767,
+        "surrogate_p95": 0.4406,
+        "best_lag_s": 0.0,
+        "best_r": 0.7767,
+        "silence_ratio": 0.1915,
+        "m2_pass": false,
+        "m3_pass": true,
+        "m4_pass": true,
+        "notes": [],
+        "n_frames": 124,
+        "r0_minus_control": 0.3812,
+        "m3_full_pass": true
+      },
+      "m1_pass": true,
+      "m5": {
+        "ssim_first": 0.8836,
+        "face_bank_min": 0.6214,
+        "face_bank_mean": 0.6711,
+        "face_pass": true
+      }
+    },
+    {
+      "route": "对照",
+      "shot_id": "ep01_sc01_sh03",
+      "text": "方案，我会替你好好完成的。",
+      "cer": 0.0,
+      "speech_windows": [
+        [
+          0.3,
+          3.06
+        ]
+      ],
+      "metrics": {
+        "measurable": true,
+        "detected_frac": 1.0,
+        "speech_onset_s": 0.3,
+        "mouth_onset_s": 0.0,
+        "onset_delta_s": -0.3,
+        "r0": 0.0118,
+        "surrogate_p95": 0.3152,
+        "best_lag_s": 0.25,
+        "best_r": 0.0262,
+        "silence_ratio": 4.4401,
+        "m2_pass": false,
+        "m3_pass": false,
+        "m4_pass": false,
+        "notes": [],
+        "n_frames": 124
+      },
+      "m5": null
+    },
+    {
+      "route": "A",
+      "shot_id": "ep01_sc01_sh03",
+      "text": "方案，我会替你好好完成的。",
+      "asr_text": "方案我会替你好好完成的。",
+      "cer": 0.0,
+      "speech_windows": [
+        [
+          2.09,
+          4.85
+        ]
+      ],
+      "metrics": {
+        "measurable": true,
+        "detected_frac": 1.0,
+        "speech_onset_s": 2.09,
+        "mouth_onset_s": 1.0833,
+        "onset_delta_s": -1.0067,
+        "r0": 0.6442,
+        "surrogate_p95": 0.1895,
+        "best_lag_s": 0.0417,
+        "best_r": 0.6544,
+        "silence_ratio": 0.3579,
+        "m2_pass": false,
+        "m3_pass": true,
+        "m4_pass": false,
+        "notes": [],
+        "n_frames": 124,
+        "r0_minus_control": 0.6324,
+        "m3_full_pass": true
+      },
+      "m1_pass": true,
+      "m5": {
+        "ssim_first": 0.9512,
+        "face_bank_min": 0.5281,
+        "face_bank_mean": 0.6239,
+        "face_pass": true
+      }
+    },
+    {
+      "route": "C",
+      "shot_id": "ep01_sc01_sh03",
+      "text": "方案，我会替你好好完成的。",
+      "cer": 0.0,
+      "speech_windows": [
+        [
+          2.09,
+          4.85
+        ]
+      ],
+      "c_plan": [
+        {
+          "line_id": "l_0003",
+          "tempo": 1.0,
+          "delay_s": 1.94,
+          "feasible": true,
+          "target_window": [
+            2.09,
+            4.85
+          ]
+        }
+      ],
+      "metrics": {
+        "measurable": true,
+        "detected_frac": 1.0,
+        "speech_onset_s": 2.09,
+        "mouth_onset_s": 1.0833,
+        "onset_delta_s": -1.0067,
+        "r0": 0.6986,
+        "surrogate_p95": 0.2037,
+        "best_lag_s": -0.0417,
+        "best_r": 0.732,
+        "silence_ratio": 0.3579,
+        "m2_pass": false,
+        "m3_pass": true,
+        "m4_pass": false,
+        "notes": [],
+        "n_frames": 124,
+        "r0_minus_control": 0.6868,
+        "m3_full_pass": true
+      },
+      "m1_pass": true,
+      "m5": null
+    },
+    {
+      "route": "B",
+      "shot_id": "ep01_sc01_sh03",
+      "text": "方案，我会替你好好完成的。",
+      "asr_text": "方案我会替你好好完成的。",
+      "cer": 0.0,
+      "speech_windows": [
+        [
+          0.19,
+          2.95
+        ]
+      ],
+      "dub_match": {
+        "corr": 0.9976,
+        "lag_s": 0.0
+      },
+      "metrics": {
+        "measurable": true,
+        "detected_frac": 1.0,
+        "speech_onset_s": 0.19,
+        "mouth_onset_s": 0.2083,
+        "onset_delta_s": 0.0183,
+        "r0": 0.6785,
+        "surrogate_p95": 0.2108,
+        "best_lag_s": 0.0,
+        "best_r": 0.6785,
+        "silence_ratio": 0.045,
+        "m2_pass": true,
+        "m3_pass": true,
+        "m4_pass": true,
+        "notes": [],
+        "n_frames": 124,
+        "r0_minus_control": 0.6667,
+        "m3_full_pass": true
+      },
+      "m1_pass": true,
+      "m5": {
+        "ssim_first": 0.809,
+        "face_bank_min": 0.5852,
+        "face_bank_mean": 0.6243,
+        "face_pass": true
+      }
+    },
+    {
+      "route": "对照",
+      "shot_id": "ep01_sc03_sh01",
+      "text": "各位，这是我主导的新品方案。",
+      "cer": 0.0,
+      "speech_windows": [
+        [
+          0.3,
+          2.86
+        ]
+      ],
+      "metrics": {
+        "measurable": true,
+        "detected_frac": 1.0,
+        "speech_onset_s": 0.3,
+        "mouth_onset_s": 0.0,
+        "onset_delta_s": -0.3,
+        "r0": 0.0058,
+        "surrogate_p95": 0.3364,
+        "best_lag_s": 0.1667,
+        "best_r": 0.1149,
+        "silence_ratio": 0.0872,
+        "m2_pass": false,
+        "m3_pass": false,
+        "m4_pass": true,
+        "notes": [],
+        "n_frames": 107
+      },
+      "m5": null
+    },
+    {
+      "route": "A",
+      "shot_id": "ep01_sc03_sh01",
+      "text": "各位，这是我主导的新品方案。",
+      "asr_text": "各位，这是我主导的新品方案。",
+      "cer": 0.0,
+      "speech_windows": [
+        [
+          1.56,
+          4.32
+        ]
+      ],
+      "metrics": {
+        "measurable": true,
+        "detected_frac": 1.0,
+        "speech_onset_s": 1.56,
+        "mouth_onset_s": 0.625,
+        "onset_delta_s": -0.935,
+        "r0": 0.7198,
+        "surrogate_p95": 0.357,
+        "best_lag_s": 0.0417,
+        "best_r": 0.7212,
+        "silence_ratio": 0.6045,
+        "m2_pass": false,
+        "m3_pass": true,
+        "m4_pass": false,
+        "notes": [],
+        "n_frames": 107,
+        "r0_minus_control": 0.714,
+        "m3_full_pass": true
+      },
+      "m1_pass": true,
+      "m5": {
+        "ssim_first": 0.9706,
+        "face_bank_min": 0.4839,
+        "face_bank_mean": 0.4882,
+        "face_pass": true
+      }
+    },
+    {
+      "route": "C",
+      "shot_id": "ep01_sc03_sh01",
+      "text": "各位，这是我主导的新品方案。",
+      "cer": 0.0,
+      "speech_windows": [
+        [
+          1.56,
+          4.32
+        ]
+      ],
+      "c_plan": [
+        {
+          "line_id": "l_0011",
+          "tempo": 0.9275,
+          "delay_s": 1.3983,
+          "feasible": true,
+          "target_window": [
+            1.56,
+            4.32
+          ]
+        }
+      ],
+      "metrics": {
+        "measurable": true,
+        "detected_frac": 1.0,
+        "speech_onset_s": 1.56,
+        "mouth_onset_s": 0.625,
+        "onset_delta_s": -0.935,
+        "r0": 0.6872,
+        "surrogate_p95": 0.4166,
+        "best_lag_s": -0.0417,
+        "best_r": 0.6899,
+        "silence_ratio": 0.6045,
+        "m2_pass": false,
+        "m3_pass": true,
+        "m4_pass": false,
+        "notes": [],
+        "n_frames": 105,
+        "r0_minus_control": 0.6814,
+        "m3_full_pass": true
+      },
+      "m1_pass": true,
+      "m5": null
+    },
+    {
+      "route": "B",
+      "shot_id": "ep01_sc03_sh01",
+      "text": "各位，这是我主导的新品方案。",
+      "asr_text": "各位，这是我主导的新品方案。",
+      "cer": 0.0,
+      "speech_windows": [
+        [
+          1.63,
+          4.15
+        ]
+      ],
+      "dub_match": {
+        "corr": 0.1344,
+        "lag_s": 0.37
+      },
+      "metrics": {
+        "measurable": true,
+        "detected_frac": 1.0,
+        "speech_onset_s": 1.63,
+        "mouth_onset_s": 0.6667,
+        "onset_delta_s": -0.9633,
+        "r0": 0.7275,
+        "surrogate_p95": 0.4884,
+        "best_lag_s": 0.0,
+        "best_r": 0.7275,
+        "silence_ratio": 0.7207,
+        "m2_pass": false,
+        "m3_pass": true,
+        "m4_pass": false,
+        "notes": [],
+        "n_frames": 107,
+        "r0_minus_control": 0.7217,
+        "m3_full_pass": true
+      },
+      "m1_pass": true,
+      "m5": {
+        "ssim_first": 0.884,
+        "face_bank_min": 0.58,
+        "face_bank_mean": 0.5948,
+        "face_pass": true
+      }
+    }
+  ]
+}
