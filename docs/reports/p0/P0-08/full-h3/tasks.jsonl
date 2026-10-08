@@ -25,3 +25,7 @@
 {"shot_id": "ep01_sc01_sh03", "node_key": "51efb1b8aedce62537de3b6c52e80979032fe31a649a632aa8db024c56dc0be2", "task_id": "447527841567111", "model": "MiniMax-H3", "resolution": "768P", "duration": 5}
 {"shot_id": "ep01_sc01_sh04", "node_key": "b7eb60de5d7b1e1d9216a1c36b19297716f84a385c204169aadef44c8ad3b1e1", "task_id": "447529411244288", "model": "MiniMax-H3", "resolution": "768P", "duration": 5}
 {"shot_id": "ep01_sc02_sh02", "node_key": "36bae218af0d0a1ec6a5c004f84804aee72ac1a413eb07ffe5cf4b4caecf4446", "task_id": "447529496228231", "model": "MiniMax-H3", "resolution": "768P", "duration": 4}
+{"shot_id": "ep01_sc02_sh03", "node_key": "d9c3676607d24b6be4b7056d7d6986f6bafa1b29aa4753f97dfb0f8706e6eaec", "task_id": "450041660436736", "model": "MiniMax-H3", "resolution": "768P", "duration": 5}
+{"shot_id": "ep01_sc02_sh04", "node_key": "2c60b6b65702a2e74fe35b8140ca49a52757b245729f0829d56ad9ef4070f01d", "task_id": "450039614648633", "model": "MiniMax-H3", "resolution": "768P", "duration": 5}
+{"shot_id": "ep01_sc03_sh03", "node_key": "2220d57dd2eaa8c0a15a965c25625fc7ab6aeb4e19b2edc6ae92cda7ca0cf79c", "task_id": "450041306497323", "model": "MiniMax-H3", "resolution": "768P", "duration": 4}
+{"shot_id": "ep01_sc03_sh04", "node_key": "d04a380d478497cf80e8ca4aa2a05f319ad82ee3132f5e60d9e86440671cfade", "task_id": "450042045895075", "model": "MiniMax-H3", "resolution": "768P", "duration": 5}
