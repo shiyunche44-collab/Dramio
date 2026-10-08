@@ -182,3 +182,37 @@ class RunTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class VerifyAndReviewTest(unittest.TestCase):
+    def test_verify_flags_missing_files_and_cost_mismatch(self):
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td)
+            (out / "videos").mkdir()
+            (out / "runs" / "r1").mkdir(parents=True)
+            rec = {"route": "A", "shot_id": "ep01_sc01_sh04", "node_key": "k1", "task_id": "t1", "status": "succeeded", "bytes": 3, "cost_cny": 2.5}
+            (out / "tasks.jsonl").write_text(json.dumps({**rec, "status": "succeeded"}) + "\n")
+            (out / "run-summary.json").write_text(json.dumps({"jobs": [rec]}))
+            (out / "runs" / "r1" / "calls.jsonl").write_text(json.dumps({"cost_cny": 1.0}) + "\n")
+            ok, errors = lipsync.verify(out)
+            self.assertFalse(ok)
+            self.assertTrue(any("缺少视频文件" in e for e in errors))
+            self.assertTrue(any("费用不一致" in e for e in errors))
+            (out / "videos" / "A_ep01_sc01_sh04.mp4").write_bytes(b"abc")
+            (out / "runs" / "r1" / "calls.jsonl").write_text(json.dumps({"cost_cny": 2.5}) + "\n")
+            ok, errors = lipsync.verify(out)
+            self.assertTrue(ok, errors)
+
+    def test_verify_flags_orphan_video_and_signed_urls(self):
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td)
+            (out / "videos").mkdir()
+            (out / "runs").mkdir()
+            (out / "tasks.jsonl").write_text("")
+            (out / "run-summary.json").write_text(json.dumps({"jobs": []}))
+            (out / "videos" / "B_ep01_sc01_sh03.mp4").write_bytes(b"x")
+            (out / "note.json").write_text('{"u": "https://example.com/a.mp4?Signature=abc&Expires=1"}')
+            ok, errors = lipsync.verify(out)
+            self.assertFalse(ok)
+            self.assertTrue(any("没有对应的成功任务" in e for e in errors))
+            self.assertTrue(any("签名" in e for e in errors))

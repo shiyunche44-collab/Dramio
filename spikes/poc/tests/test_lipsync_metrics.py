@@ -87,3 +87,28 @@ class MetricsTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EvalTest(unittest.TestCase):
+    def test_route_c_plan_tempo_and_delay(self):
+        from poc import compose, lipsync_eval
+
+        ln = compose.LinePlan("l_x", "s", "dialogue", "你好", "x.mp3", "0" * 64, 0.44, 3.6, 0.15, 0.3, 3.06, 3.82)
+        plan = lipsync_eval.route_c_plan([ln], [(2.09, 4.85)])
+        self.assertTrue(plan[0]["feasible"])
+        self.assertAlmostEqual(plan[0]["tempo"], 1.0, places=2)  # 配音语音 2.76 秒，H3 语音 2.76 秒
+        self.assertAlmostEqual(plan[0]["delay_s"], 2.09 - 0.15, places=2)  # 剪辑段内语音起点 0.15 秒
+        slow = lipsync_eval.route_c_plan([ln], [(2.0, 5.5)])  # H3 说得慢：tempo ≈ 0.79
+        self.assertFalse(slow[0]["feasible"])
+        self.assertEqual(lipsync_eval.route_c_plan([ln, ln], [(2.0, 4.0)]), [])  # 句数不一致
+
+    def test_cer_equiv_folds_homophones_and_punctuation(self):
+        from poc import lipsync_eval
+
+        self.assertEqual(lipsync_eval.cer_equiv("她说的方案，对吗？", "他说得方案对吗"), 0.0)
+        self.assertGreater(lipsync_eval.cer_equiv("那是我熬了三个月的方案", "那是我的方案"), 0.3)
+
+    def test_windows_from_asr_converts_ms(self):
+        from poc import lipsync_eval
+
+        self.assertEqual(lipsync_eval.windows_from_asr({"utterances": [{"start_ms": 2720, "end_ms": 4720}, {"text": "x"}]}), [(2.72, 4.72)])

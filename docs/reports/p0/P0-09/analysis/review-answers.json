@@ -1,0 +1,60 @@
+{
+  "seed": 20261008,
+  "answers": [
+    {
+      "code": "r11",
+      "shot_id": "ep01_sc01_sh03",
+      "route": "A"
+    },
+    {
+      "code": "r01",
+      "shot_id": "ep01_sc01_sh03",
+      "route": "B"
+    },
+    {
+      "code": "r04",
+      "shot_id": "ep01_sc01_sh03",
+      "route": "C"
+    },
+    {
+      "code": "r08",
+      "shot_id": "ep01_sc01_sh03",
+      "route": "对照"
+    },
+    {
+      "code": "r07",
+      "shot_id": "ep01_sc01_sh04",
+      "route": "A"
+    },
+    {
+      "code": "r06",
+      "shot_id": "ep01_sc01_sh04",
+      "route": "B"
+    },
+    {
+      "code": "r10",
+      "shot_id": "ep01_sc01_sh04",
+      "route": "对照"
+    },
+    {
+      "code": "r03",
+      "shot_id": "ep01_sc03_sh01",
+      "route": "A"
+    },
+    {
+      "code": "r05",
+      "shot_id": "ep01_sc03_sh01",
+      "route": "B"
+    },
+    {
+      "code": "r02",
+      "shot_id": "ep01_sc03_sh01",
+      "route": "C"
+    },
+    {
+      "code": "r09",
+      "shot_id": "ep01_sc03_sh01",
+      "route": "对照"
+    }
+  ]
+}

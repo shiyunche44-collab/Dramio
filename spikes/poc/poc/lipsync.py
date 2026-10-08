@@ -26,7 +26,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
-from poc import compose, images, media, minimax, pricing, runlog, script, tts, video
+from poc import compose, images, media, minimax, pricing, runlog, script, tts, video, video_ledger
 
 ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_OUT = ROOT / "docs/reports/p0/P0-09"
@@ -387,12 +387,111 @@ def run_jobs(
     return {"jobs": records, "count": len(records), "success": sum(r.get("status") == "succeeded" for r in records)}
 
 
+# ---- 评审包与核验 ----
+
+
+def build_review_pack(out: Path, seed: int = 20261008) -> dict[str, Any]:
+    """评审包：每个镜头 × {对照, A, B, C}（有就放）随机编号成 review/rNN.mp4，答案表放在 analysis/review-answers.json（评分前别看）。
+
+    对照 = P0-08 的无台词片段 + P0-05 配音按 P0-11 的排法（镜头内偏移）混成的音轨，等于 P0-11 成片里这个镜头现在的样子。
+    """
+    import random
+    import shutil
+
+    from poc import lipsync_eval
+
+    cplan = compose.plan()
+    by_id = {s.shot_id: s for s in cplan.shots}
+    items: list[tuple[str, str, Path]] = []
+    for sid in SHOTS:
+        a_video = out / "videos" / f"A_{sid}.mp4"
+        if not (a_video.exists() or (out / "videos" / f"B_{sid}.mp4").exists()):
+            continue
+        ctrl = out / "analysis" / "control" / f"{sid}.mp4"
+        ctrl.parent.mkdir(parents=True, exist_ok=True)
+        media._run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(compose.DEFAULT_VIDEOS / f"{sid}.mp4"), "-i", str(out / "audio" / f"{sid}.mp3"),
+                    "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy", "-c:a", "aac", "-b:a", "128k", "-shortest", str(ctrl)])
+        items.append((sid, "对照", ctrl))
+        for route in ("A", "B", "C"):
+            path = out / "videos" / f"{route}_{sid}.mp4"
+            if path.exists():
+                items.append((sid, route, path))
+    rng = random.Random(seed)
+    order = list(range(len(items)))
+    rng.shuffle(order)
+    review = out / "review"
+    if review.exists():
+        shutil.rmtree(review)
+    review.mkdir(parents=True)
+    answers = []
+    for n, idx in enumerate(order, start=1):
+        sid, route, path = items[idx]
+        code = f"r{n:02d}"
+        shutil.copyfile(path, review / f"{code}.mp4")
+        answers.append({"code": code, "shot_id": sid, "route": route})
+    answers.sort(key=lambda a: (a["shot_id"], a["route"]))
+    (out / "analysis" / "review-answers.json").write_text(json.dumps({"seed": seed, "answers": answers}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    del lipsync_eval, by_id
+    return {"count": len(answers), "dir": str(review)}
+
+
+def verify(out: Path, max_bytes: int | None = None) -> tuple[bool, list[str]]:
+    """核验证据目录：成功任务与视频文件一一对应、同一 node_key 不重复成功、费用与 run-summary 一致、无密钥与带签名链接、体积上限。"""
+    errors: list[str] = []
+    tasks_path = out / "tasks.jsonl"
+    summary_path = out / "run-summary.json"
+    if not tasks_path.exists() or not summary_path.exists():
+        return False, ["缺少 tasks.jsonl 或 run-summary.json"]
+    succeeded: dict[str, dict[str, Any]] = {}
+    for line in tasks_path.read_text(encoding="utf-8").splitlines():
+        rec = json.loads(line)
+        if rec.get("status") == "succeeded":
+            succeeded[rec["node_key"]] = rec
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    seen_tasks: dict[str, str] = {}
+    for rec in summary["jobs"]:
+        if rec.get("status") != "succeeded":
+            continue
+        label = f"{rec['route']}_{rec['shot_id']}"
+        if rec["node_key"] not in succeeded:
+            errors.append(f"{label} 在 run-summary 里成功，但 tasks.jsonl 没有成功记录")
+        if rec.get("task_id") in seen_tasks:
+            errors.append(f"{label} 与 {seen_tasks[rec['task_id']]} 是同一个任务")
+        seen_tasks[rec.get("task_id")] = label
+        video = out / "videos" / f"{label}.mp4"
+        if not video.exists():
+            errors.append(f"{label} 缺少视频文件")
+        elif video.stat().st_size != rec.get("bytes"):
+            errors.append(f"{label} 视频大小与记录不一致")
+    for video in sorted((out / "videos").glob("[AB]_*.mp4")):
+        if not any(f"{r['route']}_{r['shot_id']}" == video.stem and r.get("status") == "succeeded" for r in summary["jobs"]):
+            errors.append(f"{video.name} 没有对应的成功任务")
+    calls_total = 0.0
+    for calls in sorted((out / "runs").glob("*/calls.jsonl")):
+        for line in calls.read_text(encoding="utf-8").splitlines():
+            calls_total += json.loads(line).get("cost_cny") or 0.0
+    summary_total = sum(r.get("cost_cny") or 0.0 for r in summary["jobs"] if r.get("status") == "succeeded")
+    if abs(calls_total - summary_total) > 1e-6:
+        errors.append(f"费用不一致：calls.jsonl 合计 ¥{calls_total:.2f}，run-summary 合计 ¥{summary_total:.2f}")
+    errors += video_ledger._scan_secrets(out)
+    if max_bytes is not None and (size := video_ledger.du_bytes(out)) > max_bytes:
+        errors.append(f"证据体积 {size} 字节超过上限 {max_bytes}")
+    return not errors, errors
+
+
 # ---- 命令行 ----
 
 
 def _cmd(args: argparse.Namespace) -> int:
     routes = tuple(r.strip().upper() for r in args.routes.split(",") if r.strip())
     out = Path(args.export or DEFAULT_OUT)
+    if args.verify:
+        ok, errors = verify(out, args.max_bytes)
+        print(json.dumps({"ok": ok, "errors": errors}, ensure_ascii=False, indent=2))
+        return 0 if ok else 1
+    if args.review:
+        print(json.dumps(build_review_pack(out), ensure_ascii=False))
+        return 0
     if args.analyze:
         from poc import lipsync_eval
 
@@ -423,5 +522,8 @@ def add_parser(sub) -> None:
     p.add_argument("--dry-run", action="store_true", help="离线列出任务与脱敏请求预览，不提交")
     p.add_argument("--resume", action="store_true", help="沿用 tasks.jsonl 里已提交的任务，只查询 / 下载")
     p.add_argument("--export", help="输出目录")
+    p.add_argument("--review", action="store_true", help="生成盲评包：<输出目录>/review/rNN.mp4（随机编号），答案表在 analysis/review-answers.json")
+    p.add_argument("--verify", action="store_true", help="核验证据目录（任务与视频对应、费用、密钥与签名链接扫描）")
+    p.add_argument("--max-bytes", type=int, help="--verify 时的证据体积上限（字节）")
     p.add_argument("--analyze", action="store_true", help="对已有片段算 M1–M4（ASR + 嘴部开合），写 <输出目录>/analysis/")
     p.set_defaults(func=_cmd)
