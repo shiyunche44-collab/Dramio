@@ -65,7 +65,7 @@ def route_c_plan(lines: list[compose.LinePlan], windows: list[tuple[float, float
     """每句配音 → (变速、延迟)。句数必须与 H3 原声的句数一致（ASR 的句），否则返回空（不可行）。
 
     tempo = 配音语音时长 ÷ H3 语音时长（> 1 加速，< 1 减速），必须在 [0.8, 1.25] 内，否则该句 feasible=False；
-    delay = 该句语音在新轨上的起点（H3 语音起点）− 剪辑段内语音起点 ÷ tempo。
+    delay = 该句语音在新轨上的起点（H3 语音起点）− 剪辑段内语音起点 ÷ tempo；delay < 0（配音要比轨道起点更早）也算不可行。
     """
     if len(lines) != len(windows):
         return []
@@ -74,7 +74,8 @@ def route_c_plan(lines: list[compose.LinePlan], windows: list[tuple[float, float
         dub_s = max(ln.speech_end_s - ln.speech_start_s, 1e-3)
         tempo = dub_s / max(we - ws, 1e-3)
         lead = (ln.speech_start_s - ln.start_s) / tempo  # 剪辑段起点到语音起点的时间（变速后）
-        plan.append({"line_id": ln.line_id, "tempo": round(tempo, 4), "delay_s": round(ws - lead, 4), "feasible": TEMPO_MIN <= tempo <= TEMPO_MAX,
+        delay = ws - lead
+        plan.append({"line_id": ln.line_id, "tempo": round(tempo, 4), "delay_s": round(delay, 4), "feasible": TEMPO_MIN <= tempo <= TEMPO_MAX and delay >= 0,
                      "target_window": [round(ws, 4), round(we, 4)]})
     return plan
 

@@ -233,7 +233,7 @@ python3 -m poc video --verify ../../docs/reports/p0/P0-08 --max-bytes 12582912  
 python3 -m poc lipsync --dry-run --export /tmp/lipsync-dry          # 离线：5 个对白镜头 × A / B 的任务、脱敏请求预览、预计费用
 python3 -m poc lipsync --routes A --shots ep01_sc01_sh04 --max-cost-cny 5   # 冒烟（约 ¥2.5）
 python3 -m poc lipsync --routes A,B --shots ep01_sc01_sh03 --shots ep01_sc03_sh01 --max-cost-cny 40   # 全量；提交后立即写 tasks.jsonl
-python3 -m poc lipsync --resume --routes A,B --max-cost-cny 40       # 只查询已提交的任务，不重复提交
+python3 -m poc lipsync --routes A,B --max-cost-cny 40                # 默认读 tasks.jsonl 去重：已提交的任务只查询，不重复提交；--force 才全部重提（重复扣费）
 python3 -m poc lipsync --analyze        # ASR（M1）、嘴部开合与音频包络（M2–M4）、路线 C、首帧 SSIM 与人脸相似度（M5），写 analysis/
 python3 -m poc lipsync --review         # 盲评包 review/rNN.mp4（随机编号），答案表 analysis/review-answers.json
 python3 -m poc lipsync --verify --max-bytes 29360128   # 任务 / 视频 / 费用对账、密钥与带签名链接扫描、体积上限

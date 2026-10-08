@@ -42,6 +42,7 @@ MAX_AUDIO_CLIPS = 3
 MAX_AUDIO_TOTAL_S = 15.0
 AUDIO_RATE = 44100
 QUOTA_CODE = video.QUOTA_CODE
+AIGC_WATERMARK = False  # P0 中间产物不加 H3 原生水印；成片标识由 P0-11 的 compose 统一加（INV-08 只约束生产环境）
 
 
 class LipsyncError(Exception):
@@ -255,9 +256,9 @@ def plan(
             prompt = make_prompt(route, shot_by_id[sid], sp.lines, chars)
             use_audio = audio if route == "B" else None
             key = node_key([
-                "lipsync.v1", route, MODEL, resolution, dur, False, prompt, sp.keyframe_sha256, use_audio.sha256 if use_audio else None,
+                "lipsync.v1", route, MODEL, resolution, dur, AIGC_WATERMARK, prompt, sp.keyframe_sha256, use_audio.sha256 if use_audio else None,
             ])
-            jobs.append(Job(route, sid, prompt, dur, resolution, _rel(key_path), sp.keyframe_sha256, use_audio, key))
+            jobs.append(Job(route, sid, prompt, dur, resolution, _rel(key_path), sp.keyframe_sha256, use_audio, key, AIGC_WATERMARK))
     return jobs
 
 
@@ -310,12 +311,12 @@ def _load_tasks(path: Path) -> dict[str, dict[str, Any]]:
 
 
 def run_jobs(
-    jobs: list[Job], out: Path, *, resume: bool = False, max_cost_cny: float = 60.0, poll_s: float = 5.0, timeout_s: float = 1200.0,
+    jobs: list[Job], out: Path, *, resume: bool = True, max_cost_cny: float = 60.0, poll_s: float = 5.0, timeout_s: float = 1200.0,
     client: minimax.Client | None = None, sleep=time.sleep,
 ) -> dict[str, Any]:
     out.mkdir(parents=True, exist_ok=True)
     tasks_path = out / "tasks.jsonl"
-    known = _load_tasks(tasks_path) if resume else {}
+    known = _load_tasks(tasks_path) if resume else {}  # 默认读 tasks.jsonl 去重：已提交的任务只查询，不重复提交 / 扣费；--force 才全部重提
     new_jobs = [j for j in jobs if not (j.node_key in known and not known[j.node_key].get("retry"))]
     estimated = sum(cost_of(j).guard_cny for j in new_jobs)
     if estimated > max_cost_cny + 1e-9:
@@ -398,10 +399,6 @@ def build_review_pack(out: Path, seed: int = 20261008) -> dict[str, Any]:
     import random
     import shutil
 
-    from poc import lipsync_eval
-
-    cplan = compose.plan()
-    by_id = {s.shot_id: s for s in cplan.shots}
     items: list[tuple[str, str, Path]] = []
     for sid in SHOTS:
         a_video = out / "videos" / f"A_{sid}.mp4"
@@ -431,7 +428,6 @@ def build_review_pack(out: Path, seed: int = 20261008) -> dict[str, Any]:
         answers.append({"code": code, "shot_id": sid, "route": route})
     answers.sort(key=lambda a: (a["shot_id"], a["route"]))
     (out / "analysis" / "review-answers.json").write_text(json.dumps({"seed": seed, "answers": answers}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    del lipsync_eval, by_id
     return {"count": len(answers), "dir": str(review)}
 
 
@@ -505,7 +501,7 @@ def _cmd(args: argparse.Namespace) -> int:
             return 0
         for j in jobs:  # 提交前全部再校验一遍
             validate_job(j, *_load_media(j))
-        result = run_jobs(jobs, out, resume=args.resume, max_cost_cny=args.max_cost_cny)
+        result = run_jobs(jobs, out, resume=not args.force, max_cost_cny=args.max_cost_cny)
     except (LipsyncError, compose.ComposeError, media.MediaError) as exc:
         print(f"错误：{exc}")
         return 1
@@ -520,7 +516,8 @@ def add_parser(sub) -> None:
     p.add_argument("--resolution", default="768P")
     p.add_argument("--max-cost-cny", type=float, default=60.0)
     p.add_argument("--dry-run", action="store_true", help="离线列出任务与脱敏请求预览，不提交")
-    p.add_argument("--resume", action="store_true", help="沿用 tasks.jsonl 里已提交的任务，只查询 / 下载")
+    p.add_argument("--resume", action="store_true", help="（默认行为，保留兼容）沿用 tasks.jsonl 里已提交的任务，只查询 / 下载")
+    p.add_argument("--force", action="store_true", help="忽略 tasks.jsonl，全部重新提交（会重复扣费）")
     p.add_argument("--export", help="输出目录")
     p.add_argument("--review", action="store_true", help="生成盲评包：<输出目录>/review/rNN.mp4（随机编号），答案表在 analysis/review-answers.json")
     p.add_argument("--verify", action="store_true", help="核验证据目录（任务与视频对应、费用、密钥与签名链接扫描）")

@@ -166,9 +166,11 @@ class RunTest(unittest.TestCase):
             self.assertEqual([x["status"] for x in lines], ["submitted", "succeeded"])
             self.assertTrue((out / "videos" / "A_ep01_sc01_sh04.mp4").exists())
             self.assertEqual(client.bodies[0][:2], ("POST", "/v2/video_generation"))
-            # resume 不重新提交
-            self.run_it(out, client, resume=True)
+            # 默认读 tasks.jsonl 去重：再跑一次不重新提交；--force（resume=False）才重提
+            self.run_it(out, client)
             self.assertEqual(client.submitted, 1)
+            self.run_it(out, client, resume=False)
+            self.assertEqual(client.submitted, 2)
             self.assertEqual(json.loads((out / "run-summary.json").read_text())["count"], 1)
 
     def test_quota_error_aborts_the_run(self):
