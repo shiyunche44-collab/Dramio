@@ -225,6 +225,25 @@ python3 -m poc video --verify ../../docs/reports/p0/P0-08 --max-bytes 12582912  
 - `--analyze` 的人脸相似度要先抽帧再跑 `face --manifest <目录>/analysis/face-manifest.json`（需要 `[face]` extras，参考图见 manifest 的 `references`），输出 `faces.json` 后再运行一次 `--analyze` 生成 `table.md`；抽帧图（`analysis/frames/`，约 3 MB）不入库，由视频重新生成。
 - Ark Seedance：本账号 Agent Plan 下 2.0 / 2.0-fast / 2.0-mini / 2.5 全部返回 404 `UnsupportedModel`（带日期的 ID 和 `PLAN_ALIASES` 里的套餐别名都试过），详见 `docs/reports/p0/P0-08.md`。
 
+## lipsync：对白镜头口型同步（P0-09，MiniMax H3）
+
+只用 MiniMax（不走 MediaKit / 火山口型）。路线字母是本步自己的编号：A 原生音画（`first_frame` + 提示词写台词）、B 参考音频（`reference_image` + `reference_audio`，与 `first_frame` 互斥）、C 回贴（A 的画面 + P0-05 配音按 H3 语音区间重排，零调用，由 `--analyze` 生成）。需要 `MINIMAX_API_KEY`；`--analyze` 另需 `VOLC_SPEECH_API_KEY`（ASR，约 ¥0.01 / 次）、`pip install -e '.[face]'` 与 `~/.cache/poc-face/models/buffalo_l/`（含 `2d106det.onnx`）。
+
+```bash
+python3 -m poc lipsync --dry-run --export /tmp/lipsync-dry          # 离线：5 个对白镜头 × A / B 的任务、脱敏请求预览、预计费用
+python3 -m poc lipsync --routes A --shots ep01_sc01_sh04 --max-cost-cny 5   # 冒烟（约 ¥2.5）
+python3 -m poc lipsync --routes A,B --shots ep01_sc01_sh03 --shots ep01_sc03_sh01 --max-cost-cny 40   # 全量；提交后立即写 tasks.jsonl
+python3 -m poc lipsync --routes A,B --max-cost-cny 40                # 默认读 tasks.jsonl 去重：已提交的任务只查询，不重复提交；--force 才全部重提（重复扣费）
+python3 -m poc lipsync --analyze        # ASR（M1）、嘴部开合与音频包络（M2–M4）、路线 C、首帧 SSIM 与人脸相似度（M5），写 analysis/
+python3 -m poc lipsync --review         # 盲评包 review/rNN.mp4（随机编号），答案表 analysis/review-answers.json
+python3 -m poc lipsync --verify --max-bytes 29360128   # 任务 / 视频 / 费用对账、密钥与带签名链接扫描、体积上限
+```
+
+- 输出默认在 `docs/reports/p0/P0-09/`：`audio/`（B 的参考音频，按 ASR 起止剪出的配音）、`videos/`（`A_`、`B_`、`C_` 加镜头 id）、`tasks.jsonl`、`run-summary.json`（多次运行按 `node_key` 累积）、`runs/`、`analysis/`（`metrics.json`、曲线、嘴部缩略条、ASR、M5 抽帧）、`review/`。
+- 官方文档（platform.minimax.cn，2026-10-08 读取）：参考音频 `audio_url` + `role=reference_audio`，WAV / MP3、单段 2–15 秒、合计 ≤ 15 秒、≤ 15 MB，可内联 data URI；出现任一 `reference_*` 就不能再带 `first_frame`；没有 `generate_audio` 开关。
+- 度量只看嘴部开合的节奏与音频包络的关系，不判断口型（viseme）是否对得上字音；多人画面按“全片检测分最高的脸 + 逐帧位置连续性”跟踪同一张脸。
+- 429 `2056` 是账号级额度（视频），提交即被拒、不创建任务、不计费；`run_jobs` 遇到它会中止其余镜头。
+
 ## compose：剪辑合成（P0-11）
 
 ep01 + P0-05 方案 C 配音 + P0-08 的 H3 片段 → OTIO 时间线 → FFmpeg 渲染 1080×1920 成片（H.264 + AAC，24 fps），带字幕、混音、AIGC 标识。不调任何付费 API，费用 ¥0。

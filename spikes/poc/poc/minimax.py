@@ -611,6 +611,11 @@ class Client:
         resp = self._send(method, path, request.body())
         return Submitted(parse_submit(resp.body, self._secrets()), _header(resp, "x-request-id", "trace-id", "x-trace-id"))
 
+    def submit_raw(self, method: str, path: str, body: Mapping[str, Any]) -> Submitted:
+        """创建任务（P0-09：参考音频 / 参考视频等 VideoRequest 不覆盖的 content 组合）。调用方必须先做本地校验，这里不再校验。"""
+        resp = self._send(method, path, body)
+        return Submitted(parse_submit(resp.body, self._secrets()), _header(resp, "x-request-id", "trace-id", "x-trace-id"))
+
     def query(self, task_id: str, api: str) -> TaskState:
         """查询任务（免费）。api = v2 / v1。"""
         if not _TASK_ID.match(str(task_id)):
