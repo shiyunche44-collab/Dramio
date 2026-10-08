@@ -1,32 +1,33 @@
 {
   "jobs": [
     {
-      "route": "A",
+      "route": "B",
       "shot_id": "ep01_sc01_sh04",
-      "node_key": "b8c00199817dbff0af9b5a7a326e3003d2617069712a8d16f062925a589d9a73",
+      "node_key": "8ffe3d90c01d00f2c5fa50cc8e55ccd04dad95b8cfa17b98bca88f0c544c3714",
       "model": "MiniMax-H3",
       "resolution": "768P",
       "duration": 5,
-      "task_id": "450048394629416",
+      "task_id": "450049305186742",
       "status": "succeeded",
       "usage": {
         "total_seconds": 5,
         "input_seconds": 0,
         "output_seconds": 5,
         "input_image_count": 1,
-        "total_tokens": 175765,
-        "prompt_tokens": 13020,
-        "completion_tokens": 162745
+        "total_tokens": 175925,
+        "prompt_tokens": 13180,
+        "completion_tokens": 162745,
+        "input_audio_seconds": 2
       },
-      "bytes": 1187180,
+      "bytes": 1157920,
       "media": {
         "width": 768,
         "height": 1344,
         "duration_s": 5.1667,
         "format_duration_s": 5.167,
         "fps": 24.0,
-        "bit_rate": 1838095,
-        "size_bytes": 1187180,
+        "bit_rate": 1792792,
+        "size_bytes": 1157920,
         "video_codec": "h264",
         "audio_codec": "aac",
         "has_audio": true,
