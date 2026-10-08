@@ -1,0 +1,15 @@
+{
+  "run_id": "20261008-030456-lipsync-2b59",
+  "command": "lipsync",
+  "args": {
+    "count": 8,
+    "routes": [
+      "A",
+      "B"
+    ]
+  },
+  "started_at": "2026-10-08T03:04:56.252Z",
+  "ended_at": null,
+  "status": "running",
+  "python": "3.13.16"
+}

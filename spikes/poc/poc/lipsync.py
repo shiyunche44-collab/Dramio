@@ -372,9 +372,19 @@ def run_jobs(
                 if video._abort(exc):
                     records.append({"status": "aborted", "error": f"账号级 / 额度错误，中止其余镜头：{minimax.scrub(str(exc))[:200]}"})
                     break
-    summary = {"jobs": records, "count": len(records), "success": sum(r.get("status") == "succeeded" for r in records)}
-    (out / "run-summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    return summary
+    summary_path = out / "run-summary.json"
+    merged: dict[str, dict[str, Any]] = {}
+    if summary_path.exists():  # 多次运行（冒烟、全量、补跑）累积：按 node_key 取最新一条
+        for r in json.loads(summary_path.read_text(encoding="utf-8")).get("jobs", []):
+            if r.get("node_key"):
+                merged[r["node_key"]] = r
+    for r in records:
+        if r.get("node_key"):
+            merged[r["node_key"]] = r
+    jobs_all = list(merged.values()) + [r for r in records if not r.get("node_key")]
+    summary = {"jobs": jobs_all, "count": len(jobs_all), "success": sum(r.get("status") == "succeeded" for r in jobs_all)}
+    summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return {"jobs": records, "count": len(records), "success": sum(r.get("status") == "succeeded" for r in records)}
 
 
 # ---- 命令行 ----
