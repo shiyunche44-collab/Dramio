@@ -8,13 +8,13 @@
   "references": {
     "char_luqingci": [
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep3/char_luqingci-main.jpg",
+        "path": "face-prep/ep3/char_luqingci-main.jpg",
         "sha256": "39d742f5f3d13c18a9470615da3fe5d173265ec765cc35982f8095eefe3dab0a",
         "det_score": 0.8822,
         "face_px": 139.4
       },
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep3/char_luqingci-neutral.jpg",
+        "path": "face-prep/ep3/char_luqingci-neutral.jpg",
         "sha256": "77850e13e4d15f80a36e655a4f91c1a9287fda5253f599848f051d58a1d7b7eb",
         "det_score": 0.8342,
         "face_px": 379.3
@@ -22,13 +22,13 @@
     ],
     "char_luzhenting": [
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep3/char_luzhenting-main.jpg",
+        "path": "face-prep/ep3/char_luzhenting-main.jpg",
         "sha256": "54b500e77fa0e08a1a39b4b324676a08f224131a4dcdf012d1967c548e8fc217",
         "det_score": 0.907,
         "face_px": 154.0
       },
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep3/char_luzhenting-neutral.jpg",
+        "path": "face-prep/ep3/char_luzhenting-neutral.jpg",
         "sha256": "9b8db7c7b16990ec79427ed2798340ebfb4b35409795a75b33b5ad3c651f3e54",
         "det_score": 0.8807,
         "face_px": 548.9
@@ -36,13 +36,13 @@
     ],
     "char_shenyan": [
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep3/char_shenyan-main.jpg",
+        "path": "face-prep/ep3/char_shenyan-main.jpg",
         "sha256": "09796e99c76802c4c6b88d07c706c8c1d35c238bf42d1bbd8ae956279972d3fa",
         "det_score": 0.8992,
         "face_px": 150.7
       },
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep3/char_shenyan-neutral.jpg",
+        "path": "face-prep/ep3/char_shenyan-neutral.jpg",
         "sha256": "a179958600d80ca0934882bf510a01b1ffdaa1a6ba899b76a4656b485aaa761b",
         "det_score": 0.8865,
         "face_px": 531.5

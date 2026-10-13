@@ -8,13 +8,13 @@
   "references": {
     "char_anni": [
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_anni-main.jpg",
+        "path": "face-prep/ep2/char_anni-main.jpg",
         "sha256": "bdd2d0175b67e626477050d248259335b68d67caf2c0f78139ac0c55b6d3647f",
         "det_score": 0.8907,
         "face_px": 162.3
       },
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_anni-neutral.jpg",
+        "path": "face-prep/ep2/char_anni-neutral.jpg",
         "sha256": "15cd8eddae8a83c5aa8b6cacc4eacd13b07a6a891b73739d3b4d4b9ae46df72f",
         "det_score": 0.8391,
         "face_px": 546.4
@@ -22,13 +22,13 @@
     ],
     "char_hejin": [
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_hejin-main.jpg",
+        "path": "face-prep/ep2/char_hejin-main.jpg",
         "sha256": "0024a6346ee00a1a255de9dfcd936b4235cbd75e24bcb79bf4c78e56455e80ab",
         "det_score": 0.905,
         "face_px": 182.6
       },
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_hejin-neutral.jpg",
+        "path": "face-prep/ep2/char_hejin-neutral.jpg",
         "sha256": "30847f33b2dfa0ed026065db0c54fd18dd8d95ba01d151a2a850471e5a885774",
         "det_score": 0.8183,
         "face_px": 531.0
@@ -36,13 +36,13 @@
     ],
     "char_linwan": [
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_linwan-main.jpg",
+        "path": "face-prep/ep2/char_linwan-main.jpg",
         "sha256": "fbc99d5c93c831360953887edd845b843697af18f1d57641e4eafc08c794c3e1",
         "det_score": 0.8936,
         "face_px": 152.6
       },
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_linwan-neutral.jpg",
+        "path": "face-prep/ep2/char_linwan-neutral.jpg",
         "sha256": "e5e52d1833d7dd32ed45944b47cfb1438260a3717202852a2c327b24b685b463",
         "det_score": 0.8043,
         "face_px": 526.5
@@ -50,13 +50,13 @@
     ],
     "char_luchen": [
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_luchen-main.jpg",
+        "path": "face-prep/ep2/char_luchen-main.jpg",
         "sha256": "9e309b6cd61728112a93419d0758915a61a5779896ad07bb071c8a04115f379b",
         "det_score": 0.8999,
         "face_px": 153.3
       },
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_luchen-neutral.jpg",
+        "path": "face-prep/ep2/char_luchen-neutral.jpg",
         "sha256": "0c89950632ae80f5c5c257916d759b3d9a7e70833b392580c2718c0303736797",
         "det_score": 0.8216,
         "face_px": 514.2

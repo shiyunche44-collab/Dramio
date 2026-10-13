@@ -8,13 +8,13 @@
   "references": {
     "char_luchen": [
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face-rr/ep1/char_luchen-main.jpg",
+        "path": "face-prep/ep1/char_luchen-main.jpg",
         "sha256": "983b785ac4385927d93ceb2cb6fa5e1911addae78e3e61d6f759cb74a80d8b9f",
         "det_score": 0.7946,
         "face_px": 238.7
       },
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face-rr/ep1/char_luchen-neutral.jpg",
+        "path": "face-prep/ep1/char_luchen-neutral.jpg",
         "sha256": "59aa30514071043957dd65502ab1ad4f4a91e8056bcdea96abc01156fd044f7b",
         "det_score": 0.7857,
         "face_px": 490.4
@@ -22,13 +22,13 @@
     ],
     "char_suning": [
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face-rr/ep1/char_suning-main.jpg",
+        "path": "face-prep/ep1/char_suning-main.jpg",
         "sha256": "760d5f0c42270de5a2e576da50ce0b6d00a9b74be5b17086a8fd080b4e503e05",
         "det_score": 0.7669,
         "face_px": 238.4
       },
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face-rr/ep1/char_suning-neutral.jpg",
+        "path": "face-prep/ep1/char_suning-neutral.jpg",
         "sha256": "621dc5122027c980fb0a7f094e28d2a9878fcfc8b0c7c488b4bafb92bb9c7fdc",
         "det_score": 0.7907,
         "face_px": 421.1
@@ -36,13 +36,13 @@
     ],
     "char_zhaolin": [
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face-rr/ep1/char_zhaolin-main.jpg",
+        "path": "face-prep/ep1/char_zhaolin-main.jpg",
         "sha256": "90de4c0d2f8771f3973a618404b27e2dfcc0fbdc88a09a62c630c773c4c55932",
         "det_score": 0.8945,
         "face_px": 171.0
       },
       {
-        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face-rr/ep1/char_zhaolin-neutral.jpg",
+        "path": "face-prep/ep1/char_zhaolin-neutral.jpg",
         "sha256": "d9197d70e67069916a38e683304eb129c01d835e380914b0d9e50fda99576165",
         "det_score": 0.8137,
         "face_px": 505.1

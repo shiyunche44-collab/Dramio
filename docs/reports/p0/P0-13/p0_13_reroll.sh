@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # P0-13 重抽实验：对首帧人脸相似度 < 0.45 的镜头各 --reroll 一次（其余节点命中缓存）。需要先跑完 p0_13_batch.sh。
+# 注意：镜头 id 依赖 p0_13_batch.sh 产生的缓存（冷启动重跑时分镜可能不同，id 会失效）。
 set -u
 cd "$(dirname "$0")/.."
 OUT_DIR="${P0_13_OUT_DIR:-runs/p0-13-reroll}"
