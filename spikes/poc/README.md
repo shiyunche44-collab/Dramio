@@ -264,6 +264,26 @@ python3 -m poc compose --verify ../../docs/reports/p0/P0-11   # 离线核验证�
 - **缓存**：节点 `segment` / `audio_mix` / `final` 各有 `node_key`（输入内容 sha256，含渲染版本号），缓存在 `runs/compose-cache/`（不入库）；`compose-manifest.json` 记录每个节点的命中与耗时。冷启动全量约 2 分钟，全命中约 10 秒。
 - **`--verify`** 检查：规格（1080×1920、24 fps、h264 / aac / yuv420p）、音视频时长差 ≤ 50 ms、总时长与规划一致、AIGC 标签与角标（5 个采样帧的角标区域有白色文字）、字幕 cue 数 = 台词数且落在各自镜头窗口内、对白起声与字幕起点偏差 ≤ 0.2 秒、响度 −16 ±1.5 LUFS 与真峰值 ≤ −1 dBTP、OTIO 往返读写与 clip 数与 placeholder 标记、FCP7 XML / EDL 回读时长、真实片段 sha256、体积 ≤ 28 MB（按入库文件计）、无费用记录与密钥。字幕框与人脸框的相交检查是几何估算，只给提示。
 
+## run：一句话梗概 → 成片（P0-12）
+
+```bash
+python3 -m poc run --logline "雨夜，被陷害的设计师当众撕开真相。" --video placeholder --max-cost-cny 15   # 不调视频接口，约 ¥6–7
+python3 -m poc run --logline "…"                      # --video auto：H3 768P，额度用尽时占位降级（退出码仍为 0）
+python3 -m poc run --logline "…" --require-real-video # 有占位镜头则退出码 1（--video h3 等价）
+python3 -m poc run --logline "…" --reroll keyframe:ep01_sc01_sh03   # 让该节点重新抽卡
+python3 -m poc run --dry-run --logline "…"            # 离线预估，不需要密钥
+python3 -m poc run --verify runs/<run_id>             # 离线复核成片规格、AIGC 标识、字幕条数、费用对账、无密钥
+```
+
+阶段：script → shots → costume（主图 + neutral 特写）→ tts → keyframe（ref2）→ video（H3 768P）→ compose（OTIO → FFmpeg）。
+全程无人工干预：定妆 / 首帧自动取第 1 张，音色按角色 gender 取 D-004 音色池，视频额度用尽时缺的镜头走首帧缓推占位并记入 manifest 的 `degraded[]`。
+每个生成节点按 `node_key`（`poc/nodekey.py`：kind / 版本 / 参数 / 模板文件 sha256 / 相关 IR 字段 / 上游产物 sha256）查缓存，命中不调用供应商；
+缓存在 `runs/pipeline-cache/`（`cas/<sha256>` + `nodes/<kind>/<key>.json`，不入库）；合成沿用 compose 自带的 segment / audio_mix / final 缓存（`pipeline-cache/compose/`）。
+输出在 `runs/<run_id>/`：`final.mp4`、`timeline.otio`、`subtitles.srt|ass`、`pipeline-manifest.json`（每个节点的 key / 命中 / 费用 / 耗时、`degraded[]`、`placeholders`）、`calls.jsonl`。
+需要环境变量 `DEEPSEEK_API_KEY`、`ARK_API_KEY`（`ARK_BILLING=plan`）、`VOLC_SPEECH_API_KEY`，真实视频还需要 `MINIMAX_API_KEY`；本机需要 ffmpeg 与 OTIO（`pip install -e '.[otio]'`）。
+`--reroll` 只改变缓存 key 的采样序号：Seedream / LLM 没有 seed，是否得到不同结果取决于供应商的随机性；阶段名之外的 id 写错不会报错（什么也不会重算），视频节点不支持 reroll。
+不含 BGM / SFX（P0-10 未做）；口型路线 C（D-016）默认不接入。
+
 ## 运行记录
 
 ```

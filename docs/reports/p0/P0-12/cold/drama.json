@@ -1,0 +1,740 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "rainy_night_design",
+    "title": "雨夜撕稿",
+    "logline": "雨夜，被陷害的设计师当众撕开真相，却发现幕后黑手是自己最信任的人。",
+    "genre": "都市逆袭·悬疑",
+    "visual_style": "现代都市写实风，冷蓝与霓虹对比色，雨夜高反差打光，发布会现场大屏蓝光与闪光灯交织，画面干净利落，竖屏构图中人物常居中偏左、右留信息区",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_linwan",
+      "name": "林晚",
+      "gender": "female",
+      "age": 28,
+      "role": "protagonist",
+      "bio": "独立服装设计师，白手起家做出个人品牌，把合伙人沈亦舟当作最信任的人。今晚是她人生第一场大型发布会，却在三分钟内被指控抄袭。",
+      "appearance": "清瘦，齐肩黑发微湿，眉骨利落，眼神锐利，唇色偏淡，手指细长常带铅笔痕",
+      "costume": "米白色高领针织衫配黑色阔腿长裤，外披一件没来得及脱的浅灰风衣，脚踩低跟短靴，胸前挂着设计师工牌",
+      "voice": "清亮偏低的年轻女声，咬字干净，前半段克制发紧，情绪爆发时字字用力不发飘"
+    },
+    {
+      "id": "char_shen",
+      "name": "沈亦舟",
+      "gender": "male",
+      "age": 30,
+      "role": "antagonist",
+      "bio": "林晚的合伙人兼未婚夫，掌管品牌运营与云端资料，表面温柔支持，实则早已把她的设计稿和家庭旧案一起当成了筹码。",
+      "appearance": "高个，短发利落，眉目清俊，习惯性带着温和笑意，雨水打湿后显出眼神里的冷",
+      "costume": "深灰色三件套西装，没有打领带，衬衫领口松着一颗扣，手里一把长柄黑伞",
+      "voice": "低沉温润的男中音，语速慢，越平静越让人发凉，尾音带一点点笑意"
+    },
+    {
+      "id": "char_suman",
+      "name": "苏曼",
+      "gender": "female",
+      "age": 32,
+      "role": "supporting",
+      "bio": "发布会主持人，混迹行业多年的老手，拿钱办事，负责把这场指控当着所有媒体的面念出来。",
+      "appearance": "干练短发，妆容精致，眼神有距离感，身姿笔挺",
+      "costume": "黑色西装裙配细跟高跟鞋，耳上一对银色长耳饰，手拿平板",
+      "voice": "职业化的中高音女声，语调平稳冷淡，像在念一份公文"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "第一集：上传账号",
+      "synopsis": "雨夜的品牌发布会上，主持人苏曼当众指控林晚抄袭。林晚在侧台查到自己作品的上传账号竟属于合伙人沈亦舟，她冲回台上当众揭穿，却在雨里等来对方亲口承认——连她父亲的旧案，也是他递出去的料。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "云顶设计大赏发布会主会场",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "挑高宴会厅，中央圆形舞台，头顶追光，身后是一整面巨幅LED屏，台下坐满媒体与买手，雨声透过玻璃顶棚隐约传来，空气又闷又亮"
+          },
+          "summary": "发布会开场不到三分钟，主持人苏曼当众指出林晚的参赛作品与三个月前的旧稿一模一样，全场哗然。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "ELS",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "竖屏9:16，大楼玻璃幕墙占画面上2/3，横幅与入口置于上1/3，右侧留出信息区，底部1/4为字幕安全区留空"
+              },
+              "description": "雨夜的城市高楼外景，玻璃幕墙反射着湿漉漉的霓虹光带，大楼入口悬挂的发布会横幅在风里翻卷，台阶积水映出灯光，雨点砸出密集水花。画面下方文字后期叠加：雨夜·云顶设计大赏发布会。",
+              "lighting": "冷蓝夜色为主光，霓虹红蓝反射在湿玻璃上，路灯把雨丝照成白色斜线",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "暴雨倾泻",
+                "远处闷雷",
+                "横幅被风拍打"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "eye_level",
+                "movement": "pull_out",
+                "composition": "竖屏9:16，人物居中偏上，追光形成窄亮区，暗下的观众席压住画面下缘，底部1/4为字幕安全区"
+              },
+              "description": "发布会主会场，林晚独自站在圆形舞台正中央，头顶追光把她和周围暗下去的观众席切开，身后一整面巨幅LED屏亮起她本人的设计稿。镜头缓缓后拉，露出满场媒体与买手。",
+              "lighting": "单一顶部追光打在人物身上，LED屏冷蓝光作为背景光源，观众席几乎全黑",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "站于舞台中央握着话筒，另一只手垂在身侧轻轻收紧",
+                  "emotion": "表面镇定，眼底发紧"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_linwan",
+                  "kind": "voiceover",
+                  "text": "三分钟前，我还是这场发布会的主角。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "会场低频背景音乐",
+                "人群细碎交谈声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 2
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "static",
+                "composition": "竖屏9:16，人物居中偏上，右留LED屏冷蓝余光信息区，底部1/4为字幕与平台UI安全区"
+              },
+              "description": "林晚近景，一手握着话筒贴在胸前，背脊挺直，追光在她发梢勾出一圈冷边，身后屏上的设计稿虚化成蓝色色块。",
+              "lighting": "顶部追光勾边，正面补一点LED冷蓝反射光，面部半明半暗",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "握着话筒站在舞台中央，背脊挺直",
+                  "emotion": "镇定克制，下颌微微绷紧"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "人群交谈声",
+                "话筒轻微电流声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh04",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "竖屏9:16，苏曼居中偏左，右侧留给大屏对比图信息区，底部1/4为字幕安全区"
+              },
+              "description": "主持人苏曼从侧台走上舞台，一手举着平板示意观众看大屏，另一只手礼貌地指向林晚。身后大屏并排显示两张几乎一致的设计稿，一张标注三个月前，一张标注今晚参赛；画面右侧文字后期叠加：涉案设计稿对比图。林晚背对镜头站在原地。",
+              "lighting": "舞台追光加LED屏冷蓝主光，苏曼面部打出干净的硬光",
+              "characters": [
+                {
+                  "character_id": "char_suman",
+                  "action": "举着平板指向大屏，另一手示意林晚",
+                  "emotion": "职业化的冷淡，嘴角带礼貌的弧度"
+                },
+                {
+                  "character_id": "char_linwan",
+                  "action": "背对镜头站在原地一动不动",
+                  "emotion": "身体僵住，肩膀绷紧"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_suman",
+                  "kind": "dialogue",
+                  "text": "林小姐，这份稿，和你三个月前的旧作一模一样。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.5,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "大屏切换提示音",
+                "台下哗然声渐起"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh05",
+              "duration": {
+                "hint_s": 3
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，双眼位于画面上1/3中线，睫毛与瞳孔占满画面，底部1/4为字幕安全区"
+              },
+              "description": "林晚眼睛的大特写，睫毛上挂着一点水光，唇线紧抿，瞳孔在追光下微微收缩，眼眶没有红，泪水被她自己压了回去；喉头轻轻滚动一下。",
+              "lighting": "追光正面直打，眼中一点高光，背景全黑",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "睁着眼一动不动，喉头轻轻滚动一下",
+                  "emotion": "震惊被强行压成冷硬"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "心跳放大声",
+                "台下议论声压低成嗡鸣"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "发布会主会场侧台",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "舞台侧后方的暗区，堆着黑色桁架、卷起的电缆和几只空行李箱，光线靠舞台溢出的冷蓝余光和平板屏幕光"
+          },
+          "summary": "林晚躲进侧台，翻出云端后台的上传记录，发现上传账号竟然属于沈亦舟。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "竖屏9:16，林晚居中偏左，右侧桁架与电缆形成暗区层次，底部1/4为字幕安全区"
+              },
+              "description": "舞台侧后方的暗区，堆着黑色桁架、卷起的电缆和几只空行李箱。林晚背对着仍在喧闹的舞台，低头飞快滑动手中平板，屏幕冷光自下而上照亮她的半张脸，映出紧蹙的眉。",
+              "lighting": "舞台溢出的冷蓝余光做轮廓光，平板屏幕光自下而上照亮下半张脸，高反差暗调",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "低头快速滑动平板，手指忽然停在屏幕中央",
+                  "emotion": "急促、慌乱中带着狠劲"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_linwan",
+                  "kind": "voiceover",
+                  "text": "上传时间，昨晚十一点四十七分。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "平板滑动声",
+                "舞台模糊的掌声",
+                "雨点敲玻璃声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "overhead",
+                "movement": "push_in",
+                "composition": "竖屏9:16，屏幕内容居中，上传账号一行压在画面中线，底部1/4为字幕安全区留空"
+              },
+              "description": "平板屏幕大特写：云端作品后台的修改记录列表，其中一行被手指按得发亮——上传账号一栏写着一个名字，上传时间定在昨晚。画面文字后期叠加：上传账号：Shen.YZ；上传时间：23:47。",
+              "lighting": "屏幕自发光冷白，周围环境近乎全黑，指尖被屏幕光染出冷边",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "指尖按在屏幕某一行上，指节泛白",
+                  "emotion": "紧绷、屏住呼吸"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "点击提示音",
+                "雨点敲玻璃声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "竖屏9:16，人物居中偏上，屏幕冷光留在画面下缘，底部1/4为字幕安全区"
+              },
+              "description": "林晚缓缓抬起头，眼睛睁大，瞳孔一缩，握着平板的手指用力收紧到发白，屏幕光仍从下方照着她，表情从慌乱一寸寸冷下来。",
+              "lighting": "仅靠平板屏幕光自下而上打脸，顶部几乎无光，冷调硬阴影",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "抬头，把平板攥紧贴在身前",
+                  "emotion": "难以置信转为冰冷的决意"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_linwan",
+                  "kind": "voiceover",
+                  "text": "他昨天问我，电脑借他用一下。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "心跳声",
+                "远处相机快门声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "发布会主会场舞台前区",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "圆形舞台正前方，台下第一排是媒体与品牌方，闪光灯不断，地上残留着从入口带进来的水痕"
+          },
+          "summary": "林晚重回台上，当众宣布上传账号不属于自己，并直视沈亦舟——云端密码只有他知道。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "竖屏9:16，林晚居中偏左走入画面，右侧留大屏对比稿信息区，底部1/4为字幕安全区"
+              },
+              "description": "圆形舞台正前方，林晚从侧台走回舞台中央，身后大屏仍挂着那两张对比稿，台下第一排媒体与品牌方的闪光灯不断，地上残留着从入口带进来的水痕。",
+              "lighting": "舞台追光加屏幕冷蓝，闪光灯偶尔闪白，地面水痕反光",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "从侧台稳步走回舞台中央",
+                  "emotion": "冷静而锋利"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "话筒轻微啸叫",
+                "全场议论声忽然压低"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "static",
+                "composition": "竖屏9:16，林晚居中偏左，举起的平板上传记录置于画面右侧信息区，底部1/4为字幕安全区"
+              },
+              "description": "林晚伸手从苏曼手里拿过话筒，另一只手举起平板正对台下，平板屏幕上清晰显示上传账号一栏，画面文字后期叠加：上传账号：Shen.YZ。",
+              "lighting": "追光正面硬光，平板屏幕光打亮她的下颌，背景LED冷蓝",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "拿过话筒，举起平板面向观众席",
+                  "emotion": "冷静、锋利"
+                },
+                {
+                  "character_id": "char_suman",
+                  "action": "递出话筒后退半步，侧身看向大屏",
+                  "emotion": "职业化的观察与疏离"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_linwan",
+                  "kind": "dialogue",
+                  "text": "这份稿子的上传账号，不是我。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "话筒电流声",
+                "全场瞬间安静"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "pan",
+                "composition": "竖屏9:16，沈亦舟居中偏上，周围记者头部压在下缘，底部1/4为字幕安全区"
+              },
+              "description": "观众席第一排，西装笔挺的沈亦舟从座位上站起来，眉头轻皱，周围记者齐刷刷转头，闪光灯连成一片白，他抬手示意林晚别再说，脸上还挂着惯常的温和。镜头随他起身小幅横移。",
+              "lighting": "观众席顶部散光加连续闪光灯白光，明暗交替",
+              "characters": [
+                {
+                  "character_id": "char_shen",
+                  "action": "从第一排站起，抬手示意她停下",
+                  "emotion": "表面担心，眼底一闪而过的慌"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_shen",
+                  "kind": "dialogue",
+                  "text": "晚晚，别闹。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.5,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "快门连拍声",
+                "椅子挪动声",
+                "人群骚动"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh04",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，人物居中偏左，视线方向留出右侧空间，底部1/4为字幕安全区"
+              },
+              "description": "林晚站在舞台边缘，话筒贴近唇边，目光越过镜头直直落向第一排的方向，眼角泛红却一眨不眨，举着平板的另一只手稳稳不抖。",
+              "lighting": "追光正面，眼中有反光点，背景LED冷蓝压暗",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "握着话筒说话，目光锁定台下某个座位",
+                  "emotion": "克制到极点的愤怒"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_linwan",
+                  "kind": "dialogue",
+                  "text": "我的云端密码，只有你知道。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "全场哗然",
+                "口哨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh05",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏9:16，面部居中偏上，右侧留一点媒体席虚影，底部1/4为字幕安全区"
+              },
+              "description": "沈亦舟的脸部特写，闪光灯在他脸上一亮一暗，他的表情从意外的关切慢慢沉下去，嘴角极轻地抽动了一下，眼底那点温度彻底退干净，慢慢放下示意的手。",
+              "lighting": "闪光灯交替白光与席位暗部，脸部明暗跳动，眼神高光消失",
+              "characters": [
+                {
+                  "character_id": "char_shen",
+                  "action": "站在原地不动，慢慢放下示意的手",
+                  "emotion": "面具裂开，转为冷静审视"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "快门声",
+                "人群低声议论"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "发布中心大楼正门台阶外",
+            "int_ext": "EXT",
+            "time_of_day": "night",
+            "description": "雨下得很大，大楼正门前的台阶与人行道连成一片水光，路灯把雨丝照成一条条白线，门口立着还没撤走的品牌展板"
+          },
+          "summary": "林晚追出大楼，在暴雨里得到沈亦舟的亲口承认，也听到一句让她浑身发冷的旧事。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 3
+              },
+              "framing": {
+                "shot_size": "ELS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "竖屏9:16，台阶与门口横幅占上2/3，林晚身影居中偏上，底部1/4为字幕安全区"
+              },
+              "description": "暴雨中的发布中心大楼正门，林晚冲出玻璃门站在最高一级台阶上，浅灰风衣瞬间被浇透贴在身上，雨幕把路灯照成一条条白线，门口还立着没撤走的品牌展板，身后大厅灯光在她背后拉出长水痕。",
+              "lighting": "路灯冷白光穿过雨幕，大厅暖白光从背后透出，形成逆光剪影",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "冲出大楼站定在台阶顶端，抬头望向台阶下方",
+                  "emotion": "喘着气，等着一个答案"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "暴雨倾泻",
+                "鞋底踏水声",
+                "雷声滚过"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏9:16，人物居中偏上，雨水在画面前景形成斜线，底部1/4为字幕安全区"
+              },
+              "description": "林晚站在暴雨里，风衣湿透贴住身体，雨水顺着下颌往下淌，她一动不动地望着台阶下方，背后大厅的灯光在雨幕中晕开。",
+              "lighting": "背光暖白与正面冷蓝雨光对比，脸上雨水反光",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "站在雨里一动不动，望向台阶下",
+                  "emotion": "压抑的难过与不甘"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_linwan",
+                  "kind": "voiceover",
+                  "text": "我信了他七年。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "暴雨",
+                "远处车驶过水洼"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh03",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "low",
+                "movement": "static",
+                "composition": "竖屏9:16，沈亦舟居中偏左下，黑伞占画面上方，右留雨幕信息区，底部1/4为字幕安全区"
+              },
+              "description": "从林晚肩后反打，台阶下的沈亦舟撑着一把长柄黑伞站在雨里，深灰西装肩头已经湿了一片，他抬起伞沿看向镜头方向的林晚，林晚的背影压在画面前景。",
+              "lighting": "路灯顶光把伞面照出冷白边，人物面部半暗，雨丝被光照亮",
+              "characters": [
+                {
+                  "character_id": "char_shen",
+                  "action": "撑着黑伞站在台阶下，抬起伞沿看她",
+                  "emotion": "平静，甚至有点轻松"
+                },
+                {
+                  "character_id": "char_linwan",
+                  "action": "背对镜头站在雨里一动不动",
+                  "emotion": "浑身发抖"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_shen",
+                  "kind": "dialogue",
+                  "text": "密码是我记的，稿子也是我传的。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨打伞面",
+                "闷雷",
+                "车驶过水洼"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh04",
+              "duration": {
+                "hint_s": 2
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "high",
+                "movement": "handheld",
+                "composition": "竖屏9:16，人物居中偏下，头顶雨幕留白，底部1/4为字幕安全区"
+              },
+              "description": "俯拍林晚在雨中的近景，湿发贴在脸侧，雨水从发梢连续滴落，她双手垂在身侧，指尖发抖，脚下积水被雨点砸出密集涟漪。",
+              "lighting": "路灯顶光从上方打下，湿发与肩线勾出冷白轮廓光",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "站在雨中，双手垂在身侧，指尖发抖",
+                  "emotion": "难以置信，强撑着不崩溃"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "暴雨砸落",
+                "牙齿轻颤的呼吸声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh05",
+              "duration": {
+                "hint_s": 5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "竖屏9:16，面部居中偏上，黑伞边沿压住画面上1/4，右留雨线信息区，底部1/4为字幕安全区"
+              },
+              "description": "沈亦舟微微前倾半步，黑伞的边沿压下来遮住半边脸，雨水沿着伞骨连成一条条线往下砸，他嘴角慢慢牵起一点弧度，眼睛里没有任何温度。镜头缓缓推近。",
+              "lighting": "伞下阴影罩住眼窝，边缘路灯冷白光勾出鼻梁与下颌线，雨线高光密集",
+              "characters": [
+                {
+                  "character_id": "char_shen",
+                  "action": "撑着伞前倾半步，直视镜头方向的林晚",
+                  "emotion": "冷静到残忍，嘴角带弧度"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_shen",
+                  "kind": "dialogue",
+                  "text": "发布会是我办的。你父亲的案子，也是我递的料。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "暴雨",
+                "一声闷雷",
+                "伞面被雨砸出的密集响声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh06",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏9:16，双眼位于画面上1/3，雨水从睫毛前端落下，底部1/4为字幕安全区"
+              },
+              "description": "林晚双眼的大特写，雨水挂在睫毛上不断滴落，瞳孔剧烈收缩，脸色一寸寸发白，眼里的水光和雨混在一起分不清。",
+              "lighting": "路灯冷白光从侧面打进眼里，形成一点刺痛的高光，脸部其余部分压暗",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "睁大眼睛一动不动，雨水从睫毛滴落",
+                  "emotion": "被彻底击穿的震惊与冰冷"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "暴雨",
+                "心跳声",
+                "远处雷声收尾"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

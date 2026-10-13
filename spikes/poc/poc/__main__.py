@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 import sys
 
-from poc import compose_cmd, config, costume, doctor, face, keyframe, lipsync, script, shots, tts, video
+from poc import compose_cmd, config, costume, doctor, face, keyframe, lipsync, pipeline_cmd, script, shots, tts, video
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -21,6 +21,7 @@ def build_parser() -> argparse.ArgumentParser:
     video.add_parser(sub)
     compose_cmd.add_parser(sub)
     lipsync.add_parser(sub)
+    pipeline_cmd.add_parser(sub)
     return parser
 
 
