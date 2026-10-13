@@ -40,18 +40,18 @@
 
 ## 子任务
 
-- [ ] 1. 摸底各阶段入口的硬编码点，写进 `pipeline.py` 模块文档
-- [ ] 2. `nodekey.py` + 单测
-- [ ] 3. 缓存存储（CAS + 节点记录，原子写入、校验、损坏视为未命中）+ 单测
-- [ ] 4. script + shots 阶段（shots 失败回退 script 自带镜头）
-- [ ] 5. costume / keyframe 自动选择规则与 manifest
-- [ ] 6. 音色按性别自动分配
-- [ ] 7. tts 阶段（按句缓存，ASR 回检）
-- [ ] 8. keyframe 阶段（按镜头缓存）
-- [ ] 9. video 阶段（按镜头缓存，额度用尽降级，占位不进缓存）
-- [ ] 10. compose 接线
-- [ ] 11. 编排器与 CLI（`run`，含 dry-run / verify / manifest）
-- [ ] 12. 离线端到端测试（冷 / 热 / 增量 / 降级 / 费用保险）
+- [x] 1. 摸底各阶段入口的硬编码点，写进 `pipeline.py` 模块文档
+- [x] 2. `nodekey.py` + 单测
+- [x] 3. 缓存存储（CAS + 节点记录，原子写入、校验、损坏视为未命中）+ 单测
+- [x] 4. script + shots 阶段（shots 失败回退 script 自带镜头）
+- [x] 5. costume / keyframe 自动选择规则与 manifest
+- [x] 6. 音色按性别自动分配
+- [x] 7. tts 阶段（按句缓存，ASR 回检）
+- [x] 8. keyframe 阶段（按镜头缓存）
+- [x] 9. video 阶段（按镜头缓存，额度用尽降级，占位不进缓存）
+- [x] 10. compose 接线
+- [x] 11. 编排器与 CLI（`run`，含 dry-run / verify / manifest）
+- [x] 12. 离线端到端测试（冷 / 热 / 增量 / 降级 / 费用保险）
 - [ ] 13. 真实冷运行（placeholder）与热运行
 - [ ] 14. 真实运行（auto），验证降级
 - [ ] 15.（可选）`--lipsync c` 开关，仅离线单测
@@ -180,3 +180,4 @@
 | 2026-10-08 | P0-09 | 收尾：D-016 已决（路线 C），P0-09 标 ✅，进度指针移到 P0-10。P0-09 PR 已于同日合并（#14）。D-017（补测 `sc03_sh02`、`sc01_sh05`）仍待决，不阻塞 | 验收对照见 `docs/reports/p0/P0-09.md` §2（5、6、9、11 部分，其余满足，10 由 D-016 满足但无逐片段评分）；`make arch-check` 通过。本步费用 ¥14.0（账本估算，账单待核对） | P0-10 音乐音效 |
 | 2026-10-13 | P0-10 | `/continue`：P0-10 仍被阻塞，未开工。`VOLC_ACCESS_KEY` / `VOLC_SECRET_KEY` / `MEDIAKIT_API_KEY` 仍未配置（`open.volcengineapi.com` 返回 400，域名可达）。新试了 MiniMax 音乐接口 `POST /v1/music_generation`（`music-2.0`，纯音乐、最小请求）：返回 `2153`“该音乐 API 不再向新用户开放”，未计费，此路不通；ElevenLabs / DashScope 密钥也没有。MiniMax 周额度剩余 19% | 无代码改动；费用 ¥0；`make arch-check` 见提交前 | 用户添加火山 OpenAPI 的 AK/SK（`VOLC_ACCESS_KEY` / `VOLC_SECRET_KEY`，豆包音乐 `GenBGMForTime`）后新会话继续；或提供 ElevenLabs Key（`ELEVENLABS_API_KEY`，音乐 + 音效）；或明确同意越过 M0.2 先做 M0.3 |
 | 2026-10-13 | 授权 | 用户明确同意越过 M0.2，直接开始 M0.3（“越过m2 开始m3”）。P0-10 音乐音效仍 ⬜（缺火山 AK/SK，MiniMax 音乐接口 2153 不可用），保持未完成，拿到密钥后补做；P0-12 串联先不含 BGM / SFX（OTIO A3 / A4 保持空轨），P0-14 复盘须把 P0-10 作为 P0 退出标准的缺口记录 | — | P0-12 一键串联 |
+| 2026-10-13 | P0-12 | 子任务 1–12 完成（离线）：`nodekey.py`（规范化 JSON 的 sha256，上游用产物 sha256）、`nodecache.py`（`cas/<sha256>` + `nodes/<kind>/<key>.json`，原子写入，读取校验，损坏视为未命中）、`pipeline.py`（script → shots → costume → tts → keyframe ref2 → video H3 768P → compose；各阶段复用现成 Runner / Generator；额度用尽停止提交并降级占位；费用保险；`--reroll`）、`pipeline_cmd.py`（`python3 -m poc run`，含 `--dry-run` / `--verify`）。`--video` 取值 auto / h3（= auto + 有占位即失败）/ placeholder。16 个新增单测覆盖冷 / 热运行、改一句台词只重算该句 tts、改一个镜头只重算该镜头首帧、额度用尽降级与续跑、费用保险、shots 失败回退、node_key 敏感性、缓存损坏。装了 OTIO（`pip install OpenTimelineIO==0.18.1 OpenTimelineIO-Plugins==0.18.1`，`.[otio]` 在本容器 editable 安装失败） | 388 个单测通过；`make arch-check` 通过。费用 ¥0 | 子任务 13：真实冷运行（`--video placeholder`，预计 ¥6–7）与热运行 |
