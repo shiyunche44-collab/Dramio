@@ -21,8 +21,8 @@
 
 ## 当前状态
 
-- **当前里程碑**：M0.2 单项能力摸底
-- **当前步骤**：P0-10
+- **当前里程碑**：M0.3 串联与结论
+- **当前步骤**：P0-12
 - **步骤状态**：未开始
 - **工作分支**：claude/admiring-fermat-vnmmrj
 - **PR**：—
@@ -156,3 +156,4 @@
 | 2026-10-08 | D-016 | 用户选 C：路线 C（H3 画面 + D-004 配音按语音区间重排）作为 P0 口型方案候选；没有给逐片段评分。含义：P0-12 串联时口型镜头先出 H3 片段，再用 ASR / 能量检测拿语音区间重排配音（`lipsync_eval.route_c_plan` / `build_route_c` 是现成实现），不用 H3 原声，D-014（原声 off）与音频先行不受影响；已知限制：变速超出 0.8–1.25 的句子不可行（`sc01_sh04` 为 0.78）、嘴型贴的是 H3 自己念的节奏、开口前约 1 秒的无声张嘴要靠提示词压缩。D-017（补测）仍待决，不阻塞 | 无代码改动；`make arch-check` 通过 | P0-09 可在下次 `/continue` 标 ✅（D-016 已决）；P0-10 仍缺火山 AK/SK |
 | 2026-10-08 | P0-09 | 收尾：D-016 已决（路线 C），P0-09 标 ✅，进度指针移到 P0-10。P0-09 PR 已于同日合并（#14）。D-017（补测 `sc03_sh02`、`sc01_sh05`）仍待决，不阻塞 | 验收对照见 `docs/reports/p0/P0-09.md` §2（5、6、9、11 部分，其余满足，10 由 D-016 满足但无逐片段评分）；`make arch-check` 通过。本步费用 ¥14.0（账本估算，账单待核对） | P0-10 音乐音效 |
 | 2026-10-13 | P0-10 | `/continue`：P0-10 仍被阻塞，未开工。`VOLC_ACCESS_KEY` / `VOLC_SECRET_KEY` / `MEDIAKIT_API_KEY` 仍未配置（`open.volcengineapi.com` 返回 400，域名可达）。新试了 MiniMax 音乐接口 `POST /v1/music_generation`（`music-2.0`，纯音乐、最小请求）：返回 `2153`“该音乐 API 不再向新用户开放”，未计费，此路不通；ElevenLabs / DashScope 密钥也没有。MiniMax 周额度剩余 19% | 无代码改动；费用 ¥0；`make arch-check` 见提交前 | 用户添加火山 OpenAPI 的 AK/SK（`VOLC_ACCESS_KEY` / `VOLC_SECRET_KEY`，豆包音乐 `GenBGMForTime`）后新会话继续；或提供 ElevenLabs Key（`ELEVENLABS_API_KEY`，音乐 + 音效）；或明确同意越过 M0.2 先做 M0.3 |
+| 2026-10-13 | 授权 | 用户明确同意越过 M0.2，直接开始 M0.3（“越过m2 开始m3”）。P0-10 音乐音效仍 ⬜（缺火山 AK/SK，MiniMax 音乐接口 2153 不可用），保持未完成，拿到密钥后补做；P0-12 串联先不含 BGM / SFX（OTIO A3 / A4 保持空轨），P0-14 复盘须把 P0-10 作为 P0 退出标准的缺口记录 | — | P0-12 一键串联 |
