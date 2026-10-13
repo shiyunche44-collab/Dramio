@@ -1,0 +1,2135 @@
+{
+  "backend": "arcface",
+  "thresholds": {
+    "min_face_px": 40,
+    "min_det_score": 0.5
+  },
+  "assign_by": "bank",
+  "references": {
+    "char_anni": [
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_anni-main.jpg",
+        "sha256": "bdd2d0175b67e626477050d248259335b68d67caf2c0f78139ac0c55b6d3647f",
+        "det_score": 0.8907,
+        "face_px": 162.3
+      },
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_anni-neutral.jpg",
+        "sha256": "15cd8eddae8a83c5aa8b6cacc4eacd13b07a6a891b73739d3b4d4b9ae46df72f",
+        "det_score": 0.8391,
+        "face_px": 546.4
+      }
+    ],
+    "char_hejin": [
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_hejin-main.jpg",
+        "sha256": "0024a6346ee00a1a255de9dfcd936b4235cbd75e24bcb79bf4c78e56455e80ab",
+        "det_score": 0.905,
+        "face_px": 182.6
+      },
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_hejin-neutral.jpg",
+        "sha256": "30847f33b2dfa0ed026065db0c54fd18dd8d95ba01d151a2a850471e5a885774",
+        "det_score": 0.8183,
+        "face_px": 531.0
+      }
+    ],
+    "char_linwan": [
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_linwan-main.jpg",
+        "sha256": "fbc99d5c93c831360953887edd845b843697af18f1d57641e4eafc08c794c3e1",
+        "det_score": 0.8936,
+        "face_px": 152.6
+      },
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_linwan-neutral.jpg",
+        "sha256": "e5e52d1833d7dd32ed45944b47cfb1438260a3717202852a2c327b24b685b463",
+        "det_score": 0.8043,
+        "face_px": 526.5
+      }
+    ],
+    "char_luchen": [
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_luchen-main.jpg",
+        "sha256": "9e309b6cd61728112a93419d0758915a61a5779896ad07bb071c8a04115f379b",
+        "det_score": 0.8999,
+        "face_px": 153.3
+      },
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep2/char_luchen-neutral.jpg",
+        "sha256": "0c89950632ae80f5c5c257916d759b3d9a7e70833b392580c2718c0303736797",
+        "det_score": 0.8216,
+        "face_px": 514.2
+      }
+    ]
+  },
+  "skipped_same_as_reference": [],
+  "images": [
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc01_sh01.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [],
+      "characters": [],
+      "shot_id": "ep01_sc01_sh01",
+      "scheme": "shared",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc01_sh02.jpg",
+      "n_faces": 3,
+      "faces": [
+        {
+          "bbox": [
+            325.3,
+            794.3,
+            363.2,
+            852.7
+          ],
+          "det_score": 0.5755,
+          "width": 37.9,
+          "height": 58.4,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            475.1,
+            435.5,
+            589.0,
+            577.3
+          ],
+          "det_score": 0.8751,
+          "width": 113.9,
+          "height": 141.8,
+          "reason": null
+        },
+        {
+          "bbox": [
+            791.5,
+            485.5,
+            885.5,
+            627.5
+          ],
+          "det_score": 0.8489,
+          "width": 94.0,
+          "height": 142.1,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_linwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.6507,
+          "bank": 0.6507,
+          "margin": 0.4891,
+          "det_score": 0.8751,
+          "face_px": 113.9,
+          "bbox": [
+            475.1,
+            435.5,
+            589.0,
+            577.3
+          ]
+        },
+        {
+          "char_id": "char_anni",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.404,
+          "bank": 0.404,
+          "margin": 0.2289,
+          "det_score": 0.8489,
+          "face_px": 94.0,
+          "bbox": [
+            791.5,
+            485.5,
+            885.5,
+            627.5
+          ]
+        }
+      ],
+      "characters": [
+        "char_linwan",
+        "char_anni"
+      ],
+      "shot_id": "ep01_sc01_sh02",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc01_sh03.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            485.1,
+            470.1,
+            717.1,
+            778.1
+          ],
+          "det_score": 0.8959,
+          "width": 232.0,
+          "height": 308.0,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_linwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5248,
+          "bank": 0.6052,
+          "margin": null,
+          "det_score": 0.8959,
+          "face_px": 232.0,
+          "bbox": [
+            485.1,
+            470.1,
+            717.1,
+            778.1
+          ]
+        }
+      ],
+      "characters": [
+        "char_linwan"
+      ],
+      "shot_id": "ep01_sc01_sh03",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc01_sh04.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            518.0,
+            759.8,
+            608.4,
+            920.2
+          ],
+          "det_score": 0.7416,
+          "width": 90.3,
+          "height": 160.4,
+          "reason": null
+        },
+        {
+          "bbox": [
+            794.5,
+            939.2,
+            907.6,
+            1071.3
+          ],
+          "det_score": 0.854,
+          "width": 113.1,
+          "height": 132.1,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_linwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.1663,
+          "bank": 0.1663,
+          "margin": 0.1662,
+          "det_score": 0.7416,
+          "face_px": 90.3,
+          "bbox": [
+            518.0,
+            759.8,
+            608.4,
+            920.2
+          ]
+        },
+        {
+          "char_id": "char_anni",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.4936,
+          "bank": 0.4936,
+          "margin": 0.239,
+          "det_score": 0.854,
+          "face_px": 113.1,
+          "bbox": [
+            794.5,
+            939.2,
+            907.6,
+            1071.3
+          ]
+        }
+      ],
+      "characters": [
+        "char_linwan",
+        "char_anni"
+      ],
+      "shot_id": "ep01_sc01_sh04",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc02_sh01.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [],
+      "characters": [],
+      "shot_id": "ep01_sc02_sh01",
+      "scheme": "shared",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc02_sh02.jpg",
+      "n_faces": 10,
+      "faces": [
+        {
+          "bbox": [
+            85.8,
+            1183.5,
+            115.1,
+            1225.1
+          ],
+          "det_score": 0.6756,
+          "width": 29.2,
+          "height": 41.6,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            172.3,
+            1367.0,
+            226.6,
+            1436.7
+          ],
+          "det_score": 0.843,
+          "width": 54.3,
+          "height": 69.6,
+          "reason": null
+        },
+        {
+          "bbox": [
+            191.0,
+            1248.1,
+            219.1,
+            1284.9
+          ],
+          "det_score": 0.5621,
+          "width": 28.1,
+          "height": 36.8,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            243.4,
+            1207.0,
+            271.0,
+            1242.0
+          ],
+          "det_score": 0.6116,
+          "width": 27.6,
+          "height": 35.0,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            484.0,
+            505.5,
+            645.0,
+            711.1
+          ],
+          "det_score": 0.9025,
+          "width": 161.0,
+          "height": 205.6,
+          "reason": null
+        },
+        {
+          "bbox": [
+            889.1,
+            1245.8,
+            919.2,
+            1281.6
+          ],
+          "det_score": 0.516,
+          "width": 30.0,
+          "height": 35.8,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            921.0,
+            1385.6,
+            970.3,
+            1448.5
+          ],
+          "det_score": 0.8301,
+          "width": 49.3,
+          "height": 62.9,
+          "reason": null
+        },
+        {
+          "bbox": [
+            997.7,
+            1230.7,
+            1028.3,
+            1270.7
+          ],
+          "det_score": 0.5507,
+          "width": 30.6,
+          "height": 40.0,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            1033.9,
+            1303.6,
+            1072.0,
+            1355.3
+          ],
+          "det_score": 0.7017,
+          "width": 38.1,
+          "height": 51.7,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            1109.2,
+            1224.2,
+            1138.9,
+            1263.2
+          ],
+          "det_score": 0.7092,
+          "width": 29.7,
+          "height": 39.0,
+          "reason": "脸太小"
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_hejin",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.7695,
+          "bank": 0.7706,
+          "margin": null,
+          "det_score": 0.9025,
+          "face_px": 161.0,
+          "bbox": [
+            484.0,
+            505.5,
+            645.0,
+            711.1
+          ]
+        }
+      ],
+      "characters": [
+        "char_hejin"
+      ],
+      "shot_id": "ep01_sc02_sh02",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc02_sh03.jpg",
+      "n_faces": 3,
+      "faces": [
+        {
+          "bbox": [
+            91.2,
+            662.3,
+            145.7,
+            759.1
+          ],
+          "det_score": 0.736,
+          "width": 54.4,
+          "height": 96.8,
+          "reason": null
+        },
+        {
+          "bbox": [
+            217.4,
+            653.7,
+            266.8,
+            728.6
+          ],
+          "det_score": 0.6602,
+          "width": 49.4,
+          "height": 74.9,
+          "reason": null
+        },
+        {
+          "bbox": [
+            388.6,
+            483.9,
+            698.4,
+            875.4
+          ],
+          "det_score": 0.8115,
+          "width": 309.8,
+          "height": 391.5,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.6931,
+          "bank": 0.6931,
+          "margin": null,
+          "det_score": 0.8115,
+          "face_px": 309.8,
+          "bbox": [
+            388.6,
+            483.9,
+            698.4,
+            875.4
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen"
+      ],
+      "shot_id": "ep01_sc02_sh03",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc02_sh04.jpg",
+      "n_faces": 4,
+      "faces": [
+        {
+          "bbox": [
+            168.8,
+            1383.0,
+            256.9,
+            1551.7
+          ],
+          "det_score": 0.7739,
+          "width": 88.1,
+          "height": 168.7,
+          "reason": null
+        },
+        {
+          "bbox": [
+            282.7,
+            1353.0,
+            380.1,
+            1489.1
+          ],
+          "det_score": 0.863,
+          "width": 97.3,
+          "height": 136.2,
+          "reason": null
+        },
+        {
+          "bbox": [
+            635.9,
+            697.2,
+            827.3,
+            956.9
+          ],
+          "det_score": 0.8927,
+          "width": 191.4,
+          "height": 259.7,
+          "reason": null
+        },
+        {
+          "bbox": [
+            1013.8,
+            1328.3,
+            1119.9,
+            1499.7
+          ],
+          "det_score": 0.7346,
+          "width": 106.1,
+          "height": 171.4,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_linwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.6407,
+          "bank": 0.7112,
+          "margin": null,
+          "det_score": 0.8927,
+          "face_px": 191.4,
+          "bbox": [
+            635.9,
+            697.2,
+            827.3,
+            956.9
+          ]
+        }
+      ],
+      "characters": [
+        "char_linwan"
+      ],
+      "shot_id": "ep01_sc02_sh04",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc02_sh05.jpg",
+      "n_faces": 20,
+      "faces": [
+        {
+          "bbox": [
+            3.7,
+            774.3,
+            37.2,
+            815.0
+          ],
+          "det_score": 0.7395,
+          "width": 33.5,
+          "height": 40.7,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            20.0,
+            976.5,
+            73.0,
+            1043.0
+          ],
+          "det_score": 0.861,
+          "width": 52.9,
+          "height": 66.5,
+          "reason": null
+        },
+        {
+          "bbox": [
+            83.4,
+            1064.5,
+            147.2,
+            1147.7
+          ],
+          "det_score": 0.863,
+          "width": 63.8,
+          "height": 83.2,
+          "reason": null
+        },
+        {
+          "bbox": [
+            141.1,
+            714.1,
+            183.8,
+            770.4
+          ],
+          "det_score": 0.7731,
+          "width": 42.7,
+          "height": 56.4,
+          "reason": null
+        },
+        {
+          "bbox": [
+            179.6,
+            1231.3,
+            258.6,
+            1329.9
+          ],
+          "det_score": 0.8099,
+          "width": 79.0,
+          "height": 98.6,
+          "reason": null
+        },
+        {
+          "bbox": [
+            182.2,
+            994.4,
+            226.1,
+            1049.4
+          ],
+          "det_score": 0.7012,
+          "width": 43.9,
+          "height": 55.0,
+          "reason": null
+        },
+        {
+          "bbox": [
+            233.8,
+            1058.2,
+            288.1,
+            1116.0
+          ],
+          "det_score": 0.8573,
+          "width": 54.4,
+          "height": 57.8,
+          "reason": null
+        },
+        {
+          "bbox": [
+            236.4,
+            791.9,
+            269.5,
+            831.9
+          ],
+          "det_score": 0.7522,
+          "width": 33.1,
+          "height": 40.0,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            296.3,
+            999.7,
+            340.8,
+            1048.3
+          ],
+          "det_score": 0.7149,
+          "width": 44.5,
+          "height": 48.7,
+          "reason": null
+        },
+        {
+          "bbox": [
+            568.1,
+            608.7,
+            727.2,
+            798.5
+          ],
+          "det_score": 0.9287,
+          "width": 159.1,
+          "height": 189.8,
+          "reason": null
+        },
+        {
+          "bbox": [
+            814.4,
+            744.1,
+            843.5,
+            781.9
+          ],
+          "det_score": 0.5489,
+          "width": 29.1,
+          "height": 37.8,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            845.3,
+            738.7,
+            877.4,
+            776.9
+          ],
+          "det_score": 0.551,
+          "width": 32.2,
+          "height": 38.2,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            926.5,
+            836.8,
+            965.9,
+            887.3
+          ],
+          "det_score": 0.8221,
+          "width": 39.4,
+          "height": 50.5,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            971.8,
+            1119.4,
+            1011.0,
+            1172.8
+          ],
+          "det_score": 0.7638,
+          "width": 39.2,
+          "height": 53.4,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            1011.5,
+            742.2,
+            1048.5,
+            786.4
+          ],
+          "det_score": 0.8031,
+          "width": 37.0,
+          "height": 44.1,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            1031.0,
+            998.2,
+            1081.4,
+            1054.1
+          ],
+          "det_score": 0.8767,
+          "width": 50.3,
+          "height": 55.8,
+          "reason": null
+        },
+        {
+          "bbox": [
+            1074.3,
+            891.6,
+            1116.4,
+            940.4
+          ],
+          "det_score": 0.8248,
+          "width": 42.1,
+          "height": 48.8,
+          "reason": null
+        },
+        {
+          "bbox": [
+            1099.5,
+            1065.9,
+            1151.3,
+            1145.2
+          ],
+          "det_score": 0.8634,
+          "width": 51.8,
+          "height": 79.3,
+          "reason": null
+        },
+        {
+          "bbox": [
+            1101.7,
+            746.9,
+            1137.6,
+            787.7
+          ],
+          "det_score": 0.7656,
+          "width": 36.0,
+          "height": 40.9,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            1117.5,
+            1208.7,
+            1153.1,
+            1286.2
+          ],
+          "det_score": 0.6182,
+          "width": 35.6,
+          "height": 77.5,
+          "reason": "脸太小"
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_hejin",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.704,
+          "bank": 0.7196,
+          "margin": null,
+          "det_score": 0.9287,
+          "face_px": 159.1,
+          "bbox": [
+            568.1,
+            608.7,
+            727.2,
+            798.5
+          ]
+        }
+      ],
+      "characters": [
+        "char_hejin"
+      ],
+      "shot_id": "ep01_sc02_sh05",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc02_sh06.jpg",
+      "n_faces": 9,
+      "faces": [
+        {
+          "bbox": [
+            18.0,
+            734.8,
+            56.4,
+            785.1
+          ],
+          "det_score": 0.6509,
+          "width": 38.5,
+          "height": 50.3,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            76.5,
+            687.4,
+            111.2,
+            730.5
+          ],
+          "det_score": 0.5181,
+          "width": 34.7,
+          "height": 43.1,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            93.0,
+            849.8,
+            146.1,
+            920.6
+          ],
+          "det_score": 0.5865,
+          "width": 53.1,
+          "height": 70.8,
+          "reason": null
+        },
+        {
+          "bbox": [
+            120.6,
+            645.3,
+            148.2,
+            680.6
+          ],
+          "det_score": 0.535,
+          "width": 27.6,
+          "height": 35.3,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            232.4,
+            651.0,
+            261.6,
+            688.7
+          ],
+          "det_score": 0.5167,
+          "width": 29.2,
+          "height": 37.7,
+          "reason": "脸太小"
+        },
+        {
+          "bbox": [
+            455.5,
+            303.3,
+            832.0,
+            788.4
+          ],
+          "det_score": 0.756,
+          "width": 376.5,
+          "height": 485.1,
+          "reason": null
+        },
+        {
+          "bbox": [
+            790.7,
+            875.9,
+            878.1,
+            981.3
+          ],
+          "det_score": 0.8684,
+          "width": 87.4,
+          "height": 105.4,
+          "reason": null
+        },
+        {
+          "bbox": [
+            1017.2,
+            917.4,
+            1095.7,
+            1016.2
+          ],
+          "det_score": 0.8878,
+          "width": 78.5,
+          "height": 98.8,
+          "reason": null
+        },
+        {
+          "bbox": [
+            1026.7,
+            768.0,
+            1059.5,
+            809.6
+          ],
+          "det_score": 0.5283,
+          "width": 32.8,
+          "height": 41.7,
+          "reason": "脸太小"
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.7365,
+          "bank": 0.7492,
+          "margin": null,
+          "det_score": 0.756,
+          "face_px": 376.5,
+          "bbox": [
+            455.5,
+            303.3,
+            832.0,
+            788.4
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen"
+      ],
+      "shot_id": "ep01_sc02_sh06",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc02_sh07.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            519.9,
+            463.3,
+            754.7,
+            780.8
+          ],
+          "det_score": 0.8712,
+          "width": 234.8,
+          "height": 317.5,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_linwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5895,
+          "bank": 0.7182,
+          "margin": null,
+          "det_score": 0.8712,
+          "face_px": 234.8,
+          "bbox": [
+            519.9,
+            463.3,
+            754.7,
+            780.8
+          ]
+        }
+      ],
+      "characters": [
+        "char_linwan"
+      ],
+      "shot_id": "ep01_sc02_sh07",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc03_sh01.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            490.6,
+            320.4,
+            699.4,
+            570.1
+          ],
+          "det_score": 0.8853,
+          "width": 208.8,
+          "height": 249.7,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_linwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.4309,
+          "bank": 0.4979,
+          "margin": null,
+          "det_score": 0.8853,
+          "face_px": 208.8,
+          "bbox": [
+            490.6,
+            320.4,
+            699.4,
+            570.1
+          ]
+        }
+      ],
+      "characters": [
+        "char_linwan"
+      ],
+      "shot_id": "ep01_sc03_sh01",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc03_sh02.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            528.8,
+            325.4,
+            804.9,
+            621.1
+          ],
+          "det_score": 0.7234,
+          "width": 276.1,
+          "height": 295.7,
+          "reason": null
+        },
+        {
+          "bbox": [
+            659.0,
+            1032.8,
+            932.8,
+            1324.0
+          ],
+          "det_score": 0.7992,
+          "width": 273.8,
+          "height": 291.2,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5603,
+          "bank": 0.5603,
+          "margin": 0.3433,
+          "det_score": 0.7234,
+          "face_px": 276.1,
+          "bbox": [
+            528.8,
+            325.4,
+            804.9,
+            621.1
+          ]
+        },
+        {
+          "char_id": "char_linwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5097,
+          "bank": 0.5593,
+          "margin": 0.3003,
+          "det_score": 0.7992,
+          "face_px": 273.8,
+          "bbox": [
+            659.0,
+            1032.8,
+            932.8,
+            1324.0
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen",
+        "char_linwan"
+      ],
+      "shot_id": "ep01_sc03_sh02",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc03_sh03.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            461.3,
+            367.5,
+            800.7,
+            820.1
+          ],
+          "det_score": 0.8219,
+          "width": 339.4,
+          "height": 452.6,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_linwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.4186,
+          "bank": 0.5224,
+          "margin": null,
+          "det_score": 0.8219,
+          "face_px": 339.4,
+          "bbox": [
+            461.3,
+            367.5,
+            800.7,
+            820.1
+          ]
+        }
+      ],
+      "characters": [
+        "char_linwan"
+      ],
+      "shot_id": "ep01_sc03_sh03",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc03_sh04.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            268.4,
+            511.6,
+            635.0,
+            984.1
+          ],
+          "det_score": 0.8277,
+          "width": 366.6,
+          "height": 472.6,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.672,
+          "bank": 0.672,
+          "margin": null,
+          "det_score": 0.8277,
+          "face_px": 366.6,
+          "bbox": [
+            268.4,
+            511.6,
+            635.0,
+            984.1
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen"
+      ],
+      "shot_id": "ep01_sc03_sh04",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc04_sh01.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [
+        {
+          "char_id": "char_linwan",
+          "measurable": false,
+          "reason": "无脸",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        }
+      ],
+      "characters": [
+        "char_linwan"
+      ],
+      "shot_id": "ep01_sc04_sh01",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc04_sh02.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            418.0,
+            310.9,
+            529.0,
+            480.0
+          ],
+          "det_score": 0.719,
+          "width": 111.0,
+          "height": 169.1,
+          "reason": null
+        },
+        {
+          "bbox": [
+            778.4,
+            397.7,
+            885.6,
+            568.4
+          ],
+          "det_score": 0.7853,
+          "width": 107.2,
+          "height": 170.7,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.4369,
+          "bank": 0.4369,
+          "margin": 0.2525,
+          "det_score": 0.719,
+          "face_px": 111.0,
+          "bbox": [
+            418.0,
+            310.9,
+            529.0,
+            480.0
+          ]
+        },
+        {
+          "char_id": "char_linwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.3804,
+          "bank": 0.3804,
+          "margin": 0.2556,
+          "det_score": 0.7853,
+          "face_px": 107.2,
+          "bbox": [
+            778.4,
+            397.7,
+            885.6,
+            568.4
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen",
+        "char_linwan"
+      ],
+      "shot_id": "ep01_sc04_sh02",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc04_sh03.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            406.6,
+            661.4,
+            453.4,
+            713.4
+          ],
+          "det_score": 0.8597,
+          "width": 46.7,
+          "height": 52.0,
+          "reason": null
+        },
+        {
+          "bbox": [
+            546.5,
+            504.9,
+            624.2,
+            621.1
+          ],
+          "det_score": 0.8617,
+          "width": 77.7,
+          "height": 116.2,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_linwan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.3834,
+          "bank": 0.3834,
+          "margin": 0.2684,
+          "det_score": 0.8617,
+          "face_px": 77.7,
+          "bbox": [
+            546.5,
+            504.9,
+            624.2,
+            621.1
+          ]
+        },
+        {
+          "char_id": "char_anni",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.094,
+          "bank": 0.1692,
+          "margin": 0.1172,
+          "det_score": 0.8597,
+          "face_px": 46.7,
+          "bbox": [
+            406.6,
+            661.4,
+            453.4,
+            713.4
+          ]
+        }
+      ],
+      "characters": [
+        "char_linwan",
+        "char_anni"
+      ],
+      "shot_id": "ep01_sc04_sh03",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc04_sh04.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": false,
+          "reason": "无脸",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        }
+      ],
+      "characters": [
+        "char_luchen"
+      ],
+      "shot_id": "ep01_sc04_sh04",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep2/20261013-173458-run-cd3d/work/keyframes/ep01_sc04_sh05.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            426.4,
+            416.2,
+            707.6,
+            747.8
+          ],
+          "det_score": 0.7715,
+          "width": 281.2,
+          "height": 331.5,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luchen",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5753,
+          "bank": 0.5753,
+          "margin": null,
+          "det_score": 0.7715,
+          "face_px": 281.2,
+          "bbox": [
+            426.4,
+            416.2,
+            707.6,
+            747.8
+          ]
+        }
+      ],
+      "characters": [
+        "char_luchen"
+      ],
+      "shot_id": "ep01_sc04_sh05",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    }
+  ],
+  "stats": {
+    "overall": {
+      "instances": 23,
+      "measurable": 21,
+      "measurable_rate": 0.913,
+      "anchor": {
+        "n": 21,
+        "min": 0.094,
+        "p10": 0.3804,
+        "p25": 0.4186,
+        "median": 0.5248,
+        "p75": 0.6507,
+        "p90": 0.704,
+        "max": 0.7695,
+        "mean": 0.5159
+      },
+      "bank": {
+        "n": 21,
+        "min": 0.1663,
+        "p10": 0.3804,
+        "p25": 0.4369,
+        "median": 0.5603,
+        "p75": 0.6931,
+        "p90": 0.7196,
+        "max": 0.7706,
+        "mean": 0.5447
+      },
+      "histogram": {
+        "anchor": [
+          [
+            0.05,
+            1
+          ],
+          [
+            0.1,
+            0
+          ],
+          [
+            0.15,
+            1
+          ],
+          [
+            0.2,
+            0
+          ],
+          [
+            0.25,
+            0
+          ],
+          [
+            0.3,
+            0
+          ],
+          [
+            0.35,
+            2
+          ],
+          [
+            0.4,
+            4
+          ],
+          [
+            0.45,
+            1
+          ],
+          [
+            0.5,
+            2
+          ],
+          [
+            0.55,
+            3
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            0.65,
+            3
+          ],
+          [
+            0.7,
+            2
+          ],
+          [
+            0.75,
+            1
+          ]
+        ],
+        "bank": [
+          [
+            0.15,
+            2
+          ],
+          [
+            0.2,
+            0
+          ],
+          [
+            0.25,
+            0
+          ],
+          [
+            0.3,
+            0
+          ],
+          [
+            0.35,
+            2
+          ],
+          [
+            0.4,
+            2
+          ],
+          [
+            0.45,
+            2
+          ],
+          [
+            0.5,
+            1
+          ],
+          [
+            0.55,
+            3
+          ],
+          [
+            0.6,
+            1
+          ],
+          [
+            0.65,
+            3
+          ],
+          [
+            0.7,
+            4
+          ],
+          [
+            0.75,
+            1
+          ]
+        ]
+      }
+    },
+    "by_scheme": {
+      "ref2": {
+        "instances": 23,
+        "measurable": 21,
+        "measurable_rate": 0.913,
+        "anchor": {
+          "n": 21,
+          "min": 0.094,
+          "p10": 0.3804,
+          "p25": 0.4186,
+          "median": 0.5248,
+          "p75": 0.6507,
+          "p90": 0.704,
+          "max": 0.7695,
+          "mean": 0.5159
+        },
+        "bank": {
+          "n": 21,
+          "min": 0.1663,
+          "p10": 0.3804,
+          "p25": 0.4369,
+          "median": 0.5603,
+          "p75": 0.6931,
+          "p90": 0.7196,
+          "max": 0.7706,
+          "mean": 0.5447
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.05,
+              1
+            ],
+            [
+              0.1,
+              0
+            ],
+            [
+              0.15,
+              1
+            ],
+            [
+              0.2,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              2
+            ],
+            [
+              0.4,
+              4
+            ],
+            [
+              0.45,
+              1
+            ],
+            [
+              0.5,
+              2
+            ],
+            [
+              0.55,
+              3
+            ],
+            [
+              0.6,
+              1
+            ],
+            [
+              0.65,
+              3
+            ],
+            [
+              0.7,
+              2
+            ],
+            [
+              0.75,
+              1
+            ]
+          ],
+          "bank": [
+            [
+              0.15,
+              2
+            ],
+            [
+              0.2,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              2
+            ],
+            [
+              0.4,
+              2
+            ],
+            [
+              0.45,
+              2
+            ],
+            [
+              0.5,
+              1
+            ],
+            [
+              0.55,
+              3
+            ],
+            [
+              0.6,
+              1
+            ],
+            [
+              0.65,
+              3
+            ],
+            [
+              0.7,
+              4
+            ],
+            [
+              0.75,
+              1
+            ]
+          ]
+        }
+      }
+    },
+    "by_char": {
+      "char_anni": {
+        "instances": 3,
+        "measurable": 3,
+        "measurable_rate": 1.0,
+        "anchor": {
+          "n": 3,
+          "min": 0.094,
+          "p10": 0.156,
+          "p25": 0.249,
+          "median": 0.404,
+          "p75": 0.4488,
+          "p90": 0.4757,
+          "max": 0.4936,
+          "mean": 0.3305
+        },
+        "bank": {
+          "n": 3,
+          "min": 0.1692,
+          "p10": 0.2162,
+          "p25": 0.2866,
+          "median": 0.404,
+          "p75": 0.4488,
+          "p90": 0.4757,
+          "max": 0.4936,
+          "mean": 0.3556
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.05,
+              1
+            ],
+            [
+              0.1,
+              0
+            ],
+            [
+              0.15,
+              0
+            ],
+            [
+              0.2,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              0
+            ],
+            [
+              0.4,
+              1
+            ],
+            [
+              0.45,
+              1
+            ]
+          ],
+          "bank": [
+            [
+              0.15,
+              1
+            ],
+            [
+              0.2,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              0
+            ],
+            [
+              0.4,
+              1
+            ],
+            [
+              0.45,
+              1
+            ]
+          ]
+        }
+      },
+      "char_hejin": {
+        "instances": 2,
+        "measurable": 2,
+        "measurable_rate": 1.0,
+        "anchor": {
+          "n": 2,
+          "min": 0.704,
+          "p10": 0.7105,
+          "p25": 0.7204,
+          "median": 0.7368,
+          "p75": 0.7531,
+          "p90": 0.7629,
+          "max": 0.7695,
+          "mean": 0.7368
+        },
+        "bank": {
+          "n": 2,
+          "min": 0.7196,
+          "p10": 0.7247,
+          "p25": 0.7324,
+          "median": 0.7451,
+          "p75": 0.7579,
+          "p90": 0.7655,
+          "max": 0.7706,
+          "mean": 0.7451
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.7,
+              1
+            ],
+            [
+              0.75,
+              1
+            ]
+          ],
+          "bank": [
+            [
+              0.7,
+              1
+            ],
+            [
+              0.75,
+              1
+            ]
+          ]
+        }
+      },
+      "char_linwan": {
+        "instances": 11,
+        "measurable": 10,
+        "measurable_rate": 0.9091,
+        "anchor": {
+          "n": 10,
+          "min": 0.1663,
+          "p10": 0.359,
+          "p25": 0.3922,
+          "median": 0.4703,
+          "p75": 0.5733,
+          "p90": 0.6417,
+          "max": 0.6507,
+          "mean": 0.4695
+        },
+        "bank": {
+          "n": 10,
+          "min": 0.1663,
+          "p10": 0.359,
+          "p25": 0.412,
+          "median": 0.5409,
+          "p75": 0.6393,
+          "p90": 0.7119,
+          "max": 0.7182,
+          "mean": 0.5195
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.15,
+              1
+            ],
+            [
+              0.2,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              2
+            ],
+            [
+              0.4,
+              2
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.5,
+              2
+            ],
+            [
+              0.55,
+              1
+            ],
+            [
+              0.6,
+              1
+            ],
+            [
+              0.65,
+              1
+            ]
+          ],
+          "bank": [
+            [
+              0.15,
+              1
+            ],
+            [
+              0.2,
+              0
+            ],
+            [
+              0.25,
+              0
+            ],
+            [
+              0.3,
+              0
+            ],
+            [
+              0.35,
+              2
+            ],
+            [
+              0.4,
+              0
+            ],
+            [
+              0.45,
+              1
+            ],
+            [
+              0.5,
+              1
+            ],
+            [
+              0.55,
+              1
+            ],
+            [
+              0.6,
+              1
+            ],
+            [
+              0.65,
+              1
+            ],
+            [
+              0.7,
+              2
+            ]
+          ]
+        }
+      },
+      "char_luchen": {
+        "instances": 7,
+        "measurable": 6,
+        "measurable_rate": 0.8571,
+        "anchor": {
+          "n": 6,
+          "min": 0.4369,
+          "p10": 0.4986,
+          "p25": 0.5641,
+          "median": 0.6237,
+          "p75": 0.6878,
+          "p90": 0.7148,
+          "max": 0.7365,
+          "mean": 0.6124
+        },
+        "bank": {
+          "n": 6,
+          "min": 0.4369,
+          "p10": 0.4986,
+          "p25": 0.5641,
+          "median": 0.6237,
+          "p75": 0.6878,
+          "p90": 0.7212,
+          "max": 0.7492,
+          "mean": 0.6145
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.4,
+              1
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.5,
+              0
+            ],
+            [
+              0.55,
+              2
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              0.65,
+              2
+            ],
+            [
+              0.7,
+              1
+            ]
+          ],
+          "bank": [
+            [
+              0.4,
+              1
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.5,
+              0
+            ],
+            [
+              0.55,
+              2
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              0.65,
+              2
+            ],
+            [
+              0.7,
+              1
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "pick": "largest"
+}

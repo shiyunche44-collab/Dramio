@@ -1,0 +1,268 @@
+{
+  "episodes": [
+    {
+      "name": "ep1",
+      "runs": [
+        "20261013-165532-run-1d04"
+      ],
+      "logline": "暴雨夜，被开除的实习生在电梯里捡到总裁遗落的U盘，里面是一份足以让整个集团覆灭的账本。",
+      "shots": 23,
+      "lines": 11,
+      "characters": 3,
+      "total_s": 62.9167,
+      "dialogue_shots": 11,
+      "multi_char_dialogue_shots": 0,
+      "extended_shots": 6,
+      "placeholders": 23,
+      "degraded": [],
+      "warnings": [
+        "female 角色多于音色数，char_suning 复用 zh_female_cancan_uranus_bigtts（听感可能与同性别角色混淆）",
+        "--video placeholder：全部镜头使用首帧缓推占位，没有调用视频接口",
+        "ep01_sc01_sh02：台词需要 2.21 秒，比 hint_s 2.2 秒长",
+        "ep01_sc01_sh03：台词需要 2.50 秒，比 hint_s 2.2 秒长",
+        "ep01_sc01_sh04：台词需要 3.71 秒，比 hint_s 3.5 秒长",
+        "ep01_sc01_sh05：台词需要 3.21 秒，比 hint_s 3.2 秒长",
+        "ep01_sc01_sh06：台词需要 4.46 秒，比 hint_s 4 秒长",
+        "ep01_sc01_sh07：台词需要 1.83 秒，比 hint_s 1.8 秒长"
+      ],
+      "cost_cny_calls": 10.138658,
+      "cost_cny_manifest_last_run": 10.138658,
+      "stage": {
+        "script": {
+          "nodes": 1,
+          "cost_cny": 0.0881,
+          "elapsed_s": 54.9
+        },
+        "shots": {
+          "nodes": 1,
+          "cost_cny": 0.1481,
+          "elapsed_s": 65.2
+        },
+        "costume_main": {
+          "nodes": 3,
+          "cost_cny": 0.9,
+          "elapsed_s": 100.4
+        },
+        "costume_neutral": {
+          "nodes": 3,
+          "cost_cny": 0.9,
+          "elapsed_s": 97.6
+        },
+        "tts": {
+          "nodes": 11,
+          "cost_cny": 0.0425,
+          "elapsed_s": 51.7
+        },
+        "keyframe": {
+          "nodes": 23,
+          "cost_cny": 8.06,
+          "elapsed_s": 1803.3
+        },
+        "compose": {
+          "nodes": 25,
+          "cost_cny": 0.0,
+          "elapsed_s": 191.9
+        }
+      },
+      "elapsed_s_runs": 2365.7,
+      "llm_repairs": {
+        "script": 0,
+        "shots": 1
+      },
+      "error_calls": 2,
+      "error_calls_cost_cny": 0.64,
+      "error_kinds": [
+        "network: ConnectionResetError: [Errno 104] Connection reset by peer",
+        "network: IncompleteRead: IncompleteRead(358839 bytes read, 76522 more expected)"
+      ],
+      "hits_last_run": 0,
+      "misses_last_run": 67
+    },
+    {
+      "name": "ep2",
+      "runs": [
+        "20261013-173458-run-cd3d"
+      ],
+      "logline": "三年后，她以匿名买家的身份回到旧公司，在拍卖会上当众拍下那份毁掉她的合同，对面坐着当年的主谋。",
+      "shots": 20,
+      "lines": 13,
+      "characters": 4,
+      "total_s": 69.125,
+      "dialogue_shots": 13,
+      "multi_char_dialogue_shots": 4,
+      "extended_shots": 12,
+      "placeholders": 20,
+      "degraded": [],
+      "warnings": [
+        "female 角色多于音色数，char_linwan 复用 zh_female_cancan_uranus_bigtts（听感可能与同性别角色混淆）",
+        "male 角色多于音色数，char_luchen 复用 zh_male_gaolengchenwen_uranus_bigtts（听感可能与同性别角色混淆）",
+        "--video placeholder：全部镜头使用首帧缓推占位，没有调用视频接口",
+        "ep01_sc01_sh02：台词需要 3.71 秒，比 hint_s 3.5 秒长",
+        "ep01_sc01_sh03：台词需要 4.21 秒，比 hint_s 4.2 秒长",
+        "ep01_sc02_sh02：台词需要 5.21 秒，比 hint_s 5 秒长",
+        "ep01_sc02_sh04：台词需要 3.21 秒，比 hint_s 3.2 秒长",
+        "ep01_sc02_sh05：台词需要 4.42 秒，比 hint_s 2.5 秒长",
+        "ep01_sc03_sh01：台词需要 2.83 秒，比 hint_s 2.8 秒长",
+        "ep01_sc03_sh02：台词需要 3.83 秒，比 hint_s 3.2 秒长",
+        "ep01_sc03_sh03：台词需要 6.83 秒，比 hint_s 5.6 秒长",
+        "ep01_sc03_sh04：台词需要 2.21 秒，比 hint_s 2.2 秒长",
+        "ep01_sc04_sh02：台词需要 3.08 秒，比 hint_s 2.6 秒长",
+        "ep01_sc04_sh03：台词需要 5.29 秒，比 hint_s 5.2 秒长",
+        "ep01_sc04_sh05：台词需要 3.79 秒，比 hint_s 3 秒长"
+      ],
+      "cost_cny_calls": 9.196711,
+      "cost_cny_manifest_last_run": 9.196711,
+      "stage": {
+        "script": {
+          "nodes": 1,
+          "cost_cny": 0.0954,
+          "elapsed_s": 64.2
+        },
+        "shots": {
+          "nodes": 1,
+          "cost_cny": 0.0774,
+          "elapsed_s": 42.2
+        },
+        "costume_main": {
+          "nodes": 4,
+          "cost_cny": 1.2,
+          "elapsed_s": 128.0
+        },
+        "costume_neutral": {
+          "nodes": 4,
+          "cost_cny": 1.2,
+          "elapsed_s": 117.0
+        },
+        "tts": {
+          "nodes": 13,
+          "cost_cny": 0.064,
+          "elapsed_s": 60.9
+        },
+        "keyframe": {
+          "nodes": 20,
+          "cost_cny": 6.56,
+          "elapsed_s": 1419.9
+        },
+        "compose": {
+          "nodes": 22,
+          "cost_cny": 0.0,
+          "elapsed_s": 190.7
+        }
+      },
+      "elapsed_s_runs": 2023.6,
+      "llm_repairs": {
+        "script": 0,
+        "shots": 0
+      },
+      "error_calls": 0,
+      "error_calls_cost_cny": 0,
+      "error_kinds": [],
+      "hits_last_run": 0,
+      "misses_last_run": 65
+    },
+    {
+      "name": "ep3",
+      "runs": [
+        "20261013-180842-run-54e9"
+      ],
+      "logline": "他以为自己是替身，直到她在婚礼前夜递给他一份遗嘱，上面写着真正的继承人是他。",
+      "shots": 20,
+      "lines": 11,
+      "characters": 3,
+      "total_s": 63.4583,
+      "dialogue_shots": 11,
+      "multi_char_dialogue_shots": 2,
+      "extended_shots": 10,
+      "placeholders": 20,
+      "degraded": [],
+      "warnings": [
+        "male 角色多于音色数，char_luzhenting 复用 zh_male_gaolengchenwen_uranus_bigtts（听感可能与同性别角色混淆）",
+        "--video placeholder：全部镜头使用首帧缓推占位，没有调用视频接口",
+        "ep01_sc01_sh02：台词需要 3.71 秒，比 hint_s 3.6 秒长",
+        "ep01_sc01_sh04：台词需要 3.71 秒，比 hint_s 3.2 秒长",
+        "ep01_sc02_sh02：台词需要 3.12 秒，比 hint_s 3 秒长",
+        "ep01_sc02_sh03：台词需要 2.62 秒，比 hint_s 2.5 秒长",
+        "ep01_sc02_sh04：台词需要 3.83 秒，比 hint_s 3.8 秒长",
+        "ep01_sc03_sh02：台词需要 3.58 秒，比 hint_s 2.5 秒长",
+        "ep01_sc03_sh03：台词需要 2.83 秒，比 hint_s 2.8 秒长",
+        "ep01_sc04_sh02：台词需要 3.88 秒，比 hint_s 3.2 秒长",
+        "ep01_sc04_sh03：台词需要 3.21 秒，比 hint_s 3.2 秒长",
+        "ep01_sc04_sh04：台词需要 3.96 秒，比 hint_s 3.2 秒长"
+      ],
+      "cost_cny_calls": 8.604125,
+      "cost_cny_manifest_last_run": 8.604125,
+      "stage": {
+        "script": {
+          "nodes": 1,
+          "cost_cny": 0.0963,
+          "elapsed_s": 59.6
+        },
+        "shots": {
+          "nodes": 1,
+          "cost_cny": 0.133,
+          "elapsed_s": 57.6
+        },
+        "costume_main": {
+          "nodes": 3,
+          "cost_cny": 0.9,
+          "elapsed_s": 97.0
+        },
+        "costume_neutral": {
+          "nodes": 3,
+          "cost_cny": 0.9,
+          "elapsed_s": 90.6
+        },
+        "tts": {
+          "nodes": 11,
+          "cost_cny": 0.0548,
+          "elapsed_s": 57.2
+        },
+        "keyframe": {
+          "nodes": 20,
+          "cost_cny": 6.52,
+          "elapsed_s": 1408.6
+        },
+        "compose": {
+          "nodes": 22,
+          "cost_cny": 0.0,
+          "elapsed_s": 198.0
+        }
+      },
+      "elapsed_s_runs": 1969.3,
+      "llm_repairs": {
+        "script": 0,
+        "shots": 1
+      },
+      "error_calls": 1,
+      "error_calls_cost_cny": 0.000816,
+      "error_kinds": [
+        "SpeechError: network: URLError: [Errno 104] Connection reset by peer"
+      ],
+      "hits_last_run": 0,
+      "misses_last_run": 61
+    }
+  ],
+  "totals": {
+    "episodes": 3,
+    "shots": 63,
+    "lines": 35,
+    "total_s": 195.5,
+    "cost_cny_calls": 27.9395,
+    "elapsed_s_runs": 6358.6,
+    "error_calls": 3,
+    "error_calls_cost_cny": 0.6408,
+    "cost_per_shot_cny": 0.4435,
+    "cost_per_minute_cny": 8.57,
+    "elapsed_per_shot_s": 100.9,
+    "stage_cost_cny": {
+      "compose": 0.0,
+      "costume_main": 3.0,
+      "costume_neutral": 3.0,
+      "keyframe": 21.14,
+      "script": 0.2798,
+      "shots": 0.3585,
+      "tts": 0.1613
+    },
+    "cost_mean_per_episode_cny": 9.313
+  }
+}

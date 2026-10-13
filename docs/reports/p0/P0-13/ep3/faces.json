@@ -1,0 +1,1333 @@
+{
+  "backend": "arcface",
+  "thresholds": {
+    "min_face_px": 40,
+    "min_det_score": 0.5
+  },
+  "assign_by": "bank",
+  "references": {
+    "char_luqingci": [
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep3/char_luqingci-main.jpg",
+        "sha256": "39d742f5f3d13c18a9470615da3fe5d173265ec765cc35982f8095eefe3dab0a",
+        "det_score": 0.8822,
+        "face_px": 139.4
+      },
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep3/char_luqingci-neutral.jpg",
+        "sha256": "77850e13e4d15f80a36e655a4f91c1a9287fda5253f599848f051d58a1d7b7eb",
+        "det_score": 0.8342,
+        "face_px": 379.3
+      }
+    ],
+    "char_luzhenting": [
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep3/char_luzhenting-main.jpg",
+        "sha256": "54b500e77fa0e08a1a39b4b324676a08f224131a4dcdf012d1967c548e8fc217",
+        "det_score": 0.907,
+        "face_px": 154.0
+      },
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep3/char_luzhenting-neutral.jpg",
+        "sha256": "9b8db7c7b16990ec79427ed2798340ebfb4b35409795a75b33b5ad3c651f3e54",
+        "det_score": 0.8807,
+        "face_px": 548.9
+      }
+    ],
+    "char_shenyan": [
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep3/char_shenyan-main.jpg",
+        "sha256": "09796e99c76802c4c6b88d07c706c8c1d35c238bf42d1bbd8ae956279972d3fa",
+        "det_score": 0.8992,
+        "face_px": 150.7
+      },
+      {
+        "path": "/tmp/claude-0/-home-user-Dramio/029c82c2-8b72-5a4d-b970-7acf48fc3468/scratchpad/face/ep3/char_shenyan-neutral.jpg",
+        "sha256": "a179958600d80ca0934882bf510a01b1ffdaa1a6ba899b76a4656b485aaa761b",
+        "det_score": 0.8865,
+        "face_px": 531.5
+      }
+    ]
+  },
+  "skipped_same_as_reference": [],
+  "images": [
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc01_sh01.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [],
+      "characters": [],
+      "shot_id": "ep01_sc01_sh01",
+      "scheme": "shared",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc01_sh02.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [
+        {
+          "char_id": "char_shenyan",
+          "measurable": false,
+          "reason": "无脸",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        }
+      ],
+      "characters": [
+        "char_shenyan"
+      ],
+      "shot_id": "ep01_sc01_sh02",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc01_sh03.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            449.3,
+            262.7,
+            664.5,
+            585.9
+          ],
+          "det_score": 0.8453,
+          "width": 215.2,
+          "height": 323.2,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_shenyan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.6384,
+          "bank": 0.6837,
+          "margin": null,
+          "det_score": 0.8453,
+          "face_px": 215.2,
+          "bbox": [
+            449.3,
+            262.7,
+            664.5,
+            585.9
+          ]
+        }
+      ],
+      "characters": [
+        "char_shenyan"
+      ],
+      "shot_id": "ep01_sc01_sh03",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc01_sh04.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            555.8,
+            996.7,
+            637.9,
+            1086.1
+          ],
+          "det_score": 0.8052,
+          "width": 82.1,
+          "height": 89.3,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_shenyan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.4959,
+          "bank": 0.512,
+          "margin": null,
+          "det_score": 0.8052,
+          "face_px": 82.1,
+          "bbox": [
+            555.8,
+            996.7,
+            637.9,
+            1086.1
+          ]
+        }
+      ],
+      "characters": [
+        "char_shenyan"
+      ],
+      "shot_id": "ep01_sc01_sh04",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc01_sh05.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [
+        {
+          "char_id": "char_shenyan",
+          "measurable": false,
+          "reason": "无脸",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        }
+      ],
+      "characters": [
+        "char_shenyan"
+      ],
+      "shot_id": "ep01_sc01_sh05",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc02_sh01.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [
+        {
+          "char_id": "char_luqingci",
+          "measurable": false,
+          "reason": "无脸",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        }
+      ],
+      "characters": [
+        "char_luqingci"
+      ],
+      "shot_id": "ep01_sc02_sh01",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc02_sh02.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            452.9,
+            353.5,
+            595.0,
+            564.2
+          ],
+          "det_score": 0.8662,
+          "width": 142.1,
+          "height": 210.7,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luqingci",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.6148,
+          "bank": 0.6763,
+          "margin": null,
+          "det_score": 0.8662,
+          "face_px": 142.1,
+          "bbox": [
+            452.9,
+            353.5,
+            595.0,
+            564.2
+          ]
+        }
+      ],
+      "characters": [
+        "char_luqingci"
+      ],
+      "shot_id": "ep01_sc02_sh02",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc02_sh03.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            447.2,
+            324.9,
+            651.7,
+            598.4
+          ],
+          "det_score": 0.8912,
+          "width": 204.5,
+          "height": 273.5,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_shenyan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.7089,
+          "bank": 0.7368,
+          "margin": null,
+          "det_score": 0.8912,
+          "face_px": 204.5,
+          "bbox": [
+            447.2,
+            324.9,
+            651.7,
+            598.4
+          ]
+        }
+      ],
+      "characters": [
+        "char_shenyan"
+      ],
+      "shot_id": "ep01_sc02_sh03",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc02_sh04.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            305.0,
+            553.3,
+            464.1,
+            773.0
+          ],
+          "det_score": 0.8315,
+          "width": 159.1,
+          "height": 219.7,
+          "reason": null
+        },
+        {
+          "bbox": [
+            644.2,
+            356.1,
+            818.2,
+            631.8
+          ],
+          "det_score": 0.8321,
+          "width": 174.0,
+          "height": 275.7,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luqingci",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.2168,
+          "bank": 0.3476,
+          "margin": 0.2629,
+          "det_score": 0.8315,
+          "face_px": 159.1,
+          "bbox": [
+            305.0,
+            553.3,
+            464.1,
+            773.0
+          ]
+        },
+        {
+          "char_id": "char_shenyan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5731,
+          "bank": 0.6128,
+          "margin": 0.4976,
+          "det_score": 0.8321,
+          "face_px": 174.0,
+          "bbox": [
+            644.2,
+            356.1,
+            818.2,
+            631.8
+          ]
+        }
+      ],
+      "characters": [
+        "char_luqingci",
+        "char_shenyan"
+      ],
+      "shot_id": "ep01_sc02_sh04",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc02_sh05.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [
+        {
+          "char_id": "char_shenyan",
+          "measurable": false,
+          "reason": "无脸",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        }
+      ],
+      "characters": [
+        "char_shenyan"
+      ],
+      "shot_id": "ep01_sc02_sh05",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc03_sh01.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            367.2,
+            596.1,
+            510.3,
+            747.8
+          ],
+          "det_score": 0.766,
+          "width": 143.1,
+          "height": 151.7,
+          "reason": null
+        },
+        {
+          "bbox": [
+            905.6,
+            380.2,
+            1007.8,
+            532.0
+          ],
+          "det_score": 0.837,
+          "width": 102.2,
+          "height": 151.7,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_shenyan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.3567,
+          "bank": 0.3567,
+          "margin": 0.2442,
+          "det_score": 0.766,
+          "face_px": 143.1,
+          "bbox": [
+            367.2,
+            596.1,
+            510.3,
+            747.8
+          ]
+        },
+        {
+          "char_id": "char_luqingci",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.316,
+          "bank": 0.316,
+          "margin": 0.1268,
+          "det_score": 0.837,
+          "face_px": 102.2,
+          "bbox": [
+            905.6,
+            380.2,
+            1007.8,
+            532.0
+          ]
+        }
+      ],
+      "characters": [
+        "char_shenyan",
+        "char_luqingci"
+      ],
+      "shot_id": "ep01_sc03_sh01",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc03_sh02.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [
+        {
+          "char_id": "char_shenyan",
+          "measurable": false,
+          "reason": "无脸",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        }
+      ],
+      "characters": [
+        "char_shenyan"
+      ],
+      "shot_id": "ep01_sc03_sh02",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc03_sh03.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            561.5,
+            379.9,
+            800.0,
+            703.8
+          ],
+          "det_score": 0.8002,
+          "width": 238.5,
+          "height": 323.9,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_shenyan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.6003,
+          "bank": 0.6257,
+          "margin": null,
+          "det_score": 0.8002,
+          "face_px": 238.5,
+          "bbox": [
+            561.5,
+            379.9,
+            800.0,
+            703.8
+          ]
+        }
+      ],
+      "characters": [
+        "char_shenyan"
+      ],
+      "shot_id": "ep01_sc03_sh03",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc03_sh04.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            447.6,
+            296.7,
+            690.7,
+            647.6
+          ],
+          "det_score": 0.8298,
+          "width": 243.1,
+          "height": 350.9,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luqingci",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.6293,
+          "bank": 0.7641,
+          "margin": null,
+          "det_score": 0.8298,
+          "face_px": 243.1,
+          "bbox": [
+            447.6,
+            296.7,
+            690.7,
+            647.6
+          ]
+        }
+      ],
+      "characters": [
+        "char_luqingci"
+      ],
+      "shot_id": "ep01_sc03_sh04",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc03_sh05.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [
+        {
+          "char_id": "char_shenyan",
+          "measurable": false,
+          "reason": "无脸",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        }
+      ],
+      "characters": [
+        "char_shenyan"
+      ],
+      "shot_id": "ep01_sc03_sh05",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc04_sh01.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            248.3,
+            294.5,
+            429.6,
+            549.5
+          ],
+          "det_score": 0.8991,
+          "width": 181.3,
+          "height": 255.0,
+          "reason": null
+        },
+        {
+          "bbox": [
+            787.7,
+            436.5,
+            918.2,
+            615.7
+          ],
+          "det_score": 0.8556,
+          "width": 130.5,
+          "height": 179.2,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_shenyan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.714,
+          "bank": 0.7462,
+          "margin": 0.5822,
+          "det_score": 0.8991,
+          "face_px": 181.3,
+          "bbox": [
+            248.3,
+            294.5,
+            429.6,
+            549.5
+          ]
+        },
+        {
+          "char_id": "char_luqingci",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.6587,
+          "bank": 0.6925,
+          "margin": 0.5259,
+          "det_score": 0.8556,
+          "face_px": 130.5,
+          "bbox": [
+            787.7,
+            436.5,
+            918.2,
+            615.7
+          ]
+        }
+      ],
+      "characters": [
+        "char_shenyan",
+        "char_luqingci"
+      ],
+      "shot_id": "ep01_sc04_sh01",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc04_sh02.jpg",
+      "n_faces": 1,
+      "faces": [
+        {
+          "bbox": [
+            403.2,
+            519.0,
+            636.0,
+            846.0
+          ],
+          "det_score": 0.8061,
+          "width": 232.9,
+          "height": 327.0,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luzhenting",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.4983,
+          "bank": 0.5253,
+          "margin": null,
+          "det_score": 0.8061,
+          "face_px": 232.9,
+          "bbox": [
+            403.2,
+            519.0,
+            636.0,
+            846.0
+          ]
+        }
+      ],
+      "characters": [
+        "char_luzhenting"
+      ],
+      "shot_id": "ep01_sc04_sh02",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc04_sh03.jpg",
+      "n_faces": 2,
+      "faces": [
+        {
+          "bbox": [
+            489.5,
+            316.9,
+            619.1,
+            523.6
+          ],
+          "det_score": 0.776,
+          "width": 129.7,
+          "height": 206.7,
+          "reason": null
+        },
+        {
+          "bbox": [
+            604.3,
+            258.4,
+            735.4,
+            498.7
+          ],
+          "det_score": 0.8313,
+          "width": 131.1,
+          "height": 240.4,
+          "reason": null
+        }
+      ],
+      "instances": [
+        {
+          "char_id": "char_luqingci",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.2895,
+          "bank": 0.356,
+          "margin": 0.252,
+          "det_score": 0.776,
+          "face_px": 129.7,
+          "bbox": [
+            489.5,
+            316.9,
+            619.1,
+            523.6
+          ]
+        },
+        {
+          "char_id": "char_shenyan",
+          "measurable": true,
+          "reason": null,
+          "anchor": 0.5148,
+          "bank": 0.5761,
+          "margin": 0.4242,
+          "det_score": 0.8313,
+          "face_px": 131.1,
+          "bbox": [
+            604.3,
+            258.4,
+            735.4,
+            498.7
+          ]
+        }
+      ],
+      "characters": [
+        "char_luqingci",
+        "char_shenyan"
+      ],
+      "shot_id": "ep01_sc04_sh03",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc04_sh04.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [
+        {
+          "char_id": "char_shenyan",
+          "measurable": false,
+          "reason": "无脸",
+          "anchor": null,
+          "bank": null,
+          "margin": null,
+          "det_score": null,
+          "face_px": null,
+          "bbox": null
+        }
+      ],
+      "characters": [
+        "char_shenyan"
+      ],
+      "shot_id": "ep01_sc04_sh04",
+      "scheme": "ref2",
+      "round": null,
+      "pre_measurable": null
+    },
+    {
+      "image": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc04_sh05.jpg",
+      "n_faces": 0,
+      "faces": [],
+      "instances": [],
+      "characters": [],
+      "shot_id": "ep01_sc04_sh05",
+      "scheme": "shared",
+      "round": null,
+      "pre_measurable": null
+    }
+  ],
+  "stats": {
+    "overall": {
+      "instances": 22,
+      "measurable": 15,
+      "measurable_rate": 0.6818,
+      "anchor": {
+        "n": 15,
+        "min": 0.2168,
+        "p10": 0.3001,
+        "p25": 0.4263,
+        "median": 0.5731,
+        "p75": 0.6339,
+        "p90": 0.6888,
+        "max": 0.714,
+        "mean": 0.5217
+      },
+      "bank": {
+        "n": 15,
+        "min": 0.316,
+        "p10": 0.351,
+        "p25": 0.4344,
+        "median": 0.6128,
+        "p75": 0.6881,
+        "p90": 0.7424,
+        "max": 0.7641,
+        "mean": 0.5685
+      },
+      "histogram": {
+        "anchor": [
+          [
+            0.2,
+            1
+          ],
+          [
+            0.25,
+            1
+          ],
+          [
+            0.3,
+            1
+          ],
+          [
+            0.35,
+            1
+          ],
+          [
+            0.4,
+            0
+          ],
+          [
+            0.45,
+            2
+          ],
+          [
+            0.5,
+            1
+          ],
+          [
+            0.55,
+            1
+          ],
+          [
+            0.6,
+            4
+          ],
+          [
+            0.65,
+            1
+          ],
+          [
+            0.7,
+            2
+          ]
+        ],
+        "bank": [
+          [
+            0.3,
+            2
+          ],
+          [
+            0.35,
+            2
+          ],
+          [
+            0.4,
+            0
+          ],
+          [
+            0.45,
+            0
+          ],
+          [
+            0.5,
+            2
+          ],
+          [
+            0.55,
+            1
+          ],
+          [
+            0.6,
+            2
+          ],
+          [
+            0.65,
+            3
+          ],
+          [
+            0.7,
+            2
+          ],
+          [
+            0.75,
+            1
+          ]
+        ]
+      }
+    },
+    "by_scheme": {
+      "ref2": {
+        "instances": 22,
+        "measurable": 15,
+        "measurable_rate": 0.6818,
+        "anchor": {
+          "n": 15,
+          "min": 0.2168,
+          "p10": 0.3001,
+          "p25": 0.4263,
+          "median": 0.5731,
+          "p75": 0.6339,
+          "p90": 0.6888,
+          "max": 0.714,
+          "mean": 0.5217
+        },
+        "bank": {
+          "n": 15,
+          "min": 0.316,
+          "p10": 0.351,
+          "p25": 0.4344,
+          "median": 0.6128,
+          "p75": 0.6881,
+          "p90": 0.7424,
+          "max": 0.7641,
+          "mean": 0.5685
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.2,
+              1
+            ],
+            [
+              0.25,
+              1
+            ],
+            [
+              0.3,
+              1
+            ],
+            [
+              0.35,
+              1
+            ],
+            [
+              0.4,
+              0
+            ],
+            [
+              0.45,
+              2
+            ],
+            [
+              0.5,
+              1
+            ],
+            [
+              0.55,
+              1
+            ],
+            [
+              0.6,
+              4
+            ],
+            [
+              0.65,
+              1
+            ],
+            [
+              0.7,
+              2
+            ]
+          ],
+          "bank": [
+            [
+              0.3,
+              2
+            ],
+            [
+              0.35,
+              2
+            ],
+            [
+              0.4,
+              0
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.5,
+              2
+            ],
+            [
+              0.55,
+              1
+            ],
+            [
+              0.6,
+              2
+            ],
+            [
+              0.65,
+              3
+            ],
+            [
+              0.7,
+              2
+            ],
+            [
+              0.75,
+              1
+            ]
+          ]
+        }
+      }
+    },
+    "by_char": {
+      "char_luqingci": {
+        "instances": 7,
+        "measurable": 6,
+        "measurable_rate": 0.8571,
+        "anchor": {
+          "n": 6,
+          "min": 0.2168,
+          "p10": 0.2531,
+          "p25": 0.2961,
+          "median": 0.4654,
+          "p75": 0.6257,
+          "p90": 0.644,
+          "max": 0.6587,
+          "mean": 0.4542
+        },
+        "bank": {
+          "n": 6,
+          "min": 0.316,
+          "p10": 0.3318,
+          "p25": 0.3497,
+          "median": 0.5161,
+          "p75": 0.6884,
+          "p90": 0.7283,
+          "max": 0.7641,
+          "mean": 0.5254
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.2,
+              1
+            ],
+            [
+              0.25,
+              1
+            ],
+            [
+              0.3,
+              1
+            ],
+            [
+              0.35,
+              0
+            ],
+            [
+              0.4,
+              0
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.5,
+              0
+            ],
+            [
+              0.55,
+              0
+            ],
+            [
+              0.6,
+              2
+            ],
+            [
+              0.65,
+              1
+            ]
+          ],
+          "bank": [
+            [
+              0.3,
+              2
+            ],
+            [
+              0.35,
+              1
+            ],
+            [
+              0.4,
+              0
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.5,
+              0
+            ],
+            [
+              0.55,
+              0
+            ],
+            [
+              0.6,
+              0
+            ],
+            [
+              0.65,
+              2
+            ],
+            [
+              0.7,
+              0
+            ],
+            [
+              0.75,
+              1
+            ]
+          ]
+        }
+      },
+      "char_luzhenting": {
+        "instances": 1,
+        "measurable": 1,
+        "measurable_rate": 1.0,
+        "anchor": {
+          "n": 1,
+          "min": 0.4983,
+          "p10": 0.4983,
+          "p25": 0.4983,
+          "median": 0.4983,
+          "p75": 0.4983,
+          "p90": 0.4983,
+          "max": 0.4983,
+          "mean": 0.4983
+        },
+        "bank": {
+          "n": 1,
+          "min": 0.5253,
+          "p10": 0.5253,
+          "p25": 0.5253,
+          "median": 0.5253,
+          "p75": 0.5253,
+          "p90": 0.5253,
+          "max": 0.5253,
+          "mean": 0.5253
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.45,
+              1
+            ]
+          ],
+          "bank": [
+            [
+              0.5,
+              1
+            ]
+          ]
+        }
+      },
+      "char_shenyan": {
+        "instances": 14,
+        "measurable": 8,
+        "measurable_rate": 0.5714,
+        "anchor": {
+          "n": 8,
+          "min": 0.3567,
+          "p10": 0.4541,
+          "p25": 0.5101,
+          "median": 0.5867,
+          "p75": 0.656,
+          "p90": 0.7104,
+          "max": 0.714,
+          "mean": 0.5753
+        },
+        "bank": {
+          "n": 8,
+          "min": 0.3567,
+          "p10": 0.4654,
+          "p25": 0.5601,
+          "median": 0.6193,
+          "p75": 0.697,
+          "p90": 0.7396,
+          "max": 0.7462,
+          "mean": 0.6062
+        },
+        "histogram": {
+          "anchor": [
+            [
+              0.35,
+              1
+            ],
+            [
+              0.4,
+              0
+            ],
+            [
+              0.45,
+              1
+            ],
+            [
+              0.5,
+              1
+            ],
+            [
+              0.55,
+              1
+            ],
+            [
+              0.6,
+              2
+            ],
+            [
+              0.65,
+              0
+            ],
+            [
+              0.7,
+              2
+            ]
+          ],
+          "bank": [
+            [
+              0.35,
+              1
+            ],
+            [
+              0.4,
+              0
+            ],
+            [
+              0.45,
+              0
+            ],
+            [
+              0.5,
+              1
+            ],
+            [
+              0.55,
+              1
+            ],
+            [
+              0.6,
+              2
+            ],
+            [
+              0.65,
+              1
+            ],
+            [
+              0.7,
+              2
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "pick": "largest"
+}
