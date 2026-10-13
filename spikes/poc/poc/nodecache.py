@@ -51,7 +51,7 @@ class NodeCache:
     def put_blob(self, data: bytes) -> str:
         sha = nodekey.sha256_bytes(data)
         p = self.cas_path(sha)
-        if not p.is_file():
+        if self.blob(sha) is None:  # 不存在，或内容已损坏：（重新）原子写入
             _atomic_write(p, data)
         return sha
 
@@ -80,9 +80,11 @@ class NodeCache:
             return None
         if rec.kind != kind or rec.key != key:
             return None
-        for art in rec.artifacts.values():
-            if self.blob(art["sha256"]) is None:
+        try:
+            if not rec.artifacts or any(self.blob(art["sha256"]) is None for art in rec.artifacts.values()):
                 return None  # 产物缺失或损坏：当作未命中，重新生成
+        except (KeyError, TypeError, ValueError, AttributeError):
+            return None
         return rec
 
     def put(self, kind: str, key: str, blobs: dict[str, bytes], *, cost_cny: float = 0.0, elapsed_s: float = 0.0, meta: dict[str, Any] | None = None) -> Record:

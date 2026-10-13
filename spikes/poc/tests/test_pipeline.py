@@ -185,6 +185,20 @@ class PipelineTest(unittest.TestCase):
         _, strict = self.run_pipeline(FakeWorld(video_outcomes={"ep01_sc01_sh01": "quota"}), video="auto", require_real_video=True)
         self.assertTrue(strict["strict_failed"])
 
+    def test_video_exception_degrades_and_manifest_is_redacted_and_strict_verified(self):
+        w = FakeWorld()
+
+        def boom(job, out_dir):
+            raise RuntimeError("provider said key=" + ENV["ARK_API_KEY"])
+
+        w.video_fn = boom
+        pl, man = self.run_pipeline(w, video="h3")
+        self.assertEqual(len(man["degraded"]), len(man["placeholders"]))
+        self.assertTrue(man["strict_failed"])
+        text = (pl.run.dir / "pipeline-manifest.json").read_text(encoding="utf-8")
+        self.assertNotIn("SENTINEL", text)
+        self.assertTrue(json.loads(text)["strict_failed"])
+
     def test_partial_video_is_cached_and_rest_resumes(self):
         order = [s["shot_id"] for sc in base_doc()["episodes"][0]["scenes"] for s in sc["shots"]]
         w = FakeWorld(video_outcomes={sid: "quota" for sid in order[3:4]})
@@ -257,6 +271,17 @@ class CacheTest(unittest.TestCase):
             c.cas_path(rec.artifacts["mp3"]["sha256"]).write_bytes(b"tampered")
             self.assertIsNone(c.get("tts", key))  # 产物损坏 → 未命中
             self.assertIsNone(c.get("video", key))  # 类型不同 → 未命中
+            c.put("tts", key, {"mp3": b"abc", "asr": b"{}"})  # 自愈：重新 put 覆盖损坏的 blob
+            self.assertEqual(c.read(c.get("tts", key), "mp3"), b"abc")
+
+    def test_malformed_record_is_a_miss(self):
+        with tempfile.TemporaryDirectory() as td:
+            c = nodecache.NodeCache(Path(td))
+            key = nodekey.sha256_json("k")
+            path = c._node_path("tts", key)
+            path.parent.mkdir(parents=True)
+            path.write_text(json.dumps({"kind": "tts", "key": key, "artifacts": {"mp3": "oops"}}), encoding="utf-8")
+            self.assertIsNone(c.get("tts", key))
 
     def test_rejects_bad_kind_or_key(self):
         c = nodecache.NodeCache(Path("/nonexistent"))

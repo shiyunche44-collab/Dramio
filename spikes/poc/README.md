@@ -281,6 +281,7 @@ python3 -m poc run --verify runs/<run_id>             # 离线复核成片规格
 缓存在 `runs/pipeline-cache/`（`cas/<sha256>` + `nodes/<kind>/<key>.json`，不入库）；合成沿用 compose 自带的 segment / audio_mix / final 缓存（`pipeline-cache/compose/`）。
 输出在 `runs/<run_id>/`：`final.mp4`、`timeline.otio`、`subtitles.srt|ass`、`pipeline-manifest.json`（每个节点的 key / 命中 / 费用 / 耗时、`degraded[]`、`placeholders`）、`calls.jsonl`。
 需要环境变量 `DEEPSEEK_API_KEY`、`ARK_API_KEY`（`ARK_BILLING=plan`）、`VOLC_SPEECH_API_KEY`，真实视频还需要 `MINIMAX_API_KEY`；本机需要 ffmpeg 与 OTIO（`pip install -e '.[otio]'`）。
+`--reroll` 只改变缓存 key 的采样序号：Seedream / LLM 没有 seed，是否得到不同结果取决于供应商的随机性；阶段名之外的 id 写错不会报错（什么也不会重算），视频节点不支持 reroll。
 不含 BGM / SFX（P0-10 未做）；口型路线 C（D-016）默认不接入。
 
 ## 运行记录

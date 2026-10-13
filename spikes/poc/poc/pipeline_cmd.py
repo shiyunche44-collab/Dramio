@@ -9,7 +9,7 @@ import re
 import sys
 from pathlib import Path
 
-from poc import compose, media, nodekey, pipeline, providers, render, runlog
+from poc import compose, config, media, nodekey, pipeline, providers, render, runlog
 
 EXIT_OK, EXIT_FAIL, EXIT_USAGE = 0, 1, 2
 DEFAULT_CACHE = Path("pipeline-cache")
@@ -69,6 +69,8 @@ def verify(directory: Path, out=sys.stdout) -> int:
             errors.append(f"manifest 费用 {man['cost_cny']} 与 calls.jsonl 合计 {total:.6f} 不一致")
     else:
         errors.append("缺少 calls.jsonl")
+    if man["options"].get("require_real_video") and man.get("placeholders"):
+        errors.append(f"严格模式（--require-real-video / --video h3）下仍有 {len(man['placeholders'])} 个占位镜头")
     if not all(set(n) >= {"stage", "key", "hit"} for n in man["nodes"]):
         errors.append("manifest 的节点缺少 stage / key / hit")
     secrets = providers.secret_values(os.environ)
@@ -103,11 +105,8 @@ def _cmd(args: argparse.Namespace, out=sys.stdout) -> int:
         return EXIT_OK
     try:
         manifest = pl.run_all()
-    except pipeline.PipelineError as exc:
-        print(f"失败：{exc}", file=out)
-        return EXIT_FAIL
-    except (render.RenderError, media.MediaError, compose.ComposeError) as exc:
-        print(f"失败：{type(exc).__name__}: {exc}", file=out)
+    except (pipeline.PipelineError, render.RenderError, media.MediaError, compose.ComposeError) as exc:
+        print(config.redact(f"失败：{type(exc).__name__}: {exc}", providers.secret_values(os.environ)), file=out)
         return EXIT_FAIL
     run_dir = pl.run.dir
     print(f"完成：{run_dir / 'final.mp4'}（{manifest['final']['duration_s']} 秒）；节点命中 {manifest['hits']} / 未命中 {manifest['misses']}；"

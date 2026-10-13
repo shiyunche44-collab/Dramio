@@ -30,7 +30,7 @@ from pathlib import Path
 from typing import Any
 
 from poc import (
-    compose, costume, images, keyframe, llm, media, nodecache, nodekey, otio_timeline, pricing, providers, render, script, seedream,
+    config, compose, costume, images, keyframe, llm, media, nodecache, nodekey, otio_timeline, pricing, providers, render, script, seedream,
     shots, speech, subtitles, tts, video,
 )
 from poc.runlog import Run
@@ -383,7 +383,10 @@ class Pipeline:
             fn = self.fns.video_fn or _default_video_fn
             with self.run.call("minimax", "video", model=job.model, node_key=key) as call:
                 call.extra = {"shot_id": sid, "resolution": job.resolution, "duration": job.duration}
-                summary = fn(job, scratch)
+                try:
+                    summary = fn(job, scratch)
+                except Exception as exc:  # noqa: BLE001 - 单个镜头的任何失败都降级为占位，不让整次运行崩溃
+                    summary = {"jobs": [{"shot_id": sid, "status": "error", "error": f"{type(exc).__name__}: {exc}"}], "count": 1, "success": 0}
                 mp4 = scratch / "videos" / f"{sid}.mp4"
                 ok = summary.get("success") == 1 and mp4.is_file()
                 call.cost_cny, call.cost_basis = (cost, "estimate") if ok else (0.0, "estimate")
@@ -400,7 +403,7 @@ class Pipeline:
             aborted = any(r.get("status") == "aborted" for r in summary.get("jobs", []))
             if aborted:
                 stop = reason  # 额度用尽 / 账号级错误：不再提交
-            self.degraded.append({"stage": "video", "shot_id": sid, "reason": reason, "fallback": "首帧缓推占位"})
+            self.degraded.append({"stage": "video", "shot_id": sid, "reason": config.redact(reason, providers.secret_values(self.env)), "fallback": "首帧缓推占位"})
         self._timed("video", t0)
         return out_dir
 
@@ -476,9 +479,8 @@ class Pipeline:
                           "fps": info.fps, "duration_s": info.duration_s, "video_codec": info.video_codec, "audio_codec": info.audio_codec},
                 "limits": ["BGM / SFX 未做（P0-10）", "口型路线 C 未接入（D-016）", "主图 / 首帧自动取第 1 张，不做一致性打分重试"],
             }
-            (run.dir / "pipeline-manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-            run.write_json("pipeline-summary.json", {"cost_cny": manifest["cost_cny"], "hits": manifest["hits"], "misses": manifest["misses"]})
             manifest["strict_failed"] = bool(strict and placeholders)
+            run.write_json("pipeline-manifest.json", manifest)  # 写出前脱敏（供应商错误文本可能回显密钥）
             return manifest
 
     def dry_run(self) -> dict[str, Any]:
