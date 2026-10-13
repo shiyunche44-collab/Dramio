@@ -19,5 +19,3 @@ ADR 记录“为什么这样设计”。流程与规则见 [docs/governance.md �
 | [ADR-0008](0008-typescript-python-split.md) | TypeScript 与 Python 的语言分工 | Proposed |
 | [ADR-0009](0009-opentimelineio.md) | 以 OpenTimelineIO 作为时间线格式 | Proposed |
 | [ADR-0010](0010-region-based-llm-routing.md) | LLM 按部署区域路由以满足合规 | Proposed |
-| [ADR-0011](0011-model-gateway-language.md) | 模型网关的实现语言 | Proposed |
-| [ADR-0012](0012-dramair-v1-scope.md) | DramaIR v1 的范围 | Proposed |

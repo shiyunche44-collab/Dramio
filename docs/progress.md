@@ -48,8 +48,8 @@
 - [x] 6. 起草 ADR-0011、ADR-0012（Proposed）并登记索引
 - [x] 7. 技术债登记提案与 architecture / governance 修改清单
 - [x] 8. 登记 D-020 ~ D-023，写 progress
-- [ ] 9. PR-A（报告 + progress，自动合并）
-- [ ] 10. PR-B（ADR 草案，受保护路径，等用户）
+- [x] 9. PR-A（报告 + progress，自动合并）
+- [x] 10. PR-B（ADR 草案，受保护路径，等用户）
 - [ ] 11. 用户 `/decide` 后：按决定改 ADR 状态并同步 `docs/adr/README.md`；ADR-0011 转 Accepted 时同步 architecture.md §14，ADR-0012 转 Accepted 时同步 §4；验证并交付
 
 ## 本步费用
@@ -189,3 +189,4 @@
 | 2026-10-13 | P0-13 | 子任务 4、5、7、9 完成：3 集冷运行全部退出码 0、`run --verify` 通过：ep1 23 镜头 / 62.9 秒 / ¥10.14 / 2366 秒，ep2 20 镜头 / 69.1 秒 / ¥9.20 / 2024 秒，ep3 20 镜头 / 63.5 秒 / ¥8.60 / 1969 秒（合计 63 镜头、35 句台词、¥27.94、6359 秒，3 次网络错误计 ¥0.64）；热运行 3 集 61–67 节点全命中、¥0、各 0.5 秒。首帧人脸相似度（face，τ=0.45）：69 个实例 58 个可度量（84%），中位 0.649、P10 0.343、P90 0.782，< τ 13 个（22%），< 0.30 3 个，13 个里 12 个是双人镜头。重抽实验（9 个镜头）已在后台启动 | 未入库的原始输出在 spikes/poc/runs/p0-13*；`make arch-check` 见提交前 | 等重抽实验结束（`scripts/p0_13_reroll.sh`），然后外推表、报告、D-019、证据、评审、PR |
 | 2026-10-13 | P0-13 | 报告 `docs/reports/p0/P0-13.md` 与证据 `docs/reports/p0/P0-13/`（2.6 MB）完成，登记 D-019。重抽实验被 Ark Agent Plan 月度额度中断（HTTP 429 `AccountQuotaExceeded`，2026-11-01 重置）：只完成 ep1 的 2 个镜头（¥0.68），其余 7 个未做；这使得重置前无法再生成新的定妆图 / 首帧 | `make arch-check` 见提交前。本步费用约 ¥28.6（估算，Ark 部分为 Agent Plan 等价费用） | verifier、arch-reviewer，然后交付 PR；用户需知道 Ark 额度已用尽 |
 | 2026-10-13 | P0-13 | 收尾：P0-13 标 ✅，指针移到 P0-14。verifier 全部通过（数字可复算；两处口径已补：分位数改为线性插值、`--verify` 在原始 runs 目录里跑）；arch-reviewer 无阻断项，建议项已处理（台词超时阈值口径、11 个无脸实例、临时路径清理、重抽脚本依赖说明；`scale_summary` 的 compose 耗时只取最后一个 run、repairs 同阶段多节点会被覆盖，目前不影响）。D-018、D-019 待用户 | 391 个单测、`make arch-check`、`make drama-ir-check` 通过。本步费用约 ¥28.6（估算，Ark 部分为 Agent Plan 等价费用） | P0-14 P0 复盘（文档为主，不需要生成；Ark 月度额度用尽至 2026-11-01，不影响）。P0-14 是 M0.3 最后一步 |
+| 2026-10-13 | P0-14 | 总报告 `docs/reports/p0/P0-14.md`、DramaIR 修订提案、P2 目标提案完成，登记 D-020 ~ D-023。verifier 发现 2 处失败已修（多候选首帧成本低估一半：3 候选应 +¥13 / 分钟，P2 成本目标改为 ≤ ¥52，2 候选 ≤ ¥45；ADR-0003 评审里的耗时口径）及 4 处小瑕疵；arch-reviewer 2 个阻断项已修（ADR 草案拆成单独 PR；§7.3 架构 2 / 3 改判“部分”）。ADR-0011（网关语言，倾向 TypeScript）、ADR-0012（DramaIR v1 范围）草案状态 Proposed，在单独分支 `claude/p0-14-adr-drafts` 的 PR 里（受保护路径，等用户合并）。ADR-0001 ~ 0010 状态未动 | 391 个单测、`make arch-check`、`make drama-ir-check` 通过；费用 ¥0 | P0-14 保持 🔄：等用户处理 D-020 ~ D-023 和 ADR 草案 PR，然后按决定改 ADR 状态（受保护路径单独 PR）并标 ✅。M0.3 的其余步骤都已完成 |
