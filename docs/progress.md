@@ -50,7 +50,7 @@
 - [x] 8. 登记 D-020 ~ D-023，写 progress
 - [ ] 9. PR-A（报告 + progress，自动合并）
 - [ ] 10. PR-B（ADR 草案，受保护路径，等用户）
-- [ ] 11. 用户 `/decide` 后：按决定改 ADR 状态并同步索引，验证并交付
+- [ ] 11. 用户 `/decide` 后：按决定改 ADR 状态并同步 `docs/adr/README.md`；ADR-0011 转 Accepted 时同步 architecture.md §14，ADR-0012 转 Accepted 时同步 §4；验证并交付
 
 ## 本步费用
 
