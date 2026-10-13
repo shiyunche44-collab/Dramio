@@ -84,7 +84,7 @@
 | D-019 | P0-13 | 规模抽测的观感与结论确认（主观）：3 集 360p 预览 `docs/reports/p0/P0-13/ep{1,2,3}/preview-360p.mp4`（全部是首帧缓推占位，没有真实视频）；报告 `docs/reports/p0/P0-13.md` | A：认可 P0-13 的结论与缺口清单，带入 P0-14；B：要求补做（说明什么，例如重抽实验需等 Ark 额度重置后再补） | A：重抽实验的剩余 7 个镜头只是辅助数据，等 2026-11-01 重置后可在 P1 补；其余四个问题已按可得数据回答并标明实测 / 外推 / 未验证。回复示例：`/decide D-019 A` | 待决 | |
 | D-020 | P0-14 | ADR-0001 ~ 0010 的处置（评审意见见 `docs/reports/p0/P0-14.md` §6，10 条自 2026-09-30 起为 Proposed）。ADR 状态变更与转 Accepted 前的措辞修订由你决定 | A：按报告建议——0001 / 0002 / 0004 ~ 0008 转 Accepted；0003 加复审条件“P1-07 失败则复审”后 Accepted；0009 补局限措辞后 Accepted；0010 注明 P0 未验证后 Accepted；B：0003 / 0010 保持 Proposed 到 P1-07 / P1-08 之后；C：其它（说明） | A：P0 对每条都有证据或无反证；措辞修订随状态变更同一 PR 提交（受保护路径）。回复示例：`/decide D-020 A` | 待决 | |
 | D-021 | P0-14 | ADR-0011 模型网关的实现语言（`docs/adr/0011-model-gateway-language.md`，Proposed） | A：TypeScript；B：Go；C：Python（需先改 ADR-0008） | A：网关是 I/O 型代理，TypeScript 与 API / 编排共享类型，只有两套工具链；P0 的 Python 适配器是验证代码，要删除不复用。回复示例：`/decide D-021 A` | 待决 | |
-| D-022 | P0-14 | P2 量化目标（`docs/reports/p0/P0-14/p2-targets-proposal.md`）：成本 ≤ ¥45 / 成片分钟（等价刊例价）、首帧一致性通过率 ≥ 95%、单集耗时 ≤ 30 分钟；QC 自动通过率与返工率“P1-28 后设定” | A：采纳；B：调整数值（说明） | A：基线来自 P0-12 / P0-13，QC 通过率 P0 没有数据，不编造数字。回复示例：`/decide D-022 A` | 待决 | |
+| D-022 | P0-14 | P2 量化目标（`docs/reports/p0/P0-14/p2-targets-proposal.md`）：成本 ≤ ¥52 / 成片分钟（3 候选首帧；2 候选为 ≤ ¥45，等价刊例价）、首帧一致性通过率 ≥ 95%、单集耗时 ≤ 30 分钟；QC 自动通过率与返工率“P1-28 后设定” | A：采纳；B：调整数值（说明） | A：基线来自 P0-12 / P0-13，QC 通过率 P0 没有数据，不编造数字。回复示例：`/decide D-022 A` | 待决 | |
 | D-023 | P0-14 | DramaIR v0 修订范围（`docs/reports/p0/P0-14/dramair-v0-revision-proposal.md`；ADR-0012 草案） | A：只做提案，实际修订并入 P1-03 / ADR-0012；B：现在就做向后兼容的 v0.x 小改（枚举扩展、可选 `voice_id`），另开受保护路径 PR | A：v0 全部必填且 `additionalProperties: false`，P1-03 才有生成类型与兼容性 CI。回复示例：`/decide D-023 A` | 待决 | |
 
 ## 已知的前置条件
