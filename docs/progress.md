@@ -40,12 +40,12 @@
 
 ## 子任务
 
-- [ ] 1. 检查环境（doctor、ffmpeg、OTIO、face 依赖与权重）
-- [ ] 2. 写 3 个梗概并 `--dry-run` 预估
-- [ ] 3. 批跑脚本（串行、nohup、可续跑）
+- [x] 1. 检查环境（doctor、ffmpeg、OTIO、face 依赖与权重）
+- [x] 2. 写 3 个梗概并 `--dry-run` 预估
+- [x] 3. 批跑脚本（串行、nohup、可续跑）
 - [ ] 4. 后台跑 3 集，逐集 `run --verify` 并检查镜头数 / H1
 - [ ] 5. 热运行 3 集
-- [ ] 6. 汇总脚本 + 单测
+- [x] 6. 汇总脚本 + 单测
 - [ ] 7. 首帧人脸相似度（face）
 - [ ] 8. 重抽实验（可选，≤ 10 张）
 - [ ] 9. 对白镜头占比、台词延长统计
@@ -181,3 +181,4 @@
 | 2026-10-13 | P0-12 | 真实运行完成：冷运行（`--video placeholder`）59.67 秒成片，3 角色 / 19 镜头 / 10 句台词，约 ¥8.5，1582 秒（首帧串行占 88%），`run --verify` 通过；热运行 58 节点全命中、¥0、0.56 秒；增量（重抽 1 个首帧 + 1 句配音）只重算 2 个生成节点 + 4 个合成节点、¥0.33；`--video auto` 额度用尽时只被拒 1 次、19 个镜头降级、退出码 0，`--video h3` 退出码 1。报告 `docs/reports/p0/P0-12.md`，证据 `docs/reports/p0/P0-12/`（16 MB）。登记 D-018（成片观感与自动化取舍） | 388 个单测通过；`make arch-check`、`make drama-ir-check` 通过。本步费用约 ¥8.9（估算，Agent Plan 图像为等价费用） | 子任务 17：verifier、arch-reviewer，然后交付 PR；D-018 待用户 |
 | 2026-10-13 | P0-12 | arch-reviewer 3 个阻断项已修：① `put_blob` 遇到已损坏的 CAS 文件会覆写（缓存自愈），`get()` 对畸形记录返回未命中；② manifest 改用 `run.write_json` 脱敏写出，错误输出也脱敏；③ `strict_failed` 先于写盘，`--verify` 在严格模式下有占位镜头即失败。另：视频调用抛异常改为降级而不是崩溃。未处理的建议项：视频失败时已提交任务的费用不入账（保险少算，上限仍有余量）、`_default_video_fn` 读 `os.environ` 而不是注入的 env、`--reroll` 的 id 写错无提示（README 已注明）、15 MB 成片入库（在 P0-11 的 28 MB 证据上限内） | 新增 2 个单测，共 390 个通过 | 等 verifier 报告，然后交付 PR |
 | 2026-10-13 | P0-12 | 收尾：P0-12 标 ✅，指针移到 P0-13。verifier 10 条全部通过（报告数字与证据一致，缓存体积已改为实测约 100 MB）；arch-reviewer 的阻断项已修。成片观感与自动化取舍待用户（D-018，不阻塞 P0-13） | 390 个单测通过；`make arch-check`、`make drama-ir-check` 通过。本步费用约 ¥8.9（估算） | P0-13 规模抽测（连续 3 集或 30 镜头以上）；真实视频仍受 MiniMax 额度限制，抽测用 `--video placeholder` |
+| 2026-10-13 | P0-13 | 子任务 1–3、6：face 依赖与 buffalo_l 权重已装好（pip + GitHub release 可达）；3 个同世界观梗概写入 `spikes/poc/scripts/p0_13_batch.sh`（串行、可续跑、`--video placeholder`），汇总模块 `poc/scale_summary.py`（多段 calls 合并、阶段费用 / 耗时取节点缓存记录、返工与对白镜头统计、为 face 准备参考图与 manifest）+ 单测。后台批跑已启动（日志在 scratchpad `p13.log`，输出 `spikes/poc/runs/p0-13/ep{1,2,3}`）。注意：第一次启动时 ep1 误用了 P0-12 的梗概（命中缓存），随即中止并删除了那次的 run 目录，实际花费不超过约 ¥1，未入账 | 单测通过；`make arch-check` 见提交前 | 等 3 集跑完（预计 80–100 分钟），然后 `run --verify`、热运行、face、汇总、报告。容器若被回收，缓存丢失，需重跑（约 ¥25） |
