@@ -22,41 +22,18 @@
 ## 当前状态
 
 - **当前里程碑**：M0.3 串联与结论
-- **当前步骤**：P0-12
-- **步骤状态**：进行中
+- **当前步骤**：P0-13
+- **步骤状态**：未开始
 - **工作分支**：claude/sweet-lamport-cwwsvb
 - **PR**：—
 
 ## 步骤卡
 
-### P0-12 一键串联
-
-- **目标**：`python3 -m poc run --logline "…"` 从一句话梗概全自动产出 1080×1920 成片；每个生成节点按 `node_key`（输入哈希）缓存，相同输入第二次运行全部命中、不发付费请求（验证 ADR-0006 / INV-05 的 node_key 思路）。
-- **做**：`nodekey.py`（规范化 JSON 的 sha256，上游用产物 sha256）；`pipeline.py` / `pipeline_cmd.py`（`run` 子命令）；阶段 script → shots → costume → voices → tts → keyframe(ref2) → video(H3 768P) → compose；缓存 `runs/pipeline-cache/`（`cas/<sha256>` + `nodes/<kind>/<key>.json`，不入库）；`--video {auto,h3,placeholder}`，额度用尽（429 2056）自动降级为首帧缓推占位并记 `degraded[]`；`--require-real-video`、`--max-cost-cny`、`--reroll`、`--dry-run`、`--verify`；离线端到端单测（伪造供应商）；README 与报告 `docs/reports/p0/P0-12.md`（冷 / 热 / 增量运行）。
-- **不做**：BGM / SFX（P0-10 未做）；口型路线 C 默认不接入（可选开关，可跳过）；补测 MiniMax 缺失镜头；Temporal / 并发 / 网关 / 数据库；人工审核点；规模抽测（P0-13）；不改 archcheck 规则、顶层目录、DramaIR Schema。
-- **验收**：① 离线伪造全流程退出码 0，无人工干预；② 真实冷运行 `--video placeholder` 退出码 0，`run --verify` 通过（1080×1920、h264+aac、AIGC 角标与元数据、字幕数=台词数）；③ `--video auto` 额度用尽时仍退出码 0 且 `degraded[]` 如实，`--require-real-video` 退出码 1；④ 第二次运行全部命中、无付费调用、费用 ¥0、≤ 30 秒；⑤ 改一句台词 / 一个镜头只重算受影响节点；⑥ node_key 稳定且对各输入敏感、不含路径 / 时间 / run_id；⑦ 费用 ≤ ¥100；⑧ 单测、`make arch-check`、`make drama-ir-check` 通过；⑨ 报告；⑩ 成片观感待用户确认（待决事项）。
-- **涉及**：architecture §6.2–6.4；ADR-0005、0006、0009；INV-02/03/05/06/07/08。无需新 ADR。
-- **估时**：2.5–3 天；费用占位冷运行约 ¥6–7，含真实视频约 ¥35（额度用尽时 ¥0）。
+（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
 
 ## 子任务
 
-- [x] 1. 摸底各阶段入口的硬编码点，写进 `pipeline.py` 模块文档
-- [x] 2. `nodekey.py` + 单测
-- [x] 3. 缓存存储（CAS + 节点记录，原子写入、校验、损坏视为未命中）+ 单测
-- [x] 4. script + shots 阶段（shots 失败回退 script 自带镜头）
-- [x] 5. costume / keyframe 自动选择规则与 manifest
-- [x] 6. 音色按性别自动分配
-- [x] 7. tts 阶段（按句缓存，ASR 回检）
-- [x] 8. keyframe 阶段（按镜头缓存）
-- [x] 9. video 阶段（按镜头缓存，额度用尽降级，占位不进缓存）
-- [x] 10. compose 接线
-- [x] 11. 编排器与 CLI（`run`，含 dry-run / verify / manifest）
-- [x] 12. 离线端到端测试（冷 / 热 / 增量 / 降级 / 费用保险）
-- [x] 13. 真实冷运行（placeholder）与热运行
-- [x] 14. 真实运行（auto），验证降级
-- [ ] 15.（可选）`--lipsync c` 开关，仅离线单测
-- [x] 16. README、报告、登记成片观感待决事项
-- [ ] 17. 验证（verifier、arch-reviewer）与交付 PR
+（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
 
 ## 本步费用
 
@@ -185,3 +162,4 @@
 | 2026-10-13 | P0-12 | 存档：README 增加 `run` 一节；真实冷运行（`--video placeholder`，梗概“雨夜，被陷害的设计师当众撕开真相，却发现幕后黑手是自己最信任的人。”）在后台进行：第一轮被 590 秒超时打断，script / shots / 部分定妆 / 10 句 tts / 3 张首帧已入缓存（`spikes/poc/runs/pipeline-cache`，不入库），第二轮正续跑（串行，图像约 100 秒 / 张）。脚本生成了 3 个角色 | 388 个单测通过；`make arch-check` 通过。目前该梗概的冷运行已花约 ¥3（估算） | 等冷运行结束后：热运行（验收 4）、`run --verify`、`--video auto` 降级验证（子任务 14）、写 `docs/reports/p0/P0-12.md`、登记成片观感待决事项、verifier / arch-reviewer、PR。容器若被回收，缓存会丢，需重新冷运行（约 ¥6–7） |
 | 2026-10-13 | P0-12 | 真实运行完成：冷运行（`--video placeholder`）59.67 秒成片，3 角色 / 19 镜头 / 10 句台词，约 ¥8.5，1582 秒（首帧串行占 88%），`run --verify` 通过；热运行 58 节点全命中、¥0、0.56 秒；增量（重抽 1 个首帧 + 1 句配音）只重算 2 个生成节点 + 4 个合成节点、¥0.33；`--video auto` 额度用尽时只被拒 1 次、19 个镜头降级、退出码 0，`--video h3` 退出码 1。报告 `docs/reports/p0/P0-12.md`，证据 `docs/reports/p0/P0-12/`（16 MB）。登记 D-018（成片观感与自动化取舍） | 388 个单测通过；`make arch-check`、`make drama-ir-check` 通过。本步费用约 ¥8.9（估算，Agent Plan 图像为等价费用） | 子任务 17：verifier、arch-reviewer，然后交付 PR；D-018 待用户 |
 | 2026-10-13 | P0-12 | arch-reviewer 3 个阻断项已修：① `put_blob` 遇到已损坏的 CAS 文件会覆写（缓存自愈），`get()` 对畸形记录返回未命中；② manifest 改用 `run.write_json` 脱敏写出，错误输出也脱敏；③ `strict_failed` 先于写盘，`--verify` 在严格模式下有占位镜头即失败。另：视频调用抛异常改为降级而不是崩溃。未处理的建议项：视频失败时已提交任务的费用不入账（保险少算，上限仍有余量）、`_default_video_fn` 读 `os.environ` 而不是注入的 env、`--reroll` 的 id 写错无提示（README 已注明）、15 MB 成片入库（在 P0-11 的 28 MB 证据上限内） | 新增 2 个单测，共 390 个通过 | 等 verifier 报告，然后交付 PR |
+| 2026-10-13 | P0-12 | 收尾：P0-12 标 ✅，指针移到 P0-13。verifier 10 条全部通过（报告数字与证据一致，缓存体积已改为实测约 100 MB）；arch-reviewer 的阻断项已修。成片观感与自动化取舍待用户（D-018，不阻塞 P0-13） | 390 个单测通过；`make arch-check`、`make drama-ir-check` 通过。本步费用约 ¥8.9（估算） | P0-13 规模抽测（连续 3 集或 30 镜头以上）；真实视频仍受 MiniMax 额度限制，抽测用 `--video placeholder` |
