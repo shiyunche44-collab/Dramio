@@ -23,17 +23,40 @@
 
 - **当前里程碑**：M0.3 串联与结论
 - **当前步骤**：P0-12
-- **步骤状态**：未开始
-- **工作分支**：claude/admiring-fermat-vnmmrj
+- **步骤状态**：进行中
+- **工作分支**：claude/sweet-lamport-cwwsvb
 - **PR**：—
 
 ## 步骤卡
 
-（开工时由 `/step` 填写：目标 / 做 / 不做 / 验收 / 涉及 / 估时）
+### P0-12 一键串联
+
+- **目标**：`python3 -m poc run --logline "…"` 从一句话梗概全自动产出 1080×1920 成片；每个生成节点按 `node_key`（输入哈希）缓存，相同输入第二次运行全部命中、不发付费请求（验证 ADR-0006 / INV-05 的 node_key 思路）。
+- **做**：`nodekey.py`（规范化 JSON 的 sha256，上游用产物 sha256）；`pipeline.py` / `pipeline_cmd.py`（`run` 子命令）；阶段 script → shots → costume → voices → tts → keyframe(ref2) → video(H3 768P) → compose；缓存 `runs/pipeline-cache/`（`cas/<sha256>` + `nodes/<kind>/<key>.json`，不入库）；`--video {auto,h3,placeholder}`，额度用尽（429 2056）自动降级为首帧缓推占位并记 `degraded[]`；`--require-real-video`、`--max-cost-cny`、`--reroll`、`--dry-run`、`--verify`；离线端到端单测（伪造供应商）；README 与报告 `docs/reports/p0/P0-12.md`（冷 / 热 / 增量运行）。
+- **不做**：BGM / SFX（P0-10 未做）；口型路线 C 默认不接入（可选开关，可跳过）；补测 MiniMax 缺失镜头；Temporal / 并发 / 网关 / 数据库；人工审核点；规模抽测（P0-13）；不改 archcheck 规则、顶层目录、DramaIR Schema。
+- **验收**：① 离线伪造全流程退出码 0，无人工干预；② 真实冷运行 `--video placeholder` 退出码 0，`run --verify` 通过（1080×1920、h264+aac、AIGC 角标与元数据、字幕数=台词数）；③ `--video auto` 额度用尽时仍退出码 0 且 `degraded[]` 如实，`--require-real-video` 退出码 1；④ 第二次运行全部命中、无付费调用、费用 ¥0、≤ 30 秒；⑤ 改一句台词 / 一个镜头只重算受影响节点；⑥ node_key 稳定且对各输入敏感、不含路径 / 时间 / run_id；⑦ 费用 ≤ ¥100；⑧ 单测、`make arch-check`、`make drama-ir-check` 通过；⑨ 报告；⑩ 成片观感待用户确认（待决事项）。
+- **涉及**：architecture §6.2–6.4；ADR-0005、0006、0009；INV-02/03/05/06/07/08。无需新 ADR。
+- **估时**：2.5–3 天；费用占位冷运行约 ¥6–7，含真实视频约 ¥35（额度用尽时 ¥0）。
 
 ## 子任务
 
-（开工时由 `/step` 填写，格式为 `- [ ] 子任务`，完成后改为 `- [x]`）
+- [ ] 1. 摸底各阶段入口的硬编码点，写进 `pipeline.py` 模块文档
+- [ ] 2. `nodekey.py` + 单测
+- [ ] 3. 缓存存储（CAS + 节点记录，原子写入、校验、损坏视为未命中）+ 单测
+- [ ] 4. script + shots 阶段（shots 失败回退 script 自带镜头）
+- [ ] 5. costume / keyframe 自动选择规则与 manifest
+- [ ] 6. 音色按性别自动分配
+- [ ] 7. tts 阶段（按句缓存，ASR 回检）
+- [ ] 8. keyframe 阶段（按镜头缓存）
+- [ ] 9. video 阶段（按镜头缓存，额度用尽降级，占位不进缓存）
+- [ ] 10. compose 接线
+- [ ] 11. 编排器与 CLI（`run`，含 dry-run / verify / manifest）
+- [ ] 12. 离线端到端测试（冷 / 热 / 增量 / 降级 / 费用保险）
+- [ ] 13. 真实冷运行（placeholder）与热运行
+- [ ] 14. 真实运行（auto），验证降级
+- [ ] 15.（可选）`--lipsync c` 开关，仅离线单测
+- [ ] 16. README、报告、登记成片观感待决事项
+- [ ] 17. 验证（verifier、arch-reviewer）与交付 PR
 
 ## 本步费用
 
