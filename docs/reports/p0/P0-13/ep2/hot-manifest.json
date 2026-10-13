@@ -1,0 +1,1409 @@
+{
+  "version": "pipeline.v1",
+  "logline": "三年后，她以匿名买家的身份回到旧公司，在拍卖会上当众拍下那份毁掉她的合同，对面坐着当年的主谋。",
+  "options": {
+    "video": "placeholder",
+    "require_real_video": false,
+    "max_cost_cny": 20.0,
+    "reroll": {},
+    "llm": "deepseek/deepseek-flash",
+    "image_model": "pro"
+  },
+  "ir_sha256": "abac8c168fe9e5de12302e8d74dc87fde4b4a118685811242512bfa4b58c2ae0",
+  "voices": {
+    "char_anni": "zh_female_cancan_uranus_bigtts",
+    "char_linwan": "zh_female_cancan_uranus_bigtts",
+    "char_hejin": "zh_male_gaolengchenwen_uranus_bigtts",
+    "char_luchen": "zh_male_gaolengchenwen_uranus_bigtts"
+  },
+  "nodes": [
+    {
+      "stage": "script",
+      "id": "",
+      "key": "c6ff37fde525892b128759b10157c561e427bc6b00c156665d46d66e4e4cf285",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "shots",
+      "id": "",
+      "key": "0ab500065a384bfad6805e5bcec4a4fd3073a8e1e73a86b6e9935e7af6fa8214",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_main",
+      "id": "char_linwan",
+      "key": "32352eecd6aa8143468bd6d784d33fb27dfdc6d5438c470e6f2b7c93ae6efb39",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_neutral",
+      "id": "char_linwan",
+      "key": "189b95c25492102451dd1d481b846acf98087fca1c14171f4de2fde646291416",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_main",
+      "id": "char_luchen",
+      "key": "6067e2361041ce998d3a0d93011722440b7c7e51aa224c916b0cf1b7e4827be2",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_neutral",
+      "id": "char_luchen",
+      "key": "e5de343538b641e9239f5697f4b9bb0473e541c803a38dccc6e973a201517188",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_main",
+      "id": "char_anni",
+      "key": "2950dd6d29b59669cd9888e29d08d96cb12a25f4a1dfffdf1e2ce5764e3a5df9",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_neutral",
+      "id": "char_anni",
+      "key": "f06fce574baaf99d404b1a3ef06d5d4030e6a5b30b326864e4c074ce3c51e3c7",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_main",
+      "id": "char_hejin",
+      "key": "3f0265297680fe03b015a1a210268f90733b6dbc0848f502a464e47ba572fac1",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_neutral",
+      "id": "char_hejin",
+      "key": "b77103564807241cebfdb7ee93da7553dd7bf1cdd5524501ea83b00a7a372e28",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0001",
+      "key": "c4a2d096e6ebf463dbe44f76daf034097b749107be3460d08e1fd2dc5e988e08",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0002",
+      "key": "9de1f6a950c754427691abf8286e2ce651301a860118c7657e2d16fcfaf36e66",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0003",
+      "key": "57ae88a6b3aa510728436067c8a69baea5a5ec46d52aaccdd49192441cc19d40",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0004",
+      "key": "ca84b2cfcd33b4ee281166bc633683a7e8a8e42fa3162aace94aabdfefbe4ab1",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0005",
+      "key": "27740a4e9f24e99713b32c3ade2e0e424d7d6cdda61167514be20728b7f48ab7",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0006",
+      "key": "d5942b37db3dfa6f9a022581b9a766dea04a10795f1c4ea909bd54ce9060cd4f",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0007",
+      "key": "b69249f108336120ea61788d46e9ec6089409770d21194ce1b33c3295158956e",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0008",
+      "key": "b9e18d6502b4c28b57ca1dc15a875fcb5367f87e6938fb82696102cbba050b4d",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0009",
+      "key": "c5f609b2c54f3a9d87bc7cb6ed04ded3da46b54f6f4aacdf58d3cda0282d2c5a",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0010",
+      "key": "aaab4f180789d6a3090ab6cae9d386b2c94992a09dd8b6331583da9348f04321",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0011",
+      "key": "6d17c33a425ec4ff4abab172167a585189a4e367610edbfdfb4ae5f97aada120",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0012",
+      "key": "09ff002baf9c05066d0400cef7ef925831abd18976d483f29e0302b52604440e",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0013",
+      "key": "29fd1c4c38e0a7d6e09a391725da6520788dad20766d7df51d58e653ef9c56c9",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh01",
+      "key": "699d30951cd920f4eeb83f2373538cace1d7abcee640f191359671261fa06387",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh01",
+      "key": "a1ab7177bbf51ed6d1531c8bec4a14a6caf61537d84ccb6a8f838d00752c5531",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh02",
+      "key": "c51995d8a8fedde3aed46fccd7e71c851e231d465be4376fa3ab0e280847fdcf",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh03",
+      "key": "2279dcd93feed1c6afffea352987631fa686fd6d0845873e83dceae1f93194a6",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh04",
+      "key": "c50b01a3373075538970c0aca6ca88222dbdc061efc6ca9a5f8712195dac0d69",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh02",
+      "key": "68ae54cdebf4e9d3d1dec910db2388a20a5239727da1c439af172d1d59419b02",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh03",
+      "key": "deda9cdcdf3476fe27de6395100cdfdc98cdfa7005a60aa72677152efa384671",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh04",
+      "key": "0fc5ee3f85d3bd318cc68d9c79d7100cba6b6df00e558e8621e3a7b911cb2f9e",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh05",
+      "key": "26b506d86482694de7eef7bd0081c98ad9b3be5a62956349ba9d4a7a439508d1",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh06",
+      "key": "d5d3d823f95789684388b37b0b4e02a334266038e6808b73fbf0cdc0186f30ec",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh07",
+      "key": "b7d848d59f178c219a597be0d0577279f885edf5e10755904f3cc84c6f829396",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh01",
+      "key": "d3032ae8533e078c231a13fb4256cf758d375d305700c294f946e2148bb3ae4d",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh02",
+      "key": "2a3cf9cbcf50100c11cbf584aeb94271ee31ac4f2738ebbf44d6aa94fb88a566",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh03",
+      "key": "0f5b071ab11226e4c31f513d09590bfc15a0cf444969708560b65e9a77668058",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh04",
+      "key": "2aecb4ded1fac8e6c01caaa112f0088ba3776786e8a23b37e2c811aa92fd471c",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh01",
+      "key": "5752702b81b4a53f4396931ad49b80f7a6d2699e17065856f32fcf3ec058af71",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh02",
+      "key": "b97f75f757120b3a5580ee544e32430e418dd0b58b52afcfd1acf829b9b8dba1",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh03",
+      "key": "b06e4f05e00f5aef50ead8206d0a56d4aed98af3acf9ec99adefd31e57d10398",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh04",
+      "key": "35d56cd5a9879d4a3ee64270ac82153b932fe7c1048610dde221bb2b04bdd84b",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh05",
+      "key": "52c89a9f7044d4c342c9a2e8e068d4b0f32ed6fd40db9d21effba80fdf0209c3",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh01",
+      "key": "62ce55059fc17c136630e8aecb78db3d10e1a9029d157262b33e5b43d41be0f4",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh02",
+      "key": "2affacaaa2565af678e5393c0f39a2b65a9ca3e33b4d3eb896fffb9c6a76ca75",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh03",
+      "key": "88093095cea9b4ea7a835f7ae054c265fdfed4480768a7508bc4cfe3bc5b0d5a",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh04",
+      "key": "ed9b32380d3a5970be3c438102f6064b45924d9e605526fc2910064a8c86ea3f",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh01",
+      "key": "fca387f4f10fc9caed4d848089dce902ffc6149ef9001ae1809ae29ab87f4579",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh02",
+      "key": "acd71dc70b109deb59f2528273b86c63f34e2e1103732324ffdcb63d35b4a8f5",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh03",
+      "key": "ea76dc0a0d1496b1f5628df5b44f75f9c6c174d61cfa3cc8f5f6fa19d777fd90",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh04",
+      "key": "9cbe8e8be64bdd9fd688e90fc7475b6938683d0ddc771e9fc41e2df6d4b9a2d6",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh05",
+      "key": "45312e99817677400db64b659df430fe24862f9d1db280a0bb04c89c10bfa479",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh06",
+      "key": "25e0a2a584c144e99c2ffc40b0b57595037d65dce2ce04ba587457de26c11c2c",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh07",
+      "key": "bcb595ca56f11f6bfda642a7f496659b95036d8dea149e69b14475beca2f9f12",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh01",
+      "key": "94b9406c55e98a4c3ad813e1c1bb2ec8d0cc43d9da4c1890071eca11205b0394",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh02",
+      "key": "ae0f2b47e431c566d157824f46382d03940fe3c0197e5521f9dbd4c76d10cff6",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh03",
+      "key": "242f4b9fc385bccf7aefaa45a664766ad07edd8002ea259d84166248238b99d3",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh04",
+      "key": "79c641c100c8d60ef8756601734b528ed8cf6d8ed9f59ecd6626d0671a97126b",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh01",
+      "key": "2ca32c85902299c0869b12184aea14440bf0b8699374d702edc28d615c427b5a",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh02",
+      "key": "d31ccb2d783084c098a47797d517311b64bcc1321332aee95ae9062b307cebae",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh03",
+      "key": "32d9f70625aa939860313a3b3633bb80b326719c0d5fd05ec81080ae57f2a89d",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh04",
+      "key": "de7a812a81f69757fe0d21685e67e1f1e5e2b4850f2aff195aa15812fa7886e1",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh05",
+      "key": "bd127e10763b1967571cb1118a78efb84c1a8b9cb51f0818aa39efd4fd8e1e1f",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:audio_mix",
+      "id": "off",
+      "key": "9c616ea845753d076402840372012e535ac2dfe5fcf111e831df9da28e2c1d23",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:final",
+      "id": "final",
+      "key": "53437f9fb83c3c35022160b4124f2c6f49852d90e55f619cc8901f629e0f252b",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    }
+  ],
+  "hits": 65,
+  "misses": 0,
+  "cost_cny": 0.0,
+  "stage_s": {
+    "script": 0.0,
+    "shots": 0.0,
+    "costume": 0.03,
+    "tts": 0.02,
+    "keyframe": 0.09,
+    "video": 0.0,
+    "compose": 0.28
+  },
+  "elapsed_s": 0.53,
+  "degraded": [],
+  "warnings": [
+    "female 角色多于音色数，char_linwan 复用 zh_female_cancan_uranus_bigtts（听感可能与同性别角色混淆）",
+    "male 角色多于音色数，char_luchen 复用 zh_male_gaolengchenwen_uranus_bigtts（听感可能与同性别角色混淆）",
+    "--video placeholder：全部镜头使用首帧缓推占位，没有调用视频接口",
+    "ep01_sc01_sh02：台词需要 3.71 秒，比 hint_s 3.5 秒长",
+    "ep01_sc01_sh03：台词需要 4.21 秒，比 hint_s 4.2 秒长",
+    "ep01_sc02_sh02：台词需要 5.21 秒，比 hint_s 5 秒长",
+    "ep01_sc02_sh04：台词需要 3.21 秒，比 hint_s 3.2 秒长",
+    "ep01_sc02_sh05：台词需要 4.42 秒，比 hint_s 2.5 秒长",
+    "ep01_sc03_sh01：台词需要 2.83 秒，比 hint_s 2.8 秒长",
+    "ep01_sc03_sh02：台词需要 3.83 秒，比 hint_s 3.2 秒长",
+    "ep01_sc03_sh03：台词需要 6.83 秒，比 hint_s 5.6 秒长",
+    "ep01_sc03_sh04：台词需要 2.21 秒，比 hint_s 2.2 秒长",
+    "ep01_sc04_sh02：台词需要 3.08 秒，比 hint_s 2.6 秒长",
+    "ep01_sc04_sh03：台词需要 5.29 秒，比 hint_s 5.2 秒长",
+    "ep01_sc04_sh05：台词需要 3.79 秒，比 hint_s 3 秒长"
+  ],
+  "placeholders": [
+    "ep01_sc01_sh01",
+    "ep01_sc01_sh02",
+    "ep01_sc01_sh03",
+    "ep01_sc01_sh04",
+    "ep01_sc02_sh01",
+    "ep01_sc02_sh02",
+    "ep01_sc02_sh03",
+    "ep01_sc02_sh04",
+    "ep01_sc02_sh05",
+    "ep01_sc02_sh06",
+    "ep01_sc02_sh07",
+    "ep01_sc03_sh01",
+    "ep01_sc03_sh02",
+    "ep01_sc03_sh03",
+    "ep01_sc03_sh04",
+    "ep01_sc04_sh01",
+    "ep01_sc04_sh02",
+    "ep01_sc04_sh03",
+    "ep01_sc04_sh04",
+    "ep01_sc04_sh05"
+  ],
+  "plan": {
+    "total_s": 69.125,
+    "shots": [
+      {
+        "shot_id": "ep01_sc01_sh01",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 0,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc01_sh01.jpg",
+        "keyframe_sha256": "93dab8d6767cd9dc6f3c06026b8c7410bd798c60b5c2ac6e19b315cfa64d67ab",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "大厅环境人声",
+          "远处电梯提示音",
+          "行李箱轮子滚过地面声"
+        ],
+        "characters": [],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh02",
+        "hint_s": 3.5,
+        "target_frames": 89,
+        "start_frames": 72,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc01_sh02.jpg",
+        "keyframe_sha256": "ec5febc396c3bbacb03fc6c4607d1f177b06cd25a7bdcaae6cbca961a252e433",
+        "extend_s": 0.2083,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0001",
+            "speaker": "char_anni",
+            "kind": "dialogue",
+            "text": "晚姐，三楼贵宾席，都安排好了。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0001.mp3",
+            "mp3_sha256": "29c9135edac4535883ece40bc4dbf2f0d6f7569d9a403c43adf302b0cf5ef345",
+            "src_in_s": 0.35,
+            "src_out_s": 3.63,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.18,
+            "file_s": 3.648
+          }
+        ],
+        "sfx": [
+          "高跟鞋敲击大理石声",
+          "大厅人声底噪"
+        ],
+        "characters": [
+          "char_linwan",
+          "char_anni"
+        ],
+        "target_s": 3.7083,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh03",
+        "hint_s": 4.2,
+        "target_frames": 101,
+        "start_frames": 161,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc01_sh03.jpg",
+        "keyframe_sha256": "c784305c3fbd686967792b97de98e0090cc794560e81c519847b5061907c257f",
+        "extend_s": 0.0083,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0002",
+            "speaker": "char_linwan",
+            "kind": "voiceover",
+            "text": "三年前，就是这栋楼把我赶了出去。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0002.mp3",
+            "mp3_sha256": "b699667e51ad82a56bdc86bbca9f9fb39f04ffed95f45a509d0e8d11c8d816d6",
+            "src_in_s": 0.4,
+            "src_out_s": 4.2,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.7,
+            "file_s": 4.488
+          }
+        ],
+        "sfx": [
+          "电梯到站提示音",
+          "远处衣料摩擦声"
+        ],
+        "characters": [
+          "char_linwan"
+        ],
+        "target_s": 4.2083,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh04",
+        "hint_s": 2.5,
+        "target_frames": 60,
+        "start_frames": 262,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc01_sh04.jpg",
+        "keyframe_sha256": "c3201922f7081eda06361e3e8942d5caa15bc0be7d42fb3f92944e40acae3d87",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "厚重木门推开声",
+          "门轴低鸣"
+        ],
+        "characters": [
+          "char_linwan",
+          "char_anni"
+        ],
+        "target_s": 2.5,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh01",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 322,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc02_sh01.jpg",
+        "keyframe_sha256": "2398eee98e7a8089d7658cb3c5cf0a5e3974ae49353e6815bea7a8700d3f456a",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "会场窃窃低语",
+          "纸张翻动声",
+          "麦克风电流轻响"
+        ],
+        "characters": [],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh02",
+        "hint_s": 5.0,
+        "target_frames": 125,
+        "start_frames": 394,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc02_sh02.jpg",
+        "keyframe_sha256": "e1f5767a2b216a0070b3a369c2e97c7ac68c77b650ff365be87d007f8e7c443f",
+        "extend_s": 0.2083,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0003",
+            "speaker": "char_hejin",
+            "kind": "dialogue",
+            "text": "第7号标的，原创设计版权转让合同，起拍价八百万。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0003.mp3",
+            "mp3_sha256": "ad2ca8679def23ab11b1b13692eb75b4f267271c01e81b4f984f72f5f577430f",
+            "src_in_s": 0.25,
+            "src_out_s": 5.05,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 4.7,
+            "file_s": 5.184
+          }
+        ],
+        "sfx": [
+          "木槌轻敲声",
+          "会场窃窃低语"
+        ],
+        "characters": [
+          "char_hejin"
+        ],
+        "target_s": 5.2083,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh03",
+        "hint_s": 2.0,
+        "target_frames": 48,
+        "start_frames": 519,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc02_sh03.jpg",
+        "keyframe_sha256": "484cdf05ca56c554623151808bcbf3d6b906f0533fa58fef52d26264f71fd271",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0004",
+            "speaker": "char_luchen",
+            "kind": "dialogue",
+            "text": "一千五百万。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0004.mp3",
+            "mp3_sha256": "0aa2bf984ca102e561940c125f87a7017fed495cc6def4a06dfdaf5f55376b0f",
+            "src_in_s": 0.34,
+            "src_out_s": 1.74,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 1.3,
+            "file_s": 1.968
+          }
+        ],
+        "sfx": [
+          "号牌轻响",
+          "椅子吱呀声"
+        ],
+        "characters": [
+          "char_luchen"
+        ],
+        "target_s": 2.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh04",
+        "hint_s": 3.2,
+        "target_frames": 77,
+        "start_frames": 567,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc02_sh04.jpg",
+        "keyframe_sha256": "515c939d168e5457343e5d8053ab5699a2cf5c98d3b4d6d97e922255682f86ad",
+        "extend_s": 0.0083,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0005",
+            "speaker": "char_linwan",
+            "kind": "dialogue",
+            "text": "三千万。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0005.mp3",
+            "mp3_sha256": "c545fd10bf615a110452ccb1d1f61bdb14b8bdffdfb7f563e461eeff71297a85",
+            "src_in_s": 0.37,
+            "src_out_s": 1.49,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 1.02,
+            "file_s": 1.8
+          }
+        ],
+        "sfx": [
+          "全场突然安静",
+          "椅脚挪动声"
+        ],
+        "characters": [
+          "char_linwan"
+        ],
+        "target_s": 3.2083,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh05",
+        "hint_s": 2.5,
+        "target_frames": 106,
+        "start_frames": 644,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc02_sh05.jpg",
+        "keyframe_sha256": "584b6852be3850bfb4a21f36858ca8024fb36407d649b4389f1ee38864f5308a",
+        "extend_s": 1.9167,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0006",
+            "speaker": "char_hejin",
+            "kind": "dialogue",
+            "text": "三千万一次，两次，成交！",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0006.mp3",
+            "mp3_sha256": "ceb538ddee7c9d1c07199d601c70a65cc1bd0dfbdaec947e1628638da0ac1223",
+            "src_in_s": 0.29,
+            "src_out_s": 4.29,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.9,
+            "file_s": 4.416
+          }
+        ],
+        "sfx": [
+          "木槌重击声",
+          "人群哗然"
+        ],
+        "characters": [
+          "char_hejin"
+        ],
+        "target_s": 4.4167,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh06",
+        "hint_s": 2.0,
+        "target_frames": 48,
+        "start_frames": 750,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc02_sh06.jpg",
+        "keyframe_sha256": "88aa5beaa15fdb88db9fe51c72838626fe8d8f5f9f607da5b0bc53512ddc9ccf",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "会场嘈杂声压低",
+          "衣领摩擦声"
+        ],
+        "characters": [
+          "char_luchen"
+        ],
+        "target_s": 2.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh07",
+        "hint_s": 2.5,
+        "target_frames": 60,
+        "start_frames": 798,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc02_sh07.jpg",
+        "keyframe_sha256": "d08c34370d1586f394413a793b350b7b8ac385e19cfac22b0a983611e9739ec8",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0007",
+            "speaker": "char_linwan",
+            "kind": "voiceover",
+            "text": "陆沉，我回来了。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0007.mp3",
+            "mp3_sha256": "6d7a06bde32b4762cdbfbd69a8dc1de17cfd48f00323ed6afbe36f044b815bf6",
+            "src_in_s": 0.36,
+            "src_out_s": 2.36,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 1.9,
+            "file_s": 2.496
+          }
+        ],
+        "sfx": [
+          "会场嘈杂声渐远",
+          "心跳般低频音"
+        ],
+        "characters": [
+          "char_linwan"
+        ],
+        "target_s": 2.5,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh01",
+        "hint_s": 2.8,
+        "target_frames": 68,
+        "start_frames": 858,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc03_sh01.jpg",
+        "keyframe_sha256": "097e6578adada31f3e645511becce4cf23f872eeb2f8036990776090973f2814",
+        "extend_s": 0.0333,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "笔尖划过纸面的沙沙声",
+          "鞋跟轻点地面的轻响"
+        ],
+        "characters": [
+          "char_linwan"
+        ],
+        "target_s": 2.8333,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh02",
+        "hint_s": 3.2,
+        "target_frames": 92,
+        "start_frames": 926,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc03_sh02.jpg",
+        "keyframe_sha256": "4e5b70a5648f4d63685ea57c74bd1f15022dd85bfc226ee5ec33d6142c5487d9",
+        "extend_s": 0.6333,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0008",
+            "speaker": "char_luchen",
+            "kind": "dialogue",
+            "text": "三千万买份废纸，你图什么？",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0008.mp3",
+            "mp3_sha256": "a5071a554362f62bb013e8562599ad1992127835428e9b3f01df0d4d03b5f783",
+            "src_in_s": 0.4,
+            "src_out_s": 3.8,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.3,
+            "file_s": 4.032
+          }
+        ],
+        "sfx": [
+          "桌面被手掌压出的轻响",
+          "笔尖停顿声"
+        ],
+        "characters": [
+          "char_luchen",
+          "char_linwan"
+        ],
+        "target_s": 3.8333,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh03",
+        "hint_s": 5.6,
+        "target_frames": 164,
+        "start_frames": 1018,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc03_sh03.jpg",
+        "keyframe_sha256": "d4ca76cdbdf6872aad044516b112cb3355679da378321a4df1eb7c8d81c26894",
+        "extend_s": 1.2333,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0009",
+            "speaker": "char_linwan",
+            "kind": "dialogue",
+            "text": "废纸？第七页第三条，自愿放弃全部署名，是陆总亲手写的。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0009.mp3",
+            "mp3_sha256": "f2951ea45da4ff22e0fc29acf782f09e14d63c5128797cd3fbcb46fa73afe81a",
+            "src_in_s": 0.38,
+            "src_out_s": 6.78,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 6.3,
+            "file_s": 6.84
+          }
+        ],
+        "sfx": [
+          "纸张翻动声",
+          "会场远处低语"
+        ],
+        "characters": [
+          "char_linwan"
+        ],
+        "target_s": 6.8333,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh04",
+        "hint_s": 2.2,
+        "target_frames": 53,
+        "start_frames": 1182,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc03_sh04.jpg",
+        "keyframe_sha256": "21308477df6e8221f985351e6ac7d04a262b431d85f7b4f6c988e05938f26660",
+        "extend_s": 0.0083,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0010",
+            "speaker": "char_luchen",
+            "kind": "dialogue",
+            "text": "你到底是谁？",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0010.mp3",
+            "mp3_sha256": "08507f0bc07cdce80132e9020b5ea75b457b7defdc4cf469cd45ba29b3cdcaba",
+            "src_in_s": 0.29,
+            "src_out_s": 1.53,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 1.14,
+            "file_s": 1.776
+          }
+        ],
+        "sfx": [
+          "桌面被压出的轻响",
+          "呼吸声"
+        ],
+        "characters": [
+          "char_luchen"
+        ],
+        "target_s": 2.2083,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh01",
+        "hint_s": 2.5,
+        "target_frames": 60,
+        "start_frames": 1235,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc04_sh01.jpg",
+        "keyframe_sha256": "eee7a47eb70bd9ab65970977f5c5ea799b58418b878ba84fde2eef5535ead736",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "空旷走廊的回声",
+          "高跟鞋节奏声"
+        ],
+        "characters": [
+          "char_linwan"
+        ],
+        "target_s": 2.5,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh02",
+        "hint_s": 2.6,
+        "target_frames": 74,
+        "start_frames": 1295,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc04_sh02.jpg",
+        "keyframe_sha256": "3f32171b96aab1abe32be17b1ca6d501e647bb963d4fe22d12c715070cb88959",
+        "extend_s": 0.4833,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0011",
+            "speaker": "char_luchen",
+            "kind": "dialogue",
+            "text": "站住。把墨镜摘了。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0011.mp3",
+            "mp3_sha256": "3eea211bbd7fd45c550124dfeac170057d05eb09a15c54a421e313fd72d55527",
+            "src_in_s": 0.28,
+            "src_out_s": 2.928,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.58,
+            "file_s": 2.928
+          }
+        ],
+        "sfx": [
+          "鞋跟急停摩擦声",
+          "空旷走廊的回声"
+        ],
+        "characters": [
+          "char_luchen",
+          "char_linwan"
+        ],
+        "target_s": 3.0833,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh03",
+        "hint_s": 5.2,
+        "target_frames": 127,
+        "start_frames": 1369,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc04_sh03.jpg",
+        "keyframe_sha256": "950a4a20d0000e15856b561cc1d3c37025dc53c9d832d8d6566ad3113971f1a4",
+        "extend_s": 0.0917,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0012",
+            "speaker": "char_linwan",
+            "kind": "dialogue",
+            "text": "陆总别急，明天，我会亲自把合同送到你的办公室。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0012.mp3",
+            "mp3_sha256": "a6ebc4196611858803bf552ac6a8dd88ed41b24ce0ce44ddaac9987eb82732a7",
+            "src_in_s": 0.39,
+            "src_out_s": 5.27,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 4.78,
+            "file_s": 5.496
+          }
+        ],
+        "sfx": [
+          "电梯到站提示音",
+          "高跟鞋远去声"
+        ],
+        "characters": [
+          "char_linwan",
+          "char_anni"
+        ],
+        "target_s": 5.2917,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh04",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 1496,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc04_sh04.jpg",
+        "keyframe_sha256": "ac442c2992801ac4371761f31d5a4d05036ee1f84e9d338fbc1f7f476e1c8ab5",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "纸张被攥紧的声音",
+          "呼吸骤停的一瞬静音"
+        ],
+        "characters": [
+          "char_luchen"
+        ],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh05",
+        "hint_s": 3.0,
+        "target_frames": 91,
+        "start_frames": 1568,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/keyframes/ep01_sc04_sh05.jpg",
+        "keyframe_sha256": "6fcb899f1dfa77560471d6104d7d3d658f8a37e8741a730d3f3d9235db64a3f0",
+        "extend_s": 0.7917,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0013",
+            "speaker": "char_luchen",
+            "kind": "dialogue",
+            "text": "林晚？不可能，她三年前就……",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep2/20261013-184155-run-3f18/work/tts/l_0013.mp3",
+            "mp3_sha256": "5a22d6aeef5922f958cd0fe8f55bf1495cc3c4b13ec927549a58a87044f2006d",
+            "src_in_s": 0.39,
+            "src_out_s": 3.75,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.26,
+            "file_s": 3.84
+          }
+        ],
+        "sfx": [
+          "电梯门合拢的闷响",
+          "纸张被攥皱声"
+        ],
+        "characters": [
+          "char_luchen"
+        ],
+        "target_s": 3.7917,
+        "placeholder": true
+      }
+    ],
+    "ir_sha256": "abac8c168fe9e5de12302e8d74dc87fde4b4a118685811242512bfa4b58c2ae0",
+    "warnings": [
+      "ep01_sc01_sh02：台词需要 3.71 秒，比 hint_s 3.5 秒长",
+      "ep01_sc01_sh03：台词需要 4.21 秒，比 hint_s 4.2 秒长",
+      "ep01_sc02_sh02：台词需要 5.21 秒，比 hint_s 5 秒长",
+      "ep01_sc02_sh04：台词需要 3.21 秒，比 hint_s 3.2 秒长",
+      "ep01_sc02_sh05：台词需要 4.42 秒，比 hint_s 2.5 秒长",
+      "ep01_sc03_sh01：台词需要 2.83 秒，比 hint_s 2.8 秒长",
+      "ep01_sc03_sh02：台词需要 3.83 秒，比 hint_s 3.2 秒长",
+      "ep01_sc03_sh03：台词需要 6.83 秒，比 hint_s 5.6 秒长",
+      "ep01_sc03_sh04：台词需要 2.21 秒，比 hint_s 2.2 秒长",
+      "ep01_sc04_sh02：台词需要 3.08 秒，比 hint_s 2.6 秒长",
+      "ep01_sc04_sh03：台词需要 5.29 秒，比 hint_s 5.2 秒长",
+      "ep01_sc04_sh05：台词需要 3.79 秒，比 hint_s 3 秒长"
+    ]
+  },
+  "cues": [
+    {
+      "line_id": "l_0001",
+      "shot_id": "ep01_sc01_sh02",
+      "start_s": 3.3,
+      "end_s": 6.18
+    },
+    {
+      "line_id": "l_0002",
+      "shot_id": "ep01_sc01_sh03",
+      "start_s": 7.008,
+      "end_s": 10.408
+    },
+    {
+      "line_id": "l_0003",
+      "shot_id": "ep01_sc02_sh02",
+      "start_s": 16.717,
+      "end_s": 21.117
+    },
+    {
+      "line_id": "l_0004",
+      "shot_id": "ep01_sc02_sh03",
+      "start_s": 21.925,
+      "end_s": 22.925
+    },
+    {
+      "line_id": "l_0005",
+      "shot_id": "ep01_sc02_sh04",
+      "start_s": 23.925,
+      "end_s": 24.645
+    },
+    {
+      "line_id": "l_0006",
+      "shot_id": "ep01_sc02_sh05",
+      "start_s": 27.133,
+      "end_s": 30.733
+    },
+    {
+      "line_id": "l_0007",
+      "shot_id": "ep01_sc02_sh07",
+      "start_s": 33.55,
+      "end_s": 35.15
+    },
+    {
+      "line_id": "l_0008",
+      "shot_id": "ep01_sc03_sh02",
+      "start_s": 38.883,
+      "end_s": 41.883
+    },
+    {
+      "line_id": "l_0009",
+      "shot_id": "ep01_sc03_sh03",
+      "start_s": 42.717,
+      "end_s": 48.717
+    },
+    {
+      "line_id": "l_0010",
+      "shot_id": "ep01_sc03_sh04",
+      "start_s": 49.55,
+      "end_s": 50.39
+    },
+    {
+      "line_id": "l_0011",
+      "shot_id": "ep01_sc04_sh02",
+      "start_s": 54.258,
+      "end_s": 56.538
+    },
+    {
+      "line_id": "l_0012",
+      "shot_id": "ep01_sc04_sh03",
+      "start_s": 57.342,
+      "end_s": 61.822
+    },
+    {
+      "line_id": "l_0013",
+      "shot_id": "ep01_sc04_sh05",
+      "start_s": 65.633,
+      "end_s": 68.593
+    }
+  ],
+  "final": {
+    "file": "final.mp4",
+    "sha256": "ca824f058944f9e9f10b5b1438c34227bc7b4f1579380b0570ff6a829deee7c1",
+    "bytes": 14649177,
+    "width": 1080,
+    "height": 1920,
+    "fps": 24.0,
+    "duration_s": 69.125,
+    "video_codec": "h264",
+    "audio_codec": "aac"
+  },
+  "limits": [
+    "BGM / SFX 未做（P0-10）",
+    "口型路线 C 未接入（D-016）",
+    "主图 / 首帧自动取第 1 张，不做一致性打分重试"
+  ],
+  "strict_failed": false
+}

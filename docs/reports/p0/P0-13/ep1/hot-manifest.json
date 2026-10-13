@@ -1,0 +1,1450 @@
+{
+  "version": "pipeline.v1",
+  "logline": "暴雨夜，被开除的实习生在电梯里捡到总裁遗落的U盘，里面是一份足以让整个集团覆灭的账本。",
+  "options": {
+    "video": "placeholder",
+    "require_real_video": false,
+    "max_cost_cny": 20.0,
+    "reroll": {},
+    "llm": "deepseek/deepseek-flash",
+    "image_model": "pro"
+  },
+  "ir_sha256": "0d622d5763a613bde875bd4355b93cb8f9072835d8d8d67a0a5a28c04cef3971",
+  "voices": {
+    "char_zhaolin": "zh_female_cancan_uranus_bigtts",
+    "char_suning": "zh_female_cancan_uranus_bigtts",
+    "char_luchen": "zh_male_gaolengchenwen_uranus_bigtts"
+  },
+  "nodes": [
+    {
+      "stage": "script",
+      "id": "",
+      "key": "4d7ed0262d36ce1c916ebe75dcf502084a6fcf9e651258395d34becfebc5fa82",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "shots",
+      "id": "",
+      "key": "107e647ba952c34e3f84f729dc48502a2e75d6e07f7c8c75cadbdd7a41647351",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_main",
+      "id": "char_suning",
+      "key": "556c98e7daa134bdbe2e8b01280b2a54df599b7809d6038296b80dc952d4e671",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_neutral",
+      "id": "char_suning",
+      "key": "83ac09c82a66ce5ab521266abdec0b807b9703c8d31b266139eba9871a9e416a",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_main",
+      "id": "char_zhaolin",
+      "key": "796a69e6ff0bc3796f301f18b240056c250ad6bd29abedc8c29860b23d5b11f5",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_neutral",
+      "id": "char_zhaolin",
+      "key": "32c916954b1b86f761aa07a9dd9336d07d47d443a50f5a556a0385d611b7b20f",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_main",
+      "id": "char_luchen",
+      "key": "27fabbec74f02e8f64611fb9b57611ff753c193e370af618f04a0eb31f053303",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "costume_neutral",
+      "id": "char_luchen",
+      "key": "5a3b9966ccc5aa5f08a386524b7e2b63b27db25d2caba0bb22aca9d5cd1f84c9",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0001",
+      "key": "ad432e28eaca0b1ba1bbd2154ca793c235be3270c9f87defd20016a7c3666a90",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0002",
+      "key": "6d8f078f5bcea388f2a75e1e59db656054161f3795dca629961bba219b4e37d2",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0003",
+      "key": "71c0123ff1df5713e2ae17e8285c42901f7b7c93122ba493c91283c0b71ff2d2",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0004",
+      "key": "0e868db57bd59de97080b504a8309cf59028b2ad47275c88b875bb8c7f3478e5",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0005",
+      "key": "1012035e6df231b9a1e5980e48e4a7f4c16375d81e2c390c0093ed7f72ed1c0c",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0006",
+      "key": "3d8f894c150e82681118136fa51cd2eb138993591cfe04699911dc3386b6deb1",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0007",
+      "key": "f859f00981aff25af0ef66e5d92c5a7371bff2d3410af1906a167d4690be0b66",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0008",
+      "key": "70911ed8a385a1ff83319453f3178f2687ce66622a202bb85dab1c6b38c08f8d",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0009",
+      "key": "da24df2a0a9747a00667e70cdc947a6970ab74c094ba25f8167a07ee0eaadffa",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0010",
+      "key": "03d4acde2ee1a2764f5e6b041227ecebfe948ee1ff947e04b6bd520a4097723b",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "tts",
+      "id": "l_0011",
+      "key": "6d033bab2bc4b5335a41d315d4b35db615abe41258459a0a593901fef8242f3d",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh02",
+      "key": "721525a25c1eeee8981c48377d150a5fe795d5beed460ff5e8d6e9d2936e585d",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh01",
+      "key": "1b3c7a203706e82225e70791af04597d2290f624847261f6fc7e03ae869a4e50",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh02",
+      "key": "ca125ec2951ebee4ae0598998d6e9e9236f92a6c060829b7489305deeca2cb65",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh03",
+      "key": "fc36a852ae50f2722f79a969a7ffd3d0e069b9c813fded4dbe956ff054b1f1bc",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh04",
+      "key": "e2b8e94955b3366b3d57ab049d26f9edbda42f35278cb85bbc9f1d6f0cee55ae",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh05",
+      "key": "e095ecee1715ba8b9f868e8652fb1257415d6abc301dc9722121f3c3d8f05f23",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh06",
+      "key": "2db532ca9c735e1a572f590252baf99d765505081e90c4198f0f348b0c68e915",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh07",
+      "key": "797c0234418881e8037243d48d6daae351be5e0f22d9def0be1378c681cb0190",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh01",
+      "key": "18d8ca7e42935a2cf29ff47a0036ed886b351bfb8e02f9511ec514176f35ba00",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh02",
+      "key": "7e25a006190e4b2f100b30273634d9d1cf36e2ebbb52acd6675d82a9490f3b72",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh03",
+      "key": "23f20154c16e9ad297ab571cfb7ac4b366dd6da6d1366bd97eb199007ba58757",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh04",
+      "key": "e019df668c99b7ab051850f38b2696e9ed5bec40b7710c898bcb42afc0067537",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh05",
+      "key": "00cd80f640f05d33e47074b585c26435ee366bcdd4da242e8ec079b7b3bbbabe",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh01",
+      "key": "3d3ad8d065cdde599629eed64e26bf7cea1e52d449e53a5b85019371ee3243d8",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh03",
+      "key": "eaa3b507151fc2a68bd96ddc33d4eb8b4531f5057e6215d957a82520f35e04fd",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh04",
+      "key": "c8960ae9a73a9800d3bf9aa0c22ece233011a3be017826c0273a452bae63de00",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh05",
+      "key": "45223947c60355c8f816ff95526ecc1008c156772df47497b7ee5bf66de4ea27",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh01",
+      "key": "26f90ff2afb45d25c0d4b185e779331d4b913898aa41d9626d632d5990770f21",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh02",
+      "key": "904dd569ba36cf66e9d877acb9ebef0862e70652db6637e02fff5dd16fcdd954",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh03",
+      "key": "7cca6fefbf0de8a148179b39a8bfba68c74d5b642144db46514189e4ba5c967a",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh04",
+      "key": "dbb39fe37366795b9d258b99ce740cf6ea00cf5b060974b8089ecefc5698e3da",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh05",
+      "key": "2f1afc70813926dc1a1e465feeef03b9a6efcd9b1bab259f50d6ccab507b52bd",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh06",
+      "key": "c8553f2e9bdeafd1a23999c869fade2e997e40c2fa34d767490fbb8f9bbc8664",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh01",
+      "key": "e2bee33ffe3ea12ca4fb57366ebcad2bf83a0ba0953f72e29a353ab3944b676a",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh02",
+      "key": "f566a65c54d4b45c2175d4c58611cd98e4b9aff89cab6922d39274dfc13909fa",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh03",
+      "key": "4515c0ae6b05566550b4acdce14b004b1cea53052fca0f38daef3d5dd1402452",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh04",
+      "key": "e0f9d5602fc10f72c3681d4a4071a68c5da10e74bdfe9e7543931e8a818f308b",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh05",
+      "key": "52e2c95bb204d709cafb8f43b8ad63e8d64efdc73b5e346d1bd3d11c6f6e8c04",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh06",
+      "key": "2ab14ff2f423173dfc3f759109dff02678f73e72e514d2849bebc64db73599e4",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh07",
+      "key": "b66f0283cd75c99469726dafa4503c583f2b77bf6cc7c1e7a5a0060f740e42db",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh01",
+      "key": "f35adfad530233c95c237323b184ebb6b75230e00c6409e89ba070c11777158c",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh02",
+      "key": "22fc5f6676d15fdfe684bb5bd9add30955c49f437a33185c951a55e20a69bfce",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh03",
+      "key": "465b9d267fce3c72545d1fd0886a734edef46c83e6abf60af04c51affbf59fb7",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh04",
+      "key": "7b5af191af1f43a63b0309519fa548a6cb8bc7a5f01bf6f1495cb9fd4949709a",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh05",
+      "key": "619d5b23f1ab9791cef5cb1ac0b27fc7b7b5dcfd59cc8c291eebbfabeb4f5c0b",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh01",
+      "key": "ba7f2f7099535cb1da298e266e77c241f8215118f76c5982d5ae34cf640b8b5d",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh02",
+      "key": "ee8573c896bbdac95128f6d8e08bb61ef7b7f265fec60cf7f041df618b0e0ad8",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh03",
+      "key": "8437722b28ab6cd833850535402a240db60de4e701cf22bbc4ce7bddd35e67c0",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh04",
+      "key": "4caf5bf5167dbd7681aa5d96c7831576de683f4d9dc2e4d0ca2a0baaae6ca393",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh05",
+      "key": "9aec567f7b4d4cdb2deef29e44b0ae18b05a101b3ff178f36c859f711eb468e5",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh01",
+      "key": "f02ba4f11e68ca840c5183ac3a73dbed88b669bd939e361a6e16c1ee148b4d3b",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh02",
+      "key": "523f4f32c631cf2bce2013cad573dbe0684d1ae9e538177c63ac9ba571d660b3",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh03",
+      "key": "bbc31b8c41684fc93c1c8c9a147dd2e523aaa68e20541d1cacfacf98e3e7e6f3",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh04",
+      "key": "3edc3feaf3a4ae0b13bc371de5c2c3d492cf29670cd9c4aee95ac91854546552",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh05",
+      "key": "6cbf94cf62d7b75a1843acc87e3fca64698f0f11ce1bafb3fba830c778b7a4a4",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh06",
+      "key": "e45362c8f9457195e0d7a1e946779d697314d46f9785ee5b02150ef2f14e0402",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:audio_mix",
+      "id": "off",
+      "key": "953c1e7886eff3b7a1f08219d6c952d602d25c43fe075de433ded09778fdf776",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    },
+    {
+      "stage": "compose:final",
+      "id": "final",
+      "key": "e1bec272ea0e635e5975951fa86b7cc7aea72803fb815ec1deefd6be2697194c",
+      "hit": true,
+      "cost_cny": 0.0,
+      "elapsed_s": 0.0
+    }
+  ],
+  "hits": 67,
+  "misses": 0,
+  "cost_cny": 0.0,
+  "stage_s": {
+    "script": 0.0,
+    "shots": 0.0,
+    "costume": 0.03,
+    "tts": 0.01,
+    "keyframe": 0.07,
+    "video": 0.0,
+    "compose": 0.29
+  },
+  "elapsed_s": 0.48,
+  "degraded": [],
+  "warnings": [
+    "female 角色多于音色数，char_suning 复用 zh_female_cancan_uranus_bigtts（听感可能与同性别角色混淆）",
+    "--video placeholder：全部镜头使用首帧缓推占位，没有调用视频接口",
+    "ep01_sc01_sh02：台词需要 2.21 秒，比 hint_s 2.2 秒长",
+    "ep01_sc01_sh03：台词需要 2.50 秒，比 hint_s 2.2 秒长",
+    "ep01_sc01_sh04：台词需要 3.71 秒，比 hint_s 3.5 秒长",
+    "ep01_sc01_sh05：台词需要 3.21 秒，比 hint_s 3.2 秒长",
+    "ep01_sc01_sh06：台词需要 4.46 秒，比 hint_s 4 秒长",
+    "ep01_sc01_sh07：台词需要 1.83 秒，比 hint_s 1.8 秒长"
+  ],
+  "placeholders": [
+    "ep01_sc01_sh01",
+    "ep01_sc01_sh02",
+    "ep01_sc01_sh03",
+    "ep01_sc01_sh04",
+    "ep01_sc01_sh05",
+    "ep01_sc01_sh06",
+    "ep01_sc01_sh07",
+    "ep01_sc02_sh01",
+    "ep01_sc02_sh02",
+    "ep01_sc02_sh03",
+    "ep01_sc02_sh04",
+    "ep01_sc02_sh05",
+    "ep01_sc03_sh01",
+    "ep01_sc03_sh02",
+    "ep01_sc03_sh03",
+    "ep01_sc03_sh04",
+    "ep01_sc03_sh05",
+    "ep01_sc04_sh01",
+    "ep01_sc04_sh02",
+    "ep01_sc04_sh03",
+    "ep01_sc04_sh04",
+    "ep01_sc04_sh05",
+    "ep01_sc04_sh06"
+  ],
+  "plan": {
+    "total_s": 62.9167,
+    "shots": [
+      {
+        "shot_id": "ep01_sc01_sh01",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 0,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc01_sh01.jpg",
+        "keyframe_sha256": "5b7abc8673fa2145a3c4ae83905dce2927dc5651e6521194d143fdb62abd29f3",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "窗外暴雨声",
+          "远处同事窃窃私语",
+          "空调低频嗡鸣"
+        ],
+        "characters": [
+          "char_suning",
+          "char_zhaolin"
+        ],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh02",
+        "hint_s": 2.2,
+        "target_frames": 53,
+        "start_frames": 72,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc01_sh02.jpg",
+        "keyframe_sha256": "1604f463dbf7b38bebd28f16592ef7ceb74bfa4d5558922997e14416ad5df0f4",
+        "extend_s": 0.0083,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "文件拍桌的重响",
+          "纸张散开声",
+          "窗外暴雨声"
+        ],
+        "characters": [
+          "char_zhaolin"
+        ],
+        "target_s": 2.2083,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh03",
+        "hint_s": 2.2,
+        "target_frames": 60,
+        "start_frames": 125,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc01_sh03.jpg",
+        "keyframe_sha256": "fc949974bccd93cddf43ed9583f9a17902cbd5a2650257b2d54e735f232fee33",
+        "extend_s": 0.3,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0001",
+            "speaker": "char_zhaolin",
+            "kind": "dialogue",
+            "text": "苏柠，你被开除了。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/tts/l_0001.mp3",
+            "mp3_sha256": "d016528b654fbea6ed5b96d04143982752cbaf742c1e19222a61952a98203e6c",
+            "src_in_s": 0.31,
+            "src_out_s": 2.39,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 1.98,
+            "file_s": 2.448
+          }
+        ],
+        "sfx": [
+          "雨点砸玻璃声"
+        ],
+        "characters": [
+          "char_zhaolin"
+        ],
+        "target_s": 2.5,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh04",
+        "hint_s": 3.5,
+        "target_frames": 89,
+        "start_frames": 185,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc01_sh04.jpg",
+        "keyframe_sha256": "51f35bf6f766b1203f99fe25f381468126f2a93fd6f4615d992f2fb9704f209b",
+        "extend_s": 0.2083,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0002",
+            "speaker": "char_suning",
+            "kind": "dialogue",
+            "text": "赵总监，我加班三个月，凭什么？",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/tts/l_0002.mp3",
+            "mp3_sha256": "e0e13caef0f71ed2ae76fac769a8ad234541995a2fd3fba5ae7aa4cf03c52af0",
+            "src_in_s": 0.29,
+            "src_out_s": 3.57,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.18,
+            "file_s": 3.864
+          }
+        ],
+        "sfx": [
+          "雨点砸玻璃声",
+          "抱着纸箱的手指摩擦声"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 3.7083,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh05",
+        "hint_s": 3.2,
+        "target_frames": 77,
+        "start_frames": 274,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc01_sh05.jpg",
+        "keyframe_sha256": "92d12273345cdca2918335b6f65909fee8cd72ca929c7c18cde2119b788ded4d",
+        "extend_s": 0.0083,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0003",
+            "speaker": "char_zhaolin",
+            "kind": "dialogue",
+            "text": "试用期不合格，就是这个理由。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/tts/l_0003.mp3",
+            "mp3_sha256": "19433931c8dc688e6d7d90aa125945d55e8510708e5f7b6ae7b4818e88c50ea9",
+            "src_in_s": 0.32,
+            "src_out_s": 2.84,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.42,
+            "file_s": 2.952
+          }
+        ],
+        "sfx": [
+          "高跟鞋轻点地面",
+          "同事压低的议论声"
+        ],
+        "characters": [
+          "char_zhaolin"
+        ],
+        "target_s": 3.2083,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh06",
+        "hint_s": 4.0,
+        "target_frames": 107,
+        "start_frames": 351,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc01_sh06.jpg",
+        "keyframe_sha256": "800476572ced2ef583214f8f58fde2cd9d64b95c075c98e5575326cd779b27de",
+        "extend_s": 0.4583,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0004",
+            "speaker": "char_suning",
+            "kind": "voiceover",
+            "text": "三个月，我连一张转正申请表都没等到。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/tts/l_0004.mp3",
+            "mp3_sha256": "e9ba61177b3398ba6f838afe2e9ed6b6feabaa757b75af83dbb5d31b5c16f37a",
+            "src_in_s": 0.4,
+            "src_out_s": 4.44,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.94,
+            "file_s": 4.656
+          }
+        ],
+        "sfx": [
+          "纸箱摩擦手臂声",
+          "窃窃私语",
+          "雨声"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 4.4583,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh07",
+        "hint_s": 1.8,
+        "target_frames": 44,
+        "start_frames": 458,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc01_sh07.jpg",
+        "keyframe_sha256": "52cd44f0e7bc4354230e6407e9b67d00b9db0159d8e488c9ad259d9c22f208e4",
+        "extend_s": 0.0333,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "纸箱轻轻晃动声",
+          "暴雨声"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 1.8333,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh01",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 502,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc02_sh01.jpg",
+        "keyframe_sha256": "55344d221b67af2ad85da9a31c14dc32e1faf882dce69dfb1f35f2170d82c307",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "瓢泼雨声",
+          "电梯远行嗡鸣"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh02",
+        "hint_s": 2.0,
+        "target_frames": 48,
+        "start_frames": 574,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc02_sh02.jpg",
+        "keyframe_sha256": "ffe8335087aacd4a38992a667f7d0dd389c89c02ac4019eb47b77a53e2fcd776",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "雨声",
+          "水滴落地声"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 2.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh03",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 622,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc02_sh03.jpg",
+        "keyframe_sha256": "029e305fc96db55c69139af3383ef1fed037638651c49815cabfce162666e9b5",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0005",
+            "speaker": "char_suning",
+            "kind": "voiceover",
+            "text": "先离开这里再说。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/tts/l_0005.mp3",
+            "mp3_sha256": "bb43ca6d125171c75ad10453506d2f7a6e1d8e506721dac82e5c0bbe620f1c68",
+            "src_in_s": 0.32,
+            "src_out_s": 1.96,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 1.54,
+            "file_s": 2.04
+          }
+        ],
+        "sfx": [
+          "电梯门滑动合拢声",
+          "轿厢运行嗡鸣",
+          "顶灯电流轻响"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh04",
+        "hint_s": 2.5,
+        "target_frames": 60,
+        "start_frames": 694,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc02_sh04.jpg",
+        "keyframe_sha256": "c62d37f1e7afa05e42af125c9dc3c2d7a905dd19c7e1f5319a726ac0e041c813",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0006",
+            "speaker": "char_suning",
+            "kind": "voiceover",
+            "text": "谁的U盘？",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/tts/l_0006.mp3",
+            "mp3_sha256": "0852fffa29634fdc7a0107c94d7de700e5ca01bd2814541aa18eb6a19082a2a3",
+            "src_in_s": 0.26,
+            "src_out_s": 1.42,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 1.06,
+            "file_s": 1.632
+          }
+        ],
+        "sfx": [
+          "金属刮擦地垫声",
+          "电梯运行声"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 2.5,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh05",
+        "hint_s": 1.5,
+        "target_frames": 36,
+        "start_frames": 754,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc02_sh05.jpg",
+        "keyframe_sha256": "ac9e98f7a785cc8df00ab855ba4cb79ced5345957b15cbc5a17d0a233a9daf87",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "电梯低频嗡鸣"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 1.5,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh01",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 790,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc03_sh01.jpg",
+        "keyframe_sha256": "d33fb0f9368ceff870a91ee485ad0ca135c7dad71d97c3153a9b165239496f74",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0007",
+            "speaker": "char_suning",
+            "kind": "voiceover",
+            "text": "云顶集团，三亿七千万。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/tts/l_0007.mp3",
+            "mp3_sha256": "e03b0f9e04fac5bdaa1a86a741e3b823579c9490eed285b041a4995397535bb8",
+            "src_in_s": 0.37,
+            "src_out_s": 2.856,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.46,
+            "file_s": 2.856
+          }
+        ],
+        "sfx": [
+          "插头卡入的轻响",
+          "手机提示音"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh02",
+        "hint_s": 2.5,
+        "target_frames": 60,
+        "start_frames": 862,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc03_sh02.jpg",
+        "keyframe_sha256": "fc83fa68008bddb9e9162b17cf13b50004c2bf89b8262f7a8d7535a2b92c27dd",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "手指滑动屏幕声",
+          "电梯运行低频嗡鸣"
+        ],
+        "characters": [],
+        "target_s": 2.5,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh03",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 922,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc03_sh03.jpg",
+        "keyframe_sha256": "861b847c8cf4e25155d0b5b3998cd1cc4d9aa86032e11650a6808745c10635d5",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0008",
+            "speaker": "char_suning",
+            "kind": "voiceover",
+            "text": "这些合同……是我签的。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/tts/l_0008.mp3",
+            "mp3_sha256": "273b502981994f844644173231037887421b43309eb5ff866c1ac70cc616f3f5",
+            "src_in_s": 0.26,
+            "src_out_s": 2.58,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.22,
+            "file_s": 2.64
+          }
+        ],
+        "sfx": [
+          "心跳般的低频鼓点",
+          "隔着轿厢的闷雨声"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh04",
+        "hint_s": 2.0,
+        "target_frames": 48,
+        "start_frames": 994,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc03_sh04.jpg",
+        "keyframe_sha256": "6b46518d365d152b54eb12ae0ad0d017a2ebaa2e32e17ca8100699fe4e736d61",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "灯管频闪电流声",
+          "电梯到站提示音",
+          "报警提示音"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 2.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh05",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 1042,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc03_sh05.jpg",
+        "keyframe_sha256": "6e04f889e053f8d2b03049c20a1f696640bec0e6fab14b5e953e113f640a65c2",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0009",
+            "speaker": "char_suning",
+            "kind": "voiceover",
+            "text": "交出去，我就是共犯。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/tts/l_0009.mp3",
+            "mp3_sha256": "e29aa233424523ea798c2ee39db486399dcb2a9d5716db59beb42eee4c28721d",
+            "src_in_s": 0.28,
+            "src_out_s": 2.28,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 1.9,
+            "file_s": 2.544
+          }
+        ],
+        "sfx": [
+          "U盘拔出的轻响",
+          "电梯门缝灌入的雨声"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh01",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 1114,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc04_sh01.jpg",
+        "keyframe_sha256": "f69c5a8b7c08e9cf24a782a1746494c80a1b81525ac737950c3a7c2cb37aedb1",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "电梯门滑动开启声",
+          "暴雨声灌入",
+          "皮鞋踩在水渍上的轻响"
+        ],
+        "characters": [
+          "char_luchen",
+          "char_suning"
+        ],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh02",
+        "hint_s": 2.5,
+        "target_frames": 60,
+        "start_frames": 1186,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc04_sh02.jpg",
+        "keyframe_sha256": "9b0871da2a4a1ea7e6b6120e468e25275a7e8b4d19d2a6212f8e2bb575a74954",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "雨滴滴落地面",
+          "衬衫滴水声"
+        ],
+        "characters": [
+          "char_luchen"
+        ],
+        "target_s": 2.5,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh03",
+        "hint_s": 2.0,
+        "target_frames": 48,
+        "start_frames": 1246,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc04_sh03.jpg",
+        "keyframe_sha256": "a6eaa528d967254bb6585ca5b786252fc357b87e489af6394562d199ce23572a",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "纸箱摩擦手臂声",
+          "心跳声"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 2.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh04",
+        "hint_s": 3.5,
+        "target_frames": 84,
+        "start_frames": 1294,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc04_sh04.jpg",
+        "keyframe_sha256": "9457bff4a766400148af59a15e79c491d528549869ea5a732d305533ae8304a5",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0010",
+            "speaker": "char_luchen",
+            "kind": "dialogue",
+            "text": "电梯里的东西，还给我。",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/tts/l_0010.mp3",
+            "mp3_sha256": "6f76fe89a8eb40fa101746a67e1bec6e445b80823537e897c9fd99a05e78e8be",
+            "src_in_s": 0.39,
+            "src_out_s": 3.15,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.66,
+            "file_s": 3.384
+          }
+        ],
+        "sfx": [
+          "雨滴滴落地面",
+          "远处雷声闷响"
+        ],
+        "characters": [
+          "char_luchen"
+        ],
+        "target_s": 3.5,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh05",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 1378,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc04_sh05.jpg",
+        "keyframe_sha256": "d8ecebb53b32edd8b5f66208282313acb5bd14b7e022028a6a43cd149c058fda",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0011",
+            "speaker": "char_suning",
+            "kind": "voiceover",
+            "text": "他怎么会知道？",
+            "mp3": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/tts/l_0011.mp3",
+            "mp3_sha256": "5584f45d8471665d878bd9789260934231fe0a86fc564ffac7c0d19091a5a99e",
+            "src_in_s": 0.31,
+            "src_out_s": 1.47,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 1.06,
+            "file_s": 1.488
+          }
+        ],
+        "sfx": [
+          "电梯门合拢声",
+          "心跳声",
+          "被门切断的暴雨声"
+        ],
+        "characters": [
+          "char_suning"
+        ],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh06",
+        "hint_s": 2.5,
+        "target_frames": 60,
+        "start_frames": 1450,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13-hot/ep1/20261013-184155-run-41c2/work/keyframes/ep01_sc04_sh06.jpg",
+        "keyframe_sha256": "f64b4b6ba5338b379e6bd59f65b7a6796cd97b1468bad011865844f3ee2e6790",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "电梯门合拢锁定的闷响",
+          "暴雨声被彻底隔断",
+          "轿厢运行嗡鸣重新响起"
+        ],
+        "characters": [
+          "char_luchen"
+        ],
+        "target_s": 2.5,
+        "placeholder": true
+      }
+    ],
+    "ir_sha256": "0d622d5763a613bde875bd4355b93cb8f9072835d8d8d67a0a5a28c04cef3971",
+    "warnings": [
+      "ep01_sc01_sh02：台词需要 2.21 秒，比 hint_s 2.2 秒长",
+      "ep01_sc01_sh03：台词需要 2.50 秒，比 hint_s 2.2 秒长",
+      "ep01_sc01_sh04：台词需要 3.71 秒，比 hint_s 3.5 秒长",
+      "ep01_sc01_sh05：台词需要 3.21 秒，比 hint_s 3.2 秒长",
+      "ep01_sc01_sh06：台词需要 4.46 秒，比 hint_s 4 秒长",
+      "ep01_sc01_sh07：台词需要 1.83 秒，比 hint_s 1.8 秒长"
+    ]
+  },
+  "cues": [
+    {
+      "line_id": "l_0001",
+      "shot_id": "ep01_sc01_sh03",
+      "start_s": 5.508,
+      "end_s": 7.188
+    },
+    {
+      "line_id": "l_0002",
+      "shot_id": "ep01_sc01_sh04",
+      "start_s": 8.008,
+      "end_s": 10.888
+    },
+    {
+      "line_id": "l_0003",
+      "shot_id": "ep01_sc01_sh05",
+      "start_s": 11.717,
+      "end_s": 13.837
+    },
+    {
+      "line_id": "l_0004",
+      "shot_id": "ep01_sc01_sh06",
+      "start_s": 14.925,
+      "end_s": 18.565
+    },
+    {
+      "line_id": "l_0005",
+      "shot_id": "ep01_sc02_sh03",
+      "start_s": 26.217,
+      "end_s": 27.457
+    },
+    {
+      "line_id": "l_0006",
+      "shot_id": "ep01_sc02_sh04",
+      "start_s": 29.217,
+      "end_s": 29.977
+    },
+    {
+      "line_id": "l_0007",
+      "shot_id": "ep01_sc03_sh01",
+      "start_s": 33.217,
+      "end_s": 35.377
+    },
+    {
+      "line_id": "l_0008",
+      "shot_id": "ep01_sc03_sh03",
+      "start_s": 38.717,
+      "end_s": 40.637
+    },
+    {
+      "line_id": "l_0009",
+      "shot_id": "ep01_sc03_sh05",
+      "start_s": 43.717,
+      "end_s": 45.317
+    },
+    {
+      "line_id": "l_0010",
+      "shot_id": "ep01_sc04_sh04",
+      "start_s": 54.217,
+      "end_s": 56.577
+    },
+    {
+      "line_id": "l_0011",
+      "shot_id": "ep01_sc04_sh05",
+      "start_s": 57.717,
+      "end_s": 58.477
+    }
+  ],
+  "final": {
+    "file": "final.mp4",
+    "sha256": "136bb09717259d3a48b9b99c44d063b771685f636cd98dff8f0627fccea809be",
+    "bytes": 14784804,
+    "width": 1080,
+    "height": 1920,
+    "fps": 24.0,
+    "duration_s": 62.9167,
+    "video_codec": "h264",
+    "audio_codec": "aac"
+  },
+  "limits": [
+    "BGM / SFX 未做（P0-10）",
+    "口型路线 C 未接入（D-016）",
+    "主图 / 首帧自动取第 1 张，不做一致性打分重试"
+  ],
+  "strict_failed": false
+}

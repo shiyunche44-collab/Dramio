@@ -1,0 +1,850 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "kuangyu_udisk",
+    "title": "暴雨夜，我捡到总裁的账本",
+    "logline": "暴雨夜，被开除的实习生在电梯里捡到总裁遗落的U盘，里面是一份足以让整个集团覆灭的账本。",
+    "genre": "都市逆袭悬疑",
+    "visual_style": "冷色调都市夜戏，暴雨霓虹与电梯冷白顶灯强对比，电影感浅景深，高反差低调光，竖屏9:16构图，人物面部特写为主",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_suning",
+      "name": "苏柠",
+      "gender": "female",
+      "age": 23,
+      "role": "protagonist",
+      "bio": "云顶集团风控部实习生，独自在大城市打拼三个月，眼看要转正却被突然开除。父亲曾因一纸合同背上巨债，所以她比谁都清楚一份合同的重量。",
+      "appearance": "清瘦，齐肩黑发被雨水打湿贴在脸侧，眼睛大而亮，素颜，神情倔强",
+      "costume": "白衬衫、灰色西装外套、胸前挂着实习生工牌，手里抱着一只旧纸箱",
+      "voice": "清亮偏细的年轻女声，语速略快，带一点鼻音的倔强感，情绪爆发时发颤"
+    },
+    {
+      "id": "char_zhaolin",
+      "name": "赵琳",
+      "gender": "female",
+      "age": 34,
+      "role": "antagonist",
+      "bio": "云顶集团人事行政总监，惯用制度压人，最擅长用一句'流程就是这样'堵死别人，背后替人收拾见不得光的烂摊子。",
+      "appearance": "利落短发，红唇，眉眼锋利，站姿笔直，眼神居高临下",
+      "costume": "黑色西装套裙、珍珠耳钉、细高跟",
+      "voice": "中低音女声，冷淡平直，句尾微微上扬带讥讽"
+    },
+    {
+      "id": "char_luchen",
+      "name": "陆沉",
+      "gender": "male",
+      "age": 32,
+      "role": "supporting",
+      "bio": "云顶集团总裁，寡言、控制欲强，手里握着集团的秘密，也被人握着把柄。暴雨夜他为追回一样东西，亲自跑回公司。",
+      "appearance": "高个，湿发贴在额前，雨水顺着下颌线滴落，眼神锐利不眨眼",
+      "costume": "深灰色西装三件套被雨浇透，白衬衫贴在身上，手腕上有一只素圈腕表",
+      "voice": "低沉男声，语速慢，几乎没有起伏，压迫感强"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "被开除的实习生",
+      "synopsis": "暴雨夜，苏柠在办公室被赵琳当众宣布开除，抱着纸箱离开。她走进一楼电梯，在轿厢角落捡到一枚贴着手写标签的U盘。手机里读出的账目数字大得吓人，而那些她亲手签过的合同赫然在列。电梯门再打开时，淋得浑身湿透的总裁陆沉站在门外，向她伸手。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "云顶大厦18层 风控部办公区",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "深夜的办公区只剩两盏顶灯亮着，工位隔断投下大片阴影，窗外暴雨拍打玻璃，地面反着湿冷的蓝光"
+          },
+          "summary": "赵琳当众宣布开除苏柠，苏柠据理力争无果，抱着纸箱离开工位。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏9:16，深夜办公区纵深全景，工位隔断形成斜向阴影，苏柠与赵琳分列画面中下部左右两侧，主体略偏上，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "深夜的云顶大厦18层风控部办公区，只剩两盏顶灯亮着，成排空工位沉在阴影里。苏柠抱着旧纸箱站在自己工位前，赵琳站在她对面，三四名同事从隔断后探头张望。窗外暴雨拍打落地玻璃，湿冷蓝光反在地面上。",
+              "lighting": "高反差低调光，仅两盏冷白顶灯从上方打下，桌面反光，背景大面积阴影，窗外暴雨霓虹透进蓝光",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "抱着旧纸箱站在工位前，肩膀绷紧",
+                  "emotion": "错愕、强忍"
+                },
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "站在工位对面，手里捏着一叠文件",
+                  "emotion": "冷漠、居高临下"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "窗外暴雨声",
+                "远处同事窃窃私语",
+                "空调低频嗡鸣"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 2.2
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏9:16，桌面俯拍特写，文件占据画面中上部，手掌压在正中，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "桌面俯拍特写：赵琳的手掌重重拍在一叠文件上，纸张向四周散开，最上面一页印着“解除实习协议”几个黑体大字（文字后期叠加）。纸张边缘被拍得微微卷起。",
+              "lighting": "冷白顶灯直射纸面，纸白刺眼，四周桌面压暗，反差强",
+              "characters": [
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "手掌拍在文件上，指尖压住纸角",
+                  "emotion": "冷硬、不容置疑"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "文件拍桌的重响",
+                "纸张散开声",
+                "窗外暴雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 2.2
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "low",
+                "movement": "static",
+                "composition": "竖屏9:16，赵琳面部居中偏上，微微抬起的下巴形成俯视感，身后同事虚化成暗部，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "赵琳正面特写，红唇、利落短发、珍珠耳钉反着顶灯光。她微微抬起下巴，目光越过镜头俯视苏柠，一字一顿地说出开除通知。",
+              "lighting": "冷白顶灯从上方打亮面部上半，眼窝与下颌留阴影，高反差",
+              "characters": [
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "下巴微抬，直视对面，说完后嘴角轻抿",
+                  "emotion": "冷淡、轻蔑"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_zhaolin",
+                  "kind": "dialogue",
+                  "text": "苏柠，你被开除了。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.6,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "雨点砸玻璃声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh04",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，苏柠居中偏上，胸前实习生工牌在画面中下部轻微晃动，画面上方留出头顶呼吸空间，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "苏柠正面近景，湿发贴在脸侧，胸前实习生工牌晃了一下。她盯着对面的赵琳，把话咽回去又开口，眼眶泛红但下巴绷紧，字字说完整。镜头缓缓推近。",
+              "lighting": "侧面冷白顶灯照亮半张脸，另一侧沉入阴影，眼底有反光",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "抱紧纸箱，抬头直视对面，嘴唇发抖",
+                  "emotion": "委屈中带着不服"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_suning",
+                  "kind": "dialogue",
+                  "text": "赵总监，我加班三个月，凭什么？",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "雨点砸玻璃声",
+                "抱着纸箱的手指摩擦声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh05",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "low",
+                "movement": "static",
+                "composition": "竖屏9:16，赵琳面部与手部居画面上半，围观同事的模糊身影在上方边缘，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "低角度特写：赵琳抬手按了按珍珠耳钉，侧头扫过围观的同事，语气平得像在念流程条文。",
+              "lighting": "冷白顶灯从上方压下来，脸部明暗分割，耳钉有明显高光点",
+              "characters": [
+                {
+                  "character_id": "char_zhaolin",
+                  "action": "指尖按了一下耳钉，侧头扫视围观同事",
+                  "emotion": "冷淡、不耐烦"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_zhaolin",
+                  "kind": "dialogue",
+                  "text": "试用期不合格，就是这个理由。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.55,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "高跟鞋轻点地面",
+                "同事压低的议论声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh06",
+              "duration": {
+                "hint_s": 4.0
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "竖屏9:16，苏柠抱纸箱位于画面中央偏上，两侧工位隔断形成纵向通道引导线，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "苏柠抱着旧纸箱穿过办公区走廊走向电梯间，镜头侧向跟随移动。两侧工位后的同事交头接耳，没人抬头帮她，纸箱顶部边缘随着步伐轻轻晃动。",
+              "lighting": "顶灯在头顶形成移动光斑，走廊深处逐渐变暗，背景蓝色雨光流动",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "抱紧纸箱快步往前走，肩膀绷得很直，不回头",
+                  "emotion": "狼狈却倔强"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_suning",
+                  "kind": "voiceover",
+                  "text": "三个月，我连一张转正申请表都没等到。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.6,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "纸箱摩擦手臂声",
+                "窃窃私语",
+                "雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh07",
+              "duration": {
+                "hint_s": 1.8
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏9:16，纸箱顶面占画面中央偏上，工牌照片为视觉焦点，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "俯拍特写：旧纸箱最上面露出实习生工牌的反面，照片上的苏柠笑得干净，边缘还沾着一滴未干的水。",
+              "lighting": "冷白顶灯从上方斜射，工牌塑料面泛反光，纸箱纹路清晰",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "双手抱住纸箱边缘，指节发白",
+                  "emotion": "隐忍、不甘"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "纸箱轻轻晃动声",
+                "暴雨声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "云顶大厦一楼 电梯厅与客梯轿厢",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "深夜大堂只留应急灯，落地玻璃外是瓢泼暴雨和晃动的霓虹，电梯厅地面被出入的人踩出一片水渍，轿厢内顶灯忽明忽暗"
+          },
+          "summary": "苏柠在一楼等电梯、进入轿厢，在角落捡到一枚贴着标签的U盘。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏9:16，苏柠与电梯门位于画面中央偏上，落地玻璃的雨幕占据上半部背景，地面水渍倒影在下部，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "深夜一楼电梯厅只留应急灯，苏柠抱着纸箱独自站在电梯门前。身后落地玻璃外暴雨倾盆，城市霓虹糊成一片晃动的色块，地面水渍里倒着显示屏的红字“18”。",
+              "lighting": "应急灯低照度，人物呈剪影感，背后霓虹红蓝光透过雨幕，地面反光",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "抱着纸箱站在电梯门前，仰头看楼层显示屏",
+                  "emotion": "疲惫、空落"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "瓢泼雨声",
+                "电梯远行嗡鸣"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 2.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏9:16，苏柠面部居中偏上，湿发贴脸，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "苏柠正面特写，抬手抹了一把脸上的雨水，指尖和脸颊都湿着，眼睫上挂着水珠，嘴唇轻轻抿了一下。",
+              "lighting": "背后霓虹冷光勾出轮廓，面部偏暗，只有应急灯的一点暖白落在鼻梁上",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "抬手抹了一把脸上的雨水，垂下手",
+                  "emotion": "疲惫、茫然"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨声",
+                "水滴落地声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "pull_out",
+                "composition": "竖屏9:16，苏柠位于画面中央偏上，镜面不锈钢壁在两侧形成倒影，脚边纸箱在画面下部，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "电梯轿厢内，门在苏柠身后缓缓合上，把雨声隔在外面。她把纸箱放在脚边，后背抵住镜面不锈钢壁仰头大口喘气，顶灯闪了一下，轿厢壁上浮出她的倒影。",
+              "lighting": "冷白顶灯忽明忽暗，镜面反射形成多重光晕，整体偏青灰",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "把纸箱放到脚边，后背抵住轿厢壁仰头喘息",
+                  "emotion": "卸下力气后的疲惫与不甘"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_suning",
+                  "kind": "voiceover",
+                  "text": "先离开这里再说。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.5,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "电梯门滑动合拢声",
+                "轿厢运行嗡鸣",
+                "顶灯电流轻响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh04",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏9:16，地面与手指位于画面中央偏上，U盘为视觉焦点，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "俯拍特写：苏柠单膝跪在轿厢角落，两根手指从地垫缝隙里抠出一枚银色U盘，把它举到眼前，金属外壳上反着一个顶灯光点。",
+              "lighting": "冷白顶灯直射金属，U盘边缘高光锐利，周围地垫压暗",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "单膝跪地，手指捏起U盘举到眼前",
+                  "emotion": "好奇、迟疑"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_suning",
+                  "kind": "voiceover",
+                  "text": "谁的U盘？",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.5,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "金属刮擦地垫声",
+                "电梯运行声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh05",
+              "duration": {
+                "hint_s": 1.5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，U盘背面标签占画面中央偏上，手指在画面下缘虚化，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "大特写：U盘背面贴着一小片手写白色标签，上面一个潦草的“陆”字（文字后期叠加），标签边缘已经磨毛，苏柠的指尖在画面下方微微收紧。",
+              "lighting": "冷白顶灯侧照，标签纸面有细微颗粒质感，金属外壳反出一道冷光",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "捏着U盘的手指微微收紧，把标签转到正对视线",
+                  "emotion": "疑惑、警觉"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "电梯低频嗡鸣"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "云顶大厦 客梯轿厢内",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "封闭的电梯轿厢，镜面不锈钢与冷白顶灯，角落堆着一只旧纸箱，空间逼仄压抑"
+          },
+          "summary": "苏柠用手机读U盘，屏幕上的账目数字和各页签章让她脸色发白，而其中几份合同正是她亲手签的。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏9:16，手机与双手位于画面中央偏上，屏幕蓝光为最亮点，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "俯拍特写：苏柠把U盘插进手机转接头，屏幕瞬间亮起，弹出进度条，屏幕上写着“读取中…”（文字后期叠加）。她的拇指悬在屏幕上方，迟迟没敢按下去，蓝光映在轿厢壁上。",
+              "lighting": "手机屏幕蓝光自下而上打在手上，轿厢顶灯冷白作背景，脸部下缘被蓝光提亮",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "双手捧住手机，拇指悬在屏幕上方微微发抖",
+                  "emotion": "紧张、屏住呼吸"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_suning",
+                  "kind": "voiceover",
+                  "text": "云顶集团，三亿七千万。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.8,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "插头卡入的轻响",
+                "手机提示音"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏9:16，手机屏幕几乎占满画面，表格与金额栏位于中央偏上，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "手机屏幕大特写：密密麻麻的表格被一页页滑过，金额栏是长串数字，收款方栏排着一串公司名，最上方红字标题与一行合计金额格外刺眼，屏幕中央叠着“云顶集团 合计 3.7亿”（文字后期叠加）。",
+              "lighting": "屏幕自身发蓝白光，是画面唯一光源，边缘溢出微光晕",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "手指滑动屏幕声",
+                "电梯运行低频嗡鸣"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏9:16，苏柠面部居中偏上，屏幕蓝光来自画面下方，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "苏柠的脸被屏幕蓝光照亮，瞳孔骤然收缩，呼吸变得又浅又快。她把屏幕转回自己眼前，指尖停在其中一页合同的签名栏上，喉咙动了一下。",
+              "lighting": "底部冷蓝屏幕光为主光，顶灯只勾出发丝轮廓，脸部明暗对比强烈",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "指尖停在合同的签名栏上，屏住呼吸",
+                  "emotion": "震惊、如坠冰窟"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_suning",
+                  "kind": "voiceover",
+                  "text": "这些合同……是我签的。",
+                  "delivery": {
+                    "emotion": "fearful",
+                    "intensity": 0.85,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "心跳般的低频鼓点",
+                "隔着轿厢的闷雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh04",
+              "duration": {
+                "hint_s": 2.0
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "handheld",
+                "composition": "竖屏9:16，苏柠位于画面中央偏上，头顶灯管与楼层显示屏在上方边缘，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "轿厢顶灯猛闪一下，楼层数字乱跳后停住，报警提示灯亮起橙光。苏柠猛地抬头，手还攥着手机，光在她脸上一下一下地跳。",
+              "lighting": "顶灯频闪造成明暗交替，橙色报警灯在画面上方投下暖色斑块，与冷白形成冲撞",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "猛地抬头盯住楼层显示屏，身体绷紧",
+                  "emotion": "警觉、慌乱"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "灯管频闪电流声",
+                "电梯到站提示音",
+                "报警提示音"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh05",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏9:16，苏柠面部与攥紧的手位于画面中央偏上，另一只手撑在轿厢壁上，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "苏柠一把拔下U盘攥进手心，另一只手撑住轿厢壁，抬头盯住合不严的电梯门缝，门缝外是一线湿冷的雨光。",
+              "lighting": "顶灯冷白与门缝外渗进的青蓝雨光同时打在脸上，形成双侧夹光",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "拔下U盘攥进手心，另一只手撑住轿厢壁",
+                  "emotion": "警觉、慌乱中强作镇定"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_suning",
+                  "kind": "voiceover",
+                  "text": "交出去，我就是共犯。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.8,
+                    "speed": 1.05
+                  }
+                }
+              ],
+              "sfx": [
+                "U盘拔出的轻响",
+                "电梯门缝灌入的雨声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "云顶大厦一楼 电梯轿厢门口",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "电梯门开向昏暗的大堂，门外地面湿成一片，暴雨声从落地玻璃方向涌进来，门外光线比轿厢更暗，只有远处霓虹作背光"
+          },
+          "summary": "电梯门打开，浑身湿透的陆沉站在门外伸手索要U盘，苏柠攥紧U盘后退。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "竖屏9:16，陆沉立于门框正中偏上，苏柠在轿厢内的暗部剪影位于画面下缘，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "电梯门缓缓向两侧打开，门框正中站着浑身湿透的陆沉：深灰三件套西装贴在身上，雨水顺着发梢和下颌往下滴。他站在门外一步不动，正对轿厢里的苏柠，远处霓虹在他背后晕成一片冷色光斑。",
+              "lighting": "门外比轿厢更暗，远处霓虹作背光勾出人物轮廓，轿厢冷白顶灯从内向外打，地面水渍反光",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "站在门外一动不动，雨水从发梢滴到地面",
+                  "emotion": "面无表情、眼神锁定"
+                },
+                {
+                  "character_id": "char_suning",
+                  "action": "抱着纸箱僵在原地，攥U盘的手往身后藏",
+                  "emotion": "惊恐、僵直"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "电梯门滑动开启声",
+                "暴雨声灌入",
+                "皮鞋踩在水渍上的轻响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏9:16，陆沉上半身居中偏上，湿透衬衫与腕表在画面中部，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "陆沉近景，湿发贴在额前，白衬衫被雨浇透贴着锁骨，手腕上的素圈腕表挂着水珠，下颌线一线雨水持续往下坠。他眼睛一眨不眨，盯着苏柠身后藏东西的那只手。",
+              "lighting": "背后霓虹蓝红混合光勾边，正面只有微弱环境光，脸部半明半暗，水珠高光锐利",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "站在原地不动，视线越过镜头看向轿厢角落",
+                  "emotion": "冷静、不容逃避"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "雨滴滴落地面",
+                "衬衫滴水声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh03",
+              "duration": {
+                "hint_s": 2.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "竖屏9:16，苏柠面部居中偏上，身后藏着的手在画面下缘虚化，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "苏柠特写，瞳孔一缩，抱着纸箱的手臂不自觉收紧，攥着U盘的那只手往身后又藏了藏，呼吸明显变乱。",
+              "lighting": "轿厢冷白顶灯从上方压下来，脸部下缘陷入阴影，眼中映着门外一线的霓虹光点",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "抱紧纸箱向后退了半步，手往身后藏",
+                  "emotion": "惊恐、紧张"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "纸箱摩擦手臂声",
+                "心跳声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh04",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "竖屏9:16，陆沉的手掌在画面中央偏上，面部在画面上方虚化，指尖水珠在下缘，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "陆沉抬手伸进轿厢，掌心向上摊开停在苏柠面前，指尖还在滴水，一滴水落在地面水渍里。镜头缓缓推近他摊开的手和毫不闪避的眼睛。",
+              "lighting": "冷白顶灯照亮摊开的掌心，指缝间水光闪烁，面部只剩轮廓光",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "手掌摊开伸到苏柠面前，指尖向下滴水",
+                  "emotion": "不容拒绝的平静"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_luchen",
+                  "kind": "dialogue",
+                  "text": "电梯里的东西，还给我。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.6,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "雨滴滴落地面",
+                "远处雷声闷响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh05",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏9:16，攥紧的拳头位于画面正中偏上，U盘银边从指缝露出为视觉焦点，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "大特写：苏柠的手在画面中央死死攥紧，银色U盘的边缘从指缝里露出一角，反着一点冷光。背景里电梯门开始缓缓合拢。",
+              "lighting": "顶灯冷白直射手背青筋与U盘边缘，背景门缝的雨光逐渐收窄变暗",
+              "characters": [
+                {
+                  "character_id": "char_suning",
+                  "action": "攥紧拳头，把手和一角U盘收进身体侧后方",
+                  "emotion": "慌乱、打定主意不交"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0011",
+                  "speaker": "char_suning",
+                  "kind": "voiceover",
+                  "text": "他怎么会知道？",
+                  "delivery": {
+                    "emotion": "fearful",
+                    "intensity": 0.85,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "电梯门合拢声",
+                "心跳声",
+                "被门切断的暴雨声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh06",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏9:16，陆沉的一只眼睛与半张脸挤在画面中央偏上的窄门缝里，雨光斜切画面，画面底部约1/4留字幕与平台UI安全区"
+              },
+              "description": "电梯门即将合严，门缝里只剩下陆沉一只眼睛和半张脸，雨水顺着下颌线往下滴，雨光从窄缝斜切进来。门彻底合上的一瞬，他的视线仍钉在轿厢里。",
+              "lighting": "门缝外的霓虹雨光是唯一光源，窄条冷光斜切面部，其余全部沉入黑暗",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "站在合拢的门缝外一动不动，目光锁定轿厢内",
+                  "emotion": "冷静、危险的笃定"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "电梯门合拢锁定的闷响",
+                "暴雨声被彻底隔断",
+                "轿厢运行嗡鸣重新响起"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

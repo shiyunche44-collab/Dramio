@@ -1,0 +1,762 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "series_yizhu_tishen",
+    "title": "婚礼前夜的遗嘱",
+    "logline": "他以为自己是替身，直到她在婚礼前夜递给他一份遗嘱，上面写着真正的继承人是他。",
+    "genre": "都市豪门悬疑逆袭",
+    "visual_style": "现代都市写实电影质感，冷蓝灰与暖金对比，浅景深，高级酒店空间，竖屏以人物中近景与手部特写为主，颗粒细腻",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_shenyan",
+      "name": "沈砚",
+      "gender": "male",
+      "age": 27,
+      "role": "protagonist",
+      "bio": "孤儿院长大，五年前被陆家接回，被安排成陆家继承人的“替身”——替他出席、替他挨骂、替他成婚。他早认了命，只等这场婚礼结束拿钱离开。",
+      "appearance": "身高一米八五，清瘦挺拔，黑色短发微长，眉骨高，眼神冷而隐忍，左手腕有一道旧疤，手指骨节分明",
+      "costume": "深灰色订制西装，白衬衫未系领带，领口敞着，胸前别着新郎胸花，袖口松开",
+      "voice": "低沉清冷男声，语速偏慢，气声多，情绪压在喉咙里，爆发前有明显的停顿"
+    },
+    {
+      "id": "char_luqingci",
+      "name": "陆清瓷",
+      "gender": "female",
+      "age": 25,
+      "role": "supporting",
+      "bio": "陆家独女。祖父临终前把遗嘱交到她手上，要她亲手交给沈砚。她顶着全族压力把婚礼拖到最后一夜，只为一个能说出口的时机。",
+      "appearance": "肤色冷白，鹅蛋脸，黑长直发垂到腰，眼尾细长，唇色浅，站姿笔直，说话时下巴微抬",
+      "costume": "象牙白缎面吊带长裙外披驼色大衣，赤脚踩在酒店地毯上，手里攥着一个牛皮纸文件袋",
+      "voice": "清冷女中音，语调平稳克制，句子短，尾音微哑，急起来反而更轻"
+    },
+    {
+      "id": "char_luzhenting",
+      "name": "陆振霆",
+      "gender": "male",
+      "age": 48,
+      "role": "antagonist",
+      "bio": "陆清瓷的叔叔，代管陆氏集团十七年。他需要一个听话的继承人，而遗嘱上那个名字，是他最不能让外人看见的秘密。",
+      "appearance": "中等身材，梳背头，鬓角灰白，戴细框眼镜，笑起来眼角有纹，眼神不动",
+      "costume": "深藏青三件套西装，暗红领带，袖扣是陆家家徽",
+      "voice": "中年男声，中气足，笑意裹着威压，每句话尾音都往下沉"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "遗嘱上的名字",
+      "synopsis": "婚礼前夜，被全族当作“替身新郎”的沈砚，在宴会散场后被陆清瓷叫进顶层套房，收到一份牛皮纸文件袋——陆家祖父的遗嘱，指定继承人一栏写着他自己的名字。他还没来得及问为什么，门外的敲门声响起，来的是陆振霆。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "酒店宴会厅外走廊",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "五星级酒店长走廊，米金色地毯，两侧暖黄壁灯，尽头是半开的宴会厅大门，门内水晶灯亮得刺眼，隐约传出碰杯声与哄笑。"
+          },
+          "summary": "婚礼彩排散场，沈砚独自站在宴会厅外，胸前的“新郎”胸花被扯下丢在地毯上，他在心里数着最后一晚。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "ELS",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏 9:16，长走廊纵深占据画面中上部，两侧壁灯形成引导线汇聚于尽头半开的宴会厅大门；画面底部约 1/4 为地毯与门外地面，留作字幕与平台 UI 安全区，主体不进入该区域"
+              },
+              "description": "五星级酒店长走廊，米金色地毯从近处延伸至尽头，两侧暖黄壁灯整齐排列，走廊尽头宴会厅大门半开，门缝里漏出刺眼的水晶灯白光，人影在门内晃动但看不清面孔；空气里有浮尘在灯下飘，画面前景无人。",
+              "lighting": "暖黄壁灯与门缝漏出的冷白强光形成冷暖对撞，走廊中段偏暗，两侧受光",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "远处宴会厅碰杯声与哄笑声",
+                "壁灯电流低鸣"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 3.6
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏 9:16，手与胸花置于画面中央偏上，米金色地毯纹理占下半部；胸花卡片上文字后期叠加，卡片避开画面最底部 1/4 的字幕安全区"
+              },
+              "description": "大特写：一只骨节分明的手捏着一枚被扯皱的红色新郎胸花，指节因用力泛白，随即手指松开，胸花坠落在米金色地毯上弹了一下；一只皮鞋尖从画外踩进画面边缘又移开；胸花卡片上“新郎 沈砚”四字清晰可见，文字后期叠加。",
+              "lighting": "顶部暖黄壁灯打在手指与地毯上，指缝间有硬阴影",
+              "characters": [
+                {
+                  "character_id": "char_shenyan",
+                  "action": "手指捏皱胸花后松开，任其落地",
+                  "emotion": "面无表情，眼神发冷，下颌线绷紧"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_shenyan",
+                  "kind": "voiceover",
+                  "text": "替身演到第五年，连名字都是借来的。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.55,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "胸花落地轻响",
+                "远处宴会厅哄笑"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 2
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏 9:16，人物居中偏上，侧脸被门缝光切成明暗两半；下半部为敞开的西装下摆与地毯，留作字幕安全区"
+              },
+              "description": "沈砚站在宴会厅门外，深灰订制西装外套敞着，白衬衫领口未系领带，垂手而立，微微侧头看向门内喧闹的人群；门缝里漏出的亮光把他的半张脸切亮，另半张沉在阴影里。",
+              "lighting": "门缝冷白强光作为侧逆光切割面部，走廊壁灯作微弱补光",
+              "characters": [
+                {
+                  "character_id": "char_shenyan",
+                  "action": "垂手站立，微微侧头望向门内",
+                  "emotion": "克制、麻木，眼神平静几近空洞"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "门内碰杯声",
+                "此起彼伏的笑声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh04",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏 9:16，手机屏幕占据画面中央偏上方，拇指悬在屏幕上方进入画面上缘；请柬文字后期叠加，屏幕下方留出字幕安全区"
+              },
+              "description": "大特写：手机屏幕亮起一张电子婚礼请柬，新郎一栏的头像被贴了一张白纸盖住，只露出下方空白的名字条；沈砚的拇指悬在屏幕上方迟迟没有落下，屏幕光照亮他指腹的纹路与左手腕那道旧疤的边缘，请柬文字后期叠加。",
+              "lighting": "屏幕冷白光自下而上打在手指上，周围环境压暗",
+              "characters": [
+                {
+                  "character_id": "char_shenyan",
+                  "action": "拇指悬停在屏幕上，迟迟没有点开",
+                  "emotion": "眼神暗下去，呼吸变轻"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_shenyan",
+                  "kind": "voiceover",
+                  "text": "明天过后，我就什么都不是了。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.5,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "手机轻微震动提示音"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh05",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "low",
+                "movement": "tracking",
+                "composition": "竖屏 9:16，人物背影位于画面中上偏左，走廊纵深向右后方延伸；地毯上孤零零的胸花落在画面下方但避开最底部 1/4 字幕安全区"
+              },
+              "description": "沈砚转身沿走廊往回走，双手插进裤袋，肩膀微塌，背影被两侧壁灯在米金色地毯上拉出长长的影子；他身后宴会厅的门缓缓合上，门内的光和笑声被一起截断，地毯中央那枚被踩皱的红色胸花仍留在原处。",
+              "lighting": "壁灯暖黄顶光，人物越走越远逐渐落入暗部，身后门缝光线收窄至熄灭",
+              "characters": [
+                {
+                  "character_id": "char_shenyan",
+                  "action": "转身走开，双手插进裤袋，肩膀微塌",
+                  "emotion": "疲惫、卸下伪装后的空"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "厚重木门合上的闷响",
+                "笑声被瞬间切断"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "酒店顶层套房客厅",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "顶层套房客厅，落地窗外是成片城市夜景，室内只开了一盏落地灯，茶几上放着两只没动过的香槟杯，空气安静得能听见空调声。"
+          },
+          "summary": "陆清瓷把沈砚叫进套房，从大衣口袋里取出一个牛皮纸文件袋，要他在签婚前协议之前先看一样东西。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 3
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏 9:16，人物立于画面中央偏上，落地窗外城市夜景铺满上半部，茶几与两只香槟杯在画面下部，留作字幕安全区"
+              },
+              "description": "酒店顶层套房客厅，落地窗外是成片城市夜景，灯火在玻璃上叠成虚影；室内只开了一盏落地灯，暖金光晕只照亮沙发一角，茶几上放着两只从未被碰过的香槟杯，液面平静；陆清瓷赤脚站在窗前，驼色大衣披在象牙白缎面长裙外。",
+              "lighting": "单盏落地灯暖金主光，窗外城市冷蓝光作背光，室内大面积暗部，空气安静得能听见空调声",
+              "characters": [
+                {
+                  "character_id": "char_luqingci",
+                  "action": "背对镜头站在落地窗前，赤脚踩在地毯上",
+                  "emotion": "表面平静，肩线微微绷紧"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "空调低鸣",
+                "窗外远处车流声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 3
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏 9:16，人物居中偏上，递出的文件袋指向画面右侧；下半部为长裙下摆与地毯，留作字幕安全区"
+              },
+              "description": "陆清瓷转身面向门口，从大衣口袋里取出一个牛皮纸文件袋递向门口方向，指节因用力而泛白；她下巴微抬，长直发垂到腰侧，身后落地窗的城市灯火在她轮廓外形成一圈冷蓝虚影。",
+              "lighting": "落地灯暖金侧光勾脸，窗外冷蓝背光勾轮廓",
+              "characters": [
+                {
+                  "character_id": "char_luqingci",
+                  "action": "转身，将牛皮纸文件袋递出",
+                  "emotion": "表面平静，眼神却很紧"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_luqingci",
+                  "kind": "dialogue",
+                  "text": "签婚前协议之前，先看这个。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.6,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "空调低鸣",
+                "布料摩擦的轻响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏 9:16，人物位于画面中央偏上，门框在画面左侧形成边框；下半部为门与地毯，留作字幕安全区"
+              },
+              "description": "沈砚站在套房门口，一只手还搭在门把上没有接文件袋，目光先落在牛皮纸袋上，又抬起看向对面的陆清瓷；走廊冷光从他背后门缝渗进来，把他的肩线勾成一条亮边。",
+              "lighting": "走廊冷白光作背光，室内落地灯暖光只照到半张脸",
+              "characters": [
+                {
+                  "character_id": "char_shenyan",
+                  "action": "手停在门把上，身体没有迈步",
+                  "emotion": "戒备、冷淡，眉骨压着"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_shenyan",
+                  "kind": "dialogue",
+                  "text": "陆小姐，明天就是婚礼。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.5,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "门把被握紧的轻微摩擦声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh04",
+              "duration": {
+                "hint_s": 3.8
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "竖屏 9:16，两人上半身居中，文件袋压在画面中央；下部为西装前襟与胸花位置，避开最底部 1/4 字幕安全区"
+              },
+              "description": "陆清瓷向前一步，把牛皮纸文件袋直接按进沈砚怀里，仰头直视他，手没有收回的意思；沈砚胸前的皱掉一半的新郎胸花被纸袋压住，两人的呼吸在极近的距离里交叠。",
+              "lighting": "落地灯暖金侧逆光，两人面部一半亮一半暗，浅景深虚化背景",
+              "characters": [
+                {
+                  "character_id": "char_luqingci",
+                  "action": "一步上前，把文件袋按进对方胸口",
+                  "emotion": "急切但克制，眼神不容拒绝"
+                },
+                {
+                  "character_id": "char_shenyan",
+                  "action": "下意识抬手扶住文件袋，身体僵住",
+                  "emotion": "被逼到墙角的冷硬"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_luqingci",
+                  "kind": "dialogue",
+                  "text": "看完，你再决定要不要当这个替身。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "纸袋按在西装上的闷响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh05",
+              "duration": {
+                "hint_s": 2
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏 9:16，牛皮纸袋占据画面中央偏上，男性手指与胸花在下部，留出字幕安全区"
+              },
+              "description": "特写：牛皮纸文件袋被压在深灰西装前襟上，纸袋边缘有一道折痕，沈砚的手指慢慢收拢攥住袋口，指节凸起，胸口那枚被压皱的红色胸花微微歪斜。",
+              "lighting": "暖金顶光在纸袋表面形成柔和高光，背景虚化的城市灯火呈冷蓝色点",
+              "characters": [
+                {
+                  "character_id": "char_shenyan",
+                  "action": "手指缓缓收拢，攥住纸袋口",
+                  "emotion": "迟疑、隐忍，眼底一丝动摇"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "纸张被攥紧的窸窣声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "酒店顶层套房落地窗前",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "落地窗前的茶几上摊开一份纸质遗嘱，纸页边缘已微微发黄，最后一页签字栏上方盖着红色印章，城市灯火在玻璃上叠成虚影。"
+          },
+          "summary": "沈砚拆开文件袋，看到陆家祖父的遗嘱：指定继承人一栏，写着他自己的名字；陆清瓷又放下一枚老宅的铜钥匙。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏 9:16，茶几与摊开的遗嘱位于画面中央偏上，两人各占画面左右边缘；玻璃上叠着城市灯火虚影，下部留作字幕安全区"
+              },
+              "description": "落地窗前的茶几上摊开一份纸质遗嘱，纸页边缘已微微发黄，最后一页签字栏上方盖着暗红印章；城市灯火在落地玻璃上叠成虚影，沈砚与陆清瓷一左一右俯身站在茶几两侧，影子被落地灯拉长投在地毯上。",
+              "lighting": "落地灯暖金光束集中在纸面上，房间其余部分沉在冷蓝暗部",
+              "characters": [
+                {
+                  "character_id": "char_shenyan",
+                  "action": "俯身，双手撑在茶几边缘",
+                  "emotion": "神色凝重，眉头压紧"
+                },
+                {
+                  "character_id": "char_luqingci",
+                  "action": "站在茶几另一侧，双手插在大衣口袋里",
+                  "emotion": "安静注视他的反应"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "空调低鸣",
+                "纸张轻响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "overhead",
+                "movement": "push_in",
+                "composition": "竖屏 9:16，遗嘱最后一页纸面铺满画面，指定继承人一栏位于画面中央偏上，红色印章与指尖在两侧；纸面文字后期叠加，人名避开最底部 1/4 字幕安全区"
+              },
+              "description": "大特写：俯拍遗嘱最后一页，“指定继承人”一栏下方贴着一条打印纸，上面写着“沈砚”两个字，红色印章压住纸角；沈砚的指尖停在那两个字上，指节细微发抖，纸面纤维在灯下清晰可见，文字后期叠加。",
+              "lighting": "暖金顶光斜切纸面，印章呈现暗红质感，四周压暗形成聚光感",
+              "characters": [
+                {
+                  "character_id": "char_shenyan",
+                  "action": "指尖停在名字上，微微发抖",
+                  "emotion": "瞳孔收缩，呼吸停住"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_shenyan",
+                  "kind": "voiceover",
+                  "text": "指定继承人——沈砚。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.8,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "纸页被翻动的脆响",
+                "环境音骤然安静"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 2.8
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "竖屏 9:16，人物面部位于画面中央偏上，手中遗嘱纸页在下部入画，留出字幕安全区"
+              },
+              "description": "沈砚抬起头看向站在对面的陆清瓷，手里的遗嘱被捏出一道明显的褶皱，嘴唇动了一下才发出声音；窗外的城市灯火在他眼中反成两个小光点，喉结滚动了一次。",
+              "lighting": "落地灯暖金侧光打在颧骨与眉骨上，另半张脸沉入冷蓝阴影",
+              "characters": [
+                {
+                  "character_id": "char_shenyan",
+                  "action": "抬头看向陆清瓷，把遗嘱纸页捏出褶皱",
+                  "emotion": "难以置信，强撑冷静"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_shenyan",
+                  "kind": "dialogue",
+                  "text": "陆家怎么会写我的名字。",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "纸张被捏皱的声音"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh04",
+              "duration": {
+                "hint_s": 4
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏 9:16，手与钥匙位于画面中央偏上，遗嘱纸角在下方延伸；钥匙与姓氏文字避开最底部 1/4 字幕安全区"
+              },
+              "description": "陆清瓷从大衣口袋里摸出一枚磨得发亮的旧铜钥匙，轻轻放在遗嘱旁边，用指尖把它推到沈砚手边，同时按住纸角不让他把纸合上；铜钥匙表面被摩挲得发亮，齿口边缘有一道细微缺口。",
+              "lighting": "暖金光在铜钥匙表面反出一道细窄高光，手背部分受光，背景虚化",
+              "characters": [
+                {
+                  "character_id": "char_luqingci",
+                  "action": "放下铜钥匙并推到对方手边，指尖按住纸角",
+                  "emotion": "笃定，眼里有光"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_luqingci",
+                  "kind": "dialogue",
+                  "text": "名字后面按了手印，还有这把老宅钥匙。",
+                  "delivery": {
+                    "emotion": "tender",
+                    "intensity": 0.7,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "金属钥匙落在茶几上的轻响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh05",
+              "duration": {
+                "hint_s": 3
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏 9:16，铜钥匙与遗嘱纸角置于画面中央，男性指尖从画面上方垂入；下端留作字幕安全区"
+              },
+              "description": "特写：茶几上，铜钥匙静静躺着，压着遗嘱的一角，纸页边缘发黄卷起；沈砚的指尖从画面上方垂下来，悬在钥匙上方一寸处没有落下，落地灯的光在钥匙和指尖之间切出一道亮线。",
+              "lighting": "暖金聚光只照亮桌面一小片区域，四周沉入深冷色暗部",
+              "characters": [
+                {
+                  "character_id": "char_shenyan",
+                  "action": "指尖悬在钥匙上方，迟迟没有触碰",
+                  "emotion": "迟疑、震动，眼神里有压不住的动摇"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "窗外远处车流声",
+                "空调低鸣"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "酒店顶层套房玄关",
+            "int_ext": "INT",
+            "time_of_day": "night",
+            "description": "套房玄关，门外的走廊灯从门缝与猫眼透进一线冷光，室内只有台灯亮着，茶几上的遗嘱被反扣在桌面上。"
+          },
+          "summary": "敲门声骤然响起，门外是陆振霆；陆清瓷贴近沈砚耳边下令封口，门缝下的皮鞋影子却停住不走。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 3
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "竖屏 9:16，两人上半身居中偏上，房门在画面后方中线；下部为茶几边缘与地毯，留作字幕安全区"
+              },
+              "description": "玄关方向骤然响起三下急促敲门声，沈砚反手把遗嘱扣在茶几上，同一瞬间陆清瓷抓住他的手腕；两人一齐抬头盯住房门，门缝与猫眼里透进一线走廊冷光，室内只有台灯亮着。",
+              "lighting": "台灯单点暖光源在茶几上方，门缝渗入的冷白光是画面里唯一的冷色，光线对比强烈",
+              "characters": [
+                {
+                  "character_id": "char_shenyan",
+                  "action": "反手把遗嘱扣在桌面上，猛地抬头",
+                  "emotion": "瞬间警觉，眼神转锐"
+                },
+                {
+                  "character_id": "char_luqingci",
+                  "action": "一把抓住他的手腕，指节收紧",
+                  "emotion": "紧张，呼吸放轻"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "急促的三下敲门声",
+                "门铃"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "high",
+                "movement": "static",
+                "composition": "竖屏 9:16，人物居中偏上，走廊纵深在身后延伸，门框压在画面下部形成压迫感；下半部留作字幕安全区"
+              },
+              "description": "门外走廊，陆振霆站在套房门口，深藏青三件套西装笔挺，背头一丝不乱，细框眼镜反着顶灯的白光；他抬起手又敲了一下门，同时侧头贴近门板，嘴角挂着笑，袖口的陆家家徽袖扣在灯下闪了一下。",
+              "lighting": "走廊顶灯冷白光自上而下打亮眼镜反光，面部下半沉在阴影里，氛围压抑",
+              "characters": [
+                {
+                  "character_id": "char_luzhenting",
+                  "action": "抬手敲门，侧头贴近门板",
+                  "emotion": "笑意不达眼底，眼神不动"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_luzhenting",
+                  "kind": "dialogue",
+                  "text": "清瓷，叔叔给你送婚前贺礼。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.6,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "敲门声在走廊里的回响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh03",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏 9:16，两人侧脸一前一后占据画面中央偏上，房门虚焦在背景；下部留作字幕安全区"
+              },
+              "description": "门内，陆清瓷压低声音贴近沈砚耳边说话，唇几乎碰到他的耳廓，眼睛却始终死死盯着门板，手指还扣在他的手腕上没有松开；沈砚侧过脸，睫毛在台灯光下投出一小片阴影。",
+              "lighting": "台灯暖金侧光从下方打亮两人侧脸，背景门板被冷光镶边",
+              "characters": [
+                {
+                  "character_id": "char_luqingci",
+                  "action": "贴近沈砚耳边低语，手指紧扣他的手腕",
+                  "emotion": "又急又稳，眼神死死盯着门"
+                },
+                {
+                  "character_id": "char_shenyan",
+                  "action": "侧脸倾听，身体绷紧不动",
+                  "emotion": "冷硬、专注，下颌线绷起"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_luqingci",
+                  "kind": "dialogue",
+                  "text": "遗嘱的事，今晚谁都不能知道。",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.75,
+                    "speed": 1.05
+                  }
+                }
+              ],
+              "sfx": [
+                "压低的呼吸声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh04",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "竖屏 9:16，男性眼睛位于画面中央偏上，瞳孔与眉骨细节占主体；眼睛下方留出字幕安全区，不叠压面部关键信息"
+              },
+              "description": "大特写：沈砚的眼睛，台灯的暖光在瞳孔里晃了一下，睫毛微微颤动，他缓缓抬眼看向门的方向，眼底那点麻木被一寸寸压成锐利的冷光；画面里只有一双眼睛和眼尾的细纹。",
+              "lighting": "暖金侧光在瞳孔里形成一个小高光点，眼窝深处压在暗部",
+              "characters": [
+                {
+                  "character_id": "char_shenyan",
+                  "action": "缓缓抬眼看向门的方向",
+                  "emotion": "从隐忍转为锐利，带着压住的怒意"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0011",
+                  "speaker": "char_shenyan",
+                  "kind": "voiceover",
+                  "text": "替身？爷爷写的不是这个名字。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.8,
+                    "speed": 1
+                  }
+                }
+              ],
+              "sfx": [
+                "一下一下的心跳声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh05",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "low",
+                "movement": "static",
+                "composition": "竖屏 9:16，门缝与皮鞋影位于画面中央偏上，地面地毯纹理占下半部；影子位置避开最底部 1/4 字幕安全区"
+              },
+              "description": "大特写：套房房门下方的缝隙，走廊冷光在地毯上切出一线亮带，一双擦得发亮的黑色皮鞋影子停在门口，一动不动，没有离开；门缝里透出的光线被影子压住一截。",
+              "lighting": "走廊冷白顶光从门缝挤出，形成一道硬边光带，室内侧全暗",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "门缝外脚步声停住",
+                "空调低鸣持续",
+                "远处电梯到站的提示音"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

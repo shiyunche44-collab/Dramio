@@ -1,0 +1,1318 @@
+{
+  "version": "pipeline.v1",
+  "logline": "他以为自己是替身，直到她在婚礼前夜递给他一份遗嘱，上面写着真正的继承人是他。",
+  "options": {
+    "video": "placeholder",
+    "require_real_video": false,
+    "max_cost_cny": 20.0,
+    "reroll": {},
+    "llm": "deepseek/deepseek-flash",
+    "image_model": "pro"
+  },
+  "ir_sha256": "dfc38d6dfdb03d5b9a289932d9997f0ba9777811144782d7c733d6f190d4e79e",
+  "voices": {
+    "char_shenyan": "zh_male_gaolengchenwen_uranus_bigtts",
+    "char_luqingci": "zh_female_cancan_uranus_bigtts",
+    "char_luzhenting": "zh_male_gaolengchenwen_uranus_bigtts"
+  },
+  "nodes": [
+    {
+      "stage": "script",
+      "id": "",
+      "key": "c67ee19ecfe6ee188ba78fcfb0cafc3bb5cdc7def33fbaa85c18ad17a2b33d8d",
+      "hit": false,
+      "cost_cny": 0.096342,
+      "elapsed_s": 59.6
+    },
+    {
+      "stage": "shots",
+      "id": "",
+      "key": "dc8648d85994f8ef43bfb85b9c2aef0825c12cba229e9c114ba1c50d79cc9a75",
+      "hit": false,
+      "cost_cny": 0.133018,
+      "elapsed_s": 57.64
+    },
+    {
+      "stage": "costume_main",
+      "id": "char_shenyan",
+      "key": "4dedb0979fef0aa0feacbf2cd5ca7da99643141bbfdaed2d8544745d7402d10a",
+      "hit": false,
+      "cost_cny": 0.3,
+      "elapsed_s": 27.75
+    },
+    {
+      "stage": "costume_neutral",
+      "id": "char_shenyan",
+      "key": "e58926f7136dab03fdb8dd1d29c013a4c8d76cc512fc8ecb969ff4c9eaf287f6",
+      "hit": false,
+      "cost_cny": 0.3,
+      "elapsed_s": 28.66
+    },
+    {
+      "stage": "costume_main",
+      "id": "char_luqingci",
+      "key": "504f398e7545dd696af6ef50776b5ff3c97d0542ebeb8d2ef189273626d9a24c",
+      "hit": false,
+      "cost_cny": 0.3,
+      "elapsed_s": 36.26
+    },
+    {
+      "stage": "costume_neutral",
+      "id": "char_luqingci",
+      "key": "fd48f8bd9bcbadd4d3c22ce1e293e3319c5afef111d47c39341c3bc1395a5593",
+      "hit": false,
+      "cost_cny": 0.3,
+      "elapsed_s": 28.79
+    },
+    {
+      "stage": "costume_main",
+      "id": "char_luzhenting",
+      "key": "efa79d58cd7c7de40097fc636e6bfd8e3457c96a037c318e24293e042ac994e2",
+      "hit": false,
+      "cost_cny": 0.3,
+      "elapsed_s": 32.99
+    },
+    {
+      "stage": "costume_neutral",
+      "id": "char_luzhenting",
+      "key": "7a0f61abf9a19645e493fc5127dea37ba3d0ec765575af04a7683000834f32ed",
+      "hit": false,
+      "cost_cny": 0.3,
+      "elapsed_s": 33.11
+    },
+    {
+      "stage": "tts",
+      "id": "l_0001",
+      "key": "cd26c4a1ae53d9726adf8724885f6aaca31b1a7ebef4d029c5a6bf61fa6ade06",
+      "hit": false,
+      "cost_cny": 0.006732,
+      "elapsed_s": 14.84
+    },
+    {
+      "stage": "tts",
+      "id": "l_0002",
+      "key": "d3b6911b50252d9ab3e336f7c552228a8678c068e728da49446435e2be442299",
+      "hit": false,
+      "cost_cny": 0.005005,
+      "elapsed_s": 5.52
+    },
+    {
+      "stage": "tts",
+      "id": "l_0003",
+      "key": "4ff28ecaf0e66f0eae398b406e83c6faa745a115951f6eeeb5d22405244ba9c9",
+      "hit": false,
+      "cost_cny": 0.00462,
+      "elapsed_s": 4.81
+    },
+    {
+      "stage": "tts",
+      "id": "l_0004",
+      "key": "0e0708a5023706aa4f34b96ab88d196ba06fa06f4b5c64901454af463c39169c",
+      "hit": false,
+      "cost_cny": 0.003924,
+      "elapsed_s": 4.07
+    },
+    {
+      "stage": "tts",
+      "id": "l_0005",
+      "key": "e8203a94ce7243b3c4bac14abe46daaa7c43c8f48768d49744ac90cdd596d5a3",
+      "hit": false,
+      "cost_cny": 0.005605,
+      "elapsed_s": 4.22
+    },
+    {
+      "stage": "tts",
+      "id": "l_0006",
+      "key": "485885948db9efdeb4d6735ab6a75e24007b8bc7f9bb084fc6b8069e86adcb47",
+      "hit": false,
+      "cost_cny": 0.003891,
+      "elapsed_s": 4.71
+    },
+    {
+      "stage": "tts",
+      "id": "l_0007",
+      "key": "0616fb1707466c4c111f8c14c9c5db64fa0347c9079b9e0c126f7c3bef5be8e1",
+      "hit": false,
+      "cost_cny": 0.003844,
+      "elapsed_s": 3.77
+    },
+    {
+      "stage": "tts",
+      "id": "l_0008",
+      "key": "1bdde85a897602d9b7d1b39c7c50918b2925489ca1991f6138b0099449d50453",
+      "hit": false,
+      "cost_cny": 0.006349,
+      "elapsed_s": 3.56
+    },
+    {
+      "stage": "tts",
+      "id": "l_0009",
+      "key": "29de582be00f0efc39b0b4141326069716bed26d8d7b451dc50c7024b1afcce4",
+      "hit": false,
+      "cost_cny": 0.004801,
+      "elapsed_s": 4.56
+    },
+    {
+      "stage": "tts",
+      "id": "l_0010",
+      "key": "e745672b66b5caa39b7b6a2259768e0fd9189627645a86320b81605ffb28990c",
+      "hit": false,
+      "cost_cny": 0.004845,
+      "elapsed_s": 3.34
+    },
+    {
+      "stage": "tts",
+      "id": "l_0011",
+      "key": "b2733cbd807f43d4a836149b0c9ef5c3a680aa61e8b8135ecbf5faf2ec23b644",
+      "hit": false,
+      "cost_cny": 0.005149,
+      "elapsed_s": 3.81
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh01",
+      "key": "3f35de3688c96532b5995951198f9edd4b461112c83014817227d6815d7ae676",
+      "hit": false,
+      "cost_cny": 0.3,
+      "elapsed_s": 44.83
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh05",
+      "key": "3c03d27b736fcd63bb4e59cc0493e0626431d83911253ac92f55146ab8082134",
+      "hit": false,
+      "cost_cny": 0.3,
+      "elapsed_s": 30.32
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh02",
+      "key": "ff0216a0b3cfb087782a498c58802085b3c1d5c155165344d90608338e293d76",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 86.19
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh03",
+      "key": "7e2fecc3b12937859373e43b52f4216989a56ebc6b22c0389b6cd8468078665c",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 69.74
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh04",
+      "key": "d9a70dd704d0561a19836744402c69160b4d82afc0101c79b014eea880ae9e6e",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 91.0
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc01_sh05",
+      "key": "50fbebfbd7889822a9377303112bd01ff46da4766edbd70e0184f4def2fd5dcd",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 60.21
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh01",
+      "key": "b9bf8e90cca70acd27813aeb16493a1f0cdc25c35cf1305f9eb6a0acf0e12b49",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 68.45
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh02",
+      "key": "6e7feed38d1ea2288ef9be50bbbc6b81515e229ab97e5d56678acfd9f1a155b5",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 69.38
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh03",
+      "key": "c5a44dba034a4d2e0b604c3bf9ed82cfb4117ac001bcbb168d0b6d6bb4634367",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 74.07
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh04",
+      "key": "a33473d62aa42744aa53be3cdb2d89699a86d475a3ddbfa4d753e6f0ea4d26dc",
+      "hit": false,
+      "cost_cny": 0.36,
+      "elapsed_s": 71.93
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc02_sh05",
+      "key": "5f6341b985eb830dc132c76807a62765754191268930480a4054f64c9d4a869f",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 68.76
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh01",
+      "key": "e3dc7048ae97132999fb196dd07060297965254813a9d4c12a2184c4efcdcfa9",
+      "hit": false,
+      "cost_cny": 0.36,
+      "elapsed_s": 88.16
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh02",
+      "key": "87a5ce5c1ea68f3fc12086f10ca8a06bf3a8def89fe71358e25cc6c4653a9921",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 76.64
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh03",
+      "key": "e175ddefe26995f71186b60ece7bf2600724bd06dcc59fc350dea3587bc6c985",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 75.95
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh04",
+      "key": "71c16203e51ea264cd73f6da79fee60270dece821134f85b28e94e19ccb56321",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 64.17
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc03_sh05",
+      "key": "5174233980dbe927b2968029b5db90f46eb4fa69ebccb5fbe2b8c18d80ee00d4",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 64.82
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh01",
+      "key": "b5e0456f4bb48d91b7c2b4c4f1fe712d45b5b74174081ffc4c45db512a31eeb1",
+      "hit": false,
+      "cost_cny": 0.36,
+      "elapsed_s": 65.17
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh02",
+      "key": "7655ba4ef2346b3aab2aa741558a762d72a52c1bc1addd8e4ca7f9f8497e911f",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 79.37
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh03",
+      "key": "28074967b3c38e7bfd318b6849b528807bcd37d3801da4ee25a4894658f09d7d",
+      "hit": false,
+      "cost_cny": 0.36,
+      "elapsed_s": 78.82
+    },
+    {
+      "stage": "keyframe",
+      "id": "ep01_sc04_sh04",
+      "key": "709fe9f6662c26909e533cca78bbe467e8e32d089cb797100f06f4e6b232abee",
+      "hit": false,
+      "cost_cny": 0.32,
+      "elapsed_s": 80.63
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh01",
+      "key": "d7f9a5cfe1df99fb68a695139d2382370aaed8b2ded2229b7649ada31398aa67",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 8.99
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh02",
+      "key": "0ebc19ce4c523d5007aa170355c7e9f60f50709a170f60440f3f14caede4ef82",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 7.33
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh03",
+      "key": "3c841d088becde8ae234318e902b66c1305edc7c04e9458943f644d5c3ce6052",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 4.58
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh04",
+      "key": "8664110a51fc263631bf4569bbcceac901a4e2eaaf36007c79afe021b1d5af74",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 6.97
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc01_sh05",
+      "key": "43544fad8d436bdcf2f5b80e3bbb0aaaee5624a8b1f214fdfa3fce1a8e085d51",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 7.19
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh01",
+      "key": "5d66e2c66c33ff711fffa5ee367042cb80a50106c1a6bf7ee154989aefc2d8ca",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 6.14
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh02",
+      "key": "931728e493d0941dfae41d33ceb857d7070dc5c00c725f7c87c9e9fe977e4e3a",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 6.67
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh03",
+      "key": "570c1e201997463888ab00d1b90ff5a0e0b72c436d6c047cf0cfbaef7c8c9603",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 5.8
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh04",
+      "key": "fa879145c10eb947a4dab067e6ede7d5a3551dae896b352a7336c9e82cd3e10f",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 8.05
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc02_sh05",
+      "key": "184e7362a2ddc83e703425f48f69dc29027217eb92003dd20d47e3a32b0bc133",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 5.45
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh01",
+      "key": "f4f84e1558357feb06386bd69ce79f1859adb7d8fa9c1a633326ccbde72735ba",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 5.88
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh02",
+      "key": "2bc8f67cd37a9b93d555ed1bf9c9e30d6be0b5bc867d16cea6a55252746dc942",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 7.07
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh03",
+      "key": "cb989a040b42a340bb37b2e764f72cb285580027356388803e2930eba51969f1",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 6.11
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh04",
+      "key": "157e962fb79573fd62e12e2661a86b5655b901aa44cfc7b9b73faffaf97988ce",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 7.73
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc03_sh05",
+      "key": "b2b21ee8d5b4ac8f9f36358f20738c6911f72a352a0be98924b315ad7732eef9",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 6.11
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh01",
+      "key": "ecc6052b43a07893d56f37e61f4af46604cb31cc513c663ae3f710cb9a44e64a",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 5.94
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh02",
+      "key": "95c2424c51eea3a9c7a8f5da4bc1b3374e8791154eaa70397daaf55eaec0b7d0",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 7.05
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh03",
+      "key": "48021b29d9071c230df6d50639cb9990abee2b24e77a8e57c83a94524ada99bd",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 7.25
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh04",
+      "key": "d3e7c7bf7b1cd2724d2beece594e5e9b6c4fc6f3dbe6d3fc717afdb2a486c8d4",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 7.77
+    },
+    {
+      "stage": "compose:segment",
+      "id": "ep01_sc04_sh05",
+      "key": "7a6f4d2a5fde5fac8b46b1414e6f8a262d5421f1e55f7f6a1d80a7bc1f69665b",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 5.46
+    },
+    {
+      "stage": "compose:audio_mix",
+      "id": "off",
+      "key": "c97bfd6c001c648043c0ec455ca0a5da77c31c683cedd837717ddd2b693bcbea",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 5.47
+    },
+    {
+      "stage": "compose:final",
+      "id": "final",
+      "key": "06c616a4b46c509c38fc63ac11519d3dee03e58f01b0e52f53079a9f38bf2b7f",
+      "hit": false,
+      "cost_cny": 0.0,
+      "elapsed_s": 58.99
+    }
+  ],
+  "hits": 0,
+  "misses": 61,
+  "cost_cny": 8.604125,
+  "stage_s": {
+    "script": 59.6,
+    "shots": 57.64,
+    "costume": 187.58,
+    "tts": 57.21,
+    "keyframe": 1408.69,
+    "video": 0.01,
+    "compose": 198.43
+  },
+  "elapsed_s": 1969.28,
+  "degraded": [],
+  "warnings": [
+    "male 角色多于音色数，char_luzhenting 复用 zh_male_gaolengchenwen_uranus_bigtts（听感可能与同性别角色混淆）",
+    "--video placeholder：全部镜头使用首帧缓推占位，没有调用视频接口",
+    "ep01_sc01_sh02：台词需要 3.71 秒，比 hint_s 3.6 秒长",
+    "ep01_sc01_sh04：台词需要 3.71 秒，比 hint_s 3.2 秒长",
+    "ep01_sc02_sh02：台词需要 3.12 秒，比 hint_s 3 秒长",
+    "ep01_sc02_sh03：台词需要 2.62 秒，比 hint_s 2.5 秒长",
+    "ep01_sc02_sh04：台词需要 3.83 秒，比 hint_s 3.8 秒长",
+    "ep01_sc03_sh02：台词需要 3.58 秒，比 hint_s 2.5 秒长",
+    "ep01_sc03_sh03：台词需要 2.83 秒，比 hint_s 2.8 秒长",
+    "ep01_sc04_sh02：台词需要 3.88 秒，比 hint_s 3.2 秒长",
+    "ep01_sc04_sh03：台词需要 3.21 秒，比 hint_s 3.2 秒长",
+    "ep01_sc04_sh04：台词需要 3.96 秒，比 hint_s 3.2 秒长"
+  ],
+  "placeholders": [
+    "ep01_sc01_sh01",
+    "ep01_sc01_sh02",
+    "ep01_sc01_sh03",
+    "ep01_sc01_sh04",
+    "ep01_sc01_sh05",
+    "ep01_sc02_sh01",
+    "ep01_sc02_sh02",
+    "ep01_sc02_sh03",
+    "ep01_sc02_sh04",
+    "ep01_sc02_sh05",
+    "ep01_sc03_sh01",
+    "ep01_sc03_sh02",
+    "ep01_sc03_sh03",
+    "ep01_sc03_sh04",
+    "ep01_sc03_sh05",
+    "ep01_sc04_sh01",
+    "ep01_sc04_sh02",
+    "ep01_sc04_sh03",
+    "ep01_sc04_sh04",
+    "ep01_sc04_sh05"
+  ],
+  "plan": {
+    "total_s": 63.4583,
+    "shots": [
+      {
+        "shot_id": "ep01_sc01_sh01",
+        "hint_s": 3.5,
+        "target_frames": 84,
+        "start_frames": 0,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc01_sh01.jpg",
+        "keyframe_sha256": "a45f45b4dbd959ca0269b0eac88a5d8f43f352c231f7ff6e6b7eeb3f0227382d",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "远处宴会厅碰杯声与哄笑声",
+          "壁灯电流低鸣"
+        ],
+        "characters": [],
+        "target_s": 3.5,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh02",
+        "hint_s": 3.6,
+        "target_frames": 89,
+        "start_frames": 84,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc01_sh02.jpg",
+        "keyframe_sha256": "a0715777b69005dffeb9386c6e98979552c054f7c1a91805896e49b495e20f88",
+        "extend_s": 0.1083,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0001",
+            "speaker": "char_shenyan",
+            "kind": "voiceover",
+            "text": "替身演到第五年，连名字都是借来的。",
+            "mp3": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/tts/l_0001.mp3",
+            "mp3_sha256": "9ca2ca467db6fed538bb0663cb79c5cc1575b6fc00e883588d62085668a1146b",
+            "src_in_s": 0.35,
+            "src_out_s": 3.63,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.18,
+            "file_s": 3.672
+          }
+        ],
+        "sfx": [
+          "胸花落地轻响",
+          "远处宴会厅哄笑"
+        ],
+        "characters": [
+          "char_shenyan"
+        ],
+        "target_s": 3.7083,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh03",
+        "hint_s": 2.0,
+        "target_frames": 48,
+        "start_frames": 173,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc01_sh03.jpg",
+        "keyframe_sha256": "785ecb4b775c70a1d50eaa35d7bfe2671c022712060dffc25503203e8a7f8e13",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "门内碰杯声",
+          "此起彼伏的笑声"
+        ],
+        "characters": [
+          "char_shenyan"
+        ],
+        "target_s": 2.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh04",
+        "hint_s": 3.2,
+        "target_frames": 89,
+        "start_frames": 221,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc01_sh04.jpg",
+        "keyframe_sha256": "b5ed6466fb93e3f627770ac88e9318a77d558521cb77f4f20daebf402dfac29f",
+        "extend_s": 0.5083,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0002",
+            "speaker": "char_shenyan",
+            "kind": "voiceover",
+            "text": "明天过后，我就什么都不是了。",
+            "mp3": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/tts/l_0002.mp3",
+            "mp3_sha256": "f29ebe34481727debe70176e16940f7cc092333a9d4c22ec87ff62f3e139aade",
+            "src_in_s": 0.33,
+            "src_out_s": 3.61,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.18,
+            "file_s": 3.624
+          }
+        ],
+        "sfx": [
+          "手机轻微震动提示音"
+        ],
+        "characters": [
+          "char_shenyan"
+        ],
+        "target_s": 3.7083,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc01_sh05",
+        "hint_s": 3.5,
+        "target_frames": 84,
+        "start_frames": 310,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc01_sh05.jpg",
+        "keyframe_sha256": "736fa127a3033a938475a998e503e7afdbbeb85660abd86837a640760232e761",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "厚重木门合上的闷响",
+          "笑声被瞬间切断"
+        ],
+        "characters": [
+          "char_shenyan"
+        ],
+        "target_s": 3.5,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh01",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 394,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc02_sh01.jpg",
+        "keyframe_sha256": "a63ef5c3dab507e8afc7e5c6a6da4518901675a24ebc9b9ea6a74f4d32c89381",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "空调低鸣",
+          "窗外远处车流声"
+        ],
+        "characters": [
+          "char_luqingci"
+        ],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh02",
+        "hint_s": 3.0,
+        "target_frames": 75,
+        "start_frames": 466,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc02_sh02.jpg",
+        "keyframe_sha256": "1c8ebc8d2462cfcf7a3c422bde5480344a99de402106f7db265c055cb84fddb6",
+        "extend_s": 0.125,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0003",
+            "speaker": "char_luqingci",
+            "kind": "dialogue",
+            "text": "签婚前协议之前，先看这个。",
+            "mp3": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/tts/l_0003.mp3",
+            "mp3_sha256": "2ea820782bc5c8fa1224fc0f3721098658b06c08ac99e22d9be38a56245b53a7",
+            "src_in_s": 0.31,
+            "src_out_s": 3.03,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.62,
+            "file_s": 3.24
+          }
+        ],
+        "sfx": [
+          "空调低鸣",
+          "布料摩擦的轻响"
+        ],
+        "characters": [
+          "char_luqingci"
+        ],
+        "target_s": 3.125,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh03",
+        "hint_s": 2.5,
+        "target_frames": 63,
+        "start_frames": 541,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc02_sh03.jpg",
+        "keyframe_sha256": "c9d2d8068e65ce65b37add04d55c989980b32986773b37c1315440c7e0309338",
+        "extend_s": 0.125,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0004",
+            "speaker": "char_shenyan",
+            "kind": "dialogue",
+            "text": "陆小姐，明天就是婚礼。",
+            "mp3": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/tts/l_0004.mp3",
+            "mp3_sha256": "d5f235cde2898a2189b656aba69e22522ec5cf1145bd99656f9a4a319d0e2aa8",
+            "src_in_s": 0.38,
+            "src_out_s": 2.58,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.1,
+            "file_s": 2.808
+          }
+        ],
+        "sfx": [
+          "门把被握紧的轻微摩擦声"
+        ],
+        "characters": [
+          "char_shenyan"
+        ],
+        "target_s": 2.625,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh04",
+        "hint_s": 3.8,
+        "target_frames": 92,
+        "start_frames": 604,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc02_sh04.jpg",
+        "keyframe_sha256": "a224e559f042d88da4bc74cc7db7a2dedb59f30a00983edd106a55e68751cbeb",
+        "extend_s": 0.0333,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0005",
+            "speaker": "char_luqingci",
+            "kind": "dialogue",
+            "text": "看完，你再决定要不要当这个替身。",
+            "mp3": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/tts/l_0005.mp3",
+            "mp3_sha256": "7c4369c3175aa428e42ead747a5a4d5cb0721344af364d8a0e0fd214ff548756",
+            "src_in_s": 0.34,
+            "src_out_s": 3.46,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.02,
+            "file_s": 3.624
+          }
+        ],
+        "sfx": [
+          "纸袋按在西装上的闷响"
+        ],
+        "characters": [
+          "char_luqingci",
+          "char_shenyan"
+        ],
+        "target_s": 3.8333,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc02_sh05",
+        "hint_s": 2.0,
+        "target_frames": 48,
+        "start_frames": 696,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc02_sh05.jpg",
+        "keyframe_sha256": "51e3eeaa6518c4d293886a3a517d85c28b77277f24c57ec1be5ee6f2ca5513d6",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "纸张被攥紧的窸窣声"
+        ],
+        "characters": [
+          "char_shenyan"
+        ],
+        "target_s": 2.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh01",
+        "hint_s": 2.5,
+        "target_frames": 60,
+        "start_frames": 744,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc03_sh01.jpg",
+        "keyframe_sha256": "22d95daacbea6fe488c95753f0f4186c6716722dcf1a504d8d8f591e4e760c66",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "空调低鸣",
+          "纸张轻响"
+        ],
+        "characters": [
+          "char_shenyan",
+          "char_luqingci"
+        ],
+        "target_s": 2.5,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh02",
+        "hint_s": 2.5,
+        "target_frames": 86,
+        "start_frames": 804,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc03_sh02.jpg",
+        "keyframe_sha256": "8d1eb05db013d7ec62ecb73d5817eb7d27c00db12348d137f10d750e6fd49b86",
+        "extend_s": 1.0833,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0006",
+            "speaker": "char_shenyan",
+            "kind": "voiceover",
+            "text": "指定继承人——沈砚。",
+            "mp3": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/tts/l_0006.mp3",
+            "mp3_sha256": "187b3dee7d89f28b674473d6f4419ae687617511ee3f51d6edd8f248187c80db",
+            "src_in_s": 0.45,
+            "src_out_s": 3.61,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.06,
+            "file_s": 4.008
+          }
+        ],
+        "sfx": [
+          "纸页被翻动的脆响",
+          "环境音骤然安静"
+        ],
+        "characters": [
+          "char_shenyan"
+        ],
+        "target_s": 3.5833,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh03",
+        "hint_s": 2.8,
+        "target_frames": 68,
+        "start_frames": 890,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc03_sh03.jpg",
+        "keyframe_sha256": "f9b639ce55ccbdb6917ac254ae840c3eb3556bc24c698bd3c33de4f64622ea14",
+        "extend_s": 0.0333,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0007",
+            "speaker": "char_shenyan",
+            "kind": "dialogue",
+            "text": "陆家怎么会写我的名字。",
+            "mp3": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/tts/l_0007.mp3",
+            "mp3_sha256": "cc26f06f517dc94614784e69e2d554d698a0f94fbee18e09f03588f75384ddca",
+            "src_in_s": 0.4,
+            "src_out_s": 2.36,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 1.86,
+            "file_s": 2.448
+          }
+        ],
+        "sfx": [
+          "纸张被捏皱的声音"
+        ],
+        "characters": [
+          "char_shenyan"
+        ],
+        "target_s": 2.8333,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh04",
+        "hint_s": 4.0,
+        "target_frames": 96,
+        "start_frames": 958,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc03_sh04.jpg",
+        "keyframe_sha256": "e8309d6dcd22ab44e1448723ffb2a795fc10ef643882b6c60e4fea986e2077a8",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0008",
+            "speaker": "char_luqingci",
+            "kind": "dialogue",
+            "text": "名字后面按了手印，还有这把老宅钥匙。",
+            "mp3": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/tts/l_0008.mp3",
+            "mp3_sha256": "beb2d44469b803402c3c23437016c09bb7d49d5f55b02d772000c3d8e4b1152b",
+            "src_in_s": 0.33,
+            "src_out_s": 3.93,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.5,
+            "file_s": 4.272
+          }
+        ],
+        "sfx": [
+          "金属钥匙落在茶几上的轻响"
+        ],
+        "characters": [
+          "char_luqingci"
+        ],
+        "target_s": 4.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc03_sh05",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 1054,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc03_sh05.jpg",
+        "keyframe_sha256": "f940894af58d8d5d602d2b5b568a9f41eb708392358fae0886fca9d9c2142564",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "窗外远处车流声",
+          "空调低鸣"
+        ],
+        "characters": [
+          "char_shenyan"
+        ],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh01",
+        "hint_s": 3.0,
+        "target_frames": 72,
+        "start_frames": 1126,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc04_sh01.jpg",
+        "keyframe_sha256": "47afe113d233ba9843361c44fdefcb3122a964bfd19e97a8edbb2bddabab85b3",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "急促的三下敲门声",
+          "门铃"
+        ],
+        "characters": [
+          "char_shenyan",
+          "char_luqingci"
+        ],
+        "target_s": 3.0,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh02",
+        "hint_s": 3.2,
+        "target_frames": 93,
+        "start_frames": 1198,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc04_sh02.jpg",
+        "keyframe_sha256": "9c5e95194498fb7679c78279ed15455283739b932800cbbfd940dcf6f1be5fa6",
+        "extend_s": 0.675,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0009",
+            "speaker": "char_luzhenting",
+            "kind": "dialogue",
+            "text": "清瓷，叔叔给你送婚前贺礼。",
+            "mp3": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/tts/l_0009.mp3",
+            "mp3_sha256": "2a4cb56c8474c14faf09269869722544c0857ab87173c1fac6857984ace3355c",
+            "src_in_s": 0.43,
+            "src_out_s": 3.87,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.34,
+            "file_s": 4.056
+          }
+        ],
+        "sfx": [
+          "敲门声在走廊里的回响"
+        ],
+        "characters": [
+          "char_luzhenting"
+        ],
+        "target_s": 3.875,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh03",
+        "hint_s": 3.2,
+        "target_frames": 77,
+        "start_frames": 1291,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc04_sh03.jpg",
+        "keyframe_sha256": "6fe06d59a0496d00267f9a1dd95cef837c52958a9d22b7bb8934a76f33af2b19",
+        "extend_s": 0.0083,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0010",
+            "speaker": "char_luqingci",
+            "kind": "dialogue",
+            "text": "遗嘱的事，今晚谁都不能知道。",
+            "mp3": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/tts/l_0010.mp3",
+            "mp3_sha256": "45e78cb1faec16d93d8ffc12d49505e04cbaaf4de8f7c76faa1aca5edf7cb036",
+            "src_in_s": 0.32,
+            "src_out_s": 2.8,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 2.38,
+            "file_s": 2.904
+          }
+        ],
+        "sfx": [
+          "压低的呼吸声"
+        ],
+        "characters": [
+          "char_luqingci",
+          "char_shenyan"
+        ],
+        "target_s": 3.2083,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh04",
+        "hint_s": 3.2,
+        "target_frames": 95,
+        "start_frames": 1368,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc04_sh04.jpg",
+        "keyframe_sha256": "9b8892853ab4b90865287d4643249ed0458b99ba9c800a3e215bb81ca45ca9a8",
+        "extend_s": 0.7583,
+        "trim_s": 0.0,
+        "lines": [
+          {
+            "line_id": "l_0011",
+            "speaker": "char_shenyan",
+            "kind": "voiceover",
+            "text": "替身？爷爷写的不是这个名字。",
+            "mp3": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/tts/l_0011.mp3",
+            "mp3_sha256": "f7d8ece84dc5541e426cbb6f640e4dc43cab9140a65dc454e998b377d5c332aa",
+            "src_in_s": 0.42,
+            "src_out_s": 3.97,
+            "start_s": 0.15,
+            "speech_start_s": 0.3,
+            "speech_end_s": 3.45,
+            "file_s": 4.272
+          }
+        ],
+        "sfx": [
+          "一下一下的心跳声"
+        ],
+        "characters": [
+          "char_shenyan"
+        ],
+        "target_s": 3.9583,
+        "placeholder": true
+      },
+      {
+        "shot_id": "ep01_sc04_sh05",
+        "hint_s": 2.5,
+        "target_frames": 60,
+        "start_frames": 1463,
+        "source": "placeholder",
+        "video": null,
+        "video_sha256": null,
+        "video_s": null,
+        "video_has_audio": false,
+        "keyframe": "spikes/poc/runs/p0-13/ep3/20261013-180842-run-54e9/work/keyframes/ep01_sc04_sh05.jpg",
+        "keyframe_sha256": "92acea7a918b263c350330b9d3caa257e100deddbf8bc7adebe493e5365a5177",
+        "extend_s": 0.0,
+        "trim_s": 0.0,
+        "lines": [],
+        "sfx": [
+          "门缝外脚步声停住",
+          "空调低鸣持续",
+          "远处电梯到站的提示音"
+        ],
+        "characters": [],
+        "target_s": 2.5,
+        "placeholder": true
+      }
+    ],
+    "ir_sha256": "dfc38d6dfdb03d5b9a289932d9997f0ba9777811144782d7c733d6f190d4e79e",
+    "warnings": [
+      "ep01_sc01_sh02：台词需要 3.71 秒，比 hint_s 3.6 秒长",
+      "ep01_sc01_sh04：台词需要 3.71 秒，比 hint_s 3.2 秒长",
+      "ep01_sc02_sh02：台词需要 3.12 秒，比 hint_s 3 秒长",
+      "ep01_sc02_sh03：台词需要 2.62 秒，比 hint_s 2.5 秒长",
+      "ep01_sc02_sh04：台词需要 3.83 秒，比 hint_s 3.8 秒长",
+      "ep01_sc03_sh02：台词需要 3.58 秒，比 hint_s 2.5 秒长",
+      "ep01_sc03_sh03：台词需要 2.83 秒，比 hint_s 2.8 秒长",
+      "ep01_sc04_sh02：台词需要 3.88 秒，比 hint_s 3.2 秒长",
+      "ep01_sc04_sh03：台词需要 3.21 秒，比 hint_s 3.2 秒长",
+      "ep01_sc04_sh04：台词需要 3.96 秒，比 hint_s 3.2 秒长"
+    ]
+  },
+  "cues": [
+    {
+      "line_id": "l_0001",
+      "shot_id": "ep01_sc01_sh02",
+      "start_s": 3.8,
+      "end_s": 6.68
+    },
+    {
+      "line_id": "l_0002",
+      "shot_id": "ep01_sc01_sh04",
+      "start_s": 9.508,
+      "end_s": 12.388
+    },
+    {
+      "line_id": "l_0003",
+      "shot_id": "ep01_sc02_sh02",
+      "start_s": 19.717,
+      "end_s": 22.037
+    },
+    {
+      "line_id": "l_0004",
+      "shot_id": "ep01_sc02_sh03",
+      "start_s": 22.842,
+      "end_s": 24.642
+    },
+    {
+      "line_id": "l_0005",
+      "shot_id": "ep01_sc02_sh04",
+      "start_s": 25.467,
+      "end_s": 28.187
+    },
+    {
+      "line_id": "l_0006",
+      "shot_id": "ep01_sc03_sh02",
+      "start_s": 33.8,
+      "end_s": 36.56
+    },
+    {
+      "line_id": "l_0007",
+      "shot_id": "ep01_sc03_sh03",
+      "start_s": 37.383,
+      "end_s": 38.943
+    },
+    {
+      "line_id": "l_0008",
+      "shot_id": "ep01_sc03_sh04",
+      "start_s": 40.217,
+      "end_s": 43.417
+    },
+    {
+      "line_id": "l_0009",
+      "shot_id": "ep01_sc04_sh02",
+      "start_s": 50.217,
+      "end_s": 53.257
+    },
+    {
+      "line_id": "l_0010",
+      "shot_id": "ep01_sc04_sh03",
+      "start_s": 54.092,
+      "end_s": 56.172
+    },
+    {
+      "line_id": "l_0011",
+      "shot_id": "ep01_sc04_sh04",
+      "start_s": 57.3,
+      "end_s": 60.45
+    }
+  ],
+  "final": {
+    "file": "final.mp4",
+    "sha256": "df8e80f7a53903a8b9693393a7678395a9b67b6330b245ccb28b41428db227c7",
+    "bytes": 14188692,
+    "width": 1080,
+    "height": 1920,
+    "fps": 24.0,
+    "duration_s": 63.4583,
+    "video_codec": "h264",
+    "audio_codec": "aac"
+  },
+  "limits": [
+    "BGM / SFX 未做（P0-10）",
+    "口型路线 C 未接入（D-016）",
+    "主图 / 首帧自动取第 1 张，不做一致性打分重试"
+  ],
+  "strict_failed": false
+}

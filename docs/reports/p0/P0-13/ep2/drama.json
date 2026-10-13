@@ -1,0 +1,812 @@
+{
+  "ir_version": "0.1.0",
+  "series": {
+    "id": "series_anon_buyer",
+    "title": "三千万，我买回我的名字",
+    "logline": "三年后，她以匿名买家的身份回到旧公司，在拍卖会上当众拍下那份毁掉她的合同，对面坐着当年的主谋。",
+    "genre": "都市逆袭·商战复仇",
+    "visual_style": "现代都市冷调质感，高对比硬光，竖屏近景为主，强调人物面部与手部特写、金属与纸张反光",
+    "aspect_ratio": "9:16",
+    "language": "zh-CN"
+  },
+  "characters": [
+    {
+      "id": "char_linwan",
+      "name": "林晚",
+      "gender": "female",
+      "age": 28,
+      "role": "protagonist",
+      "bio": "三年前是星澜设计最年轻的主创设计师，被一份署名权与版权转让合同骗签，失去全部作品与职位，被扫地出门；三年后以海外基金匿名买家身份归来，只为拿回自己的名字。",
+      "appearance": "清瘦高挑，冷白皮，黑长直发，细长眉眼，左眉尾一颗小痣，站姿笔直",
+      "costume": "黑色丝绒长裙，宽檐墨镜，细高跟，简洁银色耳钉，腕上一只旧款男式手表",
+      "voice": "低沉偏冷的女中音，语速慢，字字清晰，带一点克制的沙哑"
+    },
+    {
+      "id": "char_luchen",
+      "name": "陆沉",
+      "gender": "male",
+      "age": 36,
+      "role": "antagonist",
+      "bio": "星澜设计现任总裁，三年前用一纸合同夺走林晚的全部作品，习惯用条款和资本解决一切，从不认为自己做错过事。",
+      "appearance": "高个宽肩，寸头，下颌线锋利，眼神沉静压人",
+      "costume": "深灰三件套西装，金属袖扣，黑色腕表",
+      "voice": "低沉平稳的男中音，习惯用陈述句，尾音下沉，压迫感强"
+    },
+    {
+      "id": "char_anni",
+      "name": "安妮",
+      "gender": "female",
+      "age": 26,
+      "role": "supporting",
+      "bio": "林晚的私人助理，负责这次匿名竞拍的全部手续，是唯一知道买家真实身份的人。",
+      "appearance": "圆脸短发，戴圆框眼镜，动作利落",
+      "costume": "米色西装套装，抱着黑色文件夹",
+      "voice": "清亮偏快的女声，说话简短，不带多余情绪"
+    },
+    {
+      "id": "char_hejin",
+      "name": "何晋",
+      "gender": "male",
+      "age": 45,
+      "role": "supporting",
+      "bio": "拍卖行资深拍卖师，主持过无数场资产拍卖，声音圆润专业，见惯大场面。",
+      "appearance": "微胖，油亮背头，金边眼镜",
+      "costume": "黑色燕尾服，白手套，手持木槌",
+      "voice": "洪亮圆润的男中音，专业拍卖腔调，节奏感强"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "title": "三千万，我买回自己的名字",
+      "synopsis": "匿名买家林晚回到三年前将她扫地出门的星澜大厦，在年度资产拍卖会上以三千万拍下那份毁掉她的合同，并当众点出合同第七页第三条，让主谋陆沉第一次在所有人面前失控。",
+      "target_duration_s": 60,
+      "scenes": [
+        {
+          "scene_id": "ep01_sc01",
+          "setting": {
+            "location": "星澜大厦一层大厅",
+            "int_ext": "INT",
+            "time_of_day": "day",
+            "description": "挑高大厅，冷白大理石地面，尽头挂着星澜设计年度资产拍卖的灯箱海报，水晶灯下人流穿梭，空气里有金属与香水的冷味"
+          },
+          "summary": "林晚以匿名买家身份走进旧公司大楼，看着墙上的拍卖海报，说出三年前被赶走的事实。",
+          "mood": "tense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc01_sh01",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "ELS",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "9:16 竖屏，大厅纵深线居中，水晶灯与地面反光形成上下呼应；人物尚未入画，画面底部约 1/4 留作字幕与平台 UI 安全区"
+              },
+              "description": "星澜大厦一层大厅全景，挑高穹顶与水晶灯压在画面上缘，冷白大理石地面映出人影，尽头墙上悬着巨大的拍卖灯箱海报（海报主标题文字后期叠加为“星澜设计·年度资产拍卖”），西装的宾客与工作人员在远处穿梭",
+              "lighting": "冷白顶光为主，水晶灯高色温高光，地面强反射形成硬亮斑",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "大厅环境人声",
+                "远处电梯提示音",
+                "行李箱轮子滚过地面声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh02",
+              "duration": {
+                "hint_s": 3.5
+              },
+              "framing": {
+                "shot_size": "MLS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "双人并排、林晚居中偏上，安妮位于画面右侧稍后半步；镜头随二人向前推移，底部 1/4 空出字幕安全区"
+              },
+              "description": "林晚穿黑色丝绒长裙、戴宽檐墨镜从旋转门走入画面正中，细高跟一步步敲在大理石地面上；安妮抱着黑色文件夹贴前半步跟在右后侧，侧头低声汇报，镜头随两人缓慢向前推移，背景灯箱海报被拉出光斑",
+              "lighting": "冷白环境顶光，侧后方水晶灯形成轮廓光，裙面丝绒吸光显深",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "双手插在裙侧，步伐稳定地朝电梯厅走",
+                  "emotion": "平静冷淡，看不出情绪"
+                },
+                {
+                  "character_id": "char_anni",
+                  "action": "抱着黑色文件夹贴前半步，侧头低声汇报",
+                  "emotion": "谨慎专注"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0001",
+                  "speaker": "char_anni",
+                  "kind": "dialogue",
+                  "text": "晚姐，三楼贵宾席，都安排好了。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.4,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "高跟鞋敲击大理石声",
+                "大厅人声底噪"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh03",
+              "duration": {
+                "hint_s": 4.2
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "林晚面部居中偏上，墨镜在手中，背景墙上灯箱海报虚化成冷白光块；底部 1/4 为字幕安全区"
+              },
+              "description": "林晚在电梯厅前停下，摘下宽檐墨镜，目光落在墙上那幅巨大的拍卖灯箱海报上（海报文字后期叠加为“星澜设计·年度资产拍卖”）；她抬起左手，拇指摩挲腕上那只旧款男式手表，睫毛轻轻一颤，镜头缓缓推近到她的眉眼与小痣",
+              "lighting": "顶部冷白射灯打在面部，海报背光勾出头发边缘一圈亮边",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "摘下墨镜，拇指摩挲腕上旧款男式手表，抬眼看向海报",
+                  "emotion": "眼底压着旧恨，嘴角不动"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0002",
+                  "speaker": "char_linwan",
+                  "kind": "voiceover",
+                  "text": "三年前，就是这栋楼把我赶了出去。",
+                  "delivery": {
+                    "emotion": "sad",
+                    "intensity": 0.5,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "电梯到站提示音",
+                "远处衣料摩擦声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc01_sh04",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "static",
+                "composition": "林晚背对镜头立于画面中央偏上，双扇木门框住她，门缝光带纵向切割画面；底部 1/4 为字幕安全区"
+              },
+              "description": "林晚重新戴回墨镜，双手推开厚重的双扇木门，会场内的暖白光从门缝里漏出来打在她背上，安妮侧身跟进，木门在两人身后缓缓合拢",
+              "lighting": "会场内暖白光从门缝透出，廊道冷光压暗前景，形成强明暗对比",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "戴回墨镜，双手推门进入会场",
+                  "emotion": "决绝"
+                },
+                {
+                  "character_id": "char_anni",
+                  "action": "侧身跟进，随手扶住门沿",
+                  "emotion": "安静利落"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "厚重木门推开声",
+                "门轴低鸣"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc02",
+          "setting": {
+            "location": "拍卖会会场",
+            "int_ext": "INT",
+            "time_of_day": "day",
+            "description": "环形会场，前排是贵宾席，后排散座坐满人；拍卖台上立着电子屏与木槌台，舞台射灯集中打在台上，台下昏暗"
+          },
+          "summary": "第七号标的开拍，陆沉举牌一千五百万，后排匿名买家直接叫三千万并落槌成交。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc02_sh01",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "ELS",
+                "angle": "high",
+                "movement": "static",
+                "composition": "俯视环形会场，拍卖台位于画面中上，台面射灯形成亮岛，台下昏暗；底部 1/4 留字幕安全区"
+              },
+              "description": "拍卖会会场全景，环形座位中前排贵宾席空出高背椅，后排散座坐满人；舞台中央立着电子屏与木槌台，电子屏上显示一份文件封面（屏幕文字后期叠加为“第7号标的：原创设计版权转让合同”），舞台射灯集中打在台上",
+              "lighting": "舞台顶部射灯强光打在台面，台下仅靠壁灯微弱补光，明暗反差极大",
+              "characters": [],
+              "dialogue": [],
+              "sfx": [
+                "会场窃窃低语",
+                "纸张翻动声",
+                "麦克风电流轻响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh02",
+              "duration": {
+                "hint_s": 5.0
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "push_in",
+                "composition": "何晋立于画面中央偏上，木槌与电子屏分列左右，仰角强化台上权威感；底部 1/4 为字幕安全区"
+              },
+              "description": "何晋穿黑色燕尾服、戴白手套站在木槌台前，一手扶台一手举起木槌扫视全场，身后电子屏上合同封面冷蓝发光（屏幕文字后期叠加为“第7号标的：原创设计版权转让合同”），镜头向台上缓慢推近",
+              "lighting": "舞台射灯自上方直下，白手套与金属木槌反出高光，背景电子屏冷蓝溢光",
+              "characters": [
+                {
+                  "character_id": "char_hejin",
+                  "action": "一手扶台，一手高举木槌宣布起拍，环视全场",
+                  "emotion": "专业从容，带着职业性的笑意"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0003",
+                  "speaker": "char_hejin",
+                  "kind": "dialogue",
+                  "text": "第7号标的，原创设计版权转让合同，起拍价八百万。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.6,
+                    "speed": 1.05
+                  }
+                }
+              ],
+              "sfx": [
+                "木槌轻敲声",
+                "会场窃窃低语"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh03",
+              "duration": {
+                "hint_s": 2.0
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "陆沉居中偏上，前景椅背虚化压住画面下缘，号牌在画面右下角；底部 1/4 为字幕安全区"
+              },
+              "description": "第一排贵宾席，陆沉靠坐在椅背上，指尖夹着号牌随意抬起，眼睛没看台上，只盯着自己手里晃动的号牌，金属袖扣在暗处闪了一下",
+              "lighting": "台上来光扫过侧脸，另一半脸沉在暗部，袖扣与号牌形成金属反光点",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "靠坐椅背，随手举起号牌",
+                  "emotion": "漫不经心，胜券在握"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0004",
+                  "speaker": "char_luchen",
+                  "kind": "dialogue",
+                  "text": "一千五百万。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.4,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "号牌轻响",
+                "椅子吱呀声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh04",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "林晚在后排角落居中偏上，墨镜与号牌同框，追光从上落下形成高亮框；底部 1/4 为字幕安全区"
+              },
+              "description": "后排角落，林晚隔着墨镜缓缓抬起写着“7”的号牌，腕上那只旧男式手表在灯光下反光；一束追光瞬间打在她身上，四周的人纷纷回头张望，镜头向她推近",
+              "lighting": "顶部追光骤亮直打全身，周围观众席留在暗部，形成孤立光岛",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "缓缓举起写着“7”的号牌，脸不转向台上",
+                  "emotion": "冷静，纹丝不动"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0005",
+                  "speaker": "char_linwan",
+                  "kind": "dialogue",
+                  "text": "三千万。",
+                  "delivery": {
+                    "emotion": "neutral",
+                    "intensity": 0.5,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "全场突然安静",
+                "椅脚挪动声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh05",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "low",
+                "movement": "static",
+                "composition": "何晋居中偏上，木槌落点处于画面中心，台下人头作为前景虚化压在底部；底部 1/4 为字幕安全区"
+              },
+              "description": "何晋高举木槌，环视一圈后用力落下，木槌重敲在台面上弹起微尘；台下宾客交头接耳，有人站起来朝后排张望，画面一片骚动",
+              "lighting": "舞台射灯直下，木槌落点形成硬阴影，台下人声区昏暗",
+              "characters": [
+                {
+                  "character_id": "char_hejin",
+                  "action": "高举木槌三次环视后用力落槌",
+                  "emotion": "惊讶中保持职业冷静"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0006",
+                  "speaker": "char_hejin",
+                  "kind": "dialogue",
+                  "text": "三千万一次，两次，成交！",
+                  "delivery": {
+                    "emotion": "surprised",
+                    "intensity": 0.7,
+                    "speed": 1.1
+                  }
+                }
+              ],
+              "sfx": [
+                "木槌重击声",
+                "人群哗然"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh06",
+              "duration": {
+                "hint_s": 2.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "陆沉面部居中偏上，转头动作带轻微拖影，后景人群虚化成色块；底部 1/4 为字幕安全区"
+              },
+              "description": "陆沉猛地转头，目光越过一整片人头，钉在后排那个戴墨镜的女人身上，下颌线绷紧，喉结动了一下",
+              "lighting": "台上来光斜切面部，一只眼睛高光一只眼睛沉入暗部",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "猛地转头，越过人群盯住后排",
+                  "emotion": "警觉、不悦"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "会场嘈杂声压低",
+                "衣领摩擦声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc02_sh07",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "前景陆沉侧脸虚化框在画面左缘，林晚脸部居中偏上，形成框中框；底部 1/4 为字幕安全区"
+              },
+              "description": "林晚隔着人群与陆沉对视，唇角很浅地扬了一下，黑色墨镜下的眼神平稳不动，镜头缓缓推近她的下半张脸",
+              "lighting": "追光从侧上方落在脸侧，镜片反射出舞台射灯的小白点",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "隔着人群与陆沉对视，唇角极浅地上扬",
+                  "emotion": "冷静中带着一丝嘲讽"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0007",
+                  "speaker": "char_linwan",
+                  "kind": "voiceover",
+                  "text": "陆沉，我回来了。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.5,
+                    "speed": 0.9
+                  }
+                }
+              ],
+              "sfx": [
+                "会场嘈杂声渐远",
+                "心跳般低频音"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc03",
+          "setting": {
+            "location": "拍卖台前签约桌",
+            "int_ext": "INT",
+            "time_of_day": "day",
+            "description": "舞台侧方的长桌，摊开的合同与签字笔摆好，头顶射灯直下，背景是巨大的电子屏"
+          },
+          "summary": "林晚当场签下合同，陆沉上前试探，被她一句“第七页第三条”点破当年的事。",
+          "mood": "uplifting",
+          "shots": [
+            {
+              "shot_id": "ep01_sc03_sh01",
+              "duration": {
+                "hint_s": 2.8
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "长桌横向铺满画面中段，林晚立于桌前偏上，背景电子屏冷蓝发亮；底部 1/4 为字幕安全区"
+              },
+              "description": "舞台侧方的长桌前，摊开的合同与签字笔摆好，头顶射灯直下在纸面打出一块亮斑，背景是巨大的电子屏泛着冷蓝光；林晚立在桌前低头执笔，笔尖稳稳落在签名栏",
+              "lighting": "头顶硬顶光直下，纸面强反光，背景电子屏冷蓝溢光勾出人物轮廓",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "低头执笔在合同上签字，笔尖很稳",
+                  "emotion": "平静"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "笔尖划过纸面的沙沙声",
+                "鞋跟轻点地面的轻响"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh02",
+              "duration": {
+                "hint_s": 3.2
+              },
+              "framing": {
+                "shot_size": "MCU",
+                "angle": "high",
+                "movement": "static",
+                "composition": "陆沉俯身占据画面上半部，林晚低头签字位于画面下半偏中，桌面形成斜线分割；底部 1/4 为字幕安全区"
+              },
+              "description": "陆沉走到长桌前，一只手按在桌沿上，居高临下地俯视正在签字的林晚，金属袖扣压进纸面反光；何晋在桌侧识趣地退开半步，镜头保持俯角",
+              "lighting": "顶光在两人之间形成强烈明暗分界，袖扣与签字笔铜环各有一处高光",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "单手按在桌沿，俯身看她",
+                  "emotion": "探究，带一丝轻蔑"
+                },
+                {
+                  "character_id": "char_linwan",
+                  "action": "继续低头签字，不为所动",
+                  "emotion": "平静"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0008",
+                  "speaker": "char_luchen",
+                  "kind": "dialogue",
+                  "text": "三千万买份废纸，你图什么？",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.5,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "桌面被手掌压出的轻响",
+                "笔尖停顿声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh03",
+              "duration": {
+                "hint_s": 5.6
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "push_in",
+                "composition": "林晚面部与手部同框，手在画面下三分之一，眼睛位于上三分之一，指尖压在纸面上；底部 1/4 为字幕安全区"
+              },
+              "description": "林晚抬眼，指尖捏住墨镜边缘往下压了一点，露出一双细长的眼睛；她伸手把合同往前翻一页，食指点在第三条上，指节压住纸面，镜头缓慢推近到她的眼睛与左眉尾那颗小痣",
+              "lighting": "顶光打在眼下形成一道硬阴影，纸面反光把手部照得发白",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "压下墨镜露出眼睛，翻页并食指点在第三条上",
+                  "emotion": "平静里透着锋利"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0009",
+                  "speaker": "char_linwan",
+                  "kind": "dialogue",
+                  "text": "废纸？第七页第三条，自愿放弃全部署名，是陆总亲手写的。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.75,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "纸张翻动声",
+                "会场远处低语"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc03_sh04",
+              "duration": {
+                "hint_s": 2.2
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "eye_level",
+                "movement": "static",
+                "composition": "陆沉面部居中偏上，按在桌沿的手入画于下缘；底部 1/4 为字幕安全区"
+              },
+              "description": "陆沉瞳孔一缩，按在桌沿上的手指骤然收紧，指节发白，原先的从容笑意彻底消失；他俯身压低，几乎贴到桌面上",
+              "lighting": "顶光自上方压下，眼窝与颧骨下拉出深阴影，手指高光锐利",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "手指收紧抓桌，俯身压低声音",
+                  "emotion": "震动、警觉"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0010",
+                  "speaker": "char_luchen",
+                  "kind": "dialogue",
+                  "text": "你到底是谁？",
+                  "delivery": {
+                    "emotion": "anxious",
+                    "intensity": 0.7,
+                    "speed": 1.05
+                  }
+                }
+              ],
+              "sfx": [
+                "桌面被压出的轻响",
+                "呼吸声"
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "ep01_sc04",
+          "setting": {
+            "location": "拍卖行侧廊",
+            "int_ext": "INT",
+            "time_of_day": "day",
+            "description": "落地窗长廊，灰白天光洒在地面，尽头是电梯，走廊空旷，脚步声回声明显"
+          },
+          "summary": "陆沉拦住林晚要她摘墨镜，她留下“明天送到你办公室”的话离开；陆沉翻开合同，看到签名栏被红笔圈出的名字。",
+          "mood": "suspense",
+          "shots": [
+            {
+              "shot_id": "ep01_sc04_sh01",
+              "duration": {
+                "hint_s": 2.5
+              },
+              "framing": {
+                "shot_size": "LS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "长廊纵深线居中，林晚背影在画面中偏右，两侧落地窗等距排列；底部 1/4 为字幕安全区"
+              },
+              "description": "空旷的落地窗长廊里，灰白天光一格一格洒在地面上，林晚背对镜头朝尽头的电梯走去，脚步声在廊内回荡，她的影子被拉长拖在身后",
+              "lighting": "落地窗自然天光均匀铺地，人物逆光成半剪影，走廊尽头略暗",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "背对镜头朝电梯走去",
+                  "emotion": "从容"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "空旷走廊的回声",
+                "高跟鞋节奏声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh02",
+              "duration": {
+                "hint_s": 2.6
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "handheld",
+                "composition": "两人面对面占据画面中央偏上，落地窗天光从右侧打来，地面长影压在底部；底部 1/4 为字幕安全区"
+              },
+              "description": "陆沉两步跨过去，横身挡在林晚面前，抬手想要碰她脸上的墨镜，手停在半空；林晚停步，纹丝不动地抬眼看他，两人的影子在灰白地面上交叠拉长",
+              "lighting": "侧窗天光形成硬边轮廓光，两人面部一半亮一半沉在暗部",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "跨步拦人，抬手要碰她的墨镜",
+                  "emotion": "急迫、压抑"
+                },
+                {
+                  "character_id": "char_linwan",
+                  "action": "停步站定，纹丝不动地看着他",
+                  "emotion": "冷静"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0011",
+                  "speaker": "char_luchen",
+                  "kind": "dialogue",
+                  "text": "站住。把墨镜摘了。",
+                  "delivery": {
+                    "emotion": "angry",
+                    "intensity": 0.6,
+                    "speed": 1.05
+                  }
+                }
+              ],
+              "sfx": [
+                "鞋跟急停摩擦声",
+                "空旷走廊的回声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh03",
+              "duration": {
+                "hint_s": 5.2
+              },
+              "framing": {
+                "shot_size": "MS",
+                "angle": "eye_level",
+                "movement": "tracking",
+                "composition": "林晚背影居中偏上，落地窗向右后方依次掠过，安妮在画面深处的电梯口形成第二个视觉焦点；底部 1/4 为字幕安全区"
+              },
+              "description": "林晚偏头避开他的手，侧身继续朝电梯走，背影在空旷长廊里拖出一条长影；安妮站在电梯口按住开门键等她，两侧落地窗一格一格从画面上掠过，电梯门敞开一道冷光",
+              "lighting": "走廊灰白天光随步伐明暗交替，电梯口溢出的冷白光形成纵深亮点",
+              "characters": [
+                {
+                  "character_id": "char_linwan",
+                  "action": "偏头避开他的手，转身走向电梯",
+                  "emotion": "从容，带着主宰感"
+                },
+                {
+                  "character_id": "char_anni",
+                  "action": "在电梯口按住开门键等候",
+                  "emotion": "利落安静"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0012",
+                  "speaker": "char_linwan",
+                  "kind": "dialogue",
+                  "text": "陆总别急，明天，我会亲自把合同送到你的办公室。",
+                  "delivery": {
+                    "emotion": "sarcastic",
+                    "intensity": 0.7,
+                    "speed": 0.95
+                  }
+                }
+              ],
+              "sfx": [
+                "电梯到站提示音",
+                "高跟鞋远去声"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh04",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "ECU",
+                "angle": "high",
+                "movement": "push_in",
+                "composition": "合同签名栏充满画面中央，红笔圈占据视觉中心，陆沉的手指从下缘入画；签名内容文字后期叠加在圈内；底部 1/4 为字幕安全区"
+              },
+              "description": "合同最后一页的乙方签署栏，签名被红笔重重圈出（签名内容文字后期叠加为“乙方签署：林晚”），镜头推近到红圈与纸纤维；陆沉的手指僵在纸面上，指腹被顶出白痕",
+              "lighting": "顶光直下纸面形成强反射，红笔墨迹与手指阴影对比锐利",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "低头翻开合同，手指僵在签名栏上",
+                  "emotion": "震惊、难以置信"
+                }
+              ],
+              "dialogue": [],
+              "sfx": [
+                "纸张被攥紧的声音",
+                "呼吸骤停的一瞬静音"
+              ]
+            },
+            {
+              "shot_id": "ep01_sc04_sh05",
+              "duration": {
+                "hint_s": 3.0
+              },
+              "framing": {
+                "shot_size": "CU",
+                "angle": "low",
+                "movement": "static",
+                "composition": "陆沉面部居中偏上，身后合拢的电梯门作为背景压在画面右缘；底部 1/4 为字幕安全区"
+              },
+              "description": "陆沉猛地抬头，看向已经合上的电梯门，合同还攥在手里被捏出折痕，唇线绷紧，眼神从震惊转成恐慌",
+              "lighting": "走廊天光从侧后方打来，面部大半沉在暗里，只有眼睛与纸面折痕反光",
+              "characters": [
+                {
+                  "character_id": "char_luchen",
+                  "action": "攥着合同猛地抬头看向合上的电梯门",
+                  "emotion": "震惊转恐惧"
+                }
+              ],
+              "dialogue": [
+                {
+                  "line_id": "l_0013",
+                  "speaker": "char_luchen",
+                  "kind": "dialogue",
+                  "text": "林晚？不可能，她三年前就……",
+                  "delivery": {
+                    "emotion": "fearful",
+                    "intensity": 0.7,
+                    "speed": 1.0
+                  }
+                }
+              ],
+              "sfx": [
+                "电梯门合拢的闷响",
+                "纸张被攥皱声"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
